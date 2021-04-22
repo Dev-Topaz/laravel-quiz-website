@@ -13,7 +13,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+                    @hasrole('manager')
+                        Hello Manager<br>
+                    @else
+                        I am not a manager<br>
+                    @endhasrole
                     {{ __('You are logged in!') }}
                 </div>
             </div>
