@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ExamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,4 @@ Route::group(['middleware' => 'role:manager'], function() {
 });
 
 Route::resource('users', UserController::class);
+Route::resource('exams', ExamController::class);
