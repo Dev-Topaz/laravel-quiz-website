@@ -14,7 +14,7 @@
                     </div>
                     @hasrole('manager')
                     <div style="float: right;margin-right: 0px">
-                        <a href="#" title="Create New Exam" id="button_create_exam" class="button_primary">
+                        <a href="{{ url('/exams/create') }}" title="Create New Exam" id="button_create_exam" class="button_primary">
                             <i class="fas fa-plus"></i>Create New Exam
                         </a>
                     </div>

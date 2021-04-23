@@ -16,7 +16,7 @@ main {
 }
 
 #main {
-    font-family: "glober_regularregular","Lucida Grande",Tahoma,Arial,sans-serif;
+    font-family: "glober_regularregular", "Lucida Grande", Tahoma, Arial, sans-serif;
     line-height: 1.5;
     margin: 0;
     border: 0;
@@ -29,7 +29,7 @@ main {
     padding: 20px 5px;
     background-color: #fff;
     border-top: 1px solid #eaeded;
-    box-shadow: 0 1px 1px 0 rgba(0,28,36,0.5);
+    box-shadow: 0 1px 1px 0 rgba(0, 28, 36, 0.5);
 }
 
 #main #content {
@@ -56,7 +56,7 @@ main {
 
 #content .post .content_header .content_header_title h2 {
     margin: 0;
-    font-family: "glober_regularregular","Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+    font-family: "glober_regularregular", "Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
     font-size: 170%;
     font-weight: 400;
     line-height: 20px;
@@ -64,19 +64,19 @@ main {
 
 #content .post .content_header .content_header_title p {
     margin: 0;
-    font-family: "glober_regularregular","Lucida Grande",Tahoma,Arial,sans-serif;
+    font-family: "glober_regularregular", "Lucida Grande", Tahoma, Arial, sans-serif;
     font-size: 13px;
     line-height: 30px;
 }
 
-#content .post .content_header .content_header_title #button_add_user, #content .post .content_header .content_header_title #button_create_exam {
+#content .post .content_header .content_header_title #button_add_user, #content .post .content_header .content_header_title #button_create_exam, .create_form button {
     line-height: 1.5;
     margin: 0;
     vertical-align: baseline;
     display: inline-block;
     outline: none;
     cursor: pointer;
-    font-family: 'globerbold',HelveticaNeue, Arial, sans-serif;
+    font-family: 'globerbold', HelveticaNeue, Arial, sans-serif;
     font-weight: normal;
     font-size: 13px;
     padding: 5px 15px;
@@ -85,7 +85,7 @@ main {
     text-decoration: none;
     background-color: #5a9117;
     color: #fff;
-    box-shadow: 0 1.6px 3.6px 0 rgba(0,0,0,.132),0 .3px .9px 0 rgba(0,0,0,.108);
+    box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, .132), 0 .3px .9px 0 rgba(0, 0, 0, .108);
     border: none;
 }
 
@@ -100,12 +100,12 @@ main {
 /*content body*/
 #content .post .content_body {
     padding: 0 20px 40px;
-    min-height: 400px;
+    min-height: 200px;
 }
 
 #content .post .content_body #entries_actions {
     border-radius: 0px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     background-color: #fff2ef;
     background-image: -webkit-linear-gradient(top, rgb(255, 242, 239), rgb(245, 211, 203));
     float: left;
@@ -128,7 +128,7 @@ main {
 }
 
 #content .post .content_body #entries_actions ul li a {
-    font-family: 'globerbold',Arial,helvetica,'Trebuchet MS','Lucida Grande';
+    font-family: 'globerbold', Arial, helvetica, 'Trebuchet MS', 'Lucida Grande';
     color: #cb6852;
     font-weight: 400;
     display: block;
@@ -170,7 +170,7 @@ main {
 
 #content .post .content_body #entries_options {
     border-radius: 0px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     background-color: #eff6ff;
     background-image: -webkit-linear-gradient(top, rgb(239, 246, 255), rgb(211, 227, 245));
     float: right;
@@ -181,7 +181,7 @@ main {
 }
 
 #content .post .content_body #entries_options li a {
-    font-family: 'globerbold',Arial,helvetica,'Trebuchet MS','Lucida Grande';
+    font-family: 'globerbold', Arial, helvetica, 'Trebuchet MS', 'Lucida Grande';
     color: #3B699F;
     font-weight: 400;
     display: block;
@@ -247,7 +247,7 @@ main {
 
 #entries_table th {
     color: #fff;
-    font-family: Arial,helvetica,'Helvetica Neue',Arial,'Trebuchet MS','Lucida Grande';
+    font-family: Arial, helvetica, 'Helvetica Neue', Arial, 'Trebuchet MS', 'Lucida Grande';
     font-size: 13px;
     font-weight: 500;
     padding-bottom: 5px;
@@ -324,7 +324,7 @@ main {
 }
 
 .content_body h3 {
-    font-family: "glober_regularregular","Trebuchet MS","Lucida Grande",Tahoma,Arial,Verdana,sans-serif;
+    font-family: "glober_regularregular", "Trebuchet MS", "Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
     font-size: 145%;
     font-weight: 400;
     line-height: 20px;
@@ -387,7 +387,7 @@ main {
     line-height: 14px;
     background-repeat: no-repeat;
     text-decoration: none;
-    font-family: "globersemibold",Arial,'HelveticaNeue',helvetica,'Helvetica Neue',Arial,'Trebuchet MS','Lucida Grande';
+    font-family: "globersemibold", Arial, 'HelveticaNeue', helvetica, 'Helvetica Neue', Arial, 'Trebuchet MS', 'Lucida Grande';
     font-size: 95%;
     font-weight: 400;
 }
@@ -406,3 +406,7 @@ main {
     margin-right: 10px;
 }
 
+.create_form input:focus, .create_form textarea:focus {
+    box-shadow: 0 0 0 0.2rem #5a911725 !important;
+    border-color: #5a9117 !important;
+}

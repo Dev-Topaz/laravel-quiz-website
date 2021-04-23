@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Exam;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ExamController extends Controller
 {
 
-    public function __contstruct()
+    public function __construct()
     {
         $this->middleware('auth');
     }
@@ -32,7 +33,7 @@ class ExamController extends Controller
      */
     public function create()
     {
-        //
+        return view('exams.create');
     }
 
     /**
@@ -43,7 +44,21 @@ class ExamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        Exam::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'author_id' => Auth::user()->id,
+            'status' => true,
+            'attempt_number' => 1,
+            'passing_score' => 10,
+        ]);
+
+        return redirect()->route('exams.index')
+            ->with('success', 'Exam created successfully.');
     }
 
     /**
