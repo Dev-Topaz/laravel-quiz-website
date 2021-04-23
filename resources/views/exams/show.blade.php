@@ -9,7 +9,7 @@
             <div class="col-3"><a href="#"><div class="quiz_type multi_choice"></div>Multiple Choice</a></div>
             <div class="col-3"><a href="#"><div class="quiz_type multi_response"></div>Multiple Response</a></div>
             <div class="col-3"><a href="#"><div class="quiz_type true_false"></div>True/False</a></div>
-            <div class="col-3"><a href="#"><div class="quiz_type short_answer"></div>Short Answer</a></div>
+            <div class="col-3"><a href="{{ url('/quizes/4') }}/exam/{{ $exam->id }}"><div class="quiz_type short_answer"></div>Short Answer</a></div>
             <div class="col-3"><a href="#"><div class="quiz_type numeric"></div>Numeric</a></div>
             <div class="col-3"><a href="#"><div class="quiz_type sequence"></div>Sequence</a></div>
             <div class="col-3"><a href="#"><div class="quiz_type matching"></div>Matching</a></div>

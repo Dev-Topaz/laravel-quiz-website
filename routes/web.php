@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ExamController;
+use App\Http\Controllers\QuizController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/initial_roles', [App\Http\Controllers\PermissionController::class, 'Permission']);
+//Route::get('/initial_roles', [App\Http\Controllers\PermissionController::class, 'Permission']);
 Route::group(['middleware' => 'role:manager'], function() {
 
    Route::get('/admin', function() {
@@ -31,7 +32,9 @@ Route::group(['middleware' => 'role:manager'], function() {
 
    });
 
+    Route::get('/quizes/{quiz_type}/exam/{exam}', [QuizController::class, 'create']);
 });
 
 Route::resource('users', UserController::class);
 Route::resource('exams', ExamController::class);
+
