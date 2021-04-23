@@ -111,18 +111,18 @@
                     <ul id="mf_form_list" style="text-align: center;">
                         @if (count($exams) > 0)
                             @foreach($exams as $exam)
-                                <li data-theme_id="26" id="liform_42152" class="form_visible">
+                                <li data-theme_id="{{ $exam->id }}" id="liform_{{ $exam->id }}" class="form_visible">
 
                                 <div class="middle_form_bar">
-                                    <h3>MINI OFFLINE - App Test Only</h3>
+                                    <h3>{{ $exam->name }}</h3>
                                     <div class="form_meta">
 
 
                                         <div class="form_actions">
-                                            <a class="form_actions_toggle" data-formid="42152" id="form_action_42152"
+                                            <a class="form_actions_toggle" data-formid="{{ $exam->id }}" id="form_action_{{ $exam->id }}"
                                                href="javascript:;"><span class="icon-cog"></span></a>
                                         </div>
-                                        <div id="action_toggle_content_42152" style="display: none">
+                                        <div id="action_toggle_content_{{ $exam->id }}" style="display: none">
                                             <div class="form_action_item mf_link_delete"><a href="#"><span
                                                         class="icon-trash2"></span> Delete</a></div>
 
@@ -133,7 +133,7 @@
                                                 <a href="#"><span class="icon-pause-circle"></span> Disable</a></div>
 
                                             <div class="form_action_item"><a title="View Form Info"
-                                                                             href="form_info.php?id=42152"><span
+                                                                             href="form_info.php?id={{ $exam->id }}"><span
                                                         class="icon-file-charts"></span> Info</a></div>
 
                                             <div class="form_action_item mf_link_export"><a title="Export Form Template"
