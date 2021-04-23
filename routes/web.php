@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,4 @@ Route::group(['middleware' => 'role:manager'], function() {
    });
 
 });
+Route::resource('users', UserController::class);

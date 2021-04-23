@@ -19,6 +19,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('css/all.min.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -38,13 +39,13 @@
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="#">
-                                <i class="fab fa-wpforms"></i>
-                                <h6>{{ __('Tests') }}</h6>
+                                <i class="fas fa-award"></i>
+                                <h6>{{ __('Exams') }}</h6>
                             </a>
                         </li>
                         @hasrole('manager')
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{ url('/users') }}">
                                 <i class="far fa-user"></i>
                                 <h6>{{ __('Users') }}</h6>
                             </a>
