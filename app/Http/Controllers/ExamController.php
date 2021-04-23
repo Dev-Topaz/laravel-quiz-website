@@ -69,7 +69,7 @@ class ExamController extends Controller
      */
     public function show(Exam $exam)
     {
-        //
+        return view('exams.show', compact('exam'));
     }
 
     /**

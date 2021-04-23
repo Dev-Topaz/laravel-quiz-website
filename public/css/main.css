@@ -69,7 +69,7 @@ main {
     line-height: 30px;
 }
 
-#content .post .content_header .content_header_title #button_add_user, #content .post .content_header .content_header_title #button_create_exam, .create_form button {
+#content .post .content_header .content_header_title #button_add_user, #content .post .content_header .content_header_title #button_create_exam, .create_form button, #button_create_quiz {
     line-height: 1.5;
     margin: 0;
     vertical-align: baseline;
@@ -283,7 +283,7 @@ main {
     white-space: nowrap;
 }
 
-#button_create_exam .fas {
+#button_create_exam .fas, #button_create_quiz .fas {
     font-size: 12px;
     padding-right: 5px;
 }

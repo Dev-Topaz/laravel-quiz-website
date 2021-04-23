@@ -82,7 +82,7 @@
                                     </div>
 
                                     <div class="form_option">
-                                        <a href="edit_form.php?id=42152"><i class="far fa-eye"></i>Edit Quizs of this Exam</a>
+                                        <a href="{{ url('/exams') }}/{{$exam->id}}"><i class="far fa-eye"></i>Edit Quizs of this Exam</a>
                                     </div>
 
                                     <div class="form_option_separator"></div>
