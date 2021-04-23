@@ -46,6 +46,8 @@ class ExamController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'attempt_number' => 'required',
+            'passing_score' => 'required',
         ]);
 
         Exam::create([
@@ -53,8 +55,8 @@ class ExamController extends Controller
             'description' => $request->description,
             'author_id' => Auth::user()->id,
             'status' => true,
-            'attempt_number' => 1,
-            'passing_score' => 10,
+            'attempt_number' => $request->attempt_number,
+            'passing_score' => $request->passing_score,
         ]);
 
         return redirect()->route('exams.index')
