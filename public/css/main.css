@@ -410,3 +410,12 @@ main {
     box-shadow: 0 0 0 0.2rem #5a911725 !important;
     border-color: #5a9117 !important;
 }
+
+#mf_form_list li .middle_form_bar:hover, #mf_form_list .form_option:hover {
+    background-color: #85b44c;
+}
+
+.form_option .fa, .form_option .far, .form_option .fas {
+    font-size: 15px;
+    padding-right: 5px;
+}
