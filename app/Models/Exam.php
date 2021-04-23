@@ -12,4 +12,9 @@ class Exam extends Model
     protected $table = 'exams';
     protected $primaryKey = 'id';
     protected $fillable = ['name', 'description', 'author_id', 'attempt_number', 'status', 'passing_score'];
+
+    public function quizes()
+    {
+        return $this->hasMany(Quiz::class, 'id', 'exam_id');
+    }
 }

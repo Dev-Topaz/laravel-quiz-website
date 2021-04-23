@@ -9,7 +9,7 @@ class Quiz extends Model
 {
     use HasFactory;
 
-    protected $table = 'quiz_type';
+    protected $table = 'quizes';
     protected $primaryKey = 'id';
     protected $fillable = ['exam_id', 'layout', 'type_id', 'question', 'answer', 'feedback_correct', 'feedback_incorrect', 'feedback_try_again', 'is_feedback', 'is_draft', 'media'];
 }

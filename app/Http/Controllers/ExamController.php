@@ -69,6 +69,7 @@ class ExamController extends Controller
      */
     public function show(Exam $exam)
     {
+        $exam['quizes'] = $exam->quizes;
         return view('exams.show', compact('exam'));
     }
 
