@@ -31,4 +31,5 @@ Route::group(['middleware' => 'role:manager'], function() {
    });
 
 });
+
 Route::resource('users', UserController::class);
