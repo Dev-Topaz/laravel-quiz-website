@@ -48,9 +48,11 @@ class QuizController extends Controller
             'is_feedback' => $request->is_feedback == 'feedback_checked' ? true : false,
             'is_draft' => false,
             ]);
-            
-            return redirect()->route('exams.index')
-            ->with('success', 'Quiz created successfully.');
+
+            $redirect_url = '/exams/' . $request->exam_id;
+
+            return redirect($redirect_url)
+                ->with('success', 'Quiz created successfully');
         }
         
         /**
@@ -93,7 +95,9 @@ class QuizController extends Controller
 
         $quiz->save();
 
-        return redirect()->route('exams.index')
+        $redirect_url = '/exams/' . $request->exam_id;
+
+        return redirect($redirect_url)
             ->with('success', 'Quiz updated successfully');
     }
 
@@ -105,6 +109,9 @@ class QuizController extends Controller
      */
     public function destroy(Quiz $quiz)
     {
-        //
+        // $product->delete();
+
+        // return redirect()->route('products.index')
+        //     ->with('success', 'Product deleted successfully');
     }
 }

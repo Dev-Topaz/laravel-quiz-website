@@ -80,11 +80,17 @@
                                     <div class="form_option">
                                         <a href="manage_entries.php?id=42152"><i class="fas fa-edit"></i>Edit Exam</a>
                                     </div>
-
+                                    
                                     <div class="form_option">
                                         <a href="{{ url('/exams') }}/{{$exam->id}}"><i class="far fa-eye"></i>Edit Quizs of this Exam</a>
                                     </div>
-
+                                    <form method="POST" action="{{ url('/exams') }}/{{ $exam->id }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <div class="form_option">
+                                            <button type="submit"><i class="fas fa-trash"></i>Delete Exam</button>
+                                        </div>
+                                    </form>
                                     <div class="form_option_separator"></div>
                                     @endhasrole
                                     <div class="form_option option_expandable">
