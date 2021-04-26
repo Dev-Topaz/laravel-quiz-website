@@ -72,6 +72,7 @@ class QuizController extends Controller
      */
     public function edit(Quiz $quiz)
     {
+        return view('quizes.update', ['quiz' => $quiz]);
     }
 
     /**

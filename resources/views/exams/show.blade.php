@@ -91,7 +91,7 @@
                                 </div>
                                 <div class="bottom_form_bar" style="display: none;">
                                     <div class="form_option">
-                                        <a href="manage_entries.php?id=42152"><i class="fas fa-edit"></i>Edit Quiz</a>
+                                        <a href="{{ url('/quizes') }}/{{$quiz->id}}/edit"><i class="fas fa-edit"></i>Edit Quiz</a>
                                     </div>
                                     <div class="form_option_separator"></div>
                                     <div class="form_option">
