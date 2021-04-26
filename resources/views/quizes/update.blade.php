@@ -20,8 +20,9 @@
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-md-12">
-                            <form method="POST" action="{{ url('/quizes') }}" class="create_form">
+                            <form method="POST" action="{{ url('/quizes') }}/{{ $quiz->id }}" class="create_form">
                                 @csrf
+                                @method('PUT')
                                 <input id="exam_id" type="text"
                                        class="form-control @error('exam_id') is-invalid @enderror" name="exam_id"
                                        value="{{ $quiz->exam_id }}" required autocomplete="exam_id" autofocus hidden>

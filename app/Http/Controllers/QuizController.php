@@ -84,7 +84,17 @@ class QuizController extends Controller
      */
     public function update(Request $request, Quiz $quiz)
     {
-        //
+        $quiz->question = $request->question;
+        $quiz->answer = $request->answer;
+        $quiz->is_feedback = $request->is_feedback ? true : false;
+        $quiz->feedback_correct = $request->feedback_correct;
+        $quiz->feedback_incorrect = $request->feedback_incorrect;
+        $quiz->feedback_try_again = $request->feedback_try_again;
+
+        $quiz->save();
+
+        return redirect()->route('exams.index')
+            ->with('success', 'Quiz updated successfully');
     }
 
     /**
