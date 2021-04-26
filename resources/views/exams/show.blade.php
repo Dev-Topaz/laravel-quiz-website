@@ -95,7 +95,7 @@
                                     </div>
                                     <div class="form_option_separator"></div>
                                     <div class="form_option">
-                                        <a href="{{ url('/exams') }}/{{$quiz->id}}"><i class="far fa-eye"></i>Preview</a>
+                                        <a href="{{ url('/quizes') }}/{{$quiz->id}}"><i class="far fa-eye"></i>Preview</a>
                                     </div>
                                 </div>
 

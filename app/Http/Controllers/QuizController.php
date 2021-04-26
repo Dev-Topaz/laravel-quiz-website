@@ -27,7 +27,7 @@ class QuizController extends Controller
     {
         return view('quizes.create', ['exam_id' => $exam_id, 'quiz_type' => $quiz_type]);
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -47,21 +47,21 @@ class QuizController extends Controller
             'feedback_try_again' => $request->feedback_try_again,
             'is_feedback' => $request->is_feedback == 'feedback_checked' ? true : false,
             'is_draft' => false,
-        ]);
-    
-        return redirect()->route('exams.index')
+            ]);
+            
+            return redirect()->route('exams.index')
             ->with('success', 'Quiz created successfully.');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Quiz  $quiz
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Quiz $quiz)
-    {
-        //
+        }
+        
+        /**
+         * Display the specified resource.
+         *
+         * @param  \App\Models\Quiz  $quiz
+         * @return \Illuminate\Http\Response
+         */
+        public function show(Quiz $quiz)
+        {
+            return view('quizes.show', ['quiz' => $quiz]);
     }
 
     /**
