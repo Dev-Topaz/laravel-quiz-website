@@ -4,7 +4,7 @@
 <div id="main">
 
     <div id="ex1" class="modal container">
-        <h3>Quiz Types</h3>
+        <h3>Select Quiz Type</h3>
         <div class="row">
             <div class="col-3"><a href="#"><div class="quiz_type multi_choice"></div>Multiple Choice</a></div>
             <div class="col-3"><a href="#"><div class="quiz_type multi_response"></div>Multiple Response</a></div>
@@ -42,11 +42,11 @@
                 <div class="content_body_main ">
                     <ul id="mf_form_list" style="text-align: center;">
                         @if (count($exam->quizes))
-                            @foreach($exam->quized as $quiz)
+                            @foreach($exam->quizes as $quiz)
                                 <li data-theme_id="{{ $quiz->id }}" id="liform_{{ $quiz->id }}" class="form_visible">
 
                                 <div class="middle_form_bar">
-                                    <h3>{{ $quiz->name }}</h3>
+                                    <h3>{{ $quiz->question }}</h3>
                                     <div class="form_meta">
 
 
@@ -90,19 +90,12 @@
                                     <div style="height: 0px; clear: both;"></div>
                                 </div>
                                 <div class="bottom_form_bar" style="display: none;">
-                                    @hasrole('manager')
                                     <div class="form_option">
-                                        <a href="manage_entries.php?id=42152"><i class="fas fa-edit"></i>Edit Exam</a>
+                                        <a href="manage_entries.php?id=42152"><i class="fas fa-edit"></i>Edit Quiz</a>
                                     </div>
-
-                                    <div class="form_option">
-                                        <a href="{{ url('/exams') }}/{{$quiz->id}}"><i class="far fa-eye"></i>Edit Quizs of this Exam</a>
-                                    </div>
-
                                     <div class="form_option_separator"></div>
-                                    @endhasrole
-                                    <div class="form_option option_expandable">
-                                        <a class="mf_link_theme" href="#" title="Theme"><i class="far fa-play-circle"></i><span class="option_text">Start Exam</span></a>
+                                    <div class="form_option">
+                                        <a href="{{ url('/exams') }}/{{$quiz->id}}"><i class="far fa-eye"></i>Preview</a>
                                     </div>
                                 </div>
 

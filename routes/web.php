@@ -33,6 +33,7 @@ Route::group(['middleware' => 'role:manager'], function() {
    });
 
     Route::get('/quizes/{quiz_type}/exam/{exam}', [QuizController::class, 'create']);
+    Route::post('/quizes', [QuizController::class, 'store']);
 });
 
 Route::resource('users', UserController::class);

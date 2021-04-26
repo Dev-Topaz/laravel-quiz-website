@@ -15,7 +15,7 @@ class CreateQuizesTable extends Migration
     {
         Schema::create('quizes', function (Blueprint $table) {
             $table->id();
-            $table->integer('example_id');
+            $table->integer('exam_id');
             $table->integer('layout');
             $table->integer('type_id');
             $table->string('question');

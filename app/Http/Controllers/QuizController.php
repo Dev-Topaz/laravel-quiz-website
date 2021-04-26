@@ -25,7 +25,7 @@ class QuizController extends Controller
      */
     public function create(string $quiz_type, string $exam_id)
     {
-        echo 'exam: '. $exam_id . ' | quiz_type'. $quiz_type;
+        return view('quizes.create', ['exam_id' => $exam_id, 'quiz_type' => $quiz_type]);
     }
 
     /**
@@ -36,7 +36,21 @@ class QuizController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Quiz::create([
+            'exam_id' => $request->exam_id,
+            'layout' => 1,
+            'type_id' => $request->type_id,
+            'question' => $request->question,
+            'answer' => $request->answer,
+            'feedback_correct' => $request->feedback_correct,
+            'feedback_incorrect' => $request->feedback_incorrect,
+            'feedback_try_again' => $request->feedback_try_again,
+            'is_feedback' => $request->is_feedback == 'feedback_checked' ? true : false,
+            'is_draft' => false,
+        ]);
+    
+        return redirect()->route('exams.index')
+            ->with('success', 'Quiz created successfully.');
     }
 
     /**
@@ -58,7 +72,6 @@ class QuizController extends Controller
      */
     public function edit(Quiz $quiz)
     {
-        //
     }
 
     /**

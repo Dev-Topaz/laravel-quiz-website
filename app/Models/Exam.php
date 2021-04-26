@@ -15,6 +15,6 @@ class Exam extends Model
 
     public function quizes()
     {
-        return $this->hasMany(Quiz::class, 'id', 'exam_id');
+        return $this->hasMany(Quiz::class, 'exam_id', 'id');
     }
 }
