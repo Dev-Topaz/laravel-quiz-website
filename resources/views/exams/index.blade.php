@@ -78,7 +78,7 @@
                                 <div class="bottom_form_bar" style="display: none;">
                                     @hasrole('manager')
                                     <div class="form_option">
-                                        <a href="manage_entries.php?id=42152"><i class="fas fa-edit"></i>Edit Exam</a>
+                                        <a href="{{ url('/exams') }}/{{$exam->id}}/edit"><i class="fas fa-edit"></i>Edit Exam</a>
                                     </div>
                                     
                                     <div class="form_option">

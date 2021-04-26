@@ -83,7 +83,7 @@ class ExamController extends Controller
      */
     public function edit(Exam $exam)
     {
-        //
+        return view('exams.update', ['exam' => $exam]);
     }
 
     /**
@@ -95,7 +95,10 @@ class ExamController extends Controller
      */
     public function update(Request $request, Exam $exam)
     {
-        //
+        $exam->update($request->all());
+
+        return redirect()->route('exams.index')
+            ->with('success', 'Exam updated successfully');
     }
 
     /**
