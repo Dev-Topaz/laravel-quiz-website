@@ -46,7 +46,7 @@
                                 <li data-theme_id="{{ $quiz->id }}" id="liform_{{ $quiz->id }}" class="form_visible">
 
                                 <div class="middle_form_bar">
-                                    <h3>{{ $quiz->question }}</h3>
+                                    <h3>{{ substr($quiz->question, 0,  39) }}{{ strlen($quiz->question) < 40 ? '' : '...' }}</h3>
                                     <div class="form_meta">
 
 
