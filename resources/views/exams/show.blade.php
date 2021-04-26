@@ -6,16 +6,66 @@
     <div id="ex1" class="modal container">
         <h3>Select Quiz Type</h3>
         <div class="row">
-            <div class="col-3"><a href="#"><div class="quiz_type multi_choice"></div>Multiple Choice</a></div>
-            <div class="col-3"><a href="#"><div class="quiz_type multi_response"></div>Multiple Response</a></div>
-            <div class="col-3"><a href="#"><div class="quiz_type true_false"></div>True/False</a></div>
-            <div class="col-3"><a href="{{ url('/quizes/4') }}/exam/{{ $exam->id }}"><div class="quiz_type short_answer"></div>Short Answer</a></div>
-            <div class="col-3"><a href="#"><div class="quiz_type numeric"></div>Numeric</a></div>
-            <div class="col-3"><a href="#"><div class="quiz_type sequence"></div>Sequence</a></div>
-            <div class="col-3"><a href="#"><div class="quiz_type matching"></div>Matching</a></div>
-            <div class="col-3"><a href="#"><div class="quiz_type fill_blank"></div>Fill in the Blanks</a></div>
-            <div class="col-3"><a href="#"><div class="quiz_type select_lists"></div>Select from Lists</a></div>
-            <div class="col-3"><a href="#"><div class="quiz_type hotspot"></div>Hotspot</a></div>
+            <div class="col-3">
+                <a href="#">
+                    <div class="quiz_type multi_choice"><img src="{{asset('images/multi_choice.png')}}" alt="Multiple Choice"></div>
+                    Multiple Choice
+                </a>
+            </div>
+            <div class="col-3">
+                <a href="#">
+                    <div class="quiz_type multi_response"><img src="{{asset('images/multi_response.png')}}" alt="Multiple Response"></div>
+                    Multiple Response
+                </a>
+            </div>
+            <div class="col-3">
+                <a href="#">
+                    <div class="quiz_type true_false"><img src="{{asset('images/true_false.png')}}" alt="True/False"></div>
+                    True/False
+                </a>
+            </div>
+            <div class="col-3">
+                <a href="{{ url('/quizes/4') }}/exam/{{ $exam->id }}">
+                    <div class="quiz_type short_answer"><img src="{{asset('images/short_answer.png')}}" alt="Short Answer"></div>
+                    Short Answer
+                </a>
+            </div>
+            <div class="col-3">
+                <a href="#">
+                    <div class="quiz_type numeric"><img src="{{asset('images/numeric.png')}}" alt="Numeric"></div>
+                    Numeric
+                </a>
+            </div>
+            <div class="col-3">
+                <a href="#">
+                    <div class="quiz_type sequence"><img src="{{asset('images/sequence.png')}}" alt="Sequence"></div>
+                    Sequence
+                </a>
+            </div>
+            <div class="col-3">
+                <a href="#">
+                    <div class="quiz_type matching"><img src="{{asset('images/matching.png')}}" alt="Matching"></div>
+                    Matching
+                </a>
+            </div>
+            <div class="col-3">
+                <a href="#">
+                    <div class="quiz_type fill_blank"><img src="{{asset('images/fill_blank.png')}}" alt="Fill in the Blank"></div>
+                    Fill in the Blanks
+                </a>
+            </div>
+            <div class="col-3">
+                <a href="#">
+                    <div class="quiz_type select_lists"><img src="{{asset('images/select_lists.png')}}" alt="Select from lists"></div>
+                    Select from Lists
+                </a>
+            </div>
+            <div class="col-3">
+                <a href="#">
+                    <div class="quiz_type hotspot"><img src="{{asset('images/hotspot.png')}}" alt="Hotspot"></div>
+                    Hotspot
+                </a>
+            </div>
         </div>
     </div>
 

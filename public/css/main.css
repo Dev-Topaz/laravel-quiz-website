@@ -311,6 +311,7 @@ main {
     background-color: #5a9117;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
 }
 
 #mf_form_list li .middle_form_bar p {
@@ -442,46 +443,5 @@ main {
 .quiz_type {
     width: 80px;
     height: 60px;
-    background: url(/images/quiz_type.png) no-repeat -20px -11px;
     margin: 10px auto;
-}
-
-.multi_choice {
-    background: url(/images/quiz_type.png) no-repeat -20px -11px;
-}
-
-.multi_response {
-    background: url(/images/quiz_type.png) no-repeat -138px -11px;
-}
-
-.true_false {
-    background: url(/images/quiz_type.png) no-repeat -256px -11px;
-}
-
-.short_answer {
-    background: url(/images/quiz_type.png) no-repeat -374px -11px;
-}
-
-.numeric {
-    background: url(/images/quiz_type.png) no-repeat -20px -106px;
-}
-
-.sequence {
-    background: url(/images/quiz_type.png) no-repeat -138px -106px;
-}
-
-.matching {
-    background: url(/images/quiz_type.png) no-repeat -256px -106px;
-}
-
-.fill_blank {
-    background: url(/images/quiz_type.png) no-repeat -374px -106px;
-}
-
-.select_lists {
-    background: url(/images/quiz_type.png) no-repeat -20px -199px;
-}
-
-.hotspot {
-    background: url(/images/quiz_type.png) no-repeat -256px -199px;
 }

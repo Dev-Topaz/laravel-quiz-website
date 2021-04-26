@@ -23,17 +23,18 @@
                 </div>
             </div>
 
+            <!-- testing git  -->
 
             <div class="content_body">
                 <div class="content_body_main ">
-                    <ul id="mf_form_list" style="text-align: center;">
+                    <ul id="mf_form_list">
                         @if (count($exams) > 0)
                             @foreach($exams as $exam)
                                 <li data-theme_id="{{ $exam->id }}" id="liform_{{ $exam->id }}" class="form_visible">
 
                                 <div class="middle_form_bar">
                                     <h3>{{ $exam->name }}</h3>
-                                    <div class="form_meta">
+                                    <div class="form_meta" style="display:none;">
 
 
                                         <div class="form_actions">
