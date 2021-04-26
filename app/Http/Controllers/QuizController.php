@@ -109,9 +109,11 @@ class QuizController extends Controller
      */
     public function destroy(Quiz $quiz)
     {
-        // $product->delete();
+        $quiz->delete();
 
-        // return redirect()->route('products.index')
-        //     ->with('success', 'Product deleted successfully');
+        $redirect_url = '/exams/' . $quiz->exam_id;
+
+        return redirect($redirect_url)
+            ->with('success', 'Quiz deleted successfully');
     }
 }

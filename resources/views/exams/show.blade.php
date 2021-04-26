@@ -93,6 +93,13 @@
                                     <div class="form_option">
                                         <a href="{{ url('/quizes') }}/{{$quiz->id}}/edit"><i class="fas fa-edit"></i>Edit Quiz</a>
                                     </div>
+                                    <form method="POST" action="{{ url('/quizes') }}/{{ $quiz->id }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <div class="form_option">
+                                            <button type="submit"><i class="fas fa-trash"></i>Delete Quiz</button>
+                                        </div>
+                                    </form>
                                     <div class="form_option_separator"></div>
                                     <div class="form_option">
                                         <a href="{{ url('/quizes') }}/{{$quiz->id}}"><i class="far fa-eye"></i>Preview</a>

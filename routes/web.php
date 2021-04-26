@@ -37,6 +37,7 @@ Route::group(['middleware' => 'role:manager'], function() {
     Route::post('/quizes', [QuizController::class, 'store']);
     Route::get('/quizes/{quiz}/edit', [QuizController::class, 'edit']);
     Route::put('/quizes/{quiz}', [QuizController::class, 'update']);
+    Route::delete('/quizes/{quiz}', [QuizController::class, 'destroy']);
 });
 
 Route::resource('users', UserController::class);
