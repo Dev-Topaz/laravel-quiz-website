@@ -40,14 +40,15 @@
 
             <div class="content_body">
                 <div class="content_body_main ">
-                    <ul id="mf_form_list" style="text-align: center;">
+                    <ul id="mf_form_list">
                         @if (count($exam->quizes))
                             @foreach($exam->quizes as $quiz)
                                 <li data-theme_id="{{ $quiz->id }}" id="liform_{{ $quiz->id }}" class="form_visible">
 
                                 <div class="middle_form_bar">
                                     <h3>{{ substr($quiz->question, 0,  39) }}{{ strlen($quiz->question) < 40 ? '' : '...' }}</h3>
-                                    <div class="form_meta">
+                                    <p>{{ $quiz->Quiz_type->name }}</p>
+                                    <div class="form_meta" style="display:none;">
 
 
                                         <div class="form_actions">

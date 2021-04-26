@@ -309,6 +309,12 @@ main {
 
 #mf_form_list li .middle_form_bar, #mf_folder_list li .middle_folder_bar {
     background-color: #5a9117;
+    display: flex;
+    flex-direction: column;
+}
+
+#mf_form_list li .middle_form_bar p {
+    padding-left: 10px;
 }
 
 #mf_form_list li .middle_form_bar {

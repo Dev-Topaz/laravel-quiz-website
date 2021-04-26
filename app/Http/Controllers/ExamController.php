@@ -72,6 +72,9 @@ class ExamController extends Controller
     public function show(Exam $exam)
     {
         $exam['quizes'] = $exam->quizes;
+        // foreach($exam->quizes as $quiz) {
+        //     var_dump($quiz->Quiz_type->name);die;
+        // }
         return view('exams.show', compact('exam'));
     }
 
