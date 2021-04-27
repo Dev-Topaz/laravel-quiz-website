@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Quiz;
+use App\Models\Answer;
+use App\Models\MultiChoiceAnswerContent;
 use Illuminate\Http\Request;
 use phpDocumentor\Reflection\Types\Integer;
 
@@ -36,9 +38,11 @@ class QuizController extends Controller
      */
     public function store(Request $request)
     {
-        var_dump($request->answer_content_array);
-        var_dump($request->choice_id_array);die;
-        Quiz::create([
+         $request->validate([
+            'answer' => 'required',
+        ]);
+
+        $quiz = Quiz::create([
             'exam_id' => $request->exam_id,
             'layout' => 1,
             'type_id' => $request->type_id,
@@ -50,6 +54,27 @@ class QuizController extends Controller
             'is_feedback' => $request->is_feedback == 'feedback_checked' ? true : false,
             'is_draft' => false,
             ]);
+
+        switch ($request->type_id) {
+            case "1":
+
+        //        insert at multi_choice_answer_contents table
+                $answer_content_array = explode(';', $request->answer_content_array);
+                array_pop($answer_content_array);
+                $choice_id_array = explode(';', $request->choice_id_array);
+                array_pop($choice_id_array);
+
+                foreach($answer_content_array as $key => $value) {
+                    MultiChoiceAnswerContent::create([
+                        'quiz_id' => $quiz->id,
+                        'content' => $answer_content_array[$key],
+                        'choice_id' => $choice_id_array[$key],
+                    ]);
+                }
+                break;
+            default:
+        }
+
 
             $redirect_url = '/exams/' . $request->exam_id;
 

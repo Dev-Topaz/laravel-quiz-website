@@ -11,5 +11,5 @@ class MultiChoiceAnswerContent extends Model
 
     protected $table = 'multi_choice_answer_contents';
     protected $primaryKey = 'id';
-    protected $fillable = ['answer_content_id', 'content', 'choice_id'];
+    protected $fillable = ['quiz_id', 'content', 'choice_id'];
 }

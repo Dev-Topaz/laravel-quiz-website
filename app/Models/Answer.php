@@ -11,5 +11,5 @@ class Answer extends Model
 
     protected $table = 'answers';
     protected $primaryKey = 'id';
-    protected $fillable = ['answer_id', 'answer_value'];
+    protected $fillable = ['quiz_id', 'answer_value'];
 }
