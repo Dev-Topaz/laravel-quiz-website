@@ -2,8 +2,7 @@ $('.middle_form_bar').click(function() {
     $(this).next().toggle();
 });
 
-$('#add_choice').click(function() {
-
+function get_choice_item_id() {
     var length = $('#answer_content .choice_item').length;
 
     var id = 1;
@@ -17,8 +16,34 @@ $('#add_choice').click(function() {
         }
     }
 
-    const element = $('<div class="choice_item"><input type="radio" id="' + id + '" name="answer" value="' + id + '" style="padding-right: 10px;"><label data-editable for="' + id + '">Type content...</label><a onclick="{$(this).parent().remove();}"><i class="fas fa-trash-alt"></i></a></div>');
+    return id;
+}
+
+function save_choice_data() {
+    var length = $('#answer_content .choice_item').length;
+
+    var choice_id_array = '';
+    var answer_content_array = '';
+
+    for(var i =0; i < length; i++) {
+        choice_id_array += $('#answer_content .choice_item input').eq(i).attr('id') + ';';
+        answer_content_array += $('#answer_content .choice_item label').eq(i).html() + ';';
+    }
+
+    console.log(choice_id_array, answer_content_array);
+
+    $('input#answer_content_array').val(answer_content_array);
+    $('input#choice_id_array').val(choice_id_array);
+}
+
+$('#add_choice').click(function() {
+
+    var id = get_choice_item_id();
+
+    const element = $('<div class="choice_item"><input type="radio" id="' + id + '" name="answer" value="' + id + '" style="padding-right: 10px;"><label data-editable for="' + id + '">Type content...</label><a onclick="{$(this).parent().remove();save_choice_data();}"><i class="fas fa-trash-alt"></i></a></div>');
     $(this).parent().before().prepend(element);
+
+    save_choice_data();
 });
 
 $('body').on('click', '[data-editable]', function(){
@@ -31,6 +56,7 @@ $('body').on('click', '[data-editable]', function(){
   var save = function(){
     var $label = $('<label data-editable />').text( $input.val() );
     $input.replaceWith( $label );
+    save_choice_data();
   };
 
   /**

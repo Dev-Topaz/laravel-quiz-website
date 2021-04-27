@@ -27,7 +27,7 @@ class QuizController extends Controller
     {
         return view('quizes.create', ['exam_id' => $exam_id, 'quiz_type' => $quiz_type]);
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -36,6 +36,8 @@ class QuizController extends Controller
      */
     public function store(Request $request)
     {
+        var_dump($request->answer_content_array);
+        var_dump($request->choice_id_array);die;
         Quiz::create([
             'exam_id' => $request->exam_id,
             'layout' => 1,
@@ -54,7 +56,7 @@ class QuizController extends Controller
             return redirect($redirect_url)
                 ->with('success', 'Quiz created successfully');
         }
-        
+
         /**
          * Display the specified resource.
          *

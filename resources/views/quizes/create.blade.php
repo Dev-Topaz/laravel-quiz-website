@@ -28,6 +28,12 @@
                                 <input id="type_id" type="text"
                                        class="form-control @error('type_id') is-invalid @enderror" name="type_id"
                                        value="{{ $quiz_type }}" required autocomplete="type_id" autofocus hidden>
+                                <input id="answer_content_array" type="text"
+                                       class="form-control @error('answer_content_array') is-invalid @enderror" name="answer_content_array"
+                                       value="" autocomplete="answer_content_array" autofocus hidden>
+                                <input id="choice_id_array" type="text"
+                                       class="form-control @error('choice_id_array') is-invalid @enderror" name="choice_id_array"
+                                       value="" autocomplete="choice_id_array" autofocus hidden>
                                 <div class="form-group row">
                                     <label for="question" class="col-md-3 col-form-label text-md-right">{{
                                         __('Question') }}</label>
