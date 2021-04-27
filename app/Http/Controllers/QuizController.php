@@ -113,6 +113,7 @@ class QuizController extends Controller
      */
     public function update(Request $request, Quiz $quiz)
     {
+
         $quiz->question = $request->question;
         $quiz->answer = $request->answer;
         $quiz->is_feedback = $request->is_feedback ? true : false;
@@ -121,6 +122,29 @@ class QuizController extends Controller
         $quiz->feedback_try_again = $request->feedback_try_again;
 
         $quiz->save();
+
+        switch ($request->type_id) {
+            case "1":
+
+                MultiChoiceAnswerContent::where('quiz_id', $quiz->id)->delete();
+        //        insert at multi_choice_answer_contents table
+                $answer_content_array = explode(';', $request->answer_content_array);
+                array_pop($answer_content_array);
+                $choice_id_array = explode(';', $request->choice_id_array);
+                array_pop($choice_id_array);
+
+                foreach($answer_content_array as $key => $value) {
+                    MultiChoiceAnswerContent::create([
+                        'quiz_id' => $quiz->id,
+                        'content' => $answer_content_array[$key],
+                        'choice_id' => $choice_id_array[$key],
+                    ]);
+                }
+                break;
+            default:
+        }
+
+
 
         $redirect_url = '/exams/' . $request->exam_id;
 
@@ -136,6 +160,14 @@ class QuizController extends Controller
      */
     public function destroy(Quiz $quiz)
     {
+        switch ($quiz->type_id) {
+            case "1":
+
+                MultiChoiceAnswerContent::where('quiz_id', $quiz->id)->delete();
+                break;
+            default:
+        }
+
         $quiz->delete();
 
         $redirect_url = '/exams/' . $quiz->exam_id;

@@ -22,20 +22,29 @@
                     <div class="row justify-content-center">
                         <div class="col-md-12">
                             <form method="POST" action="{{ url('/quizes') }}" class="create_form">
-                                    @csrf
+                                @csrf
                                 <div class="form-group row">
                                     <div class="col-md-12">
+                                        @if($quiz->type_id == 1)
+                                        @foreach($quiz->multi_choice_answer_contents as $answer_content)
+                                        <div class="choice_item">
+                                            <input type="radio" id="{{ $answer_content->choice_id }}" name="answer" value="{{ $answer_content->choice_id }}" style="padding-right: 10px;">
+                                            <label data-editable for="{{ $answer_content->choice_id }}">{{ $answer_content->content }}</label>
+                                        </div>
+                                        @endforeach
+                                        @else
                                         <input id="answer" type="text"
-                                                    class="form-control @error('answer') is-invalid @enderror"
-                                                    name="answer"
-                                                    value="{{ old('answer') }}"
-                                                    autocomplete="answer">
+                                               class="form-control @error('answer') is-invalid @enderror"
+                                               name="answer"
+                                               value="{{ old('answer') }}"
+                                               autocomplete="answer">
 
                                         @error('answer')
                                         <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                         @enderror
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group row mb-0">
@@ -45,7 +54,7 @@
                                         </button>
                                     </div>
                                 </div>
-                            </from>
+                            </form>
                         </div>
                     </div>
                 </div>
