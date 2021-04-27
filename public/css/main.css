@@ -445,3 +445,11 @@ main {
     height: 60px;
     margin: 10px auto;
 }
+
+.choice_item label {
+    padding: 0 60px 0 5px;
+}
+
+.choice_item i {
+    font-size: 18px;
+}

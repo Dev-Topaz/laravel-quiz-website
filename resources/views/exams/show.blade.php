@@ -7,7 +7,7 @@
         <h3>Select Quiz Type</h3>
         <div class="row">
             <div class="col-3">
-                <a href="#">
+                <a href="{{ url('/quizes/1') }}/exam/{{ $exam->id }}">
                     <div class="quiz_type multi_choice"><img src="{{asset('images/multi_choice.png')}}" alt="Multiple Choice"></div>
                     Multiple Choice
                 </a>

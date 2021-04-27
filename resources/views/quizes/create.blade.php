@@ -48,7 +48,10 @@
                                 <div class="form-group row">
                                     <label for="answer" class="col-md-3 col-form-label text-md-right">{{ __('Answer')
                                         }}</label>
-                                    <div class="col-md-7">
+                                    <div class="col-md-7" id="answer_content">
+                                        @if($quiz_type == 1)
+                                        <a id="add_choice" style="padding: 10px 0;">Type to add a new choice</a>
+                                        @else
                                         <input id="answer" type="text"
                                                class="form-control @error('answer') is-invalid @enderror" name="answer"
                                                value="{{ old('answer') }}" required autocomplete="answer" autofocus>
@@ -57,6 +60,7 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                         @enderror
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group row" style="align-items: center">
