@@ -20,7 +20,7 @@
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-md-12">
-                            <form method="POST" action="{{ url('/quizes') }}" class="create_form">
+                            <form method="POST" action="{{ url('/quizes') }}" class="create_form" id="quiz_creat_form">
                                 @csrf
                                 <input id="exam_id" type="text"
                                        class="form-control @error('exam_id') is-invalid @enderror" name="exam_id"
@@ -128,7 +128,7 @@
                                 </div>
                                 <div class="form-group row mb-0">
                                     <div class="col-md-6 offset-md-4">
-                                        <button type="submit" class="btn btn-primary">
+                                        <button type="button" class="btn btn-primary" onclick="submitForm()">
                                             {{ __('Create a quiz') }}
                                         </button>
                                     </div>

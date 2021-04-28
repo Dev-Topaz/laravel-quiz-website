@@ -8,7 +8,7 @@
             <div class="content_header">
                 <div class="content_header_title">
                     <div style="float: left">
-                        {{ $quiz->question }}
+                        {!! $quiz->question !!}
                     </div>
                     <div style="float: right;margin-right: 0px">
                     </div>

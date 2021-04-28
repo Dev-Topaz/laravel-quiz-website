@@ -86,9 +86,33 @@
     <script src="{{ asset('js/main.js') }}" defer></script>
     <script src="{{ asset('js/jquery.richtext.min.js') }}" defer></script>
     <script>
+        function submitForm() {
+            const content = $("div.richText-editor").html();
+            $("textarea#question").val(content);
+            $("form#quiz_creat_form").submit();
+        }
         $(document).ready(function(){
             $('.content').richText();
+            // // select the target node
+            // var target = document.querySelector('.richText-editor');
+            //
+            // // create an observer instance
+            // var observer = new MutationObserver(function(mutations) {
+            //     mutations.forEach(function(mutation) {
+            //         console.log(mutation.target.innerHTML);
+            //     });
+            // });
+            //
+            // // configuration of the observer:
+            // var config = { attributes: true, childList: true, characterData: true }
+            //
+            // // pass in the target node, as well as the observer options
+            // observer.observe(target, config);
+            //
+            // // later, you can stop observing
+            // // observer.disconnect();
         });
+
     </script>
 </body>
 </html>
