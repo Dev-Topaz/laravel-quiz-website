@@ -20,7 +20,7 @@
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-md-12">
-                            <form method="POST" action="{{ url('/quizes') }}" class="create_form" id="quiz_creat_form">
+                            <form method="POST" action="{{ url('/quizes') }}" class="create_form" id="quiz_form">
                                 @csrf
                                 <input id="exam_id" type="text"
                                        class="form-control @error('exam_id') is-invalid @enderror" name="exam_id"
