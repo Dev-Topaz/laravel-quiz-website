@@ -447,7 +447,12 @@ main {
 }
 
 .choice_item label {
-    padding: 0 60px 0 5px;
+    padding: 0 0 0 5px;
+    width: 518px;
+}
+
+.choice_item input:nth-child(2) {
+    width: 473px;
 }
 
 .choice_item i {

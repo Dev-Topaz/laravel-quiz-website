@@ -13,7 +13,7 @@
                 </a>
             </div>
             <div class="col-3">
-                <a href="#">
+                <a href="{{ url('/quizes/2') }}/exam/{{ $exam->id }}">
                     <div class="quiz_type multi_response"><img src="{{asset('images/multi_response.png')}}" alt="Multiple Response"></div>
                     Multiple Response
                 </a>
