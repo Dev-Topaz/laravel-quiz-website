@@ -41,11 +41,12 @@
                                     <label for="question" class="col-md-3 col-form-label text-md-right">{{
                                         __('Question') }}</label>
                                     <div class="col-md-7">
+                                        <textarea class="content" name="example">{{$quiz->question}}</textarea>
                                         <textarea id="question"
                                                   class="form-control @error('question') is-invalid @enderror"
                                                   name="question"
                                                   value="{{ old('question') }}" rows="4" cols="50"
-                                                  autocomplete="question" required>{{ $quiz->question }}</textarea>
+                                                  autocomplete="question" required style="display: none;"></textarea>
 
                                         @error('question')
                                         <span class="invalid-feedback" role="alert">
