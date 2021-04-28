@@ -29,7 +29,14 @@
                                         @foreach($quiz->multi_choice_answer_contents as $answer_content)
                                         <div class="choice_item">
                                             <input type="radio" id="{{ $answer_content->choice_id }}" name="answer" value="{{ $answer_content->choice_id }}" style="padding-right: 10px;">
-                                            <label data-editable for="{{ $answer_content->choice_id }}">{{ $answer_content->content }}</label>
+                                            <label for="{{ $answer_content->choice_id }}">{{ $answer_content->content }}</label>
+                                        </div>
+                                        @endforeach
+                                        @elseif($quiz->type_id == 2)
+                                        @foreach($quiz->multi_response_answer_contents as $answer_content)
+                                        <div class="response_item">
+                                            <input type="checkbox" id="{{ $answer_content->response_id }}" name="answer" value="{{ $answer_content->response_id }}" style="padding-right: 10px;">
+                                            <label for="{{ $answer_content->response_id }}">{{ $answer_content->content }}</label>
                                         </div>
                                         @endforeach
                                         @else

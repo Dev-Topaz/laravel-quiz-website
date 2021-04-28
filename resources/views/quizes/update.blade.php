@@ -33,10 +33,6 @@
                                        class="form-control @error('answer_content_array') is-invalid @enderror"
                                        name="answer_content_array"
                                        value="" autocomplete="answer_content_array" autofocus hidden>
-                                <input id="choice_id_array" type="text"
-                                       class="form-control @error('choice_id_array') is-invalid @enderror"
-                                       name="choice_id_array"
-                                       value="" autocomplete="choice_id_array" autofocus hidden>
                                 <div class="form-group row">
                                     <label for="question" class="col-md-3 col-form-label text-md-right">{{
                                         __('Question') }}</label>
@@ -60,14 +56,34 @@
                                         }}</label>
                                     <div class="col-md-7" id="answer_content">
                                         @if($quiz->type_id == 1)
+                                        <input id="choice_id_array" type="text"
+                                               class="form-control @error('choice_id_array') is-invalid @enderror"
+                                               name="choice_id_array"
+                                               value="" autocomplete="choice_id_array" autofocus hidden>
                                         @foreach($quiz->multi_choice_answer_contents as $answer_content)
                                         <div class="choice_item">
                                             <input type="radio" id="{{ $answer_content->choice_id }}" name="answer" value="{{ $answer_content->choice_id }}" style="padding-right: 10px;">
-                                            <label data-editable for="{{ $answer_content->choice_id }}">{{ $answer_content->content }}</label>
+                                            <label class="choice_label" data-editable for="{{ $answer_content->choice_id }}">{{ $answer_content->content }}</label>
                                             <a onclick="{$(this).parent().remove();save_choice_data();}"><i class="fas fa-trash-alt"></i></a>
                                         </div>
                                         @endforeach
                                         <a id="add_choice" style="padding: 10px 0;">Type to add a new choice</a>
+                                        @elseif($quiz->type_id == 2)
+                                        <input id="response_id_array" type="text"
+                                               class="form-control @error('response_id_array') is-invalid @enderror"
+                                               name="response_id_array"
+                                               value="" autocomplete="response_id_array" autofocus hidden>
+                                        @foreach($quiz->multi_response_answer_contents as $answer_content)
+                                        <div class="response_item">
+                                            <input type="checkbox" onclick="responsehandleclick();" id="{{ $answer_content->response_id }}" name="answer{{ $answer_content->response_id }}" value="{{ $answer_content->response_id }}" style="padding-right: 10px;">
+                                            <label class="response_label" data-editable for="{{ $answer_content->choice_id }}">{{ $answer_content->content }}</label>
+                                            <a onclick="{$(this).parent().remove();save_choice_data();}"><i class="fas fa-trash-alt"></i></a>
+                                        </div>
+                                        @endforeach
+                                        <a id="add_response" style="padding: 10px 0;">Type to add a new response</a>
+                                        <input id="answer" type="text"
+                                               class="form-control @error('answer') is-invalid @enderror" name="answer"
+                                               value="{{ old('answer') }}" required autocomplete="answer" autofocus hidden>
                                         @else
                                         <input id="answer" type="text"
                                                class="form-control @error('answer') is-invalid @enderror" name="answer"

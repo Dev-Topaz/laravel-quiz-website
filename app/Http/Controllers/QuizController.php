@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Quiz;
 use App\Models\Answer;
 use App\Models\MultiChoiceAnswerContent;
+use App\Models\MultiResponseAnswerContent;
 use Illuminate\Http\Request;
 use phpDocumentor\Reflection\Types\Integer;
 
@@ -40,7 +41,7 @@ class QuizController extends Controller
     {
          $request->validate([
             'answer' => 'required',
-        ]);
+         ]);
 
         $quiz = Quiz::create([
             'exam_id' => $request->exam_id,
@@ -69,6 +70,23 @@ class QuizController extends Controller
                         'quiz_id' => $quiz->id,
                         'content' => $answer_content_array[$key],
                         'choice_id' => $choice_id_array[$key],
+                    ]);
+                }
+                break;
+
+            case "2":
+
+        //        insert at multi_response_answer_contents table
+                $answer_content_array = explode(';', $request->answer_content_array);
+                array_pop($answer_content_array);
+                $response_id_array = explode(';', $request->response_id_array);
+                array_pop($response_id_array);
+
+                foreach($answer_content_array as $key => $value) {
+                    MultiResponseAnswerContent::create([
+                        'quiz_id' => $quiz->id,
+                        'content' => $answer_content_array[$key],
+                        'response_id' => $response_id_array[$key],
                     ]);
                 }
                 break;
@@ -141,6 +159,25 @@ class QuizController extends Controller
                     ]);
                 }
                 break;
+
+            case "2":
+
+                MultiResponseAnswerContent::where('quiz_id', $quiz->id)->delete();
+        //        insert at multi_choice_answer_contents table
+                $answer_content_array = explode(';', $request->answer_content_array);
+                array_pop($answer_content_array);
+                $response_id_array = explode(';', $request->response_id_array);
+                array_pop($response_id_array);
+
+                foreach($answer_content_array as $key => $value) {
+                    MultiResponseAnswerContent::create([
+                        'quiz_id' => $quiz->id,
+                        'content' => $answer_content_array[$key],
+                        'response_id' => $response_id_array[$key],
+                    ]);
+                }
+                break;
+
             default:
         }
 
@@ -165,6 +202,12 @@ class QuizController extends Controller
 
                 MultiChoiceAnswerContent::where('quiz_id', $quiz->id)->delete();
                 break;
+
+            case "2":
+
+                MultiResponseAnswerContent::where('quiz_id', $quiz->id)->delete();
+                break;
+
             default:
         }
 

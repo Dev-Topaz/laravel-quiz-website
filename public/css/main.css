@@ -446,15 +446,15 @@ main {
     margin: 10px auto;
 }
 
-.choice_item label {
+.choice_item label, .response_item label {
     padding: 0 0 0 5px;
     width: 518px;
 }
 
-.choice_item input:nth-child(2) {
+.choice_item input:nth-child(2), .response_item input:nth-child(2) {
     width: 473px;
 }
 
-.choice_item i {
+.choice_item i, .response_item i {
     font-size: 18px;
 }

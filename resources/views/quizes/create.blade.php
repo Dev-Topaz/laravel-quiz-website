@@ -31,9 +31,6 @@
                                 <input id="answer_content_array" type="text"
                                        class="form-control @error('answer_content_array') is-invalid @enderror" name="answer_content_array"
                                        value="" autocomplete="answer_content_array" autofocus hidden>
-                                <input id="choice_id_array" type="text"
-                                       class="form-control @error('choice_id_array') is-invalid @enderror" name="choice_id_array"
-                                       value="" autocomplete="choice_id_array" autofocus hidden>
                                 <div class="form-group row">
                                     <label for="question" class="col-md-3 col-form-label text-md-right">{{
                                         __('Question') }}</label>
@@ -57,7 +54,18 @@
                                         }}</label>
                                     <div class="col-md-7" id="answer_content">
                                         @if($quiz_type == 1)
+                                        <input id="choice_id_array" type="text"
+                                               class="form-control @error('choice_id_array') is-invalid @enderror" name="choice_id_array"
+                                               value="" autocomplete="choice_id_array" autofocus hidden>
                                         <a id="add_choice" style="padding: 10px 0;">Type to add a new choice</a>
+                                        @elseif($quiz_type == 2)
+                                        <input id="response_id_array" type="text"
+                                               class="form-control @error('response_id_array') is-invalid @enderror" name="response_id_array"
+                                               value="" autocomplete="response_id_array" autofocus hidden>
+                                        <a id="add_response" style="padding: 10px 0;">Type to add a new response</a>
+                                        <input id="answer" type="text"
+                                               class="form-control @error('answer') is-invalid @enderror" name="answer"
+                                               value="{{ old('answer') }}" required autocomplete="answer" autofocus hidden>
                                         @else
                                         <input id="answer" type="text"
                                                class="form-control @error('answer') is-invalid @enderror" name="answer"
