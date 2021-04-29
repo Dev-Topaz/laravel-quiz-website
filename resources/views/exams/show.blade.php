@@ -19,7 +19,7 @@
                 </a>
             </div>
             <div class="col-3">
-                <a href="#">
+                <a href="{{ url('/quizes/3') }}/exam/{{ $exam->id }}">
                     <div class="quiz_type true_false"><img src="{{asset('images/true_false.png')}}" alt="True/False"></div>
                     True/False
                 </a>

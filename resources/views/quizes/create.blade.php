@@ -53,29 +53,42 @@
                                     <label for="answer" class="col-md-3 col-form-label text-md-right">{{ __('Answer')
                                         }}</label>
                                     <div class="col-md-7" id="answer_content">
-                                        @if($quiz_type == 1)
-                                        <input id="choice_id_array" type="text"
-                                               class="form-control @error('choice_id_array') is-invalid @enderror" name="choice_id_array"
-                                               value="" autocomplete="choice_id_array" autofocus hidden>
-                                        <a id="add_choice" style="padding: 10px 0;">Type to add a new choice</a>
-                                        @elseif($quiz_type == 2)
-                                        <input id="response_id_array" type="text"
-                                               class="form-control @error('response_id_array') is-invalid @enderror" name="response_id_array"
-                                               value="" autocomplete="response_id_array" autofocus hidden>
-                                        <a id="add_response" style="padding: 10px 0;">Type to add a new response</a>
-                                        <input id="answer" type="text"
-                                               class="form-control @error('answer') is-invalid @enderror" name="answer"
-                                               value="{{ old('answer') }}" required autocomplete="answer" autofocus hidden>
-                                        @else
-                                        <input id="answer" type="text"
-                                               class="form-control @error('answer') is-invalid @enderror" name="answer"
-                                               value="{{ old('answer') }}" required autocomplete="answer" autofocus>
-                                        @error('answer')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                        @endif
+                                        @switch($quiz_type)
+                                            @case(1)
+                                                <input id="choice_id_array" type="text"
+                                                       class="form-control @error('choice_id_array') is-invalid @enderror" name="choice_id_array"
+                                                       value="" autocomplete="choice_id_array" autofocus hidden>
+                                                <a id="add_choice" style="padding: 10px 0;">Type to add a new choice</a>
+                                                @break
+                                            @case(2)
+                                                <input id="response_id_array" type="text"
+                                                       class="form-control @error('response_id_array') is-invalid @enderror" name="response_id_array"
+                                                       value="" autocomplete="response_id_array" autofocus hidden>
+                                                <a id="add_response" style="padding: 10px 0;">Type to add a new response</a>
+                                                <input id="answer" type="text"
+                                                       class="form-control @error('answer') is-invalid @enderror" name="answer"
+                                                       value="{{ old('answer') }}" required autocomplete="answer" autofocus hidden>
+                                                @break
+                                            @case(3)
+                                                <div class="choice_item">
+                                                    <input type="radio" id="true" name="answer" value="1" style="padding-right: 10px;">
+                                                    <label for="true">True</label>
+                                                </div>
+                                                <div class="choice_item">
+                                                    <input type="radio" id="false" name="answer" value="0" style="padding-right: 10px;">
+                                                    <label for="false">False</label>
+                                                </div>
+                                                @break
+                                            @default
+                                                <input id="answer" type="text"
+                                                       class="form-control @error('answer') is-invalid @enderror" name="answer"
+                                                       value="{{ old('answer') }}" required autocomplete="answer" autofocus>
+                                                @error('answer')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                        @endswitch
                                     </div>
                                 </div>
                                 <div class="form-group row" style="align-items: center">

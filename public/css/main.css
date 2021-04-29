@@ -458,3 +458,7 @@ main {
 .choice_item i, .response_item i {
     font-size: 18px;
 }
+
+.richText-help {
+    display: none !important;
+}
