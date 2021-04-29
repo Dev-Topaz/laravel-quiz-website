@@ -27,4 +27,10 @@ class Quiz extends Model
     {
         return $this->hasMany(MultiResponseAnswerContent::class, 'quiz_id', 'id');
     }
+
+    public function numeric_answer_contents()
+    {
+        return $this->hasMany(NumericAnswerContent::class, 'quiz_id', 'id');
+    }
+
 }

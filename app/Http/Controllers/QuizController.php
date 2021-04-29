@@ -194,6 +194,22 @@ class QuizController extends Controller
                 }
                 break;
 
+            case "5":
+                NumericAnswerContent::where('quiz_id', $quiz->id)->delete();
+                $select_answer_array = explode('@', $request->select_answer);
+                array_pop($select_answer_array);
+
+                foreach ($select_answer_array as $key=>$value) {
+                    $value_array = explode(';', $value);
+                    NumericAnswerContent::create([
+                        'quiz_id' => $quiz->id,
+                        'option_value' => $value_array[0],
+                        'input_value_1' => $value_array[1],
+                        'input_value_2' => $value_array[2],
+                    ]);
+                }
+                break;
+
             default:
         }
 
@@ -222,6 +238,10 @@ class QuizController extends Controller
             case "2":
 
                 MultiResponseAnswerContent::where('quiz_id', $quiz->id)->delete();
+                break;
+
+            case "5":
+                NumericAnswerContent::where('quiz_id', $quiz->id)->delete();
                 break;
 
             default:

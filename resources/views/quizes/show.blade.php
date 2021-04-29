@@ -52,6 +52,19 @@
                                                     <label for="false">False</label>
                                                 </div>
                                                 @break
+                                            @case(5)
+                                                <input id="answer" type="number"
+                                                       class="form-control @error('answer') is-invalid @enderror"
+                                                       name="answer"
+                                                       value="{{ old('answer') }}"
+                                                       autocomplete="answer">
+
+                                                @error('answer')
+                                                <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                @enderror
+                                                @break
                                             @default
                                                 <input id="answer" type="text"
                                                        class="form-control @error('answer') is-invalid @enderror"
