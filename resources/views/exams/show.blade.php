@@ -31,37 +31,37 @@
                 </a>
             </div>
             <div class="col-3">
-                <a href="#">
+                <a href="{{ url('/quizes/5') }}/exam/{{ $exam->id }}">
                     <div class="quiz_type numeric"><img src="{{asset('images/numeric.png')}}" alt="Numeric"></div>
                     Numeric
                 </a>
             </div>
             <div class="col-3">
-                <a href="#">
+                <a href="{{ url('/quizes/6') }}/exam/{{ $exam->id }}">
                     <div class="quiz_type sequence"><img src="{{asset('images/sequence.png')}}" alt="Sequence"></div>
                     Sequence
                 </a>
             </div>
             <div class="col-3">
-                <a href="#">
+                <a href="{{ url('/quizes/7') }}/exam/{{ $exam->id }}">
                     <div class="quiz_type matching"><img src="{{asset('images/matching.png')}}" alt="Matching"></div>
                     Matching
                 </a>
             </div>
             <div class="col-3">
-                <a href="#">
+                <a href="{{ url('/quizes/8') }}/exam/{{ $exam->id }}">
                     <div class="quiz_type fill_blank"><img src="{{asset('images/fill_blank.png')}}" alt="Fill in the Blank"></div>
                     Fill in the Blanks
                 </a>
             </div>
             <div class="col-3">
-                <a href="#">
+                <a href="{{ url('/quizes/9') }}/exam/{{ $exam->id }}">
                     <div class="quiz_type select_lists"><img src="{{asset('images/select_lists.png')}}" alt="Select from lists"></div>
                     Select from Lists
                 </a>
             </div>
             <div class="col-3">
-                <a href="#">
+                <a href="{{ url('/quizes/10') }}/exam/{{ $exam->id }}">
                     <div class="quiz_type hotspot"><img src="{{asset('images/hotspot.png')}}" alt="Hotspot"></div>
                     Hotspot
                 </a>

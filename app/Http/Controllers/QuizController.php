@@ -6,6 +6,7 @@ use App\Models\Quiz;
 use App\Models\Answer;
 use App\Models\MultiChoiceAnswerContent;
 use App\Models\MultiResponseAnswerContent;
+use App\Models\NumericAnswerContent;
 use Illuminate\Http\Request;
 use phpDocumentor\Reflection\Types\Integer;
 
@@ -39,9 +40,9 @@ class QuizController extends Controller
      */
     public function store(Request $request)
     {
-         $request->validate([
+        $request->validate([
             'answer' => 'required',
-         ]);
+        ]);
 
         $quiz = Quiz::create([
             'exam_id' => $request->exam_id,
@@ -87,6 +88,21 @@ class QuizController extends Controller
                         'quiz_id' => $quiz->id,
                         'content' => $answer_content_array[$key],
                         'response_id' => $response_id_array[$key],
+                    ]);
+                }
+                break;
+
+            case "5":
+                $select_answer_array = explode('@', $request->select_answer);
+                array_pop($select_answer_array);
+
+                foreach ($select_answer_array as $key=>$value) {
+                    $value_array = explode(';', $value);
+                    NumericAnswerContent::create([
+                        'quiz_id' => $quiz->id,
+                        'option_value' => $value_array[0],
+                        'input_value_1' => $value_array[1],
+                        'input_value_2' => $value_array[2],
                     ]);
                 }
                 break;

@@ -79,6 +79,24 @@
                                                     <label for="false">False</label>
                                                 </div>
                                                 @break
+                                            @case(5)
+                                                <select name="add_select" id="add_select">
+                                                    <option value="+">Add a new condition</option>
+                                                    <option value="==">Equal to</option>
+                                                    <option value="<<">Between</option>
+                                                    <option value=">">Greater than</option>
+                                                    <option value=">=">Greater than or equal to</option>
+                                                    <option value="<">Less than</option>
+                                                    <option value="<=">Less than or equal to</option>
+                                                    <option value="!=">Not equal to</option>
+                                                </select>
+                                                <input id="answer" type="text"
+                                                       class="form-control @error('answer') is-invalid @enderror" name="answer"
+                                                       value="numeric" required autocomplete="answer" autofocus hidden>
+                                                <input id="select_answer" type="text"
+                                                       class="form-control @error('select_answer') is-invalid @enderror" name="select_answer"
+                                                       value="" required autocomplete="select_answer" autofocus hidden>
+                                                @break
                                             @default
                                                 <input id="answer" type="text"
                                                        class="form-control @error('answer') is-invalid @enderror" name="answer"
