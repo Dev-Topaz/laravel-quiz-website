@@ -102,10 +102,19 @@
                                                 @break
 
                                             @case(6)
-                                                <ul id="sortable">
+                                                <ul id="sortable" class="sequence">
                                                 </ul>
                                                 <a id="add_sequence" style="padding: 10px 0;">Type to add a new choice</a>
                                                 <input id="sequence_array" type="text"
+                                                       class="form-control @error('answer') is-invalid @enderror" name="answer"
+                                                       value="" autocomplete="answer" autofocus hidden>
+                                                @break
+
+                                            @case(7)
+                                                <ul id="sortable" class="matching">
+                                                </ul>
+                                                <a id="add_matching" style="padding: 10px 0;">Type to add a new item</a>
+                                                <input id="matching_array" type="text"
                                                        class="form-control @error('answer') is-invalid @enderror" name="answer"
                                                        value="" autocomplete="answer" autofocus hidden>
                                                 @break

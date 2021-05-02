@@ -204,6 +204,26 @@
                                                        name="answer"
                                                        value="" autocomplete="answer" autofocus hidden>
                                                 @break
+                                                @case(7)
+                                                <ul id="sortable">
+                                                    @foreach ($quiz->item_array as $key => $item)
+                                                        <li class="ui-state-default"><span
+                                                                class="ui-icon ui-icon-arrowthick-2-n-s"></span><label
+                                                                class="matching_item_label" data-editable>{{ $item }}</label>
+                                                            <div
+                                                                style="border_right: 1px black solid;width: 30px;"></div>
+                                                            <label class="matching_label" data-editable>{{ $quiz->matching_array[$key] }}</label><a
+                                                                onclick="{$(this).parent().remove();save_select_data();}"><i
+                                                                    class="fas fa-trash-alt"></i></a></li>
+                                                    @endforeach
+                                                </ul>
+                                                <a id="add_matching" style="padding: 10px 0;">Type to add a new
+                                                    choice</a>
+                                                <input id="matching_array" type="text"
+                                                       class="form-control @error('answer') is-invalid @enderror"
+                                                       name="answer"
+                                                       value="" autocomplete="answer" autofocus hidden>
+                                                @break
                                                 @default
                                                 <input id="answer" type="text"
                                                        class="form-control @error('answer') is-invalid @enderror"
