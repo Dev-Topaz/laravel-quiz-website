@@ -448,14 +448,14 @@ main {
 
 .choice_item label, .response_item label {
     padding: 0 0 0 5px;
-    width: 518px;
+    width: 511px;
 }
 
 .choice_item input:nth-child(2), .response_item input:nth-child(2) {
     width: 473px;
 }
 
-.choice_item i, .response_item i, .select_item i {
+.choice_item i, .response_item i, .select_item i, .ui-state-default i {
     font-size: 18px;
 }
 
@@ -465,4 +465,9 @@ main {
 
 .richText-help {
     display: none !important;
+}
+
+.ui-state-default {
+    display: flex;
+    align-items: center;
 }

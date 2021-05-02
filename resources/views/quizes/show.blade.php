@@ -65,6 +65,15 @@
                                                             </span>
                                                 @enderror
                                                 @break
+                                            @case(6)
+                                                <ul id="sortable">
+                                                    @foreach ($quiz->sequence_array as $item)
+                                                        <li class="ui-state-default"><span
+                                                                class="ui-icon ui-icon-arrowthick-2-n-s"></span><label
+                                                                class="sequence_label" data-editable>{{ $item }}</label></li>
+                                                    @endforeach
+                                                </ul>
+                                                @break
                                             @default
                                                 <input id="answer" type="text"
                                                        class="form-control @error('answer') is-invalid @enderror"

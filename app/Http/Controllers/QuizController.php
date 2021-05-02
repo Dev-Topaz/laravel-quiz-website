@@ -124,6 +124,11 @@ class QuizController extends Controller
          */
         public function show(Quiz $quiz)
         {
+            if ($quiz->type_id == 6) {
+                $sequence_array = explode(';', $quiz->answer);
+                array_pop($sequence_array);
+                $quiz->sequence_array = $sequence_array;
+            }
             return view('quizes.show', ['quiz' => $quiz]);
     }
 
@@ -135,6 +140,11 @@ class QuizController extends Controller
      */
     public function edit(Quiz $quiz)
     {
+        if ($quiz->type_id == 6) {
+            $sequence_array = explode(';', $quiz->answer);
+            array_pop($sequence_array);
+            $quiz->sequence_array = $sequence_array;
+        }
         return view('quizes.update', ['quiz' => $quiz]);
     }
 

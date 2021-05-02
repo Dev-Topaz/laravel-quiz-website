@@ -60,6 +60,7 @@
                                                        value="" autocomplete="choice_id_array" autofocus hidden>
                                                 <a id="add_choice" style="padding: 10px 0;">Type to add a new choice</a>
                                                 @break
+
                                             @case(2)
                                                 <input id="response_id_array" type="text"
                                                        class="form-control @error('response_id_array') is-invalid @enderror" name="response_id_array"
@@ -69,6 +70,7 @@
                                                        class="form-control @error('answer') is-invalid @enderror" name="answer"
                                                        value="{{ old('answer') }}" required autocomplete="answer" autofocus hidden>
                                                 @break
+
                                             @case(3)
                                                 <div class="choice_item">
                                                     <input type="radio" id="true" name="answer" value="1" style="padding-right: 10px;">
@@ -79,6 +81,7 @@
                                                     <label for="false">False</label>
                                                 </div>
                                                 @break
+
                                             @case(5)
                                                 <select name="add_select" id="add_select">
                                                     <option value="+">Add a new condition</option>
@@ -97,6 +100,16 @@
                                                        class="form-control @error('select_answer') is-invalid @enderror" name="select_answer"
                                                        value="" required autocomplete="select_answer" autofocus hidden>
                                                 @break
+
+                                            @case(6)
+                                                <ul id="sortable">
+                                                </ul>
+                                                <a id="add_sequence" style="padding: 10px 0;">Type to add a new choice</a>
+                                                <input id="sequence_array" type="text"
+                                                       class="form-control @error('answer') is-invalid @enderror" name="answer"
+                                                       value="" autocomplete="answer" autofocus hidden>
+                                                @break
+
                                             @default
                                                 <input id="answer" type="text"
                                                        class="form-control @error('answer') is-invalid @enderror" name="answer"

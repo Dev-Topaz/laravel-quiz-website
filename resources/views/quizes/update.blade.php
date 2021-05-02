@@ -66,7 +66,7 @@
                                                        name="choice_id_array"
                                                        value="" autocomplete="choice_id_array" autofocus hidden>
                                                 @foreach($quiz->multi_choice_answer_contents as $answer_content)
-                                                    <div class="choice_item">
+                                                    <div class="choice_item" style="display: flex;">
                                                         <input type="radio" id="{{ $answer_content->choice_id }}"
                                                                name="answer" value="{{ $answer_content->choice_id }}"
                                                                style="padding-right: 10px;">
@@ -118,30 +118,55 @@
                                                 @break
                                                 @case(5)
                                                 @foreach($quiz->numeric_answer_contents as $answer_content)
-                                                <div class="select_item" style="display: flex;padding: 5px 0;">
-                                                    <select
-                                                        onchange="{select_change(this);}" name="' + {{ $answer_content->id }} + '"
-                                                        id="' + {{ $answer_content->id }} + '">
-                                                        <option value="==" {{ $answer_content->option_value == '==' ? 'selected' : '' }}>Equal to</option>
-                                                        <option value="<<" {{ $answer_content->option_value == '<<' ? 'selected' : '' }}>Between</option>
-                                                        <option value=">" {{ $answer_content->option_value == '>' ? 'selected' : '' }}>Greater than</option>
-                                                        <option value=">=" {{ $answer_content->option_value == '>=' ? 'selected' : '' }}>Greater than or equal to</option>
-                                                        <option value="<" {{ $answer_content->option_value == '<' ? 'selected' : '' }}>Less than</option>
-                                                        <option value="<=" {{ $answer_content->option_value == '<=' ? 'selected' : '' }}>Less than or equal to</option>
-                                                        <option value="!=" {{ $answer_content->option_value == '!=' ? 'selected' : '' }}>Not equal to</option>
-                                                    </select>
-                                                    <div>
-                                                        <input type="number" value="{{$answer_content->input_value_1}}"
-                                                                onchange="{save_select_data();}">
-                                                        @if ($answer_content->option_value == '<<')
-                                                        <span>and</span>
-                                                        <input
-                                                            type="number" value="{{$answer_content->input_value_2}}" onchange="{save_select_data();}">
-                                                        @endif
+                                                    <div class="select_item" style="display: flex;padding: 5px 0;">
+                                                        <select
+                                                            onchange="{select_change(this);}"
+                                                            name="' + {{ $answer_content->id }} + '"
+                                                            id="' + {{ $answer_content->id }} + '">
+                                                            <option
+                                                                value="==" {{ $answer_content->option_value == '==' ? 'selected' : '' }}>
+                                                                Equal to
+                                                            </option>
+                                                            <option
+                                                                value="<<" {{ $answer_content->option_value == '<<' ? 'selected' : '' }}>
+                                                                Between
+                                                            </option>
+                                                            <option
+                                                                value=">" {{ $answer_content->option_value == '>' ? 'selected' : '' }}>
+                                                                Greater than
+                                                            </option>
+                                                            <option
+                                                                value=">=" {{ $answer_content->option_value == '>=' ? 'selected' : '' }}>
+                                                                Greater than or equal to
+                                                            </option>
+                                                            <option
+                                                                value="<" {{ $answer_content->option_value == '<' ? 'selected' : '' }}>
+                                                                Less than
+                                                            </option>
+                                                            <option
+                                                                value="<=" {{ $answer_content->option_value == '<=' ? 'selected' : '' }}>
+                                                                Less than or equal to
+                                                            </option>
+                                                            <option
+                                                                value="!=" {{ $answer_content->option_value == '!=' ? 'selected' : '' }}>
+                                                                Not equal to
+                                                            </option>
+                                                        </select>
+                                                        <div>
+                                                            <input type="number"
+                                                                   value="{{$answer_content->input_value_1}}"
+                                                                   onchange="{save_select_data();}">
+                                                            @if ($answer_content->option_value == '<<')
+                                                                <span>and</span>
+                                                                <input
+                                                                    type="number"
+                                                                    value="{{$answer_content->input_value_2}}"
+                                                                    onchange="{save_select_data();}">
+                                                            @endif
+                                                        </div>
+                                                        <a onclick="{$(this).parent().remove();save_select_data();}"><i
+                                                                class="fas fa-trash-alt"></i></a>
                                                     </div>
-                                                    <a onclick="{$(this).parent().remove();save_select_data();}"><i
-                                                            class="fas fa-trash-alt"></i></a>
-                                                </div>
                                                 @endforeach
                                                 <select name="add_select" id="add_select">
                                                     <option value="+">Add a new condition</option>
@@ -154,11 +179,30 @@
                                                     <option value="!=">Not equal to</option>
                                                 </select>
                                                 <input id="answer" type="text"
-                                                       class="form-control @error('answer') is-invalid @enderror" name="answer"
+                                                       class="form-control @error('answer') is-invalid @enderror"
+                                                       name="answer"
                                                        value="numeric" required autocomplete="answer" autofocus hidden>
                                                 <input id="select_answer" type="text"
-                                                       class="form-control @error('select_answer') is-invalid @enderror" name="select_answer"
+                                                       class="form-control @error('select_answer') is-invalid @enderror"
+                                                       name="select_answer"
                                                        value="" required autocomplete="select_answer" autofocus hidden>
+                                                @break
+                                                @case(6)
+                                                <ul id="sortable">
+                                                    @foreach ($quiz->sequence_array as $item)
+                                                        <li class="ui-state-default"><span
+                                                                class="ui-icon ui-icon-arrowthick-2-n-s"></span><label
+                                                                class="sequence_label" data-editable>{{ $item }}</label><a
+                                                                onclick="{$(this).parent().remove();save_select_data();}"><i
+                                                                    class="fas fa-trash-alt"></i></a></li>
+                                                    @endforeach
+                                                </ul>
+                                                <a id="add_sequence" style="padding: 10px 0;">Type to add a new
+                                                    choice</a>
+                                                <input id="sequence_array" type="text"
+                                                       class="form-control @error('answer') is-invalid @enderror"
+                                                       name="answer"
+                                                       value="" autocomplete="answer" autofocus hidden>
                                                 @break
                                                 @default
                                                 <input id="answer" type="text"

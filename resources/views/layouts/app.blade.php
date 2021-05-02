@@ -22,22 +22,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
     <!-- Scripts -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#sortable" ).sortable();
+    $( "#sortable" ).disableSelection();
+  } );
+  </script>
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-<!--                    {{ config('app.name', 'Laravel') }}-->
+<!--                    {{ config('app.name', 'Quiz Maker') }}-->
                     <img class="title" src="https://www.online-anytime.com.au/admin-logo1.png" style="margin-left: 8px;">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <li class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
@@ -82,11 +89,25 @@
     <!--    modal library-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 
-    <script src="{{ asset('js/app.js') }}" defer></script>
+{{--    <script src="{{ asset('js/app.js') }}" defer></script>--}}
     <script src="{{ asset('js/main.js') }}" defer></script>
     <script src="{{ asset('js/jquery.richtext.min.js') }}" defer></script>
+
     <script>
+        function fetchsequencelist() {
+            let list = '';
+            let length = $('.ui-state-default label').length;
+
+            for (let i = 0; i < length; i++) {
+                list += $('.ui-state-default label').eq(i).html() + ';';
+            }
+
+            return list;
+        }
         function submitForm() {
+            if ($('#sequence_array').length > 0) {
+                 $('#sequence_array').val(fetchsequencelist());
+            }
             const content = $("div.richText-editor").html();
             $("textarea#question").val(content);
             $("form#quiz_form").submit();
@@ -94,7 +115,6 @@
         $(document).ready(function(){
             $('.content').richText();
         });
-
     </script>
 </body>
 </html>

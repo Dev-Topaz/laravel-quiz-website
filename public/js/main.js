@@ -2,9 +2,6 @@ $('.middle_form_bar').click(function() {
     $(this).next().toggle();
 });
 
-$(document).ready(function(){
-
-});
 // multiple choice
 function get_choice_item_id() {
     const length = $('#answer_content .choice_item').length;
@@ -176,6 +173,17 @@ function save_select_data() {
     console.log(select_answer_array);
     $('input#select_answer').val(select_answer_array);
 }
+
+/* Sequence */
+$('#add_sequence').click(function() {
+    console.log($(this));
+     let element;
+
+     element = '<li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><label class="sequence_label" data-editable>Type content...</label><a onclick="{$(this).parent().remove();save_select_data();}"><i class="fas fa-trash-alt"></i></a></li>';
+
+     $(this).prev().prepend(element);
+
+});
 
 $('body').on('click', '[data-editable]', function(){
 
