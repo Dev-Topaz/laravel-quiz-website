@@ -91,6 +91,19 @@
                                                 </div>
                                                 @break
 
+                                                @case(4)
+                                                <input id="answer" type="text"
+                                                       class="form-control @error('answer') is-invalid @enderror"
+                                                       name="answer"
+                                                       value="{{ old('answer') }}" required autocomplete="answer"
+                                                       autofocus>
+                                                @error('answer')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                                @break
+
                                                 @case(5)
                                                 <select name="add_select" id="add_select">
                                                     <option value="+">Add a new condition</option>

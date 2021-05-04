@@ -116,6 +116,18 @@
                                                     <label for="false">False</label>
                                                 </div>
                                                 @break
+                                                @case(4)
+                                                <input id="answer" type="text"
+                                                       class="form-control @error('answer') is-invalid @enderror"
+                                                       name="answer"
+                                                       value="{{ $quiz->answer }}" required autocomplete="answer"
+                                                       autofocus>
+                                                @error('answer')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                                @break
                                                 @case(5)
                                                 @foreach($quiz->numeric_answer_contents as $answer_content)
                                                     <div class="select_item" style="display: flex;padding: 5px 0;">
