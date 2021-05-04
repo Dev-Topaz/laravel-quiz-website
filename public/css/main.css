@@ -471,3 +471,20 @@ main {
     display: flex;
     align-items: center;
 }
+
+.textarea_dropdown {
+    height: 200px;
+    border: 1px black solid;
+    margin: auto;
+    word-break: break-all;
+    overflow-y: scroll;
+}
+
+.textarea_dropdown span {
+    border-right: 1px solid transparent;
+    letter-spacing: -0.5px;
+}
+
+.textarea_dropdown .cursor {
+    border-right: 1px solid black;
+}
