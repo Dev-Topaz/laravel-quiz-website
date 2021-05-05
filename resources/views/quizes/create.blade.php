@@ -146,14 +146,15 @@
                                                        value="" autocomplete="answer" autofocus hidden>
                                                 @break
 
-                                                @default
+                                                @case(8)
+
                                                 <div class="textarea_dropdown" tabindex="1"
                                                      id="textarea_dropdown"
                                                      style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;"
                                                      unselectable="on"
                                                      onselectstart="return false;"
                                                 ></div>
-                                                <a href="javascript:void(0)" id="insert_dropdown" onclick="{insert_dropdown();}">Insert
+                                                <a href="javascript:void(0)" id="insert_dropdown" onclick="{insert_dropdown(8);}">Insert
                                                     dropdown</a>
                                                 <input id="answer" type="text"
                                                        class="form-control @error('answer') is-invalid @enderror"
@@ -165,6 +166,9 @@
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                                 @enderror
+                                                @break
+
+                                                @default
                                             @endswitch
                                         </div>
                                     </div>

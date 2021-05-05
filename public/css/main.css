@@ -455,7 +455,7 @@ main {
     width: 473px;
 }
 
-.choice_item i, .response_item i, .select_item i, .ui-state-default i {
+.choice_item i, .response_item i, .select_item i, .ui-state-default i, .dropdown i {
     font-size: 18px;
 }
 
@@ -487,4 +487,77 @@ main {
 
 .textarea_dropdown .cursor {
     border-right: 1px solid black;
+}
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: white;
+    color: black;
+    padding: 5px;
+    margin: 2px;
+    font-size: 14px;
+    border: 1px solid grey;
+    cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+    background-color: rgba(128, 128, 128, 0.5);
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 250px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content input:nth-child(2), .dropdown-content label {
+    width: 160px;
+    margin: 0 !important;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ddd
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {
+    display: block;
+}
+
+#main.quiz, #main.quiz #content, main.quiz {
+    width: 1366px;
+}
+
+main.quiz {
+    display: flex;
+    justify-content: center;
+}
+
+.ribbon-dropdown .col-3 {
+    height: 110px;
+}
+
+.listview.view-content .node>.data {
+    padding-left: 8px;
 }

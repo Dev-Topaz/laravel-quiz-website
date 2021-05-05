@@ -26,7 +26,6 @@ $(function () {
 
     $('.textarea_dropdown').keydown(function () {
         const keyCode = event.keyCode;
-        console.log(keyCode);
         switch (keyCode) {
             case 32:
                 $('.select_cursor').after('<span style="padding-left: 3px;" onclick="{cursor(this);}"></span>');
@@ -65,9 +64,16 @@ $(function () {
     });
 });
 
-function insert_dropdown() {
+function insert_dropdown(type_id) {
+    const id = get_dropdown_id();
     $('#textarea_dropdown').focus();
-    $('.select_cursor').after('<span onclick="{cursor(this);}"><select name="cars" id="cars"><option value="volvo">Volvo</option><option value="saab">Saab</option><option value="mercedes">Mercedes</option><option value="audi">Audi</option></select></span>');
+    switch (type_id) {
+        case 8:
+            $('.select_cursor').after('<span><div class="dropdown" id="' + id + '"><div onclick="dropdown(this)" class="dropbtn">Add a new word</div><div class="dropdown-content"><a href="javascript:void(0)" onclick="{add_new_word_blank(this);}">Add a new word</a></div></div></span>');
+            break;
+        default:
+            $('.select_cursor').after('<span><div class="dropdown" id="' + id + '"><div onclick="dropdown(this)" class="dropbtn">Add a new word</div><div class="dropdown-content"><a href="javascript:void(0)" onclick="{add_new_word_list(this);}">Add a new word</a></div></div></span>');
+    }
     cursor($('.select_cursor').next());
     $('#textarea_dropdown').focus();
 }
@@ -84,4 +90,62 @@ function show_cursor() {
             $('.textarea_dropdown .select_cursor').toggleClass('cursor');
         }
     }, 500);
+}
+
+function dropdown(element) {
+    if ($(element).next().hasClass('show')) {
+        cursor($(element).parent().parent());
+        const text = $(element).parent().find('a').eq(0).find('label').text();
+        $(element).text(text == '' ? 'Add a new word' : text);
+    } else {
+        const textarea_dropdown = $('.textarea_dropdown .select_cursor');
+        textarea_dropdown.removeClass('cursor');
+        textarea_dropdown.removeClass('select_cursor');
+    }
+    $(element).next().toggleClass('show');
+}
+
+function get_radio_id(element) {
+    const length = $(element).parent().find('input').length;
+
+    let id = 1;
+
+    if (length > 0) {
+        id = 0;
+        for (let i = 0; i < length; i++) {
+            const input_value = parseInt($(element).parent().find('input').eq(i).val());
+            if (input_value > id) {
+                id = input_value + 1;
+            }
+        }
+    }
+
+    return id;
+}
+
+function get_dropdown_id() {
+    const length = $('.dropdown').length;
+
+    let id = 1;
+
+    if (length > 0) {
+        id = 0;
+        for (let i = 0; i < length; i++) {
+            const dropdown_id = parseInt($('.dropdown').eq(i).attr('id'));
+            if (dropdown_id > id) {
+                id = dropdown_id + 1;
+            }
+        }
+    }
+
+    return id;
+}
+
+function add_new_word_blank(element) {
+    $(element).parent().prepend('<a href="javascript:void(0)"><label class="matching_label" data-editable>Type matching content...</label><span onclick="{$(this).parent().remove();}"><i class="fas fa-trash-alt"></i></span></a>');
+}
+
+function add_new_word_list(element) {
+    const id = get_radio_id(element);
+    $(element).parent().prepend('<a href="javascript:void(0)"><input type="radio" name="answer" value="' + id + '" style="padding-right: 10px;"><label class="matching_label" data-editable>Type matching content...</label><span onclick="{$(this).parent().remove();}"><i class="fas fa-trash-alt"></i></span></a>');
 }

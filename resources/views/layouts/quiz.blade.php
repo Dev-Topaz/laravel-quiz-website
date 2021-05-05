@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
+    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4.3.2/css/metro-all.min.css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
@@ -82,19 +83,19 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4 quiz">
             @yield('content')
         </main>
 
     </div>
     <!--    modal library-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>
 
-{{--    <script src="{{ asset('js/app.js') }}" defer></script>--}}
     <script src="{{ asset('js/main.js') }}" defer></script>
     <script src="{{ asset('js/matching.js') }}" defer></script>
     <script src="{{ asset('js/text_dropdown.js') }}" defer></script>
-    <script src="{{ asset('js/jquery.richtext.min.js') }}" defer></script>
+{{--    <script src="{{ asset('js/jquery.richtext.min.js') }}" defer></script>--}}
 
     <script>
         function fetchsequencelist() {
