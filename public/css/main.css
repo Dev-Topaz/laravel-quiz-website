@@ -446,12 +446,12 @@ main {
     margin: 10px auto;
 }
 
-.choice_item label, .response_item label {
+.choice_item label, .response_item label, .sequence_item label {
     padding: 0 0 0 5px;
     width: 440px;
 }
 
-.choice_item td:nth-child(2) input, .response_item td:nth-child(2) input {
+.choice_item td:nth-child(2) input, .response_item td:nth-child(2) input, .sequence_item input {
     width: 395px;
     padding: 4px 0;
 }
@@ -465,7 +465,7 @@ main {
     padding: 4px 0;
 }
 
-.choice_item i, .response_item i, .select_item i, #numeric_list i, .ui-state-default i, .dropdown i {
+.choice_item i, .response_item i, .select_item i, #numeric_list i, #sequence_list i, .ui-state-default i, .dropdown i {
     font-size: 18px;
 }
 

@@ -26,12 +26,6 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
-  $( function() {
-    $( "#sortable" ).sortable();
-    $( "#sortable" ).disableSelection();
-  } );
-  </script>
 </head>
 <body>
     <div id="app">
@@ -100,10 +94,10 @@
     <script>
         function fetchsequencelist() {
             let list = '';
-            let length = $('.ui-state-default label').length;
+            let length = $('.sequence_item label').length;
 
             for (let i = 0; i < length; i++) {
-                list += $('.ui-state-default label').eq(i).html() + ';';
+                list += $('.sequence_item label').eq(i).html() + ';';
             }
 
             return list;

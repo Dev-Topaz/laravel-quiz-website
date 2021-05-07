@@ -15,6 +15,10 @@
         @include('updatequiz.numeric', array('quiz' => $quiz))
         @break
 
+    @case(6)
+        @include('updatequiz.sequence', array('quiz' => $quiz))
+        @break
+
     @default
         @include('updatequiz.multiple_choice', array('quiz' => $quiz))
 
