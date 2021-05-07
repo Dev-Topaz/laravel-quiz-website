@@ -220,16 +220,15 @@
                     </div>
                 </div>
 
-
                 <div class="content_body">
                     <div class="row">
                         <div class="cell-3">
-                            <div class="content_body_main " style="overflow-y: scroll;height: 500px;">
-                                <ul data-role="listview" data-view="content" id="quiz_list">
+                            <div class="content_body_main " style="overflow-y: scroll;height: 650px;">
+                                <ul data-role="listview" data-view="content" id="quiz_list" data-on-node-click="onNodeClick">
                                     <li data-caption="Question Group">
                                         <ul>
                                             @foreach($exam->quizes as $quiz)
-                                            <li data-caption="{{ substr(strip_tags($quiz->question), 0,  29) }}{{ strlen(strip_tags($quiz->question)) < 30 ? '' : '...' }}"
+                                            <li id="{{ $quiz->id }}" data-caption="{{ substr(strip_tags($quiz->question), 0,  29) }}{{ strlen(strip_tags($quiz->question)) < 30 ? '' : '...' }}"
                                             data-content="<i>{{ $quiz->Quiz_type->name }}</i>"></li>
                                             @endforeach
                                         </ul>
@@ -237,12 +236,21 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="cell-7" style="background: #dcdcdc;"><div>cell-7</div></div>
-                        <div class="cell-2"><div>cell-2</div></div>
+                        <div class="cell-9" id="quiz_form" style="padding: 0;">
+                        </div>
                     </div>
                 </div>
 
             </div><!-- /.post -->
         </div><!-- /#content -->
     </div>
+    <script>
+        function onNodeClick(node) {
+            const quizId = node.attr('id');
+            $.get("{{ url('/quizes') }}/" + quizId + "/edit", function(data, status){
+                // alert("Data: " + data + "\nStatus: " + status);
+                $('#quiz_form').html(data);
+            });
+        }
+    </script>
 @endsection

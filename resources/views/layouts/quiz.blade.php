@@ -132,7 +132,7 @@
             $("form#quiz_form").submit();
         }
         $(document).ready(function(){
-            $('.content').richText();
+            // $('.content').richText();
         });
     </script>
 </body>

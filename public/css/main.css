@@ -99,7 +99,7 @@ main {
 
 /*content body*/
 #content .post .content_body {
-    padding: 0 20px 40px;
+    padding: 0 20px;
     min-height: 200px;
 }
 
@@ -448,11 +448,21 @@ main {
 
 .choice_item label, .response_item label {
     padding: 0 0 0 5px;
-    width: 511px;
+    width: 440px;
 }
 
-.choice_item input:nth-child(2), .response_item input:nth-child(2) {
-    width: 473px;
+.choice_item td:nth-child(2) input, .response_item input:nth-child(2) {
+    width: 395px;
+    padding: 4px 0;
+}
+
+.feedback_branching label:nth-child(1) {
+    width: 345px;
+}
+
+.feedback_branching input:nth-child(1) {
+    width: 300px;
+    padding: 4px 0;
 }
 
 .choice_item i, .response_item i, .select_item i, .ui-state-default i, .dropdown i {
@@ -560,4 +570,20 @@ main.quiz {
 
 .listview.view-content .node>.data {
     padding-left: 8px;
+}
+
+.slide_option .dropdown-toggle:after {
+    display: none;
+}
+
+#slide_details .d-menu li a, #slide_details .v-menu li a {
+    padding: 0 0 0 0.5rem;
+}
+
+.slide_option > div {
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 0;
 }
