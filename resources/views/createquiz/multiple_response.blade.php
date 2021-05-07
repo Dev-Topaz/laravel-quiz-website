@@ -3,11 +3,11 @@
         <div style="margin: auto 10px;background: #f1f1f1;width: 100%;padding: 20px;">
             <input id="exam_id" type="text"
                    class="form-control @error('exam_id') is-invalid @enderror" name="exam_id"
-                   value="{{ $quiz->exam_id }}" required autocomplete="exam_id" autofocus
+                   value="{{ $exam_id }}" required autocomplete="exam_id" autofocus
                    hidden>
             <input id="type_id" type="text"
                    class="form-control @error('type_id') is-invalid @enderror" name="type_id"
-                   value="{{ $quiz->type_id }}" required autocomplete="type_id" autofocus
+                   value="{{ $quiz_type }}" required autocomplete="type_id" autofocus
                    hidden>
             <input id="answer_content_array" type="text"
                    class="form-control @error('answer_content_array') is-invalid @enderror"
@@ -16,7 +16,8 @@
 
             <div>
                 <h4>Multiple Response Question</h4>
-                <textarea name="question" id="question" cols="30" rows="3">{{ strip_tags($quiz->question) }}</textarea>
+                <textarea name="question" id="question" cols="30"
+                          rows="3">Select one or more correct answers:</textarea>
             </div>
             <br>
 
@@ -37,22 +38,36 @@
                         </tr>
                         </thead>
                         <tbody id="response_list">
-                        @foreach($quiz->multi_response_answer_contents as $answer_content)
-                            <tr class="response_item">
-                                <td><input type="checkbox" onclick="responsehandleclick();"
-                                           id="{{ $answer_content->response_id }}"
-                                           name="{{ $answer_content->response_id }}"
-                                           value="{{ $answer_content->response_id }}"
-                                           style="padding-right: 10px;" {{ in_array($answer_content->response_id, explode(';', $quiz->answer)) ? 'checked' : '' }}>
-                                </td>
-                                <td><label class="response_label" data-editable
-                                           for="{{ $answer_content->response_id }}">{{ $answer_content->content }}</label>
-                                </td>
-                                <td></td>
-                                <td><a onclick="{$(this).parent().parent().remove();save_response_data();}"><i
-                                            class="fas fa-trash-alt"></i></a></td>
-                            </tr>
-                        @endforeach
+                        <tr class="response_item">
+                            <td><input type="checkbox" onclick="responsehandleclick();" id="1" name="1" value="1" style="padding-right: 10px;" checked>
+                            </td>
+                            <td><label class="response_label" data-editable
+                                       for="1">Option 1</label>
+                            </td>
+                            <td></td>
+                            <td><a onclick="{$(this).parent().parent().remove();save_response_data();}"><i
+                                        class="fas fa-trash-alt"></i></a></td>
+                        </tr>
+                        <tr class="response_item">
+                            <td><input type="checkbox" onclick="responsehandleclick();" id="2" name="2" value="2" style="padding-right: 10px;">
+                            </td>
+                            <td><label class="response_label" data-editable
+                                       for="2">Option 2</label>
+                            </td>
+                            <td></td>
+                            <td><a onclick="{$(this).parent().parent().remove();save_response_data();}"><i
+                                        class="fas fa-trash-alt"></i></a></td>
+                        </tr>
+                        <tr class="response_item">
+                            <td><input type="checkbox" onclick="responsehandleclick();" id="3" name="3" value="3" style="padding-right: 10px;">
+                            </td>
+                            <td><label class="response_label" data-editable
+                                       for="3">Option 3</label>
+                            </td>
+                            <td></td>
+                            <td><a onclick="{$(this).parent().parent().remove();save_response_data();}"><i
+                                        class="fas fa-trash-alt"></i></a></td>
+                        </tr>
                         </tbody>
                     </table>
                     <a id="add_response" style="padding: 10px 0;margin-left: 90px;margin-top: 10px;">Type to add a new
@@ -75,19 +90,19 @@
                 <tbody>
                 <tr>
                     <td>Correct:</td>
-                    <td><label class="choice_label" data-editable>{{ $quiz->feedback_correct }}</label></td>
+                    <td><label class="choice_label" data-editable>That's right! You answered correctly.</label></td>
                     <td></td>
                     <td>1</td>
                 </tr>
                 <tr>
                     <td>Incorrect:</td>
-                    <td><label class="choice_label" data-editable>{{ $quiz->feedback_incorrect }}</label></td>
+                    <td><label class="choice_label" data-editable>You did not choose the correct response.</label></td>
                     <td></td>
                     <td>0</td>
                 </tr>
                 <tr>
                     <td>Try Again:</td>
-                    <td><label class="choice_label" data-editable>{{ $quiz->feedback_try_again }}</label></td>
+                    <td><label class="choice_label" data-editable>Try again.</label></td>
                     <td>None</td>
                     <td>0</td>
                 </tr>

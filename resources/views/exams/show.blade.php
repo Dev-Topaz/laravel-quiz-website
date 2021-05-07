@@ -33,7 +33,7 @@
                                         </a>
                                     </div>
                                     <div class="col-3">
-                                        <a href="{{ url('/quizes/2') }}/exam/{{ $exam->id }}">
+                                        <a href="javascript:void(0)" onclick="create_quiz(2, {{ $exam->id }})">
                                             <div class="quiz_type multi_response"><img
                                                     src="{{asset('images/multi_response.png')}}"
                                                     alt="Multiple Response"></div>
@@ -274,6 +274,36 @@
                             'is_feedback': true,
                             'answer_content_array': 'Option 1;Option 2;Option 3;',
                             'choice_id_array': '1;2;3;'
+                        },
+                        function (data, status) {
+                            quizId = data;
+                            node.next().attr('id', quizId);
+                        }).catch((XHttpResponse) => {
+                        console.log(XHttpResponse);
+                    });
+                    break;
+
+                case(2):
+                    lv.insertAfter(node, {
+                        caption: 'Select the correct answer option:',
+                        content: '<i>Multiple Choice<i>'
+                    });
+                    $('#quiz_list').find('.current').removeClass('current current-select');
+                    node.next().addClass('current current-select');
+                    node.next().attr('id', quizId);
+
+                    $.post("{{ url('/quizes') }}", {
+                            '_token': "{{ csrf_token() }}",
+                            'type_id': quiz_type,
+                            'exam_id': exam_id,
+                            'question': 'Select one or more correct answers:',
+                            'answer': '1',
+                            'feedback_correct': 'That\'s right! You answered correctly.',
+                            'feedback_incorrect': 'You did not choose the correct response.',
+                            'feedback_try_again': 'Try again.',
+                            'is_feedback': true,
+                            'answer_content_array': 'Option 1;Option 2;Option 3;',
+                            'response_id_array': '1;2;3;'
                         },
                         function (data, status) {
                             quizId = data;
