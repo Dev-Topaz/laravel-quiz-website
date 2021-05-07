@@ -19,6 +19,10 @@
         @include('updatequiz.sequence', array('quiz' => $quiz))
         @break
 
+    @case(7)
+        @include('updatequiz.matching', array('quiz' => $quiz))
+        @break
+
     @default
         @include('updatequiz.multiple_choice', array('quiz' => $quiz))
 

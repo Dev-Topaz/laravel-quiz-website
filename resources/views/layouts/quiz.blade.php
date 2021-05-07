@@ -105,10 +105,10 @@
 
         function fetchmatchinglist() {
             let list = '';
-            let length = $('.ui-state-default').length;
+            let length = $('.matching_item').length;
 
             for (let i = 0; i <length; i++) {
-                list += $('.ui-state-default:nth-child(' + (i + 1) + ') label').eq(0).html() + ';' + $('.ui-state-default:nth-child(' + (i + 1) + ') label').eq(1).html() + '@';
+                list += $('.matching_item:nth-child(' + (i + 1) + ') label').eq(0).html() + ';' + $('.matching_item:nth-child(' + (i + 1) + ') label').eq(1).html() + '@';
             }
             return list;
         }

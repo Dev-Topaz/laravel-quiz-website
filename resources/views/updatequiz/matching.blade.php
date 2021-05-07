@@ -15,12 +15,12 @@
                    value="" autocomplete="answer_content_array" autofocus hidden>
 
             <div>
-                <h4>Sequence Question</h4>
+                <h4>Matching Question</h4>
                 <textarea name="question" id="question" cols="30" rows="3">{{ strip_tags($quiz->question) }}</textarea>
             </div>
             <br>
 
-            <h4>Correct Order</h4>
+            <h4>Correct Matches</h4>
             <div style="height: 216px;overflow-y: scroll;">
                 <input id="response_id_array" type="text"
                        class="form-control @error('response_id_array') is-invalid @enderror"
@@ -30,26 +30,33 @@
                     <table class="table striped" style="margin: 0">
                         <thead>
                         <tr>
-                            <th>Choice</th>
+                            <th>Item</th>
+                            <th></th>
+                            <th>Match</th>
                             <th></th>
                             <th></th>
                         </tr>
                         </thead>
-                        <tbody id="sequence_list">
-                        @foreach($quiz->sequence_array as $item)
-                            <tr class="sequence_item">
+                        <tbody id="matching_list">
+                        @foreach($quiz->item_array as $key => $item)
+                            <tr class="matching_item">
                                 <td><span
-                                    class="ui-icon ui-icon-arrowthick-2-n-s"></span><label
-                                    class="sequence_label" data-editable>{{ $item }}</label>
+                                        class="ui-icon ui-icon-arrowthick-2-n-s"></span><label
+                                        class="matching_item_label" data-editable>{{ $item }}</label>
+                                </td>
                                 <td></td>
-                                <td><a onclick="{$(this).parent().parent().remove();}"><i
-                                        class="fas fa-trash-alt"></i></a></td>
+                                <td><label class="matching_label"
+                                           data-editable>{{ $quiz->matching_array[$key] }}</label>
+                                </td>
+                                <td></td>
+                                <td><a onclick="{$(this).parent().parent().remove();}"><i class="fas fa-trash-alt"></i></a></td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
-                    <a id="add_sequence" style="padding: 10px 0;margin-left: 30px;">Type to add a new choice</a>
-                    <input id="sequence_array" type="text"
+                    <a id="add_matching" style="padding: 10px 0;">Type to add a new
+                        choice</a>
+                    <input id="matching_array" type="text"
                            class="form-control @error('answer') is-invalid @enderror"
                            name="answer"
                            value="" autocomplete="answer" autofocus hidden>
@@ -152,6 +159,9 @@
                                    data-clear-button="false">
                         </div>
                         <div class="cell-12">
+                            <input type="checkbox" data-role="checkbox" data-caption="Shuffle answers">
+                        </div>
+                        <div class="cell-12">
                             <input type="checkbox" data-role="checkbox" data-caption="Accept partially correct answers">
                         </div>
                     </div>
@@ -164,14 +174,15 @@
 
 <script>
     $(function () {
-        $('tbody#sequence_list').sortable();
+        $('#matching_list').sortable();
     });
-    $('#add_sequence').click(function () {
+    $('#add_matching').click(function () {
+        console.log($(this));
         let element;
 
-        element = '<tr class="sequence_item"><td><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><label class="sequence_label" data-editable>Type content...</label><td></td><td><a onclick="{$(this).parent().parent().remove();save_select_data();}"><i class="fas fa-trash-alt"></i></a></td></tr>';
+        element = '<tr class="matching_item"><td><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><label class="matching_item_label" data-editable>Type item content...</label></td><td></td><td><label class="matching_label" data-editable>Type match content...</label></td><td></td><td><a onclick="{$(this).parent().parent().remove();}"><i class="fas fa-trash-alt"></i></a></td></tr>';
 
-        $('tbody#sequence_list').append(element);
+        $('#matching_list').append(element);
 
     });
 </script>
