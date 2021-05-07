@@ -22,10 +22,6 @@
 
             <h4>Correct Order</h4>
             <div style="height: 216px;overflow-y: scroll;">
-                <input id="response_id_array" type="text"
-                       class="form-control @error('response_id_array') is-invalid @enderror"
-                       name="response_id_array"
-                       value="" autocomplete="response_id_array" autofocus hidden>
                 <div>
                     <table class="table striped" style="margin: 0">
                         <thead>

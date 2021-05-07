@@ -15,47 +15,33 @@
                    value="" autocomplete="answer_content_array" autofocus hidden>
 
             <div>
-                <h4>Matching Question</h4>
+                <h4>Short Answer Question</h4>
                 <textarea name="question" id="question" cols="30" rows="3">{{ strip_tags($quiz->question) }}</textarea>
             </div>
             <br>
 
-            <h4>Correct Matches</h4>
+            <h4>Acceptable Answers</h4>
             <div style="height: 216px;overflow-y: scroll;">
                 <div>
                     <table class="table striped" style="margin: 0">
                         <thead>
                         <tr>
-                            <th>Item</th>
-                            <th></th>
-                            <th>Match</th>
-                            <th></th>
+                            <th>Acceptable Answer</th>
                             <th></th>
                         </tr>
                         </thead>
-                        <tbody id="matching_list">
-                        @foreach($quiz->item_array as $key => $item)
-                            <tr class="matching_item">
-                                <td><span
-                                        class="ui-icon ui-icon-arrowthick-2-n-s"></span><label
-                                        class="matching_item_label" data-editable>{{ $item }}</label>
-                                </td>
-                                <td></td>
-                                <td><label class="matching_label"
-                                           data-editable>{{ $quiz->matching_array[$key] }}</label>
-                                </td>
-                                <td></td>
-                                <td><a onclick="{$(this).parent().parent().remove();}"><i class="fas fa-trash-alt"></i></a></td>
-                            </tr>
-                        @endforeach
+                        <tbody id="short_answer_list">
+                        <tr>
+                            <td>
+                                <input id="answer" type="text"
+                                       class="form-control @error('answer') is-invalid @enderror" name="answer"
+                                       value="{{ $quiz->answer }}" required autocomplete="answer" autofocus>
+                            </td>
+                            <td><a onclick="{$(this).parent().parent().remove();}"><i
+                                        class="fas fa-trash-alt"></i></a></td>
+                        </tr>
                         </tbody>
                     </table>
-                    <a id="add_matching" style="padding: 10px 0;">Type to add a new
-                        choice</a>
-                    <input id="matching_array" type="text"
-                           class="form-control @error('answer') is-invalid @enderror"
-                           name="answer"
-                           value="" autocomplete="answer" autofocus hidden>
                 </div>
             </div>
 
@@ -155,10 +141,7 @@
                                    data-clear-button="false">
                         </div>
                         <div class="cell-12">
-                            <input type="checkbox" data-role="checkbox" data-caption="Shuffle answers">
-                        </div>
-                        <div class="cell-12">
-                            <input type="checkbox" data-role="checkbox" data-caption="Accept partially correct answers">
+                            <input type="checkbox" data-role="checkbox" data-caption="Answers are case sensitive">
                         </div>
                     </div>
                 </div>
@@ -169,16 +152,5 @@
 </div>
 
 <script>
-    $(function () {
-        $('#matching_list').sortable();
-    });
-    $('#add_matching').click(function () {
-        console.log($(this));
-        let element;
 
-        element = '<tr class="matching_item"><td><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><label class="matching_item_label" data-editable>Type item content...</label></td><td></td><td><label class="matching_label" data-editable>Type match content...</label></td><td></td><td><a onclick="{$(this).parent().parent().remove();}"><i class="fas fa-trash-alt"></i></a></td></tr>';
-
-        $('#matching_list').append(element);
-
-    });
 </script>

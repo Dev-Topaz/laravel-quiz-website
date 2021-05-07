@@ -475,7 +475,7 @@ main {
     padding: 4px 0;
 }
 
-.choice_item i, .response_item i, .select_item i, #numeric_list i, #sequence_list i, #matching_list i, .ui-state-default i, .dropdown i {
+.choice_item i, .response_item i, .select_item i, #numeric_list i, #sequence_list i, #matching_list i, #short_answer_list i, .ui-state-default i, .dropdown i {
     font-size: 18px;
 }
 
