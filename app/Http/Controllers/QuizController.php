@@ -109,11 +109,14 @@ class QuizController extends Controller
             default:
         }
 
+//        return view('quizes.create', ['exam_id' => $exam_id, 'quiz_type' => $quiz_type]);
 
-        $redirect_url = '/exams/' . $request->exam_id;
+        return $quiz->id;
 
-        return redirect($redirect_url)
-            ->with('success', 'Quiz created successfully');
+//        $redirect_url = '/exams/' . $request->exam_id;
+//
+//        return redirect($redirect_url)
+//            ->with('success', 'Quiz created successfully');
     }
 
     /**

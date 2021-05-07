@@ -20,21 +20,12 @@
                                 </span>
                                 <span class="caption">Question</span>
                             </button>
-                            <div class="container ribbon-dropdown" data-role="dropdown" data-duration="100" style="width: 500px;">
+                            <div class="container ribbon-dropdown" data-role="dropdown" data-duration="100"
+                                 style="width: 500px;">
                                 <h3>Questions</h3>
                                 <div class="row">
                                     <div class="col-3">
-                                        <a href="javascript:void(0)" onclick="
-                                                const lv = Metro.getPlugin('#quiz_list', 'listview');
-                                                const node = $('#quiz_list').find('.current');
-                                                lv.insertAfter(node, {
-                                                    caption: 'Select the correct answer option:',
-                                                    content: '<i>Multiple Choice<i>'
-                                                });
-                                                node.removeClass('current current-select');
-                                                node.next().addClass('current current-select');
-                                            ">
-{{--                                        <a href="{{ url('/quizes/1') }}/exam/{{ $exam->id }}">--}}
+                                        <a href="javascript:void(0)" onclick="create_quiz(1, {{$exam->id}})">
                                             <div class="quiz_type multi_choice"><img
                                                     src="{{asset('images/multi_choice.png')}}"
                                                     alt="Multiple Choice"></div>
@@ -224,12 +215,14 @@
                     <div class="row">
                         <div class="cell-3">
                             <div class="content_body_main " style="overflow-y: scroll;height: 650px;">
-                                <ul data-role="listview" data-view="content" id="quiz_list" data-on-node-click="onNodeClick">
+                                <ul data-role="listview" data-view="content" id="quiz_list"
+                                    data-on-node-click="onNodeClick">
                                     <li data-caption="Question Group">
                                         <ul>
                                             @foreach($exam->quizes as $quiz)
-                                            <li id="{{ $quiz->id }}" data-caption="{{ substr(strip_tags($quiz->question), 0,  29) }}{{ strlen(strip_tags($quiz->question)) < 30 ? '' : '...' }}"
-                                            data-content="<i>{{ $quiz->Quiz_type->name }}</i>"></li>
+                                                <li id="{{ $quiz->id }}"
+                                                    data-caption="{{ substr(strip_tags($quiz->question), 0,  29) }}{{ strlen(strip_tags($quiz->question)) < 30 ? '' : '...' }}"
+                                                    data-content="<i>{{ $quiz->Quiz_type->name }}</i>"></li>
                                             @endforeach
                                         </ul>
                                     </li>
@@ -247,10 +240,57 @@
     <script>
         function onNodeClick(node) {
             const quizId = node.attr('id');
-            $.get("{{ url('/quizes') }}/" + quizId + "/edit", function(data, status){
-                // alert("Data: " + data + "\nStatus: " + status);
+            $.get("{{ url('/quizes') }}/" + quizId + "/edit", function (data, status) {
                 $('#quiz_form').html(data);
             });
         }
+
+        function create_quiz(quiz_type, exam_id) {
+            console.log(quiz_type, exam_id);
+
+            let quizId;
+            const lv = Metro.getPlugin('#quiz_list', 'listview');
+            const node = $('#quiz_list ul li:last-child');
+
+            switch (quiz_type) {
+                case(1):
+                    lv.insertAfter(node, {
+                        caption: 'Select the correct answer option:',
+                        content: '<i>Multiple Choice<i>'
+                    });
+                    $('#quiz_list').find('.current').removeClass('current current-select');
+                    node.next().addClass('current current-select');
+                    node.next().attr('id', quizId);
+
+                    $.post("{{ url('/quizes') }}", {
+                            '_token': "{{ csrf_token() }}",
+                            'type_id': quiz_type,
+                            'exam_id': exam_id,
+                            'question': 'Select the correct answer option:',
+                            'answer': '1',
+                            'feedback_correct': 'That\'s right! You answered correctly.',
+                            'feedback_incorrect': 'You did not choose the correct response.',
+                            'feedback_try_again': 'Try again.',
+                            'is_feedback': true,
+                            'answer_content_array': 'Option 1;Option 2;Option 3;',
+                            'choice_id_array': '1;2;3;'
+                        },
+                        function (data, status) {
+                            quizId = data;
+                            node.next().attr('id', quizId);
+                        }).catch((XHttpResponse) => {
+                        console.log(XHttpResponse);
+                    });
+                    break;
+
+                default:
+            }
+
+            $.get("{{ url('/quizes') }}/" + quiz_type + "/exam/" + exam_id, function (data, status) {
+                $('#quiz_form').html(data);
+            });
+
+        }
+
     </script>
 @endsection
