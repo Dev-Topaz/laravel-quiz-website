@@ -7,6 +7,10 @@
         @include('updatequiz.multiple_response', array('quiz' => $quiz))
         @break
 
+    @case(3)
+        @include('updatequiz.true_false', array('quiz' => $quiz))
+        @break
+
     @default
         @include('updatequiz.multiple_choice', array('quiz' => $quiz))
 
