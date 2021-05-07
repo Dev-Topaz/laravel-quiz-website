@@ -2,69 +2,6 @@ $('.middle_form_bar').click(function() {
     $(this).next().toggle();
 });
 
-// multiple choice
-
-/* Multiple Response */
-function get_response_item_id() {
-    const length = $('#answer_content .response_item').length;
-
-    let id = 1;
-
-    if (length > 0) {
-        id = 0;
-        for(let i = 0; i < length; i++) {
-            if (parseInt($('#answer_content .response_item input').eq(i).attr('id')) > id) {
-                id = parseInt($('#answer_content .response_item input').eq(i).attr('id')) + 1;
-            }
-        }
-    }
-
-    return id;
-}
-
-function save_response_data() {
-    const length = $('#answer_content .response_item').length;
-
-    let response_id_array = '';
-    let answer_content_array = '';
-
-    for(let i =0; i < length; i++) {
-        response_id_array += $('#answer_content .response_item input').eq(i).attr('id') + ';';
-        answer_content_array += $('#answer_content .response_item label').eq(i).html() + ';';
-    }
-
-    console.log(response_id_array, answer_content_array);
-
-    $('input#answer_content_array').val(answer_content_array);
-    $('input#response_id_array').val(response_id_array);
-}
-
-$('#add_response').click(function() {
-
-    const id = get_response_item_id();
-
-    const element = $('<div class="response_item"><input type="checkbox" onclick="responsehandleclick();" id="' + id + '" name="answer' + id + '" value="' + id + '" style="padding-right: 10px;"><label class="response_label" data-editable for="' + id + '">Type content...</label><a onclick="{$(this).parent().remove();save_response_data();}"><i class="fas fa-trash-alt"></i></a></div>');
-    $(this).parent().before().prepend(element);
-
-    save_response_data();
-});
-
-function responsehandleclick() {
-    const length = $('#answer_content .response_item').length;
-
-    let answer_array = '';
-
-    for(let i =0; i < length; i++) {
-        if($('#answer_content .response_item input').eq(i)[0].checked) {
-            answer_array += $('#answer_content .response_item input').eq(i).attr('id') + ';';
-        }
-    }
-
-    console.log(answer_array);
-
-    $('input#answer').val(answer_array);
-}
-
 /* Numeric */
 function get_select_item_id() {
     const length = $('#answer_content .select_item').length;

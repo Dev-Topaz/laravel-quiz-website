@@ -451,7 +451,7 @@ main {
     width: 440px;
 }
 
-.choice_item td:nth-child(2) input, .response_item input:nth-child(2) {
+.choice_item td:nth-child(2) input, .response_item td:nth-child(2) input {
     width: 395px;
     padding: 4px 0;
 }

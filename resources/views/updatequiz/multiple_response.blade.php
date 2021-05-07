@@ -15,17 +15,17 @@
                    value="" autocomplete="answer_content_array" autofocus hidden>
 
             <div>
-                <h4>Multiple Choice Question</h4>
+                <h4>Multiple Response Question</h4>
                 <textarea name="question" id="question" cols="30" rows="3">{{ strip_tags($quiz->question) }}</textarea>
             </div>
             <br>
 
             <h4>Choices</h4>
             <div style="height: 216px;overflow-y: scroll;">
-                <input id="choice_id_array" type="text"
-                       class="form-control @error('choice_id_array') is-invalid @enderror"
-                       name="choice_id_array"
-                       value="" autocomplete="choice_id_array" autofocus hidden>
+                <input id="response_id_array" type="text"
+                       class="form-control @error('response_id_array') is-invalid @enderror"
+                       name="response_id_array"
+                       value="" autocomplete="response_id_array" autofocus hidden>
                 <div>
                     <table class="table striped" style="margin: 0">
                         <thead>
@@ -36,24 +36,26 @@
                             <th></th>
                         </tr>
                         </thead>
-                        <tbody id="choice_list">
-                        @foreach($quiz->multi_choice_answer_contents as $answer_content)
-                            <tr class="choice_item">
-                                <td><input type="radio" id="{{ $answer_content->choice_id }}"
-                                           name="answer" value="{{ $answer_content->choice_id }}"
-                                           style="padding-right: 10px;" {{ $answer_content->choice_id == $quiz->answer ? 'checked' : '' }}>
+                        <tbody id="response_list">
+                        @foreach($quiz->multi_response_answer_contents as $answer_content)
+                            <tr class="response_item">
+                                <td><input type="checkbox" onclick="responsehandleclick();"
+                                           id="{{ $answer_content->response_id }}"
+                                           name="answer{{ $answer_content->response_id }}"
+                                           value="{{ $answer_content->response_id }}"
+                                           style="padding-right: 10px;" {{ in_array($answer_content->response_id, explode(';', $quiz->answer)) ? 'checked' : '' }}>
                                 </td>
-                                <td><label class="choice_label" data-editable
+                                <td><label class="response_label" data-editable
                                            for="{{ $answer_content->choice_id }}">{{ $answer_content->content }}</label>
                                 </td>
                                 <td></td>
-                                <td><a onclick="{$(this).parent().parent().remove();save_choice_data();}"><i
+                                <td><a onclick="{$(this).parent().parent().remove();save_response_data();}"><i
                                             class="fas fa-trash-alt"></i></a></td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
-                    <a id="add_choice" style="padding: 10px 0;margin-left: 90px;margin-top: 10px;">Type to add a new
+                    <a id="add_response" style="padding: 10px 0;margin-left: 90px;margin-top: 10px;">Type to add a new
                         choice</a>
                 </div>
             </div>
@@ -117,16 +119,6 @@
                             <select data-role="select" data-filter="false" name="feedback">
                                 <option value="none">None</option>
                                 <option value="by_result" selected>By Result</option>
-                                <option value="by_choice">By Choice</option>
-                            </select>
-                        </div>
-                        <div class="cell-6">
-                            <label for="braching" name="braching">Branching:</label>
-                        </div>
-                        <div class="cell-6">
-                            <select data-role="select" data-filter="false" name="braching">
-                                <option value="by_result" selected>By Result</option>
-                                <option value="by_choice">By Choice</option>
                             </select>
                         </div>
                         <div class="cell-6">
@@ -167,6 +159,12 @@
                         <div class="cell-12">
                             <input type="checkbox" data-role="checkbox" data-caption="Shuffle answers">
                         </div>
+                        <div class="cell-12">
+                            <input type="checkbox" data-role="checkbox" data-caption="Accept partially correct answers">
+                        </div>
+                        <div class="cell-12">
+                            <input type="checkbox" data-role="checkbox" data-caption="Limit number of responses:(1)">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -176,8 +174,8 @@
 </div>
 
 <script>
-    function get_choice_item_id() {
-        const length = $('.choice_item').length;
+    function get_response_item_id() {
+        const length = $('.response_item').length;
 
         let id = 1;
 
@@ -185,7 +183,7 @@
             id = 0;
 
             for (let i = 0; i < length; i++) {
-                const inputId = parseInt($('.choice_item input').eq(i).attr('id'));
+                const inputId = parseInt($('.response_item input').eq(i).attr('id'));
                 if (inputId > id) id = inputId + 1;
             }
         }
@@ -193,31 +191,47 @@
         return id;
     }
 
-    function save_choice_data() {
-        const length = $('.choice_item').length;
+    function save_response_data() {
+        const length = $('.response_item').length;
 
-        let choice_id_array = '';
+        let response_id_array = '';
         let answer_content_array = '';
 
         for (let i = 0; i < length; i++) {
-            choice_id_array += $('.choice_item input').eq(i).attr('id') + ';';
-            answer_content_array += $('.choice_item label').eq(i).html() + ';';
+            response_id_array += $('.response_item input').eq(i).attr('id') + ';';
+            answer_content_array += $('.response_item label').eq(i).html() + ';';
         }
 
-        console.log(choice_id_array, answer_content_array);
+        console.log(response_id_array, answer_content_array);
 
         $('input#answer_content_array').val(answer_content_array);
-        $('input#choice_id_array').val(choice_id_array);
+        $('input#response_id_array').val(response_id_array);
     }
 
-    $('#add_choice').click(function () {
+    $('#add_response').click(function () {
 
-        const id = get_choice_item_id();
+        const id = get_response_item_id();
 
-        const element = $('<tr class="choice_item"><td><input type="radio" id="' + id + '" name="answer" value="' + id + '" style="padding-right: 10px;"></td><td><label class="choice_label" data-editable for="' + id + '">Type content ...</label></td><td></td><td><a onclick="{$(this).parent().parent().remove();save_choice_data();}"><i class="fas fa-trash-alt"></i></a></td></tr>');
-        $('tbody#choice_list').append(element);
+        const element = $('<tr class="response_item"><td><input onclick="responsehandleclick();" type="checkbox" id="' + id + '" name="answer" value="' + id + '" style="padding-right: 10px;"></td><td><label class="response_label" data-editable for="' + id + '">Type content ...</label></td><td></td><td><a onclick="{$(this).parent().parent().remove();save_response_data();}"><i class="fas fa-trash-alt"></i></a></td></tr>');
+        $('tbody#response_list').append(element);
 
-        save_choice_data();
+        save_response_data();
     });
+
+    function responsehandleclick() {
+        const length = $('.response_item').length;
+
+        let answer_array = '';
+
+        for (let i = 0; i < length; i++) {
+            if ($('.response_item input').eq(i)[0].checked) {
+                answer_array += $('.response_item input').eq(i).attr('id') + ';';
+            }
+        }
+
+        console.log(answer_array);
+
+        $('input#answer').val(answer_array);
+    }
 
 </script>
