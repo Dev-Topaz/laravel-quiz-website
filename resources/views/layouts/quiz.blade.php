@@ -14,19 +14,20 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4.3.2/css/metro-all.min.css">
+    <link href="{{ asset('css/metro-all.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('css/all.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/richtext.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <link href="{{ asset('css/jquery.modal.min.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="{{ asset('css/jquery-ui.min.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/jquery3.2.1.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui.min.js') }}" defer></script>
+
 </head>
 <body>
     <div id="app">
@@ -83,10 +84,8 @@
         </main>
 
     </div>
-    <!--    modal library-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-    <script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>
-
+    <script src="{{ asset('js/jquery.modal.min.js') }}" defer></script>
+    <script src="{{ asset('js/metro.js') }}" defer></script>
     <script src="{{ asset('js/main.js') }}" defer></script>
     <script src="{{ asset('js/matching.js') }}" defer></script>
     <script src="{{ asset('js/text_dropdown.js') }}" defer></script>

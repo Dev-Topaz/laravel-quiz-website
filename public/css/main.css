@@ -69,7 +69,7 @@ main {
     line-height: 30px;
 }
 
-#content .post .content_header .content_header_title #button_add_user, #content .post .content_header .content_header_title #button_create_exam, .create_form button, #button_create_quiz {
+#content .post .content_header .content_header_title #button_add_user, #content .post .content_header .content_header_title #button_create_exam, .create_form button, #button_create_quiz, .quiz button.quiz_handle_button {
     line-height: 1.5;
     margin: 0;
     vertical-align: baseline;
@@ -578,7 +578,7 @@ main.quiz {
     height: 110px;
 }
 
-.listview.view-content .node>.data {
+.listview.view-content .node > .data {
     padding-left: 8px;
 }
 
@@ -596,4 +596,9 @@ main.quiz {
     flex-direction: column;
     justify-content: space-between;
     padding: 20px 0;
+}
+
+.quiz_handle_button i {
+    font-size: medium;
+    padding-right: 10px;
 }

@@ -1129,10 +1129,15 @@
                                 <p>Attempt Number: {{ $exam->attempt_number }}, Passing
                                     Score: {{ $exam->passing_score }}</p>
                             </div>
+                            <div style="float: right">
+                                <button type="button" class="quiz_handle_button"><i class="fas fa-trash"></i>Update Quiz</button>
+                                <button type="button" class="quiz_handle_button"><i class="fas fa-trash"></i>Delete Quiz</button>
+                            </div>
                             <div style="clear: both; height: 1px"></div>
                         </div>
                     </div>
 
+                    <form method="POST" action="#" class="create_form" id="quiz_form">
                     <div class="content_body">
                         <div class="row">
                             <div class="cell-3">
@@ -1159,13 +1164,11 @@
                                     </ul>
                                 </div>
                             </div>
-                            <form method="POST" action="#" class="create_form"
-                                      id="quiz_form">
-                            <div class="cell-9" id="quiz_form" style="padding: 0;"></div>
-                            <div class="cell-9" id="quiz_slide" style="padding: 0;"></div>
-                            </form>
+                            <div class="cell-9" id="quiz_form_view" style="padding: 0;"></div>
+                            <div class="cell-9" id="quiz_slide_view" style="padding: 0;"></div>
                         </div>
                     </div>
+                    </form>
 
                 </div><!-- /.post -->
             </div><!-- /#content -->
@@ -1177,10 +1180,11 @@
                 {{--    $('#quiz_form').html(data);--}}
                 {{--});--}}
                 $.get("{{ url('/quizes_form_view') }}/" + quizId + "/edit", function (data, status) {
-                    $('#quiz_form').html(data);
+                    $('#quiz_form_view').html(data);
                 });
                 $.get("{{ url('/quizes_slide_view') }}/" + quizId + "/edit", function (data, status) {
-                    $('#quiz_slide').html(data);
+                    console.log(data);
+                    $('#quiz_slide_view').html(data);
                 });
             }
 
@@ -1255,7 +1259,7 @@
                 }
 
                 $.get("{{ url('/quizes') }}/" + quiz_type + "/exam/" + exam_id, function (data, status) {
-                    $('#quiz_form').html(data);
+                    $('#quiz_form_view').html(data);
                 });
 
             }
@@ -1276,8 +1280,8 @@
 
 
             $('#form_view_btn').click(function () {
-                $('#quiz_form').show();
-                $('#quiz_slide').hide();
+                $('#quiz_form_view').show();
+                $('#quiz_slide_view').hide();
 
                 if ($(this).hasClass('clicked')) return;
 
@@ -1304,8 +1308,8 @@
             });
 
             $('#slide_view_btn').click(function () {
-                $('#quiz_form').hide();
-                $('#quiz_slide').show();
+                $('#quiz_form_view').hide();
+                $('#quiz_slide_view').show();
 
                 if ($(this).hasClass('clicked')) return;
 
