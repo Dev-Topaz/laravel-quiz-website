@@ -25,8 +25,7 @@
 
     <!-- Scripts -->
     <link href="{{ asset('css/jquery-ui.min.css') }}" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-{{--    <script src="{{ asset('js/jquery.min.js') }}" defer></script>--}}
+    <script src="{{ asset('js/jquery3.2.1.min.js') }}"></script>
     <script src="{{ asset('js/jquery-ui.min.js') }}" defer></script>
 
 </head>
