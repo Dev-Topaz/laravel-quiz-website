@@ -255,7 +255,7 @@
                             <span class="ribbon-split dropdown-toggle">Preview</span>
                             <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">
                                 <li class="design_preview_submenu"
-                                    style="background-image: url({{ url("/images/ribbon_ imgs/design-pre-1.png") }});">
+                                    style="background-image: url({{ url("/images/ribbon_imgs/design-pre-1.png") }});">
                                     Preview
                                     Slide
                                 </li>
@@ -522,7 +522,7 @@
                             <span class="ribbon-split dropdown-toggle">Preview</span>
                             <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">
                                 <li class="design_preview_submenu"
-                                    style="background-image: url({{ url("/images/ribbon_ imgs/design-pre-1.png") }});">
+                                    style="background-image: url({{ url("/images/ribbon_imgs/design-pre-1.png") }});">
                                     Preview
                                     Slide
                                 </li>
@@ -701,7 +701,7 @@
                         </div>
                         <div class="dropdown-button">
                             <button class="button dropdown-toggle"
-                                    style="margin-left: 10px; width: 44px; margin-top: 3px; height: 23px; background-image: url({{ url("/images/ribbon_ imgs/home-19.png") }}); background-repeat: no-repeat; background-position-y: center; background-position-x: 5px;"></button>
+                                    style="margin-left: 10px; width: 44px; margin-top: 3px; height: 23px; background-image: url({{ url("/images/ribbon_imgs/home-19.png") }}); background-repeat: no-repeat; background-position-y: center; background-position-x: 5px;"></button>
                             <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100"
                                 style="transform: translate(10px, -10px);">
                                 <li><a>1,0</a></li>
@@ -789,7 +789,7 @@
                             <span class="ribbon-split dropdown-toggle">Preview</span>
                             <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">
                                 <li class="design_preview_submenu"
-                                    style="background-image: url({{ url("/images/ribbon_ imgs/design-pre-1.png") }});">
+                                    style="background-image: url({{ url("/images/ribbon_imgs/design-pre-1.png") }});">
                                     Preview
                                     Slide
                                 </li>
@@ -915,27 +915,27 @@
                                 <span class="caption dropdown-toggle">Link</span>
                                 <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">
                                     <li class="form_view_home_link"
-                                        style="background-image: url({{ url("/images/ribbon_ imgs/images/Untitled-1_03.png") }});">
+                                        style="background-image: url({{ url("/images/ribbon_imgs/images/Untitled-1_03.png") }});">
                                         To
                                         Slide Above
                                     </li>
                                     <li class="form_view_home_link"
-                                        style="background-image: url({{ url("/images/ribbon_ imgs/images/Untitled-1_05.png") }}); border-bottom: 1px dotted grey;">
+                                        style="background-image: url({{ url("/images/ribbon_imgs/images/Untitled-1_05.png") }}); border-bottom: 1px dotted grey;">
                                         To
                                         Slide Below
                                     </li>
                                     <li class="form_view_home_link"
-                                        style="background-image: url({{ url("/images/ribbon_ imgs/images/Untitled-1_06.png") }});">
+                                        style="background-image: url({{ url("/images/ribbon_imgs/images/Untitled-1_06.png") }});">
                                         To
                                         Top of Group
                                     </li>
                                     <li class="form_view_home_link"
-                                        style="background-image: url({{ url("/images/ribbon_ imgs/images/Untitled-1_07.png") }}); border-bottom: 1px dotted grey;">
+                                        style="background-image: url({{ url("/images/ribbon_imgs/images/Untitled-1_07.png") }}); border-bottom: 1px dotted grey;">
                                         To
                                         Bottom of Group
                                     </li>
                                     <li class="form_view_home_link"
-                                        style="background-image: url({{ url("/images/ribbon_ imgs/images/Untitled-1.png") }});"
+                                        style="background-image: url({{ url("/images/ribbon_imgs/images/Untitled-1.png") }});"
                                         disabled>Unlink
                                     </li>
                                 </ul>
@@ -1049,16 +1049,16 @@
                                 <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100"
                                     style="width: 150px; text-align: left;">
                                     <li class="insert_audio"
-                                        style="background-image: url({{ url("/images/ribbon_ imgs/insert/audio-1.png") }});">
+                                        style="background-image: url({{ url("/images/ribbon_imgs/insert/audio-1.png") }});">
                                         From
                                         File...
                                     </li>
                                     <li class="insert_audio"
-                                        style="background-image: url({{ url("/images/ribbon_ imgs/insert/audio-2.png") }}); border-bottom: 1px dotted gainsboro;">
+                                        style="background-image: url({{ url("/images/ribbon_imgs/insert/audio-2.png") }}); border-bottom: 1px dotted gainsboro;">
                                         Record Mic...
                                     </li>
                                     <li class="insert_audio"
-                                        style="background-image: url({{ url("/images/ribbon_ imgs/insert/audio-3.png") }});">
+                                        style="background-image: url({{ url("/images/ribbon_imgs/insert/audio-3.png") }});">
                                         Microphone
                                         Settings
                                     </li>
