@@ -1159,8 +1159,11 @@
                                     </ul>
                                 </div>
                             </div>
+                            <form method="POST" action="#" class="create_form"
+                                      id="quiz_form">
                             <div class="cell-9" id="quiz_form" style="padding: 0;"></div>
                             <div class="cell-9" id="quiz_slide" style="padding: 0;"></div>
+                            </form>
                         </div>
                     </div>
 
