@@ -183,6 +183,14 @@ class QuizController extends Controller
         return view('quizes.update', ['quiz' => $quiz]);
     }
 
+    public function edit_form_view(Quiz $quiz) {
+        return view('quizes.update_form_view', ['quiz' => $quiz]);
+    }
+
+    public function edit_slide_view(Quiz $quiz) {
+        return view('quizes.update_slide_view', ['quiz' => $quiz]);
+    }
+
     /**
      * Update the specified resource in storage.
      *
