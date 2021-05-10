@@ -16,7 +16,12 @@
 
             <div>
                 <h4>Multiple Choice Question</h4>
-                <textarea name="question" id="question" cols="30" rows="3">Select the correct answer option:</textarea>
+                <div contenteditable="true" id="question" class="form_view_textbox_editable"
+                     style="width: 100%;height: 70px;overflow-y: scroll;border: 1px solid black;">Select the correct
+                    answer option:
+                </div>
+
+                <textarea name="question" cols="30" rows="3" hidden>Select the correct answer option:</textarea>
             </div>
             <br>
 
@@ -37,42 +42,42 @@
                         </tr>
                         </thead>
                         <tbody id="choice_list">
-                            <tr class="choice_item">
-                                <td><input type="radio" id="1"
-                                           name="answer" value="1"
-                                           style="padding-right: 10px;" checked>
-                                </td>
-                                <td><label class="choice_label" data-editable
-                                           for="1">Option 1</label>
-                                </td>
-                                <td></td>
-                                <td><a onclick="{$(this).parent().parent().remove();save_choice_data();}"><i
-                                            class="fas fa-trash-alt"></i></a></td>
-                            </tr>
-                            <tr class="choice_item">
-                                <td><input type="radio" id="2"
-                                           name="answer" value="2"
-                                           style="padding-right: 10px;">
-                                </td>
-                                <td><label class="choice_label" data-editable
-                                           for="1">Option 2</label>
-                                </td>
-                                <td></td>
-                                <td><a onclick="{$(this).parent().parent().remove();save_choice_data();}"><i
-                                            class="fas fa-trash-alt"></i></a></td>
-                            </tr>
-                            <tr class="choice_item">
-                                <td><input type="radio" id="3"
-                                           name="answer" value="3"
-                                           style="padding-right: 10px;">
-                                </td>
-                                <td><label class="choice_label" data-editable
-                                           for="1">Option 3</label>
-                                </td>
-                                <td></td>
-                                <td><a onclick="{$(this).parent().parent().remove();save_choice_data();}"><i
-                                            class="fas fa-trash-alt"></i></a></td>
-                            </tr>
+                        <tr class="choice_item">
+                            <td><input type="radio" id="1"
+                                       name="answer" value="1"
+                                       style="padding-right: 10px;" checked>
+                            </td>
+                            <td><label class="choice_label" data-editable
+                                       for="1">Option 1</label>
+                            </td>
+                            <td></td>
+                            <td><a onclick="{$(this).parent().parent().remove();save_choice_data();}"><i
+                                        class="fas fa-trash-alt"></i></a></td>
+                        </tr>
+                        <tr class="choice_item">
+                            <td><input type="radio" id="2"
+                                       name="answer" value="2"
+                                       style="padding-right: 10px;">
+                            </td>
+                            <td><label class="choice_label" data-editable
+                                       for="1">Option 2</label>
+                            </td>
+                            <td></td>
+                            <td><a onclick="{$(this).parent().parent().remove();save_choice_data();}"><i
+                                        class="fas fa-trash-alt"></i></a></td>
+                        </tr>
+                        <tr class="choice_item">
+                            <td><input type="radio" id="3"
+                                       name="answer" value="3"
+                                       style="padding-right: 10px;">
+                            </td>
+                            <td><label class="choice_label" data-editable
+                                       for="1">Option 3</label>
+                            </td>
+                            <td></td>
+                            <td><a onclick="{$(this).parent().parent().remove();save_choice_data();}"><i
+                                        class="fas fa-trash-alt"></i></a></td>
+                        </tr>
                         </tbody>
                     </table>
                     <a id="add_choice" style="padding: 10px 0;margin-left: 90px;margin-top: 10px;">Type to add a new
@@ -101,7 +106,8 @@
                 </tr>
                 <tr>
                     <td>Incorrect:</td>
-                    <td><label class="choice_label" data-editable>You did not choose the correct response.</label></td>
+                    <td><label class="choice_label" data-editable>You did not choose the correct response.</label>
+                    </td>
                     <td></td>
                     <td>0</td>
                 </tr>
