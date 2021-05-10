@@ -21,12 +21,14 @@
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('css/all.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/richtext.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <link href="{{ asset('css/jquery.modal.min.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="{{ asset('css/jquery-ui.min.css') }}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{{--    <script src="{{ asset('js/jquery.min.js') }}" defer></script>--}}
+    <script src="{{ asset('js/jquery-ui.min.js') }}" defer></script>
+
 </head>
 <body>
     <div id="app">
@@ -83,9 +85,7 @@
         </main>
 
     </div>
-    <!--    modal library-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-
+    <script src="{{ asset('js/jquery.modal.min.js') }}" defer></script>
     <script src="{{ asset('js/metro.js') }}" defer></script>
     <script src="{{ asset('js/main.js') }}" defer></script>
     <script src="{{ asset('js/matching.js') }}" defer></script>
