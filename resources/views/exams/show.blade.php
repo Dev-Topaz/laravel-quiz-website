@@ -1272,9 +1272,14 @@
                 $(this).toggleClass('clicked');
                 $('#slide_view_btn').toggleClass('clicked');
 
-                $("#section_Home_SlideView").removeClass('active');
-                $("#section_Home_FormView").addClass('active');
                 $("#section_home_form").addClass('active');
+
+                $("#section_Home_SlideView").removeClass('active');
+                $("#section_Insert").removeClass('active');
+                $("#section_Design").removeClass('active');
+                $("#section_Animation").removeClass('active');
+                $("#section_Help").removeClass('active');
+                $("#section_Home_FormView").addClass('active');
 
                 $("#section_home_slide").hide();
                 $("#section_home_form").show();
@@ -1293,9 +1298,15 @@
                 $('#form_view_btn').toggleClass('clicked');
 
 
-                $("#section_Home_FormView").removeClass('active');
-                $("#section_Home_SlideView").addClass('active');
                 $("#section_home_slide").addClass('active');
+
+                $("#section_Home_FormView").removeClass('active');
+                $("#section_Insert").removeClass('active');
+                $("#section_Design").removeClass('active');
+                $("#section_Animation").removeClass('active');
+                $("#section_Help").removeClass('active');
+
+                $("#section_Home_SlideView").addClass('active');
 
                 $("#section_home_slide").show();
                 $("#section_home_form").hide();
