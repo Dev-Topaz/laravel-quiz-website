@@ -1307,7 +1307,7 @@
                 if ($(this).hasClass('clicked')) return;
 
                 $(this).toggleClass('clicked');
-                $('#form_view_btn').toggleClass('clicked');
+                $('#form_view_btn').toggleClass('clicked');//for main branch comment
 
 
                 $("#section_home_slide").addClass('active');
