@@ -6,7 +6,7 @@
 
         <nav data-role="ribbonmenu">
             <ul class="tabs-holder">
-                <li id="section_home_form" class="active"><a href="#section_Home_FormView">Home</a></li>
+                <li id="section_home_form"><a href="#section_Home_FormView">Home</a></li>
                 <li id="section_home_slide" style="display: none;"><a href="#section_Home_SlideView">Home</a></li>
                 <li id="section_insert" style="display: none;"><a href="#section_Insert">Insert</a></li>
                 <li id="section_design" style="display: none;"><a href="#section_Design">Design</a></li>
@@ -1159,8 +1159,11 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="cell-9" id="quiz_form" style="padding: 0;">
-                            </div>
+                            <form method="POST" action="#" class="create_form"
+                                      id="quiz_form">
+                            <div class="cell-9" id="quiz_form" style="padding: 0;"></div>
+                            <div class="cell-9" id="quiz_slide" style="padding: 0;"></div>
+                            </form>
                         </div>
                     </div>
 
@@ -1170,8 +1173,14 @@
         <script>
             function onNodeClick(node) {
                 const quizId = node.attr('id');
-                $.get("{{ url('/quizes') }}/" + quizId + "/edit", function (data, status) {
+                {{--$.get("{{ url('/quizes') }}/" + quizId + "/edit", function (data, status) {--}}
+                {{--    $('#quiz_form').html(data);--}}
+                {{--});--}}
+                $.get("{{ url('/quizes_form_view') }}/" + quizId + "/edit", function (data, status) {
                     $('#quiz_form').html(data);
+                });
+                $.get("{{ url('/quizes_slide_view') }}/" + quizId + "/edit", function (data, status) {
+                    $('#quiz_slide').html(data);
                 });
             }
 
@@ -1267,6 +1276,9 @@
 
 
             $('#form_view_btn').click(function () {
+                $('#quiz_form').show();
+                $('#quiz_slide').hide();
+
                 if ($(this).hasClass('clicked')) return;
 
                 $(this).toggleClass('clicked');
@@ -1292,10 +1304,13 @@
             });
 
             $('#slide_view_btn').click(function () {
+                $('#quiz_form').hide();
+                $('#quiz_slide').show();
+
                 if ($(this).hasClass('clicked')) return;
 
                 $(this).toggleClass('clicked');
-                $('#form_view_btn').toggleClass('clicked');
+                $('#form_view_btn').toggleClass('clicked');//for main branch comment
 
 
                 $("#section_home_slide").addClass('active');
