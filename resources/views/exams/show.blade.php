@@ -204,47 +204,58 @@
                         <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">
                             <div id="quiz_types_panel">
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_01.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_01.png") }}"
+                                        onclick="create_quiz(1, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_01.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_02.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_02.png") }}"
+                                        onclick="create_quiz(2, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_02.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_03.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_03.png") }}"
+                                        onclick="create_quiz(3, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_03.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_04.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_04.png") }}"
+                                        onclick="create_quiz(4, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_04.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_05.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_05.png") }}"
+                                        onclick="create_quiz(5, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_05.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_06.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_06.png") }}"
+                                        onclick="create_quiz(6, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_06.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_07.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_07.png") }}"
+                                        onclick="create_quiz(7, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_07.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_08.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_08.png") }}"
+                                        onclick="create_quiz(8, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_08.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_09.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_09.png") }}"
+                                        onclick="create_quiz(9, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_09.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_10.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_10.png") }}"
+                                        onclick="create_quiz(10, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_10.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_11.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_11.png") }}"
+                                        onclick="create_quiz(11, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_11.png") }}">
                                 </div>
                             </div>
@@ -854,47 +865,57 @@
                             <div id="quiz_types_panel_2">
                                 <div>
                                     <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_01.png") }}"
-                                        onclick="create_quiz(1, {{$exam->id}})">
+                                        onclick="create_quiz(1, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_01.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_02.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_02.png") }}"
+                                         onclick="create_quiz(2, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_02.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_03.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_03.png") }}"
+                                        onclick="create_quiz(3, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_03.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_04.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_04.png") }}"
+                                        onclick="create_quiz(4, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_04.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_05.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_05.png") }}"
+                                        onclick="create_quiz(5, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_05.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_06.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_06.png") }}"
+                                        onclick="create_quiz(6, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_06.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_07.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_07.png") }}"
+                                        onclick="create_quiz(7, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_07.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_08.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_08.png") }}"
+                                        onclick="create_quiz(8, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_08.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_09.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_09.png") }}"
+                                        onclick="create_quiz(9, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_09.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_10.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_10.png") }}"
+                                        onclick="create_quiz(10, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_10.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_11.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_11.png") }}"
+                                        onclick="create_quiz(11, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_11.png") }}">
                                 </div>
                             </div>
@@ -1146,10 +1167,10 @@
                                 Score: {{ $exam->passing_score }}</p>
                         </div>
                         <div style="float: right">
-                            <button type="button" class="quiz_handle_button"><i class="fas fa-trash"></i>Update
+                            <button type="button" class="quiz_handle_button" onclick="update_quiz()"><i class="fas fa-trash"></i>Update
                                 Quiz
                             </button>
-                            <button type="button" class="quiz_handle_button"><i class="fas fa-trash"></i>Delete
+                            <button type="button" class="quiz_handle_button" onclick="delete_quiz()"><i class="fas fa-trash"></i>Delete
                                 Quiz
                             </button>
                         </div>
