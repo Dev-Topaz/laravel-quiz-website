@@ -606,3 +606,11 @@ main.quiz {
     font-size: medium;
     padding-right: 10px;
 }
+
+.resize-element {
+    z-index: 0 !important;
+}
+
+#quiz_list .node-toggle {
+    z-index: 0;
+}
