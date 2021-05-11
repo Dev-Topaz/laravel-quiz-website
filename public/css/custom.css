@@ -11,6 +11,7 @@
 }
 
 
+/* start of theme selector style */
 #design_themes_panel_holder {
     position: absolute;
     border: 1px solid;
@@ -30,8 +31,6 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
-
-
 
 .design_themes_panels {
     width: 60px;
@@ -57,6 +56,9 @@
     margin: 7px;
     text-align: left;
 }
+
+/* End of theme selector style */
+
 
 #quiz_types_panel,
 #quiz_types_panel_2 {
@@ -168,13 +170,61 @@
 }
 
 .ribbon-menu .content-holder .group .group-divider {
-background-color: transparent!important;
+    background-color: transparent !important;
 }
 
 .ribbon-menu .content-holder .group .title {
-    border: none!important;
+    border: none !important;
 }
 
 .dropdown-toggle::after {
     visibility: hidden;
 }
+
+
+/* start of quick styler css */
+#quick_styles_panel_holder {
+    position: absolute;
+    border: 1px solid;
+    background-color: white;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: auto;
+    height: 436px;
+    width: 444px;
+}
+
+#quick_styles_panel_holder>div {
+    display: flex;
+    width: 440px;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#quick_styles_panel_holder>div>div:hover {
+    background-color: rgb(71, 114, 255);
+}
+
+.quick_style_sample {
+    width: 40px;
+    height: 40px;
+    border: 1px solid;
+    margin: 11px;
+    border-radius: 10px;
+}
+
+.quick_style_sample:hover {
+    /* box-shadow: 1px 1px 3px 3px grey; */
+    opacity: 0.85;
+}
+
+.quick_style_sample span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 13px;
+    transform: translate(-50%, -50%);
+}
+
+/* End of quick styler css */

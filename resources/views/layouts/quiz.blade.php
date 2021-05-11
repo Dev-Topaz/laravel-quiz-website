@@ -24,16 +24,10 @@
     <link href="{{ asset('css/jquery.modal.min.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
-<<<<<<< HEAD
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="{{ asset('js/jquery3.2.1.min.js') }}" defer></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-=======
     <link href="{{ asset('css/jquery-ui.min.css') }}" rel="stylesheet">
     <script src="{{ asset('js/jquery3.2.1.min.js') }}"></script>
     <script src="{{ asset('js/jquery-ui.min.js') }}" defer></script>
 
->>>>>>> 58f187ef3e5dff75bd44d2e2175542b5d32de583
 </head>
 <body>
     <div id="app">
@@ -90,13 +84,7 @@
         </main>
 
     </div>
-<<<<<<< HEAD
-    <!--    modal library-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-
-=======
     <script src="{{ asset('js/jquery.modal.min.js') }}" defer></script>
->>>>>>> 58f187ef3e5dff75bd44d2e2175542b5d32de583
     <script src="{{ asset('js/metro.js') }}" defer></script>
     <script src="{{ asset('js/main.js') }}" defer></script>
     <script src="{{ asset('js/matching.js') }}" defer></script>
