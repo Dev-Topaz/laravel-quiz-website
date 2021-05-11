@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ExamGroup extends Model
+class MultiChoiceAnswerContent extends Model
 {
     use HasFactory;
 
-    protected $table = 'exam_groups';
+    protected $table = 'multi_choice_answer_contents';
     protected $primaryKey = 'id';
-    protected $fillable = ['group_name', 'exam_id'];
+    protected $fillable = ['quiz_id', 'content', 'choice_id'];
 }
