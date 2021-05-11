@@ -12,4 +12,9 @@ class ExamGroup extends Model
     protected $table = 'exam_groups';
     protected $primaryKey = 'id';
     protected $fillable = ['group_name', 'exam_id'];
+
+    public function quizes()
+    {
+        return $this->hasMany(Quiz::class, 'exam_group_id', 'id');
+    }
 }
