@@ -1,8 +1,19 @@
 <div class="row" style="height: 100%;margin: 0;">
     <div class="cell-8" style="background: #dcdcdc;display: flex;">
         <div style="margin: auto 10px;background: #f1f1f1;width: 100%;padding: 20px;min-height: 500px;">
-            <div contenteditable="true" class="slide_view_textbox_editable slide_view_element" style="border: 1px solid black;width: 70%;">
+            <div contenteditable="true" class="question_element slide_view_element" style="border: 1px solid black;width: 70%;overflow-y: scroll;">
                 Select the correct answer option:
+            </div>
+            <div class="answer_element slide_view_element" style="border: 1px solid black;width: 70%;">
+                <input name="answer" value="Answer Element" style="max-width: 100%">
+                <label for="answer">Answer</label>
+            </div>
+            <div class="media_element slide_view_element" style="border: 1px solid black;">
+                <img src="{{ url("/images/ribbon_imgs/home-28.png") }}" alt="media">
+            </div>
+            <div class="slide_text_element slide_view_element" style="border: 1px solid black;width: 70%;overflow-y: scroll;">Slide Text</div>
+            <div class="slide_media_element slide_view_element" style="border: 1px solid black;">
+                <img src="{{ url("/images/ribbon_imgs/home-27.png") }}" alt="media">
             </div>
         </div>
     </div>
