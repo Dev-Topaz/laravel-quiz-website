@@ -475,6 +475,10 @@ main {
     padding: 4px 0;
 }
 
+.feedback_branching tr td:last-child .form_view_textbox_editable, .feedback_branching tr td:last-child label {
+    width: 50px !important;
+}
+
 .choice_item i, .response_item i, .select_item i, #numeric_list i, #sequence_list i, #matching_list i, #short_answer_list i, .ui-state-default i, .dropdown i {
     font-size: 18px;
 }

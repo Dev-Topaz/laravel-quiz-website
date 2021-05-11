@@ -14,9 +14,9 @@ class UpdateQuizesTableAddThreeScoreFields extends Migration
     public function up()
     {
         Schema::table('quizes', function (Blueprint $table) {
-           $table->integer('correct_score')->nullable();
-           $table->integer('incorrect_score')->nullable();
-           $table->integer('try_again_score');
+           $table->integer('correct_score');
+           $table->integer('incorrect_score');
+           $table->integer('try_again_score')->nullable();
         });
     }
 

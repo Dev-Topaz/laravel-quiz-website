@@ -1,11 +1,8 @@
 function onNodeClick(node) {
+    const root_url = $('meta[name=url]').attr('content');
     const quizId = node.attr('id');
-    $.get("{{ url('/quizes_form_view') }}/" + quizId + "/edit", function (data, status) {
-        $('#quiz_form_view').html(data);
-    });
-    $.get("{{ url('/quizes_slide_view') }}/" + quizId + "/edit", function (data, status) {
-        console.log(data);
-        $('#quiz_slide_view').html(data);
+    $.get(root_url + "/quizes/" + quizId + "/edit", function (data, status) {
+        $('#quiz_view').html(data);
     });
 }
 
@@ -51,7 +48,7 @@ function create_quiz(quiz_type, root_url, token) {
             node.next().attr('id', quizId);
 
             $.get(root_url + "/quizes/" + quizId + "/edit", function (data, status) {
-                $('#quiz_form_view').html(data);
+                $('#quiz_view').html(data);
             });
         }).catch((XHttpResponse) => {
         console.log(XHttpResponse);

@@ -1330,8 +1330,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="cell-9" id="quiz_form_view" style="padding: 0;"></div>
-                                <div class="cell-9" id="quiz_slide_view" style="padding: 0;"></div>
+                                <div class="cell-9" id="quiz_view" style="padding: 0;"></div>
                             </div>
                         </div>
                     </form>
@@ -1345,7 +1344,6 @@
             for (var i = 0; i < userSelection.length; i++) {
                 (function (index) {
                     userSelection[index].addEventListener("mousemove", function () {
-                        console.log("Clicked index: " + index);
                         if ($('.tooltip_pic').eq(index).css("display") == 'block') return;
                         for (let j = 0; j < 22; j++) {
                             if (j == index) $('.tooltip_pic').eq(j).fadeIn();
@@ -1357,8 +1355,9 @@
 
 
             $('#form_view_btn').click(function () {
-                $('#quiz_form_view').show();
-                $('#quiz_slide_view').hide();
+
+                $('.form_view_element').show();
+                $('.slide_view_element').hide();
 
                 if ($(this).hasClass('clicked')) return;
 
@@ -1385,8 +1384,9 @@
             });
 
             $('#slide_view_btn').click(function () {
-                $('#quiz_form_view').hide();
-                $('#quiz_slide_view').show();
+
+                $('.form_view_element').hide();
+                $('.slide_view_element').show();
 
                 if ($(this).hasClass('clicked')) return;
 

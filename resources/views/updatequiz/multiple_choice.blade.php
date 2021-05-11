@@ -16,7 +16,7 @@
 
             <div>
                 <h4>Multiple Choice Question</h4>
-                <textarea name="question" id="question" cols="30" rows="3">{{ strip_tags($quiz->question_element) }}</textarea>
+                <div contenteditable="true" id="question" style="overflow-y: scroll;width: 100%;border: 1px solid black;height: 70px">{!! $quiz->question_element !!}</div>
             </div>
             <br>
 
@@ -75,22 +75,33 @@
                     <td>Correct:</td>
                     <td><label class="choice_label" data-editable>{{ $quiz->feedback_correct }}</label></td>
                     <td></td>
-                    <td>1</td>
+                    <td><label class="choice_label" data-editable>{{ $quiz->correct_score }}</label></td>
                 </tr>
                 <tr>
                     <td>Incorrect:</td>
                     <td><label class="choice_label" data-editable>{{ $quiz->feedback_incorrect }}</label></td>
                     <td></td>
-                    <td>0</td>
+                    <td><label class="choice_label" data-editable>{{ $quiz->incorrect_score }}</label></td>
                 </tr>
-                <tr>
-                    <td>Try Again:</td>
-                    <td><label class="choice_label" data-editable>{{ $quiz->feedback_try_again }}</label></td>
-                    <td>None</td>
-                    <td>0</td>
-                </tr>
+                @if ($quiz->feedback_try_again != null)
+                    <tr>
+                        <td>Try Again:</td>
+                        <td><label class="choice_label" data-editable>{{ $quiz->feedback_try_again }}</label></td>
+                        <td>None</td>
+                        <td><label class="choice_label" data-editable>{{ $quiz->try_again_score }}</label></td>
+                    </tr>
+                @endif
                 </tbody>
             </table>
+        </div>
+    </div>
+    <div class="cell-8 slide_view_element" style="background: #dcdcdc;display: none;">
+        <div style="margin: auto 0;background: #f1f1f1;width: 100%;height:500px;padding: 20px;">
+            <div contenteditable="true" class="question_element slide_view_group" style="overflow-y: scroll;border: 1px solid black;height: 70px;width: 80%;left: 10%">{!! $quiz->question_element !!}</div>
+            <div class="answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%">{!! $quiz->answer_element !!}</div>
+            @if ($quiz->media != null)
+                <div class="media_element slide_view_group"></div>
+            @endif
         </div>
     </div>
     <div class="cell-4 slide_option" style="padding: 0 20px;">
@@ -103,8 +114,8 @@
                     </div>
                     <div class="cell-7">
                         <select data-role="select" data-filter="false" name="question_type">
-                            <option value="dedicated_graded">Graded</option>
-                            <option value="dedicated_survey">Survey</option>
+                            <option value="graded" {{ $quiz->question_type == 'graded' ? 'selected' : '' }}>Graded</option>
+                            <option value="survey" {{ $quiz->question_type == 'survey' ? 'selected' : '' }}>Survey</option>
                         </select>
                     </div>
                 </div>
@@ -115,27 +126,29 @@
                         </div>
                         <div class="cell-6">
                             <select data-role="select" data-filter="false" name="feedback">
-                                <option value="none">None</option>
-                                <option value="by_result" selected>By Result</option>
-                                <option value="by_choice">By Choice</option>
+                                <option value="none" {{ $quiz->feedback_type == 'none' ? 'selected' : '' }}>None</option>
+                                <option value="by_result" {{ $quiz->feedback_type == 'by_result' ? 'selected' : '' }}>By Result</option>
+                                <option value="by_choice" {{ $quiz->feedback_type == 'by_choice' ? 'selected' : '' }}>By Choice</option>
                             </select>
                         </div>
-                        <div class="cell-6">
-                            <label for="braching" name="braching">Branching:</label>
-                        </div>
-                        <div class="cell-6">
-                            <select data-role="select" data-filter="false" name="braching">
-                                <option value="by_result" selected>By Result</option>
-                                <option value="by_choice">By Choice</option>
-                            </select>
-                        </div>
+                        @if ($quiz->branching != null)
+                            <div class="cell-6">
+                                <label for="braching" name="braching">Branching:</label>
+                            </div>
+                            <div class="cell-6">
+                                <select data-role="select" data-filter="false" name="braching">
+                                    <option value="by_result" {{ $quiz->feedback_type == 'by_result' ? 'selected' : '' }}>By Result</option>
+                                    <option value="by_choice" {{ $quiz->feedback_type == 'by_choice' ? 'selected' : '' }}>By Choice</option>
+                                </select>
+                            </div>
+                        @endif
                         <div class="cell-6">
                             <label for="score" name="score">Score:</label>
                         </div>
                         <div class="cell-6">
-                            <select data-role="select" data-filter="false" name="score">
-                                <option value="by_result" selected>By Result</option>
-                                <option value="by_choice">By Choice</option>
+                            <select data-role="select" data-filter="false" name="score" {{ $quiz->score == null ? 'disable' : '' }}>
+                                <option value="by_result" {{ $quiz->score == 'by_result' ? 'selected' : '' }}>By Result</option>
+                                <option value="by_choice" {{ $quiz->score == 'by_choice' ? 'selected' : '' }}>By Choice</option>
                             </select>
                         </div>
                         <div class="cell-6">
@@ -143,34 +156,52 @@
                         </div>
                         <div class="cell-6">
                             <select data-role="select" data-filter="false" name="attempts">
-                                <option value="1">1</option>
-                                <option value="2" selected>2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                                <option value="unlimited">Unlimited</option>
+                                <option value="1" {{ $quiz->attempts == '1' ? 'selected' : '' }}>1</option>
+                                <option value="2" {{ $quiz->attempts == '2' ? 'selected' : '' }}>2</option>
+                                <option value="3" {{ $quiz->attempts == '3' ? 'selected' : '' }}>3</option>
+                                <option value="4" {{ $quiz->attempts == '4' ? 'selected' : '' }}>4</option>
+                                <option value="5" {{ $quiz->attempts == '5' ? 'selected' : '' }}>5</option>
+                                <option value="6" {{ $quiz->attempts == '6' ? 'selected' : '' }}>6</option>
+                                <option value="7" {{ $quiz->attempts == '7' ? 'selected' : '' }}>7</option>
+                                <option value="8" {{ $quiz->attempts == '8' ? 'selected' : '' }}>8</option>
+                                <option value="9" {{ $quiz->attempts == '9' ? 'selected' : '' }}>9</option>
+                                <option value="10" {{ $quiz->attempts == '10' ? 'selected' : '' }}>10</option>
+                                <option value="unlimited" {{ $quiz->attempts == 'unlimited' ? 'selected' : '' }}>Unlimited</option>
                             </select>
                         </div>
                         <div class="cell-7">
                             <input type="checkbox" data-role="checkbox"
-                                   data-caption="Limit time to answer the question:">
+                                   data-caption="Limit time to answer the question:" {{ $quiz->is_limit_time ? 'checked' : '' }}>
                         </div>
                         <div class="cell-5">
-                            <input class="mt-1" type="time" data-role="input" value="01:00" disabled
-                                   data-clear-button="false">
+                            <input class="mt-1" type="time" data-role="input" {{ $quiz->is_limit_time ? '' : 'disabled' }}
+                                   data-clear-button="false" value="{{ $quiz->is_limit_time ? $quiz->limit_time : '01:00' }}">
                         </div>
-                        <div class="cell-12">
-                            <input type="checkbox" data-role="checkbox" data-caption="Shuffle answers">
-                        </div>
+                        @if ($quiz->shuffle_answers != null)
+                            <div class="cell-12">
+                                <input type="checkbox" data-role="checkbox" data-caption="Shuffle answers" {{ $quiz->shuffle_answers ? 'checked' : '' }}>
+                            </div>
+                        @endif
+                        @if ($quiz->partially_correct != null)
+                            <div class="cell-12">
+                                <input type="checkbox" data-role="checkbox" data-caption="Accept partially correct answer" {{ $quiz->partially_correct ? 'checked' : '' }}>
+                            </div>
+                        @endif
+                        @if ($quiz->limit_number_response != null)
+                            <div class="cell-12">
+                                <input type="checkbox" data-role="checkbox" data-caption="Limit number of response" {{ $quiz->limit_response ? 'checked' : '' }}>
+                            </div>
+                        @endif
+                        @if ($quiz->case_sensitive != null)
+                            <div class="cell-12">
+                                <input type="checkbox" data-role="checkbox" data-caption="Case sensitive" {{ $quiz->case_sensitive ? 'checked' : '' }}>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
             <div class="form_view_element">preview</div>
+            <div class="slide_view_element" style="display: none">Slide Layer</div>
         </div>
     </div>
 </div>
@@ -220,4 +251,6 @@
         save_choice_data();
     });
 
+    $('.slide_view_group').draggable();
+    $('.slide_view_group').resizable();
 </script>
