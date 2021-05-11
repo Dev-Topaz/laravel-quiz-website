@@ -214,11 +214,6 @@
     border-radius: 10px;
 }
 
-.quick_style_sample:hover {
-    /* box-shadow: 1px 1px 3px 3px grey; */
-    opacity: 0.85;
-}
-
 .quick_style_sample span {
     position: absolute;
     top: 50%;
