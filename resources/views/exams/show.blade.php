@@ -4,6 +4,7 @@
 <div id="main" class="quiz">
     <h2>{{ $exam->name }}</h2>
 
+
     <nav data-role="ribbonmenu">
         <ul class="tabs-holder">
             <li id="section_home_form"><a href="#section_Home_FormView">Home</a></li>
@@ -203,47 +204,58 @@
                         <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">
                             <div id="quiz_types_panel">
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_01.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_01.png") }}"
+                                        onclick="create_quiz(1, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_01.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_02.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_02.png") }}"
+                                        onclick="create_quiz(2, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_02.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_03.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_03.png") }}"
+                                        onclick="create_quiz(3, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_03.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_04.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_04.png") }}"
+                                        onclick="create_quiz(4, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_04.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_05.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_05.png") }}"
+                                        onclick="create_quiz(5, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_05.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_06.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_06.png") }}"
+                                        onclick="create_quiz(6, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_06.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_07.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_07.png") }}"
+                                        onclick="create_quiz(7, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_07.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_08.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_08.png") }}"
+                                        onclick="create_quiz(8, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_08.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_09.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_09.png") }}"
+                                        onclick="create_quiz(9, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_09.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_10.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_10.png") }}"
+                                        onclick="create_quiz(10, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_10.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_11.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_11.png") }}"
+                                        onclick="create_quiz(11, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_11.png") }}">
                                 </div>
                             </div>
@@ -533,7 +545,6 @@
                                 width: 25px;
                                 height: 25px;
                             }
-
                         </style>
                         <div data-role="">
                             <button class="button"
@@ -854,47 +865,57 @@
                             <div id="quiz_types_panel_2">
                                 <div>
                                     <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_01.png") }}"
-                                        onclick="create_quiz(1, {{$exam->id}})">
+                                        onclick="create_quiz(1, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_01.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_02.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_02.png") }}"
+                                         onclick="create_quiz(2, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_02.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_03.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_03.png") }}"
+                                        onclick="create_quiz(3, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_03.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_04.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_04.png") }}"
+                                        onclick="create_quiz(4, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_04.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_05.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_05.png") }}"
+                                        onclick="create_quiz(5, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_05.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_06.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_06.png") }}"
+                                        onclick="create_quiz(6, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_06.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_07.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_07.png") }}"
+                                        onclick="create_quiz(7, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_07.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_08.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_08.png") }}"
+                                        onclick="create_quiz(8, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_08.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_09.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_09.png") }}"
+                                        onclick="create_quiz(9, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_09.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_10.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_10.png") }}"
+                                        onclick="create_quiz(10, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_10.png") }}">
                                 </div>
                                 <div>
-                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_11.png") }}">
+                                    <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_11.png") }}"
+                                        onclick="create_quiz(11, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_11.png") }}">
                                 </div>
                             </div>
@@ -1132,6 +1153,7 @@
         </div>
     </nav>
 
+
     <div class="window-content p-2">
 
 
@@ -1145,10 +1167,12 @@
                                 Score: {{ $exam->passing_score }}</p>
                         </div>
                         <div style="float: right">
-                            <button type="button" class="quiz_handle_button"><i class="fas fa-trash"></i>Update
-                                Quiz</button>
-                            <button type="button" class="quiz_handle_button"><i class="fas fa-trash"></i>Delete
-                                Quiz</button>
+                            <button type="button" class="quiz_handle_button" onclick="update_quiz()"><i class="fas fa-trash"></i>Update
+                                Quiz
+                            </button>
+                            <button type="button" class="quiz_handle_button" onclick="delete_quiz()"><i class="fas fa-trash"></i>Delete
+                                Quiz
+                            </button>
                         </div>
                         <div style="clear: both; height: 1px"></div>
                     </div>
@@ -1171,121 +1195,39 @@
                                 <div class="content_body_main " style="overflow-y: scroll;height: 650px;">
                                     <ul data-role="listview" data-view="content" id="quiz_list"
                                         data-on-node-click="onNodeClick">
-                                        <li data-caption="Question Group">
+                                        @foreach ($exam->exam_groups as $exam_group)
+                                        <li data-caption="{{ $exam_group->group_name }}" id="{{ $exam_group->id }}">
                                             <ul>
-                                                @foreach($exam->quizes as $quiz)
+                                                @if (count($exam_group->quizes) == 0)
+                                                <li id="none" data-caption="No questions"
+                                                    data-content="<i>Add questions</i>"></li>
+                                                @else
+                                                @foreach($exam_group->quizes as $quiz)
                                                 <li id="{{ $quiz->id }}"
-                                                    data-caption="{{ substr(strip_tags($quiz->question), 0,  29) }}{{ strlen(strip_tags($quiz->question)) < 30 ? '' : '...' }}"
+                                                    data-caption="{{ substr(strip_tags($quiz->question_element), 0,  29) }}{{ strlen(strip_tags($quiz->question_element)) < 30 ? '' : '...' }}"
                                                     data-content="<i>{{ $quiz->Quiz_type->name }}</i>"></li>
                                                 @endforeach
+                                                @endif
                                             </ul>
                                         </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
-                            <div class="cell-9" id="quiz_form_view" style="padding: 0;"></div>
-                            <div class="cell-9" id="quiz_slide_view" style="padding: 0;"></div>
+                            <div class="cell-9" id="quiz_view" style="padding: 0;"></div>
                         </div>
                     </div>
-                </form>
 
+                </form>
             </div><!-- /.post -->
         </div><!-- /#content -->
     </div>
+    <script src="{{ asset('js/quiz_crud.js') }}"></script>
     <script>
-        function onNodeClick(node) {
-            const quizId = node.attr('id');
-
-            $.get("{{ url('/quizes_form_view') }}/" + quizId + "/edit", function (data, status) {
-                $('#quiz_form_view').html(data);
-            });
-            $.get("{{ url('/quizes_slide_view') }}/" + quizId + "/edit", function (data, status) {
-                console.log(data);
-                $('#quiz_slide_view').html(data);
-            });
-        }
-
-        function create_quiz(quiz_type, exam_id) {
-
-            let quizId;
-            const lv = Metro.getPlugin('#quiz_list', 'listview');
-            const node = $('#quiz_list ul li:last-child');
-
-            switch (quiz_type) {
-                case (1):
-                    lv.insertAfter(node, {
-                        caption: 'Select the correct answer option:',
-                        content: '<i>Multiple Choice<i>'
-                    });
-                    $('#quiz_list').find('.current').removeClass('current current-select');
-                    node.next().addClass('current current-select');
-                    node.next().attr('id', quizId);
-
-                    $.post("{{ url('/quizes') }}", {
-                            '_token': "{{ csrf_token() }}",
-                            'type_id': quiz_type,
-                            'exam_id': exam_id,
-                            'question': 'Select the correct answer option:',
-                            'answer': '1',
-                            'feedback_correct': 'That\'s right! You answered correctly.',
-                            'feedback_incorrect': 'You did not choose the correct response.',
-                            'feedback_try_again': 'Try again.',
-                            'is_feedback': true,
-                            'answer_content_array': 'Option 1;Option 2;Option 3;',
-                            'choice_id_array': '1;2;3;'
-                        },
-                        function (data, status) {
-                            quizId = data;
-                            node.next().attr('id', quizId);
-                        }).catch((XHttpResponse) => {
-                        console.log(XHttpResponse);
-                    });
-                    break;
-
-                case (2):
-                    lv.insertAfter(node, {
-                        caption: 'Select the correct answer option:',
-                        content: '<i>Multiple Choice<i>'
-                    });
-                    $('#quiz_list').find('.current').removeClass('current current-select');
-                    node.next().addClass('current current-select');
-                    node.next().attr('id', quizId);
-
-                    $.post("{{ url('/quizes') }}", {
-                            '_token': "{{ csrf_token() }}",
-                            'type_id': quiz_type,
-                            'exam_id': exam_id,
-                            'question': 'Select one or more correct answers:',
-                            'answer': '1',
-                            'feedback_correct': 'That\'s right! You answered correctly.',
-                            'feedback_incorrect': 'You did not choose the correct response.',
-                            'feedback_try_again': 'Try again.',
-                            'is_feedback': true,
-                            'answer_content_array': 'Option 1;Option 2;Option 3;',
-                            'response_id_array': '1;2;3;'
-                        },
-                        function (data, status) {
-                            quizId = data;
-                            node.next().attr('id', quizId);
-                        }).catch((XHttpResponse) => {
-                        console.log(XHttpResponse);
-                    });
-                    break;
-
-                default:
-            }
-
-            $.get("{{ url('/quizes') }}/" + quiz_type + "/exam/" + exam_id, function (data, status) {
-                $('#quiz_form_view').html(data);
-            });
-
-        }
-
         var userSelection = document.getElementsByClassName('quiz_types');
         for (var i = 0; i < userSelection.length; i++) {
             (function (index) {
                 userSelection[index].addEventListener("mousemove", function () {
-                    console.log("Clicked index: " + index);
                     if ($('.tooltip_pic').eq(index).css("display") == 'block') return;
                     for (let j = 0; j < 22; j++) {
                         if (j == index) $('.tooltip_pic').eq(j).fadeIn();
@@ -1297,45 +1239,37 @@
 
 
         $('#form_view_btn').click(function () {
-            $('#quiz_form_view').show();
-            $('#quiz_slide_view').hide();
+
+            $('.form_view_element').show();
+            $('.slide_view_element').hide();
 
             if ($(this).hasClass('clicked')) return;
-
             $(this).toggleClass('clicked');
             $('#slide_view_btn').toggleClass('clicked');
-
             $("#section_home_form").addClass('active');
-
             $("#section_Home_SlideView").removeClass('active');
             $("#section_Insert").removeClass('active');
             $("#section_Design").removeClass('active');
             $("#section_Home_FormView").addClass('active');
-
             $("#section_home_slide").hide();
             $("#section_home_form").show();
             $("#section_insert").hide();
             $("#section_design").hide();
         });
 
+
         $('#slide_view_btn').click(function () {
-            $('#quiz_form_view').hide();
-            $('#quiz_slide_view').show();
+            $('.form_view_element').hide();
+            $('.slide_view_element').show();
 
             if ($(this).hasClass('clicked')) return;
-
             $(this).toggleClass('clicked');
             $('#form_view_btn').toggleClass('clicked'); //for main branch comment
-
-
             $("#section_home_slide").addClass('active');
-
             $("#section_Home_FormView").removeClass('active');
             $("#section_Insert").removeClass('active');
             $("#section_Design").removeClass('active');
-
             $("#section_Home_SlideView").addClass('active');
-
             $("#section_home_slide").show();
             $("#section_home_form").hide();
             $("#section_insert").show();

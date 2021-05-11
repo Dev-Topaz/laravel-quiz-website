@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Exam;
+use App\Models\ExamGroup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -50,13 +51,23 @@ class ExamController extends Controller
             'passing_score' => 'required',
         ]);
 
-        Exam::create([
+        $exam = Exam::create([
             'name' => $request->name,
             'description' => $request->description,
             'author_id' => Auth::user()->id,
             'status' => true,
             'attempt_number' => $request->attempt_number,
             'passing_score' => $request->passing_score,
+        ]);
+
+        ExamGroup::create([
+            'group_name' => 'Question Group 1',
+            'exam_id' => $exam->id,
+        ]);
+
+        ExamGroup::create([
+            'group_name' => 'Results',
+            'exam_id' => $exam->id,
         ]);
 
         return redirect()->route('exams.index')

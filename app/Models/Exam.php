@@ -13,8 +13,8 @@ class Exam extends Model
     protected $primaryKey = 'id';
     protected $fillable = ['name', 'description', 'author_id', 'attempt_number', 'status', 'passing_score'];
 
-    public function quizes()
+    public function exam_groups()
     {
-        return $this->hasMany(Quiz::class, 'exam_id', 'id');
+        return $this->hasMany(ExamGroup::class, 'exam_id', 'id');
     }
 }
