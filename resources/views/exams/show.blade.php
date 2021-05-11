@@ -389,26 +389,26 @@
             </div>
             <div class="section" id="section_Home_SlideView">
                 <div class="group" style="flex: 0 0 170px;">
-                    <button class="ribbon-button">
+                    <button id="slide_view_paste_btn" class="ribbon-button paste_btn">
                         <span class="icon">
                             <img src="{{ url("/images/ribbon_imgs/home-1.png") }}">
                         </span>
                         <span class="caption">Paste</span>
                     </button>
                     <div style="display: flex; flex-direction: column;">
-                        <button class="ribbon-icon-button">
+                        <button id="slide_view_cut_btn" class="ribbon-icon-button cut_btn">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/home-2.png") }}">
                             </span>
                             <span class="caption">Cut</span>
                         </button>
-                        <button class="ribbon-icon-button">
+                        <button id="slide_view_copy_btn" class="ribbon-icon-button copy_btn">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/home-3.png") }}">
                             </span>
                             <span class="caption">Copy</span>
                         </button>
-                        <button class="ribbon-icon-button">
+                        <button id="format_painter_btn" class="ribbon-icon-button">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/home-4.png") }}">
                             </span>
@@ -433,31 +433,31 @@
                                 style="position: absolute; width: 600px;">
                                 <div style="display: flex;flex-wrap: wrap;">
                                     <div class="layout_panel_divider">Default</div>
-                                    <div class="layout_panel_img_holder"><img
+                                    <div id="layout_default" class="layout_panel_img_holder"><img
                                             src="{{ url("/images/ribbon_imgs/images/layout_ver_01.png") }}"></div>
                                     <div class="layout_panel_divider">Side Panel</div>
-                                    <div class="layout_panel_img_holder"><img
+                                    <div id="layout_side_panel_01" class="layout_panel_img_holder"><img
                                             src="{{ url("/images/ribbon_imgs/images/side_panel_01.png") }}"></div>
-                                    <div class="layout_panel_img_holder"><img
+                                    <div id="layout_side_panel_02" class="layout_panel_img_holder"><img
                                             src="{{ url("/images/ribbon_imgs/images/side_panel_02.png") }}"></div>
-                                    <div class="layout_panel_img_holder"><img
+                                    <div id="layout_side_panel_03" class="layout_panel_img_holder"><img
                                             src="{{ url("/images/ribbon_imgs/images/side_panel_03.png") }}"></div>
                                     <div class="layout_panel_divider">Horizontal</div>
-                                    <div class="layout_panel_img_holder"><img
+                                    <div id="layout_horizontal_01" class="layout_panel_img_holder"><img
                                             src="{{ url("/images/ribbon_imgs/images/layout_hor_03.png") }}"></div>
-                                    <div class="layout_panel_img_holder"><img
+                                    <div id="layout_horizontal_02" class="layout_panel_img_holder"><img
                                             src="{{ url("/images/ribbon_imgs/images/layout_hor_04.png") }}"></div>
                                     <div class="layout_panel_divider">Balanced Content</div>
-                                    <div class="layout_panel_img_holder"><img
+                                    <div id="layout_balanced_01" class="layout_panel_img_holder"><img
                                             src="{{ url("/images/ribbon_imgs/images/balance_01.png") }}"></div>
-                                    <div class="layout_panel_img_holder"><img
+                                    <div id="layout_balanced_02" class="layout_panel_img_holder"><img
                                             src="{{ url("/images/ribbon_imgs/images/balance_02.png") }}"></div>
-                                    <div class="layout_panel_img_holder"><img
+                                    <div id="layout_balanced_03" class="layout_panel_img_holder"><img
                                             src="{{ url("/images/ribbon_imgs/images/balance_03.png") }}"></div>
                                 </div>
                             </div>
                         </div>
-                        <button class="ribbon-icon-button">
+                        <button id="layout_reset_btn" class="ribbon-icon-button">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/home-6.png") }}">
                             </span>
@@ -474,10 +474,10 @@
                                     style="margin-left: 5px; margin-top: 0;">Columns</span>
                             </button>
                             <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">
-                                <li><a>1 Column</a></li>
-                                <li><a>2 Column</a></li>
-                                <li><a>3 Column</a></li>
-                                <li><a>4 Column</a></li>
+                                <li id="layout_column_01_btn"><a>1 Column</a></li>
+                                <li id="layout_column_02_btn"><a>2 Column</a></li>
+                                <li id="layout_column_03_btn"><a>3 Column</a></li>
+                                <li id="layout_column_04_btn"><a>4 Column</a></li>
                             </ul>
                         </div>
                     </div>
@@ -486,7 +486,8 @@
                 </div>
                 <div class="group" style="flex: 0 0 273px; flex-wrap: wrap;">
                     <div style="display: flex; align-items: center;">
-                        <select style="font-size: 12px; outline: none; width: 131px; height: 25px;">
+                        <select id="font_family_selector"
+                            style="font-size: 12px; outline: none; width: 131px; height: 25px;">
                             <option value="">Core i3 (hp)</option>
                             <option value="">Pentium (hp)</option>
                             <option value="">Smart Core i3 (hp)</option>
@@ -497,7 +498,8 @@
                             <option value="" selected="selected">Open Sans Semibold</option>
                             <option value="">eVPS-2</option>
                         </select>
-                        <select style="font-size: 12px; outline: none; height: 25px; margin-right: 7px;">
+                        <select id="font_size_selector"
+                            style="font-size: 12px; outline: none; height: 25px; margin-right: 7px;">
                             <option value="5">5</option>
                             <option value="6">6</option>
                             <option value="7">7</option>
@@ -509,11 +511,11 @@
                             <option value="18">18</option>
                         </select>
                         <div data-role="">
-                            <button class="button"
+                            <button class="button" id="font_size_bigger_btn"
                                 style="padding: 7px;height: 25px; background-image: url('{{ url('/images/ribbon_imgs/home-8.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;"></button>
-                            <button class="button"
+                            <button class="button" id="font_size_smaller_btn"
                                 style="padding: 7px;height: 25px; background-image: url('{{ url('/images/ribbon_imgs/home-9.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;"></button>
-                            <button class="button"
+                            <button class="button" id="font_style_clear_btn"
                                 style="padding: 7px;height: 25px; background-image: url('{{ url('/images/ribbon_imgs/home-10.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;"></button>
                         </div>
                     </div>
@@ -545,6 +547,7 @@
                                 width: 25px;
                                 height: 25px;
                             }
+
                         </style>
                         <div data-role="">
                             <button class="button"
@@ -870,7 +873,7 @@
                                 </div>
                                 <div>
                                     <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_02.png") }}"
-                                         onclick="create_quiz(2, '{{ url('/') }}', '{{ csrf_token() }}')">
+                                        onclick="create_quiz(2, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_02.png") }}">
                                 </div>
                                 <div>
@@ -1005,23 +1008,23 @@
                 </div>
                 <div class="group">
                     <div style="display: flex;flex-direction: column;">
-                        <button class="ribbon-icon-button">
+                        <button id="form_view_cut_btn" class="ribbon-icon-button cut_btn">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/home-2.png") }}">
                             </span>
                             <span class="caption">Cut</span>
                         </button>
-                        <button class="ribbon-icon-button">
+                        <button id="form_view_copy_btn" class="ribbon-icon-button copy_btn">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/home-3.png") }}">
                             </span>
                             <span class="caption">Copy</span>
                         </button>
-                        <button class="ribbon-icon-button">
+                        <button id="form_view_paste_btn" class="ribbon-icon-button paste_btn">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/home-1.png") }}">
                             </span>
-                            <span class="caption ">Paste</span>
+                            <span class="caption">Paste</span>
                         </button>
                     </div>
                     <span class="title">Clipboard</span>
@@ -1167,10 +1170,12 @@
                                 Score: {{ $exam->passing_score }}</p>
                         </div>
                         <div style="float: right">
-                            <button type="button" class="quiz_handle_button" onclick="update_quiz()"><i class="fas fa-trash"></i>Update
+                            <button type="button" class="quiz_handle_button" onclick="update_quiz()"><i
+                                    class="fas fa-trash"></i>Update
                                 Quiz
                             </button>
-                            <button type="button" class="quiz_handle_button" onclick="delete_quiz()"><i class="fas fa-trash"></i>Delete
+                            <button type="button" class="quiz_handle_button" onclick="delete_quiz()"><i
+                                    class="fas fa-trash"></i>Delete
                                 Quiz
                             </button>
                         </div>
