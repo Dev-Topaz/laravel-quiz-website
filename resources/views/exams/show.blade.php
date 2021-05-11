@@ -1176,9 +1176,6 @@
         <script>
             function onNodeClick(node) {
                 const quizId = node.attr('id');
-                {{--$.get("{{ url('/quizes') }}/" + quizId + "/edit", function (data, status) {--}}
-                {{--    $('#quiz_form').html(data);--}}
-                {{--});--}}
                 $.get("{{ url('/quizes_form_view') }}/" + quizId + "/edit", function (data, status) {
                     $('#quiz_form_view').html(data);
                 });
