@@ -975,7 +975,7 @@
                                 <div id="quiz_types_panel_2">
                                     <div>
                                         <img class="quiz_types" src="{{ url("/images/ribbon_imgs/slices/1_01.png") }}"
-                                             onclick="create_quiz(1, {{$exam->id}})">
+                                             onclick="create_quiz(1, '{{ url('/') }}', '{{ csrf_token() }}')">
                                         <img class="tooltip_pic" src="{{ url("/images/ribbon_imgs/tip_01.png") }}">
                                     </div>
                                     <div>
@@ -1312,10 +1312,10 @@
                                         <ul data-role="listview" data-view="content" id="quiz_list"
                                             data-on-node-click="onNodeClick">
                                             @foreach ($exam->exam_groups as $exam_group)
-                                                <li data-caption="{{ $exam_group->group_name }}">
+                                                <li data-caption="{{ $exam_group->group_name }}" id="{{ $exam_group->id }}">
                                                     <ul>
                                                         @if (count($exam_group->quizes) == 0)
-                                                            <li data-caption="No questions"
+                                                            <li id="none" data-caption="No questions"
                                                                     data-content="<i>Add questions</i>"></li>
                                                         @else
                                                             @foreach($exam_group->quizes as $quiz)
@@ -1338,93 +1338,8 @@
                 </div><!-- /.post -->
             </div><!-- /#content -->
         </div>
+        <script src="{{ asset('js/quiz_crud.js') }}"></script>
         <script>
-            function onNodeClick(node) {
-                const quizId = node.attr('id');
-                $.get("{{ url('/quizes_form_view') }}/" + quizId + "/edit", function (data, status) {
-                    $('#quiz_form_view').html(data);
-                });
-                $.get("{{ url('/quizes_slide_view') }}/" + quizId + "/edit", function (data, status) {
-                    console.log(data);
-                    $('#quiz_slide_view').html(data);
-                });
-            }
-
-            function create_quiz(quiz_type, exam_id) {
-
-                let quizId;
-                const lv = Metro.getPlugin('#quiz_list', 'listview');
-                const node = $('#quiz_list ul li:last-child');
-
-                switch (quiz_type) {
-                    case (1):
-                        lv.insertAfter(node, {
-                            caption: 'Select the correct answer option:',
-                            content: '<i>Multiple Choice<i>'
-                        });
-                        $('#quiz_list').find('.current').removeClass('current current-select');
-                        node.next().addClass('current current-select');
-                        node.next().attr('id', quizId);
-
-                        $.post("{{ url('/quizes') }}", {
-                                '_token': "{{ csrf_token() }}",
-                                'type_id': quiz_type,
-                                'exam_id': exam_id,
-                                'question': 'Select the correct answer option:',
-                                'answer': '1',
-                                'feedback_correct': 'That\'s right! You answered correctly.',
-                                'feedback_incorrect': 'You did not choose the correct response.',
-                                'feedback_try_again': 'Try again.',
-                                'is_feedback': true,
-                                'answer_content_array': 'Option 1;Option 2;Option 3;',
-                                'choice_id_array': '1;2;3;'
-                            },
-                            function (data, status) {
-                                quizId = data;
-                                node.next().attr('id', quizId);
-                            }).catch((XHttpResponse) => {
-                            console.log(XHttpResponse);
-                        });
-                        break;
-
-                    case (2):
-                        lv.insertAfter(node, {
-                            caption: 'Select the correct answer option:',
-                            content: '<i>Multiple Choice<i>'
-                        });
-                        $('#quiz_list').find('.current').removeClass('current current-select');
-                        node.next().addClass('current current-select');
-                        node.next().attr('id', quizId);
-
-                        $.post("{{ url('/quizes') }}", {
-                                '_token': "{{ csrf_token() }}",
-                                'type_id': quiz_type,
-                                'exam_id': exam_id,
-                                'question': 'Select one or more correct answers:',
-                                'answer': '1',
-                                'feedback_correct': 'That\'s right! You answered correctly.',
-                                'feedback_incorrect': 'You did not choose the correct response.',
-                                'feedback_try_again': 'Try again.',
-                                'is_feedback': true,
-                                'answer_content_array': 'Option 1;Option 2;Option 3;',
-                                'response_id_array': '1;2;3;'
-                            },
-                            function (data, status) {
-                                quizId = data;
-                                node.next().attr('id', quizId);
-                            }).catch((XHttpResponse) => {
-                            console.log(XHttpResponse);
-                        });
-                        break;
-
-                    default:
-                }
-
-                $.get("{{ url('/quizes') }}/" + quiz_type + "/exam/" + exam_id, function (data, status) {
-                    $('#quiz_form_view').html(data);
-                });
-
-            }
 
             var userSelection = document.getElementsByClassName('quiz_types');
             for (var i = 0; i < userSelection.length; i++) {

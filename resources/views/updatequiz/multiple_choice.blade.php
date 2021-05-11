@@ -1,22 +1,22 @@
 <div class="row" style="height: 100%;margin: 0;">
-    <div class="cell-8" style="background: #dcdcdc;display: flex;">
+    <div class="cell-8 form_view_element" style="background: #dcdcdc;display: flex;">
         <div style="margin: auto 10px;background: #f1f1f1;width: 100%;padding: 20px;">
-            <input id="exam_id" type="text"
-                   class="form-control @error('exam_id') is-invalid @enderror" name="exam_id"
-                   value="{{ $quiz->exam_id }}" required autocomplete="exam_id" autofocus
+            <input id="exam_group_id" type="text"
+                   class="form-control @error('exam_group_id') is-invalid @enderror" name="exam_group_id"
+                   value="{{ $quiz->exam_group_id }}" required autocomplete="exam_id" autofocus
                    hidden>
             <input id="type_id" type="text"
                    class="form-control @error('type_id') is-invalid @enderror" name="type_id"
                    value="{{ $quiz->type_id }}" required autocomplete="type_id" autofocus
                    hidden>
-            <input id="answer_content_array" type="text"
-                   class="form-control @error('answer_content_array') is-invalid @enderror"
-                   name="answer_content_array"
-                   value="" autocomplete="answer_content_array" autofocus hidden>
+            <input id="answer_element" type="text"
+                   class="form-control @error('answer_element') is-invalid @enderror"
+                   name="answer_element"
+                   value="{{ $quiz->answer_element }}" autocomplete="answer_element" autofocus hidden>
 
             <div>
                 <h4>Multiple Choice Question</h4>
-                <textarea name="question" id="question" cols="30" rows="3">{{ strip_tags($quiz->question) }}</textarea>
+                <textarea name="question" id="question" cols="30" rows="3">{{ strip_tags($quiz->question_element) }}</textarea>
             </div>
             <br>
 
@@ -37,20 +37,20 @@
                         </tr>
                         </thead>
                         <tbody id="choice_list">
-                        @foreach($quiz->multi_choice_answer_contents as $answer_content)
-                            <tr class="choice_item">
-                                <td><input type="radio" id="{{ $answer_content->choice_id }}"
-                                           name="answer" value="{{ $answer_content->choice_id }}"
-                                           style="padding-right: 10px;" {{ $answer_content->choice_id == $quiz->answer ? 'checked' : '' }}>
-                                </td>
-                                <td><label class="choice_label" data-editable
-                                           for="{{ $answer_content->choice_id }}">{{ $answer_content->content }}</label>
-                                </td>
-                                <td></td>
-                                <td><a onclick="{$(this).parent().parent().remove();save_choice_data();}"><i
-                                            class="fas fa-trash-alt"></i></a></td>
-                            </tr>
-                        @endforeach
+{{--                        @foreach($quiz->multi_choice_answer_contents as $answer_content)--}}
+{{--                            <tr class="choice_item">--}}
+{{--                                <td><input type="radio" id="{{ $answer_content->choice_id }}"--}}
+{{--                                           name="answer" value="{{ $answer_content->choice_id }}"--}}
+{{--                                           style="padding-right: 10px;" {{ $answer_content->choice_id == $quiz->answer ? 'checked' : '' }}>--}}
+{{--                                </td>--}}
+{{--                                <td><label class="choice_label" data-editable--}}
+{{--                                           for="{{ $answer_content->choice_id }}">{{ $answer_content->content }}</label>--}}
+{{--                                </td>--}}
+{{--                                <td></td>--}}
+{{--                                <td><a onclick="{$(this).parent().parent().remove();save_choice_data();}"><i--}}
+{{--                                            class="fas fa-trash-alt"></i></a></td>--}}
+{{--                            </tr>--}}
+{{--                        @endforeach--}}
                         </tbody>
                     </table>
                     <a id="add_choice" style="padding: 10px 0;margin-left: 90px;margin-top: 10px;">Type to add a new
@@ -170,7 +170,7 @@
                     </div>
                 </div>
             </div>
-            <div>preview</div>
+            <div class="form_view_element">preview</div>
         </div>
     </div>
 </div>
