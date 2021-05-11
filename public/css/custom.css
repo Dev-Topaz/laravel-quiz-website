@@ -1,3 +1,12 @@
+/* Overrides of metro css */
+span.icon img {
+    margin: auto !important;
+}
+
+.ribbon-menu .tabs-holder {
+    background-color: white !important;
+}
+
 .design_preview_submenu {
     white-space: nowrap;
     padding-right: 17px;
@@ -17,30 +26,29 @@
     border: 1px solid;
     background-color: white;
     z-index: 1;
-    width: 380px;
     display: flex;
     flex-wrap: wrap;
     overflow: auto;
     height: 290px;
-    width: 400px;
+    width: 360px;
 }
 
 #design_themes_panel_holder>div {
     display: flex;
-    width: 380px;
+    width: 337px;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
 .design_themes_panels {
-    width: 60px;
-    height: 40px;
+    width: 70px;
+    height: 50px;
     border: 1px solid;
     margin: 7px;
 }
 
 .design_themes_panels:hover {
-    box-shadow: 1px 1px 3px 3px grey;
+    box-shadow: 1px 1px 3px 3px rgb(71 114 255);
 }
 
 .design_themes_panels span {
@@ -58,6 +66,7 @@
 }
 
 /* End of theme selector style */
+
 
 
 #quiz_types_panel,
@@ -93,7 +102,6 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-
 }
 
 .shape_icon:hover {
@@ -112,9 +120,7 @@
 
 .introduction_slide:hover {
     opacity: 0.84;
-
 }
-
 
 .form_view_home_link {
     white-space: nowrap;
@@ -149,7 +155,6 @@
 .layout_panel_img_holder {
     display: flex;
     background-color: rgb(71, 114, 255);
-
 }
 
 .layout_panel_img_holder>img:hover {
@@ -223,3 +228,44 @@
 }
 
 /* End of quick styler css */
+
+.arrange_panel_list_divider {
+    border-bottom: 1px solid #e7e7e7 !important;
+}
+
+#arrange_ul>li {
+    width: 130px;
+    text-align: left;
+}
+
+.arrange_ul_ul {
+    border: 1px solid #dadbdc;
+    background: #fbfcfd;
+    padding-left: 0;
+    transform: translate(107px, -26px);
+    width: 182px;
+    display: none;
+}
+
+.arrange_ul_ul>li {
+    width: 180px;
+    text-align: left;
+}
+
+#arrange_li_align:hover .arrange_ul_ul {
+    display: block;
+}
+
+#arrange_li_rotate:hover .arrange_ul_ul {
+    display: block;
+}
+
+.subtitle_li {
+    padding-left: 0 !important;
+    font-weight: bold !important;
+}
+
+.subtitle_li:hover {
+    border-color: transparent !important;
+    background-color: transparent !important;
+}

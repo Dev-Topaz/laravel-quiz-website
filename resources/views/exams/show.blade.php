@@ -10,8 +10,6 @@
             <li id="section_home_slide" style="display: none;"><a href="#section_Home_SlideView">Home</a></li>
             <li id="section_insert" style="display: none;"><a href="#section_Insert">Insert</a></li>
             <li id="section_design" style="display: none;"><a href="#section_Design">Design</a></li>
-            <li id="section_animation" style="display: none;"><a href="#section_Animation">Animation</a></li>
-            <li id="section_help"><a href="#section_Help">Help</a></li>
         </ul>
         <div class="content-holder">
             <div class="section" id="section_main">
@@ -118,82 +116,6 @@
                     <span class="title">ribbon controls</span>
                 </div>
             </div>
-            <div class="section" id="section_Help">
-                <div class="group">
-                    <div data-role="button-group" data-cls-active="active">
-                        <button class="ribbon-button">
-                            <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/help-1.png") }}">
-                            </span>
-                            <span class="caption">Tutorials</span>
-                        </button>
-                        <button class="ribbon-button">
-                            <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/help-2.png") }}">
-                            </span>
-                            <span class="caption">Help</span>
-                        </button>
-                        <button class="ribbon-button">
-                            <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/help-3.png") }}">
-                            </span>
-                            <span class="caption">Community</span>
-                        </button>
-                    </div>
-                    <span class="title">Help</span>
-                    <div class="group-divider"></div>
-                </div>
-                <div class="group">
-                    <div data-role="button-group" data-cls-active="active">
-                        <button class="ribbon-button">
-                            <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/help-4.png") }}">
-                            </span>
-                            <span class="caption">About</span>
-                        </button>
-                        <button class="ribbon-button">
-                            <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/help-5.png") }}">
-                            </span>
-                            <span class="caption">Feedback</span>
-                        </button>
-                    </div>
-                    <span class="title">About</span>
-                    <div class="group-divider"></div>
-                </div>
-                <div class="group">
-                    <div data-role="button-group" data-cls-active="active">
-                        <button class="ribbon-button">
-                            <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/help-6.png") }}">
-                            </span>
-                            <span class="caption">Updates</span>
-                        </button>
-                        <button class="ribbon-button">
-                            <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/help-7.png") }}">
-                            </span>
-                            <span class="caption">Ask a question</span>
-                        </button>
-                    </div>
-                    <span class="title">Support</span>
-                    <div class="group-divider"></div>
-                </div>
-                <div class="group">
-                    <div data-role="button-group" data-cls-active="active">
-                        <button class="ribbon-button">
-                            <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/help-8.png") }}">
-                            </span>
-                            <span class="caption">Log in</span>
-                        </button>
-                    </div>
-                    <span class="title">iSpring Space</span>
-                    <div class="group-divider" style="margin-left: 17px;"></div>
-                </div>
-                <div class="group">
-                </div>
-            </div>
             <div class="section" id="section_Design">
                 <div class="group">
                     <div class="ribbon-split-button">
@@ -264,74 +186,6 @@
                         </ul>
                     </div>
                     <span class="title">Publish</span>
-                    <div class="group-divider"></div>
-                </div>
-                <div class="group">
-                </div>
-            </div>
-            <div class="section" id="section_Animation">
-                <div class="group">
-                    <div data-role="button-group" data-cls-active="active">
-                        <button class="ribbon-button">
-                            <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/ani-1.png") }}">
-                            </span>
-                            <span class="caption">None</span>
-                        </button>
-                        <button class="ribbon-button">
-                            <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/ani-2.png") }}">
-                            </span>
-                            <span class="caption">Appear</span>
-                        </button>
-                        <button class="ribbon-button">
-                            <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/ani-3.png") }}">
-                            </span>
-                            <span class="caption">Fade</span>
-                        </button>
-                        <button class="ribbon-button">
-                            <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/ani-4.png") }}">
-                            </span>
-                            <span class="caption">Float in</span>
-                        </button>
-                    </div>
-                    <div class="ribbon-split-button">
-                        <button class="ribbon-main">
-                            <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/ani-5.png") }}">
-                            </span>
-                        </button>
-                        <span class="ribbon-split dropdown-toggle">Options</span>
-                        <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">
-
-                        </ul>
-                    </div>
-                    <span class="title">Answer animation</span>
-                    <div class="group-divider"></div>
-                </div>
-                <div class="group"
-                    style="display: flex; flex-wrap: wrap; flex: 0 0 130px; justify-content: flex-start;">
-                    <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;">
-                        <label style="font-size: 12px;" for="duration">Duration:</label>
-                        <input style="font-size: 12px;width: 60px;outline: none;" type="number" name="duration"
-                            id="duration" value="01.00" step="0.01">
-                        <label style="font-size: 12px;" for="duration">Delay:</label>
-                        <input style="font-size: 12px;width: 60px;outline: none;" type="number" name="delay" id="delay"
-                            value="00.00" step="0.01">
-                    </div>
-                    <span class="title">Timing</span>
-                    <div class="group-divider"></div>
-                </div>
-                <div class="group">
-                    <button class="ribbon-button">
-                        <span class="icon">
-                            <img src="{{ url("/images/ribbon_imgs/ani-6.png") }}">
-                        </span>
-                        <span class="caption">Play Animation</span>
-                    </button>
-                    <span class="title"></span>
                     <div class="group-divider"></div>
                 </div>
                 <div class="group">
@@ -452,24 +306,12 @@
                         </span>
                         <span class="caption">TextBox</span>
                     </button>
-                    <div style="display: flex; flex-direction: column;">
+                    <div style="display: flex; flex-direction: column; margin-top: 26px;">
                         <button class="ribbon-icon-button">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/insert-6.png") }}">
                             </span>
                             <span class="caption">Hyperlink</span>
-                        </button>
-                        <button class="ribbon-icon-button">
-                            <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/insert-7.png") }}">
-                            </span>
-                            <span class="caption">Equation</span>
-                        </button>
-                        <button class="ribbon-icon-button">
-                            <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/insert-8.png") }}">
-                            </span>
-                            <span class="caption">Symbol</span>
                         </button>
                     </div>
                     <span class="title">Text</span>
@@ -581,11 +423,25 @@
                                     <div class="layout_panel_divider">Default</div>
                                     <div class="layout_panel_img_holder"><img
                                             src="{{ url("/images/ribbon_imgs/images/layout_ver_01.png") }}"></div>
+                                    <div class="layout_panel_divider">Side Panel</div>
+                                    <div class="layout_panel_img_holder"><img
+                                            src="{{ url("/images/ribbon_imgs/images/side_panel_01.png") }}"></div>
+                                    <div class="layout_panel_img_holder"><img
+                                            src="{{ url("/images/ribbon_imgs/images/side_panel_02.png") }}"></div>
+                                    <div class="layout_panel_img_holder"><img
+                                            src="{{ url("/images/ribbon_imgs/images/side_panel_03.png") }}"></div>
                                     <div class="layout_panel_divider">Horizontal</div>
                                     <div class="layout_panel_img_holder"><img
                                             src="{{ url("/images/ribbon_imgs/images/layout_hor_03.png") }}"></div>
                                     <div class="layout_panel_img_holder"><img
                                             src="{{ url("/images/ribbon_imgs/images/layout_hor_04.png") }}"></div>
+                                    <div class="layout_panel_divider">Balanced Content</div>
+                                    <div class="layout_panel_img_holder"><img
+                                            src="{{ url("/images/ribbon_imgs/images/balance_01.png") }}"></div>
+                                    <div class="layout_panel_img_holder"><img
+                                            src="{{ url("/images/ribbon_imgs/images/balance_02.png") }}"></div>
+                                    <div class="layout_panel_img_holder"><img
+                                            src="{{ url("/images/ribbon_imgs/images/balance_03.png") }}"></div>
                                 </div>
                             </div>
                         </div>
@@ -597,7 +453,7 @@
                         </button>
                         <div class="ribbon-split-button" style="display: flex; flex-direction: column;">
 
-                            <button class="ribbon-icon-button" disabled>
+                            <button class="ribbon-icon-button">
                                 <span class="icon">
                                     <img src="{{ url("/images/ribbon_imgs/home-7.png") }}"
                                         style="width: 100%; height: 100%;">
@@ -606,6 +462,10 @@
                                     style="margin-left: 5px; margin-top: 0;">Columns</span>
                             </button>
                             <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">
+                                <li><a>1 Column</a></li>
+                                <li><a>2 Column</a></li>
+                                <li><a>3 Column</a></li>
+                                <li><a>4 Column</a></li>
                             </ul>
                         </div>
                     </div>
@@ -722,8 +582,34 @@
                             </span>
                         </button>
                         <span class="ribbon-split dropdown-toggle">Arrange</span>
-                        <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">
-
+                        <ul id="arrange_ul" class="ribbon-dropdown" data-role="dropdown" data-duration="100">
+                            <li class="subtitle_li">Order Objects</li>
+                            <li><a>Bring to Front</a></li>
+                            <li><a>Send to Back</a></li>
+                            <li><a>Bring Forward</a></li>
+                            <li><a>Send Backward</a></li>
+                            <li class="subtitle_li">Position Objects</li>
+                            <li id="arrange_li_align"><a>Align</a>
+                                <ul class="arrange_ul_ul" style=" height: 244px;">
+                                    <li><a>Align Left</a></li>
+                                    <li><a>Align Center</a></li>
+                                    <li><a>Align Right</a></li>
+                                    <li><a>Align Top</a></li>
+                                    <li><a>Align Middle</a></li>
+                                    <li><a>Align Bottom</a></li>
+                                    <li><a>Distribute Horizontally</a></li>
+                                    <li><a>Distribute Vertically</a></li>
+                                    <li><a>Align to Slide</a></li>
+                                    <li><a>Align Selected Objects</a></li>
+                                </ul>
+                            </li>
+                            <li id="arrange_li_rotate"><a>Rotate</a>
+                                <ul class="arrange_ul_ul" style="height: 76px;">
+                                    <li><a>Rotate Right</a></li>
+                                    <li><a>Rotate Left</a></li>
+                                    <li><a>More Rotation Options...</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                     <div class="ribbon-split-button">
@@ -736,55 +622,153 @@
                         <div id="quick_styles_panel_holder" class="ribbon-dropdaown" data-role="dropdown"
                             data-duration="100">
                             <div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
-                                <div><div class="quick_style_sample"><span>Abc</span></div></div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
+                                <div>
+                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1051,24 +1035,12 @@
                     <div class="group-divider"></div>
                 </div>
                 <div class="group">
-                    <div style="display: flex; flex-direction: column;">
+                    <div style="display: flex; flex-direction: column; margin-top: 26px;">
                         <button class="ribbon-icon-button">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/insert-6.png") }}">
                             </span>
                             <span class="caption">Hyperlink</span>
-                        </button>
-                        <button class="ribbon-icon-button">
-                            <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/insert-7.png") }}">
-                            </span>
-                            <span class="caption">Equation</span>
-                        </button>
-                        <button class="ribbon-icon-button">
-                            <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/insert-8.png") }}">
-                            </span>
-                            <span class="caption">Symbol</span>
                         </button>
                     </div>
                     <div style="display: flex; flex-direction: column;">
@@ -1338,18 +1310,12 @@
             $("#section_Home_SlideView").removeClass('active');
             $("#section_Insert").removeClass('active');
             $("#section_Design").removeClass('active');
-            $("#section_Animation").removeClass('active');
-            $("#section_Help").removeClass('active');
             $("#section_Home_FormView").addClass('active');
 
             $("#section_home_slide").hide();
             $("#section_home_form").show();
             $("#section_insert").hide();
             $("#section_design").hide();
-            $("#section_animation").hide();
-            $("#section_help").show();
-
-
         });
 
         $('#slide_view_btn').click(function () {
@@ -1367,8 +1333,6 @@
             $("#section_Home_FormView").removeClass('active');
             $("#section_Insert").removeClass('active');
             $("#section_Design").removeClass('active');
-            $("#section_Animation").removeClass('active');
-            $("#section_Help").removeClass('active');
 
             $("#section_Home_SlideView").addClass('active');
 
@@ -1376,8 +1340,6 @@
             $("#section_home_form").hide();
             $("#section_insert").show();
             $("#section_design").show();
-            $("#section_animation").show();
-            $("#section_help").hide();
         });
 
     </script>
