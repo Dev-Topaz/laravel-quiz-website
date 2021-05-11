@@ -269,3 +269,7 @@ span.icon img {
     border-color: transparent !important;
     background-color: transparent !important;
 }
+
+.section {
+    height: 100%;
+}

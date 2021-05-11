@@ -11,7 +11,7 @@
             <li id="section_insert" style="display: none;"><a href="#section_Insert">Insert</a></li>
             <li id="section_design" style="display: none;"><a href="#section_Design">Design</a></li>
         </ul>
-        <div class="content-holder">
+        <div class="content-holder" style="height: 118px;">
             <div class="section" id="section_main">
                 <div class="group">
                     <button class="ribbon-button"><span class="icon"><span class="mif-share"></span></span><span
