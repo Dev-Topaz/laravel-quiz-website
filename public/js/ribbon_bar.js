@@ -1,0 +1,1 @@
+console.log('ribbon_bar');

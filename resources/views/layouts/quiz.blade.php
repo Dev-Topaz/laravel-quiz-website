@@ -25,7 +25,7 @@
 
     <!-- Scripts -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link href="{{ asset('js/jquery3.2.1.min.js') }}" rel="stylesheet">
+    <script src="{{ asset('js/jquery3.2.1.min.js') }}" defer></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>
@@ -90,6 +90,7 @@
     <script src="{{ asset('js/main.js') }}" defer></script>
     <script src="{{ asset('js/matching.js') }}" defer></script>
     <script src="{{ asset('js/text_dropdown.js') }}" defer></script>
+    <script src="{{ asset('js/ribbon_bar.js') }}" defer></script>
 {{--    <script src="{{ asset('js/jquery.richtext.min.js') }}" defer></script>--}}
 
     <script>
