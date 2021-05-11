@@ -12,20 +12,24 @@ MySQL - 10.4.8-MariaDB : Database - quiz_maker
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-/*Table structure for table `answers` */
+/*Table structure for table `exam_groups` */
 
-DROP TABLE IF EXISTS `answers`;
+DROP TABLE IF EXISTS `exam_groups`;
 
-CREATE TABLE `answers` (
+CREATE TABLE `exam_groups` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `quiz_id` int(11) NOT NULL,
-  `answer_value` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `group_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exam_id` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-/*Data for the table `answers` */
+/*Data for the table `exam_groups` */
+
+insert  into `exam_groups`(`id`,`group_name`,`exam_id`,`created_at`,`updated_at`) values 
+(1,'Question Group 1',5,'2021-05-11 07:29:11','2021-05-11 07:29:11'),
+(2,'Results',5,'2021-05-11 07:29:11','2021-05-11 07:29:11');
 
 /*Table structure for table `exams` */
 
@@ -42,14 +46,15 @@ CREATE TABLE `exams` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `exams` */
 
 insert  into `exams`(`id`,`name`,`description`,`author_id`,`status`,`attempt_number`,`passing_score`,`created_at`,`updated_at`) values 
 (1,'First Text Exam','This is my first exam. I will make it to test. Hope everything is working well.',1,1,2,90,'2021-04-23 22:25:54','2021-04-29 06:00:08'),
 (2,'Simple Exam - Attemp Number & Passing Score Test','At first test, Attemp number and passing score are not saving well. So I make a exam again.',1,1,2,80,'2021-04-23 22:29:59','2021-04-23 22:29:59'),
-(4,'Mini Simple Exam','This is my mistake. But I will test using this exam.',1,1,1,50,'2021-04-24 03:25:05','2021-04-26 11:41:17');
+(4,'Mini Simple Exam','This is my mistake. But I will test using this exam.',1,1,1,50,'2021-04-24 03:25:05','2021-04-26 11:41:17'),
+(5,'Professional Exam','This is Professional Exam',1,1,2,100,'2021-05-11 07:29:11','2021-05-11 07:29:11');
 
 /*Table structure for table `failed_jobs` */
 
@@ -78,7 +83,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `migrations` */
 
@@ -107,94 +112,15 @@ insert  into `migrations`(`id`,`migration`,`batch`) values
 (22,'2021_04_27_181016_update_quizes_table',7),
 (23,'2021_04_28_200710_create_multi_response_answer_contents_table',8),
 (24,'2021_04_28_201051_update_multi_response_answer_content_table',9),
-(25,'2021_04_29_211602_create_numeric_answer_contents_table',10);
-
-/*Table structure for table `multi_choice_answer_contents` */
-
-DROP TABLE IF EXISTS `multi_choice_answer_contents`;
-
-CREATE TABLE `multi_choice_answer_contents` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `quiz_id` int(11) NOT NULL,
-  `content` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `choice_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-/*Data for the table `multi_choice_answer_contents` */
-
-insert  into `multi_choice_answer_contents`(`id`,`quiz_id`,`content`,`choice_id`,`created_at`,`updated_at`) values 
-(10,8,'Type content...','1','2021-04-28 06:37:26','2021-04-28 06:37:26'),
-(17,7,'Type content...','3','2021-04-28 22:08:53','2021-04-28 22:08:53'),
-(18,7,'Type content...','2','2021-04-28 22:08:53','2021-04-28 22:08:53'),
-(19,7,'Type content...','1','2021-04-28 22:08:53','2021-04-28 22:08:53'),
-(22,20,'Option 1','1','2021-05-07 22:16:31','2021-05-07 22:16:31'),
-(23,20,'Option 2','2','2021-05-07 22:16:31','2021-05-07 22:16:31'),
-(24,20,'Option 3','3','2021-05-07 22:16:31','2021-05-07 22:16:31'),
-(25,21,'Option 1','1','2021-05-07 22:20:31','2021-05-07 22:20:31'),
-(26,21,'Option 2','2','2021-05-07 22:20:31','2021-05-07 22:20:31'),
-(27,21,'Option 3','3','2021-05-07 22:20:31','2021-05-07 22:20:31'),
-(28,22,'Option 1','1','2021-05-07 22:23:06','2021-05-07 22:23:06'),
-(29,22,'Option 2','2','2021-05-07 22:23:06','2021-05-07 22:23:06'),
-(30,22,'Option 3','3','2021-05-07 22:23:06','2021-05-07 22:23:06'),
-(31,23,'Option 1','1','2021-05-07 22:25:24','2021-05-07 22:25:24'),
-(32,23,'Option 2','2','2021-05-07 22:25:24','2021-05-07 22:25:24'),
-(33,23,'Option 3','3','2021-05-07 22:25:24','2021-05-07 22:25:24'),
-(34,27,'Option 1','1','2021-05-09 13:01:35','2021-05-09 13:01:35'),
-(35,27,'Option 2','2','2021-05-09 13:01:35','2021-05-09 13:01:35'),
-(36,27,'Option 3','3','2021-05-09 13:01:35','2021-05-09 13:01:35');
-
-/*Table structure for table `multi_response_answer_contents` */
-
-DROP TABLE IF EXISTS `multi_response_answer_contents`;
-
-CREATE TABLE `multi_response_answer_contents` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `quiz_id` int(11) NOT NULL,
-  `content` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `response_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-/*Data for the table `multi_response_answer_contents` */
-
-insert  into `multi_response_answer_contents`(`id`,`quiz_id`,`content`,`response_id`,`created_at`,`updated_at`) values 
-(7,12,'Sign 1','3','2021-04-28 21:55:35','2021-04-28 21:55:35'),
-(8,12,'Sign 2','2','2021-04-28 21:55:35','2021-04-28 21:55:35'),
-(9,12,'Sign 3','1','2021-04-28 21:55:35','2021-04-28 21:55:35'),
-(10,24,'Option 1','1','2021-05-07 22:53:43','2021-05-07 22:53:43'),
-(11,24,'Option 2','2','2021-05-07 22:53:43','2021-05-07 22:53:43'),
-(12,24,'Option 3','3','2021-05-07 22:53:43','2021-05-07 22:53:43'),
-(13,25,'Option 1','1','2021-05-09 12:22:44','2021-05-09 12:22:44'),
-(14,25,'Option 2','2','2021-05-09 12:22:44','2021-05-09 12:22:44'),
-(15,25,'Option 3','3','2021-05-09 12:22:44','2021-05-09 12:22:44'),
-(16,26,'Option 1','1','2021-05-09 12:22:45','2021-05-09 12:22:45'),
-(17,26,'Option 2','2','2021-05-09 12:22:45','2021-05-09 12:22:45'),
-(18,26,'Option 3','3','2021-05-09 12:22:45','2021-05-09 12:22:45');
-
-/*Table structure for table `numeric_answer_contents` */
-
-DROP TABLE IF EXISTS `numeric_answer_contents`;
-
-CREATE TABLE `numeric_answer_contents` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `quiz_id` int(11) NOT NULL,
-  `option_value` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `input_value_1` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `input_value_2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-/*Data for the table `numeric_answer_contents` */
-
-insert  into `numeric_answer_contents`(`id`,`quiz_id`,`option_value`,`input_value_1`,`input_value_2`,`created_at`,`updated_at`) values 
-(6,15,'==','300','','2021-04-29 23:27:23','2021-04-29 23:27:23');
+(25,'2021_04_29_211602_create_numeric_answer_contents_table',10),
+(26,'2021_05_04_235634_update_quizes_table_rename_some_fields',11),
+(27,'2021_05_11_062811_drop_answers_table',11),
+(28,'2021_05_11_063042_drop_multi_choice_answer_contents_table',12),
+(29,'2021_05_11_063127_drop_multi_response_answer_contents_table',12),
+(30,'2021_05_11_063231_drop_numeric_answer_contents_table',13),
+(31,'2021_05_11_063557_update_quizes_table_delete_rename_add_many_fields',14),
+(32,'2021_05_11_064814_create_exam_groups_table',15),
+(33,'2021_05_11_091542_update_quizes_table_add_three_score_fields',16);
 
 /*Table structure for table `password_resets` */
 
@@ -258,42 +184,40 @@ DROP TABLE IF EXISTS `quizes`;
 
 CREATE TABLE `quizes` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `exam_id` int(11) NOT NULL,
-  `layout` int(11) NOT NULL,
+  `exam_group_id` int(11) NOT NULL,
   `type_id` int(11) NOT NULL,
-  `question` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `question_element` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `answer` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `feedback_correct` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `feedback_incorrect` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `feedback_try_again` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `is_feedback` tinyint(1) NOT NULL,
-  `is_draft` tinyint(1) NOT NULL,
   `media` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `answer_content_id` int(11) DEFAULT NULL,
-  `answer_id` int(11) DEFAULT NULL,
   `order` int(11) DEFAULT NULL,
+  `answer_element` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `question_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `feedback_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `branching` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `score` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `attempts` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `is_limit_time` tinyint(1) DEFAULT NULL,
+  `limit_time` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `shuffle_answers` tinyint(1) DEFAULT NULL,
+  `partially_correct` tinyint(1) DEFAULT NULL,
+  `limit_number_response` tinyint(1) DEFAULT NULL,
+  `case_sensitive` tinyint(1) DEFAULT NULL,
+  `correct_score` int(11) DEFAULT NULL,
+  `incorrect_score` int(11) DEFAULT NULL,
+  `try_again_score` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `quizes` */
 
-insert  into `quizes`(`id`,`exam_id`,`layout`,`type_id`,`question`,`answer`,`feedback_correct`,`feedback_incorrect`,`feedback_try_again`,`is_feedback`,`is_draft`,`media`,`created_at`,`updated_at`,`answer_content_id`,`answer_id`,`order`) values 
-(1,2,1,4,'100 + 200 = _______','300','Correct!','Incorrect!','Try again',1,1,NULL,'2021-04-26 06:46:36','2021-04-26 10:04:32',NULL,NULL,NULL),
-(3,2,1,4,'THIS QUESTION TYPE IS: Type in the Word\r\nThis question type is auto assessable. If the correct answer is selected the quiz engine will mark it as correct. This will automatically be included in the final results that is emailed to the student.\r\n\r\nYou are eating at a restaurant and the bill is $150.00.  You need to split the bill between six (6) people.  Each person will pay _____________________ .','25.0','Correct!','Incorrect!','Try again',1,0,NULL,'2021-04-26 10:27:26','2021-04-26 12:13:35',NULL,NULL,NULL),
-(7,1,1,1,'THIS QUESTION TYPE IS: MULTIPLE CHOICE\r\nThis question type is auto assessable. If the correct answer is selected the quiz engine will mark it as correct. This will automatically be included in the final results that is emailed to the student.\r\nA box holds 15 cauliflowers.  At the end of the day, the crew had filled 86 boxes.  How many cauliflowers is that in total?','2','Correct!','Incorrect!','Try again',1,0,NULL,'2021-04-28 05:09:11','2021-04-28 22:08:52',NULL,NULL,NULL),
-(8,1,1,1,'<div><div><span style=\"font-size:18px;\"><b><font color=\"#ff0000\">THIS QUESTION TYPE IS: MULTIPLE CHOICE</font></b></span></div><span style=\"font-size:16px;\"><font color=\"#0000ff\">\r\n<span style=\"font-size:18px;\">This question type is auto assessable. If the correct answer is selected the quiz engine will mark it as correct. This will automatically be included in the final results that is emailed to the student.</span></font></span><div>A box holds 15 cauliflowers.&nbsp; At the end of the day, the crew had filled 86 boxes.&nbsp; How many cauliflowers is that in total?</div></div>','1','Correct!','Incorrect!','Try again',1,0,NULL,'2021-04-28 06:37:26','2021-04-28 06:37:26',NULL,NULL,NULL),
-(12,1,1,2,'<div><div><span style=\"font-size:18px;\"><font color=\"#ff0000\">THIS QUESTION TYPE IS: MULTIPLE CHOICE</font></span></div><div><font color=\"#0000ff\">This question type is auto assessable. If the correct answer is selected the quiz engine will mark it as correct. This will automatically be included in the final results that is emailed to the student.</font></div><div>Which sign best describes a risk to electrocution.&nbsp;</div></div>','3;1;','Correct!','Incorrect!','Try again',1,0,NULL,'2021-04-28 21:45:00','2021-04-28 21:55:35',NULL,NULL,NULL),
-(13,1,1,3,'<div><div><span style=\"font-size:18px;\"><font color=\"#ff0000\">THIS QUESTION TYPE IS: TRUE or FALSE</font></span></div><div><font color=\"#0000ff\">This question type is auto assessable. If the correct answer is selected the quiz engine will mark it as correct. This will automatically be included in the final results that is emailed to the student.</font></div><div><br></div><div>Four (4) bags of sugar at $3.50 each would cost more than three (3) bags of sugar at $5.00 each.&nbsp;</div></div>','0','Correct!','Incorrect!','Try again',1,0,NULL,'2021-04-29 06:34:01','2021-04-29 06:37:01',NULL,NULL,NULL),
-(15,1,1,5,'<div>100 + 200 = ?</div>','numeric','Correct!','Incorrect!','Try again',1,0,NULL,'2021-04-29 21:32:57','2021-04-29 23:27:23',NULL,NULL,NULL),
-(17,1,1,6,'<div><span style=\"font-size: 14.4px;\"><font color=\"#ff0000\"><span style=\"font-size:18px;\">THIS QUESTION TYPE IS: Drag and Drop</span></font></span><font color=\"#0000ff\"><br></font></div><div><font color=\"#0000ff\">This question type is auto assessable. If the correct answer is selected the quiz engine will mark it as correct. This will automatically be included in the final results that is emailed to the student.</font></div><div>Arrange the following letters in the correct order(where \'A\' is no.1)</div>','A;B;C;D;E;','Correct!','Incorrect!','Try again',1,0,NULL,'2021-05-02 14:31:35','2021-05-02 14:47:18',NULL,NULL,NULL),
-(18,1,1,7,'<div><div><font color=\"#ff0000\"><span style=\"font-size:18px;\"><b>THIS QUESTION TYPE IS: Drag and Click</b></span></font></div><div><font color=\"#0000ff\">This question type is auto assessable. If the correct answer is selected the quiz engine will mark it as correct. This will automatically be included in the final results that is emailed to the student.</font></div><div>Match the following items:</div></div>','Australia;Australia@America;America@India;India@Brazil;Brazil@','Correct!','Incorrect!','Try again',1,0,NULL,'2021-05-02 21:11:22','2021-05-02 21:24:00',NULL,NULL,NULL),
-(28,1,1,8,'ok','ok','ok','ok','ok',1,0,NULL,NULL,NULL,NULL,NULL,NULL),
-(29,1,1,9,'ok','ok','ok','ok','ok',1,0,NULL,NULL,NULL,NULL,NULL,NULL),
-(30,1,1,10,'ok','ok','ok','ok','ok',1,0,NULL,NULL,NULL,NULL,NULL,NULL),
-(31,1,1,11,'ok','ok','ok','ok','ok',1,0,NULL,NULL,NULL,NULL,NULL,NULL),
-(32,1,1,4,'short Answer','ok','ok','ok','ok',1,0,NULL,NULL,NULL,NULL,NULL,NULL);
+insert  into `quizes`(`id`,`exam_group_id`,`type_id`,`question_element`,`answer`,`feedback_correct`,`feedback_incorrect`,`feedback_try_again`,`media`,`created_at`,`updated_at`,`order`,`answer_element`,`question_type`,`feedback_type`,`branching`,`score`,`attempts`,`is_limit_time`,`limit_time`,`shuffle_answers`,`partially_correct`,`limit_number_response`,`case_sensitive`,`correct_score`,`incorrect_score`,`try_again_score`) values 
+(34,1,1,'Select the correct answer option:','1','That\'s right! You chose the correct response.','You did not choose the correct response.',NULL,NULL,'2021-05-11 10:28:28','2021-05-11 10:28:28',NULL,'<div class=\"col-md-12\"><div class=\"choice_item\"><input type=\"radio\" id=\"1\" name=\"answer\" value=\"1\" style=\"padding-right: 10px;\"><label for=\"1\">Option 1</label></div><div class=\"choice_item\"><input type=\"radio\" id=\"2\" name=\"answer\" value=\"2\" style=\"padding-right: 10px;\"><label for=\"2\">Option 2</label></div><div class=\"choice_item\"><input type=\"radio\" id=\"3\" name=\"answer\" value=\"3\" style=\"padding-right: 10px;\"><label for=\"3\">Option 3</label></div></div>','graded','by_result','by_result','by_result','1',0,NULL,1,NULL,NULL,NULL,10,0,NULL),
+(35,1,1,'Select the correct answer option:','1','That\'s right! You chose the correct response.','You did not choose the correct response.',NULL,NULL,'2021-05-11 18:16:11','2021-05-11 18:16:11',NULL,'<div class=\"col-md-12\"><div class=\"choice_item\"><input type=\"radio\" id=\"1\" name=\"answer\" value=\"1\" style=\"padding-right: 10px;\"><label for=\"1\">Option 1</label></div><div class=\"choice_item\"><input type=\"radio\" id=\"2\" name=\"answer\" value=\"2\" style=\"padding-right: 10px;\"><label for=\"2\">Option 2</label></div><div class=\"choice_item\"><input type=\"radio\" id=\"3\" name=\"answer\" value=\"3\" style=\"padding-right: 10px;\"><label for=\"3\">Option 3</label></div></div>','graded','by_result','by_result','by_result','1',0,NULL,1,NULL,NULL,NULL,10,0,NULL);
 
 /*Table structure for table `roles` */
 

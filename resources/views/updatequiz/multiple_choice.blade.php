@@ -16,7 +16,8 @@
 
             <div>
                 <h4>Multiple Choice Question</h4>
-                <div contenteditable="true" id="question" style="overflow-y: scroll;width: 100%;border: 1px solid black;height: 70px">{!! $quiz->question_element !!}</div>
+                <div contenteditable="true" id="question"
+                     style="overflow-y: scroll;width: 100%;border: 1px solid black;height: 70px">{!! $quiz->question_element !!}</div>
             </div>
             <br>
 
@@ -37,20 +38,20 @@
                         </tr>
                         </thead>
                         <tbody id="choice_list">
-{{--                        @foreach($quiz->multi_choice_answer_contents as $answer_content)--}}
-{{--                            <tr class="choice_item">--}}
-{{--                                <td><input type="radio" id="{{ $answer_content->choice_id }}"--}}
-{{--                                           name="answer" value="{{ $answer_content->choice_id }}"--}}
-{{--                                           style="padding-right: 10px;" {{ $answer_content->choice_id == $quiz->answer ? 'checked' : '' }}>--}}
-{{--                                </td>--}}
-{{--                                <td><label class="choice_label" data-editable--}}
-{{--                                           for="{{ $answer_content->choice_id }}">{{ $answer_content->content }}</label>--}}
-{{--                                </td>--}}
-{{--                                <td></td>--}}
-{{--                                <td><a onclick="{$(this).parent().parent().remove();save_choice_data();}"><i--}}
-{{--                                            class="fas fa-trash-alt"></i></a></td>--}}
-{{--                            </tr>--}}
-{{--                        @endforeach--}}
+                        {{--                        @foreach($quiz->multi_choice_answer_contents as $answer_content)--}}
+                        {{--                            <tr class="choice_item">--}}
+                        {{--                                <td><input type="radio" id="{{ $answer_content->choice_id }}"--}}
+                        {{--                                           name="answer" value="{{ $answer_content->choice_id }}"--}}
+                        {{--                                           style="padding-right: 10px;" {{ $answer_content->choice_id == $quiz->answer ? 'checked' : '' }}>--}}
+                        {{--                                </td>--}}
+                        {{--                                <td><label class="choice_label" data-editable--}}
+                        {{--                                           for="{{ $answer_content->choice_id }}">{{ $answer_content->content }}</label>--}}
+                        {{--                                </td>--}}
+                        {{--                                <td></td>--}}
+                        {{--                                <td><a onclick="{$(this).parent().parent().remove();save_choice_data();}"><i--}}
+                        {{--                                            class="fas fa-trash-alt"></i></a></td>--}}
+                        {{--                            </tr>--}}
+                        {{--                        @endforeach--}}
                         </tbody>
                     </table>
                     <a id="add_choice" style="padding: 10px 0;margin-left: 90px;margin-top: 10px;">Type to add a new
@@ -97,10 +98,12 @@
     </div>
     <div class="cell-8 slide_view_element" style="background: #dcdcdc;display: none;">
         <div style="margin: auto 0;background: #f1f1f1;width: 100%;height:500px;padding: 20px;">
-            <div contenteditable="true" class="question_element slide_view_group" style="overflow-y: scroll;border: 1px solid black;height: 70px;width: 80%;left: 10%">{!! $quiz->question_element !!}</div>
-            <div class="answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%">{!! $quiz->answer_element !!}</div>
+            <div contenteditable="true" class="slide_view_question_element slide_view_group"
+                 style="overflow-y: scroll;border: 1px solid black;height: 70px;width: 80%;left: 10%">{!! $quiz->question_element !!}</div>
+            <div class="slide_view_answer_element slide_view_group"
+                 style="width: 80%;top: 100px;left: 10%">{!! $quiz->answer_element !!}</div>
             @if ($quiz->media != null)
-                <div class="media_element slide_view_group"></div>
+                <div class="slide_view_media_element slide_view_group"></div>
             @endif
         </div>
     </div>
@@ -114,8 +117,10 @@
                     </div>
                     <div class="cell-7">
                         <select data-role="select" data-filter="false" name="question_type">
-                            <option value="graded" {{ $quiz->question_type == 'graded' ? 'selected' : '' }}>Graded</option>
-                            <option value="survey" {{ $quiz->question_type == 'survey' ? 'selected' : '' }}>Survey</option>
+                            <option value="graded" {{ $quiz->question_type == 'graded' ? 'selected' : '' }}>Graded
+                            </option>
+                            <option value="survey" {{ $quiz->question_type == 'survey' ? 'selected' : '' }}>Survey
+                            </option>
                         </select>
                     </div>
                 </div>
@@ -126,9 +131,14 @@
                         </div>
                         <div class="cell-6">
                             <select data-role="select" data-filter="false" name="feedback">
-                                <option value="none" {{ $quiz->feedback_type == 'none' ? 'selected' : '' }}>None</option>
-                                <option value="by_result" {{ $quiz->feedback_type == 'by_result' ? 'selected' : '' }}>By Result</option>
-                                <option value="by_choice" {{ $quiz->feedback_type == 'by_choice' ? 'selected' : '' }}>By Choice</option>
+                                <option value="none" {{ $quiz->feedback_type == 'none' ? 'selected' : '' }}>None
+                                </option>
+                                <option value="by_result" {{ $quiz->feedback_type == 'by_result' ? 'selected' : '' }}>By
+                                    Result
+                                </option>
+                                <option value="by_choice" {{ $quiz->feedback_type == 'by_choice' ? 'selected' : '' }}>By
+                                    Choice
+                                </option>
                             </select>
                         </div>
                         @if ($quiz->branching != null)
@@ -137,8 +147,14 @@
                             </div>
                             <div class="cell-6">
                                 <select data-role="select" data-filter="false" name="braching">
-                                    <option value="by_result" {{ $quiz->feedback_type == 'by_result' ? 'selected' : '' }}>By Result</option>
-                                    <option value="by_choice" {{ $quiz->feedback_type == 'by_choice' ? 'selected' : '' }}>By Choice</option>
+                                    <option
+                                        value="by_result" {{ $quiz->feedback_type == 'by_result' ? 'selected' : '' }}>By
+                                        Result
+                                    </option>
+                                    <option
+                                        value="by_choice" {{ $quiz->feedback_type == 'by_choice' ? 'selected' : '' }}>By
+                                        Choice
+                                    </option>
                                 </select>
                             </div>
                         @endif
@@ -146,9 +162,14 @@
                             <label for="score" name="score">Score:</label>
                         </div>
                         <div class="cell-6">
-                            <select data-role="select" data-filter="false" name="score" {{ $quiz->score == null ? 'disable' : '' }}>
-                                <option value="by_result" {{ $quiz->score == 'by_result' ? 'selected' : '' }}>By Result</option>
-                                <option value="by_choice" {{ $quiz->score == 'by_choice' ? 'selected' : '' }}>By Choice</option>
+                            <select data-role="select" data-filter="false"
+                                    name="score" {{ $quiz->score == null ? 'disable' : '' }}>
+                                <option value="by_result" {{ $quiz->score == 'by_result' ? 'selected' : '' }}>By
+                                    Result
+                                </option>
+                                <option value="by_choice" {{ $quiz->score == 'by_choice' ? 'selected' : '' }}>By
+                                    Choice
+                                </option>
                             </select>
                         </div>
                         <div class="cell-6">
@@ -166,7 +187,9 @@
                                 <option value="8" {{ $quiz->attempts == '8' ? 'selected' : '' }}>8</option>
                                 <option value="9" {{ $quiz->attempts == '9' ? 'selected' : '' }}>9</option>
                                 <option value="10" {{ $quiz->attempts == '10' ? 'selected' : '' }}>10</option>
-                                <option value="unlimited" {{ $quiz->attempts == 'unlimited' ? 'selected' : '' }}>Unlimited</option>
+                                <option value="unlimited" {{ $quiz->attempts == 'unlimited' ? 'selected' : '' }}>
+                                    Unlimited
+                                </option>
                             </select>
                         </div>
                         <div class="cell-7">
@@ -174,27 +197,33 @@
                                    data-caption="Limit time to answer the question:" {{ $quiz->is_limit_time ? 'checked' : '' }}>
                         </div>
                         <div class="cell-5">
-                            <input class="mt-1" type="time" data-role="input" {{ $quiz->is_limit_time ? '' : 'disabled' }}
-                                   data-clear-button="false" value="{{ $quiz->is_limit_time ? $quiz->limit_time : '01:00' }}">
+                            <input class="mt-1" type="time" data-role="input"
+                                   {{ $quiz->is_limit_time ? '' : 'disabled' }}
+                                   data-clear-button="false"
+                                   value="{{ $quiz->is_limit_time ? $quiz->limit_time : '01:00' }}">
                         </div>
                         @if ($quiz->shuffle_answers != null)
                             <div class="cell-12">
-                                <input type="checkbox" data-role="checkbox" data-caption="Shuffle answers" {{ $quiz->shuffle_answers ? 'checked' : '' }}>
+                                <input type="checkbox" data-role="checkbox"
+                                       data-caption="Shuffle answers" {{ $quiz->shuffle_answers ? 'checked' : '' }}>
                             </div>
                         @endif
                         @if ($quiz->partially_correct != null)
                             <div class="cell-12">
-                                <input type="checkbox" data-role="checkbox" data-caption="Accept partially correct answer" {{ $quiz->partially_correct ? 'checked' : '' }}>
+                                <input type="checkbox" data-role="checkbox"
+                                       data-caption="Accept partially correct answer" {{ $quiz->partially_correct ? 'checked' : '' }}>
                             </div>
                         @endif
                         @if ($quiz->limit_number_response != null)
                             <div class="cell-12">
-                                <input type="checkbox" data-role="checkbox" data-caption="Limit number of response" {{ $quiz->limit_response ? 'checked' : '' }}>
+                                <input type="checkbox" data-role="checkbox"
+                                       data-caption="Limit number of response" {{ $quiz->limit_response ? 'checked' : '' }}>
                             </div>
                         @endif
                         @if ($quiz->case_sensitive != null)
                             <div class="cell-12">
-                                <input type="checkbox" data-role="checkbox" data-caption="Case sensitive" {{ $quiz->case_sensitive ? 'checked' : '' }}>
+                                <input type="checkbox" data-role="checkbox"
+                                       data-caption="Case sensitive" {{ $quiz->case_sensitive ? 'checked' : '' }}>
                             </div>
                         @endif
                     </div>
@@ -202,11 +231,32 @@
             </div>
             <div class="form_view_element">preview</div>
             <div class="slide_view_element" style="display: none">Slide Layer</div>
+            <input type="text" id="target_element" value="" hidden>
         </div>
     </div>
 </div>
 
 <script>
+    $("body").click(function (e) {
+        if (jQuery.inArray('slide_view_question_element', e.target.classList) !== -1 || $(e.target).parents(".slide_view_question_element").length) {
+            console.log('slide_view_question_element');
+            $('#target_element').val('slide_view_question_element');
+            return;
+        }
+        if (jQuery.inArray('slide_view_answer_element', e.target.classList) !== -1 || $(e.target).parents(".slide_view_answer_element").length) {
+            console.log('slide_view_answer_element');
+            $('#target_element').val('slide_view_answer_element');
+            return;
+        }
+        if (jQuery.inArray('slide_view_media_element', e.target.classList) !== -1 || $(e.target).parents(".slide_view_media_element").length) {
+            console.log('slide_view_media_element');
+            $('#target_element').val('slide_view_media_element');
+            return;
+        }
+        $('#target_element').val('common_element');
+            return;
+    });
+
     function get_choice_item_id() {
         const length = $('.choice_item').length;
 
