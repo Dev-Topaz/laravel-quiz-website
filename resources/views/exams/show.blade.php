@@ -1188,13 +1188,20 @@
                         </div>
                     </div>
                 </form>
-
-            </div><!-- /.post -->
-        </div><!-- /#content -->
-    </div>
-    <script>
-        function onNodeClick(node) {
-            const quizId = node.attr('id');
+                </div><!-- /.post -->
+            </div><!-- /#content -->
+        </div>
+        <script>
+            function onNodeClick(node) {
+                const quizId = node.attr('id');
+                $.get("{{ url('/quizes_form_view') }}/" + quizId + "/edit", function (data, status) {
+                    $('#quiz_form_view').html(data);
+                });
+                $.get("{{ url('/quizes_slide_view') }}/" + quizId + "/edit", function (data, status) {
+                    console.log(data);
+                    $('#quiz_slide_view').html(data);
+                });
+            }
 
             $.get("{{ url('/quizes_form_view') }}/" + quizId + "/edit", function (data, status) {
                 $('#quiz_form_view').html(data);
