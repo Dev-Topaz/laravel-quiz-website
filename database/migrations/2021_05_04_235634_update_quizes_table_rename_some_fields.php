@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class DropAnswersTable extends Migration
+class UpdateQuizesTableRenameSomeFields extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class DropAnswersTable extends Migration
      */
     public function up()
     {
-        Schema::drop('answers');
+        //
     }
 
     /**
