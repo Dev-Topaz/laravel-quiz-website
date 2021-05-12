@@ -1,47 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
-  <component name="ChangeListManager">
-    <list default="true" id="9d9fd7c1-0dd1-410f-8492-d59f6bb67158" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/updatequiz/multiple_choice.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/updatequiz/multiple_choice.blade.php" afterDir="false" />
-    </list>
-    <option name="SHOW_DIALOG" value="false" />
-    <option name="HIGHLIGHT_CONFLICTS" value="true" />
-    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
-    <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
-    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="composer.json" />
-        <option value="JavaScript File" />
-      </list>
-    </option>
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="master" />
-      </map>
-    </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
-  </component>
-  <component name="PhpWorkspaceProjectConfiguration">
+  <component name="PhpIncludePathManager">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/nunomaduro/collision" />
       <path value="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
@@ -157,117 +116,10 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/deprecations" />
     </include_path>
   </component>
-  <component name="ProjectId" id="1rVbfaLx2kr7ksqGrNNT6WLcvx8" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
-  <component name="PropertiesComponent">
-    <property name="DatabaseDriversLRU" value="mysql" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="go.import.settings.migrated" value="true" />
-    <property name="go.vendoring.notification.had.been.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/quiz_form_view" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.editor" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Source\laravel\quizmaker\resources\views\quiz_form_view" />
-    </key>
-  </component>
-  <component name="RunManager">
-    <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
-      <TestRunner scope="XML" />
-      <method v="2" />
-    </configuration>
-  </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
-  <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="9d9fd7c1-0dd1-410f-8492-d59f6bb67158" name="Default Changelist" comment="" />
-      <created>1619064453134</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1619064453134</updated>
-      <workItem from="1619064488330" duration="49031000" />
-      <workItem from="1619166807173" duration="33759000" />
-      <workItem from="1619238327837" duration="172000" />
-      <workItem from="1619238523206" duration="800000" />
-      <workItem from="1619243140388" duration="2755000" />
-      <workItem from="1619246880322" duration="1940000" />
-      <workItem from="1619351977366" duration="7851000" />
-      <workItem from="1619407978059" duration="589000" />
-      <workItem from="1619504628118" duration="10565000" />
-      <workItem from="1619519895762" duration="29088000" />
-      <workItem from="1619623010422" duration="15842000" />
-      <workItem from="1619711803764" duration="7298000" />
-      <workItem from="1619724376907" duration="15780000" />
-      <workItem from="1619761813850" duration="2208000" />
-      <workItem from="1619956192680" duration="169000" />
-      <workItem from="1619956626111" duration="12124000" />
-      <workItem from="1620034248066" duration="6607000" />
-      <workItem from="1620107434062" duration="792000" />
-      <workItem from="1620119122322" duration="1391000" />
-      <workItem from="1620121530169" duration="758000" />
-      <workItem from="1620123943380" duration="174000" />
-      <workItem from="1620124142907" duration="2693000" />
-      <workItem from="1620143265509" duration="472000" />
-      <workItem from="1620143823401" duration="83000" />
-      <workItem from="1620144621918" duration="1128000" />
-      <workItem from="1620145977145" duration="10540000" />
-      <workItem from="1620164443804" duration="31000" />
-      <workItem from="1620164494823" duration="102000" />
-      <workItem from="1620164858684" duration="1012000" />
-      <workItem from="1620165906612" duration="4646000" />
-      <workItem from="1620197911201" duration="22743000" />
-      <workItem from="1620245193472" duration="765000" />
-      <workItem from="1620315732607" duration="9810000" />
-      <workItem from="1620340389564" duration="48202000" />
-      <workItem from="1620562471552" duration="26204000" />
-      <workItem from="1620701680750" duration="13791000" />
-      <workItem from="1620726280378" duration="24990000" />
-      <workItem from="1620794349448" duration="18887000" />
-      <workItem from="1620833537992" duration="555000" />
-      <workItem from="1620835489772" duration="3510000" />
-    </task>
-    <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="main" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />
+  <component name="PhpUnit">
+    <phpunit_settings>
+      <PhpUnitSettings configuration_file_path="$PROJECT_DIR$/phpunit.xml" custom_loader_path="$PROJECT_DIR$/vendor/autoload.php" use_configuration_file="true" />
+    </phpunit_settings>
   </component>
 </project>

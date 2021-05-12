@@ -19,6 +19,11 @@
                    name="question_element"
                    value="{{ $quiz->question_element }}" autocomplete="question_element" autofocus hidden>
 
+            <input id="answer_content" type="text"
+                   class="form-control @error('answer_content') is-invalid @enderror"
+                   name="answer_content"
+                   value="{{ $quiz->answer }}" autocomplete="answer_content" autofocus hidden>
+
             <div>
                 <h4>Multiple Choice Question</h4>
                 <div contenteditable="true" id="question"
@@ -297,16 +302,17 @@
         return element.html();
     }
 
-    function answer_slide2form(answer) {
+    function answer_slide2form(answer_element, answer_content) {
         const typeId = $('#type_id').val();
-        const element = $(answer);
+        const element = $(answer_element);
         console.log(typeId);
 
         let form_answer = '';
         switch (typeId) {
             case '1':
                 for (let i = 0; i <element.find('.choice_item').length; i++) {
-                    form_answer += '<tr class="choice_item"><td>' + element.find('.choice_item').eq(i).find('input')[0].outerHTML + '</td><td><label class="choice_label" data-editable for="' + element.find('.choice_item').eq(i).find('label').attr('for') + '">' + element.find('.choice_item').eq(i).find('label').html() + '</label></td><td></td><td><a onclick="{$(this).parent().parent().remove();save_choice_data();}"><i class="fas fa-trash-alt"></i></a></td></tr>';
+                    const value = element.find('.choice_item').eq(i).find('input').attr('value');
+                    form_answer += '<tr class="choice_item"><td><input type="radio" name="answer" value="' + value +  '" ' + (value == answer_content ? 'checked' : '') + '></td><td><label class="choice_label" data-editable for="' + element.find('.choice_item').eq(i).find('label').attr('for') + '">' + element.find('.choice_item').eq(i).find('label').html() + '</label></td><td></td><td><a onclick="{$(this).parent().parent().remove();save_choice_data();}"><i class="fas fa-trash-alt"></i></a></td></tr>';
                 }
                 break;
 
@@ -317,5 +323,5 @@
     }
 
     $('#question').html(question_slide2form($('#question_element').val()));
-    $('#choice_list').html(answer_slide2form($('#answer_element').val()));
+    $('#choice_list').html(answer_slide2form($('#answer_element').val(), $('#answer_content').val()));
 </script>
