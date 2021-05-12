@@ -238,6 +238,27 @@ span.icon img {
     text-align: left;
 }
 
+#arrange_ul li {
+    background-position-x: 4px;
+    background-repeat: no-repeat;
+    background-position-y: center;
+}
+
+#layout_column_ul li {
+    background-position-x: 4px;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    height: 40px;
+    width: 100px;
+    padding-left: 30px;
+}
+
+#layout_column_ul li a {
+    height: 40px;
+    line-height: 38px;
+    display: block;
+}
+
 .arrange_ul_ul {
     border: 1px solid #dadbdc;
     background: #fbfcfd;
@@ -272,4 +293,9 @@ span.icon img {
 
 .section {
     height: 100%;
+}
+
+.group button.button {
+    width: 25px;
+    height: 25px;
 }

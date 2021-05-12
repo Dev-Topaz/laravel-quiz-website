@@ -473,11 +473,11 @@
                                 <span class="caption dropdown-toggle"
                                     style="margin-left: 5px; margin-top: 0;">Columns</span>
                             </button>
-                            <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">
-                                <li id="layout_column_01_btn"><a>1 Column</a></li>
-                                <li id="layout_column_02_btn"><a>2 Column</a></li>
-                                <li id="layout_column_03_btn"><a>3 Column</a></li>
-                                <li id="layout_column_04_btn"><a>4 Column</a></li>
+                            <ul id="layout_column_ul" class="ribbon-dropdown" data-role="dropdown" data-duration="100">
+                                <li style="background-image: url({{ url("/images/ribbon_imgs/column_1.png") }});" id="layout_column_01_btn"><a>1 Column</a></li>
+                                <li style="background-image: url({{ url("/images/ribbon_imgs/column_2.png") }});" id="layout_column_02_btn"><a>2 Column</a></li>
+                                <li style="background-image: url({{ url("/images/ribbon_imgs/column_3.png") }});" id="layout_column_03_btn"><a>3 Column</a></li>
+                                <li style="background-image: url({{ url("/images/ribbon_imgs/column_4.png") }});" id="layout_column_04_btn"><a>4 Column</a></li>
                             </ul>
                         </div>
                     </div>
@@ -521,19 +521,19 @@
                     </div>
                     <div style="display: flex;">
                         <div data-role="buttongroup" data-mode="multi" data-cls-active="bg-grey fg-white">
-                            <button class="button" style="background-image: url('{{ url('/images/ribbon_imgs/home/bold.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;
+                            <button id="slide_view_font_bold_btn" class="button font_bold_btn" style="background-image: url('{{ url('/images/ribbon_imgs/home/bold.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;
                                             "></button>
-                            <button class=" button" style="background-image: url('{{ url('/images/ribbon_imgs/home/ital.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;
+                            <button id="slide_view_font_ital_btn" class="button font_ital_btn" style="background-image: url('{{ url('/images/ribbon_imgs/home/ital.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;
                                             "></button>
-                            <button class=" button" style="background-image: url('{{ url('/images/ribbon_imgs/home/under.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;
-                                            "></button>
+                            <button id="slide_view_font_underline_btn" class="button font_underline_btn"
+                                style="background-image: url('{{ url('/images/ribbon_imgs/home/under.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;"></button>
                         </div>
                     </div>
                     <div style=" display: flex; margin-left: 10px;">
                         <div data-role=" buttongroup" style="margin-left: 11px; ">
-                            <button class="button" style="background-image: url('{{ url('/images/ribbon_imgs/home/sub.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;
+                            <button id="slide_view_font_subscription_btn" class="button" style="background-image: url('{{ url('/images/ribbon_imgs/home/sub.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;
                                             "></button>
-                            <button class=" button" style="background-image: url('{{ url('/images/ribbon_imgs/home/sup.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;
+                            <button id="slide_view_font_superscription_btn" class=" button" style="background-image: url('{{ url('/images/ribbon_imgs/home/sup.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;
                                             "></button>
                         </div>
                     </div>
@@ -542,31 +542,24 @@
                 </div>
                 <div class="group" style="flex: 0 0 200px;">
                     <div>
-                        <style>
-                            .group button.button {
-                                width: 25px;
-                                height: 25px;
-                            }
-
-                        </style>
                         <div data-role="">
-                            <button class="button"
+                            <button class="button bullet_btn" id="slide_view_paragraph_style_bullet_btn"
                                 style="padding: 7px;height: 25px; background-image: url('{{ url('/images/ribbon_imgs/home-11.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;"></button>
-                            <button class="button"
+                            <button class="button numbering_btn" id="slide_view_paragraph_style_numbering_btn"
                                 style="padding: 7px;height: 25px; background-image: url('{{ url('/images/ribbon_imgs/home-12.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;"></button>
-                            <button class="button"
+                            <button class="button decrease_indent" id="slide_view_paragraph_style_decrease_indent_btn"
                                 style="padding: 7px;height: 25px; background-image: url('{{ url('/images/ribbon_imgs/home-13.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;"></button>
-                            <button class="button"
+                            <button class="button increase_indent" id="slide_view_paragraph_style_increase_indent_btn"
                                 style="padding: 7px;height: 25px; background-image: url('{{ url('/images/ribbon_imgs/home-14.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;"></button>
                         </div>
                         <div data-role="">
-                            <button class="button"
+                            <button class="button" id="paragraph_align_left"
                                 style="padding: 7px;height: 25px; background-image: url('{{ url('/images/ribbon_imgs/home-15.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;"></button>
-                            <button class="button"
+                            <button class="button" id="paragraph_align_center"
                                 style="padding: 7px;height: 25px; background-image: url('{{ url('/images/ribbon_imgs/home-16.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;"></button>
-                            <button class="button"
+                            <button class="button" id="paragraph_align_right"
                                 style="padding: 7px;height: 25px; background-image: url('{{ url('/images/ribbon_imgs/home-17.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;"></button>
-                            <button class="button"
+                            <button class="button" id="paragraph_align_justify"
                                 style="padding: 7px;height: 25px; background-image: url('{{ url('/images/ribbon_imgs/home-18.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;"></button>
                         </div>
                     </div>
@@ -575,14 +568,14 @@
                             style="margin-left: 10px; width: 44px; margin-top: 3px; height: 23px; background-image: url({{ url("/images/ribbon_imgs/home-19.png") }}); background-repeat: no-repeat; background-position-y: center; background-position-x: 5px;"></button>
                         <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100"
                             style="transform: translate(10px, -10px);">
-                            <li><a>1,0</a></li>
-                            <li><a>1,15</a></li>
-                            <li><a>1,5</a></li>
-                            <li><a>2,0</a></li>
-                            <li><a>Spacing Options</a></li>
+                            <li id="paragraph_line_spacing_100"><a>1,0</a></li>
+                            <li id="paragraph_line_spacing_115"><a>1,15</a></li>
+                            <li id="paragraph_line_spacing_150"><a>1,5</a></li>
+                            <li id="paragraph_line_spacing_200"><a>2,0</a></li>
+                            <li id="paragraph_line_spacing_option"><a>Spacing Options</a></li>
                             <li class="list_divider"></li>
-                            <li><a>Add Space Before Paragraph</a></li>
-                            <li><a>Add Space After Paragraph</a></li>
+                            <li id="paragraph_line_spacing_add_before"><a>Add Space Before Paragraph</a></li>
+                            <li id="paragraph_line_spacing_add_after"><a>Add Space After Paragraph</a></li>
                         </ul>
                     </div>
                     <span class="title">Paragraph</span>
@@ -598,30 +591,30 @@
                         <span class="ribbon-split dropdown-toggle">Arrange</span>
                         <ul id="arrange_ul" class="ribbon-dropdown" data-role="dropdown" data-duration="100">
                             <li class="subtitle_li">Order Objects</li>
-                            <li><a>Bring to Front</a></li>
-                            <li><a>Send to Back</a></li>
-                            <li><a>Bring Forward</a></li>
-                            <li><a>Send Backward</a></li>
+                            <li style="background-image: url({{ url("/images/ribbon_imgs/arrange_bring_to_front.png") }});" id="arrange_bring_front"><a>Bring to Front</a></li>
+                            <li style="background-image: url({{ url("/images/ribbon_imgs/arrange_send_to_back.png") }});" id="arrange_send_back"><a>Send to Back</a></li>
+                            <li style="background-image: url({{ url("/images/ribbon_imgs/arrange_bring_forward.png") }});" id="arrange_bring_forward"><a>Bring Forward</a></li>
+                            <li style="background-image: url({{ url("/images/ribbon_imgs/arrange_send_backward.png") }});" id="arrange_send_backward"><a>Send Backward</a></li>
                             <li class="subtitle_li">Position Objects</li>
-                            <li id="arrange_li_align"><a>Align</a>
+                            <li style="background-image: url({{ url("/images/ribbon_imgs/align.png") }});" id="arrange_li_align"><a>Align <strong style="position: absolute; right: 5px;">></strong></a>
                                 <ul class="arrange_ul_ul" style=" height: 244px;">
-                                    <li><a>Align Left</a></li>
-                                    <li><a>Align Center</a></li>
-                                    <li><a>Align Right</a></li>
-                                    <li><a>Align Top</a></li>
-                                    <li><a>Align Middle</a></li>
-                                    <li><a>Align Bottom</a></li>
-                                    <li><a>Distribute Horizontally</a></li>
-                                    <li><a>Distribute Vertically</a></li>
-                                    <li><a>Align to Slide</a></li>
-                                    <li><a>Align Selected Objects</a></li>
+                                    <li style="background-image: url({{ url("/images/ribbon_imgs/align_left.png") }});" id="align_left"><a>Align Left</a></li>
+                                    <li style="background-image: url({{ url("/images/ribbon_imgs/align_center.png") }});" id="align_center"><a>Align Center</a></li>
+                                    <li style="background-image: url({{ url("/images/ribbon_imgs/align_right.png") }});" id="align_right"><a>Align Right</a></li>
+                                    <li style="background-image: url({{ url("/images/ribbon_imgs/align_top.png") }});" id="align_top"><a>Align Top</a></li>
+                                    <li style="background-image: url({{ url("/images/ribbon_imgs/align_middle.png") }});" id="align_middle"><a>Align Middle</a></li>
+                                    <li style="background-image: url({{ url("/images/ribbon_imgs/align_bottom.png") }});" id="align_bottom"><a>Align Bottom</a></li>
+                                    <li style="background-image: url({{ url("/images/ribbon_imgs/distribute_horizontally.png") }});" id="distribute_horizontally"><a>Distribute Horizontally</a></li>
+                                    <li style="background-image: url({{ url("/images/ribbon_imgs/distribute_vertically.png") }});" id="distribute_vertically"><a>Distribute Vertically</a></li>
+                                    <li style="background-image: url({{ url("/images/ribbon_imgs/checked.png") }});" id="align_to_slide"><a>Align to Slide</a></li>
+                                    <li id="align_to_selected_obj"><a>Align Selected Objects</a></li>
                                 </ul>
                             </li>
-                            <li id="arrange_li_rotate"><a>Rotate</a>
+                            <li style="background-image: url({{ url("/images/ribbon_imgs/rotate.png") }});" id="arrange_li_rotate"><a>Rotate <strong style="position: absolute; right: 5px;">></strong></a>
                                 <ul class="arrange_ul_ul" style="height: 76px;">
-                                    <li><a>Rotate Right</a></li>
-                                    <li><a>Rotate Left</a></li>
-                                    <li><a>More Rotation Options...</a></li>
+                                    <li style="background-image: url({{ url("/images/ribbon_imgs/rotate_right.png") }});" id="rotate_right"><a>Rotate Right</a></li>
+                                    <li style="background-image: url({{ url("/images/ribbon_imgs/rotate_left.png") }});" id="rotate_left"><a>Rotate Left</a></li>
+                                    <li id="rotate_options"><a>More Rotation Options...</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -1032,27 +1025,27 @@
                 </div>
                 <div class="group" style="display: flex; flex-wrap: wrap; flex: 0 0 180px;">
                     <div data-role="">
-                        <button class="button"
+                        <button class="button bullet_btn" id="form_view_paragraph_style_bullet_btn"
                             style="padding: 7px;height: 25px; background-image: url('{{ url('/images/ribbon_imgs/home-11.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;"></button>
-                        <button class="button"
+                        <button class="button numbering_btn" id="form_view_paragraph_style_numbering_btn"
                             style="padding: 7px;height: 25px; background-image: url('{{ url('/images/ribbon_imgs/home-12.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;"></button>
-                        <button class="button"
+                        <button class="button decrease_indent" id="form_view_paragraph_style_decrease_indent_btn"
                             style="padding: 7px;height: 25px; background-image: url('{{ url('/images/ribbon_imgs/home-13.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;"></button>
-                        <button class="button"
+                        <button class="button increase_indent" id="form_view_paragraph_style_increase_indent_btn"
                             style="padding: 7px;height: 25px; background-image: url('{{ url('/images/ribbon_imgs/home-14.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;"></button>
                     </div>
                     <div data-role="buttongroup" data-mode="multi" data-cls-active="bg-grey fg-white">
-                        <button class="button" style="background-image: url('{{ url('/images/ribbon_imgs/home/bold.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;
+                        <button id="form_view_font_bold_btn" class="button font_bold_btn" style="background-image: url('{{ url('/images/ribbon_imgs/home/bold.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;
                                         "></button>
-                        <button class=" button" style="background-image: url('{{ url('/images/ribbon_imgs/home/ital.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;
+                        <button id="form_view_font_ital_btn" class="button font_ital_btn" style="background-image: url('{{ url('/images/ribbon_imgs/home/ital.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;
                                         "></button>
-                        <button class=" button" style="background-image: url('{{ url('/images/ribbon_imgs/home/under.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;
+                        <button id="form_view_font_underline_btn" class="button font_underline_btn" style="background-image: url('{{ url('/images/ribbon_imgs/home/under.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;
                                         "></button>
                     </div>
-                    <div data-role=" buttongroup" style="margin-left: 11px; ">
-                        <button class="button" style="background-image: url('{{ url('/images/ribbon_imgs/home/sub.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;
+                    <div data-role="buttongroup" style="margin-left: 11px;">
+                        <button id="form_view_font_subscription_btn" class="button font_subscription_btn" style="background-image: url('{{ url('/images/ribbon_imgs/home/sub.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;
                                         "></button>
-                        <button class=" button" style="background-image: url('{{ url('/images/ribbon_imgs/home/sup.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;
+                        <button id="form_view_font_superscription_btn" class="button font_superscription_btn" style="background-image: url('{{ url('/images/ribbon_imgs/home/sup.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;
                                         "></button>
                     </div>
                     <span class=" title">Text</span>
@@ -1229,57 +1222,56 @@
     </div>
     <script src="{{ asset('js/quiz_crud.js') }}"></script>
     <script>
-        var userSelection = document.getElementsByClassName('quiz_types');
-        for (var i = 0; i < userSelection.length; i++) {
-            (function (index) {
-                userSelection[index].addEventListener("mousemove", function () {
-                    if ($('.tooltip_pic').eq(index).css("display") == 'block') return;
-                    for (let j = 0; j < 22; j++) {
-                        if (j == index) $('.tooltip_pic').eq(j).fadeIn();
-                        else $('.tooltip_pic').eq(j).fadeOut();
-                    }
-                })
-            })(i);
-        }
+    var userSelection = document.getElementsByClassName('quiz_types');
+    for (var i = 0; i < userSelection.length; i++) {
+        (function(index) {
+            userSelection[index].addEventListener("mousemove", function() {
+                if ($('.tooltip_pic').eq(index).css("display") == 'block') return;
+                for (let j = 0; j < 22; j++) {
+                    if (j == index) $('.tooltip_pic').eq(j).fadeIn();
+                    else $('.tooltip_pic').eq(j).fadeOut();
+                }
+            })
+        })(i);
+    }
 
 
-        $('#form_view_btn').click(function () {
+    $('#form_view_btn').click(function() {
 
-            $('.form_view_element').show();
-            $('.slide_view_element').hide();
+        $('.form_view_element').show();
+        $('.slide_view_element').hide();
 
-            if ($(this).hasClass('clicked')) return;
-            $(this).toggleClass('clicked');
-            $('#slide_view_btn').toggleClass('clicked');
-            $("#section_home_form").addClass('active');
-            $("#section_Home_SlideView").removeClass('active');
-            $("#section_Insert").removeClass('active');
-            $("#section_Design").removeClass('active');
-            $("#section_Home_FormView").addClass('active');
-            $("#section_home_slide").hide();
-            $("#section_home_form").show();
-            $("#section_insert").hide();
-            $("#section_design").hide();
-        });
+        if ($(this).hasClass('clicked')) return;
+        $(this).toggleClass('clicked');
+        $('#slide_view_btn').toggleClass('clicked');
+        $("#section_home_form").addClass('active');
+        $("#section_Home_SlideView").removeClass('active');
+        $("#section_Insert").removeClass('active');
+        $("#section_Design").removeClass('active');
+        $("#section_Home_FormView").addClass('active');
+        $("#section_home_slide").hide();
+        $("#section_home_form").show();
+        $("#section_insert").hide();
+        $("#section_design").hide();
+    });
 
 
-        $('#slide_view_btn').click(function () {
-            $('.form_view_element').hide();
-            $('.slide_view_element').show();
+    $('#slide_view_btn').click(function() {
+        $('.form_view_element').hide();
+        $('.slide_view_element').show();
 
-            if ($(this).hasClass('clicked')) return;
-            $(this).toggleClass('clicked');
-            $('#form_view_btn').toggleClass('clicked'); //for main branch comment
-            $("#section_home_slide").addClass('active');
-            $("#section_Home_FormView").removeClass('active');
-            $("#section_Insert").removeClass('active');
-            $("#section_Design").removeClass('active');
-            $("#section_Home_SlideView").addClass('active');
-            $("#section_home_slide").show();
-            $("#section_home_form").hide();
-            $("#section_insert").show();
-            $("#section_design").show();
-        });
-
+        if ($(this).hasClass('clicked')) return;
+        $(this).toggleClass('clicked');
+        $('#form_view_btn').toggleClass('clicked'); //for main branch comment
+        $("#section_home_slide").addClass('active');
+        $("#section_Home_FormView").removeClass('active');
+        $("#section_Insert").removeClass('active');
+        $("#section_Design").removeClass('active');
+        $("#section_Home_SlideView").addClass('active');
+        $("#section_home_slide").show();
+        $("#section_home_form").hide();
+        $("#section_insert").show();
+        $("#section_design").show();
+    });
     </script>
     @endsection
