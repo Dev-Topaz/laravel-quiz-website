@@ -190,25 +190,25 @@
                                    data-clear-button="false"
                                    value="{{ $quiz->is_limit_time ? $quiz->limit_time : '01:00' }}">
                         </div>
-                        @if ($quiz->shuffle_answers != null)
+                        @if (isset($quiz->shuffle_answers))
                             <div class="cell-12">
                                 <input type="checkbox" data-role="checkbox" id="shuffle_answers"
                                        data-caption="Shuffle answers" {{ $quiz->shuffle_answers ? 'checked' : '' }}>
                             </div>
                         @endif
-                        @if ($quiz->partially_correct != null)
+                        @if (isset($quiz->partially_correct))
                             <div class="cell-12">
                                 <input type="checkbox" data-role="checkbox" id="partially_correct"
                                        data-caption="Accept partially correct answer" {{ $quiz->partially_correct ? 'checked' : '' }}>
                             </div>
                         @endif
-                        @if ($quiz->limit_number_response != null)
+                        @if (isset($quiz->limit_number_response))
                             <div class="cell-12">
                                 <input type="checkbox" data-role="checkbox" id="limit_response"
                                        data-caption="Limit number of response" {{ $quiz->limit_response ? 'checked' : '' }}>
                             </div>
                         @endif
-                        @if ($quiz->case_sensitive != null)
+                        @if (isset($quiz->case_sensitive))
                             <div class="cell-12">
                                 <input type="checkbox" data-role="checkbox" id="case_sensitive"
                                        data-caption="Case sensitive" {{ $quiz->case_sensitive ? 'checked' : '' }}>

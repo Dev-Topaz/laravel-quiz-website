@@ -6,6 +6,8 @@ function onNodeClick(node) {
 
     $.get(root_url + "/quizes/" + quizId + "/edit", function (data, status) {
         $('#quiz_view').html(data);
+    }).catch((XHttpResponse) => {
+        console.log(XHttpResponse);
     });
 }
 
@@ -53,6 +55,8 @@ function create_quiz(quiz_type, root_url, token) {
 
             $.get(root_url + "/quizes/" + quizId + "/edit", function (data, status) {
                 $('#quiz_view').html(data);
+            }).catch((XHttpResponse) => {
+                console.log(XHttpResponse);
             });
         }).catch((XHttpResponse) => {
         console.log(XHttpResponse);
@@ -90,20 +94,25 @@ function update_quiz() {
     const attempts = Metro.getPlugin('#attempts', 'select').val();
 
     let is_limit_time = $('#is_limit_time').is(":checked");
+    is_limit_time = is_limit_time === 'true' ? 1 : 0;
     if ($('#is_limit_time').length === 0) is_limit_time = null;
 
     const limit_time = $('#limit_time').val();
 
     let shuffle_answers = $('#shuffle_answers').is(":checked");
+    shuffle_answers = shuffle_answers === 'true' ? 1 : 0;
     if ($('#shuffle_answers').length === 0) shuffle_answers = null;
 
     let partially_correct = $('#partially_correct').is(":checked");
+    partially_correct = partially_correct === 'true' ? 1 : 0;
     if ($('#partially_correct').length === 0) partially_correct = null;
 
     let limit_number_response = $('#limit_number_response').is(":checked");
+    limit_number_response = limit_number_response === 'true' ? 1 : 0;
     if ($('#limit_number_response').length === 0) limit_number_response = null;
 
     let case_sensitive = $('#case_sensitive').is(":checked");
+    case_sensitive = case_sensitive === 'true' ? 1 : 0;
     if ($('#case_sensitive').length === 0) case_sensitive = null;
 
     const root_url = $('meta[name=url]').attr('content');
@@ -128,12 +137,12 @@ function update_quiz() {
             branching: branching,
             score: score,
             attempts: attempts,
-            is_limit_time: is_limit_time === 'true' ? 1 : 0,
+            is_limit_time: is_limit_time,
             limit_time: limit_time,
-            shuffle_answers: shuffle_answers === 'true' ? 1 : 0,
-            partially_correct: partially_correct === 'true' ? 1 : 0,
-            limit_number_response: limit_number_response === 'true' ? 1 : 0,
-            case_sensitive: case_sensitive === 'true' ? 1 : 0,
+            shuffle_answers: shuffle_answers,
+            partially_correct: partially_correct,
+            limit_number_response: limit_number_response,
+            case_sensitive: case_sensitive,
             correct_score: correct_score,
             incorrect_score: incorrect_score,
             try_again_score: try_again_score,
