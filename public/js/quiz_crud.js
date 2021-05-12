@@ -31,8 +31,8 @@ function create_quiz(quiz_type, root_url, token) {
 
         case (2):
             lv.insertAfter(node, {
-                caption: 'Select the correct answer option:',
-                content: '<i>Multiple Choice<i>'
+                caption: 'Select one or more correct answers:',
+                content: '<i>Multiple Response<i>'
             });
             break;
 
@@ -48,7 +48,6 @@ function create_quiz(quiz_type, root_url, token) {
             'exam_group_id': groupId,
         },
         function (data, status) {
-            console.log(data);
             quizId = data;
             node.next().attr('id', quizId);
             if (node.attr('id') === 'none' || node.attr('id') === undefined) node.remove();
@@ -87,8 +86,12 @@ function update_quiz() {
     const question_type = Metro.getPlugin('#question_type', 'select').val();
     const feedback_type = Metro.getPlugin('#feedback', 'select').val();
 
-    let branching = Metro.getPlugin('#branching', 'select').val();
-    if ($('#branching:disabled').length !== 0) branching = null;
+    let branching;
+    if ($('#branching:disabled').length !== 0 || $('#branching').length === 0 ) {
+        branching = null;
+    } else {
+        branching = Metro.getPlugin('#branching', 'select').val();
+    }
 
     const score = Metro.getPlugin('#score', 'select').val();
     const attempts = Metro.getPlugin('#attempts', 'select').val();

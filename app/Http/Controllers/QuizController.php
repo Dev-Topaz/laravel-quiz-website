@@ -71,17 +71,43 @@ class QuizController extends Controller
                 ]);
 
                 break;
+
+            case "2":
+                $quiz = Quiz::create([
+                    'exam_group_id' => $request->exam_group_id,
+                    'type_id' => $request->type_id,
+                    'question_element' => '<div contenteditable="true" class="slide_view_question_element slide_view_group" style="overflow-y: scroll;border: 1px solid black;height: 70px;width: 80%;left: 10%">Select one or more correct answers:</div>',
+                    'answer' => '1',
+                    'feedback_correct' => 'That\'s right! You chose the correct response.',
+                    'feedback_incorrect' => 'You did not choose the correct response.',
+                    'feedback_try_again' => null,
+                    'media' => null,
+                    'order' => null,
+                    'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%"><div class="col-md-12"><div class="choice_item"><input type="checkbox" id="1" name="answer" value="1" style="padding-right: 10px;"><label for="1">Option 1</label></div><div class="choice_item"><input type="checkbox" id="2" name="answer" value="2" style="padding-right: 10px;"><label for="2">Option 2</label></div><div class="choice_item"><input type="checkbox" id="3" name="answer" value="3" style="padding-right: 10px;"><label for="3">Option 3</label></div></div></div>',
+                    'question_type' => 'graded',
+                    'feedback_type' => 'by_result',
+                    'branching' => null,
+                    'score' => 'by_result',
+                    'attempts' => '1',
+                    'is_limit_time' => false,
+                    'limit_time' => null,
+                    'shuffle_answers' => true,
+                    'partially_correct' => false,
+                    'limit_number_response' => false,
+                    'case_sensitive' => null,
+                    'correct_score' => 10,
+                    'incorrect_score' => 0,
+                    'try_again_score' => null,
+                ]);
+
+                break;
+
             default:
         }
 
-//        return view('quizes.create', ['exam_id' => $exam_id, 'quiz_type' => $quiz_type]);
 
         return $quiz->id;
 
-//        $redirect_url = '/exams/' . $request->exam_id;
-//
-//        return redirect($redirect_url)
-//            ->with('success', 'Quiz created successfully');
     }
 
     /**
@@ -125,36 +151,28 @@ class QuizController extends Controller
      */
     public function edit(Quiz $quiz)
     {
-        if ($quiz->type_id == 6) {
-            $sequence_array = explode(';', $quiz->answer);
-            array_pop($sequence_array);
-            $quiz->sequence_array = $sequence_array;
-        }
-        if ($quiz->type_id == 7) {
-            $matching = explode('@', $quiz->answer);
-            array_pop($matching);
-
-            $matching_array = [];
-            $item_array = [];
-
-            foreach ($matching as $item) {
-                array_push($item_array, explode(';', $item)[0]);
-                array_push($matching_array, explode(';', $item)[1]);
-            }
-
-            $quiz->item_array = $item_array;
-            $quiz->matching_array = $matching_array;
-        }
+//        if ($quiz->type_id == 6) {
+//            $sequence_array = explode(';', $quiz->answer);
+//            array_pop($sequence_array);
+//            $quiz->sequence_array = $sequence_array;
+//        }
+//        if ($quiz->type_id == 7) {
+//            $matching = explode('@', $quiz->answer);
+//            array_pop($matching);
+//
+//            $matching_array = [];
+//            $item_array = [];
+//
+//            foreach ($matching as $item) {
+//                array_push($item_array, explode(';', $item)[0]);
+//                array_push($matching_array, explode(';', $item)[1]);
+//            }
+//
+//            $quiz->item_array = $item_array;
+//            $quiz->matching_array = $matching_array;
+//        }
         return view('quizes.update', ['quiz' => $quiz]);
     }
-
-//    public function edit_form_view(Quiz $quiz) {
-//        return view('quizes.update_form_view', ['quiz' => $quiz]);
-//    }
-//
-//    public function edit_slide_view(Quiz $quiz) {
-//        return view('quizes.update_slide_view', ['quiz' => $quiz]);
-//    }
 
     /**
      * Update the specified resource in storage.
@@ -190,10 +208,6 @@ class QuizController extends Controller
 
         $quiz->save();
 
-//        $redirect_url = '/exams/' . $request->exam_id;
-//
-//        return redirect($redirect_url)
-//            ->with('success', 'Quiz updated successfully');
         return $quiz->id;
     }
 
@@ -208,6 +222,6 @@ class QuizController extends Controller
 
         $quiz->delete();
 
-        return;
+        return true;
     }
 }

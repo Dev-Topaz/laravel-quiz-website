@@ -249,50 +249,50 @@
         $('#target_element').val('common_element');
             return;
     });
-
-    function get_choice_item_id() {
-        const length = $('.choice_item').length;
-
-        let id = 1;
-
-        if (length > 0) {
-            id = 0;
-
-            for (let i = 0; i < length; i++) {
-                const inputId = parseInt($('.choice_item input').eq(i).attr('id'));
-                if (inputId > id) id = inputId + 1;
-            }
-        }
-
-        return id;
-    }
-
-    function save_choice_data() {
-        const length = $('.choice_item').length;
-
-        let choice_id_array = '';
-        let answer_content_array = '';
-
-        for (let i = 0; i < length; i++) {
-            choice_id_array += $('.choice_item input').eq(i).attr('id') + ';';
-            answer_content_array += $('.choice_item label').eq(i).html() + ';';
-        }
-
-        console.log(choice_id_array, answer_content_array);
-
-        $('input#answer_content_array').val(answer_content_array);
-        $('input#choice_id_array').val(choice_id_array);
-    }
-
-    $('#add_choice').click(function () {
-
-        const id = get_choice_item_id();
-
-        const element = $('<tr class="choice_item"><td><input type="radio" id="' + id + '" name="answer" value="' + id + '" style="padding-right: 10px;"></td><td><label class="choice_label" data-editable for="' + id + '">Type content ...</label></td><td></td><td><a onclick="{$(this).parent().parent().remove();save_choice_data();}"><i class="fas fa-trash-alt"></i></a></td></tr>');
-        $('tbody#choice_list').append(element);
-
-        save_choice_data();
-    });
+    //
+    // function get_choice_item_id() {
+    //     const length = $('.choice_item').length;
+    //
+    //     let id = 1;
+    //
+    //     if (length > 0) {
+    //         id = 0;
+    //
+    //         for (let i = 0; i < length; i++) {
+    //             const inputId = parseInt($('.choice_item input').eq(i).attr('id'));
+    //             if (inputId > id) id = inputId + 1;
+    //         }
+    //     }
+    //
+    //     return id;
+    // }
+    //
+    // function save_choice_data() {
+    //     const length = $('.choice_item').length;
+    //
+    //     let choice_id_array = '';
+    //     let answer_content_array = '';
+    //
+    //     for (let i = 0; i < length; i++) {
+    //         choice_id_array += $('.choice_item input').eq(i).attr('id') + ';';
+    //         answer_content_array += $('.choice_item label').eq(i).html() + ';';
+    //     }
+    //
+    //     console.log(choice_id_array, answer_content_array);
+    //
+    //     $('input#answer_content_array').val(answer_content_array);
+    //     $('input#choice_id_array').val(choice_id_array);
+    // }
+    //
+    // $('#add_choice').click(function () {
+    //
+    //     const id = get_choice_item_id();
+    //
+    //     const element = $('<tr class="choice_item"><td><input type="radio" id="' + id + '" name="answer" value="' + id + '" style="padding-right: 10px;"></td><td><label class="choice_label" data-editable for="' + id + '">Type content ...</label></td><td></td><td><a onclick="{$(this).parent().parent().remove();save_choice_data();}"><i class="fas fa-trash-alt"></i></a></td></tr>');
+    //     $('tbody#choice_list').append(element);
+    //
+    //     save_choice_data();
+    // });
 
     $('.slide_view_group').draggable();
     $('.slide_view_group').resizable();
