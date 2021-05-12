@@ -49,6 +49,7 @@ function create_quiz(quiz_type, root_url, token) {
             console.log(data);
             quizId = data;
             node.next().attr('id', quizId);
+            if (node.attr('id') === 'none' || node.attr('id') === undefined) node.remove();
 
             $.get(root_url + "/quizes/" + quizId + "/edit", function (data, status) {
                 $('#quiz_view').html(data);
@@ -57,7 +58,6 @@ function create_quiz(quiz_type, root_url, token) {
         console.log(XHttpResponse);
     });
 
-    if (node.attr('id') == 'none') node.remove();
 }
 
 function update_quiz() {
@@ -111,37 +111,36 @@ function update_quiz() {
     const quizId = $('#quiz_list').find('.current').attr('id');
 
     $.ajax({
-      url: root_url + '/quizes/' + quizId,
-      type: 'PUT',
-      data: {
-          _token: token,
-          question_element: question_element,
-          answer: answer,
-          answer_element: answer_element,
-          feedback_correct: feedback_correct,
-          feedback_incorrect: feedback_incorrect,
-          feedback_try_again: feedback_try_again,
-          // media: media,
-          // order: order,
-          question_type: question_type,
-          feedback_type: feedback_type,
-          branching: branching,
-          score: score,
-          attempts: attempts,
-          is_limit_time: is_limit_time === 'true' ? 1 : 0,
-          limit_time: limit_time,
-          shuffle_answers: shuffle_answers === 'true' ? 1 : 0,
-          partially_correct: partially_correct === 'true' ? 1 : 0,
-          limit_number_response: limit_number_response === 'true' ? 1 : 0,
-          case_sensitive: case_sensitive === 'true' ? 1 : 0,
-          correct_score: correct_score,
-          incorrect_score: incorrect_score,
-          try_again_score: try_again_score,
-      },
-      success: function(data) {
-        alert(data);
-        console.log('quiz updated successfully');
-      }
+        url: root_url + '/quizes/' + quizId,
+        type: 'PUT',
+        data: {
+            _token: token,
+            question_element: question_element,
+            answer: answer,
+            answer_element: answer_element,
+            feedback_correct: feedback_correct,
+            feedback_incorrect: feedback_incorrect,
+            feedback_try_again: feedback_try_again,
+            // media: media,
+            // order: order,
+            question_type: question_type,
+            feedback_type: feedback_type,
+            branching: branching,
+            score: score,
+            attempts: attempts,
+            is_limit_time: is_limit_time === 'true' ? 1 : 0,
+            limit_time: limit_time,
+            shuffle_answers: shuffle_answers === 'true' ? 1 : 0,
+            partially_correct: partially_correct === 'true' ? 1 : 0,
+            limit_number_response: limit_number_response === 'true' ? 1 : 0,
+            case_sensitive: case_sensitive === 'true' ? 1 : 0,
+            correct_score: correct_score,
+            incorrect_score: incorrect_score,
+            try_again_score: try_again_score,
+        },
+        success: function (data) {
+            alert('Quiz updated successfully');
+        }
     }).catch((XHttpResponse) => {
         console.log(XHttpResponse);
     });
@@ -149,5 +148,37 @@ function update_quiz() {
 }
 
 function delete_quiz() {
-    console.log('deleted');
+    const root_url = $('meta[name=url]').attr('content');
+    const token = $('meta[name=csrf-token]').attr('content');
+    const node = $('#quiz_list').find('.current');
+    const quizId = node.attr('id');
+
+    $.ajax({
+        url: root_url + '/quizes/' + quizId,
+        type: 'DELETE',
+        data: {
+            id: quizId,
+            _token: token,
+
+        },
+        success: function (data) {
+
+            const parentNode = $('.current').closest('.node-group');
+
+            console.log(parentNode.find('li').length);
+            if (parentNode.find('li').length === 1) {
+                Metro.getPlugin('#quiz_list', 'listview').add(parentNode, {
+                    caption: 'No questions',
+                    content: '<i>Add questions<i>'
+                });
+            }
+
+            node.remove();
+            $('#quiz_view').html('');
+            alert('Quiz deleted successfully');
+        }
+    }).catch((XHttpResponse) => {
+        console.log(XHttpResponse);
+    });
+
 }

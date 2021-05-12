@@ -205,29 +205,9 @@ class QuizController extends Controller
      */
     public function destroy(Quiz $quiz)
     {
-        switch ($quiz->type_id) {
-            case "1":
-
-                MultiChoiceAnswerContent::where('quiz_id', $quiz->id)->delete();
-                break;
-
-            case "2":
-
-                MultiResponseAnswerContent::where('quiz_id', $quiz->id)->delete();
-                break;
-
-            case "5":
-                NumericAnswerContent::where('quiz_id', $quiz->id)->delete();
-                break;
-
-            default:
-        }
 
         $quiz->delete();
 
-        $redirect_url = '/exams/' . $quiz->exam_id;
-
-        return redirect($redirect_url)
-            ->with('success', 'Quiz deleted successfully');
+        return;
     }
 }
