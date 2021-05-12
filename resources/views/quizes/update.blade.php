@@ -31,28 +31,28 @@
             </div>
             <br>
 
-            <h4>Choices</h4>
-            <div style="height: 216px;overflow-y: scroll;">
-                <input id="choice_id_array" type="text"
-                       class="form-control @error('choice_id_array') is-invalid @enderror"
-                       name="choice_id_array"
-                       value="" autocomplete="choice_id_array" autofocus hidden>
-                <div>
-                    <table class="table striped" style="margin: 0">
-                        <thead>
-                        <tr>
-                            <th>Correct</th>
-                            <th>Choice</th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        <tbody id="choice_list">
-                        </tbody>
-                    </table>
-                    <a id="add_choice" style="padding: 10px 0;margin-left: 90px;margin-top: 10px;">Type to add a new choice</a>
-                </div>
-            </div>
+            @switch($quiz->type_id)
+                @case(1)
+                    <h4>Choices</h4>
+                    <div style="height: 216px;overflow-y: scroll;">
+                        <div>
+                            <table class="table striped" style="margin: 0">
+                                <thead>
+                                <tr>
+                                    <th>Correct</th>
+                                    <th>Choice</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody id="choice_list">
+                                </tbody>
+                            </table>
+                            <a id="add_choice" style="padding: 10px 0;margin-left: 90px;margin-top: 10px;">Type to add a new choice</a>
+                        </div>
+                    </div>
+                @break
+            @endswitch
 
             <br>
 
@@ -229,6 +229,8 @@
     </div>
 </div>
 
+{{--<script src="{{ asset('js/texteditor.js') }}" defer></script>--}}
+<script src="{{ asset('js/multiple_choice.js') }}" defer></script>
 <script>
     $("body").click(function (e) {
         if (jQuery.inArray('slide_view_question_element', e.target.classList) !== -1 || $(e.target).parents(".slide_view_question_element").length) {
@@ -250,48 +252,6 @@
             return;
     });
 
-    function get_choice_item_id() {
-        const length = $('.choice_item').length;
-
-        let id = 1;
-
-        if (length > 0) {
-            id = 0;
-
-            for (let i = 0; i < length; i++) {
-                const inputId = parseInt($('.choice_item input').eq(i).attr('id'));
-                if (inputId > id) id = inputId + 1;
-            }
-        }
-
-        return id;
-    }
-
-    // function save_choice_data() {
-    //     const length = $('.choice_item').length;
-    //
-    //     let choice_id_array = '';
-    //     let answer_content_array = '';
-    //
-    //     for (let i = 0; i < length; i++) {
-    //         choice_id_array += $('.choice_item input').eq(i).attr('id') + ';';
-    //         answer_content_array += $('.choice_item label').eq(i).html() + ';';
-    //     }
-    //
-    //     console.log(choice_id_array, answer_content_array);
-    //
-    //     $('input#answer_content_array').val(answer_content_array);
-    //     $('input#choice_id_array').val(choice_id_array);
-    // }
-
-    $('#add_choice').click(function () {
-
-        const id = get_choice_item_id();
-
-        const element = $('<tr class="choice_item"><td><input type="radio" id="' + id + '" name="answer" value="' + id + '" style="padding-right: 10px;"></td><td><label class="choice_label" data-editable for="' + id + '">Type content ...</label></td><td></td><td><a onclick="{$(this).parent().parent().remove();}"><i class="fas fa-trash-alt"></i></a></td></tr>');
-        $('tbody#choice_list').append(element);
-    });
-
     $('.slide_view_group').draggable();
     $('.slide_view_group').resizable();
 
@@ -303,7 +263,6 @@
     function answer_slide2form(answer_element, answer_content) {
         const typeId = $('#type_id').val();
         const element = $(answer_element);
-        console.log(typeId);
 
         let form_answer = '';
         switch (typeId) {
