@@ -486,29 +486,285 @@
                 </div>
                 <div class="group" style="flex: 0 0 273px; flex-wrap: wrap;">
                     <div style="display: flex; align-items: center;">
-                        <select id="font_family_selector"
+                        <select id="slide_view_font_family_selector"
                             style="font-size: 12px; outline: none; width: 131px; height: 25px;">
-                            <option value="">Core i3 (hp)</option>
-                            <option value="">Pentium (hp)</option>
-                            <option value="">Smart Core i3 (hp)</option>
-                            <option value="">Mini</option>
-                            <option value="">Site</option>
-                            <option value="">Portal</option>
-                            <option value="">eVPS-TEST (30 дней)</option>
-                            <option value="" selected="selected">Open Sans Semibold</option>
-                            <option value="">eVPS-2</option>
+                            <option style="font-family: 'Abadi MT Condensed Light';" value="Abadi MT Condensed Light">Abadi MT Condensed Light</option>
+                            <option style="font-family: 'Aharoni';" value="Aharoni">Aharoni</option>
+                            <option style="font-family: 'Aharoni Bold';" value="Aharoni Bold">Aharoni Bold</option>
+                            <option style="font-family: 'Aldhabi';" value="Aldhabi">Aldhabi</option>
+                            <option style="font-family: 'AlternateGothic2 BT';" value="AlternateGothic2 BT">AlternateGothic2 BT</option>
+                            <option style="font-family: 'Andale Mono';" value="Andale Mono">Andale Mono</option>
+                            <option style="font-family: 'Andalus';" value="Andalus">Andalus</option>
+                            <option style="font-family: 'Angsana New';" value="Angsana New">Angsana New</option>
+                            <option style="font-family: 'AngsanaUPC';" value="AngsanaUPC">AngsanaUPC</option>
+                            <option style="font-family: 'Aparajita';" value="Aparajita">Aparajita</option>
+                            <option style="font-family: 'Apple Chancery';" value="Apple Chancery">Apple Chancery</option>
+                            <option style="font-family: 'Arabic Typesetting';" value="Arabic Typesetting">Arabic Typesetting</option>
+                            <option style="font-family: 'Arial';" value="Arial" selected="selected">Arial</option>
+                            <option style="font-family: 'Arial Black';" value="Arial Black">Arial Black</option>
+                            <option style="font-family: 'Arial narrow';" value="Arial narrow">Arial narrow</option>
+                            <option style="font-family: 'Arial Nova';" value="Arial Nova">Arial Nova</option>
+                            <option style="font-family: 'Arial Rounded MT Bold';" value="Arial Rounded MT Bold">Arial Rounded MT Bold</option>
+                            <option style="font-family: 'Arnoldboecklin';" value="Arnoldboecklin">Arnoldboecklin</option>
+                            <option style="font-family: 'Avanta Garde';" value="Avanta Garde">Avanta Garde</option>
+                            <option style="font-family: 'Bahnschrift';" value="Bahnschrift">Bahnschrift</option>
+                            <option style="font-family: 'Bahnschrift Light';" value="Bahnschrift Light">Bahnschrift Light</option>
+                            <option style="font-family: 'Bahnschrift SemiBold';" value="Bahnschrift SemiBold">Bahnschrift SemiBold</option>
+                            <option style="font-family: 'Bahnschrift SemiLight';" value="Bahnschrift SemiLight">Bahnschrift SemiLight</option>
+                            <option style="font-family: 'Baskerville';" value="Baskerville">Baskerville</option>
+                            <option style="font-family: 'Batang';" value="Batang">Batang</option>
+                            <option style="font-family: 'BatangChe';" value="BatangChe">BatangChe</option>
+                            <option style="font-family: 'Big Caslon';" value="Big Caslon">Big Caslon</option>
+                            <option style="font-family: 'BIZ UDGothic';" value="BIZ UDGothic">BIZ UDGothic</option>
+                            <option style="font-family: 'BIZ UDMincho Medium';" value="BIZ UDMincho Medium">BIZ UDMincho Medium</option>
+                            <option style="font-family: 'Blippo';" value="Blippo">Blippo</option>
+                            <option style="font-family: 'Blippo';" value="Blippo">Blippo</option>
+                            <option style="font-family: 'Bodoni MT';" value="Bodoni MT">Bodoni MT</option>
+                            <option style="font-family: 'Book Antiqua';" value="Book Antiqua">Book Antiqua</option>
+                            <option style="font-family: 'Bookman';" value="Bookman">Bookman</option>
+                            <option style="font-family: 'Bradley Hand';" value="Bradley Hand">Bradley Hand</option>
+                            <option style="font-family: 'Browallia New';" value="Browallia New">Browallia New</option>
+                            <option style="font-family: 'BrowalliaUPC';" value="BrowalliaUPC">BrowalliaUPC</option>
+                            <option style="font-family: 'Brush Script MT';" value="Brush Script MT">Brush Script MT</option>
+                            <option style="font-family: 'Brush Script Std';" value="Brush Script Std">Brush Script Std</option>
+                            <option style="font-family: 'Brushstroke';" value="Brushstroke">Brushstroke</option>
+                            <option style="font-family: 'Calibri';" value="Calibri">Calibri</option>
+                            <option style="font-family: 'Calibri Light';" value="Calibri Light">Calibri Light</option>
+                            <option style="font-family: 'Calisto MT';" value="Calisto MT">Calisto MT</option>
+                            <option style="font-family: 'Cambodian';" value="Cambodian">Cambodian</option>
+                            <option style="font-family: 'Cambria';" value="Cambria">Cambria</option>
+                            <option style="font-family: 'Cambria Math';" value="Cambria Math">Cambria Math</option>
+                            <option style="font-family: 'Candara';" value="Candara">Candara</option>
+                            <option style="font-family: 'Century Gothic';" value="Century Gothic">Century Gothic</option>
+                            <option style="font-family: 'Chalkduster';" value="Chalkduster">Chalkduster</option>
+                            <option style="font-family: 'Cherokee';" value="Cherokee">Cherokee</option>
+                            <option style="font-family: 'Comic Sans';" value="Comic Sans">Comic Sans</option>
+                            <option style="font-family: 'Comic Sans MS';" value="Comic Sans MS">Comic Sans MS</option>
+                            <option style="font-family: 'Consolas';" value="Consolas">Consolas</option>
+                            <option style="font-family: 'Constantia';" value="Constantia">Constantia</option>
+                            <option style="font-family: 'Copperplate';" value="Copperplate">Copperplate</option>
+                            <option style="font-family: 'Copperplate Gothic Light';" value="Copperplate Gothic Light">Copperplate Gothic Light</option>
+                            <option style="font-family: 'Copperplate Gothic Bold';" value="Copperplate Gothic Bold">Copperplate Gothic Bold</option>
+                            <option style="font-family: 'Corbel';" value="Corbel">Corbel</option>
+                            <option style="font-family: 'Cordia New';" value="Cordia New">Cordia New</option>
+                            <option style="font-family: 'CordiaUPC';" value="CordiaUPC">CordiaUPC</option>
+                            <option style="font-family: 'Coronet script';" value="Coronet script">Coronet script</option>
+                            <option style="font-family: 'Coronetscript';" value="Coronetscript">Coronetscript</option>
+                            <option style="font-family: 'Courier';" value="Courier">Courier</option>
+                            <option style="font-family: 'Courier New';" value="Courier New">Courier New</option>
+                            <option style="font-family: 'DaunPenh';" value="DaunPenh">DaunPenh</option>
+                            <option style="font-family: 'David';" value="David">David</option>
+                            <option style="font-family: 'DengXian';" value="DengXian">DengXian</option>
+                            <option style="font-family: 'DFKai-SB';" value="DFKai-SB">DFKai-SB</option>
+                            <option style="font-family: 'Didot';" value="Didot">Didot</option>
+                            <option style="font-family: 'DilleniaUPC';" value="DilleniaUPC">DilleniaUPC</option>
+                            <option style="font-family: 'DokChampa';" value="DokChampa">DokChampa</option>
+                            <option style="font-family: 'Dotum';" value="Dotum">Dotum</option>
+                            <option style="font-family: 'DotumChe';" value="DotumChe">DotumChe</option>
+                            <option style="font-family: 'Ebrima';" value="Ebrima">Ebrima</option>
+                            <option style="font-family: 'Estrangelo Edessa';" value="Estrangelo Edessa">Estrangelo Edessa</option>
+                            <option style="font-family: 'EucrosiaUPC';" value="EucrosiaUPC">EucrosiaUPC</option>
+                            <option style="font-family: 'Euphemia';" value="Euphemia">Euphemia</option>
+                            <option style="font-family: 'FangSong';" value="FangSong">FangSong</option>
+                            <option style="font-family: 'Florence';" value="Florence">Florence</option>
+                            <option style="font-family: 'Franklin Gothic Medium';" value="Franklin Gothic Medium">Franklin Gothic Medium</option>
+                            <option style="font-family: 'FrankRuehl';" value="FrankRuehl">FrankRuehl</option>
+                            <option style="font-family: 'FreesiaUPC';" value="FreesiaUPC">FreesiaUPC</option>
+                            <option style="font-family: 'Futara';" value="Futara">Futara</option>
+                            <option style="font-family: 'Gabriola';" value="Gabriola">Gabriola</option>
+                            <option style="font-family: 'Gadugi';" value="Gadugi">Gadugi</option>
+                            <option style="font-family: 'Garamond';" value="Garamond">Garamond</option>
+                            <option style="font-family: 'Gautami';" value="Gautami">Gautami</option>
+                            <option style="font-family: 'Geneva';" value="Geneva">Geneva</option>
+                            <option style="font-family: 'Georgia';" value="Georgia">Georgia</option>
+                            <option style="font-family: 'Georgia Pro';" value="Georgia Pro">Georgia Pro</option>
+                            <option style="font-family: 'Gill Sans';" value="Gill Sans">Gill Sans</option>
+                            <option style="font-family: 'Gill Sans';" value="Gill Sans">Gill Sans</option>
+                            <option style="font-family: 'Gill Sans Nova';" value="Gill Sans Nova">Gill Sans Nova</option>
+                            <option style="font-family: 'Gisha';" value="Gisha">Gisha</option>
+                            <option style="font-family: 'Goudy Old Style';" value="Goudy Old Style">Goudy Old Style</option>
+                            <option style="font-family: 'Gulim';" value="Gulim">Gulim</option>
+                            <option style="font-family: 'GulimChe';" value="GulimChe">GulimChe</option>
+                            <option style="font-family: 'Gungsuh';" value="Gungsuh">Gungsuh</option>
+                            <option style="font-family: 'GungsuhChe';" value="GungsuhChe">GungsuhChe</option>
+                            <option style="font-family: 'Hebrew';" value="Hebrew">Hebrew</option>
+                            <option style="font-family: 'Helvetica';" value="Helvetica">Helvetica</option>
+                            <option style="font-family: 'Hoefler Text';" value="Hoefler Text">Hoefler Text</option>
+                            <option style="font-family: 'HoloLens MDL2 Assets';" value="HoloLens MDL2 Assets">HoloLens MDL2 Assets</option>
+                            <option style="font-family: 'Impact';" value="Impact">Impact</option>
+                            <option style="font-family: 'Impact';" value="Impact">Impact</option>
+                            <option style="font-family: 'Ink Free';" value="Ink Free">Ink Free</option>
+                            <option style="font-family: 'IrisUPC';" value="IrisUPC">IrisUPC</option>
+                            <option style="font-family: 'Iskoola Pota';" value="Iskoola Pota">Iskoola Pota</option>
+                            <option style="font-family: 'Japanese';" value="Japanese">Japanese</option>
+                            <option style="font-family: 'JasmineUPC';" value="JasmineUPC">JasmineUPC</option>
+                            <option style="font-family: 'Javanese Text';" value="Javanese Text">Javanese Text</option>
+                            <option style="font-family: 'Jazz LET';" value="Jazz LET">Jazz LET</option>
+                            <option style="font-family: 'KaiTi';" value="KaiTi">KaiTi</option>
+                            <option style="font-family: 'Kalinga';" value="Kalinga">Kalinga</option>
+                            <option style="font-family: 'Kartika';" value="Kartika">Kartika</option>
+                            <option style="font-family: 'Khmer UI';" value="Khmer UI">Khmer UI</option>
+                            <option style="font-family: 'KodchiangUPC';" value="KodchiangUPC">KodchiangUPC</option>
+                            <option style="font-family: 'Kokila';" value="Kokila">Kokila</option>
+                            <option style="font-family: 'Korean';" value="Korean">Korean</option>
+                            <option style="font-family: 'Lao';" value="Lao">Lao</option>
+                            <option style="font-family: 'Lao UI';" value="Lao UI">Lao UI</option>
+                            <option style="font-family: 'Latha';" value="Latha">Latha</option>
+                            <option style="font-family: 'Leelawadee';" value="Leelawadee">Leelawadee</option>
+                            <option style="font-family: 'Leelawadee UI';" value="Leelawadee UI">Leelawadee UI</option>
+                            <option style="font-family: 'Leelawadee UI Semilight';" value="Leelawadee UI Semilight">Leelawadee UI Semilight</option>
+                            <option style="font-family: 'Levenim MT';" value="Levenim MT">Levenim MT</option>
+                            <option style="font-family: 'LilyUPC';" value="LilyUPC">LilyUPC</option>
+                            <option style="font-family: 'Lucida Bright';" value="Lucida Bright">Lucida Bright</option>
+                            <option style="font-family: 'Lucida Bright';" value="Lucida Bright">Lucida Bright</option>
+                            <option style="font-family: 'Lucida Console';" value="Lucida Console">Lucida Console</option>
+                            <option style="font-family: 'Lucida Handwriting';" value="Lucida Handwriting">Lucida Handwriting</option>
+                            <option style="font-family: 'Lucida Sans';" value="Lucida Sans">Lucida Sans</option>
+                            <option style="font-family: 'Lucida Sans Typewriter';" value="Lucida Sans Typewriter">Lucida Sans Typewriter</option>
+                            <option style="font-family: 'Lucida Sans Unicode';" value="Lucida Sans Unicode">Lucida Sans Unicode</option>
+                            <option style="font-family: 'Lucidatypewriter';" value="Lucidatypewriter">Lucidatypewriter</option>
+                            <option style="font-family: 'Luminari';" value="Luminari">Luminari</option>
+                            <option style="font-family: 'Malgun Gothic';" value="Malgun Gothic">Malgun Gothic</option>
+                            <option style="font-family: 'Malgun Gothic Semilight';" value="Malgun Gothic Semilight">Malgun Gothic Semilight</option>
+                            <option style="font-family: 'Mangal';" value="Mangal">Mangal</option>
+                            <option style="font-family: 'Marker Felt';" value="Marker Felt">Marker Felt</option>
+                            <option style="font-family: 'Marlett';" value="Marlett">Marlett</option>
+                            <option style="font-family: 'Meiryo';" value="Meiryo">Meiryo</option>
+                            <option style="font-family: 'Meiryo UI';" value="Meiryo UI">Meiryo UI</option>
+                            <option style="font-family: 'Microsoft Himalaya';" value="Microsoft Himalaya">Microsoft Himalaya</option>
+                            <option style="font-family: 'Microsoft JhengHei';" value="Microsoft JhengHei">Microsoft JhengHei</option>
+                            <option style="font-family: 'Microsoft JhengHei UI';" value="Microsoft JhengHei UI">Microsoft JhengHei UI</option>
+                            <option style="font-family: 'Microsoft New Tai Lue';" value="Microsoft New Tai Lue">Microsoft New Tai Lue</option>
+                            <option style="font-family: 'Microsoft PhagsPa';" value="Microsoft PhagsPa">Microsoft PhagsPa</option>
+                            <option style="font-family: 'Microsoft Sans Serif';" value="Microsoft Sans Serif">Microsoft Sans Serif</option>
+                            <option style="font-family: 'Microsoft Tai Le';" value="Microsoft Tai Le">Microsoft Tai Le</option>
+                            <option style="font-family: 'Microsoft Uighur';" value="Microsoft Uighur">Microsoft Uighur</option>
+                            <option style="font-family: 'Microsoft YaHei';" value="Microsoft YaHei">Microsoft YaHei</option>
+                            <option style="font-family: 'Microsoft YaHei UI';" value="Microsoft YaHei UI">Microsoft YaHei UI</option>
+                            <option style="font-family: 'Microsoft Yi Baiti';" value="Microsoft Yi Baiti">Microsoft Yi Baiti</option>
+                            <option style="font-family: 'MingLiU';" value="MingLiU">MingLiU</option>
+                            <option style="font-family: 'MingLiU_HKSCS';" value="MingLiU_HKSCS">MingLiU_HKSCS</option>
+                            <option style="font-family: 'MingLiU_HKSCS-ExtB';" value="MingLiU_HKSCS-ExtB">MingLiU_HKSCS-ExtB</option>
+                            <option style="font-family: 'MingLiU-ExtB';" value="MingLiU-ExtB">MingLiU-ExtB</option>
+                            <option style="font-family: 'Miriam';" value="Miriam">Miriam</option>
+                            <option style="font-family: 'Monaco';" value="Monaco">Monaco</option>
+                            <option style="font-family: 'Monaco';" value="Monaco">Monaco</option>
+                            <option style="font-family: 'Mongolian Baiti';" value="Mongolian Baiti">Mongolian Baiti</option>
+                            <option style="font-family: 'MoolBoran';" value="MoolBoran">MoolBoran</option>
+                            <option style="font-family: 'MS Gothic';" value="MS Gothic">MS Gothic</option>
+                            <option style="font-family: 'MS Mincho';" value="MS Mincho">MS Mincho</option>
+                            <option style="font-family: 'MS PGothic';" value="MS PGothic">MS PGothic</option>
+                            <option style="font-family: 'MS PMincho';" value="MS PMincho">MS PMincho</option>
+                            <option style="font-family: 'MS UI Gothic';" value="MS UI Gothic">MS UI Gothic</option>
+                            <option style="font-family: 'MV Boli';" value="MV Boli">MV Boli</option>
+                            <option style="font-family: 'Myanmar Text';" value="Myanmar Text">Myanmar Text</option>
+                            <option style="font-family: 'Narkisim';" value="Narkisim">Narkisim</option>
+                            <option style="font-family: 'Neue Haas Grotesk Text Pro';" value="Neue Haas Grotesk Text Pro">Neue Haas Grotesk Text Pro</option>
+                            <option style="font-family: 'New Century Schoolbook';" value="New Century Schoolbook">New Century Schoolbook</option>
+                            <option style="font-family: 'News Gothic MT';" value="News Gothic MT">News Gothic MT</option>
+                            <option style="font-family: 'Nirmala UI';" value="Nirmala UI">Nirmala UI</option>
+                            <option style="font-family: 'No automatic language associations';" value="No automatic language associations">No automatic language associations</option>
+                            <option style="font-family: 'Noto';" value="Noto">Noto</option>
+                            <option style="font-family: 'Noto';" value="Noto">Noto</option>
+                            <option style="font-family: 'NSimSun';" value="NSimSun">NSimSun</option>
+                            <option style="font-family: 'Nyala';" value="Nyala">Nyala</option>
+                            <option style="font-family: 'Oldtown';" value="Oldtown">Oldtown</option>
+                            <option style="font-family: 'Optima';" value="Optima">Optima</option>
+                            <option style="font-family: 'Palatino';" value="Palatino">Palatino</option>
+                            <option style="font-family: 'Palatino Linotype';" value="Palatino Linotype">Palatino Linotype</option>
+                            <option style="font-family: 'papyrus';" value="papyrus">papyrus</option>
+                            <option style="font-family: 'Parkavenue';" value="Parkavenue">Parkavenue</option>
+                            <option style="font-family: 'Perpetua';" value="Perpetua">Perpetua</option>
+                            <option style="font-family: 'Plantagenet Cherokee';" value="Plantagenet Cherokee">Plantagenet Cherokee</option>
+                            <option style="font-family: 'PMingLiU';" value="PMingLiU">PMingLiU</option>
+                            <option style="font-family: 'Raavi';" value="Raavi">Raavi</option>
+                            <option style="font-family: 'Rockwell';" value="Rockwell">Rockwell</option>
+                            <option style="font-family: 'Rockwell Extra Bold';" value="Rockwell Extra Bold">Rockwell Extra Bold</option>
+                            <option style="font-family: 'Rockwell Nova';" value="Rockwell Nova">Rockwell Nova</option>
+                            <option style="font-family: 'Rockwell Nova Cond';" value="Rockwell Nova Cond">Rockwell Nova Cond</option>
+                            <option style="font-family: 'Rockwell Nova Extra Bold';" value="Rockwell Nova Extra Bold">Rockwell Nova Extra Bold</option>
+                            <option style="font-family: 'Rod';" value="Rod">Rod</option>
+                            <option style="font-family: 'Sakkal Majalla';" value="Sakkal Majalla">Sakkal Majalla</option>
+                            <option style="font-family: 'Sanskrit Text';" value="Sanskrit Text">Sanskrit Text</option>
+                            <option style="font-family: 'Segoe MDL2 Assets';" value="Segoe MDL2 Assets">Segoe MDL2 Assets</option>
+                            <option style="font-family: 'Segoe Print';" value="Segoe Print">Segoe Print</option>
+                            <option style="font-family: 'Segoe Script';" value="Segoe Script">Segoe Script</option>
+                            <option style="font-family: 'Segoe UI';" value="Segoe UI">Segoe UI</option>
+                            <option style="font-family: 'Segoe UI Emoji';" value="Segoe UI Emoji">Segoe UI Emoji</option>
+                            <option style="font-family: 'Segoe UI Historic';" value="Segoe UI Historic">Segoe UI Historic</option>
+                            <option style="font-family: 'Segoe UI Symbol';" value="Segoe UI Symbol">Segoe UI Symbol</option>
+                            <option style="font-family: 'Shonar Bangla';" value="Shonar Bangla">Shonar Bangla</option>
+                            <option style="font-family: 'Shruti';" value="Shruti">Shruti</option>
+                            <option style="font-family: 'SimHei';" value="SimHei">SimHei</option>
+                            <option style="font-family: 'SimKai';" value="SimKai">SimKai</option>
+                            <option style="font-family: 'Simplified Arabic';" value="Simplified Arabic">Simplified Arabic</option>
+                            <option style="font-family: 'Simplified Chinese';" value="Simplified Chinese">Simplified Chinese</option>
+                            <option style="font-family: 'SimSun';" value="SimSun">SimSun</option>
+                            <option style="font-family: 'SimSun-ExtB';" value="SimSun-ExtB">SimSun-ExtB</option>
+                            <option style="font-family: 'Sitka';" value="Sitka">Sitka</option>
+                            <option style="font-family: 'Snell Roundhan';" value="Snell Roundhan">Snell Roundhan</option>
+                            <option style="font-family: 'Snell Roundhan';" value="Snell Roundhan">Snell Roundhan</option>
+                            <option style="font-family: 'Stencil Std';" value="Stencil Std">Stencil Std</option>
+                            <option style="font-family: 'Stencil Std';" value="Stencil Std">Stencil Std</option>
+                            <option style="font-family: 'Sylfaen';" value="Sylfaen">Sylfaen</option>
+                            <option style="font-family: 'Symbol';" value="Symbol">Symbol</option>
+                            <option style="font-family: 'Tahoma';" value="Tahoma">Tahoma</option>
+                            <option style="font-family: 'Thai';" value="Thai">Thai</option>
+                            <option style="font-family: 'Times New Roman';" value="Times New Roman">Times New Roman</option>
+                            <option style="font-family: 'Traditional Arabic';" value="Traditional Arabic">Traditional Arabic</option>
+                            <option style="font-family: 'Traditional Chinese';" value="Traditional Chinese">Traditional Chinese</option>
+                            <option style="font-family: 'Trattatello';" value="Trattatello">Trattatello</option>
+                            <option style="font-family: 'Trattatello';" value="Trattatello">Trattatello</option>
+                            <option style="font-family: 'Trebuchet MS';" value="Trebuchet MS">Trebuchet MS</option>
+                            <option style="font-family: 'Trebuchet MS';" value="Trebuchet MS">Trebuchet MS</option>
+                            <option style="font-family: 'Tunga';" value="Tunga">Tunga</option>
+                            <option style="font-family: 'UD Digi Kyokasho';" value="UD Digi Kyokasho">UD Digi Kyokasho</option>
+                            <option style="font-family: 'UD Digi KyoKasho NK-R';" value="UD Digi KyoKasho NK-R">UD Digi KyoKasho NK-R</option>
+                            <option style="font-family: 'UD Digi KyoKasho NP-R';" value="UD Digi KyoKasho NP-R">UD Digi KyoKasho NP-R</option>
+                            <option style="font-family: 'UD Digi KyoKasho N-R';" value="UD Digi KyoKasho N-R">UD Digi KyoKasho N-R</option>
+                            <option style="font-family: 'Urdu Typesetting';" value="Urdu Typesetting">Urdu Typesetting</option>
+                            <option style="font-family: 'URW Chancery';" value="URW Chancery">URW Chancery</option>
+                            <option style="font-family: 'URW Chancery';" value="URW Chancery">URW Chancery</option>
+                            <option style="font-family: 'Utsaah';" value="Utsaah">Utsaah</option>
+                            <option style="font-family: 'Vani';" value="Vani">Vani</option>
+                            <option style="font-family: 'Verdana';" value="Verdana">Verdana</option>
+                            <option style="font-family: 'Verdana Pro';" value="Verdana Pro">Verdana Pro</option>
+                            <option style="font-family: 'Vijaya';" value="Vijaya">Vijaya</option>
+                            <option style="font-family: 'Vrinda';" value="Vrinda">Vrinda</option>
+                            <option style="font-family: 'Webdings';" value="Webdings">Webdings</option>
+                            <option style="font-family: 'Westminster';" value="Westminster">Westminster</option>
+                            <option style="font-family: 'Wingdings';" value="Wingdings">Wingdings</option>
+                            <option style="font-family: 'Yu Gothic';" value="Yu Gothic">Yu Gothic</option>
+                            <option style="font-family: 'Yu Gothic UI';" value="Yu Gothic UI">Yu Gothic UI</option>
+                            <option style="font-family: 'Yu Mincho';" value="Yu Mincho">Yu Mincho</option>
+                            <option style="font-family: 'Zapf Chancery';" value="Zapf Chancery">Zapf Chancery</option>
                         </select>
                         <select id="font_size_selector"
                             style="font-size: 12px; outline: none; height: 25px; margin-right: 7px;">
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="10">10</option>
-                            <option value="12">12</option>
-                            <option value="14">14</option>
-                            <option value="16" selected="selected">16</option>
-                            <option value="18">18</option>
+                            <option value='8'>8</option>
+                            <option value='10'>10</option>
+                            <option value='12' selected="selected">12</option>
+                            <option value='16'>16</option>
+                            <option value='20'>20</option>
+                            <option value='24'>24</option>
+                            <option value='28'>28</option>
+                            <option value='32'>32</option>
+                            <option value='36'>36</option>
+                            <option value='40'>40</option>
+                            <option value='44'>44</option>
+                            <option value='48'>48</option>
+                            <option value='52'>52</option>
+                            <option value='56'>56</option>
+                            <option value='60'>60</option>
+                            <option value='64'>64</option>
+                            <option value='68'>68</option>
+                            <option value='72'>72</option>
+                            <option value='76'>76</option>
+                            <option value='80'>80</option>
+                            <option value='84'>84</option>
+                            <option value='88'>88</option>
+                            <option value='92'>92</option>
+                            <option value='96'>96</option>
                         </select>
                         <div data-role="">
                             <button class="button" id="font_size_bigger_btn"
