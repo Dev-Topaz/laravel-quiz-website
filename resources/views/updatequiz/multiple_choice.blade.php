@@ -14,10 +14,15 @@
                    name="answer_element"
                    value="{{ $quiz->answer_element }}" autocomplete="answer_element" autofocus hidden>
 
+            <input id="question_element" type="text"
+                   class="form-control @error('question_element') is-invalid @enderror"
+                   name="question_element"
+                   value="{{ $quiz->question_element }}" autocomplete="question_element" autofocus hidden>
+
             <div>
                 <h4>Multiple Choice Question</h4>
                 <div contenteditable="true" id="question"
-                     style="overflow-y: scroll;width: 100%;border: 1px solid black;height: 70px">{!! $quiz->question_element !!}</div>
+                     style="overflow-y: scroll;width: 100%;border: 1px solid black;height: 70px"></div>
             </div>
             <br>
 
@@ -38,24 +43,9 @@
                         </tr>
                         </thead>
                         <tbody id="choice_list">
-                        {{--                        @foreach($quiz->multi_choice_answer_contents as $answer_content)--}}
-                        {{--                            <tr class="choice_item">--}}
-                        {{--                                <td><input type="radio" id="{{ $answer_content->choice_id }}"--}}
-                        {{--                                           name="answer" value="{{ $answer_content->choice_id }}"--}}
-                        {{--                                           style="padding-right: 10px;" {{ $answer_content->choice_id == $quiz->answer ? 'checked' : '' }}>--}}
-                        {{--                                </td>--}}
-                        {{--                                <td><label class="choice_label" data-editable--}}
-                        {{--                                           for="{{ $answer_content->choice_id }}">{{ $answer_content->content }}</label>--}}
-                        {{--                                </td>--}}
-                        {{--                                <td></td>--}}
-                        {{--                                <td><a onclick="{$(this).parent().parent().remove();save_choice_data();}"><i--}}
-                        {{--                                            class="fas fa-trash-alt"></i></a></td>--}}
-                        {{--                            </tr>--}}
-                        {{--                        @endforeach--}}
                         </tbody>
                     </table>
-                    <a id="add_choice" style="padding: 10px 0;margin-left: 90px;margin-top: 10px;">Type to add a new
-                        choice</a>
+                    <a id="add_choice" style="padding: 10px 0;margin-left: 90px;margin-top: 10px;">Type to add a new choice</a>
                 </div>
             </div>
 
@@ -98,10 +88,8 @@
     </div>
     <div class="cell-8 slide_view_element" style="background: #dcdcdc;display: none;">
         <div style="margin: auto 0;background: #f1f1f1;width: 100%;height:500px;padding: 20px;">
-            <div contenteditable="true" class="slide_view_question_element slide_view_group"
-                 style="overflow-y: scroll;border: 1px solid black;height: 70px;width: 80%;left: 10%">{!! $quiz->question_element !!}</div>
-            <div class="slide_view_answer_element slide_view_group"
-                 style="width: 80%;top: 100px;left: 10%">{!! $quiz->answer_element !!}</div>
+            {!! $quiz->question_element !!}
+            {!! $quiz->answer_element !!}
             @if ($quiz->media != null)
                 <div class="slide_view_media_element slide_view_group"></div>
             @endif
@@ -116,7 +104,7 @@
                         <label for="question_type" style="font-size: 16px;">Question type:</label>
                     </div>
                     <div class="cell-7">
-                        <select data-role="select" data-filter="false" name="question_type">
+                        <select data-role="select" data-filter="false" id="question_type">
                             <option value="graded" {{ $quiz->question_type == 'graded' ? 'selected' : '' }}>Graded
                             </option>
                             <option value="survey" {{ $quiz->question_type == 'survey' ? 'selected' : '' }}>Survey
@@ -130,7 +118,7 @@
                             <label for="feedback" name="feedback">Feedback:</label>
                         </div>
                         <div class="cell-6">
-                            <select data-role="select" data-filter="false" name="feedback">
+                            <select data-role="select" data-filter="false" id="feedback">
                                 <option value="none" {{ $quiz->feedback_type == 'none' ? 'selected' : '' }}>None
                                 </option>
                                 <option value="by_result" {{ $quiz->feedback_type == 'by_result' ? 'selected' : '' }}>By
@@ -146,7 +134,7 @@
                                 <label for="braching" name="braching">Branching:</label>
                             </div>
                             <div class="cell-6">
-                                <select data-role="select" data-filter="false" name="braching">
+                                <select data-role="select" data-filter="false" id="branching">
                                     <option
                                         value="by_result" {{ $quiz->feedback_type == 'by_result' ? 'selected' : '' }}>By
                                         Result
@@ -163,7 +151,7 @@
                         </div>
                         <div class="cell-6">
                             <select data-role="select" data-filter="false"
-                                    name="score" {{ $quiz->score == null ? 'disable' : '' }}>
+                                    id="score" {{ $quiz->score == null ? 'disable' : '' }}>
                                 <option value="by_result" {{ $quiz->score == 'by_result' ? 'selected' : '' }}>By
                                     Result
                                 </option>
@@ -176,7 +164,7 @@
                             <label for="attempts" name="attempts">Attempts:</label>
                         </div>
                         <div class="cell-6">
-                            <select data-role="select" data-filter="false" name="attempts">
+                            <select data-role="select" data-filter="false" id="attempts">
                                 <option value="1" {{ $quiz->attempts == '1' ? 'selected' : '' }}>1</option>
                                 <option value="2" {{ $quiz->attempts == '2' ? 'selected' : '' }}>2</option>
                                 <option value="3" {{ $quiz->attempts == '3' ? 'selected' : '' }}>3</option>
@@ -193,36 +181,36 @@
                             </select>
                         </div>
                         <div class="cell-7">
-                            <input type="checkbox" data-role="checkbox"
+                            <input type="checkbox" data-role="checkbox" id="is_limit_time"
                                    data-caption="Limit time to answer the question:" {{ $quiz->is_limit_time ? 'checked' : '' }}>
                         </div>
                         <div class="cell-5">
-                            <input class="mt-1" type="time" data-role="input"
+                            <input class="mt-1" type="time" data-role="input" id="limit_time"
                                    {{ $quiz->is_limit_time ? '' : 'disabled' }}
                                    data-clear-button="false"
                                    value="{{ $quiz->is_limit_time ? $quiz->limit_time : '01:00' }}">
                         </div>
                         @if ($quiz->shuffle_answers != null)
                             <div class="cell-12">
-                                <input type="checkbox" data-role="checkbox"
+                                <input type="checkbox" data-role="checkbox" id="shuffle_answers"
                                        data-caption="Shuffle answers" {{ $quiz->shuffle_answers ? 'checked' : '' }}>
                             </div>
                         @endif
                         @if ($quiz->partially_correct != null)
                             <div class="cell-12">
-                                <input type="checkbox" data-role="checkbox"
+                                <input type="checkbox" data-role="checkbox" id="partially_correct"
                                        data-caption="Accept partially correct answer" {{ $quiz->partially_correct ? 'checked' : '' }}>
                             </div>
                         @endif
                         @if ($quiz->limit_number_response != null)
                             <div class="cell-12">
-                                <input type="checkbox" data-role="checkbox"
+                                <input type="checkbox" data-role="checkbox" id="limit_response"
                                        data-caption="Limit number of response" {{ $quiz->limit_response ? 'checked' : '' }}>
                             </div>
                         @endif
                         @if ($quiz->case_sensitive != null)
                             <div class="cell-12">
-                                <input type="checkbox" data-role="checkbox"
+                                <input type="checkbox" data-role="checkbox" id="case_sensitive"
                                        data-caption="Case sensitive" {{ $quiz->case_sensitive ? 'checked' : '' }}>
                             </div>
                         @endif
@@ -303,4 +291,31 @@
 
     $('.slide_view_group').draggable();
     $('.slide_view_group').resizable();
+
+    function question_slide2form(question) {
+        const element = $(question);
+        return element.html();
+    }
+
+    function answer_slide2form(answer) {
+        const typeId = $('#type_id').val();
+        const element = $(answer);
+        console.log(typeId);
+
+        let form_answer = '';
+        switch (typeId) {
+            case '1':
+                for (let i = 0; i <element.find('.choice_item').length; i++) {
+                    form_answer += '<tr class="choice_item"><td>' + element.find('.choice_item').eq(i).find('input')[0].outerHTML + '</td><td><label class="choice_label" data-editable for="' + element.find('.choice_item').eq(i).find('label').attr('for') + '">' + element.find('.choice_item').eq(i).find('label').html() + '</label></td><td></td><td><a onclick="{$(this).parent().parent().remove();save_choice_data();}"><i class="fas fa-trash-alt"></i></a></td></tr>';
+                }
+                break;
+
+            default:
+        }
+
+        return form_answer;
+    }
+
+    $('#question').html(question_slide2form($('#question_element').val()));
+    $('#choice_list').html(answer_slide2form($('#answer_element').val()));
 </script>

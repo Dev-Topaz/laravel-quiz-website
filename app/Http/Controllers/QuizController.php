@@ -46,14 +46,14 @@ class QuizController extends Controller
                 $quiz = Quiz::create([
                     'exam_group_id' => $request->exam_group_id,
                     'type_id' => $request->type_id,
-                    'question_element' => 'Select the correct answer option:',
+                    'question_element' => '<div contenteditable="true" class="slide_view_question_element slide_view_group" style="overflow-y: scroll;border: 1px solid black;height: 70px;width: 80%;left: 10%">Select the correct answer option:</div>',
                     'answer' => '1',
                     'feedback_correct' => 'That\'s right! You chose the correct response.',
                     'feedback_incorrect' => 'You did not choose the correct response.',
                     'feedback_try_again' => null,
                     'media' => null,
                     'order' => null,
-                    'answer_element' => '<div class="col-md-12"><div class="choice_item"><input type="radio" id="1" name="answer" value="1" style="padding-right: 10px;"><label for="1">Option 1</label></div><div class="choice_item"><input type="radio" id="2" name="answer" value="2" style="padding-right: 10px;"><label for="2">Option 2</label></div><div class="choice_item"><input type="radio" id="3" name="answer" value="3" style="padding-right: 10px;"><label for="3">Option 3</label></div></div>',
+                    'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%"><div class="col-md-12"><div class="choice_item"><input type="radio" id="1" name="answer" value="1" style="padding-right: 10px;"><label for="1">Option 1</label></div><div class="choice_item"><input type="radio" id="2" name="answer" value="2" style="padding-right: 10px;"><label for="2">Option 2</label></div><div class="choice_item"><input type="radio" id="3" name="answer" value="3" style="padding-right: 10px;"><label for="3">Option 3</label></div></div></div>',
                     'question_type' => 'graded',
                     'feedback_type' => 'by_result',
                     'branching' => 'by_result',
@@ -148,13 +148,13 @@ class QuizController extends Controller
         return view('quizes.update', ['quiz' => $quiz]);
     }
 
-    public function edit_form_view(Quiz $quiz) {
-        return view('quizes.update_form_view', ['quiz' => $quiz]);
-    }
-
-    public function edit_slide_view(Quiz $quiz) {
-        return view('quizes.update_slide_view', ['quiz' => $quiz]);
-    }
+//    public function edit_form_view(Quiz $quiz) {
+//        return view('quizes.update_form_view', ['quiz' => $quiz]);
+//    }
+//
+//    public function edit_slide_view(Quiz $quiz) {
+//        return view('quizes.update_slide_view', ['quiz' => $quiz]);
+//    }
 
     /**
      * Update the specified resource in storage.
@@ -165,77 +165,36 @@ class QuizController extends Controller
      */
     public function update(Request $request, Quiz $quiz)
     {
-
-        $quiz->question = $request->question;
+        $quiz->question_element = $request->question_element;
         $quiz->answer = $request->answer;
-        $quiz->is_feedback = $request->is_feedback ? true : false;
         $quiz->feedback_correct = $request->feedback_correct;
         $quiz->feedback_incorrect = $request->feedback_incorrect;
         $quiz->feedback_try_again = $request->feedback_try_again;
+        $quiz->media = $request->media;
+        $quiz->order = $request->order;
+        $quiz->answer_element = $request->answer_element;
+        $quiz->question_type = $request->question_type;
+        $quiz->feedback_type = $request->feedback_type;
+        $quiz->branching = $request->branching;
+        $quiz->score = $request->score;
+        $quiz->attempts = $request->attempts;
+        $quiz->is_limit_time = $request->is_limit_time;
+        $quiz->limit_time = $request->limit_time;
+        $quiz->shuffle_answers = $request->shuffle_answers;
+        $quiz->partially_correct = $request->partially_correct;
+        $quiz->limit_number_response = $request->limit_number_response;
+        $quiz->case_sensitive = $request->case_sensitive;
+        $quiz->correct_score = $request->correct_score;
+        $quiz->incorrect_score = $request->incorrect_score;
+        $quiz->try_again_score = $request->try_again_score;
 
         $quiz->save();
 
-        switch ($request->type_id) {
-            case "1":
-
-                MultiChoiceAnswerContent::where('quiz_id', $quiz->id)->delete();
-                //        insert at multi_choice_answer_contents table
-                $answer_content_array = explode(';', $request->answer_content_array);
-                array_pop($answer_content_array);
-                $choice_id_array = explode(';', $request->choice_id_array);
-                array_pop($choice_id_array);
-
-                foreach ($answer_content_array as $key => $value) {
-                    MultiChoiceAnswerContent::create([
-                        'quiz_id' => $quiz->id,
-                        'content' => $answer_content_array[$key],
-                        'choice_id' => $choice_id_array[$key],
-                    ]);
-                }
-                break;
-
-            case "2":
-
-                MultiResponseAnswerContent::where('quiz_id', $quiz->id)->delete();
-                //        insert at multi_choice_answer_contents table
-                $answer_content_array = explode(';', $request->answer_content_array);
-                array_pop($answer_content_array);
-                $response_id_array = explode(';', $request->response_id_array);
-                array_pop($response_id_array);
-
-                foreach ($answer_content_array as $key => $value) {
-                    MultiResponseAnswerContent::create([
-                        'quiz_id' => $quiz->id,
-                        'content' => $answer_content_array[$key],
-                        'response_id' => $response_id_array[$key],
-                    ]);
-                }
-                break;
-
-            case "5":
-                NumericAnswerContent::where('quiz_id', $quiz->id)->delete();
-                $select_answer_array = explode('@', $request->select_answer);
-                array_pop($select_answer_array);
-
-                foreach ($select_answer_array as $key => $value) {
-                    $value_array = explode(';', $value);
-                    NumericAnswerContent::create([
-                        'quiz_id' => $quiz->id,
-                        'option_value' => $value_array[0],
-                        'input_value_1' => $value_array[1],
-                        'input_value_2' => $value_array[2],
-                    ]);
-                }
-                break;
-
-            default:
-        }
-
-
-        $redirect_url = '/exams/' . $request->exam_id;
-
-        return redirect($redirect_url)
-            ->with('success', 'Quiz updated successfully');
+//        $redirect_url = '/exams/' . $request->exam_id;
+//
+//        return redirect($redirect_url)
+//            ->with('success', 'Quiz updated successfully');
+        return $quiz->id;
     }
 
     /**
