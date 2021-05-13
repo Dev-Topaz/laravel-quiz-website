@@ -132,24 +132,163 @@
                                 <div class="design_themes_panels_divider">This Quiz</div>
                                 <div class="design_themes_panels"><span>Aa</span></div>
                                 <div class="design_themes_panels_divider">Office</div>
-                                <div class="design_themes_panels"><span>Aa</span></div>
-                                <div class="design_themes_panels"><span>Aa</span></div>
-                                <div class="design_themes_panels"><span>Aa</span></div>
-                                <div class="design_themes_panels"><span>Aa</span></div>
-                                <div class="design_themes_panels"><span>Aa</span></div>
-                                <div class="design_themes_panels"><span>Aa</span></div>
-                                <div class="design_themes_panels"><span>Aa</span></div>
-                                <div class="design_themes_panels"><span>Aa</span></div>
+                                <div class="design_themes_panels" title="White Lines"
+                                    style="font-family: Calibri; color: #4d4d4d; background-image: url( {{url('/images/theme_backgrounds/white_lines.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Black Drops"
+                                    style="font-family: Calibri; color: #ffffff; background-image: url( {{url('/images/theme_backgrounds/black_drops.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Green Texture"
+                                    style="font-family: Calibri; color: #000000; background-image: url( {{url('/images/theme_backgrounds/green_texture.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Abstract Beige"
+                                    style="font-family: Calibri; color: #000000; background-image: url( {{url('/images/theme_backgrounds/abstract_beige.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Color Line"
+                                    style="font-family: Calibri; color: #ffffff; background-image: url( {{url('/images/theme_backgrounds/color_line.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Misty Forest"
+                                    style="font-family: Calibri; color: #000000; background-image: url( {{url('/images/theme_backgrounds/misty_forest.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Grid"
+                                    style="font-family: Calibri; color: #ffffff; background-image: url( {{url('/images/theme_backgrounds/grid.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Dark Gray Gradient"
+                                    style="font-family: Calibri; color: #ffffff; background-image: url( {{url('/images/theme_backgrounds/dark_gray_gradient.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Cloud"
+                                    style="font-family: Calibri; color: #000000; background-image: url( {{url('/images/theme_backgrounds/cloud.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Abstract Colors"
+                                    style="font-family: Calibri; color: #000000; background-image: url( {{url('/images/theme_backgrounds/abstract_colors.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Geometry"
+                                    style="font-family: Calibri; color: #000000; background-image: url( {{url('/images/theme_backgrounds/geometry.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Blue Drops"
+                                    style="font-family: Calibri; color: #000000; background-image: url( {{url('/images/theme_backgrounds/blue_drops.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
                                 <div class="design_themes_panels_divider">Built In</div>
-                                <div class="design_themes_panels"><span>Aa</span></div>
-                                <div class="design_themes_panels"><span>Aa</span></div>
-                                <div class="design_themes_panels"><span>Aa</span></div>
-                                <div class="design_themes_panels"><span>Aa</span></div>
-                                <div class="design_themes_panels"><span>Aa</span></div>
-                                <div class="design_themes_panels"><span>Aa</span></div>
-                                <div class="design_themes_panels"><span>Aa</span></div>
-                                <div class="design_themes_panels"><span>Aa</span></div>
-                                <div class="design_themes_panels"><span>Aa</span></div>
+                                <div class="design_themes_panels" title="Default"
+                                    style="font-family: Calibri; color: #4d4d4d; background-image: url( {{url('/images/theme_backgrounds/default.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Blue Gradient"
+                                    style="font-family: Calibri; color: #ffffff; background-image: url( {{url('/images/theme_backgrounds/blue_gradient.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Blue Line"
+                                    style="font-family: Calibri; color: #000000; background-image: url( {{url('/images/theme_backgrounds/blue_line.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Dark Blue Shine"
+                                    style="font-family: Calibri; color: #ffffff; background-image: url( {{url('/images/theme_backgrounds/dark_blue_shine.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Dark Blue Abstract"
+                                    style="font-family: Calibri; color: #ffffff; background-image: url( {{url('/images/theme_backgrounds/dark_blue_abstract.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Dark Brown Abstract"
+                                    style="font-family: Calibri; color: #ffffff; background-image: url( {{url('/images/theme_backgrounds/dark_brown_abstract.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Dark Green Shine"
+                                    style="font-family: Calibri; color: #000000; background-image: url( {{url('/images/theme_backgrounds/dark_green_shine.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Corner Light Blue Abstract"
+                                    style="font-family: Calibri; color: #36608b; background-image: url( {{url('/images/theme_backgrounds/corner_light_blue_abstract.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Light Blue Blur"
+                                    style="font-family: Calibri; color: #14395c; background-image: url( {{url('/images/theme_backgrounds/light_blue_blur.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Light Brown Shine"
+                                    style="font-family: Calibri; color: #423226; background-image: url( {{url('/images/theme_backgrounds/light_brown_shine.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Light Brown Abstract"
+                                    style="font-family: Calibri; color: #523c2c; background-image: url( {{url('/images/theme_backgrounds/light_brown_abstract.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Light Green"
+                                    style="font-family: Calibri; color: #2a2a2a; background-image: url( {{url('/images/theme_backgrounds/light_green.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Dark Greenish Blue Shine"
+                                    style="font-family: Calibri; color: #ffffff; background-image: url( {{url('/images/theme_backgrounds/dark_greenish_blue_shine.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Dark Purple Gradient"
+                                    style="font-family: Calibri; color: #ffffff; background-image: url( {{url('/images/theme_backgrounds/dark_purple_gradient.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Dark Red"
+                                    style="font-family: Calibri; color: #ffffff; background-image: url( {{url('/images/theme_backgrounds/dark_red.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Green Line"
+                                    style="font-family: Calibri; color: #000000; background-image: url( {{url('/images/theme_backgrounds/green_line.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Light Brown Texture"
+                                    style="font-family: Calibri; color: #000000; background-image: url( {{url('/images/theme_backgrounds/light_brown_texture.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Light Metal Texture"
+                                    style="font-family: Calibri; color: #000000; background-image: url( {{url('/images/theme_backgrounds/light_metal_texture.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Purple Line"
+                                    style="font-family: Calibri; color: #000000; background-image: url( {{url('/images/theme_backgrounds/purple_line.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Turguoise Gradient"
+                                    style="font-family: Calibri; color: #ffffff; background-image: url( {{url('/images/theme_backgrounds/turguoise_gradient.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Turguoise Sea Texture"
+                                    style="font-family: Calibri; color: #ffffff; background-image: url( {{url('/images/theme_backgrounds/turguoise_sea_texture.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Dark Red Waves"
+                                    style="font-family: Calibri; color: #ffffff; background-image: url( {{url('/images/theme_backgrounds/dark_red_waves.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Blue Green Gradient"
+                                    style="font-family: Calibri; color: #ffffff; background-image: url( {{url('/images/theme_backgrounds/blue_green_gradient.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Dark Red Gradient"
+                                    style="font-family: Calibri; color: #ffffff; background-image: url( {{url('/images/theme_backgrounds/dark_red_gradient.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Gray Gradient"
+                                    style="font-family: Calibri; color: #414141; background-image: url( {{url('/images/theme_backgrounds/gray_gradient.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Light Blue Gradient"
+                                    style="font-family: Calibri; color: #2a2a2a; background-image: url( {{url('/images/theme_backgrounds/light_blue_gradient.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Light Brown Gradient"
+                                    style="font-family: Calibri; color: #59493c; background-image: url( {{url('/images/theme_backgrounds/light_brown_gradient.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Lavender Gradient"
+                                    style="font-family: Calibri; color: #414141; background-image: url( {{url('/images/theme_backgrounds/lavender_gradient.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Light Purple"
+                                    style="font-family: Calibri; color: #414141; background-image: url( {{url('/images/theme_backgrounds/light_purple.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Light Rose Gradient"
+                                    style="font-family: Calibri; color: #2a2a2a; background-image: url( {{url('/images/theme_backgrounds/light_rose_gradient.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Purple Yellow Gradient on Texture"
+                                    style="font-family: Calibri; color: #573b3e; background-image: url( {{url('/images/theme_backgrounds/purple_yellow_gradient_on_texture.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Red Brown Gradient"
+                                    style="font-family: Calibri; color: #ffffff; background-image: url( {{url('/images/theme_backgrounds/red_brown_gradient.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Red Green Gradient"
+                                    style="font-family: Calibri; color: #310e0a; background-image: url( {{url('/images/theme_backgrounds/red_green_gradient.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Rose Green Gradient"
+                                    style="font-family: Calibri; color: #414141; background-image: url( {{url('/images/theme_backgrounds/rose_green_gradient.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Turguoise Blue Gradient"
+                                    style="font-family: Calibri; color: #ffffff; background-image: url( {{url('/images/theme_backgrounds/turguoise_blue_gradient.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Wood Texture"
+                                    style="font-family: Calibri; color: #4e2b10; background-image: url( {{url('/images/theme_backgrounds/wood_texture.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Yellow Green Gradient"
+                                    style="font-family: Calibri; color: #132300; background-image: url( {{url('/images/theme_backgrounds/yellow_green_gradient.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Dark Blue"
+                                    style="font-family: Calibri; color: #ffffff; background-image: url( {{url('/images/theme_backgrounds/dark_blue.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Dark Green"
+                                    style="font-family: Calibri; color: #ffffff; background-image: url( {{url('/images/theme_backgrounds/dark_green.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
+                                <div class="design_themes_panels" title="Light Brown"
+                                    style="font-family: Calibri; color: #523f32; background-image: url( {{url('/images/theme_backgrounds/light_brown.png')}} ); background-size: 100% 100%; ">
+                                    <span>Aa</span></div>
                             </div>
                         </div>
                     </div>
@@ -1262,37 +1401,27 @@
                                 <li style="background-image: url({{ url("/images/ribbon_imgs/shadow_no_shadow.png") }});"
                                     id="arrange_li_align"><a>Shadow <strong
                                             style="position: absolute; right: 5px;">></strong></a>
-                                    <div id="design_themes_panel_holder" class="ribbon-dropdaown" data-role="dropdown"
-                                        data-duration="100">
+                                    <div id="shape_effect_shadow_panel">
                                         <div>
-                                            <div class="design_themes_panels_divider">This Quiz</div>
-                                            <div class="design_themes_panels"><span>Aa</span></div>
-                                            <div class="design_themes_panels_divider">Office</div>
-                                            <div class="design_themes_panels"><span>Aa</span></div>
-                                            <div class="design_themes_panels"><span>Aa</span></div>
-                                            <div class="design_themes_panels"><span>Aa</span></div>
-                                            <div class="design_themes_panels"><span>Aa</span></div>
-                                            <div class="design_themes_panels"><span>Aa</span></div>
-                                            <div class="design_themes_panels"><span>Aa</span></div>
-                                            <div class="design_themes_panels"><span>Aa</span></div>
-                                            <div class="design_themes_panels"><span>Aa</span></div>
-                                            <div class="design_themes_panels_divider">Built In</div>
-                                            <div class="design_themes_panels"><span>Aa</span></div>
-                                            <div class="design_themes_panels"><span>Aa</span></div>
-                                            <div class="design_themes_panels"><span>Aa</span></div>
-                                            <div class="design_themes_panels"><span>Aa</span></div>
-                                            <div class="design_themes_panels"><span>Aa</span></div>
-                                            <div class="design_themes_panels"><span>Aa</span></div>
-                                            <div class="design_themes_panels"><span>Aa</span></div>
-                                            <div class="design_themes_panels"><span>Aa</span></div>
-                                            <div class="design_themes_panels"><span>Aa</span></div>
+                                            <div class="shape_effect_shadow_sample_divider">No Shadow</div>
+                                            <div class="shape_effect_shadow_sample"  style="background-image: url({{ url("/images/ribbon_imgs/shadow_no_shadow.png") }});"></div>
+                                            <div class="shape_effect_shadow_sample_divider">Variant</div>
+                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow_no_shadow.png") }});"></div>
+                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow_no_shadow.png") }});"></div>
+                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow_no_shadow.png") }});"></div>
+                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow_no_shadow.png") }});"></div>
+                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow_no_shadow.png") }});"></div>
+                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow_no_shadow.png") }});"></div>
+                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow_no_shadow.png") }});"></div>
+                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow_no_shadow.png") }});"></div>
+                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow_no_shadow.png") }});"></div>
                                         </div>
                                     </div>
                                 </li>
                                 <li style="background-image: url({{ url("/images/ribbon_imgs/shadow_no_shadow.png") }});"
                                     id="arrange_li_rotate"><a>Glow <strong
                                             style="position: absolute; right: 5px;">></strong></a>
-                                    <div>adfasdfasdfasdfasdf</div>
+                                    <div></div>
                                 </li>
                             </ul>
                         </button>
