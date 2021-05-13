@@ -46,7 +46,7 @@ class QuizController extends Controller
                 $quiz = Quiz::create([
                     'exam_group_id' => $request->exam_group_id,
                     'type_id' => $request->type_id,
-                    'question_element' => '<div contenteditable="true" class="slide_view_question_element slide_view_group" style="overflow-y: scroll;border: 1px solid black;height: 70px;width: 80%;left: 10%">Select the correct answer option:</div>',
+                    'question_element' => '<div contenteditable="true" class="slide_view_question_element slide_view_group" style="border: 1px solid black;height: 70px;width: 80%;left: 10%">Select the correct answer option:</div>',
                     'answer' => '1',
                     'feedback_correct' => 'That\'s right! You chose the correct response.',
                     'feedback_incorrect' => 'You did not choose the correct response.',
@@ -76,7 +76,7 @@ class QuizController extends Controller
                 $quiz = Quiz::create([
                     'exam_group_id' => $request->exam_group_id,
                     'type_id' => $request->type_id,
-                    'question_element' => '<div contenteditable="true" class="slide_view_question_element slide_view_group" style="overflow-y: scroll;border: 1px solid black;height: 70px;width: 80%;left: 10%">Select one or more correct answers:</div>',
+                    'question_element' => '<div contenteditable="true" class="slide_view_question_element slide_view_group" style="border: 1px solid black;height: 70px;width: 80%;left: 10%">Select one or more correct answers:</div>',
                     'answer' => '1;',
                     'feedback_correct' => 'That\'s right! You chose the correct response.',
                     'feedback_incorrect' => 'You did not choose the correct response.',
@@ -106,7 +106,7 @@ class QuizController extends Controller
                 $quiz = Quiz::create([
                     'exam_group_id' => $request->exam_group_id,
                     'type_id' => $request->type_id,
-                    'question_element' => '<div contenteditable="true" class="slide_view_question_element slide_view_group" style="overflow-y: scroll;border: 1px solid black;height: 70px;width: 80%;left: 10%">Choose whether the statement is true or false:</div>',
+                    'question_element' => '<div contenteditable="true" class="slide_view_question_element slide_view_group" style="border: 1px solid black;height: 70px;width: 80%;left: 10%">Choose whether the statement is true or false:</div>',
                     'answer' => '1',
                     'feedback_correct' => 'That\'s right! You chose the correct response.',
                     'feedback_incorrect' => 'You did not choose the correct response.',
@@ -136,7 +136,7 @@ class QuizController extends Controller
                 $quiz = Quiz::create([
                     'exam_group_id' => $request->exam_group_id,
                     'type_id' => $request->type_id,
-                    'question_element' => '<div contenteditable="true" class="slide_view_question_element slide_view_group" style="overflow-y: scroll;border: 1px solid black;height: 70px;width: 80%;left: 10%">Type your response:</div>',
+                    'question_element' => '<div contenteditable="true" class="slide_view_question_element slide_view_group" style="border: 1px solid black;height: 70px;width: 80%;left: 10%">Type your response:</div>',
                     'answer' => 'Correct Answer 1',
                     'feedback_correct' => 'That\'s right! You chose the correct response.',
                     'feedback_incorrect' => 'You did not choose the correct response.',

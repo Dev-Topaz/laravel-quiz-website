@@ -52,6 +52,13 @@ function create_quiz(quiz_type, root_url, token) {
             });
             break;
 
+        case (5):
+            lv.insertAfter(node, {
+                caption: 'Type your response:',
+                content: '<i>Numeric<i>'
+            });
+            break;
+
         default:
     }
 
