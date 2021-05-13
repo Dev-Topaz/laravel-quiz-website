@@ -638,8 +638,7 @@ $('.quick_style_sample').click(function () {
     if ($(this).css('background').indexOf('repeating-conic-gradient(rgb') == -1) {
         $('.slide_view_question_element').eq(0).css('background', $(this).css('background'));
     } else {
-        var tmp = 'rgba' + $(this).css('background').split('repeating-conic-gradient(rgb')[1].split(') 0deg,')[0] + ', 0.7)';
-        $('.slide_view_question_element').eq(0).css('background', tmp);
+        $('.slide_view_question_element').eq(0).css('background', 'rgba' + $(this).css('background').split('repeating-conic-gradient(rgb')[1].split(') 0deg,')[0] + ', 0.7)');
     }
 });
 
@@ -648,23 +647,23 @@ $('.quick_style_sample').mousedown(function (e) {
 });
 
 $('#office_color_picker').colorpicker({
-  color:'#31859b',
+  color:'#ffffff',
   defaultPalette:'theme'
 });
 
 $('#shape_fill_color_picker').colorpicker({
-  color:'#31859b',
+  color:'#ffffff',
   defaultPalette:'theme'
 });
 
 $('#shape_outline_color_picker').colorpicker({
-  color:'#31859b',
+  color:'#000000',
   defaultPalette:'theme'
 });
 
 // triggered when a color is selected.
 $("#shape_fill_color_picker").on("change.color", function(event, color){
-  $('.slide_view_question_element').eq(0).css('background-color', color);
+  $('.slide_view_question_element').eq(0).css('background', color);
 });
 
 $("#shape_outline_color_picker").on("change.color", function (event, color) {
