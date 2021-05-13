@@ -149,14 +149,6 @@
                             <option value="<=">Less than or equal to</option>
                             <option value="!=">Not equal to</option>
                         </select>
-                        <input id="answer" type="text"
-                               class="form-control @error('answer') is-invalid @enderror"
-                               name="answer"
-                               value="numeric" required autocomplete="answer" autofocus hidden>
-                        <input id="select_answer" type="text"
-                               class="form-control @error('select_answer') is-invalid @enderror"
-                               name="select_answer"
-                               value="" required autocomplete="select_answer" autofocus hidden>
                     </div>
                 </div>
                 @break
@@ -200,7 +192,7 @@
         </div>
     </div>
     <div class="cell-8 slide_view_element" style="background: #dcdcdc;display: none;">
-        <div style="margin: auto 0;background: #f1f1f1;width: 100%;height:500px;padding: 20px;">
+        <div style="margin: auto 0;background: #f1f1f1;width: 100%;height:500px;padding: 20px;" id="slide_view_container">
             {!! $quiz->question_element !!}
             {!! $quiz->answer_element !!}
             @if ($quiz->media != null)
