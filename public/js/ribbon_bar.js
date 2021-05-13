@@ -48,7 +48,7 @@ $('#slide_view_paste_btn').click(function () {
     paste_str(clipboard_str);
     // window.getSelection().removeAllRanges();
     // sel.focusOffset
-    setCurrentCursorPosition(get_cursor_pos_supposed_to_be(clipboard_str));
+    // setCurrentCursorPosition(get_cursor_pos_supposed_to_be(clipboard_str));
 });
 
 $('#slide_view_paste_btn').mousedown(function (e) {
@@ -630,18 +630,8 @@ function increase_indent() {
 //
 //=========================================================================
 
-$('.quick_style_sample')
-
 $('.quick_style_sample').click(function () {
-
-    console.log('*******************');
-    console.log('border-col =>', $(this).css('border-color'));
-    console.log('letter =>', $(this).css('color'));
-    console.log('back img =>', $(this).css('background-image'));
-    console.log('box-shadow =>', $(this).css('box-shadow'));
-    console.log('background =>', $(this).css('background'));
     $('.slide_view_question_element').eq(0).css('border-color', $(this).css('border-color'));
-    // $('.slide_view_question_element').eq(0).css('background-color', $(this).css('background-color'));
     $('.slide_view_question_element').eq(0).css('color', $(this).css('color'));
     $('.slide_view_question_element').eq(0).css('background-image', $(this).css('background-image'));
     $('.slide_view_question_element').eq(0).css('box-shadow', $(this).css('box-shadow'));
@@ -656,3 +646,28 @@ $('.quick_style_sample').click(function () {
 $('.quick_style_sample').mousedown(function (e) {
     e.preventDefault();
 });
+
+$('#office_color_picker').colorpicker({
+  color:'#31859b',
+  defaultPalette:'theme'
+});
+
+$('#shape_fill_color_picker').colorpicker({
+  color:'#31859b',
+  defaultPalette:'theme'
+});
+
+$('#shape_outline_color_picker').colorpicker({
+  color:'#31859b',
+  defaultPalette:'theme'
+});
+
+// triggered when a color is selected.
+$("#shape_fill_color_picker").on("change.color", function(event, color){
+  $('.slide_view_question_element').eq(0).css('background-color', color);
+});
+
+$("#shape_outline_color_picker").on("change.color", function (event, color) {
+  $('.slide_view_question_element').eq(0).css('border-color', color);
+});
+
