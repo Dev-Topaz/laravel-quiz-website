@@ -253,6 +253,7 @@
 
 {{--<script src="{{ asset('js/texteditor.js') }}" defer></script>--}}
 <script src="{{ asset('js/multiple_choice.js') }}" defer></script>
+<script src="{{ asset('js/multiple_response.js') }}" defer></script>
 <script>
     $("body").click(function (e) {
         if (jQuery.inArray('slide_view_question_element', e.target.classList) !== -1 || $(e.target).parents(".slide_view_question_element").length) {
