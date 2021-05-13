@@ -342,4 +342,37 @@ span.icon img {
 
 #shape_effects_ul>li>a {
     line-height: 43px;
+    background: transparent;
+    border: none;
+}
+
+#shape_effect_shadow_panel {
+    position: absolute;
+    z-index: 1;
+    display: none;
+    background: white;
+    transform: translate(107px, -26px);
+    width: 200px;
+    filter: drop-shadow(1px 2px 2px black);
+}
+
+#arrange_li_align:hover #shape_effect_shadow_panel {
+    display: block;
+}
+
+.shape_effect_shadow_sample {
+    width: 30px;
+    height: 30px;
+    border: 1px solid;
+    margin: 18px;
+}
+
+#shape_effect_shadow_panel>div {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.shape_effect_shadow_sample_divider {
+    width: 199px;
+    text-align: left;
 }
