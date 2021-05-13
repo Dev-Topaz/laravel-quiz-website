@@ -836,7 +836,7 @@
                             <li id="paragraph_line_spacing_115"><a>1,15</a></li>
                             <li id="paragraph_line_spacing_150"><a>1,5</a></li>
                             <li id="paragraph_line_spacing_200"><a>2,0</a></li>
-                            <li id="paragraph_line_spacing_option"><a>Spacing Options</a></li>
+                            <!-- <li id="paragraph_line_spacing_option"><a>Spacing Options</a></li> -->
                             <li class="list_divider"></li>
                             <li id="paragraph_line_spacing_add_before"><a>Add Space Before Paragraph</a></li>
                             <li id="paragraph_line_spacing_add_after"><a>Add Space After Paragraph</a></li>
@@ -1517,6 +1517,7 @@
         $("#section_home_form").show();
         $("#section_insert").hide();
         $("#section_design").hide();
+        slide_to_form();
     });
 
 
@@ -1536,6 +1537,7 @@
         $("#section_home_form").hide();
         $("#section_insert").show();
         $("#section_design").show();
+        form_to_slide();
     });
     </script>
     @endsection
