@@ -6,7 +6,7 @@ console.log('ribbon_bar');
 
 // template function
 $('#xxxxx').click(function () {
-    console.log('xxx');
+    console.log('xxxxx');
 });
 $('#xxxxx').mousedown(function (e) {
     e.preventDefault();
@@ -627,7 +627,6 @@ function increase_indent() {
 //          Quick styles
 //
 //
-//
 //=========================================================================
 
 $('.quick_style_sample').click(function () {
@@ -670,3 +669,27 @@ $("#shape_outline_color_picker").on("change.color", function (event, color) {
   $('.slide_view_question_element').eq(0).css('border-color', color);
 });
 
+
+//========================================================
+//
+//                    Design => Themes
+//
+//========================================================
+
+
+$('.design_themes_panels').click(function () {
+    console.log('design_themes_panels');
+    console.log($(this).css('font-family'));
+    console.log($(this).css('color'));
+    console.log($(this).css('background-image'));
+    $('#slide_view_container').eq(0).css('background', 'unset');
+    $('#slide_view_container').eq(0).css('font-family', $(this).css('font-family'));
+    $('#slide_view_container').eq(0).css('color', $(this).css('color'));
+    $('#slide_view_container').eq(0).css('background-image', $(this).css('background-image'));
+    $('#slide_view_container').eq(0).css('background-size', '100% 100%');
+    $('#slide_view_container').eq(0).css('background-repeat', 'no-repeat');
+
+});
+$('.design_themes_panels').mousedown(function (e) {
+    e.preventDefault();
+});

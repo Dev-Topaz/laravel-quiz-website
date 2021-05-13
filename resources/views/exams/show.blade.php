@@ -420,37 +420,6 @@
                     <div class="group-divider"></div>
                 </div>
                 <div class="group">
-                    <div class="ribbon-split-button">
-                        <button class="ribbon-main">
-                            <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/insert-4.png") }}">
-                            </span>
-                        </button>
-                        <span class="ribbon-split dropdown-toggle">Shape</span>
-                        <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">
-                            <div id="insert_shape_panel">
-                                Shapes
-                                <div>
-                                    <div><img class="shape_icon"
-                                            src="{{ url("/images/ribbon_imgs/shapes/Untitled-1_03.png") }}"></div>
-                                    <div><img class="shape_icon"
-                                            src="{{ url("/images/ribbon_imgs/shapes/Untitled-1_04.png") }}"></div>
-                                    <div><img class="shape_icon"
-                                            src="{{ url("/images/ribbon_imgs/shapes/Untitled-1_05.png") }}"></div>
-                                    <div><img class="shape_icon"
-                                            src="{{ url("/images/ribbon_imgs/shapes/Untitled-1_06.png") }}"></div>
-                                    <div><img class="shape_icon"
-                                            src="{{ url("/images/ribbon_imgs/shapes/Untitled-1_08.png") }}"></div>
-                                    <div><img class="shape_icon"
-                                            src="{{ url("/images/ribbon_imgs/shapes/Untitled-1_09.png") }}"></div>
-                                </div>
-                            </div>
-                        </ul>
-                    </div>
-                    <span class="title">Illustrations</span>
-                    <div class="group-divider"></div>
-                </div>
-                <div class="group">
                     <button class="ribbon-button">
                         <span class="icon">
                             <img src="{{ url("/images/ribbon_imgs/insert-5.png") }}">
