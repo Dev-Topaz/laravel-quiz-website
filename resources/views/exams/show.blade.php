@@ -977,7 +977,7 @@
                     <div>
                         <span id="font_color_display_letter" style="border-bottom: 2px solid black;">A</span>
                         <button class="dropdown-toggle" id="font_picker_trigger"
-                            style="margin-left: -1px; width: 1px; padding: 0; margin-top: 3px; height: 20px; background: #f5f6f7;"></button>
+                            style="margin-left: 5px;background: #f5f6f7;"></button>
                         <!-- <input type="color" name="" id="font_color_picker"> -->
                         <div id="office_color_picker" class="ribbon-dropdown" data-role="dropdown" data-duration="100"
                             style="position: absolute;">
@@ -1010,7 +1010,7 @@
                         </div>
                     </div>
                     <div class="dropdown-button">
-                        <button class="button dropdown-toggle"
+                        <button class="button dropdown-toggle" id="line_height_selector"
                             style="margin-left: 10px; width: 44px; margin-top: 3px; height: 23px; background-image: url({{ url("/images/ribbon_imgs/home-19.png") }}); background-repeat: no-repeat; background-position-y: center; background-position-x: 5px;"></button>
                         <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100"
                             style="transform: translate(10px, -10px);">
@@ -1090,7 +1090,7 @@
                                 <img src="{{ url("/images/ribbon_imgs/home-21.png") }}">
                             </span>
                         </button>
-                        <span class="ribbon-split dropdown-toggle">Quick<br>Styles</span>
+                        <span class="ribbon-split dropdown-toggle" style="line-height: 1.3;">Quick<br>Styles</span>
                         <div id="quick_styles_panel_holder" class="ribbon-dropdaown" data-role="dropdown"
                             data-duration="100">
                             <div>

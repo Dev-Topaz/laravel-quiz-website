@@ -183,9 +183,12 @@ span.icon img {
 }
 
 .dropdown-toggle::after {
-    visibility: hidden;
+    /* visibility: hidden; */
 }
 
+.dropdown-toggle::before {
+    visibility: hidden;
+}
 
 /* start of quick styler css */
 #quick_styles_panel_holder {
@@ -375,4 +378,12 @@ span.icon img {
 .shape_effect_shadow_sample_divider {
     width: 199px;
     text-align: left;
+}
+
+#line_height_selector.dropdown-toggle::after {
+    margin-left: 35px;
+}
+
+.ribbon-split.dropdown-toggle::after {
+    margin-left: 0 !important;
 }
