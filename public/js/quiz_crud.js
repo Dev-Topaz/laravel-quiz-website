@@ -45,6 +45,13 @@ function create_quiz(quiz_type, root_url, token) {
             });
             break;
 
+        case (4):
+            lv.insertAfter(node, {
+                caption: 'Type your response:',
+                content: '<i>Short Answer<i>'
+            });
+            break;
+
         default:
     }
 
@@ -111,6 +118,11 @@ function update_quiz() {
             if (selected.length > 0) {
                 answer = selected.val();
             }
+            console.log(answer);
+            break;
+
+        case '4':
+            answer = $('#short_answer').val();
             console.log(answer);
             break;
     }

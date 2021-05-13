@@ -96,6 +96,33 @@
                     </div>
                 </div>
                 @break
+
+                @case(4)
+                <h4>Acceptable Answers</h4>
+                <div style="height: 216px;overflow-y: scroll;">
+                    <div>
+                        <table class="table striped" style="margin: 0">
+                            <thead>
+                            <tr>
+                                <th>Acceptable Answer</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody id="short_answer_list">
+                            <tr>
+                                <td>
+                                    <input id="short_answer" type="text"
+                                           class="form-control @error('short_answer') is-invalid @enderror" name="short_answer"
+                                           value="{{ $quiz->answer }}" required autocomplete="short_answer" autofocus>
+                                </td>
+                                <td><a onclick="{$(this).parent().parent().remove();}"><i
+                                            class="fas fa-trash-alt"></i></a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                @break
             @endswitch
 
             <br>
@@ -357,7 +384,7 @@
                 for (const item of element.find('tr')) {
                     const value = $(item).find('input').attr('value');
                     const label = $(item).find('label').html();
-                    slide_answer_element += '<div class="choice_item"><input type="radio" id="' + value + '" name="answer" value="' + value +'" style="padding-right: 10px;"><label for="' + value + '">' + label + '</label></div>';
+                    slide_answer_element += '<div class="choice_item"><input type="radio" id="' + value + '" name="answer" value="' + value + '" style="padding-right: 10px;"><label for="' + value + '">' + label + '</label></div>';
                 }
                 break;
 
@@ -367,12 +394,16 @@
                 for (const item of element.find('tr')) {
                     const value = $(item).find('input').attr('value');
                     const label = $(item).find('label').html();
-                    slide_answer_element += '<div class="response_item"><input type="checkbox" id="' + value + '" name="answer" value="' + value +'" style="padding-right: 10px;"><label for="' + value + '">' + label + '</label></div>';
+                    slide_answer_element += '<div class="response_item"><input type="checkbox" id="' + value + '" name="answer" value="' + value + '" style="padding-right: 10px;"><label for="' + value + '">' + label + '</label></div>';
                 }
                 break;
 
             case '3':
                 slide_answer_element = '<div class="choice_item"><input type="radio" id="true" name="answer" value="1" style="padding-right: 10px;"><label for="true">True</label></div><div class="choice_item"><input type="radio" id="false" name="answer" value="0" style="padding-right: 10px;"><label for="0">False</label></div>';
+                break;
+
+            case '4':
+                slide_answer_element = '<input id="answer" type="text" class="form-control is-invalid " name="answer" autocomplete="answer">';
                 break;
         }
 
