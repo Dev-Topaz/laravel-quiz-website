@@ -332,6 +332,7 @@
 {{--<script src="{{ asset('js/texteditor.js') }}" defer></script>--}}
 <script src="{{ asset('js/multiple_choice.js') }}" defer></script>
 <script src="{{ asset('js/multiple_response.js') }}" defer></script>
+<script src="{{ asset('js/numeric.js') }}" defer></script>
 <script src="{{ asset('js/ribbon_bar.js') }}" defer></script>
 <script>
     $("body").click(function (e) {
