@@ -56,7 +56,7 @@ $('#slide_view_paste_btn').mousedown(function (e) {
 //  https://raw.githubusercontent.com/Sophie627/flutter-Enriched-Digital-Writer-re-build/master/lib/widget/texteditor/divelement.dart
 
 function get_selected_str() {
-    var sel = window.getSelection(); 
+    var sel = window.getSelection();
     if (sel.rangeCount) {
         return (sel.toString());
     }
@@ -64,7 +64,7 @@ function get_selected_str() {
 }
 
 function delete_selected_str() {
-    var sel = window.getSelection(); 
+    var sel = window.getSelection();
     if (sel.rangeCount) {
         var range = sel.getRangeAt(0);
         range.deleteContents();
@@ -73,7 +73,7 @@ function delete_selected_str() {
 
 function paste_str(str) {
     console.log(str);
-    var sel = window.getSelection(); 
+    var sel = window.getSelection();
 
     if (sel.rangeCount) {
         var e = document.createElement('span');
@@ -112,7 +112,6 @@ function createRange(node, chars, range) {
             }
         }
     }
-
     return range;
 };
 
@@ -137,7 +136,6 @@ function get_cursor_pos_supposed_to_be(str) {
     var el = document.getElementsByClassName('slide_view_question_element')[0].innerText;
     return (el.lastIndexOf(str) + str.length);
 }
-
 
 //=========================================
 //
@@ -249,7 +247,7 @@ $('#font_color_picker').change(function () {
 
 function change_font_color(color) {
     console.log('change_font_color', color);
-    var sel = window.getSelection(); 
+    var sel = window.getSelection();
     if (sel.rangeCount) {
         var e = document.createElement('span');
         e.style = 'color: ' + color + ';';
@@ -263,7 +261,7 @@ function change_font_color(color) {
 
 function toggle_superscript(formatting_superscript) {
     console.log('toggle_subscript');
-    var sel = window.getSelection(); 
+    var sel = window.getSelection();
     if (sel.rangeCount) {
         var e = document.createElement('span');
         if (formatting_superscript) e.style = 'vertical-align: super;';
@@ -278,7 +276,7 @@ function toggle_superscript(formatting_superscript) {
 
 function toggle_subscript(formatting_subscript) {
     console.log('toggle_subscript');
-    var sel = window.getSelection(); 
+    var sel = window.getSelection();
     if (sel.rangeCount) {
         var e = document.createElement('span');
         if (formatting_subscript) e.style = 'vertical-align: sub;';
@@ -293,7 +291,7 @@ function toggle_subscript(formatting_subscript) {
 
 function toggle_underline(formatting_underline) {
     console.log('toggle_ital');
-    var sel = window.getSelection(); 
+    var sel = window.getSelection();
     if (sel.rangeCount) {
         var e = document.createElement('span');
         if (formatting_underline) e.style = 'text-decoration: underline;';
@@ -308,7 +306,7 @@ function toggle_underline(formatting_underline) {
 
 function toggle_ital(formatting_ital) {
     console.log('toggle_ital');
-    var sel = window.getSelection(); 
+    var sel = window.getSelection();
     if (sel.rangeCount) {
         var e = document.createElement('span');
         if (formatting_ital) e.style = 'font-style: italic;';
@@ -322,7 +320,7 @@ function toggle_ital(formatting_ital) {
 }
 
 function toggle_bold(formatting_bold) {
-    var sel = window.getSelection(); 
+    var sel = window.getSelection();
     if (sel.rangeCount) {
         var e = document.createElement('span');
         if (formatting_bold) e.style = 'font-weight: bold;';
@@ -336,7 +334,7 @@ function toggle_bold(formatting_bold) {
 }
 
 function changeFont(font_family) {
-    var sel = window.getSelection(); 
+    var sel = window.getSelection();
     if (sel.rangeCount) {
         var e = document.createElement('span');
         e.style = 'font-family:' + font_family + ';';
@@ -349,7 +347,7 @@ function changeFont(font_family) {
 }
 
 function clear_formatting() {
-    var sel = window.getSelection(); 
+    var sel = window.getSelection();
     if (sel.rangeCount) {
         var e = document.createElement('span');
         e.style = "font-family: 'arial'; font-size: 12px; color: black;";
@@ -362,7 +360,7 @@ function clear_formatting() {
 }
 
 function changeFont_size(font_size) {
-    var sel = window.getSelection(); 
+    var sel = window.getSelection();
     if (sel.rangeCount) {
         var e = document.createElement('span');
         e.style = 'font-size:' + font_size + 'px;';
@@ -397,7 +395,7 @@ function create_bullet(para_bullet) {
     console.log('nodes==>>', nodes);
     for (i = 0; i < nodes.length; i++) {
         console.log('==>', nodes[i].innerText);
-        nodes[i].innerText = i + 1 + '. ' + nodes[i].innerText;
+        nodes[i].innerHTML = '<span>&bull;</span>' + ' ' + nodes[i].innerText;
     }
 
     if (para_bullet) {
@@ -405,4 +403,62 @@ function create_bullet(para_bullet) {
     } else {
 
     }
+}
+
+$('.slide_view_question_element').keydown(function (event) {
+    console.log(event.keycode);
+})
+
+$('#paragraph_align_left').click(function () {
+    $('.slide_view_question_element').css('text-align', 'left');
+});
+
+$('#paragraph_align_center').click(function () {
+    $('.slide_view_question_element').css('text-align', 'center');
+});
+
+$('#paragraph_align_right').click(function () {
+    $('.slide_view_question_element').css('text-align', 'right');
+});
+
+$('#paragraph_align_justify').click(function () {
+    $('.slide_view_question_element').css('text-align', 'justify');
+});
+
+$('#paragraph_line_spacing_100').click(function () {
+    $('.slide_view_question_element').css('line-height', '1');
+});
+
+$('#paragraph_line_spacing_115').click(function () {
+    $('.slide_view_question_element').css('line-height', '1.15');
+});
+
+$('#paragraph_line_spacing_150').click(function () {
+    $('.slide_view_question_element').css('line-height', '1.5');
+});
+
+$('#paragraph_line_spacing_200').click(function () {
+    $('.slide_view_question_element').css('line-height', '2');
+});
+
+$('#paragraph_line_spacing_option').click(function () {
+    // show modal
+});
+
+
+$('#paragraph_line_spacing_add_before').click(function () {
+    add_line_spacing_before();
+});
+
+$('#paragraph_line_spacing_add_after').click(function () {
+
+});
+
+function add_line_spacing_before() {
+
+}
+
+function add_line_spacing_before() {
+    var sel = window.getSelection();
+    sel.anchorNode.parentElement.style.marginTop = "15px";
 }
