@@ -1444,7 +1444,7 @@
                     <div class="content_body">
                         <div class="row">
                             <div class="cell-3">
-                                <div style="display: flex;">
+                                <div style="display: flex; justify-content: space-between;">
                                     <div id="form_view_btn" class="view_switch_btn clicked form_view"
                                         style="background-image: url('{{ url('/images/ribbon_imgs/form_view.png') }}');">
                                         Form View

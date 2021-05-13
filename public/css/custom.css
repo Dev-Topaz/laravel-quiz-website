@@ -318,3 +318,17 @@ span.icon img {
     transform: translate(-39px, 13px);
     visibility: hidden;
 }
+
+.view_switch_btn {
+    width: 164px;
+    height: 31px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    padding-left: 29px;
+}
+
+.view_switch_btn:not(.clicked):hover {
+    background-color: #fff0e6;
+}
