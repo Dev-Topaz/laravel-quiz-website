@@ -299,3 +299,22 @@ span.icon img {
     width: 25px;
     height: 25px;
 }
+
+#font_color_display_letter {
+    border-bottom: 3px solid black;
+    font-weight: bolder;
+    font-family: 'Inter';
+    color: #595959;
+    padding-inline: 2px;
+    margin-left: 13px;
+    margin-right: -7px;
+    z-index: 2;
+    position: relative;
+}
+
+#font_color_picker {
+    width: 0px;
+    height: 0px;
+    transform: translate(-39px, 13px);
+    visibility: hidden;
+}
