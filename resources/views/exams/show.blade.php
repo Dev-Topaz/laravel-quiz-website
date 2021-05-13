@@ -894,151 +894,151 @@
                             data-duration="100">
                             <div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-color: #2b2b2b; background-color: #ffffff; color: #2b2b2b"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-color: #959595; background-color: #ffffff; color: #2b2b2b"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-color: #df4047; background-color: #ffffff; color: #2b2b2b"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-color: #e97624; background-color: #ffffff; color: #2b2b2b"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-color: #60b952; background-color: #ffffff; color: #2b2b2b"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-color: #5a97d6; background-color: #ffffff; color: #2b2b2b"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-color: #319cbc; background-color: #ffffff; color: #2b2b2b"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-color: #0f0f0f; background-color: #2b2b2b; color: #ffffff"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-color: #7b7b7b; background-color: #959595; color: #ffffff"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-color: #b9262e; background-color: #df4047; color: #ffffff"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-color: #c56014; background-color: #e97624; color: #ffffff"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-color: #509b40; background-color: #60b952; color: #ffffff"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-color: #4575a0; background-color: #5a97d6; color: #ffffff"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-color: #367b96; background-color: #319cbc; color: #ffffff"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-color: #2b2b2b; background-color: #2b2b2b; color: #ffffff"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-color: #959595; background-color: #959595; color: #ffffff"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-color: #df4047; background-color: #df4047; color: #ffffff"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-color: #e97624; background-color: #e97624; color: #ffffff"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-color: #60b952; background-color: #60b952; color: #ffffff"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-color: #5a97d6; background-color: #5a97d6; color: #ffffff"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-color: #319cbc; background-color: #319cbc; color: #ffffff"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-color: #2b2b2b; background-image: linear-gradient(#929292, #5f5f5f); color: #2b2b2b"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-color: #959595; background-image: linear-gradient(#d1d1d1, #c1c1c1); color: #2b2b2b"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-color: #d73d43; background-image: linear-gradient(#ebacb0, #e28d92); color: #2b2b2b"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-color: #e97624; background-image: linear-gradient(#f2c199, #eaae7b); color: #2b2b2b"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-color: #60b952; background-image: linear-gradient(#bfe2b8, #a7d79c); color: #2b2b2b"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-color: #5a97d6; background-image: linear-gradient(#cfdff2, #b0cbeb); color: #2b2b2b"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-color: #319cbc; background-image: linear-gradient(#81c1d6, #6eb1cb); color: #2b2b2b"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-color: #2b2b2b; background-image: linear-gradient(#3e3e3e, #040404); color: #ffffff"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-color: #7b7b7b; background-image: linear-gradient(#959595, #8b8b8b); color: #ffffff"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-color: #b9262e; background-image: linear-gradient(#df4047, #cc2a30); color: #ffffff"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-color: #e27520; background-image: linear-gradient(#e27520, #cd6c18); color: #ffffff"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-color: #579c45; background-image: linear-gradient(#69ba57, #63b350); color: #ffffff"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-color: #4679c9; background-image: linear-gradient(#6497d5, #5d8bcf); color: #ffffff"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-color: #319cbc; background-image: linear-gradient(#459cbc, #4b8fae); color: #ffffff"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-style: none; box-shadow: 1px 1px 3px grey; background-image: linear-gradient(#3e3e3e, #040404); color: #ffffff"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-style: none; box-shadow: 1px 1px 3px grey; background-image: linear-gradient(#959595, #8b8b8b); color: #ffffff"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-style: none; box-shadow: 1px 1px 3px grey; background-image: linear-gradient(#df4047, #cc2a30); color: #ffffff"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-style: none; box-shadow: 1px 1px 3px grey; background-image: linear-gradient(#e27520, #cd6c18); color: #ffffff"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-style: none; box-shadow: 1px 1px 3px grey; background-image: linear-gradient(#69ba57, #63b350); color: #ffffff"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-style: none; box-shadow: 1px 1px 3px grey; background-image: linear-gradient(#6497d5, #5d8bcf); color: #ffffff"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-style: none; box-shadow: 1px 1px 3px grey; background-image: linear-gradient(#459cbc, #4b8fae); color: #ffffff"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-style: none; background: repeating-conic-gradient(#585858 0deg 90deg, #646464 0 180deg) 0 0/25% 25%; color: #ffffff"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-style: none; background: repeating-conic-gradient(#a2a2a2 0deg 90deg, #aeaeae 0 180deg) 0 0/25% 25%; color: #ffffff"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-style: none; background: repeating-conic-gradient(#d5666b 0deg 90deg, #e27378 0 180deg) 0 0/25% 25%; color: #ffffff"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-style: none; background: repeating-conic-gradient(#dc8d53 0deg 90deg, #e9995f 0 180deg) 0 0/25% 25%; color: #ffffff"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-style: none; background: repeating-conic-gradient(#7dbb73 0deg 90deg, #89c780 0 180deg) 0 0/25% 25%; color: #ffffff"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-style: none; background: repeating-conic-gradient(#78a3cf 0deg 90deg, #85b0dc 0 180deg) 0 0/25% 25%; color: #ffffff"><span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample"><span>Abc</span></div>
+                                    <div class="quick_style_sample" style="border-style: none; background: repeating-conic-gradient(#5ca7bd 0deg 90deg, #69b3ca 0 180deg) 0 0/25% 25%; color: #ffffff"><span>Abc</span></div>
                                 </div>
                             </div>
                         </div>
