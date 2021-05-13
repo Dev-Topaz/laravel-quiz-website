@@ -102,6 +102,36 @@ class QuizController extends Controller
 
                 break;
 
+            case "3":
+                $quiz = Quiz::create([
+                    'exam_group_id' => $request->exam_group_id,
+                    'type_id' => $request->type_id,
+                    'question_element' => '<div contenteditable="true" class="slide_view_question_element slide_view_group" style="overflow-y: scroll;border: 1px solid black;height: 70px;width: 80%;left: 10%">Choose whether the statement is true or false:</div>',
+                    'answer' => '1',
+                    'feedback_correct' => 'That\'s right! You chose the correct response.',
+                    'feedback_incorrect' => 'You did not choose the correct response.',
+                    'feedback_try_again' => null,
+                    'media' => null,
+                    'order' => null,
+                    'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%"><div class="col-md-12"><div class="response_item"><input type="checkbox" id="1" name="answer" value="1" style="padding-right: 10px;"><label for="1">Option 1</label></div><div class="response_item"><input type="checkbox" id="2" name="answer" value="2" style="padding-right: 10px;"><label for="2">Option 2</label></div><div class="response_item"><input type="checkbox" id="3" name="answer" value="3" style="padding-right: 10px;"><label for="3">Option 3</label></div></div></div>',
+                    'question_type' => 'graded',
+                    'feedback_type' => 'by_result',
+                    'branching' => null,
+                    'score' => 'by_result',
+                    'attempts' => '1',
+                    'is_limit_time' => false,
+                    'limit_time' => null,
+                    'shuffle_answers' => true,
+                    'partially_correct' => false,
+                    'limit_number_response' => false,
+                    'case_sensitive' => null,
+                    'correct_score' => 10,
+                    'incorrect_score' => 0,
+                    'try_again_score' => null,
+                ]);
+
+                break;
+
             default:
         }
 
