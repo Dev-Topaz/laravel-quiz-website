@@ -123,6 +123,10 @@
                     </div>
                 </div>
                 @break
+
+                @case(5)
+
+                @break
             @endswitch
 
             <br>
@@ -403,7 +407,11 @@
                 break;
 
             case '4':
-                slide_answer_element = '<input id="answer" type="text" class="form-control is-invalid " name="answer" autocomplete="answer">';
+                slide_answer_element = '<input id="answer" type="text" class="form-control" name="answer" autocomplete="answer">';
+                break;
+
+            case '5':
+                slide_answer_element = '<input id="answer" type="number" class="form-control" name="answer" autocomplete="answer">';
                 break;
         }
 
