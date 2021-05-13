@@ -6,11 +6,11 @@ function onNodeClick(node) {
 
     $.get(root_url + "/quizes/" + quizId + "/edit", function (data, status) {
         $('#quiz_view').html(data);
+        show_correct_view();
     }).catch((XHttpResponse) => {
         console.log(XHttpResponse);
     });
 
-    show_correct_view();
 }
 
 function create_quiz(quiz_type, root_url, token) {
@@ -56,6 +56,7 @@ function create_quiz(quiz_type, root_url, token) {
 
             $.get(root_url + "/quizes/" + quizId + "/edit", function (data, status) {
                 $('#quiz_view').html(data);
+                show_correct_view();
             }).catch((XHttpResponse) => {
                 console.log(XHttpResponse);
             });
@@ -63,7 +64,6 @@ function create_quiz(quiz_type, root_url, token) {
         console.log(XHttpResponse);
     });
 
-    show_correct_view();
 }
 
 function update_quiz() {
@@ -221,11 +221,12 @@ function delete_quiz() {
 }
 
 function is_form_or_slide() {
-    if ($('#form_view_btn').hasClass('click')) return 'form';
-    if ($('#slide_view_btn').hasClass('click')) return 'slide';
+    if ($('#form_view_btn').hasClass('clicked')) return 'form';
+    if ($('#slide_view_btn').hasClass('clicked')) return 'slide';
 }
 
 function show_correct_view() {
+    console.log(is_form_or_slide());
     if (is_form_or_slide() === 'form') {
         $('.form_view_element').show();
         $('.slide_view_element').hide();
