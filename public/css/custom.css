@@ -332,3 +332,14 @@ span.icon img {
 .view_switch_btn:not(.clicked):hover {
     background-color: #fff0e6;
 }
+
+#shape_effects_ul>li {
+    background-position-x: 8px;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    height: 45px;
+}
+
+#shape_effects_ul>li>a {
+    line-height: 43px;
+}

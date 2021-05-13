@@ -474,10 +474,14 @@
                                     style="margin-left: 5px; margin-top: 0;">Columns</span>
                             </button>
                             <ul id="layout_column_ul" class="ribbon-dropdown" data-role="dropdown" data-duration="100">
-                                <li style="background-image: url({{ url("/images/ribbon_imgs/column_1.png") }});" id="layout_column_01_btn"><a>1 Column</a></li>
-                                <li style="background-image: url({{ url("/images/ribbon_imgs/column_2.png") }});" id="layout_column_02_btn"><a>2 Column</a></li>
-                                <li style="background-image: url({{ url("/images/ribbon_imgs/column_3.png") }});" id="layout_column_03_btn"><a>3 Column</a></li>
-                                <li style="background-image: url({{ url("/images/ribbon_imgs/column_4.png") }});" id="layout_column_04_btn"><a>4 Column</a></li>
+                                <li style="background-image: url({{ url("/images/ribbon_imgs/column_1.png") }});"
+                                    id="layout_column_01_btn"><a>1 Column</a></li>
+                                <li style="background-image: url({{ url("/images/ribbon_imgs/column_2.png") }});"
+                                    id="layout_column_02_btn"><a>2 Column</a></li>
+                                <li style="background-image: url({{ url("/images/ribbon_imgs/column_3.png") }});"
+                                    id="layout_column_03_btn"><a>3 Column</a></li>
+                                <li style="background-image: url({{ url("/images/ribbon_imgs/column_4.png") }});"
+                                    id="layout_column_04_btn"><a>4 Column</a></li>
                             </ul>
                         </div>
                     </div>
@@ -488,35 +492,45 @@
                     <div style="display: flex; align-items: center;">
                         <select id="slide_view_font_family_selector"
                             style="font-size: 12px; outline: none; width: 131px; height: 25px;">
-                            <option style="font-family: 'Abadi MT Condensed Light';" value="Abadi MT Condensed Light">Abadi MT Condensed Light</option>
+                            <option style="font-family: 'Abadi MT Condensed Light';" value="Abadi MT Condensed Light">
+                                Abadi MT Condensed Light</option>
                             <option style="font-family: 'Aharoni';" value="Aharoni">Aharoni</option>
                             <option style="font-family: 'Aharoni Bold';" value="Aharoni Bold">Aharoni Bold</option>
                             <option style="font-family: 'Aldhabi';" value="Aldhabi">Aldhabi</option>
-                            <option style="font-family: 'AlternateGothic2 BT';" value="AlternateGothic2 BT">AlternateGothic2 BT</option>
+                            <option style="font-family: 'AlternateGothic2 BT';" value="AlternateGothic2 BT">
+                                AlternateGothic2 BT</option>
                             <option style="font-family: 'Andale Mono';" value="Andale Mono">Andale Mono</option>
                             <option style="font-family: 'Andalus';" value="Andalus">Andalus</option>
                             <option style="font-family: 'Angsana New';" value="Angsana New">Angsana New</option>
                             <option style="font-family: 'AngsanaUPC';" value="AngsanaUPC">AngsanaUPC</option>
                             <option style="font-family: 'Aparajita';" value="Aparajita">Aparajita</option>
-                            <option style="font-family: 'Apple Chancery';" value="Apple Chancery">Apple Chancery</option>
-                            <option style="font-family: 'Arabic Typesetting';" value="Arabic Typesetting">Arabic Typesetting</option>
+                            <option style="font-family: 'Apple Chancery';" value="Apple Chancery">Apple Chancery
+                            </option>
+                            <option style="font-family: 'Arabic Typesetting';" value="Arabic Typesetting">Arabic
+                                Typesetting</option>
                             <option style="font-family: 'Arial';" value="Arial" selected="selected">Arial</option>
                             <option style="font-family: 'Arial Black';" value="Arial Black">Arial Black</option>
                             <option style="font-family: 'Arial narrow';" value="Arial narrow">Arial narrow</option>
                             <option style="font-family: 'Arial Nova';" value="Arial Nova">Arial Nova</option>
-                            <option style="font-family: 'Arial Rounded MT Bold';" value="Arial Rounded MT Bold">Arial Rounded MT Bold</option>
-                            <option style="font-family: 'Arnoldboecklin';" value="Arnoldboecklin">Arnoldboecklin</option>
+                            <option style="font-family: 'Arial Rounded MT Bold';" value="Arial Rounded MT Bold">Arial
+                                Rounded MT Bold</option>
+                            <option style="font-family: 'Arnoldboecklin';" value="Arnoldboecklin">Arnoldboecklin
+                            </option>
                             <option style="font-family: 'Avanta Garde';" value="Avanta Garde">Avanta Garde</option>
                             <option style="font-family: 'Bahnschrift';" value="Bahnschrift">Bahnschrift</option>
-                            <option style="font-family: 'Bahnschrift Light';" value="Bahnschrift Light">Bahnschrift Light</option>
-                            <option style="font-family: 'Bahnschrift SemiBold';" value="Bahnschrift SemiBold">Bahnschrift SemiBold</option>
-                            <option style="font-family: 'Bahnschrift SemiLight';" value="Bahnschrift SemiLight">Bahnschrift SemiLight</option>
+                            <option style="font-family: 'Bahnschrift Light';" value="Bahnschrift Light">Bahnschrift
+                                Light</option>
+                            <option style="font-family: 'Bahnschrift SemiBold';" value="Bahnschrift SemiBold">
+                                Bahnschrift SemiBold</option>
+                            <option style="font-family: 'Bahnschrift SemiLight';" value="Bahnschrift SemiLight">
+                                Bahnschrift SemiLight</option>
                             <option style="font-family: 'Baskerville';" value="Baskerville">Baskerville</option>
                             <option style="font-family: 'Batang';" value="Batang">Batang</option>
                             <option style="font-family: 'BatangChe';" value="BatangChe">BatangChe</option>
                             <option style="font-family: 'Big Caslon';" value="Big Caslon">Big Caslon</option>
                             <option style="font-family: 'BIZ UDGothic';" value="BIZ UDGothic">BIZ UDGothic</option>
-                            <option style="font-family: 'BIZ UDMincho Medium';" value="BIZ UDMincho Medium">BIZ UDMincho Medium</option>
+                            <option style="font-family: 'BIZ UDMincho Medium';" value="BIZ UDMincho Medium">BIZ UDMincho
+                                Medium</option>
                             <option style="font-family: 'Blippo';" value="Blippo">Blippo</option>
                             <option style="font-family: 'Blippo';" value="Blippo">Blippo</option>
                             <option style="font-family: 'Bodoni MT';" value="Bodoni MT">Bodoni MT</option>
@@ -525,8 +539,10 @@
                             <option style="font-family: 'Bradley Hand';" value="Bradley Hand">Bradley Hand</option>
                             <option style="font-family: 'Browallia New';" value="Browallia New">Browallia New</option>
                             <option style="font-family: 'BrowalliaUPC';" value="BrowalliaUPC">BrowalliaUPC</option>
-                            <option style="font-family: 'Brush Script MT';" value="Brush Script MT">Brush Script MT</option>
-                            <option style="font-family: 'Brush Script Std';" value="Brush Script Std">Brush Script Std</option>
+                            <option style="font-family: 'Brush Script MT';" value="Brush Script MT">Brush Script MT
+                            </option>
+                            <option style="font-family: 'Brush Script Std';" value="Brush Script Std">Brush Script Std
+                            </option>
                             <option style="font-family: 'Brushstroke';" value="Brushstroke">Brushstroke</option>
                             <option style="font-family: 'Calibri';" value="Calibri">Calibri</option>
                             <option style="font-family: 'Calibri Light';" value="Calibri Light">Calibri Light</option>
@@ -535,7 +551,8 @@
                             <option style="font-family: 'Cambria';" value="Cambria">Cambria</option>
                             <option style="font-family: 'Cambria Math';" value="Cambria Math">Cambria Math</option>
                             <option style="font-family: 'Candara';" value="Candara">Candara</option>
-                            <option style="font-family: 'Century Gothic';" value="Century Gothic">Century Gothic</option>
+                            <option style="font-family: 'Century Gothic';" value="Century Gothic">Century Gothic
+                            </option>
                             <option style="font-family: 'Chalkduster';" value="Chalkduster">Chalkduster</option>
                             <option style="font-family: 'Cherokee';" value="Cherokee">Cherokee</option>
                             <option style="font-family: 'Comic Sans';" value="Comic Sans">Comic Sans</option>
@@ -543,12 +560,15 @@
                             <option style="font-family: 'Consolas';" value="Consolas">Consolas</option>
                             <option style="font-family: 'Constantia';" value="Constantia">Constantia</option>
                             <option style="font-family: 'Copperplate';" value="Copperplate">Copperplate</option>
-                            <option style="font-family: 'Copperplate Gothic Light';" value="Copperplate Gothic Light">Copperplate Gothic Light</option>
-                            <option style="font-family: 'Copperplate Gothic Bold';" value="Copperplate Gothic Bold">Copperplate Gothic Bold</option>
+                            <option style="font-family: 'Copperplate Gothic Light';" value="Copperplate Gothic Light">
+                                Copperplate Gothic Light</option>
+                            <option style="font-family: 'Copperplate Gothic Bold';" value="Copperplate Gothic Bold">
+                                Copperplate Gothic Bold</option>
                             <option style="font-family: 'Corbel';" value="Corbel">Corbel</option>
                             <option style="font-family: 'Cordia New';" value="Cordia New">Cordia New</option>
                             <option style="font-family: 'CordiaUPC';" value="CordiaUPC">CordiaUPC</option>
-                            <option style="font-family: 'Coronet script';" value="Coronet script">Coronet script</option>
+                            <option style="font-family: 'Coronet script';" value="Coronet script">Coronet script
+                            </option>
                             <option style="font-family: 'Coronetscript';" value="Coronetscript">Coronetscript</option>
                             <option style="font-family: 'Courier';" value="Courier">Courier</option>
                             <option style="font-family: 'Courier New';" value="Courier New">Courier New</option>
@@ -562,12 +582,14 @@
                             <option style="font-family: 'Dotum';" value="Dotum">Dotum</option>
                             <option style="font-family: 'DotumChe';" value="DotumChe">DotumChe</option>
                             <option style="font-family: 'Ebrima';" value="Ebrima">Ebrima</option>
-                            <option style="font-family: 'Estrangelo Edessa';" value="Estrangelo Edessa">Estrangelo Edessa</option>
+                            <option style="font-family: 'Estrangelo Edessa';" value="Estrangelo Edessa">Estrangelo
+                                Edessa</option>
                             <option style="font-family: 'EucrosiaUPC';" value="EucrosiaUPC">EucrosiaUPC</option>
                             <option style="font-family: 'Euphemia';" value="Euphemia">Euphemia</option>
                             <option style="font-family: 'FangSong';" value="FangSong">FangSong</option>
                             <option style="font-family: 'Florence';" value="Florence">Florence</option>
-                            <option style="font-family: 'Franklin Gothic Medium';" value="Franklin Gothic Medium">Franklin Gothic Medium</option>
+                            <option style="font-family: 'Franklin Gothic Medium';" value="Franklin Gothic Medium">
+                                Franklin Gothic Medium</option>
                             <option style="font-family: 'FrankRuehl';" value="FrankRuehl">FrankRuehl</option>
                             <option style="font-family: 'FreesiaUPC';" value="FreesiaUPC">FreesiaUPC</option>
                             <option style="font-family: 'Futara';" value="Futara">Futara</option>
@@ -580,9 +602,11 @@
                             <option style="font-family: 'Georgia Pro';" value="Georgia Pro">Georgia Pro</option>
                             <option style="font-family: 'Gill Sans';" value="Gill Sans">Gill Sans</option>
                             <option style="font-family: 'Gill Sans';" value="Gill Sans">Gill Sans</option>
-                            <option style="font-family: 'Gill Sans Nova';" value="Gill Sans Nova">Gill Sans Nova</option>
+                            <option style="font-family: 'Gill Sans Nova';" value="Gill Sans Nova">Gill Sans Nova
+                            </option>
                             <option style="font-family: 'Gisha';" value="Gisha">Gisha</option>
-                            <option style="font-family: 'Goudy Old Style';" value="Goudy Old Style">Goudy Old Style</option>
+                            <option style="font-family: 'Goudy Old Style';" value="Goudy Old Style">Goudy Old Style
+                            </option>
                             <option style="font-family: 'Gulim';" value="Gulim">Gulim</option>
                             <option style="font-family: 'GulimChe';" value="GulimChe">GulimChe</option>
                             <option style="font-family: 'Gungsuh';" value="Gungsuh">Gungsuh</option>
@@ -590,7 +614,8 @@
                             <option style="font-family: 'Hebrew';" value="Hebrew">Hebrew</option>
                             <option style="font-family: 'Helvetica';" value="Helvetica">Helvetica</option>
                             <option style="font-family: 'Hoefler Text';" value="Hoefler Text">Hoefler Text</option>
-                            <option style="font-family: 'HoloLens MDL2 Assets';" value="HoloLens MDL2 Assets">HoloLens MDL2 Assets</option>
+                            <option style="font-family: 'HoloLens MDL2 Assets';" value="HoloLens MDL2 Assets">HoloLens
+                                MDL2 Assets</option>
                             <option style="font-family: 'Impact';" value="Impact">Impact</option>
                             <option style="font-family: 'Impact';" value="Impact">Impact</option>
                             <option style="font-family: 'Ink Free';" value="Ink Free">Ink Free</option>
@@ -612,44 +637,64 @@
                             <option style="font-family: 'Latha';" value="Latha">Latha</option>
                             <option style="font-family: 'Leelawadee';" value="Leelawadee">Leelawadee</option>
                             <option style="font-family: 'Leelawadee UI';" value="Leelawadee UI">Leelawadee UI</option>
-                            <option style="font-family: 'Leelawadee UI Semilight';" value="Leelawadee UI Semilight">Leelawadee UI Semilight</option>
+                            <option style="font-family: 'Leelawadee UI Semilight';" value="Leelawadee UI Semilight">
+                                Leelawadee UI Semilight</option>
                             <option style="font-family: 'Levenim MT';" value="Levenim MT">Levenim MT</option>
                             <option style="font-family: 'LilyUPC';" value="LilyUPC">LilyUPC</option>
                             <option style="font-family: 'Lucida Bright';" value="Lucida Bright">Lucida Bright</option>
                             <option style="font-family: 'Lucida Bright';" value="Lucida Bright">Lucida Bright</option>
-                            <option style="font-family: 'Lucida Console';" value="Lucida Console">Lucida Console</option>
-                            <option style="font-family: 'Lucida Handwriting';" value="Lucida Handwriting">Lucida Handwriting</option>
+                            <option style="font-family: 'Lucida Console';" value="Lucida Console">Lucida Console
+                            </option>
+                            <option style="font-family: 'Lucida Handwriting';" value="Lucida Handwriting">Lucida
+                                Handwriting</option>
                             <option style="font-family: 'Lucida Sans';" value="Lucida Sans">Lucida Sans</option>
-                            <option style="font-family: 'Lucida Sans Typewriter';" value="Lucida Sans Typewriter">Lucida Sans Typewriter</option>
-                            <option style="font-family: 'Lucida Sans Unicode';" value="Lucida Sans Unicode">Lucida Sans Unicode</option>
-                            <option style="font-family: 'Lucidatypewriter';" value="Lucidatypewriter">Lucidatypewriter</option>
+                            <option style="font-family: 'Lucida Sans Typewriter';" value="Lucida Sans Typewriter">Lucida
+                                Sans Typewriter</option>
+                            <option style="font-family: 'Lucida Sans Unicode';" value="Lucida Sans Unicode">Lucida Sans
+                                Unicode</option>
+                            <option style="font-family: 'Lucidatypewriter';" value="Lucidatypewriter">Lucidatypewriter
+                            </option>
                             <option style="font-family: 'Luminari';" value="Luminari">Luminari</option>
                             <option style="font-family: 'Malgun Gothic';" value="Malgun Gothic">Malgun Gothic</option>
-                            <option style="font-family: 'Malgun Gothic Semilight';" value="Malgun Gothic Semilight">Malgun Gothic Semilight</option>
+                            <option style="font-family: 'Malgun Gothic Semilight';" value="Malgun Gothic Semilight">
+                                Malgun Gothic Semilight</option>
                             <option style="font-family: 'Mangal';" value="Mangal">Mangal</option>
                             <option style="font-family: 'Marker Felt';" value="Marker Felt">Marker Felt</option>
                             <option style="font-family: 'Marlett';" value="Marlett">Marlett</option>
                             <option style="font-family: 'Meiryo';" value="Meiryo">Meiryo</option>
                             <option style="font-family: 'Meiryo UI';" value="Meiryo UI">Meiryo UI</option>
-                            <option style="font-family: 'Microsoft Himalaya';" value="Microsoft Himalaya">Microsoft Himalaya</option>
-                            <option style="font-family: 'Microsoft JhengHei';" value="Microsoft JhengHei">Microsoft JhengHei</option>
-                            <option style="font-family: 'Microsoft JhengHei UI';" value="Microsoft JhengHei UI">Microsoft JhengHei UI</option>
-                            <option style="font-family: 'Microsoft New Tai Lue';" value="Microsoft New Tai Lue">Microsoft New Tai Lue</option>
-                            <option style="font-family: 'Microsoft PhagsPa';" value="Microsoft PhagsPa">Microsoft PhagsPa</option>
-                            <option style="font-family: 'Microsoft Sans Serif';" value="Microsoft Sans Serif">Microsoft Sans Serif</option>
-                            <option style="font-family: 'Microsoft Tai Le';" value="Microsoft Tai Le">Microsoft Tai Le</option>
-                            <option style="font-family: 'Microsoft Uighur';" value="Microsoft Uighur">Microsoft Uighur</option>
-                            <option style="font-family: 'Microsoft YaHei';" value="Microsoft YaHei">Microsoft YaHei</option>
-                            <option style="font-family: 'Microsoft YaHei UI';" value="Microsoft YaHei UI">Microsoft YaHei UI</option>
-                            <option style="font-family: 'Microsoft Yi Baiti';" value="Microsoft Yi Baiti">Microsoft Yi Baiti</option>
+                            <option style="font-family: 'Microsoft Himalaya';" value="Microsoft Himalaya">Microsoft
+                                Himalaya</option>
+                            <option style="font-family: 'Microsoft JhengHei';" value="Microsoft JhengHei">Microsoft
+                                JhengHei</option>
+                            <option style="font-family: 'Microsoft JhengHei UI';" value="Microsoft JhengHei UI">
+                                Microsoft JhengHei UI</option>
+                            <option style="font-family: 'Microsoft New Tai Lue';" value="Microsoft New Tai Lue">
+                                Microsoft New Tai Lue</option>
+                            <option style="font-family: 'Microsoft PhagsPa';" value="Microsoft PhagsPa">Microsoft
+                                PhagsPa</option>
+                            <option style="font-family: 'Microsoft Sans Serif';" value="Microsoft Sans Serif">Microsoft
+                                Sans Serif</option>
+                            <option style="font-family: 'Microsoft Tai Le';" value="Microsoft Tai Le">Microsoft Tai Le
+                            </option>
+                            <option style="font-family: 'Microsoft Uighur';" value="Microsoft Uighur">Microsoft Uighur
+                            </option>
+                            <option style="font-family: 'Microsoft YaHei';" value="Microsoft YaHei">Microsoft YaHei
+                            </option>
+                            <option style="font-family: 'Microsoft YaHei UI';" value="Microsoft YaHei UI">Microsoft
+                                YaHei UI</option>
+                            <option style="font-family: 'Microsoft Yi Baiti';" value="Microsoft Yi Baiti">Microsoft Yi
+                                Baiti</option>
                             <option style="font-family: 'MingLiU';" value="MingLiU">MingLiU</option>
                             <option style="font-family: 'MingLiU_HKSCS';" value="MingLiU_HKSCS">MingLiU_HKSCS</option>
-                            <option style="font-family: 'MingLiU_HKSCS-ExtB';" value="MingLiU_HKSCS-ExtB">MingLiU_HKSCS-ExtB</option>
+                            <option style="font-family: 'MingLiU_HKSCS-ExtB';" value="MingLiU_HKSCS-ExtB">
+                                MingLiU_HKSCS-ExtB</option>
                             <option style="font-family: 'MingLiU-ExtB';" value="MingLiU-ExtB">MingLiU-ExtB</option>
                             <option style="font-family: 'Miriam';" value="Miriam">Miriam</option>
                             <option style="font-family: 'Monaco';" value="Monaco">Monaco</option>
                             <option style="font-family: 'Monaco';" value="Monaco">Monaco</option>
-                            <option style="font-family: 'Mongolian Baiti';" value="Mongolian Baiti">Mongolian Baiti</option>
+                            <option style="font-family: 'Mongolian Baiti';" value="Mongolian Baiti">Mongolian Baiti
+                            </option>
                             <option style="font-family: 'MoolBoran';" value="MoolBoran">MoolBoran</option>
                             <option style="font-family: 'MS Gothic';" value="MS Gothic">MS Gothic</option>
                             <option style="font-family: 'MS Mincho';" value="MS Mincho">MS Mincho</option>
@@ -659,11 +704,15 @@
                             <option style="font-family: 'MV Boli';" value="MV Boli">MV Boli</option>
                             <option style="font-family: 'Myanmar Text';" value="Myanmar Text">Myanmar Text</option>
                             <option style="font-family: 'Narkisim';" value="Narkisim">Narkisim</option>
-                            <option style="font-family: 'Neue Haas Grotesk Text Pro';" value="Neue Haas Grotesk Text Pro">Neue Haas Grotesk Text Pro</option>
-                            <option style="font-family: 'New Century Schoolbook';" value="New Century Schoolbook">New Century Schoolbook</option>
-                            <option style="font-family: 'News Gothic MT';" value="News Gothic MT">News Gothic MT</option>
+                            <option style="font-family: 'Neue Haas Grotesk Text Pro';"
+                                value="Neue Haas Grotesk Text Pro">Neue Haas Grotesk Text Pro</option>
+                            <option style="font-family: 'New Century Schoolbook';" value="New Century Schoolbook">New
+                                Century Schoolbook</option>
+                            <option style="font-family: 'News Gothic MT';" value="News Gothic MT">News Gothic MT
+                            </option>
                             <option style="font-family: 'Nirmala UI';" value="Nirmala UI">Nirmala UI</option>
-                            <option style="font-family: 'No automatic language associations';" value="No automatic language associations">No automatic language associations</option>
+                            <option style="font-family: 'No automatic language associations';"
+                                value="No automatic language associations">No automatic language associations</option>
                             <option style="font-family: 'Noto';" value="Noto">Noto</option>
                             <option style="font-family: 'Noto';" value="Noto">Noto</option>
                             <option style="font-family: 'NSimSun';" value="NSimSun">NSimSun</option>
@@ -671,58 +720,80 @@
                             <option style="font-family: 'Oldtown';" value="Oldtown">Oldtown</option>
                             <option style="font-family: 'Optima';" value="Optima">Optima</option>
                             <option style="font-family: 'Palatino';" value="Palatino">Palatino</option>
-                            <option style="font-family: 'Palatino Linotype';" value="Palatino Linotype">Palatino Linotype</option>
+                            <option style="font-family: 'Palatino Linotype';" value="Palatino Linotype">Palatino
+                                Linotype</option>
                             <option style="font-family: 'papyrus';" value="papyrus">papyrus</option>
                             <option style="font-family: 'Parkavenue';" value="Parkavenue">Parkavenue</option>
                             <option style="font-family: 'Perpetua';" value="Perpetua">Perpetua</option>
-                            <option style="font-family: 'Plantagenet Cherokee';" value="Plantagenet Cherokee">Plantagenet Cherokee</option>
+                            <option style="font-family: 'Plantagenet Cherokee';" value="Plantagenet Cherokee">
+                                Plantagenet Cherokee</option>
                             <option style="font-family: 'PMingLiU';" value="PMingLiU">PMingLiU</option>
                             <option style="font-family: 'Raavi';" value="Raavi">Raavi</option>
                             <option style="font-family: 'Rockwell';" value="Rockwell">Rockwell</option>
-                            <option style="font-family: 'Rockwell Extra Bold';" value="Rockwell Extra Bold">Rockwell Extra Bold</option>
+                            <option style="font-family: 'Rockwell Extra Bold';" value="Rockwell Extra Bold">Rockwell
+                                Extra Bold</option>
                             <option style="font-family: 'Rockwell Nova';" value="Rockwell Nova">Rockwell Nova</option>
-                            <option style="font-family: 'Rockwell Nova Cond';" value="Rockwell Nova Cond">Rockwell Nova Cond</option>
-                            <option style="font-family: 'Rockwell Nova Extra Bold';" value="Rockwell Nova Extra Bold">Rockwell Nova Extra Bold</option>
+                            <option style="font-family: 'Rockwell Nova Cond';" value="Rockwell Nova Cond">Rockwell Nova
+                                Cond</option>
+                            <option style="font-family: 'Rockwell Nova Extra Bold';" value="Rockwell Nova Extra Bold">
+                                Rockwell Nova Extra Bold</option>
                             <option style="font-family: 'Rod';" value="Rod">Rod</option>
-                            <option style="font-family: 'Sakkal Majalla';" value="Sakkal Majalla">Sakkal Majalla</option>
+                            <option style="font-family: 'Sakkal Majalla';" value="Sakkal Majalla">Sakkal Majalla
+                            </option>
                             <option style="font-family: 'Sanskrit Text';" value="Sanskrit Text">Sanskrit Text</option>
-                            <option style="font-family: 'Segoe MDL2 Assets';" value="Segoe MDL2 Assets">Segoe MDL2 Assets</option>
+                            <option style="font-family: 'Segoe MDL2 Assets';" value="Segoe MDL2 Assets">Segoe MDL2
+                                Assets</option>
                             <option style="font-family: 'Segoe Print';" value="Segoe Print">Segoe Print</option>
                             <option style="font-family: 'Segoe Script';" value="Segoe Script">Segoe Script</option>
                             <option style="font-family: 'Segoe UI';" value="Segoe UI">Segoe UI</option>
-                            <option style="font-family: 'Segoe UI Emoji';" value="Segoe UI Emoji">Segoe UI Emoji</option>
-                            <option style="font-family: 'Segoe UI Historic';" value="Segoe UI Historic">Segoe UI Historic</option>
-                            <option style="font-family: 'Segoe UI Symbol';" value="Segoe UI Symbol">Segoe UI Symbol</option>
+                            <option style="font-family: 'Segoe UI Emoji';" value="Segoe UI Emoji">Segoe UI Emoji
+                            </option>
+                            <option style="font-family: 'Segoe UI Historic';" value="Segoe UI Historic">Segoe UI
+                                Historic</option>
+                            <option style="font-family: 'Segoe UI Symbol';" value="Segoe UI Symbol">Segoe UI Symbol
+                            </option>
                             <option style="font-family: 'Shonar Bangla';" value="Shonar Bangla">Shonar Bangla</option>
                             <option style="font-family: 'Shruti';" value="Shruti">Shruti</option>
                             <option style="font-family: 'SimHei';" value="SimHei">SimHei</option>
                             <option style="font-family: 'SimKai';" value="SimKai">SimKai</option>
-                            <option style="font-family: 'Simplified Arabic';" value="Simplified Arabic">Simplified Arabic</option>
-                            <option style="font-family: 'Simplified Chinese';" value="Simplified Chinese">Simplified Chinese</option>
+                            <option style="font-family: 'Simplified Arabic';" value="Simplified Arabic">Simplified
+                                Arabic</option>
+                            <option style="font-family: 'Simplified Chinese';" value="Simplified Chinese">Simplified
+                                Chinese</option>
                             <option style="font-family: 'SimSun';" value="SimSun">SimSun</option>
                             <option style="font-family: 'SimSun-ExtB';" value="SimSun-ExtB">SimSun-ExtB</option>
                             <option style="font-family: 'Sitka';" value="Sitka">Sitka</option>
-                            <option style="font-family: 'Snell Roundhan';" value="Snell Roundhan">Snell Roundhan</option>
-                            <option style="font-family: 'Snell Roundhan';" value="Snell Roundhan">Snell Roundhan</option>
+                            <option style="font-family: 'Snell Roundhan';" value="Snell Roundhan">Snell Roundhan
+                            </option>
+                            <option style="font-family: 'Snell Roundhan';" value="Snell Roundhan">Snell Roundhan
+                            </option>
                             <option style="font-family: 'Stencil Std';" value="Stencil Std">Stencil Std</option>
                             <option style="font-family: 'Stencil Std';" value="Stencil Std">Stencil Std</option>
                             <option style="font-family: 'Sylfaen';" value="Sylfaen">Sylfaen</option>
                             <option style="font-family: 'Symbol';" value="Symbol">Symbol</option>
                             <option style="font-family: 'Tahoma';" value="Tahoma">Tahoma</option>
                             <option style="font-family: 'Thai';" value="Thai">Thai</option>
-                            <option style="font-family: 'Times New Roman';" value="Times New Roman">Times New Roman</option>
-                            <option style="font-family: 'Traditional Arabic';" value="Traditional Arabic">Traditional Arabic</option>
-                            <option style="font-family: 'Traditional Chinese';" value="Traditional Chinese">Traditional Chinese</option>
+                            <option style="font-family: 'Times New Roman';" value="Times New Roman">Times New Roman
+                            </option>
+                            <option style="font-family: 'Traditional Arabic';" value="Traditional Arabic">Traditional
+                                Arabic</option>
+                            <option style="font-family: 'Traditional Chinese';" value="Traditional Chinese">Traditional
+                                Chinese</option>
                             <option style="font-family: 'Trattatello';" value="Trattatello">Trattatello</option>
                             <option style="font-family: 'Trattatello';" value="Trattatello">Trattatello</option>
                             <option style="font-family: 'Trebuchet MS';" value="Trebuchet MS">Trebuchet MS</option>
                             <option style="font-family: 'Trebuchet MS';" value="Trebuchet MS">Trebuchet MS</option>
                             <option style="font-family: 'Tunga';" value="Tunga">Tunga</option>
-                            <option style="font-family: 'UD Digi Kyokasho';" value="UD Digi Kyokasho">UD Digi Kyokasho</option>
-                            <option style="font-family: 'UD Digi KyoKasho NK-R';" value="UD Digi KyoKasho NK-R">UD Digi KyoKasho NK-R</option>
-                            <option style="font-family: 'UD Digi KyoKasho NP-R';" value="UD Digi KyoKasho NP-R">UD Digi KyoKasho NP-R</option>
-                            <option style="font-family: 'UD Digi KyoKasho N-R';" value="UD Digi KyoKasho N-R">UD Digi KyoKasho N-R</option>
-                            <option style="font-family: 'Urdu Typesetting';" value="Urdu Typesetting">Urdu Typesetting</option>
+                            <option style="font-family: 'UD Digi Kyokasho';" value="UD Digi Kyokasho">UD Digi Kyokasho
+                            </option>
+                            <option style="font-family: 'UD Digi KyoKasho NK-R';" value="UD Digi KyoKasho NK-R">UD Digi
+                                KyoKasho NK-R</option>
+                            <option style="font-family: 'UD Digi KyoKasho NP-R';" value="UD Digi KyoKasho NP-R">UD Digi
+                                KyoKasho NP-R</option>
+                            <option style="font-family: 'UD Digi KyoKasho N-R';" value="UD Digi KyoKasho N-R">UD Digi
+                                KyoKasho N-R</option>
+                            <option style="font-family: 'Urdu Typesetting';" value="Urdu Typesetting">Urdu Typesetting
+                            </option>
                             <option style="font-family: 'URW Chancery';" value="URW Chancery">URW Chancery</option>
                             <option style="font-family: 'URW Chancery';" value="URW Chancery">URW Chancery</option>
                             <option style="font-family: 'Utsaah';" value="Utsaah">Utsaah</option>
@@ -799,7 +870,10 @@
                         <span id="font_color_display_letter" style="border-bottom: 2px solid black;">A</span>
                         <button class="dropdown-toggle" id="font_picker_trigger"
                             style="margin-left: -1px; width: 1px; padding: 0; margin-top: 3px; height: 20px; background: #f5f6f7;"></button>
-                        <input type="color" name="" id="font_color_picker">
+                        <!-- <input type="color" name="" id="font_color_picker"> -->
+                        <div id="office_color_picker" class="ribbon-dropdown" data-role="dropdown" data-duration="100"
+                            style="position: absolute;">
+                        </div>
                     </div>
                     <span class=" title">Font</span>
                     <div class="group-divider"></div>
@@ -855,29 +929,48 @@
                         <span class="ribbon-split dropdown-toggle">Arrange</span>
                         <ul id="arrange_ul" class="ribbon-dropdown" data-role="dropdown" data-duration="100">
                             <li class="subtitle_li">Order Objects</li>
-                            <li style="background-image: url({{ url("/images/ribbon_imgs/arrange_bring_to_front.png") }});" id="arrange_bring_front"><a>Bring to Front</a></li>
-                            <li style="background-image: url({{ url("/images/ribbon_imgs/arrange_send_to_back.png") }});" id="arrange_send_back"><a>Send to Back</a></li>
-                            <li style="background-image: url({{ url("/images/ribbon_imgs/arrange_bring_forward.png") }});" id="arrange_bring_forward"><a>Bring Forward</a></li>
-                            <li style="background-image: url({{ url("/images/ribbon_imgs/arrange_send_backward.png") }});" id="arrange_send_backward"><a>Send Backward</a></li>
+                            <li style="background-image: url({{ url("/images/ribbon_imgs/arrange_bring_to_front.png") }});"
+                                id="arrange_bring_front"><a>Bring to Front</a></li>
+                            <li style="background-image: url({{ url("/images/ribbon_imgs/arrange_send_to_back.png") }});"
+                                id="arrange_send_back"><a>Send to Back</a></li>
+                            <li style="background-image: url({{ url("/images/ribbon_imgs/arrange_bring_forward.png") }});"
+                                id="arrange_bring_forward"><a>Bring Forward</a></li>
+                            <li style="background-image: url({{ url("/images/ribbon_imgs/arrange_send_backward.png") }});"
+                                id="arrange_send_backward"><a>Send Backward</a></li>
                             <li class="subtitle_li">Position Objects</li>
-                            <li style="background-image: url({{ url("/images/ribbon_imgs/align.png") }});" id="arrange_li_align"><a>Align <strong style="position: absolute; right: 5px;">></strong></a>
+                            <li style="background-image: url({{ url("/images/ribbon_imgs/align.png") }});"
+                                id="arrange_li_align"><a>Align <strong
+                                        style="position: absolute; right: 5px;">></strong></a>
                                 <ul class="arrange_ul_ul" style=" height: 244px;">
-                                    <li style="background-image: url({{ url("/images/ribbon_imgs/align_left.png") }});" id="align_left"><a>Align Left</a></li>
-                                    <li style="background-image: url({{ url("/images/ribbon_imgs/align_center.png") }});" id="align_center"><a>Align Center</a></li>
-                                    <li style="background-image: url({{ url("/images/ribbon_imgs/align_right.png") }});" id="align_right"><a>Align Right</a></li>
-                                    <li style="background-image: url({{ url("/images/ribbon_imgs/align_top.png") }});" id="align_top"><a>Align Top</a></li>
-                                    <li style="background-image: url({{ url("/images/ribbon_imgs/align_middle.png") }});" id="align_middle"><a>Align Middle</a></li>
-                                    <li style="background-image: url({{ url("/images/ribbon_imgs/align_bottom.png") }});" id="align_bottom"><a>Align Bottom</a></li>
-                                    <li style="background-image: url({{ url("/images/ribbon_imgs/distribute_horizontally.png") }});" id="distribute_horizontally"><a>Distribute Horizontally</a></li>
-                                    <li style="background-image: url({{ url("/images/ribbon_imgs/distribute_vertically.png") }});" id="distribute_vertically"><a>Distribute Vertically</a></li>
-                                    <li style="background-image: url({{ url("/images/ribbon_imgs/checked.png") }});" id="align_to_slide"><a>Align to Slide</a></li>
+                                    <li style="background-image: url({{ url("/images/ribbon_imgs/align_left.png") }});"
+                                        id="align_left"><a>Align Left</a></li>
+                                    <li style="background-image: url({{ url("/images/ribbon_imgs/align_center.png") }});"
+                                        id="align_center"><a>Align Center</a></li>
+                                    <li style="background-image: url({{ url("/images/ribbon_imgs/align_right.png") }});"
+                                        id="align_right"><a>Align Right</a></li>
+                                    <li style="background-image: url({{ url("/images/ribbon_imgs/align_top.png") }});"
+                                        id="align_top"><a>Align Top</a></li>
+                                    <li style="background-image: url({{ url("/images/ribbon_imgs/align_middle.png") }});"
+                                        id="align_middle"><a>Align Middle</a></li>
+                                    <li style="background-image: url({{ url("/images/ribbon_imgs/align_bottom.png") }});"
+                                        id="align_bottom"><a>Align Bottom</a></li>
+                                    <li style="background-image: url({{ url("/images/ribbon_imgs/distribute_horizontally.png") }});"
+                                        id="distribute_horizontally"><a>Distribute Horizontally</a></li>
+                                    <li style="background-image: url({{ url("/images/ribbon_imgs/distribute_vertically.png") }});"
+                                        id="distribute_vertically"><a>Distribute Vertically</a></li>
+                                    <li style="background-image: url({{ url("/images/ribbon_imgs/checked.png") }});"
+                                        id="align_to_slide"><a>Align to Slide</a></li>
                                     <li id="align_to_selected_obj"><a>Align Selected Objects</a></li>
                                 </ul>
                             </li>
-                            <li style="background-image: url({{ url("/images/ribbon_imgs/rotate.png") }});" id="arrange_li_rotate"><a>Rotate <strong style="position: absolute; right: 5px;">></strong></a>
+                            <li style="background-image: url({{ url("/images/ribbon_imgs/rotate.png") }});"
+                                id="arrange_li_rotate"><a>Rotate <strong
+                                        style="position: absolute; right: 5px;">></strong></a>
                                 <ul class="arrange_ul_ul" style="height: 76px;">
-                                    <li style="background-image: url({{ url("/images/ribbon_imgs/rotate_right.png") }});" id="rotate_right"><a>Rotate Right</a></li>
-                                    <li style="background-image: url({{ url("/images/ribbon_imgs/rotate_left.png") }});" id="rotate_left"><a>Rotate Left</a></li>
+                                    <li style="background-image: url({{ url("/images/ribbon_imgs/rotate_right.png") }});"
+                                        id="rotate_right"><a>Rotate Right</a></li>
+                                    <li style="background-image: url({{ url("/images/ribbon_imgs/rotate_left.png") }});"
+                                        id="rotate_left"><a>Rotate Left</a></li>
                                     <li id="rotate_options"><a>More Rotation Options...</a></li>
                                 </ul>
                             </li>
@@ -894,151 +987,249 @@
                             data-duration="100">
                             <div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-color: #2b2b2b; background-color: #ffffff; color: #2b2b2b"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-color: #2b2b2b; background-color: #ffffff; color: #2b2b2b">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-color: #959595; background-color: #ffffff; color: #2b2b2b"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-color: #959595; background-color: #ffffff; color: #2b2b2b">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-color: #df4047; background-color: #ffffff; color: #2b2b2b"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-color: #df4047; background-color: #ffffff; color: #2b2b2b">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-color: #e97624; background-color: #ffffff; color: #2b2b2b"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-color: #e97624; background-color: #ffffff; color: #2b2b2b">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-color: #60b952; background-color: #ffffff; color: #2b2b2b"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-color: #60b952; background-color: #ffffff; color: #2b2b2b">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-color: #5a97d6; background-color: #ffffff; color: #2b2b2b"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-color: #5a97d6; background-color: #ffffff; color: #2b2b2b">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-color: #319cbc; background-color: #ffffff; color: #2b2b2b"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-color: #319cbc; background-color: #ffffff; color: #2b2b2b">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-color: #0f0f0f; background-color: #2b2b2b; color: #ffffff"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-color: #0f0f0f; background-color: #2b2b2b; color: #ffffff">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-color: #7b7b7b; background-color: #959595; color: #ffffff"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-color: #7b7b7b; background-color: #959595; color: #ffffff">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-color: #b9262e; background-color: #df4047; color: #ffffff"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-color: #b9262e; background-color: #df4047; color: #ffffff">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-color: #c56014; background-color: #e97624; color: #ffffff"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-color: #c56014; background-color: #e97624; color: #ffffff">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-color: #509b40; background-color: #60b952; color: #ffffff"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-color: #509b40; background-color: #60b952; color: #ffffff">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-color: #4575a0; background-color: #5a97d6; color: #ffffff"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-color: #4575a0; background-color: #5a97d6; color: #ffffff">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-color: #367b96; background-color: #319cbc; color: #ffffff"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-color: #367b96; background-color: #319cbc; color: #ffffff">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-color: #2b2b2b; background-color: #2b2b2b; color: #ffffff"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-color: #2b2b2b; background-color: #2b2b2b; color: #ffffff">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-color: #959595; background-color: #959595; color: #ffffff"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-color: #959595; background-color: #959595; color: #ffffff">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-color: #df4047; background-color: #df4047; color: #ffffff"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-color: #df4047; background-color: #df4047; color: #ffffff">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-color: #e97624; background-color: #e97624; color: #ffffff"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-color: #e97624; background-color: #e97624; color: #ffffff">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-color: #60b952; background-color: #60b952; color: #ffffff"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-color: #60b952; background-color: #60b952; color: #ffffff">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-color: #5a97d6; background-color: #5a97d6; color: #ffffff"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-color: #5a97d6; background-color: #5a97d6; color: #ffffff">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-color: #319cbc; background-color: #319cbc; color: #ffffff"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-color: #319cbc; background-color: #319cbc; color: #ffffff">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-color: #2b2b2b; background-image: linear-gradient(#929292, #5f5f5f); color: #2b2b2b"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-color: #2b2b2b; background-image: linear-gradient(#929292, #5f5f5f); color: #2b2b2b">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-color: #959595; background-image: linear-gradient(#d1d1d1, #c1c1c1); color: #2b2b2b"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-color: #959595; background-image: linear-gradient(#d1d1d1, #c1c1c1); color: #2b2b2b">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-color: #d73d43; background-image: linear-gradient(#ebacb0, #e28d92); color: #2b2b2b"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-color: #d73d43; background-image: linear-gradient(#ebacb0, #e28d92); color: #2b2b2b">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-color: #e97624; background-image: linear-gradient(#f2c199, #eaae7b); color: #2b2b2b"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-color: #e97624; background-image: linear-gradient(#f2c199, #eaae7b); color: #2b2b2b">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-color: #60b952; background-image: linear-gradient(#bfe2b8, #a7d79c); color: #2b2b2b"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-color: #60b952; background-image: linear-gradient(#bfe2b8, #a7d79c); color: #2b2b2b">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-color: #5a97d6; background-image: linear-gradient(#cfdff2, #b0cbeb); color: #2b2b2b"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-color: #5a97d6; background-image: linear-gradient(#cfdff2, #b0cbeb); color: #2b2b2b">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-color: #319cbc; background-image: linear-gradient(#81c1d6, #6eb1cb); color: #2b2b2b"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-color: #319cbc; background-image: linear-gradient(#81c1d6, #6eb1cb); color: #2b2b2b">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-color: #2b2b2b; background-image: linear-gradient(#3e3e3e, #040404); color: #ffffff"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-color: #2b2b2b; background-image: linear-gradient(#3e3e3e, #040404); color: #ffffff">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-color: #7b7b7b; background-image: linear-gradient(#959595, #8b8b8b); color: #ffffff"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-color: #7b7b7b; background-image: linear-gradient(#959595, #8b8b8b); color: #ffffff">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-color: #b9262e; background-image: linear-gradient(#df4047, #cc2a30); color: #ffffff"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-color: #b9262e; background-image: linear-gradient(#df4047, #cc2a30); color: #ffffff">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-color: #e27520; background-image: linear-gradient(#e27520, #cd6c18); color: #ffffff"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-color: #e27520; background-image: linear-gradient(#e27520, #cd6c18); color: #ffffff">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-color: #579c45; background-image: linear-gradient(#69ba57, #63b350); color: #ffffff"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-color: #579c45; background-image: linear-gradient(#69ba57, #63b350); color: #ffffff">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-color: #4679c9; background-image: linear-gradient(#6497d5, #5d8bcf); color: #ffffff"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-color: #4679c9; background-image: linear-gradient(#6497d5, #5d8bcf); color: #ffffff">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-color: #319cbc; background-image: linear-gradient(#459cbc, #4b8fae); color: #ffffff"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-color: #319cbc; background-image: linear-gradient(#459cbc, #4b8fae); color: #ffffff">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-style: none; box-shadow: 1px 1px 3px grey; background-image: linear-gradient(#3e3e3e, #040404); color: #ffffff"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-style: none; box-shadow: 1px 1px 3px grey; background-image: linear-gradient(#3e3e3e, #040404); color: #ffffff">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-style: none; box-shadow: 1px 1px 3px grey; background-image: linear-gradient(#959595, #8b8b8b); color: #ffffff"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-style: none; box-shadow: 1px 1px 3px grey; background-image: linear-gradient(#959595, #8b8b8b); color: #ffffff">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-style: none; box-shadow: 1px 1px 3px grey; background-image: linear-gradient(#df4047, #cc2a30); color: #ffffff"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-style: none; box-shadow: 1px 1px 3px grey; background-image: linear-gradient(#df4047, #cc2a30); color: #ffffff">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-style: none; box-shadow: 1px 1px 3px grey; background-image: linear-gradient(#e27520, #cd6c18); color: #ffffff"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-style: none; box-shadow: 1px 1px 3px grey; background-image: linear-gradient(#e27520, #cd6c18); color: #ffffff">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-style: none; box-shadow: 1px 1px 3px grey; background-image: linear-gradient(#69ba57, #63b350); color: #ffffff"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-style: none; box-shadow: 1px 1px 3px grey; background-image: linear-gradient(#69ba57, #63b350); color: #ffffff">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-style: none; box-shadow: 1px 1px 3px grey; background-image: linear-gradient(#6497d5, #5d8bcf); color: #ffffff"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-style: none; box-shadow: 1px 1px 3px grey; background-image: linear-gradient(#6497d5, #5d8bcf); color: #ffffff">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-style: none; box-shadow: 1px 1px 3px grey; background-image: linear-gradient(#459cbc, #4b8fae); color: #ffffff"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-style: none; box-shadow: 1px 1px 3px grey; background-image: linear-gradient(#459cbc, #4b8fae); color: #ffffff">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-style: none; background: repeating-conic-gradient(#585858 0deg 90deg, #646464 0 180deg) 0 0/25% 25%; color: #ffffff"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-style: none; background: repeating-conic-gradient(#585858 0deg 90deg, #646464 0 180deg) 0 0/25% 25%; color: #ffffff">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-style: none; background: repeating-conic-gradient(#a2a2a2 0deg 90deg, #aeaeae 0 180deg) 0 0/25% 25%; color: #ffffff"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-style: none; background: repeating-conic-gradient(#a2a2a2 0deg 90deg, #aeaeae 0 180deg) 0 0/25% 25%; color: #ffffff">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-style: none; background: repeating-conic-gradient(#d5666b 0deg 90deg, #e27378 0 180deg) 0 0/25% 25%; color: #ffffff"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-style: none; background: repeating-conic-gradient(#d5666b 0deg 90deg, #e27378 0 180deg) 0 0/25% 25%; color: #ffffff">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-style: none; background: repeating-conic-gradient(#dc8d53 0deg 90deg, #e9995f 0 180deg) 0 0/25% 25%; color: #ffffff"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-style: none; background: repeating-conic-gradient(#dc8d53 0deg 90deg, #e9995f 0 180deg) 0 0/25% 25%; color: #ffffff">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-style: none; background: repeating-conic-gradient(#7dbb73 0deg 90deg, #89c780 0 180deg) 0 0/25% 25%; color: #ffffff"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-style: none; background: repeating-conic-gradient(#7dbb73 0deg 90deg, #89c780 0 180deg) 0 0/25% 25%; color: #ffffff">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-style: none; background: repeating-conic-gradient(#78a3cf 0deg 90deg, #85b0dc 0 180deg) 0 0/25% 25%; color: #ffffff"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-style: none; background: repeating-conic-gradient(#78a3cf 0deg 90deg, #85b0dc 0 180deg) 0 0/25% 25%; color: #ffffff">
+                                        <span>Abc</span></div>
                                 </div>
                                 <div>
-                                    <div class="quick_style_sample" style="border-style: none; background: repeating-conic-gradient(#5ca7bd 0deg 90deg, #69b3ca 0 180deg) 0 0/25% 25%; color: #ffffff"><span>Abc</span></div>
+                                    <div class="quick_style_sample"
+                                        style="border-style: none; background: repeating-conic-gradient(#5ca7bd 0deg 90deg, #69b3ca 0 180deg) 0 0/25% 25%; color: #ffffff">
+                                        <span>Abc</span></div>
                                 </div>
                             </div>
                         </div>
@@ -1049,18 +1240,61 @@
                                 <img src="{{ url("/images/ribbon_imgs/home-22.png") }}">
                             </span>
                             <span class="caption dropdown-toggle">Shape Fill</span>
+                            <div id="shape_fill_color_picker" class="ribbon-dropdown" data-role="dropdown"
+                                data-duration="100" style="position: absolute;">
+                            </div>
                         </button>
                         <button class="ribbon-icon-button">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/home-23.png") }}">
                             </span>
                             <span class="caption dropdown-toggle">Shape Outline</span>
+                            <div id="shape_outline_color_picker" class="ribbon-dropdown" data-role="dropdown"
+                                data-duration="100" style="position: absolute;">
+                            </div>
                         </button>
                         <button class="ribbon-icon-button">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/home-24.png") }}">
                             </span>
                             <span class="caption dropdown-toggle">Shape Effects</span>
+                            <ul id="shape_effects_ul" class="ribbon-dropdown" data-role="dropdown" data-duration="100">
+                                <li style="background-image: url({{ url("/images/ribbon_imgs/shadow_no_shadow.png") }});"
+                                    id="arrange_li_align"><a>Shadow <strong
+                                            style="position: absolute; right: 5px;">></strong></a>
+                                    <div id="design_themes_panel_holder" class="ribbon-dropdaown" data-role="dropdown"
+                                        data-duration="100">
+                                        <div>
+                                            <div class="design_themes_panels_divider">This Quiz</div>
+                                            <div class="design_themes_panels"><span>Aa</span></div>
+                                            <div class="design_themes_panels_divider">Office</div>
+                                            <div class="design_themes_panels"><span>Aa</span></div>
+                                            <div class="design_themes_panels"><span>Aa</span></div>
+                                            <div class="design_themes_panels"><span>Aa</span></div>
+                                            <div class="design_themes_panels"><span>Aa</span></div>
+                                            <div class="design_themes_panels"><span>Aa</span></div>
+                                            <div class="design_themes_panels"><span>Aa</span></div>
+                                            <div class="design_themes_panels"><span>Aa</span></div>
+                                            <div class="design_themes_panels"><span>Aa</span></div>
+                                            <div class="design_themes_panels_divider">Built In</div>
+                                            <div class="design_themes_panels"><span>Aa</span></div>
+                                            <div class="design_themes_panels"><span>Aa</span></div>
+                                            <div class="design_themes_panels"><span>Aa</span></div>
+                                            <div class="design_themes_panels"><span>Aa</span></div>
+                                            <div class="design_themes_panels"><span>Aa</span></div>
+                                            <div class="design_themes_panels"><span>Aa</span></div>
+                                            <div class="design_themes_panels"><span>Aa</span></div>
+                                            <div class="design_themes_panels"><span>Aa</span></div>
+                                            <div class="design_themes_panels"><span>Aa</span></div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li style="background-image: url({{ url("/images/ribbon_imgs/shadow_no_shadow.png") }});"
+                                    id="arrange_li_rotate"><a>Glow <strong
+                                            style="position: absolute; right: 5px;">></strong></a>
+                                    <div>adfasdfasdfasdfasdf</div>
+                                </li>
+                            </ul>
                         </button>
                     </div>
                     <span class="title">Drawing</span>
@@ -1486,58 +1720,59 @@
     </div>
     <script src="{{ asset('js/quiz_crud.js') }}"></script>
     <script>
-    var userSelection = document.getElementsByClassName('quiz_types');
-    for (var i = 0; i < userSelection.length; i++) {
-        (function(index) {
-            userSelection[index].addEventListener("mousemove", function() {
-                if ($('.tooltip_pic').eq(index).css("display") == 'block') return;
-                for (let j = 0; j < 22; j++) {
-                    if (j == index) $('.tooltip_pic').eq(j).fadeIn();
-                    else $('.tooltip_pic').eq(j).fadeOut();
-                }
-            })
-        })(i);
-    }
+        var userSelection = document.getElementsByClassName('quiz_types');
+        for (var i = 0; i < userSelection.length; i++) {
+            (function (index) {
+                userSelection[index].addEventListener("mousemove", function () {
+                    if ($('.tooltip_pic').eq(index).css("display") == 'block') return;
+                    for (let j = 0; j < 22; j++) {
+                        if (j == index) $('.tooltip_pic').eq(j).fadeIn();
+                        else $('.tooltip_pic').eq(j).fadeOut();
+                    }
+                })
+            })(i);
+        }
 
 
-    $('#form_view_btn').click(function() {
+        $('#form_view_btn').click(function () {
 
-        $('.form_view_element').show();
-        $('.slide_view_element').hide();
+            $('.form_view_element').show();
+            $('.slide_view_element').hide();
 
-        if ($(this).hasClass('clicked')) return;
-        $(this).toggleClass('clicked');
-        $('#slide_view_btn').toggleClass('clicked');
-        $("#section_home_form").addClass('active');
-        $("#section_Home_SlideView").removeClass('active');
-        $("#section_Insert").removeClass('active');
-        $("#section_Design").removeClass('active');
-        $("#section_Home_FormView").addClass('active');
-        $("#section_home_slide").hide();
-        $("#section_home_form").show();
-        $("#section_insert").hide();
-        $("#section_design").hide();
-        slide_to_form();
-    });
+            if ($(this).hasClass('clicked')) return;
+            $(this).toggleClass('clicked');
+            $('#slide_view_btn').toggleClass('clicked');
+            $("#section_home_form").addClass('active');
+            $("#section_Home_SlideView").removeClass('active');
+            $("#section_Insert").removeClass('active');
+            $("#section_Design").removeClass('active');
+            $("#section_Home_FormView").addClass('active');
+            $("#section_home_slide").hide();
+            $("#section_home_form").show();
+            $("#section_insert").hide();
+            $("#section_design").hide();
+            slide_to_form();
+        });
 
 
-    $('#slide_view_btn').click(function() {
-        $('.form_view_element').hide();
-        $('.slide_view_element').show();
+        $('#slide_view_btn').click(function () {
+            $('.form_view_element').hide();
+            $('.slide_view_element').show();
 
-        if ($(this).hasClass('clicked')) return;
-        $(this).toggleClass('clicked');
-        $('#form_view_btn').toggleClass('clicked'); //for main branch comment
-        $("#section_home_slide").addClass('active');
-        $("#section_Home_FormView").removeClass('active');
-        $("#section_Insert").removeClass('active');
-        $("#section_Design").removeClass('active');
-        $("#section_Home_SlideView").addClass('active');
-        $("#section_home_slide").show();
-        $("#section_home_form").hide();
-        $("#section_insert").show();
-        $("#section_design").show();
-        form_to_slide();
-    });
+            if ($(this).hasClass('clicked')) return;
+            $(this).toggleClass('clicked');
+            $('#form_view_btn').toggleClass('clicked'); //for main branch comment
+            $("#section_home_slide").addClass('active');
+            $("#section_Home_FormView").removeClass('active');
+            $("#section_Insert").removeClass('active');
+            $("#section_Design").removeClass('active');
+            $("#section_Home_SlideView").addClass('active');
+            $("#section_home_slide").show();
+            $("#section_home_form").hide();
+            $("#section_insert").show();
+            $("#section_design").show();
+            form_to_slide();
+        });
+
     </script>
     @endsection
