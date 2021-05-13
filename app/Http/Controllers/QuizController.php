@@ -77,7 +77,7 @@ class QuizController extends Controller
                     'exam_group_id' => $request->exam_group_id,
                     'type_id' => $request->type_id,
                     'question_element' => '<div contenteditable="true" class="slide_view_question_element slide_view_group" style="overflow-y: scroll;border: 1px solid black;height: 70px;width: 80%;left: 10%">Select one or more correct answers:</div>',
-                    'answer' => '1',
+                    'answer' => '1;',
                     'feedback_correct' => 'That\'s right! You chose the correct response.',
                     'feedback_incorrect' => 'You did not choose the correct response.',
                     'feedback_try_again' => null,

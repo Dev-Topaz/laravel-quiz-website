@@ -254,6 +254,7 @@
 {{--<script src="{{ asset('js/texteditor.js') }}" defer></script>--}}
 <script src="{{ asset('js/multiple_choice.js') }}" defer></script>
 <script src="{{ asset('js/multiple_response.js') }}" defer></script>
+<script src="{{ asset('js/ribbon_bar.js') }}" defer></script>
 <script>
     $("body").click(function (e) {
         if (jQuery.inArray('slide_view_question_element', e.target.classList) !== -1 || $(e.target).parents(".slide_view_question_element").length) {
@@ -316,38 +317,3 @@
     answer_slide2form($('#answer_element').val(), $('#answer_content').val())
     $('#question').html(question_slide2form($('#question_element').val()));
 </script>
-
-
-{{--@switch($quiz->type_id)--}}
-{{--    @case(1)--}}
-{{--        @include('updatequiz.multiple_choice', array('quiz' => $quiz))--}}
-{{--        @break--}}
-
-{{--    @case(2)--}}
-{{--        @include('updatequiz.multiple_response', array('quiz' => $quiz))--}}
-{{--        @break--}}
-
-{{--    @case(3)--}}
-{{--        @include('updatequiz.true_false', array('quiz' => $quiz))--}}
-{{--        @break--}}
-
-{{--    @case(4)--}}
-{{--        @include('updatequiz.short_answer', array('quiz' => $quiz))--}}
-{{--        @break--}}
-
-{{--    @case(5)--}}
-{{--        @include('updatequiz.numeric', array('quiz' => $quiz))--}}
-{{--        @break--}}
-
-{{--    @case(6)--}}
-{{--        @include('updatequiz.sequence', array('quiz' => $quiz))--}}
-{{--        @break--}}
-
-{{--    @case(7)--}}
-{{--        @include('updatequiz.matching', array('quiz' => $quiz))--}}
-{{--        @break--}}
-
-{{--    @default--}}
-{{--        @include('updatequiz.multiple_choice', array('quiz' => $quiz))--}}
-
-{{--@endswitch--}}
