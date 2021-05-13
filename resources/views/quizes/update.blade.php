@@ -75,6 +75,58 @@
                     </div>
                 </div>
                 @break
+
+                @case(3)
+                <h4>Choices</h4>
+                <div style="height: 216px;overflow-y: scroll;">
+                    <div>
+                        <table class="table striped" style="margin: 0">
+                            <thead>
+                            <tr>
+                                <th>Correct</th>
+                                <th>Choice</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody id="choice_list">
+                            </tbody>
+                        </table>
+                        <a id="add_choice" style="padding: 10px 0;margin-left: 90px;margin-top: 10px;">Type to add a new
+                            choice</a>
+                    </div>
+                </div>
+                @break
+
+                @case(4)
+                <h4>Acceptable Answers</h4>
+                <div style="height: 216px;overflow-y: scroll;">
+                    <div>
+                        <table class="table striped" style="margin: 0">
+                            <thead>
+                            <tr>
+                                <th>Acceptable Answer</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody id="short_answer_list">
+                            <tr>
+                                <td>
+                                    <input id="short_answer" type="text"
+                                           class="form-control @error('short_answer') is-invalid @enderror" name="short_answer"
+                                           value="{{ $quiz->answer }}" required autocomplete="short_answer" autofocus>
+                                </td>
+                                <td><a onclick="{$(this).parent().parent().remove();}"><i
+                                            class="fas fa-trash-alt"></i></a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                @break
+
+                @case(5)
+
+                @break
             @endswitch
 
             <br>
@@ -157,9 +209,9 @@
                                 </option>
                             </select>
                         </div>
-                        @if ($quiz->branching != null)
+                        @if (isset($quiz->branching))
                             <div class="cell-6">
-                                <label for="braching" name="braching">Branching:</label>
+                                <label for="branching" name="branching">Branching:</label>
                             </div>
                             <div class="cell-6">
                                 <select data-role="select" data-filter="false" id="branching">
@@ -179,7 +231,7 @@
                         </div>
                         <div class="cell-6">
                             <select data-role="select" data-filter="false"
-                                    id="score" {{ $quiz->score == null ? 'disable' : '' }}>
+                                    id="score" {{ !isset($quiz->score) ? 'disabled' : '' }}>
                                 <option value="by_result" {{ $quiz->score == 'by_result' ? 'selected' : '' }}>By
                                     Result
                                 </option>
@@ -308,9 +360,14 @@
                 answer_array.pop();
                 for (let i = 0; i < element.find('.response_item').length; i++) {
                     const value = element.find('.response_item').eq(i).find('input').attr('value');
-                    form_answer += '<tr class="response_item"><td><input type="checkbox" name="answer" value="' + value + '" ' + (answer_array.indexOf(value) != -1 ? 'checked' : '') + '></td><td><label class="choice_label" data-editable for="' + element.find('.response_item').eq(i).find('label').attr('for') + '">' + element.find('.response_item').eq(i).find('label').html() + '</label></td><td></td><td><a onclick="{$(this).parent().parent().remove();}"><i class="fas fa-trash-alt"></i></a></td></tr>';
+                    form_answer += '<tr class="response_item"><td><input type="checkbox" name="answer" value="' + value + '" ' + (answer_array.indexOf(value) !== -1 ? 'checked' : '') + '></td><td><label class="choice_label" data-editable for="' + element.find('.response_item').eq(i).find('label').attr('for') + '">' + element.find('.response_item').eq(i).find('label').html() + '</label></td><td></td><td><a onclick="{$(this).parent().parent().remove();}"><i class="fas fa-trash-alt"></i></a></td></tr>';
                 }
                 $('#response_list').html(form_answer);
+                break;
+
+            case '3':
+                form_answer = '<tr class="choice_item"><td><input type="radio" id="true" name="answer" value="1" style="padding-right: 10px;" ' + (answer_content === '1' ? 'checked' : '') + '></td><td><label for="true">True</label></td><td></td></tr><tr class="choice_item"><td><input type="radio" id="false" name="answer" value="0" style="padding-right: 10px;" ' + (answer_content === '1' ? '' : 'checked') + '></td><td><label for="false">False</label><td></td></tr>';
+                $('#choice_list').html(form_answer);
                 break;
 
             default:
@@ -331,7 +388,7 @@
                 for (const item of element.find('tr')) {
                     const value = $(item).find('input').attr('value');
                     const label = $(item).find('label').html();
-                    slide_answer_element += '<div class="choice_item"><input type="radio" id="' + value + '" name="answer" value="' + value +'" style="padding-right: 10px;"><label for="' + value + '">' + label + '</label></div>';
+                    slide_answer_element += '<div class="choice_item"><input type="radio" id="' + value + '" name="answer" value="' + value + '" style="padding-right: 10px;"><label for="' + value + '">' + label + '</label></div>';
                 }
                 break;
 
@@ -341,8 +398,20 @@
                 for (const item of element.find('tr')) {
                     const value = $(item).find('input').attr('value');
                     const label = $(item).find('label').html();
-                    slide_answer_element += '<div class="response_item"><input type="checkbox" id="' + value + '" name="answer" value="' + value +'" style="padding-right: 10px;"><label for="' + value + '">' + label + '</label></div>';
+                    slide_answer_element += '<div class="response_item"><input type="checkbox" id="' + value + '" name="answer" value="' + value + '" style="padding-right: 10px;"><label for="' + value + '">' + label + '</label></div>';
                 }
+                break;
+
+            case '3':
+                slide_answer_element = '<div class="choice_item"><input type="radio" id="true" name="answer" value="1" style="padding-right: 10px;"><label for="true">True</label></div><div class="choice_item"><input type="radio" id="false" name="answer" value="0" style="padding-right: 10px;"><label for="0">False</label></div>';
+                break;
+
+            case '4':
+                slide_answer_element = '<input id="answer" type="text" class="form-control" name="answer" autocomplete="answer">';
+                break;
+
+            case '5':
+                slide_answer_element = '<input id="answer" type="number" class="form-control" name="answer" autocomplete="answer">';
                 break;
         }
 

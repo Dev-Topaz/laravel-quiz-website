@@ -23,6 +23,7 @@
     <link href="{{ asset('css/all.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/richtext.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/jquery.modal.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/evol-colorpicker.min.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <link href="{{ asset('css/jquery-ui.min.css') }}" rel="stylesheet">
@@ -90,6 +91,7 @@
     <script src="{{ asset('js/main.js') }}" defer></script>
     <script src="{{ asset('js/matching.js') }}" defer></script>
     <script src="{{ asset('js/text_dropdown.js') }}" defer></script>
+    <script src="{{ asset('js/evol-colorpicker.min.js') }}" defer></script>
 {{--    <script src="{{ asset('js/jquery.richtext.min.js') }}" defer></script>--}}
 
     <script>

@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9d9fd7c1-0dd1-410f-8492-d59f6bb67158" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/multiple_choice.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/multiple_choice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/multiple_response.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/multiple_response.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/QuizController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/QuizController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/quizes/update.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/quizes/update.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -238,7 +238,7 @@
       <workItem from="1620833537992" duration="555000" />
       <workItem from="1620835489772" duration="17390000" />
       <workItem from="1620860500578" duration="2518000" />
-      <workItem from="1620879243325" duration="17196000" />
+      <workItem from="1620879243325" duration="29208000" />
     </task>
     <servers />
   </component>
@@ -256,13 +256,38 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="main" />
+                        <option value="list" />
                       </list>
                     </value>
                   </entry>
                 </map>
               </option>
             </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="list" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/ribbon_bar" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/master" />
+                </option>
+              </RecentGroup>
+            </list>
           </value>
         </entry>
       </map>

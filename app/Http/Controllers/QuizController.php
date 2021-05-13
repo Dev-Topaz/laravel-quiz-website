@@ -46,7 +46,7 @@ class QuizController extends Controller
                 $quiz = Quiz::create([
                     'exam_group_id' => $request->exam_group_id,
                     'type_id' => $request->type_id,
-                    'question_element' => '<div contenteditable="true" class="slide_view_question_element slide_view_group" style="overflow-y: scroll;border: 1px solid black;height: 70px;width: 80%;left: 10%">Select the correct answer option:</div>',
+                    'question_element' => '<div contenteditable="true" class="slide_view_question_element slide_view_group" style="border: 1px solid black;height: 70px;width: 80%;left: 10%">Select the correct answer option:</div>',
                     'answer' => '1',
                     'feedback_correct' => 'That\'s right! You chose the correct response.',
                     'feedback_incorrect' => 'You did not choose the correct response.',
@@ -76,7 +76,7 @@ class QuizController extends Controller
                 $quiz = Quiz::create([
                     'exam_group_id' => $request->exam_group_id,
                     'type_id' => $request->type_id,
-                    'question_element' => '<div contenteditable="true" class="slide_view_question_element slide_view_group" style="overflow-y: scroll;border: 1px solid black;height: 70px;width: 80%;left: 10%">Select one or more correct answers:</div>',
+                    'question_element' => '<div contenteditable="true" class="slide_view_question_element slide_view_group" style="border: 1px solid black;height: 70px;width: 80%;left: 10%">Select one or more correct answers:</div>',
                     'answer' => '1;',
                     'feedback_correct' => 'That\'s right! You chose the correct response.',
                     'feedback_incorrect' => 'You did not choose the correct response.',
@@ -94,6 +94,96 @@ class QuizController extends Controller
                     'shuffle_answers' => true,
                     'partially_correct' => false,
                     'limit_number_response' => false,
+                    'case_sensitive' => null,
+                    'correct_score' => 10,
+                    'incorrect_score' => 0,
+                    'try_again_score' => null,
+                ]);
+
+                break;
+
+            case "3":
+                $quiz = Quiz::create([
+                    'exam_group_id' => $request->exam_group_id,
+                    'type_id' => $request->type_id,
+                    'question_element' => '<div contenteditable="true" class="slide_view_question_element slide_view_group" style="border: 1px solid black;height: 70px;width: 80%;left: 10%">Choose whether the statement is true or false:</div>',
+                    'answer' => '1',
+                    'feedback_correct' => 'That\'s right! You chose the correct response.',
+                    'feedback_incorrect' => 'You did not choose the correct response.',
+                    'feedback_try_again' => null,
+                    'media' => null,
+                    'order' => null,
+                    'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%"><div class="col-md-12"><div class="choice_item"><input type="radio" id="true" name="answer" value="1" style="padding-right: 10px;"><label for="true">True</label></div><div class="choice_item"><input type="radio" id="false" name="answer" value="0" style="padding-right: 10px;"><label for="0">False</label></div></div></div>',
+                    'question_type' => 'graded',
+                    'feedback_type' => 'by_result',
+                    'branching' => null,
+                    'score' => null,
+                    'attempts' => '1',
+                    'is_limit_time' => false,
+                    'limit_time' => null,
+                    'shuffle_answers' => null,
+                    'partially_correct' => null,
+                    'limit_number_response' => null,
+                    'case_sensitive' => null,
+                    'correct_score' => 10,
+                    'incorrect_score' => 0,
+                    'try_again_score' => null,
+                ]);
+
+                break;
+
+            case "4":
+                $quiz = Quiz::create([
+                    'exam_group_id' => $request->exam_group_id,
+                    'type_id' => $request->type_id,
+                    'question_element' => '<div contenteditable="true" class="slide_view_question_element slide_view_group" style="border: 1px solid black;height: 70px;width: 80%;left: 10%">Type your response:</div>',
+                    'answer' => 'Correct Answer 1',
+                    'feedback_correct' => 'That\'s right! You chose the correct response.',
+                    'feedback_incorrect' => 'You did not choose the correct response.',
+                    'feedback_try_again' => null,
+                    'media' => null,
+                    'order' => null,
+                    'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%"><div class="col-md-12"><input id="answer" type="text" class="form-control" name="answer" autocomplete="answer"></div></div>',
+                    'question_type' => 'graded',
+                    'feedback_type' => 'by_result',
+                    'branching' => null,
+                    'score' => null,
+                    'attempts' => '1',
+                    'is_limit_time' => false,
+                    'limit_time' => null,
+                    'shuffle_answers' => null,
+                    'partially_correct' => null,
+                    'limit_number_response' => null,
+                    'case_sensitive' => false,
+                    'correct_score' => 10,
+                    'incorrect_score' => 0,
+                    'try_again_score' => null,
+                ]);
+
+                break;
+
+            case "5":
+                $quiz = Quiz::create([
+                    'exam_group_id' => $request->exam_group_id,
+                    'type_id' => $request->type_id,
+                    'question_element' => '<div contenteditable="true" class="slide_view_question_element slide_view_group" style="border: 1px solid black;height: 70px;width: 80%;left: 10%">Type your response:</div>',
+                    'answer' => '=;0@',
+                    'feedback_correct' => 'That\'s right! You chose the correct response.',
+                    'feedback_incorrect' => 'You did not choose the correct response.',
+                    'feedback_try_again' => null,
+                    'media' => null,
+                    'order' => null,
+                    'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%"><div class="col-md-12"><input id="answer" type="number" class="form-control" name="answer" autocomplete="answer"></div></div>',
+                    'question_type' => 'graded',
+                    'feedback_type' => 'by_result',
+                    'branching' => null,
+                    'score' => null,
+                    'attempts' => '1',
+                    'is_limit_time' => false,
+                    'limit_time' => null,
+                    'shuffle_answers' => null,
+                    'partially_correct' => null,
+                    'limit_number_response' => null,
                     'case_sensitive' => null,
                     'correct_score' => 10,
                     'incorrect_score' => 0,
