@@ -618,3 +618,7 @@ main.quiz {
 #question span {
     color: black;
 }
+
+div[contenteditable="true"] {
+    outline: none;
+}
