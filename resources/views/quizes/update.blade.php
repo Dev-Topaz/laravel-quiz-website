@@ -33,24 +33,46 @@
 
             @switch($quiz->type_id)
                 @case(1)
-                    <h4>Choices</h4>
-                    <div style="height: 216px;overflow-y: scroll;">
-                        <div>
-                            <table class="table striped" style="margin: 0">
-                                <thead>
-                                <tr>
-                                    <th>Correct</th>
-                                    <th>Choice</th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody id="choice_list">
-                                </tbody>
-                            </table>
-                            <a id="add_choice" style="padding: 10px 0;margin-left: 90px;margin-top: 10px;">Type to add a new choice</a>
-                        </div>
+                <h4>Choices</h4>
+                <div style="height: 216px;overflow-y: scroll;">
+                    <div>
+                        <table class="table striped" style="margin: 0">
+                            <thead>
+                            <tr>
+                                <th>Correct</th>
+                                <th>Choice</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody id="choice_list">
+                            </tbody>
+                        </table>
+                        <a id="add_choice" style="padding: 10px 0;margin-left: 90px;margin-top: 10px;">Type to add a new
+                            choice</a>
                     </div>
+                </div>
+                @break
+
+                @case(2)
+                <h4>Choices</h4>
+                <div style="height: 216px;overflow-y: scroll;">
+                    <div>
+                        <table class="table striped" style="margin: 0">
+                            <thead>
+                            <tr>
+                                <th>Correct</th>
+                                <th>Choice</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody id="response_list">
+                            </tbody>
+                        </table>
+                        <a id="add_response" style="padding: 10px 0;margin-left: 90px;margin-top: 10px;">Type to add a new choice</a>
+                    </div>
+                </div>
                 @break
             @endswitch
 
@@ -249,7 +271,7 @@
             return;
         }
         $('#target_element').val('common_element');
-            return;
+        return;
     });
 
     $('.slide_view_group').draggable();
@@ -267,10 +289,21 @@
         let form_answer = '';
         switch (typeId) {
             case '1':
-                for (let i = 0; i <element.find('.choice_item').length; i++) {
+                for (let i = 0; i < element.find('.choice_item').length; i++) {
                     const value = element.find('.choice_item').eq(i).find('input').attr('value');
-                    form_answer += '<tr class="choice_item"><td><input type="radio" name="answer" value="' + value +  '" ' + (value == answer_content ? 'checked' : '') + '></td><td><label class="choice_label" data-editable for="' + element.find('.choice_item').eq(i).find('label').attr('for') + '">' + element.find('.choice_item').eq(i).find('label').html() + '</label></td><td></td><td><a onclick="{$(this).parent().parent().remove();}"><i class="fas fa-trash-alt"></i></a></td></tr>';
+                    form_answer += '<tr class="choice_item"><td><input type="radio" name="answer" value="' + value + '" ' + (value == answer_content ? 'checked' : '') + '></td><td><label class="choice_label" data-editable for="' + element.find('.choice_item').eq(i).find('label').attr('for') + '">' + element.find('.choice_item').eq(i).find('label').html() + '</label></td><td></td><td><a onclick="{$(this).parent().parent().remove();}"><i class="fas fa-trash-alt"></i></a></td></tr>';
                 }
+                $('#choice_list').html(form_answer);
+                break;
+
+            case '2':
+                let answer_array = answer_content.split(';');
+                answer_array.pop();
+                for (let i = 0; i < element.find('.response_item').length; i++) {
+                    const value = element.find('.response_item').eq(i).find('input').attr('value');
+                    form_answer += '<tr class="response_item"><td><input type="checkbox" name="answer" value="' + value + '" ' + (answer_array.indexOf(value) != -1 ? 'checked' : '') + '></td><td><label class="choice_label" data-editable for="' + element.find('.response_item').eq(i).find('label').attr('for') + '">' + element.find('.response_item').eq(i).find('label').html() + '</label></td><td></td><td><a onclick="{$(this).parent().parent().remove();}"><i class="fas fa-trash-alt"></i></a></td></tr>';
+                }
+                $('#response_list').html(form_answer);
                 break;
 
             default:
@@ -279,8 +312,8 @@
         return form_answer;
     }
 
+    answer_slide2form($('#answer_element').val(), $('#answer_content').val())
     $('#question').html(question_slide2form($('#question_element').val()));
-    $('#choice_list').html(answer_slide2form($('#answer_element').val(), $('#answer_content').val()));
 </script>
 
 

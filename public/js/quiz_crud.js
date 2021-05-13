@@ -66,12 +66,25 @@ function create_quiz(quiz_type, root_url, token) {
 function update_quiz() {
     console.log('Updating quiz now...');
 
+    const typeId = $('#type_id').val();
     const question_element = $('.slide_view_question_element')[0].outerHTML;
 
     let answer = "";
-    var selected = $("input[type='radio'][name='answer']:checked");
-    if (selected.length > 0) {
-        answer = selected.val();
+    switch (typeId) {
+        case '1':
+            var selected = $("input[type='radio'][name='answer']:checked");
+            if (selected.length > 0) {
+                answer = selected.val();
+            }
+            break;
+
+        case '2':
+            var selected = $("input[type='checkbox'][name='answer']:checked");
+            for (const selectedElement of selected) {
+                console.log($(selectedElement).val());
+                answer += $(selectedElement).val() + ';';
+            }
+            break;
     }
 
     const feedback_correct = $('.feedback_branching tr:first-child td:nth-child(2) label').html();
