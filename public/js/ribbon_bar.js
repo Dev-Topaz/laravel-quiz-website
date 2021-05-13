@@ -8,7 +8,9 @@ console.log('ribbon_bar');
 $('#xxxxx').click(function () {
     console.log('xxx');
 });
-
+$('#xxxxx').mousedown(function (e) {
+    e.preventDefault(); // prevent the textarea to loose focus!
+});
 
 //=========================================
 //
@@ -379,6 +381,35 @@ function changeFont_size(font_size) {
 //
 //==============================================
 
+var para_numbering = false;
+
+$('#slide_view_paragraph_style_numbering_btn').click(function () {
+    console.log('slide_view_paragraph_style_numbering_btn');
+    para_numbering = !para_numbering;
+    create_numbering(para_numbering);
+});
+
+function create_numbering(para_numbering) {
+    console.log('create_numbering');
+    el = document.getElementsByClassName('slide_view_question_element')[0];
+
+    if (para_numbering) {
+        $('.slide_view_question_element').eq(0).find('span.buuuuullet').remove();
+
+        console.log('==>>', el);
+        nodes = el.childNodes;
+        console.log('nodes==>>', nodes);
+        for (i = 0; i < nodes.length; i++) {
+            console.log('==>', nodes[i].innerText);
+            nodes[i].innerHTML = '<span class="nuuumbering">' + (i + 1) + '. ' + '</span>' + ' ' + nodes[i].innerText;
+        }
+    } else {
+        console.log('have to remove numbering');
+        // document.getElementsByClassName('nuuumbering').remove();
+        $('.slide_view_question_element').eq(0).find('span.nuuumbering').remove();
+    }
+}
+
 var para_bullet = false;
 
 $('#slide_view_paragraph_style_bullet_btn').click(function () {
@@ -390,18 +421,20 @@ $('#slide_view_paragraph_style_bullet_btn').click(function () {
 function create_bullet(para_bullet) {
     console.log('create_bullet');
     el = document.getElementsByClassName('slide_view_question_element')[0];
-    console.log('==>>', el);
-    nodes = el.childNodes;
-    console.log('nodes==>>', nodes);
-    for (i = 0; i < nodes.length; i++) {
-        console.log('==>', nodes[i].innerText);
-        nodes[i].innerHTML = '<span>&bull;</span>' + ' ' + nodes[i].innerText;
-    }
 
     if (para_bullet) {
-
+        $('.slide_view_question_element').eq(0).find('span.nuuumbering').remove();
+        console.log('==>>', el);
+        nodes = el.childNodes;
+        console.log('nodes==>>', nodes);
+        for (i = 0; i < nodes.length; i++) {
+            console.log('==>', nodes[i].innerText);
+            nodes[i].innerHTML = '<span class="buuuuullet">&bull;</span>' + ' ' + nodes[i].innerText;
+        }
     } else {
-
+        console.log('have to remove bullet');
+        // document.getElementsByClassName('buuuuullet').remove();
+        $('.slide_view_question_element').eq(0).find('span.buuuuullet').remove();
     }
 }
 
@@ -445,20 +478,120 @@ $('#paragraph_line_spacing_option').click(function () {
     // show modal
 });
 
-
+var paragraph_line_spacing_add_before = false;
 $('#paragraph_line_spacing_add_before').click(function () {
-    add_line_spacing_before();
+    paragraph_line_spacing_add_before = !paragraph_line_spacing_add_before;
+    if (!paragraph_line_spacing_add_before) $(this).find('a').eq(0).text('Add Space Before Paragraph');
+    else $(this).find('a').eq(0).text('Remove Space Before Paragraph');
+    add_line_spacing_before(paragraph_line_spacing_add_before);
 });
 
+$('#paragraph_line_spacing_add_before').mousedown(function (e) {
+    e.preventDefault(); // prevent the textarea to loose focus!
+});
+
+var paragraph_line_spacing_add_after = false;
 $('#paragraph_line_spacing_add_after').click(function () {
-
+    paragraph_line_spacing_add_after = !paragraph_line_spacing_add_after;
+    if (!paragraph_line_spacing_add_after) $(this).find('a').eq(0).text('Add Space After Paragraph');
+    else $(this).find('a').eq(0).text('Remove Space After Paragraph');
+    add_line_spacing_after(paragraph_line_spacing_add_after);
 });
 
-function add_line_spacing_before() {
+$('#paragraph_line_spacing_add_after').mousedown(function (e) {
+    e.preventDefault(); // prevent the textarea to loose focus!
+});
 
+function add_line_spacing_after(paragraph_line_spacing_add_after) {
+    var sel = window.getSelection();
+    if (sel.rangeCount) {
+        var e = document.createElement('span');
+        e.innerHTML = sel.toString();
+        // https://developer.mozilla.org/en-US/docs/Web/API/Selection/getRangeAt
+        var range = sel.getRangeAt(0);
+        range.deleteContents();
+        range.insertNode(e);
+        while (!(e.parentElement.classList.contains('slide_view_question_element'))) {
+             e = e.parentElement
+        }
+        if (paragraph_line_spacing_add_after)
+            e.style.marginBottom = '25px';
+        else
+            e.style.marginBottom = 'unset';
+    }
 }
 
-function add_line_spacing_before() {
+function add_line_spacing_before(paragraph_line_spacing_add_before) {
     var sel = window.getSelection();
-    sel.anchorNode.parentElement.style.marginTop = "15px";
+    if (sel.rangeCount) {
+        var e = document.createElement('span');
+        e.innerHTML = sel.toString();
+        // https://developer.mozilla.org/en-US/docs/Web/API/Selection/getRangeAt
+        var range = sel.getRangeAt(0);
+        range.deleteContents();
+        range.insertNode(e);
+        while (!(e.parentElement.classList.contains('slide_view_question_element'))) {
+             e = e.parentElement
+        }
+        if (paragraph_line_spacing_add_before)
+            e.style.marginTop= '25px';
+        else
+            e.style.marginTop= 'unset';
+    }
+}
+
+$('#slide_view_paragraph_style_decrease_indent_btn').click(function () {
+    console.log('slide_view_paragraph_style_decrease_indent_btn');
+    decrease_indent();
+});
+
+$('#slide_view_paragraph_style_decrease_indent_btn').mousedown(function (e) {
+    e.preventDefault(); // prevent the textarea to loose focus!
+});
+
+$('#slide_view_paragraph_style_increase_indent_btn').click(function () {
+    console.log('slide_view_paragraph_style_increase_indent_btn');
+    increase_indent();
+});
+
+$('#slide_view_paragraph_style_increase_indent_btn').mousedown(function (e) {
+    e.preventDefault(); // prevent the textarea to loose focus!
+});
+
+function decrease_indent() {
+    var sel = window.getSelection();
+    if (sel.rangeCount) {
+        var e = document.createElement('span');
+        e.innerHTML = sel.toString();
+        // https://developer.mozilla.org/en-US/docs/Web/API/Selection/getRangeAt
+        var range = sel.getRangeAt(0);
+        range.deleteContents();
+        range.insertNode(e);
+        while (!(e.parentElement.classList.contains('slide_view_question_element'))) {
+             e = e.parentElement
+        }
+        if (e.style.marginLeft == '' || e.style.marginLeft == '0px')
+            e.style.marginLeft= '0px';
+        else
+            e.style.marginLeft = parseInt(e.style.marginLeft) - 10 + 'px';
+    }
+}
+
+function increase_indent() {
+    var sel = window.getSelection();
+    if (sel.rangeCount) {
+        var e = document.createElement('span');
+        e.innerHTML = sel.toString();
+        // https://developer.mozilla.org/en-US/docs/Web/API/Selection/getRangeAt
+        var range = sel.getRangeAt(0);
+        range.deleteContents();
+        range.insertNode(e);
+        while (!(e.parentElement.classList.contains('slide_view_question_element'))) {
+             e = e.parentElement
+        }
+        if (e.style.marginLeft == '' || e.style.marginLeft == '0px')
+            e.style.marginLeft= '10px';
+        else
+            e.style.marginLeft = parseInt(e.style.marginLeft) + 10 + 'px';
+    }
 }
