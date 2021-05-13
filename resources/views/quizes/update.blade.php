@@ -112,7 +112,8 @@
                             <tr>
                                 <td>
                                     <input id="short_answer" type="text"
-                                           class="form-control @error('short_answer') is-invalid @enderror" name="short_answer"
+                                           class="form-control @error('short_answer') is-invalid @enderror"
+                                           name="short_answer"
                                            value="{{ $quiz->answer }}" required autocomplete="short_answer" autofocus>
                                 </td>
                                 <td><a onclick="{$(this).parent().parent().remove();}"><i
@@ -125,7 +126,39 @@
                 @break
 
                 @case(5)
-
+                <h4>Acceptable Numeric Values</h4>
+                <div style="height: 216px;overflow-y: scroll;">
+                    <div>
+                        <table class="table striped" style="margin: 0">
+                            <thead>
+                            <tr>
+                                <th>Acceptable Value</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody id="numeric_list">
+                            </tbody>
+                        </table>
+                        <select name="add_select" id="add_select" style="max-width: 160px;margin-left: 65px;">
+                            <option value="+">Add a new condition</option>
+                            <option value="==">Equal to</option>
+                            <option value="<<">Between</option>
+                            <option value=">">Greater than</option>
+                            <option value=">=">Greater than or equal to</option>
+                            <option value="<">Less than</option>
+                            <option value="<=">Less than or equal to</option>
+                            <option value="!=">Not equal to</option>
+                        </select>
+                        <input id="answer" type="text"
+                               class="form-control @error('answer') is-invalid @enderror"
+                               name="answer"
+                               value="numeric" required autocomplete="answer" autofocus hidden>
+                        <input id="select_answer" type="text"
+                               class="form-control @error('select_answer') is-invalid @enderror"
+                               name="select_answer"
+                               value="" required autocomplete="select_answer" autofocus hidden>
+                    </div>
+                </div>
                 @break
             @endswitch
 
