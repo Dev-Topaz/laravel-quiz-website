@@ -9,7 +9,7 @@ $('#xxxxx').click(function () {
     console.log('xxx');
 });
 $('#xxxxx').mousedown(function (e) {
-    e.preventDefault(); // prevent the textarea to loose focus!
+    e.preventDefault();
 });
 
 //=========================================
@@ -25,7 +25,7 @@ $('#slide_view_copy_btn').click(function () {
 });
 
 $('#slide_view_copy_btn').mousedown(function (e) {
-    e.preventDefault(); // prevent the textarea to loose focus!
+    e.preventDefault();
 });
 
 
@@ -38,7 +38,7 @@ $('#slide_view_cut_btn').click(function () {
 });
 
 $('#slide_view_cut_btn').mousedown(function (e) {
-    e.preventDefault(); // prevent the textarea to loose focus!
+    e.preventDefault();
 });
 
 
@@ -52,7 +52,7 @@ $('#slide_view_paste_btn').click(function () {
 });
 
 $('#slide_view_paste_btn').mousedown(function (e) {
-    e.preventDefault(); // prevent the textarea to loose focus!
+    e.preventDefault();
 });
 
 //  https://raw.githubusercontent.com/Sophie627/flutter-Enriched-Digital-Writer-re-build/master/lib/widget/texteditor/divelement.dart
@@ -190,6 +190,15 @@ $('#slide_view_font_bold_btn').click(function () {
     toggle_bold(formatting_bold);
 });
 
+var formatting_strike = false;
+
+$('#slide_view_font_strike_btn').click(function () {
+    console.log('slide_view_font_strike_btn clicked');
+    formatting_strike = !formatting_strike;
+    // changing_font_size = parseInt($('#font_size_selector').val());
+    toggle_strike(formatting_strike);
+});
+
 var formatting_ital = false;
 
 $('#slide_view_font_ital_btn').click(function () {
@@ -236,7 +245,7 @@ $('#font_picker_trigger').click(function () {
 });
 
 $('#font_picker_trigger').mousedown(function (e) {
-    e.preventDefault(); // prevent the textarea to loose focus!
+    e.preventDefault();
 });
 
 $('#font_color_picker').change(function () {
@@ -283,6 +292,22 @@ function toggle_subscript(formatting_subscript) {
         var e = document.createElement('span');
         if (formatting_subscript) e.style = 'vertical-align: sub;';
         else e.style = 'vertical-align: unset;';
+        e.innerHTML = sel.toString();
+        // https://developer.mozilla.org/en-US/docs/Web/API/Selection/getRangeAt
+        var range = sel.getRangeAt(0);
+        range.deleteContents();
+        range.insertNode(e);
+    }
+}
+
+
+function toggle_strike(formatting_strike) {
+    console.log('toggle_ital');
+    var sel = window.getSelection();
+    if (sel.rangeCount) {
+        var e = document.createElement('span');
+        if (formatting_strike) e.style = 'text-decoration: line-through;';
+        else e.style = 'text-decoration: none;';
         e.innerHTML = sel.toString();
         // https://developer.mozilla.org/en-US/docs/Web/API/Selection/getRangeAt
         var range = sel.getRangeAt(0);
@@ -487,7 +512,7 @@ $('#paragraph_line_spacing_add_before').click(function () {
 });
 
 $('#paragraph_line_spacing_add_before').mousedown(function (e) {
-    e.preventDefault(); // prevent the textarea to loose focus!
+    e.preventDefault();
 });
 
 var paragraph_line_spacing_add_after = false;
@@ -499,7 +524,7 @@ $('#paragraph_line_spacing_add_after').click(function () {
 });
 
 $('#paragraph_line_spacing_add_after').mousedown(function (e) {
-    e.preventDefault(); // prevent the textarea to loose focus!
+    e.preventDefault();
 });
 
 function add_line_spacing_after(paragraph_line_spacing_add_after) {
@@ -546,7 +571,7 @@ $('#slide_view_paragraph_style_decrease_indent_btn').click(function () {
 });
 
 $('#slide_view_paragraph_style_decrease_indent_btn').mousedown(function (e) {
-    e.preventDefault(); // prevent the textarea to loose focus!
+    e.preventDefault();
 });
 
 $('#slide_view_paragraph_style_increase_indent_btn').click(function () {
@@ -555,7 +580,7 @@ $('#slide_view_paragraph_style_increase_indent_btn').click(function () {
 });
 
 $('#slide_view_paragraph_style_increase_indent_btn').mousedown(function (e) {
-    e.preventDefault(); // prevent the textarea to loose focus!
+    e.preventDefault();
 });
 
 function decrease_indent() {
@@ -595,3 +620,39 @@ function increase_indent() {
             e.style.marginLeft = parseInt(e.style.marginLeft) + 10 + 'px';
     }
 }
+
+//=========================================================================
+//
+//
+//          Quick styles
+//
+//
+//
+//=========================================================================
+
+$('.quick_style_sample')
+
+$('.quick_style_sample').click(function () {
+
+    console.log('*******************');
+    console.log('border-col =>', $(this).css('border-color'));
+    console.log('letter =>', $(this).css('color'));
+    console.log('back img =>', $(this).css('background-image'));
+    console.log('box-shadow =>', $(this).css('box-shadow'));
+    console.log('background =>', $(this).css('background'));
+    $('.slide_view_question_element').eq(0).css('border-color', $(this).css('border-color'));
+    // $('.slide_view_question_element').eq(0).css('background-color', $(this).css('background-color'));
+    $('.slide_view_question_element').eq(0).css('color', $(this).css('color'));
+    $('.slide_view_question_element').eq(0).css('background-image', $(this).css('background-image'));
+    $('.slide_view_question_element').eq(0).css('box-shadow', $(this).css('box-shadow'));
+    if ($(this).css('background').indexOf('repeating-conic-gradient(rgb') == -1) {
+        $('.slide_view_question_element').eq(0).css('background', $(this).css('background'));
+    } else {
+        var tmp = 'rgba' + $(this).css('background').split('repeating-conic-gradient(rgb')[1].split(') 0deg,')[0] + ', 0.7)';
+        $('.slide_view_question_element').eq(0).css('background', tmp);
+    }
+});
+
+$('.quick_style_sample').mousedown(function (e) {
+    e.preventDefault();
+});
