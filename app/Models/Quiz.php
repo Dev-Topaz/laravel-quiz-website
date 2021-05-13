@@ -11,26 +11,13 @@ class Quiz extends Model
 
     protected $table = 'quizes';
     protected $primaryKey = 'id';
-    protected $fillable = ['exam_id', 'layout', 'type_id', 'question', 'answer', 'feedback_correct', 'feedback_incorrect', 'feedback_try_again', 'is_draft', 'is_feedback', 'media'];
+
+    protected $fillable = ['exam_group_id', 'type_id', 'question_element', 'answer', 'feedback_correct', 'feedback_incorrect', 'feedback_try_again', 'media', 'answer_element', 'order', 'question_type', 'feedback_type', 'branching', 'score', 'attempts', 'is_limit_time', 'limit_time', 'shuffle_answers', 'partially_correct', 'limit_number_response', 'case_sensitive', 'correct_score', 'incorrect_score', 'try_again_score'];
+
 
     public function Quiz_type()
     {
         return $this->belongsTo(QuizType::class, 'type_id', 'id');
-    }
-
-    public function multi_choice_answer_contents()
-    {
-        return $this->hasMany(MultiChoiceAnswerContent::class, 'quiz_id', 'id');
-    }
-
-    public function multi_response_answer_contents()
-    {
-        return $this->hasMany(MultiResponseAnswerContent::class, 'quiz_id', 'id');
-    }
-
-    public function numeric_answer_contents()
-    {
-        return $this->hasMany(NumericAnswerContent::class, 'quiz_id', 'id');
     }
 
 }

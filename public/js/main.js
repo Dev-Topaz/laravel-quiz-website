@@ -15,8 +15,6 @@ $('body').on('click', '[data-editable]', function(){
     const save = function () {
         const $label = $('<label data-editable />').text($input.text());
         $input.replaceWith($label);
-        if($el[0].className === 'choice_label') save_choice_data();
-        if($el[0].className === 'response_label') save_response_data();
     };
 
   $input.one('blur', save).focus();
