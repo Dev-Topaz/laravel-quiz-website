@@ -38,6 +38,13 @@ function create_quiz(quiz_type, root_url, token) {
             });
             break;
 
+        case (3):
+            lv.insertAfter(node, {
+                caption: 'Choose whether the statement...',
+                content: '<i>True/False<i>'
+            });
+            break;
+
         default:
     }
 
@@ -79,6 +86,7 @@ function update_quiz() {
     console.log('Updating quiz now...');
 
     const typeId = $('#type_id').val();
+    console.log(typeId);
     const question_element = $('.slide_view_question_element')[0].outerHTML;
 
     let answer = "";
@@ -96,6 +104,14 @@ function update_quiz() {
                 console.log($(selectedElement).val());
                 answer += $(selectedElement).val() + ';';
             }
+            break;
+
+        case '3':
+            var selected = $("input[type='radio'][name='answer']:checked");
+            if (selected.length > 0) {
+                answer = selected.val();
+            }
+            console.log(answer);
             break;
     }
 
