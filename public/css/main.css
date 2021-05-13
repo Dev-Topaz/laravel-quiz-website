@@ -614,3 +614,7 @@ main.quiz {
 #quiz_list .node-toggle {
     z-index: 0;
 }
+
+#question span {
+    color: black;
+}

@@ -27,7 +27,7 @@
             <div>
                 <h4>Multiple Choice Question</h4>
                 <div contenteditable="true" id="question"
-                     style="overflow-y: scroll;width: 100%;border: 1px solid black;height: 70px"></div>
+                     style="overflow-y: scroll;width: 100%;border: 1px solid black;height: 70px;color: black"></div>
             </div>
             <br>
 
@@ -70,7 +70,8 @@
                             <tbody id="response_list">
                             </tbody>
                         </table>
-                        <a id="add_response" style="padding: 10px 0;margin-left: 90px;margin-top: 10px;">Type to add a new choice</a>
+                        <a id="add_response" style="padding: 10px 0;margin-left: 90px;margin-top: 10px;">Type to add a
+                            new choice</a>
                     </div>
                 </div>
                 @break
@@ -284,6 +285,10 @@
         return element.html();
     }
 
+    function question_form2slide() {
+        $('.slide_view_question_element').html($('#question').html());
+    }
+
     function answer_slide2form(answer_element, answer_content) {
         const typeId = $('#type_id').val();
         const element = $(answer_element);
@@ -314,6 +319,40 @@
         return form_answer;
     }
 
-    answer_slide2form($('#answer_element').val(), $('#answer_content').val())
+    function answer_form2slide() {
+        const typeId = $('#type_id').val();
+        let answer_element;
+        let slide_answer_element = '';
+        switch (typeId) {
+            case '1':
+                answer_element = $('#choice_list')[0].outerHTML;
+                const element = $(answer_element);
+                console.log(element.find('tr'));
+                for (const item of element.find('tr')) {
+                    const value = $(item).find('input').attr('value');
+                    const label = $(item).find('label').html();
+                    slide_answer_element += '<div class="choice_item"><input type="radio" id="' + value + '" name="answer" value="' + value +'" style="padding-right: 10px;"><label for="' + value + '">' + label + '</label></div>';
+                }
+                break;
+        }
+
+        $('.slide_view_answer_element').html('<div class="col-md-12">' + slide_answer_element + '</div>');
+    }
+
+    answer_slide2form($('#answer_element').val(), $('#answer_content').val());
     $('#question').html(question_slide2form($('#question_element').val()));
+
+    function slide_to_form() {
+        console.log("slide2form");
+
+        answer_slide2form($('.slide_view_answer_element')[0].outerHTML, $('#answer_content').val());
+        $('#question').html(question_slide2form($('.slide_view_question_element')[0].outerHTML));
+    }
+
+    function form_to_slide() {
+        console.log("form2slide");
+
+        question_form2slide();
+        answer_form2slide();
+    }
 </script>
