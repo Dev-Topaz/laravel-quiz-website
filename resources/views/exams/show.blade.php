@@ -766,7 +766,7 @@
                             <option value='92'>92</option>
                             <option value='96'>96</option>
                         </select>
-                        <div data-role="">
+                        <div>
                             <button class="button" id="font_size_bigger_btn"
                                 style="padding: 7px;height: 25px; background-image: url('{{ url('/images/ribbon_imgs/home-8.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;"></button>
                             <button class="button" id="font_size_smaller_btn"
@@ -783,6 +783,8 @@
                                             "></button>
                             <button id="slide_view_font_underline_btn" class="button font_underline_btn"
                                 style="background-image: url('{{ url('/images/ribbon_imgs/home/under.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;"></button>
+                            <button id="slide_view_font_strike_btn" class="button font_strike_btn"
+                                style="background-image: url('{{ url('/images/ribbon_imgs/home/strike.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;"></button>
                         </div>
                     </div>
                     <div style=" display: flex; margin-left: 10px;">
@@ -793,12 +795,18 @@
                                             "></button>
                         </div>
                     </div>
+                    <div>
+                        <span id="font_color_display_letter" style="border-bottom: 2px solid black;">A</span>
+                        <button class="dropdown-toggle" id="font_picker_trigger"
+                            style="margin-left: -1px; width: 1px; padding: 0; margin-top: 3px; height: 20px; background: #f5f6f7;"></button>
+                        <input type="color" name="" id="font_color_picker">
+                    </div>
                     <span class=" title">Font</span>
                     <div class="group-divider"></div>
                 </div>
                 <div class="group" style="flex: 0 0 200px;">
                     <div>
-                        <div data-role="">
+                        <div>
                             <button class="button bullet_btn" id="slide_view_paragraph_style_bullet_btn"
                                 style="padding: 7px;height: 25px; background-image: url('{{ url('/images/ribbon_imgs/home-11.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;"></button>
                             <button class="button numbering_btn" id="slide_view_paragraph_style_numbering_btn"
@@ -808,7 +816,7 @@
                             <button class="button increase_indent" id="slide_view_paragraph_style_increase_indent_btn"
                                 style="padding: 7px;height: 25px; background-image: url('{{ url('/images/ribbon_imgs/home-14.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;"></button>
                         </div>
-                        <div data-role="">
+                        <div>
                             <button class="button" id="paragraph_align_left"
                                 style="padding: 7px;height: 25px; background-image: url('{{ url('/images/ribbon_imgs/home-15.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;"></button>
                             <button class="button" id="paragraph_align_center"
@@ -1280,7 +1288,7 @@
                     <div class="group-divider"></div>
                 </div>
                 <div class="group" style="display: flex; flex-wrap: wrap; flex: 0 0 180px;">
-                    <div data-role="">
+                    <div>
                         <button class="button bullet_btn" id="form_view_paragraph_style_bullet_btn"
                             style="padding: 7px;height: 25px; background-image: url('{{ url('/images/ribbon_imgs/home-11.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;"></button>
                         <button class="button numbering_btn" id="form_view_paragraph_style_numbering_btn"

@@ -56,7 +56,7 @@ $('#slide_view_paste_btn').mousedown(function (e) {
 //  https://raw.githubusercontent.com/Sophie627/flutter-Enriched-Digital-Writer-re-build/master/lib/widget/texteditor/divelement.dart
 
 function get_selected_str() {
-    var sel = window.getSelection(); // Gets selection
+    var sel = window.getSelection(); 
     if (sel.rangeCount) {
         return (sel.toString());
     }
@@ -64,7 +64,7 @@ function get_selected_str() {
 }
 
 function delete_selected_str() {
-    var sel = window.getSelection(); // Gets selection
+    var sel = window.getSelection(); 
     if (sel.rangeCount) {
         var range = sel.getRangeAt(0);
         range.deleteContents();
@@ -73,7 +73,7 @@ function delete_selected_str() {
 
 function paste_str(str) {
     console.log(str);
-    var sel = window.getSelection(); // Gets selection
+    var sel = window.getSelection(); 
 
     if (sel.rangeCount) {
         var e = document.createElement('span');
@@ -230,9 +230,40 @@ $('#slide_view_font_superscription_btn').click(function () {
     toggle_superscript(formatting_superscript);
 });
 
+$('#font_picker_trigger').click(function () {
+    console.log('font_picker_trigger clicked');
+    $('#font_color_picker').trigger('click');
+});
+
+$('#font_picker_trigger').mousedown(function (e) {
+    e.preventDefault(); // prevent the textarea to loose focus!
+});
+
+$('#font_color_picker').change(function () {
+    //console.log('color changed', $(this).val());
+    $("#font_color_display_letter").css('border-color', $(this).val());
+    change_font_color($(this).val());
+});
+
+
+
+function change_font_color(color) {
+    console.log('change_font_color', color);
+    var sel = window.getSelection(); 
+    if (sel.rangeCount) {
+        var e = document.createElement('span');
+        e.style = 'color: ' + color + ';';
+        e.innerHTML = sel.toString();
+        // https://developer.mozilla.org/en-US/docs/Web/API/Selection/getRangeAt
+        var range = sel.getRangeAt(0);
+        range.deleteContents();
+        range.insertNode(e);
+    }
+}
+
 function toggle_superscript(formatting_superscript) {
     console.log('toggle_subscript');
-    var sel = window.getSelection(); // Gets selection
+    var sel = window.getSelection(); 
     if (sel.rangeCount) {
         var e = document.createElement('span');
         if (formatting_superscript) e.style = 'vertical-align: super;';
@@ -247,7 +278,7 @@ function toggle_superscript(formatting_superscript) {
 
 function toggle_subscript(formatting_subscript) {
     console.log('toggle_subscript');
-    var sel = window.getSelection(); // Gets selection
+    var sel = window.getSelection(); 
     if (sel.rangeCount) {
         var e = document.createElement('span');
         if (formatting_subscript) e.style = 'vertical-align: sub;';
@@ -262,7 +293,7 @@ function toggle_subscript(formatting_subscript) {
 
 function toggle_underline(formatting_underline) {
     console.log('toggle_ital');
-    var sel = window.getSelection(); // Gets selection
+    var sel = window.getSelection(); 
     if (sel.rangeCount) {
         var e = document.createElement('span');
         if (formatting_underline) e.style = 'text-decoration: underline;';
@@ -277,7 +308,7 @@ function toggle_underline(formatting_underline) {
 
 function toggle_ital(formatting_ital) {
     console.log('toggle_ital');
-    var sel = window.getSelection(); // Gets selection
+    var sel = window.getSelection(); 
     if (sel.rangeCount) {
         var e = document.createElement('span');
         if (formatting_ital) e.style = 'font-style: italic;';
@@ -291,7 +322,7 @@ function toggle_ital(formatting_ital) {
 }
 
 function toggle_bold(formatting_bold) {
-    var sel = window.getSelection(); // Gets selection
+    var sel = window.getSelection(); 
     if (sel.rangeCount) {
         var e = document.createElement('span');
         if (formatting_bold) e.style = 'font-weight: bold;';
@@ -305,7 +336,7 @@ function toggle_bold(formatting_bold) {
 }
 
 function changeFont(font_family) {
-    var sel = window.getSelection(); // Gets selection
+    var sel = window.getSelection(); 
     if (sel.rangeCount) {
         var e = document.createElement('span');
         e.style = 'font-family:' + font_family + ';';
@@ -318,7 +349,7 @@ function changeFont(font_family) {
 }
 
 function clear_formatting() {
-    var sel = window.getSelection(); // Gets selection
+    var sel = window.getSelection(); 
     if (sel.rangeCount) {
         var e = document.createElement('span');
         e.style = "font-family: 'arial'; font-size: 12px; color: black;";
@@ -331,7 +362,7 @@ function clear_formatting() {
 }
 
 function changeFont_size(font_size) {
-    var sel = window.getSelection(); // Gets selection
+    var sel = window.getSelection(); 
     if (sel.rangeCount) {
         var e = document.createElement('span');
         e.style = 'font-size:' + font_size + 'px;';
