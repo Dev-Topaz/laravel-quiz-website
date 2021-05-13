@@ -323,15 +323,25 @@
         const typeId = $('#type_id').val();
         let answer_element;
         let slide_answer_element = '';
+        let element;
         switch (typeId) {
             case '1':
                 answer_element = $('#choice_list')[0].outerHTML;
-                const element = $(answer_element);
-                console.log(element.find('tr'));
+                element = $(answer_element);
                 for (const item of element.find('tr')) {
                     const value = $(item).find('input').attr('value');
                     const label = $(item).find('label').html();
                     slide_answer_element += '<div class="choice_item"><input type="radio" id="' + value + '" name="answer" value="' + value +'" style="padding-right: 10px;"><label for="' + value + '">' + label + '</label></div>';
+                }
+                break;
+
+            case '2':
+                answer_element = $('#response_list')[0].outerHTML;
+                element = $(answer_element);
+                for (const item of element.find('tr')) {
+                    const value = $(item).find('input').attr('value');
+                    const label = $(item).find('label').html();
+                    slide_answer_element += '<div class="response_item"><input type="checkbox" id="' + value + '" name="answer" value="' + value +'" style="padding-right: 10px;"><label for="' + value + '">' + label + '</label></div>';
                 }
                 break;
         }

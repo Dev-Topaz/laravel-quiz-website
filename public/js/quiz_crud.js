@@ -9,6 +9,8 @@ function onNodeClick(node) {
     }).catch((XHttpResponse) => {
         console.log(XHttpResponse);
     });
+
+    show_correct_view();
 }
 
 function create_quiz(quiz_type, root_url, token) {
@@ -61,9 +63,19 @@ function create_quiz(quiz_type, root_url, token) {
         console.log(XHttpResponse);
     });
 
+    show_correct_view();
 }
 
 function update_quiz() {
+
+    if (is_form_or_slide() === 'form') {
+        form_to_slide();
+    }
+
+    if (is_form_or_slide() === 'slide') {
+        slide_to_form();
+    }
+
     console.log('Updating quiz now...');
 
     const typeId = $('#type_id').val();
@@ -100,7 +112,7 @@ function update_quiz() {
     const feedback_type = Metro.getPlugin('#feedback', 'select').val();
 
     let branching;
-    if ($('#branching:disabled').length !== 0 || $('#branching').length === 0 ) {
+    if ($('#branching:disabled').length !== 0 || $('#branching').length === 0) {
         branching = null;
     } else {
         branching = Metro.getPlugin('#branching', 'select').val();
@@ -206,4 +218,21 @@ function delete_quiz() {
         console.log(XHttpResponse);
     });
 
+}
+
+function is_form_or_slide() {
+    if ($('#form_view_btn').hasClass('click')) return 'form';
+    if ($('#slide_view_btn').hasClass('click')) return 'slide';
+}
+
+function show_correct_view() {
+    if (is_form_or_slide() === 'form') {
+        $('.form_view_element').show();
+        $('.slide_view_element').hide();
+    }
+
+    if (is_form_or_slide() === 'slide') {
+        $('.form_view_element').hide();
+        $('.slide_view_element').show();
+    }
 }
