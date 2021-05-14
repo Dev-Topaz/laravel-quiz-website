@@ -337,16 +337,16 @@
 </div>
 
 <script>
-    $('.slide_view_group').resizable();
     $('.slide_view_group').draggable();
+    $('.slide_view_group').resizable();
 
     answer_slide2form($('#answer_element').val(), $('#answer_content').val());
     $('#question').html(question_slide2form($('#question_element').val()));
 </script>
 
 {{--<script src="{{ asset('js/texteditor.js') }}" defer></script>--}}
-{{--<script src="{{ asset('js/multiple_choice.js') }}" defer></script>--}}
-{{--<script src="{{ asset('js/multiple_response.js') }}" defer></script>--}}
-{{--<script src="{{ asset('js/numeric.js') }}" defer></script>--}}
+<script src="{{ asset('js/multiple_choice.js') }}" defer></script>
+<script src="{{ asset('js/multiple_response.js') }}" defer></script>
+<script src="{{ asset('js/numeric.js') }}" defer></script>
 {{--<script src="{{ asset('js/ribbon_bar.js') }}" defer></script>--}}
 {{--<script src="{{ asset('js/update_quiz.js') }}"></script>--}}

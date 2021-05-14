@@ -18,8 +18,6 @@ $("body").click(function (e) {
     return;
 });
 
-    // $('.slide_view_group').draggable();
-    // $('.slide_view_group').resizable();
 
 function question_slide2form(question) {
     const element = $(question);

@@ -1829,12 +1829,12 @@
             </div><!-- /.post -->
         </div><!-- /#content -->
     </div>
-    <script src="{{ asset('js/quiz_crud.js') }}"></script>
-    <script src="{{ asset('js/multiple_choice.js') }}" defer></script>
-    <script src="{{ asset('js/multiple_response.js') }}" defer></script>
-    <script src="{{ asset('js/numeric.js') }}" defer></script>
+    <script src="{{ asset('js/quiz_crud.js') }}" defer></script>
+{{--    <script src="{{ asset('js/multiple_choice.js') }}"></script>--}}
+{{--    <script src="{{ asset('js/multiple_response.js') }}" defer></script>--}}
+{{--    <script src="{{ asset('js/numeric.js') }}" defer></script>--}}
     <script src="{{ asset('js/ribbon_bar.js') }}" defer></script>
-    <script src="{{ asset('js/update_quiz.js') }}"></script>
+    <script src="{{ asset('js/update_quiz.js') }}" defer></script>
     <script>
         var userSelection = document.getElementsByClassName('quiz_types');
         for (var i = 0; i < userSelection.length; i++) {
