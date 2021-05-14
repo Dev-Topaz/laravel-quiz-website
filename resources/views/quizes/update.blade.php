@@ -1,9 +1,13 @@
 <div class="row" style="height: 100%;margin: 0;">
     <div class="cell-8 form_view_element" style="background: #dcdcdc;display: flex;">
         <div style="margin: auto 10px;background: #f1f1f1;width: 100%;padding: 20px;">
+            <input id="exam_id" type="text"
+                   class="form-control @error('exam_id') is-invalid @enderror" name="exam_id"
+                   value="{{ $quiz->exam_group->exam_id }}" required autocomplete="exam_id" autofocus
+                   hidden>
             <input id="exam_group_id" type="text"
                    class="form-control @error('exam_group_id') is-invalid @enderror" name="exam_group_id"
-                   value="{{ $quiz->exam_group_id }}" required autocomplete="exam_id" autofocus
+                   value="{{ $quiz->exam_group_id }}" required autocomplete="exam_group_id" autofocus
                    hidden>
             <input id="type_id" type="text"
                    class="form-control @error('type_id') is-invalid @enderror" name="type_id"
@@ -152,6 +156,50 @@
                     </div>
                 </div>
                 @break
+
+                @case(6)
+                <h4>Correct Order</h4>
+                <div style="height: 216px;overflow-y: scroll;">
+                    <div>
+                        <table class="table striped" style="margin: 0">
+                            <thead>
+                            <tr>
+                                <th>Choice</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody id="sequence_list">
+                            </tbody>
+                        </table>
+                        <a id="add_sequence" style="padding: 10px 0;margin-left: 30px;">Type to add a new choice</a>
+                    </div>
+                </div>
+                @break
+
+                @case(7)
+                <h4>Correct Matches</h4>
+                <div style="height: 216px;overflow-y: scroll;">
+                    <div>
+                        <table class="table striped" style="margin: 0">
+                            <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th></th>
+                                <th>Match</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody id="matching_list">
+                            </tbody>
+                        </table>
+                        <a id="add_matching" style="padding: 10px 0;">Type to add a new
+                            choice</a>
+                    </div>
+                </div>
+                @break
+
             @endswitch
 
             <br>
@@ -192,7 +240,9 @@
         </div>
     </div>
     <div class="cell-8 slide_view_element" style="background: #dcdcdc;display: none;">
-        <div style="margin: auto 0;background: #f1f1f1;width: 100%;height:500px;padding: 20px;" id="slide_view_container">
+        <div
+            style="margin: auto 0;width: 100%;height:500px;padding: 20px;{{ $quiz->exam_group->exam->theme_style ?? 'background:white' }}"
+            id="slide_view_container">
             {!! $quiz->question_element !!}
             {!! $quiz->answer_element !!}
             @if ($quiz->media != null)
@@ -329,135 +379,25 @@
     </div>
 </div>
 
-{{--<script src="{{ asset('js/texteditor.js') }}" defer></script>--}}
-<script src="{{ asset('js/multiple_choice.js') }}" defer></script>
-<script src="{{ asset('js/multiple_response.js') }}" defer></script>
-<script src="{{ asset('js/numeric.js') }}" defer></script>
-<script src="{{ asset('js/ribbon_bar.js') }}" defer></script>
 <script>
-    $("body").click(function (e) {
-        if (jQuery.inArray('slide_view_question_element', e.target.classList) !== -1 || $(e.target).parents(".slide_view_question_element").length) {
-            console.log('slide_view_question_element');
-            $('#target_element').val('slide_view_question_element');
-            return;
-        }
-        if (jQuery.inArray('slide_view_answer_element', e.target.classList) !== -1 || $(e.target).parents(".slide_view_answer_element").length) {
-            console.log('slide_view_answer_element');
-            $('#target_element').val('slide_view_answer_element');
-            return;
-        }
-        if (jQuery.inArray('slide_view_media_element', e.target.classList) !== -1 || $(e.target).parents(".slide_view_media_element").length) {
-            console.log('slide_view_media_element');
-            $('#target_element').val('slide_view_media_element');
-            return;
-        }
-        $('#target_element').val('common_element');
-        return;
-    });
-
+    // $('.slide_view_question_element').click(function (evt) {
+    //     console.log(evt.pageX - $(this).offset().left);
+    //     if(evt.pageX - $(this).offset().left > 10) $(this).draggable({disabled: true});
+    //     else $(this).draggable();
+    // });
+    // $('.slide_view_question_element').mouseup(function () {
+    //     console.log("mouseup");
+    //     $(this).draggable({disabled: true});
+    // });
     $('.slide_view_group').draggable();
     $('.slide_view_group').resizable();
 
-    function question_slide2form(question) {
-        const element = $(question);
-        return element.html();
-    }
-
-    function question_form2slide() {
-        $('.slide_view_question_element').html($('#question').html());
-    }
-
-    function answer_slide2form(answer_element, answer_content) {
-        const typeId = $('#type_id').val();
-        const element = $(answer_element);
-
-        let form_answer = '';
-        switch (typeId) {
-            case '1':
-                for (let i = 0; i < element.find('.choice_item').length; i++) {
-                    const value = element.find('.choice_item').eq(i).find('input').attr('value');
-                    form_answer += '<tr class="choice_item"><td><input type="radio" name="answer" value="' + value + '" ' + (value == answer_content ? 'checked' : '') + '></td><td><label class="choice_label" data-editable for="' + element.find('.choice_item').eq(i).find('label').attr('for') + '">' + element.find('.choice_item').eq(i).find('label').html() + '</label></td><td></td><td><a onclick="{$(this).parent().parent().remove();}"><i class="fas fa-trash-alt"></i></a></td></tr>';
-                }
-                $('#choice_list').html(form_answer);
-                break;
-
-            case '2':
-                let answer_array = answer_content.split(';');
-                answer_array.pop();
-                for (let i = 0; i < element.find('.response_item').length; i++) {
-                    const value = element.find('.response_item').eq(i).find('input').attr('value');
-                    form_answer += '<tr class="response_item"><td><input type="checkbox" name="answer" value="' + value + '" ' + (answer_array.indexOf(value) !== -1 ? 'checked' : '') + '></td><td><label class="choice_label" data-editable for="' + element.find('.response_item').eq(i).find('label').attr('for') + '">' + element.find('.response_item').eq(i).find('label').html() + '</label></td><td></td><td><a onclick="{$(this).parent().parent().remove();}"><i class="fas fa-trash-alt"></i></a></td></tr>';
-                }
-                $('#response_list').html(form_answer);
-                break;
-
-            case '3':
-                form_answer = '<tr class="choice_item"><td><input type="radio" id="true" name="answer" value="1" style="padding-right: 10px;" ' + (answer_content === '1' ? 'checked' : '') + '></td><td><label for="true">True</label></td><td></td></tr><tr class="choice_item"><td><input type="radio" id="false" name="answer" value="0" style="padding-right: 10px;" ' + (answer_content === '1' ? '' : 'checked') + '></td><td><label for="false">False</label><td></td></tr>';
-                $('#choice_list').html(form_answer);
-                break;
-
-            default:
-        }
-
-        return form_answer;
-    }
-
-    function answer_form2slide() {
-        const typeId = $('#type_id').val();
-        let answer_element;
-        let slide_answer_element = '';
-        let element;
-        switch (typeId) {
-            case '1':
-                answer_element = $('#choice_list')[0].outerHTML;
-                element = $(answer_element);
-                for (const item of element.find('tr')) {
-                    const value = $(item).find('input').attr('value');
-                    const label = $(item).find('label').html();
-                    slide_answer_element += '<div class="choice_item"><input type="radio" id="' + value + '" name="answer" value="' + value + '" style="padding-right: 10px;"><label for="' + value + '">' + label + '</label></div>';
-                }
-                break;
-
-            case '2':
-                answer_element = $('#response_list')[0].outerHTML;
-                element = $(answer_element);
-                for (const item of element.find('tr')) {
-                    const value = $(item).find('input').attr('value');
-                    const label = $(item).find('label').html();
-                    slide_answer_element += '<div class="response_item"><input type="checkbox" id="' + value + '" name="answer" value="' + value + '" style="padding-right: 10px;"><label for="' + value + '">' + label + '</label></div>';
-                }
-                break;
-
-            case '3':
-                slide_answer_element = '<div class="choice_item"><input type="radio" id="true" name="answer" value="1" style="padding-right: 10px;"><label for="true">True</label></div><div class="choice_item"><input type="radio" id="false" name="answer" value="0" style="padding-right: 10px;"><label for="0">False</label></div>';
-                break;
-
-            case '4':
-                slide_answer_element = '<input id="answer" type="text" class="form-control" name="answer" autocomplete="answer">';
-                break;
-
-            case '5':
-                slide_answer_element = '<input id="answer" type="number" class="form-control" name="answer" autocomplete="answer">';
-                break;
-        }
-
-        $('.slide_view_answer_element').html('<div class="col-md-12">' + slide_answer_element + '</div>');
-    }
-
     answer_slide2form($('#answer_element').val(), $('#answer_content').val());
     $('#question').html(question_slide2form($('#question_element').val()));
-
-    function slide_to_form() {
-        console.log("slide2form");
-
-        answer_slide2form($('.slide_view_answer_element')[0].outerHTML, $('#answer_content').val());
-        $('#question').html(question_slide2form($('.slide_view_question_element')[0].outerHTML));
-    }
-
-    function form_to_slide() {
-        console.log("form2slide");
-
-        question_form2slide();
-        answer_form2slide();
-    }
 </script>
+
+<script src="{{ asset('js/multiple_choice.js') }}" defer></script>
+<script src="{{ asset('js/multiple_response.js') }}" defer></script>
+<script src="{{ asset('js/numeric.js') }}" defer></script>
+<script src="{{ asset('js/sequence.js') }}" defer></script>
+<script src="{{ asset('js/matching.js') }}" defer></script>

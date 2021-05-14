@@ -241,19 +241,33 @@ $('#slide_view_font_superscription_btn').click(function () {
 
 $('#font_picker_trigger').click(function () {
     console.log('font_picker_trigger clicked');
-    $('#font_color_picker').trigger('click');
+    // $('#font_color_picker').trigger('click');
 });
 
 $('#font_picker_trigger').mousedown(function (e) {
     e.preventDefault();
 });
 
-$('#font_color_picker').change(function () {
-    //console.log('color changed', $(this).val());
-    $("#font_color_display_letter").css('border-color', $(this).val());
-    change_font_color($(this).val());
+// $('#font_color_picker').change(function () {
+//     //console.log('color changed', $(this).val());
+//     $("#font_color_display_letter").css('border-color', $(this).val());
+//     change_font_color($(this).val());
+// });
+
+$('#office_color_picker').colorpicker({
+  color:'#ffffff',
+  defaultPalette:'theme'
 });
 
+$('#office_color_picker').mousedown(function (e) {
+    e.preventDefault();
+});
+
+$("#office_color_picker").on("change.color", function (event, color) {
+    // event.preventDefault();
+    console.log(color);
+    change_font_color(color);
+});
 
 
 function change_font_color(color) {
@@ -623,9 +637,7 @@ function increase_indent() {
 
 //=========================================================================
 //
-//
 //          Quick styles
-//
 //
 //=========================================================================
 
@@ -672,7 +684,7 @@ $("#shape_outline_color_picker").on("change.color", function (event, color) {
 
 //========================================================
 //
-//                    Design => Themes
+//               Design => Themes
 //
 //========================================================
 
@@ -689,7 +701,82 @@ $('.design_themes_panels').click(function () {
     $('#slide_view_container').eq(0).css('background-size', '100% 100%');
     $('#slide_view_container').eq(0).css('background-repeat', 'no-repeat');
 
+    var style = "background: unset; font-fmily:" + $(this).css('font-family') + "; color:" + $(this).css('color') + "; background-image:" + $(this).css('background-image') + "; background-size: 100% 100%; background-repeat: no-repeat; ";
+
+    store_theme_style(style);
+
 });
 $('.design_themes_panels').mousedown(function (e) {
     e.preventDefault();
+});
+
+
+//====================================================
+//
+//              Insert panel functions
+//
+//====================================================
+
+$('#slide_view_picture_import_btn').click(function () {
+    console.log('slide_view_picture_import_btn');
+    $('#slide_view_picture_file_selector').trigger('click');
+});
+
+$('#slide_view_picture_file_selector').change(function () {
+    console.log('Slide View Picture File selected => ', $(this).val());
+});
+
+$('#form_view_picture_btn').click(function () {
+    console.log('form_view_picture_btn');
+    $('#form_view_picture_selector').trigger('click');
+});
+
+$('#form_view_picture_selector').change(function () {
+    console.log('Fomr View Picture File selected => ', $(this).val());
+});
+
+$('#form_view_video_file_btn').click(function () {
+    console.log('form_view_video_file_btn');
+    $('#form_view_video_file_selector').trigger('click');
+});
+
+$('#form_view_video_file_selector').change(function () {
+    console.log('Form View Video File selected => ', $(this).val());
+});
+
+$('#slide_view_video_file_btn').click(function () {
+    console.log('slide_view_video_file_btn');
+    $('#slide_view_video_file_selector').trigger('click');
+});
+
+$('#slide_view_video_file_selector').change(function () {
+    console.log('Slide View Video File selected => ', $(this).val());
+});
+
+$('#slide_view_insert_audio_btn').click(function () {
+    console.log('slide_view_insert_audio_btn');
+    $('#slide_view_audio_selector').trigger('click');
+});
+
+$('#slide_view_audio_selector').change(function () {
+    console.log('Slide View Audio File selected => ', $(this).val());
+});
+
+$('#form_view_import_audio_file_btn').click(function () {
+    console.log('form_view_import_audio_file_btn');
+    $('#form_view_audio_selector').trigger('click');
+});
+
+$('#form_view_audio_selector').change(function () {
+    console.log('Form View Audio File selected => ', $(this).val());
+});
+
+
+
+$('#layout_reset_btn').click(function () {
+    console.log('test====');
+    var sel = window.getSelection()
+    let range = new Range();
+    var content = sel.cloneContents();
+    console.log(content);
 });

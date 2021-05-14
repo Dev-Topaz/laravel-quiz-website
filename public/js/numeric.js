@@ -6,8 +6,9 @@ function get_select_item_id() {
     if (length > 0) {
         id = 0;
         for (let i = 0; i < length; i++) {
-            if (parseInt($('.select_item select:nth-child(1)').eq(i).attr('id')) > id) {
-                id = parseInt($('.select_item select:nth-child(1)').eq(i).attr('id')) + 1;
+            console.log(parseInt($('.select_item select').eq(i).attr('id')));
+            if (parseInt($('.select_item select').eq(i).attr('id')) >= id) {
+                id = parseInt($('.select_item select').eq(i).attr('id')) + 1;
             }
         }
     }

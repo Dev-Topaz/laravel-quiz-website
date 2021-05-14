@@ -409,25 +409,33 @@
                     <span class="title">Slides</span>
                     <div class="group-divider"></div>
                 </div>
-                <div class="group">
-                    <button class="ribbon-button">
+                <div class="group" id="import_picture_group">
+                    <button class="ribbon-button" id="slide_view_picture_import_btn">
                         <span class="icon">
                             <img src="{{ url("/images/ribbon_imgs/insert-3.png") }}">
                         </span>
                         <span class="caption">Picture</span>
                     </button>
+                    <input id="slide_view_picture_file_selector" type="file" data-role="file" style="display: none;">
                     <span class="title">Images</span>
                     <div class="group-divider"></div>
                 </div>
                 <div class="group">
-                    <button class="ribbon-button">
+                    <button class="ribbon-button" id="insert_textbox_btn">
                         <span class="icon">
                             <img src="{{ url("/images/ribbon_imgs/insert-5.png") }}">
                         </span>
                         <span class="caption">TextBox</span>
                     </button>
+                    <!-- <button class="ribbon-button" id="insert_textbox_btn">
+                        <span class="icon">
+                            <img src="{{ url("/images/ribbon_imgs/insert-6.png") }}">
+                        </span>
+                        <span class="caption">Hyperlink</span>
+                    </button> -->
+
                     <div style="display: flex; flex-direction: column; margin-top: 26px;">
-                        <button class="ribbon-icon-button">
+                        <button class="ribbon-icon-button" id="slide_view_hyperlink_btn">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/insert-6.png") }}">
                             </span>
@@ -438,12 +446,13 @@
                     <div class="group-divider"></div>
                 </div>
                 <div class="group">
-                    <button class="ribbon-button">
+                    <button class="ribbon-button" id="slide_view_video_file_btn">
                         <span class="icon">
                             <img src="{{ url("/images/ribbon_imgs/insert-9.png") }}">
                         </span>
                         <span class="caption">Video</span>
                     </button>
+                    <input id="slide_view_video_file_selector" type="file" data-role="file" style="display: none;">
                     <div class="ribbon-split-button">
                         <button class="ribbon-main">
                             <span class="icon">
@@ -453,16 +462,17 @@
                         <span class="ribbon-split dropdown-toggle">Audio</span>
                         <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100"
                             style="width: 150px; text-align: left;">
-                            <li class="insert_audio"
+                            <li class="insert_audio" id="slide_view_insert_audio_btn"
                                 style="background-image: url({{ url("/images/ribbon_imgs/insert/audio-1.png") }});">
                                 From
                                 File...
                             </li>
-                            <li class="insert_audio"
+                            <input id="slide_view_audio_selector" type="file" data-role="file" style="display: none;">
+                            <li class="insert_audio" id="slide_view_rec_mic_btn"
                                 style="background-image: url({{ url("/images/ribbon_imgs/insert/audio-2.png") }}); border-bottom: 1px dotted gainsboro;">
                                 Record Mic...
                             </li>
-                            <li class="insert_audio"
+                            <li class="insert_audio" id="slide_view_mic_settings_btn"
                                 style="background-image: url({{ url("/images/ribbon_imgs/insert/audio-3.png") }});">
                                 Microphone Settings
                             </li>
@@ -1367,30 +1377,60 @@
                             </span>
                             <span class="caption dropdown-toggle">Shape Effects</span>
                             <ul id="shape_effects_ul" class="ribbon-dropdown" data-role="dropdown" data-duration="100">
-                                <li style="background-image: url({{ url("/images/ribbon_imgs/shadow_no_shadow.png") }});"
-                                    id="arrange_li_align"><a>Shadow <strong
+                                <li style="background-image: url({{ url("/images/ribbon_imgs/shadow/shadow_item.png") }});"
+                                    id="shape_li_shadow"><a>Shadow <strong
                                             style="position: absolute; right: 5px;">></strong></a>
                                     <div id="shape_effect_shadow_panel">
                                         <div>
                                             <div class="shape_effect_shadow_sample_divider">No Shadow</div>
-                                            <div class="shape_effect_shadow_sample"  style="background-image: url({{ url("/images/ribbon_imgs/shadow_no_shadow.png") }});"></div>
-                                            <div class="shape_effect_shadow_sample_divider">Variant</div>
-                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow_no_shadow.png") }});"></div>
-                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow_no_shadow.png") }});"></div>
-                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow_no_shadow.png") }});"></div>
-                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow_no_shadow.png") }});"></div>
-                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow_no_shadow.png") }});"></div>
-                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow_no_shadow.png") }});"></div>
-                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow_no_shadow.png") }});"></div>
-                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow_no_shadow.png") }});"></div>
-                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow_no_shadow.png") }});"></div>
+                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow/no_shadow.png") }});"></div>
+                                            <div class="shape_effect_shadow_sample_divider">Variations</div>
+                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow/Screenshot_11_03.png") }});"></div>
+                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow/Screenshot_11_04.png") }});"></div>
+                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow/Screenshot_11_05.png") }});"></div>
+                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow/Screenshot_11_07.png") }});"></div>
+                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow/Screenshot_11_08.png") }});"></div>
+                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow/Screenshot_11_09.png") }});"></div>
+                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow/Screenshot_11_10.png") }});"></div>
+                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow/Screenshot_11_11.png") }});"></div>
+                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow/Screenshot_11_12.png") }});"></div>
                                         </div>
                                     </div>
                                 </li>
-                                <li style="background-image: url({{ url("/images/ribbon_imgs/shadow_no_shadow.png") }});"
-                                    id="arrange_li_rotate"><a>Glow <strong
+                                <li style="background-image: url({{ url("/images/ribbon_imgs/glow/glowitem.png") }});"
+                                    id="shape_li_glow"><a>Glow <strong
                                             style="position: absolute; right: 5px;">></strong></a>
-                                    <div></div>
+                                    <div id="shape_effect_glow_panel">
+                                        <div style="display: flex; flex-wrap: wrap;">
+                                            <div class="shape_effect_glow_sample_divider">No Glow</div>
+                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/no_glow.png") }});"></div>
+                                            <div class="shape_effect_glow_sample_divider">Glow Variations</div>
+                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_03.png") }});"></div>
+                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_04.png") }});"></div>
+                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_05.png") }});"></div>
+                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_06.png") }});"></div>
+                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_07.png") }});"></div>
+                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_08.png") }});"></div>
+                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_10.png") }});"></div>
+                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_11.png") }});"></div>
+                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_12.png") }});"></div>
+                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_13.png") }});"></div>
+                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_14.png") }});"></div>
+                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_15.png") }});"></div>
+                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_16.png") }});"></div>
+                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_17.png") }});"></div>
+                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_18.png") }});"></div>
+                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_19.png") }});"></div>
+                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_20.png") }});"></div>
+                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_21.png") }});"></div>
+                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_22.png") }});"></div>
+                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_23.png") }});"></div>
+                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_24.png") }});"></div>
+                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_25.png") }});"></div>
+                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_26.png") }});"></div>
+                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_27.png") }});"></div>
+                                        </div>
+                                    </div>
                                 </li>
                             </ul>
                         </button>
@@ -1657,18 +1697,20 @@
                         </button>
                     </div>
                     <div style="display: flex; flex-direction: column;">
-                        <button class="ribbon-icon-button">
+                        <button class="ribbon-icon-button" id="form_view_picture_btn">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/insert-3.png") }}">
                             </span>
                             <span class="caption">Picture</span>
                         </button>
-                        <button class="ribbon-icon-button">
+                        <input id="form_view_picture_selector" type="file" data-role="file" style="display: none;">
+                        <button class="ribbon-icon-button" id="form_view_video_file_btn">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/insert-9.png") }}">
                             </span>
                             <span class="caption">Video</span>
                         </button>
+                        <input id="form_view_video_file_selector" type="file" data-role="file" style="display: none;">
                         <button class="ribbon-icon-button">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/insert-10.png") }}">
@@ -1676,16 +1718,17 @@
                             <span class="caption dropdown-toggle">Audio</span>
                             <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100"
                                 style="width: 150px; text-align: left;">
-                                <li class="insert_audio"
+                                <li class="insert_audio" id="form_view_import_audio_file_btn"
                                     style="background-image: url({{ url("/images/ribbon_imgs/insert/audio-1.png") }});">
                                     From
                                     File...
                                 </li>
-                                <li class="insert_audio"
+                                <input id="form_view_audio_selector" type="file" data-role="file" style="display: none;">
+                                <li class="insert_audio" id="form_view_rec_mic_btn"
                                     style="background-image: url({{ url("/images/ribbon_imgs/insert/audio-2.png") }}); border-bottom: 1px dotted gainsboro;">
                                     Record Mic...
                                 </li>
-                                <li class="insert_audio"
+                                <li class="insert_audio" id="form_view_mic_settings_btn"
                                     style="background-image: url({{ url("/images/ribbon_imgs/insert/audio-3.png") }});">
                                     Microphone
                                     Settings
@@ -1808,15 +1851,17 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="cell-9" id="quiz_view" style="padding: 0;"></div>
+                            <div class="cell-9" id="quiz_view" style="padding: 0;">
+                            </div>
                         </div>
                     </div>
-
                 </form>
             </div><!-- /.post -->
         </div><!-- /#content -->
     </div>
     <script src="{{ asset('js/quiz_crud.js') }}"></script>
+    <script src="{{ asset('js/ribbon_bar.js') }}" defer></script>
+    <script src="{{ asset('js/update_quiz.js') }}"></script>
     <script>
         var userSelection = document.getElementsByClassName('quiz_types');
         for (var i = 0; i < userSelection.length; i++) {

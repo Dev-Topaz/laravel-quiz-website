@@ -59,6 +59,20 @@ function create_quiz(quiz_type, root_url, token) {
             });
             break;
 
+        case (6):
+            lv.insertAfter(node, {
+                caption: 'Arrange the following items in the...',
+                content: '<i>Sequence<i>'
+            });
+            break;
+
+        case (7):
+            lv.insertAfter(node, {
+                caption: 'Match the following items with th...',
+                content: '<i>Matching<i>'
+            });
+            break;
+
         default:
     }
 
@@ -100,39 +114,9 @@ function update_quiz() {
     console.log('Updating quiz now...');
 
     const typeId = $('#type_id').val();
-    console.log(typeId);
     const question_element = $('.slide_view_question_element')[0].outerHTML;
 
-    let answer = "";
-    switch (typeId) {
-        case '1':
-            var selected = $("input[type='radio'][name='answer']:checked");
-            if (selected.length > 0) {
-                answer = selected.val();
-            }
-            break;
-
-        case '2':
-            var selected = $("input[type='checkbox'][name='answer']:checked");
-            for (const selectedElement of selected) {
-                console.log($(selectedElement).val());
-                answer += $(selectedElement).val() + ';';
-            }
-            break;
-
-        case '3':
-            var selected = $("input[type='radio'][name='answer']:checked");
-            if (selected.length > 0) {
-                answer = selected.val();
-            }
-            console.log(answer);
-            break;
-
-        case '4':
-            answer = $('#short_answer').val();
-            console.log(answer);
-            break;
-    }
+    const answer = $('#answer_content').val();
 
     const feedback_correct = $('.feedback_branching tr:first-child td:nth-child(2) label').html();
     const feedback_incorrect = $('.feedback_branching tr:nth-child(2) td:nth-child(2) label').html();
@@ -272,3 +256,5 @@ function show_correct_view() {
         $('.slide_view_element').show();
     }
 }
+
+
