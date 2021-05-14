@@ -409,26 +409,33 @@
                     <span class="title">Slides</span>
                     <div class="group-divider"></div>
                 </div>
-                <div class="group">
-                    <button class="ribbon-button">
+                <div class="group" id="import_picture_group">
+                    <button class="ribbon-button" id="slide_view_picture_import_btn">
                         <span class="icon">
                             <img src="{{ url("/images/ribbon_imgs/insert-3.png") }}">
                         </span>
                         <span class="caption">Picture</span>
                     </button>
-                    <input type="file" data-role="file">
+                    <input id="slide_view_picture_file_selector" type="file" data-role="file" style="display: none;">
                     <span class="title">Images</span>
                     <div class="group-divider"></div>
                 </div>
                 <div class="group">
-                    <button class="ribbon-button">
+                    <button class="ribbon-button" id="insert_textbox_btn">
                         <span class="icon">
                             <img src="{{ url("/images/ribbon_imgs/insert-5.png") }}">
                         </span>
                         <span class="caption">TextBox</span>
                     </button>
+                    <!-- <button class="ribbon-button" id="insert_textbox_btn">
+                        <span class="icon">
+                            <img src="{{ url("/images/ribbon_imgs/insert-6.png") }}">
+                        </span>
+                        <span class="caption">Hyperlink</span>
+                    </button> -->
+
                     <div style="display: flex; flex-direction: column; margin-top: 26px;">
-                        <button class="ribbon-icon-button">
+                        <button class="ribbon-icon-button" id="slide_view_hyperlink_btn">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/insert-6.png") }}">
                             </span>
@@ -439,12 +446,13 @@
                     <div class="group-divider"></div>
                 </div>
                 <div class="group">
-                    <button class="ribbon-button">
+                    <button class="ribbon-button" id="slide_view_video_file_btn">
                         <span class="icon">
                             <img src="{{ url("/images/ribbon_imgs/insert-9.png") }}">
                         </span>
                         <span class="caption">Video</span>
                     </button>
+                    <input id="slide_view_video_file_selector" type="file" data-role="file" style="display: none;">
                     <div class="ribbon-split-button">
                         <button class="ribbon-main">
                             <span class="icon">
@@ -454,16 +462,17 @@
                         <span class="ribbon-split dropdown-toggle">Audio</span>
                         <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100"
                             style="width: 150px; text-align: left;">
-                            <li class="insert_audio"
+                            <li class="insert_audio" id="slide_view_insert_audio_btn"
                                 style="background-image: url({{ url("/images/ribbon_imgs/insert/audio-1.png") }});">
                                 From
                                 File...
                             </li>
-                            <li class="insert_audio"
+                            <input id="slide_view_audio_selector" type="file" data-role="file" style="display: none;">
+                            <li class="insert_audio" id="slide_view_rec_mic_btn"
                                 style="background-image: url({{ url("/images/ribbon_imgs/insert/audio-2.png") }}); border-bottom: 1px dotted gainsboro;">
                                 Record Mic...
                             </li>
-                            <li class="insert_audio"
+                            <li class="insert_audio" id="slide_view_mic_settings_btn"
                                 style="background-image: url({{ url("/images/ribbon_imgs/insert/audio-3.png") }});">
                                 Microphone Settings
                             </li>
@@ -1658,18 +1667,20 @@
                         </button>
                     </div>
                     <div style="display: flex; flex-direction: column;">
-                        <button class="ribbon-icon-button">
+                        <button class="ribbon-icon-button" id="form_view_picture_btn">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/insert-3.png") }}">
                             </span>
                             <span class="caption">Picture</span>
                         </button>
-                        <button class="ribbon-icon-button">
+                        <input id="form_view_picture_selector" type="file" data-role="file" style="display: none;">
+                        <button class="ribbon-icon-button" id="form_view_video_file_btn">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/insert-9.png") }}">
                             </span>
                             <span class="caption">Video</span>
                         </button>
+                        <input id="form_view_video_file_selector" type="file" data-role="file" style="display: none;">
                         <button class="ribbon-icon-button">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/insert-10.png") }}">
@@ -1677,16 +1688,17 @@
                             <span class="caption dropdown-toggle">Audio</span>
                             <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100"
                                 style="width: 150px; text-align: left;">
-                                <li class="insert_audio"
+                                <li class="insert_audio" id="form_view_import_audio_file_btn"
                                     style="background-image: url({{ url("/images/ribbon_imgs/insert/audio-1.png") }});">
                                     From
                                     File...
                                 </li>
-                                <li class="insert_audio"
+                                <input id="form_view_audio_selector" type="file" data-role="file" style="display: none;">
+                                <li class="insert_audio" id="form_view_rec_mic_btn"
                                     style="background-image: url({{ url("/images/ribbon_imgs/insert/audio-2.png") }}); border-bottom: 1px dotted gainsboro;">
                                     Record Mic...
                                 </li>
-                                <li class="insert_audio"
+                                <li class="insert_audio" id="form_view_mic_settings_btn"
                                     style="background-image: url({{ url("/images/ribbon_imgs/insert/audio-3.png") }});">
                                     Microphone
                                     Settings

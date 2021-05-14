@@ -697,3 +697,64 @@ $('.design_themes_panels').click(function () {
 $('.design_themes_panels').mousedown(function (e) {
     e.preventDefault();
 });
+
+
+//====================================================
+//
+//              Insert panel functions
+//
+//====================================================
+
+$('#slide_view_picture_import_btn').click(function () {
+    console.log('slide_view_picture_import_btn');
+    $('#slide_view_picture_file_selector').trigger('click');
+});
+
+$('#slide_view_picture_file_selector').change(function () {
+    console.log('Slide View Picture File selected => ', $(this).val());
+});
+
+$('#form_view_picture_btn').click(function () {
+    console.log('form_view_picture_btn');
+    $('#form_view_picture_selector').trigger('click');
+});
+
+$('#form_view_picture_selector').change(function () {
+    console.log('Fomr View Picture File selected => ', $(this).val());
+});
+
+$('#form_view_video_file_btn').click(function () {
+    console.log('form_view_video_file_btn');
+    $('#form_view_video_file_selector').trigger('click');
+});
+
+$('#form_view_video_file_selector').change(function () {
+    console.log('Form View Video File selected => ', $(this).val());
+});
+
+$('#slide_view_video_file_btn').click(function () {
+    console.log('slide_view_video_file_btn');
+    $('#slide_view_video_file_selector').trigger('click');
+});
+
+$('#slide_view_video_file_selector').change(function () {
+    console.log('Slide View Video File selected => ', $(this).val());
+});
+
+$('#slide_view_insert_audio_btn').click(function () {
+    console.log('slide_view_insert_audio_btn');
+    $('#slide_view_audio_selector').trigger('click');
+});
+
+$('#slide_view_audio_selector').change(function () {
+    console.log('Slide View Audio File selected => ', $(this).val());
+});
+
+$('#form_view_import_audio_file_btn').click(function () {
+    console.log('form_view_import_audio_file_btn');
+    $('#form_view_audio_selector').trigger('click');
+});
+
+$('#form_view_audio_selector').change(function () {
+    console.log('Form View Audio File selected => ', $(this).val());
+});
