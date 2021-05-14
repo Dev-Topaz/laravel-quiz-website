@@ -388,3 +388,7 @@ span.icon img {
 .ribbon-split.dropdown-toggle::after {
     margin-left: 0 !important;
 }
+
+label.file {
+    display: none;
+}
