@@ -1836,7 +1836,8 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="cell-9" id="quiz_view" style="padding: 0;"></div>
+                            <div class="cell-9" id="quiz_view" style="padding: 0;">
+                            </div>
                         </div>
                     </div>
                 </form>

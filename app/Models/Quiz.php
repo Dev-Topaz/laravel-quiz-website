@@ -20,4 +20,9 @@ class Quiz extends Model
         return $this->belongsTo(QuizType::class, 'type_id', 'id');
     }
 
+    public function exam_group()
+    {
+        return $this->belongsTo(ExamGroup::class, 'exam_group_id', 'id');
+    }
+
 }

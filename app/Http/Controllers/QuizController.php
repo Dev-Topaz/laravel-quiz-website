@@ -3,10 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Quiz;
-use App\Models\Answer;
-use App\Models\MultiChoiceAnswerContent;
-use App\Models\MultiResponseAnswerContent;
-use App\Models\NumericAnswerContent;
+use App\Models\Exam;
 use Illuminate\Http\Request;
 use phpDocumentor\Reflection\Types\Integer;
 
@@ -167,7 +164,7 @@ class QuizController extends Controller
                     'exam_group_id' => $request->exam_group_id,
                     'type_id' => $request->type_id,
                     'question_element' => '<div contenteditable="true" class="slide_view_question_element slide_view_group" style="border: 1px solid black;height: 70px;width: 80%;left: 10%">Type your response:</div>',
-                    'answer' => '=;0@',
+                    'answer' => '=;0;@',
                     'feedback_correct' => 'That\'s right! You chose the correct response.',
                     'feedback_incorrect' => 'You did not choose the correct response.',
                     'feedback_try_again' => null,
@@ -311,6 +308,15 @@ class QuizController extends Controller
     {
 
         $quiz->delete();
+
+        return true;
+    }
+
+    public function update_theme_style(Request $request)
+    {
+
+        $exam = Exam::where('id', $request->exam_id)
+            ->update(['theme_style' => $request->style]);
 
         return true;
     }
