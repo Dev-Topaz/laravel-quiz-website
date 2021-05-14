@@ -337,8 +337,9 @@
 </div>
 
 <script>
-    $('.slide_view_group').draggable();
     $('.slide_view_group').resizable();
+    $('.slide_view_group').draggable();
+
     answer_slide2form($('#answer_element').val(), $('#answer_content').val());
     $('#question').html(question_slide2form($('#question_element').val()));
 </script>
