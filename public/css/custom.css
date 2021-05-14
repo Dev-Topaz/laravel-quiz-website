@@ -375,6 +375,8 @@ span.icon img {
     height: 30px;
     margin: 18px;
     background-repeat: no-repeat;
+    background-position: center;
+    background-size: 150%;
 }
 
 .shape_effect_shadow_sample_divider {
@@ -399,25 +401,24 @@ label.file {
     display: none;
 }
 
-
-#shape_effect_shadow_panel>div {
+#arrange_li_rotate>div {
     display: flex;
     flex-wrap: wrap;
 }
 
-.shape_effect_shadow_sample {
+.glow_effect_shadow_sample {
     width: 30px;
     height: 30px;
     margin: 18px;
     background-repeat: no-repeat;
 }
 
-.shape_effect_shadow_sample_divider {
+.glow_effect_shadow_sample_divider {
     width: 199px;
     text-align: left;
 }
 
-.shape_effect_shadow_sample:hover {
+.glow_effect_shadow_sample:hover {
     outline: 5px solid #fbd8be;
     outline-offset: 13px;
 }
