@@ -242,3 +242,5 @@ function show_correct_view() {
         $('.slide_view_element').show();
     }
 }
+
+

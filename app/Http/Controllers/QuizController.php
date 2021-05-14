@@ -3,10 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Quiz;
-use App\Models\Answer;
-use App\Models\MultiChoiceAnswerContent;
-use App\Models\MultiResponseAnswerContent;
-use App\Models\NumericAnswerContent;
+use App\Models\Exam;
 use Illuminate\Http\Request;
 use phpDocumentor\Reflection\Types\Integer;
 
@@ -311,6 +308,15 @@ class QuizController extends Controller
     {
 
         $quiz->delete();
+
+        return true;
+    }
+
+    public function update_theme_style(Request $request)
+    {
+
+        $exam = Exam::where('id', $request->exam_id)
+            ->update(['theme_style' => $request->style]);
 
         return true;
     }

@@ -1,9 +1,13 @@
 <div class="row" style="height: 100%;margin: 0;">
-    <div class="cell-8 form_view_element" style="background: #dcdcdc;display: flex;{{ $quiz->exam_group->exam->theme_style }}">
+    <div class="cell-8 form_view_element" style="background: #dcdcdc;display: flex;">
         <div style="margin: auto 10px;background: #f1f1f1;width: 100%;padding: 20px;">
+            <input id="exam_id" type="text"
+                   class="form-control @error('exam_id') is-invalid @enderror" name="exam_id"
+                   value="{{ $quiz->exam_group->exam_id }}" required autocomplete="exam_id" autofocus
+                   hidden>
             <input id="exam_group_id" type="text"
                    class="form-control @error('exam_group_id') is-invalid @enderror" name="exam_group_id"
-                   value="{{ $quiz->exam_group_id }}" required autocomplete="exam_id" autofocus
+                   value="{{ $quiz->exam_group_id }}" required autocomplete="exam_group_id" autofocus
                    hidden>
             <input id="type_id" type="text"
                    class="form-control @error('type_id') is-invalid @enderror" name="type_id"
@@ -192,7 +196,8 @@
         </div>
     </div>
     <div class="cell-8 slide_view_element" style="background: #dcdcdc;display: none;">
-        <div style="margin: auto 0;background: #f1f1f1;width: 100%;height:500px;padding: 20px;"
+        {{--        <div style="margin: auto 0;width: 100%;height:500px;padding: 20px;{{ isset($quiz->exam_group->exam->theme_style) ? $quiz->exam_group->theme_style : 'background: #f1f1f1;' }}" id="slide_view_container">--}}
+        <div style="margin: auto 0;width: 100%;height:500px;padding: 20px;{{ $quiz->exam_group->exam->theme_style ?? 'background:white' }}"
              id="slide_view_container">
             {!! $quiz->question_element !!}
             {!! $quiz->answer_element !!}
@@ -525,5 +530,22 @@
         question_form2slide();
         answer_form2slide();
         answer_store();
+    }
+
+    function store_theme_style(style) {
+        console.log(style);
+        const root_url = $('meta[name=url]').attr('content');
+        const token = $('meta[name=csrf-token]').attr('content');
+        const examId = $('#exam_id').val();
+        $.post(root_url + "/update_theme_style", {
+                '_token': token,
+                'exam_id': examId,
+                'style': style,
+            },
+            function (data, status) {
+                console.log(data, status);
+            }).catch((XHttpResponse) => {
+            console.log(XHttpResponse);
+        });
     }
 </script>
