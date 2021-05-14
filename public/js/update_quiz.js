@@ -18,8 +18,8 @@ $("body").click(function (e) {
     return;
 });
 
-$('.slide_view_group').draggable();
-$('.slide_view_group').resizable();
+// $('.slide_view_group').draggable();
+// $('.slide_view_group').resizable();
 
 function question_slide2form(question) {
     const element = $(question);
@@ -121,8 +121,8 @@ function answer_form2slide() {
     $('.slide_view_answer_element').html('<div class="col-md-12">' + slide_answer_element + '</div>');
 }
 
-answer_slide2form($('#answer_element').val(), $('#answer_content').val());
-$('#question').html(question_slide2form($('#question_element').val()));
+// answer_slide2form($('#answer_element').val(), $('#answer_content').val());
+// $('#question').html(question_slide2form($('#question_element').val()));
 
 function answer_store() {
     const typeId = $('#type_id').val();

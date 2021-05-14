@@ -29,6 +29,7 @@
     <link href="{{ asset('css/jquery-ui.min.css') }}" rel="stylesheet">
     <script src="{{ asset('js/jquery3.2.1.min.js') }}"></script>
     <script src="{{ asset('js/jquery-ui.min.js') }}" defer></script>
+    <script src="{{ asset('js/evol-colorpicker.min.js') }}" defer></script>
 
 </head>
 <body>
@@ -91,7 +92,7 @@
     <script src="{{ asset('js/main.js') }}" defer></script>
     <script src="{{ asset('js/matching.js') }}" defer></script>
     <script src="{{ asset('js/text_dropdown.js') }}" defer></script>
-    <script src="{{ asset('js/evol-colorpicker.min.js') }}" defer></script>
+
 {{--    <script src="{{ asset('js/jquery.richtext.min.js') }}" defer></script>--}}
 
     <script>

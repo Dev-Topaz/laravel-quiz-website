@@ -197,8 +197,9 @@
     </div>
     <div class="cell-8 slide_view_element" style="background: #dcdcdc;display: none;">
         {{--        <div style="margin: auto 0;width: 100%;height:500px;padding: 20px;{{ isset($quiz->exam_group->exam->theme_style) ? $quiz->exam_group->theme_style : 'background: #f1f1f1;' }}" id="slide_view_container">--}}
-        <div style="margin: auto 0;width: 100%;height:500px;padding: 20px;{{ $quiz->exam_group->exam->theme_style ?? 'background:white' }}"
-             id="slide_view_container">
+        <div
+            style="margin: auto 0;width: 100%;height:500px;padding: 20px;{{ $quiz->exam_group->exam->theme_style ?? 'background:white' }}"
+            id="slide_view_container">
             {!! $quiz->question_element !!}
             {!! $quiz->answer_element !!}
             @if ($quiz->media != null)
@@ -334,6 +335,13 @@
         </div>
     </div>
 </div>
+
+<script>
+    $('.slide_view_group').draggable();
+    $('.slide_view_group').resizable();
+    answer_slide2form($('#answer_element').val(), $('#answer_content').val());
+    $('#question').html(question_slide2form($('#question_element').val()));
+</script>
 
 {{--<script src="{{ asset('js/texteditor.js') }}" defer></script>--}}
 {{--<script src="{{ asset('js/multiple_choice.js') }}" defer></script>--}}
