@@ -19,7 +19,6 @@ span.icon img {
     background-position-y: center;
 }
 
-
 /* start of theme selector style */
 #design_themes_panel_holder {
     position: absolute;
@@ -341,7 +340,7 @@ span.icon img {
     background-repeat: no-repeat;
     background-position-y: center;
     height: 45px;
-    width: 133px;
+    width: 110px;
 }
 
 #shape_effects_ul>li>a {
@@ -355,15 +354,14 @@ span.icon img {
     z-index: 1;
     display: none;
     background: white;
-    transform: translate(107px, -26px);
+    transform: translate(86px, -26px);
     width: 200px;
     filter: drop-shadow(1px 2px 2px black);
 }
 
-#arrange_li_align:hover #shape_effect_shadow_panel {
+#shape_li_shadow:hover #shape_effect_shadow_panel {
     display: block;
 }
-
 
 #shape_effect_shadow_panel>div {
     display: flex;
@@ -371,12 +369,12 @@ span.icon img {
 }
 
 .shape_effect_shadow_sample {
-    width: 30px;
-    height: 30px;
-    margin: 18px;
+    width: 65px;
+    height: 65px;
+    margin: 0px;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 150%;
+    background-size: 100%;
 }
 
 .shape_effect_shadow_sample_divider {
@@ -386,7 +384,7 @@ span.icon img {
 
 .shape_effect_shadow_sample:hover {
     outline: 5px solid #fbd8be;
-    outline-offset: 13px;
+    outline-offset: -5px;
 }
 
 #line_height_selector.dropdown-toggle::after {
@@ -406,19 +404,35 @@ label.file {
     flex-wrap: wrap;
 }
 
-.glow_effect_shadow_sample {
-    width: 30px;
-    height: 30px;
-    margin: 18px;
+.shape_effect_glow_sample {
+    width: 60px;
+    height: 60px;
+    margin: 0px;
     background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
 }
 
-.glow_effect_shadow_sample_divider {
-    width: 199px;
+.shape_effect_glow_sample_divider {
+    width: 417px;
     text-align: left;
 }
 
-.glow_effect_shadow_sample:hover {
+.shape_effect_glow_sample:hover {
     outline: 5px solid #fbd8be;
-    outline-offset: 13px;
+    outline-offset: -5px;
+}
+
+#shape_effect_glow_panel {
+    position: absolute;
+    z-index: 1;
+    display: none;
+    background: white;
+    transform: translate(86px, -26px);
+    width: 360px;
+    filter: drop-shadow(1px 2px 2px black);
+}
+
+#shape_li_glow:hover #shape_effect_glow_panel {
+    display: block;
 }
