@@ -192,7 +192,8 @@
         </div>
     </div>
     <div class="cell-8 slide_view_element" style="background: #dcdcdc;display: none;">
-        <div style="margin: auto 0;background: #f1f1f1;width: 100%;height:500px;padding: 20px;" id="slide_view_container">
+        <div style="margin: auto 0;background: #f1f1f1;width: 100%;height:500px;padding: 20px;"
+             id="slide_view_container">
             {!! $quiz->question_element !!}
             {!! $quiz->answer_element !!}
             @if ($quiz->media != null)
@@ -396,6 +397,20 @@
                 $('#choice_list').html(form_answer);
                 break;
 
+            case '5':
+                console.log(answer_content);
+                let numeric_answer_array = answer_content.split('@');
+                numeric_answer_array.pop();
+
+                let item;
+                for (let i = 0; i < numeric_answer_array.length; i++) {
+                    item = numeric_answer_array[i].split(';');
+                    item.pop();
+                    form_answer += '<tr><td><div class="select_item" style="display: flex;padding: 5px 0;"><label for="' + (i + 1) + '">Value is: </label><select onchange="{select_change(this);}" name="' + (i + 1) + '"id="' + (i + 1) + '" style="max-width: 160px;"><option value="==" ' + (item[0] === '==' ? 'selected' : '') + '>Equal to</option><option value="<<" ' + (item[0] === '<<' ? 'selected' : '') + '>Between</option><option value=">" ' + (item[0] === '>' ? 'selected' : '') + '>Greater than</option><option value=">=" ' + (item[0] === '>=' ? 'selected' : '') + '>Greater than or equal to</option><option value="<" ' + (item[0] === '<' ? 'selected' : '') + '>Less than</option><option value="<=" ' + (item[0] === '<=' ? 'selected' : '') + '>Less than or equal to</option><option value="!=" ' + (item[0] === '!=' ? 'selected' : '') + '>Not equal to</option></select><div style="display: flex;"><input type="number" value="' + item[1] + '" style="max-width: 100px;">' + (item[0] === '<<' ? '<span>and</span><input type="number" value="' + item[2] + '" style="max-width: 100px;">' : '') + '</div></div></td><td><a onclick="{$(this).parent().parent().remove();}"><i class="fas fa-trash-alt"></i></a></td></tr>';
+                }
+                $('#numeric_list').html(form_answer);
+                break;
+
             default:
         }
 
@@ -447,6 +462,56 @@
     answer_slide2form($('#answer_element').val(), $('#answer_content').val());
     $('#question').html(question_slide2form($('#question_element').val()));
 
+    function answer_store() {
+        const typeId = $('#type_id').val();
+
+        let answer = "";
+        switch (typeId) {
+            case '1':
+                var selected = $("input[type='radio'][name='answer']:checked");
+                if (selected.length > 0) {
+                    answer = selected.val();
+                }
+                break;
+
+            case '2':
+                var selected = $("input[type='checkbox'][name='answer']:checked");
+                for (const selectedElement of selected) {
+                    console.log($(selectedElement).val());
+                    answer += $(selectedElement).val() + ';';
+                }
+                break;
+
+            case '3':
+                var selected = $("input[type='radio'][name='answer']:checked");
+                if (selected.length > 0) {
+                    answer = selected.val();
+                }
+                console.log(answer);
+                break;
+
+            case '4':
+                answer = $('#short_answer').val();
+                console.log(answer);
+                break;
+
+            case '5':
+                const select_items = $('.select_item');
+                let select_input_items;
+                for (let i = 0; i < select_items.length; i++) {
+                    answer += select_items.eq(i).find('select').val() + ';';
+                    select_input_items = select_items.eq(i).find('input');
+                    for (let j = 0; j < select_input_items.length; j++) {
+                        answer += select_input_items.eq(j).val() + ';';
+                    }
+                    answer += '@';
+                }
+                break;
+        }
+
+        $('#answer_content').val(answer);
+    }
+
     function slide_to_form() {
         console.log("slide2form");
 
@@ -459,5 +524,6 @@
 
         question_form2slide();
         answer_form2slide();
+        answer_store();
     }
 </script>
