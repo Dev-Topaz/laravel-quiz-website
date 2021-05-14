@@ -241,19 +241,33 @@ $('#slide_view_font_superscription_btn').click(function () {
 
 $('#font_picker_trigger').click(function () {
     console.log('font_picker_trigger clicked');
-    $('#font_color_picker').trigger('click');
+    // $('#font_color_picker').trigger('click');
 });
 
 $('#font_picker_trigger').mousedown(function (e) {
     e.preventDefault();
 });
 
-$('#font_color_picker').change(function () {
-    //console.log('color changed', $(this).val());
-    $("#font_color_display_letter").css('border-color', $(this).val());
-    change_font_color($(this).val());
+// $('#font_color_picker').change(function () {
+//     //console.log('color changed', $(this).val());
+//     $("#font_color_display_letter").css('border-color', $(this).val());
+//     change_font_color($(this).val());
+// });
+
+$('#office_color_picker').colorpicker({
+  color:'#ffffff',
+  defaultPalette:'theme'
 });
 
+$('#office_color_picker').mousedown(function (e) {
+    e.preventDefault();
+});
+
+$("#office_color_picker").on("change.color", function (event, color) {
+    // event.preventDefault();
+    console.log(color);
+    change_font_color(color);
+});
 
 
 function change_font_color(color) {
@@ -755,4 +769,14 @@ $('#form_view_import_audio_file_btn').click(function () {
 
 $('#form_view_audio_selector').change(function () {
     console.log('Form View Audio File selected => ', $(this).val());
+});
+
+
+
+$('#layout_reset_btn').click(function () {
+    console.log('test====');
+    var sel = window.getSelection()
+    let range = new Range();
+    var content = sel.cloneContents();
+    console.log(content);
 });
