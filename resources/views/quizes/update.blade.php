@@ -1,5 +1,5 @@
 <div class="row" style="height: 100%;margin: 0;">
-    <div class="cell-8 form_view_element" style="background: #dcdcdc;display: flex;">
+    <div class="cell-8 form_view_element" style="background: #dcdcdc;display: flex;{{ $quiz->exam_group->exam->theme_style }}">
         <div style="margin: auto 10px;background: #f1f1f1;width: 100%;padding: 20px;">
             <input id="exam_group_id" type="text"
                    class="form-control @error('exam_group_id') is-invalid @enderror" name="exam_group_id"
