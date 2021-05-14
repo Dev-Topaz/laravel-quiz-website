@@ -59,6 +59,13 @@ function create_quiz(quiz_type, root_url, token) {
             });
             break;
 
+        case (6):
+            lv.insertAfter(node, {
+                caption: 'Arrange the following items in the...',
+                content: '<i>Sequence<i>'
+            });
+            break;
+
         default:
     }
 

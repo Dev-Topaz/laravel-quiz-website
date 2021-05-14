@@ -189,6 +189,36 @@ class QuizController extends Controller
 
                 break;
 
+            case "6":
+                $quiz = Quiz::create([
+                    'exam_group_id' => $request->exam_group_id,
+                    'type_id' => $request->type_id,
+                    'question_element' => '<div contenteditable="true" class="slide_view_question_element slide_view_group" style="border: 1px solid black;height: 70px;width: 80%;left: 10%">Arrange the following items in the correct order:</div>',
+                    'answer' => 'Option 1;Option 2;Option 3;Option 4;',
+                    'feedback_correct' => 'That\'s right! You chose the correct response.',
+                    'feedback_incorrect' => 'You did not choose the correct response.',
+                    'feedback_try_again' => null,
+                    'media' => null,
+                    'order' => null,
+                    'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%"><div class="col-md-12"><ul id="sortable"><li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><label class="sequence_label" data-editable>Option 1</label></li><li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><label class="sequence_label" data-editable>Option 2</label></li><li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><label class="sequence_label" data-editable>Option 3</label></li><li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><label class="sequence_label" data-editable>Option 4</label></li></ul></div></div>',
+                    'question_type' => 'graded',
+                    'feedback_type' => 'by_result',
+                    'branching' => null,
+                    'score' => null,
+                    'attempts' => '1',
+                    'is_limit_time' => false,
+                    'limit_time' => null,
+                    'shuffle_answers' => null,
+                    'partially_correct' => false,
+                    'limit_number_response' => null,
+                    'case_sensitive' => null,
+                    'correct_score' => 10,
+                    'incorrect_score' => 0,
+                    'try_again_score' => null,
+                ]);
+
+                break;
+
             default:
         }
 

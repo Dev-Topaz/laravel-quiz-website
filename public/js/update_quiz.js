@@ -62,13 +62,24 @@ function answer_slide2form(answer_element, answer_content) {
             let numeric_answer_array = answer_content.split('@');
             numeric_answer_array.pop();
 
-            let item;
+            let numeric_item;
             for (let i = 0; i < numeric_answer_array.length; i++) {
-                item = numeric_answer_array[i].split(';');
-                item.pop();
-                form_answer += '<tr><td><div class="select_item" style="display: flex;padding: 5px 0;"><label for="' + (i + 1) + '">Value is: </label><select onchange="{select_change(this);}" name="' + (i + 1) + '"id="' + (i + 1) + '" style="max-width: 160px;"><option value="==" ' + (item[0] === '==' ? 'selected' : '') + '>Equal to</option><option value="<<" ' + (item[0] === '<<' ? 'selected' : '') + '>Between</option><option value=">" ' + (item[0] === '>' ? 'selected' : '') + '>Greater than</option><option value=">=" ' + (item[0] === '>=' ? 'selected' : '') + '>Greater than or equal to</option><option value="<" ' + (item[0] === '<' ? 'selected' : '') + '>Less than</option><option value="<=" ' + (item[0] === '<=' ? 'selected' : '') + '>Less than or equal to</option><option value="!=" ' + (item[0] === '!=' ? 'selected' : '') + '>Not equal to</option></select><div style="display: flex;"><input type="number" value="' + item[1] + '" style="max-width: 100px;">' + (item[0] === '<<' ? '<span>and</span><input type="number" value="' + item[2] + '" style="max-width: 100px;">' : '') + '</div></div></td><td><a onclick="{$(this).parent().parent().remove();}"><i class="fas fa-trash-alt"></i></a></td></tr>';
+                numeric_item = numeric_answer_array[i].split(';');
+                numeric_item.pop();
+                form_answer += '<tr><td><div class="select_numeric_item" style="display: flex;padding: 5px 0;"><label for="' + (i + 1) + '">Value is: </label><select onchange="{select_change(this);}" name="' + (i + 1) + '"id="' + (i + 1) + '" style="max-width: 160px;"><option value="==" ' + (numeric_item[0] === '==' ? 'selected' : '') + '>Equal to</option><option value="<<" ' + (numeric_item[0] === '<<' ? 'selected' : '') + '>Between</option><option value=">" ' + (numeric_item[0] === '>' ? 'selected' : '') + '>Greater than</option><option value=">=" ' + (numeric_item[0] === '>=' ? 'selected' : '') + '>Greater than or equal to</option><option value="<" ' + (numeric_item[0] === '<' ? 'selected' : '') + '>Less than</option><option value="<=" ' + (numeric_item[0] === '<=' ? 'selected' : '') + '>Less than or equal to</option><option value="!=" ' + (numeric_item[0] === '!=' ? 'selected' : '') + '>Not equal to</option></select><div style="display: flex;"><input type="number" value="' + numeric_item[1] + '" style="max-width: 100px;">' + (numeric_item[0] === '<<' ? '<span>and</span><input type="number" value="' + numeric_item[2] + '" style="max-width: 100px;">' : '') + '</div></div></td><td><a onclick="{$(this).parent().parent().remove();}"><i class="fas fa-trash-alt"></i></a></td></tr>';
             }
             $('#numeric_list').html(form_answer);
+            break;
+
+        case '6':
+            console.log(answer_content);
+            let sequence_answer_array = answer_content.split(';');
+            sequence_answer_array.pop();
+
+            for (let i = 0; i < sequence_answer_array.length; i++) {
+                form_answer += '<tr class="sequence_item"><td><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><label class="sequence_label" data-editable>' + sequence_answer_array[i] + '</label><td></td><td><a onclick="{$(this).parent().parent().remove();}"><i class="fas fa-trash-alt"></i></a></td></tr>';
+            }
+            $('#sequence_list').html(form_answer);
             break;
 
         default:
@@ -113,6 +124,15 @@ function answer_form2slide() {
 
         case '5':
             slide_answer_element = '<input id="answer" type="number" class="form-control" name="answer" autocomplete="answer">';
+            break;
+
+        case '6':
+            answer_element = $('tbody#sequence_list tr');
+            slide_answer_element = '<ul id="sortable">';
+            for (let i = 0; i < answer_element.length; i++) {
+                slide_answer_element += '<li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><label class="sequence_label" data-editable>' + answer_element.eq(i).find('label').html() + '</label></li>';
+            }
+            slide_answer_element += '</ul>';
             break;
     }
 
@@ -165,6 +185,13 @@ function answer_store() {
                     answer += select_input_items.eq(j).val() + ';';
                 }
                 answer += '@';
+            }
+            break;
+
+        case '6':
+            answer_element = $('tbody#sequence_list tr');
+            for (let i = 0; i < answer_element.length; i++) {
+                answer += answer_element.eq(i).find('label').html() + ';';
             }
             break;
     }

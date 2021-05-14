@@ -156,6 +156,27 @@
                     </div>
                 </div>
                 @break
+
+                @case(6)
+                <h4>Correct Order</h4>
+                <div style="height: 216px;overflow-y: scroll;">
+                    <div>
+                        <table class="table striped" style="margin: 0">
+                            <thead>
+                            <tr>
+                                <th>Choice</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody id="sequence_list">
+                            </tbody>
+                        </table>
+                        <a id="add_sequence" style="padding: 10px 0;margin-left: 30px;">Type to add a new choice</a>
+                    </div>
+                </div>
+                @break
+
             @endswitch
 
             <br>
@@ -196,7 +217,6 @@
         </div>
     </div>
     <div class="cell-8 slide_view_element" style="background: #dcdcdc;display: none;">
-        {{--        <div style="margin: auto 0;width: 100%;height:500px;padding: 20px;{{ isset($quiz->exam_group->exam->theme_style) ? $quiz->exam_group->theme_style : 'background: #f1f1f1;' }}" id="slide_view_container">--}}
         <div
             style="margin: auto 0;width: 100%;height:500px;padding: 20px;{{ $quiz->exam_group->exam->theme_style ?? 'background:white' }}"
             id="slide_view_container">
@@ -344,9 +364,7 @@
     $('#question').html(question_slide2form($('#question_element').val()));
 </script>
 
-{{--<script src="{{ asset('js/texteditor.js') }}" defer></script>--}}
 <script src="{{ asset('js/multiple_choice.js') }}" defer></script>
 <script src="{{ asset('js/multiple_response.js') }}" defer></script>
 <script src="{{ asset('js/numeric.js') }}" defer></script>
-{{--<script src="{{ asset('js/ribbon_bar.js') }}" defer></script>--}}
-{{--<script src="{{ asset('js/update_quiz.js') }}"></script>--}}
+<script src="{{ asset('js/sequence.js') }}" defer></script>
