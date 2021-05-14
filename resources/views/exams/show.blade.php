@@ -416,6 +416,7 @@
                         </span>
                         <span class="caption">Picture</span>
                     </button>
+                    <input type="file" data-role="file">
                     <span class="title">Images</span>
                     <div class="group-divider"></div>
                 </div>

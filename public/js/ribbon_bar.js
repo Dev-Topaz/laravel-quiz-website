@@ -689,6 +689,10 @@ $('.design_themes_panels').click(function () {
     $('#slide_view_container').eq(0).css('background-size', '100% 100%');
     $('#slide_view_container').eq(0).css('background-repeat', 'no-repeat');
 
+    var style = "background: unset; font-fmily:" + $(this).css('font-family') + "; color:" + $(this).css('color') + "; background-image:" + $(this).css('background-image') + "; background-size: 100% 100%; background-repeat: no-repeat; ";
+
+    store_theme_style(style);
+
 });
 $('.design_themes_panels').mousedown(function (e) {
     e.preventDefault();

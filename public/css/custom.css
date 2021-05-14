@@ -341,6 +341,7 @@ span.icon img {
     background-repeat: no-repeat;
     background-position-y: center;
     height: 45px;
+    width: 133px;
 }
 
 #shape_effects_ul>li>a {
@@ -366,8 +367,8 @@ span.icon img {
 .shape_effect_shadow_sample {
     width: 30px;
     height: 30px;
-    border: 1px solid;
     margin: 18px;
+    background-repeat: no-repeat;
 }
 
 #shape_effect_shadow_panel>div {
