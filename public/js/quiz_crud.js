@@ -66,6 +66,13 @@ function create_quiz(quiz_type, root_url, token) {
             });
             break;
 
+        case (7):
+            lv.insertAfter(node, {
+                caption: 'Match the following items with th...',
+                content: '<i>Matching<i>'
+            });
+            break;
+
         default:
     }
 

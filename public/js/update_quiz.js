@@ -82,6 +82,18 @@ function answer_slide2form(answer_element, answer_content) {
             $('#sequence_list').html(form_answer);
             break;
 
+        case '7':
+            console.log(answer_content);
+            let matching_answer_array = answer_content.split('@');
+            matching_answer_array.pop();
+
+            for (let i = 0; i < matching_answer_array.length; i++) {
+                form_answer += '<tr class="matching_item"><td><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><label class="matching_item_label" data-editable>' + matching_answer_array[i].split(';')[0] + '</label></td><td></td><td><label class="matching_label" data-editable>' + matching_answer_array[i].split(';')[1] + '</label></td><td></td><td><a onclick="{$(this).parent().parent().remove();}"><i class="fas fa-trash-alt"></i></a></td></tr>';
+            }
+
+            $('#matching_list').html(form_answer);
+            break;
+
         default:
     }
 
@@ -133,6 +145,13 @@ function answer_form2slide() {
                 slide_answer_element += '<li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><label class="sequence_label" data-editable>' + answer_element.eq(i).find('label').html() + '</label></li>';
             }
             slide_answer_element += '</ul>';
+            break;
+
+        case '7':
+            answer_element = $('tbody#matching_list tr');
+            for (let i = 0; i <answer_element.length; i++) {
+                slide_answer_element += '<div style="display: flex;justify-content: space-around;padding-bottom: 10px;"><div class="ui-widget-header droppable" style="width: 40%"><p>' + $('tbody#matching_list tr').eq(i).find('label').eq(0).html() + '</p></div><div class="ui-widget-content draggable" style="width: 40%" isdropped=false><p>' + $('tbody#matching_list tr').eq(i).find('label').eq(1).html() + '</p></div></div>';
+            }
             break;
     }
 
@@ -192,6 +211,13 @@ function answer_store() {
             answer_element = $('tbody#sequence_list tr');
             for (let i = 0; i < answer_element.length; i++) {
                 answer += answer_element.eq(i).find('label').html() + ';';
+            }
+            break;
+
+        case '7':
+            answer_element = $('tbody#matching_list tr');
+            for (let i = 0; i <answer_element.length; i++) {
+                answer +=  $('tbody#matching_list tr').eq(0).find('label').eq(0).html() + ';' + $('tbody#matching_list tr').eq(0).find('label').eq(1).html() + '@';
             }
             break;
     }

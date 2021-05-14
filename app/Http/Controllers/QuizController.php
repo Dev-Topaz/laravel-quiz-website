@@ -219,6 +219,36 @@ class QuizController extends Controller
 
                 break;
 
+            case "7":
+                $quiz = Quiz::create([
+                    'exam_group_id' => $request->exam_group_id,
+                    'type_id' => $request->type_id,
+                    'question_element' => '<div contenteditable="true" class="slide_view_question_element slide_view_group" style="border: 1px solid black;height: 70px;width: 80%;left: 10%">Match the following items with their descriptions:</div>',
+                    'answer' => 'Item 1;Match 1@Item 2;Match 2@Item 3;Match 3@',
+                    'feedback_correct' => 'That\'s right! You chose the correct response.',
+                    'feedback_incorrect' => 'You did not choose the correct response.',
+                    'feedback_try_again' => null,
+                    'media' => null,
+                    'order' => null,
+                    'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%"><div class="col-md-12"><div style="display: flex;justify-content: space-around;padding-bottom: 10px;"><div class="ui-widget-header droppable" style="width: 40%"><p>Item 1</p></div><div class="ui-widget-content draggable" style="width: 40%" isdropped=false><p>Match 1</p></div></div><div style="display: flex;justify-content: space-around;padding-bottom: 10px;"><div class="ui-widget-header droppable" style="width: 40%"><p>Item 2</p></div><div class="ui-widget-content draggable" style="width: 40%" isdropped=false><p>Match 2</p></div></div><div style="display: flex;justify-content: space-around;padding-bottom: 10px;"><div class="ui-widget-header droppable" style="width: 40%"><p>Item 3</p></div><div class="ui-widget-content draggable" style="width: 40%" isdropped=false><p>Match 3</p></div></div></div></div>',
+                    'question_type' => 'graded',
+                    'feedback_type' => 'by_result',
+                    'branching' => null,
+                    'score' => null,
+                    'attempts' => '1',
+                    'is_limit_time' => false,
+                    'limit_time' => null,
+                    'shuffle_answers' => true,
+                    'partially_correct' => false,
+                    'limit_number_response' => null,
+                    'case_sensitive' => null,
+                    'correct_score' => 10,
+                    'incorrect_score' => 0,
+                    'try_again_score' => null,
+                ]);
+
+                break;
+
             default:
         }
 

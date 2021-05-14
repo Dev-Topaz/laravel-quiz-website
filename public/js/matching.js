@@ -1,33 +1,47 @@
+// $(function () {
+//     $(".draggable").draggable({
+//
+//         start: function () {
+//             $(this).addClass("ui-state-highlight");
+//             if ($(this).attr("isdropped")) {
+//                 $(this).parent().css({'justify-content': 'space-around'});
+//                 $(this).attr("isdropped", false);
+//             }
+//         },
+//
+//         stop: function () {
+//             $(this).removeClass("ui-state-highlight");
+//
+//         },
+//
+//         revert: true,
+//     });
+//     $(".droppable").droppable({
+//         classes: {
+//             "ui-droppable-hover": "ui-state-highlight"
+//         },
+//         drop: function (event, ui) {
+//             $(this).addClass("ui-state-hover");
+//             $(this).parent().css({'justify-content': 'center'});
+//             ui.draggable.attr("isdropped", true);
+//
+//             swap_value(ui.draggable, $(this).next());
+//         }
+//     });
+// });
+
 $(function () {
-    $(".draggable").draggable({
+    $('#matching_list').sortable();
+});
 
-        start: function () {
-            $(this).addClass("ui-state-highlight");
-            if ($(this).attr("isdropped")) {
-                $(this).parent().css({'justify-content': 'space-around'});
-                $(this).attr("isdropped", false);
-            }
-        },
+$('#add_matching').click(function () {
+    console.log($(this));
+    let element;
 
-        stop: function () {
-            $(this).removeClass("ui-state-highlight");
+    element = '<tr class="matching_item"><td><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><label class="matching_item_label" data-editable>Type item content...</label></td><td></td><td><label class="matching_label" data-editable>Type match content...</label></td><td></td><td><a onclick="{$(this).parent().parent().remove();}"><i class="fas fa-trash-alt"></i></a></td></tr>';
 
-        },
+    $('#matching_list').append(element);
 
-        revert: true,
-    });
-    $(".droppable").droppable({
-        classes: {
-            "ui-droppable-hover": "ui-state-highlight"
-        },
-        drop: function (event, ui) {
-            $(this).addClass("ui-state-hover");
-            $(this).parent().css({'justify-content': 'center'});
-            ui.draggable.attr("isdropped", true);
-
-            swap_value(ui.draggable, $(this).next());
-        }
-    });
 });
 
 function swap_value(a, b) {

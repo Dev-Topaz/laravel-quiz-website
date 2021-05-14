@@ -177,6 +177,29 @@
                 </div>
                 @break
 
+                @case(7)
+                <h4>Correct Matches</h4>
+                <div style="height: 216px;overflow-y: scroll;">
+                    <div>
+                        <table class="table striped" style="margin: 0">
+                            <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th></th>
+                                <th>Match</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody id="matching_list">
+                            </tbody>
+                        </table>
+                        <a id="add_matching" style="padding: 10px 0;">Type to add a new
+                            choice</a>
+                    </div>
+                </div>
+                @break
+
             @endswitch
 
             <br>
@@ -357,6 +380,15 @@
 </div>
 
 <script>
+    // $('.slide_view_question_element').click(function (evt) {
+    //     console.log(evt.pageX - $(this).offset().left);
+    //     if(evt.pageX - $(this).offset().left > 10) $(this).draggable({disabled: true});
+    //     else $(this).draggable();
+    // });
+    // $('.slide_view_question_element').mouseup(function () {
+    //     console.log("mouseup");
+    //     $(this).draggable({disabled: true});
+    // });
     $('.slide_view_group').draggable();
     $('.slide_view_group').resizable();
 
@@ -368,3 +400,4 @@
 <script src="{{ asset('js/multiple_response.js') }}" defer></script>
 <script src="{{ asset('js/numeric.js') }}" defer></script>
 <script src="{{ asset('js/sequence.js') }}" defer></script>
+<script src="{{ asset('js/matching.js') }}" defer></script>
