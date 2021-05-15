@@ -436,7 +436,7 @@
                     </button> -->
 
                     <div style="display: flex; flex-direction: column; margin-top: 26px;">
-                        <button class="ribbon-icon-button" id="slide_view_hyperlink_btn">
+                        <button class="ribbon-icon-button hyperlink_btn" id="slide_view_hyperlink_btn">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/insert-6.png") }}">
                             </span>
@@ -979,9 +979,9 @@
                     </div>
                     <div style=" display: flex; margin-left: 10px;">
                         <div data-role=" buttongroup" style="margin-left: 11px; ">
-                            <button id="slide_view_font_subscription_btn" class="button" style="background-image: url('{{ url('/images/ribbon_imgs/home/sub.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;
+                            <button id="slide_view_font_subscription_btn" class="button font_subscription_btn" style="background-image: url('{{ url('/images/ribbon_imgs/home/sub.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;
                                             "></button>
-                            <button id="slide_view_font_superscription_btn" class=" button" style="background-image: url('{{ url('/images/ribbon_imgs/home/sup.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;
+                            <button id="slide_view_font_superscription_btn" class=" button font_superscription_btn" style="background-image: url('{{ url('/images/ribbon_imgs/home/sup.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;
                                             "></button>
                         </div>
                     </div>
@@ -1760,7 +1760,7 @@
                 </div>
                 <div class="group">
                     <div style="display: flex; flex-direction: column; margin-top: 26px;">
-                        <button class="ribbon-icon-button">
+                        <button class="ribbon-icon-button hyperlink_btn">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/insert-6.png") }}">
                             </span>
@@ -1973,17 +1973,6 @@
     <script>
         var userSelection = document.getElementsByClassName('quiz_types');
         var ele_num = userSelection.length;
-        // for (var i = 0; i < ele_num; i++) {
-        //     (function (index) {
-        //         userSelection[index].addEventListener("mousemove", function () {
-        //             if ($('.tooltip_pic').eq(index).css("display") == 'block') return;
-        //             for (let j = 0; j < ele_num; j++) {
-        //                 if (j == index) $('.tooltip_pic').eq(j).fadeIn();
-        //                 else $('.tooltip_pic').eq(j).fadeOut();
-        //             }
-        //         })
-        //     })(i);
-        // }
 
         for (var i = 0; i < ele_num; i++) {
             (function (index) {
