@@ -646,6 +646,43 @@ function increase_indent() {
 //
 //=========================================================================
 
+$('#arrange_bring_forward').click(function () {
+    console.log('arrange_bring_forward');
+    var element = $('.' + $('#target_element').val()).eq(0); // get selected element
+    element.css('z-index', parseInt(element.css('z-index')) + 1);
+});
+
+$('#arrange_send_backward').click(function () {
+    console.log('arrange_send_backward');
+    var element = $('.' + $('#target_element').val()).eq(0); // get selected element
+    element.css('z-index', parseInt(element.css('z-index')) - 1);
+});
+
+$('#arrange_bring_front').click(function () {
+    console.log('arrange_bring_front');
+    var element = $('.' + $('#target_element').val()).eq(0); // get selected element
+    var ele_cnt = $('.slide_view_group').length;
+    var max_index = 0;
+    for (let j = 0; j < ele_cnt; j++) {
+        if (parseInt($('.slide_view_group').eq(j).css('z-index')) > max_index)
+            max_index = parseInt($('.slide_view_group').eq(j).css('z-index'));
+    }
+    element.css('z-index', max_index + 1);
+});
+
+$('#arrange_send_back').click(function () {
+    console.log('arrange_send_back');
+    var element = $('.' + $('#target_element').val()).eq(0); // get selected element
+    var ele_cnt = $('.slide_view_group').length;
+    var min_index = 0;
+    for (let j = 0; j < ele_cnt; j++) {
+        if (parseInt($('.slide_view_group').eq(j).css('z-index')) < min_index)
+            min_index = parseInt($('.slide_view_group').eq(j).css('z-index'));
+    }
+    element.css('z-index', min_index - 1);
+});
+
+
 
 $('#rotate_right').click(function () {
     console.log('rotate_right');
@@ -759,7 +796,7 @@ $('#distribute_vertically').click(function () {
         for (let j = 0; j < i; j++) {
             height_to_set_sum += $('.slide_view_group').eq(j).height();
         }
-        $('.slide_view_group').eq(i).css('top', height_to_set_sum + gap *(i+1) + 'px');
+        $('.slide_view_group').eq(i).css('top', height_to_set_sum + gap * (i + 1) + 'px');
     }
 });
 
@@ -776,7 +813,7 @@ $('#distribute_horizontally').click(function () {
         for (let j = 0; j < i; j++) {
             width_to_set_sum += $('.slide_view_group').eq(j).width();
         }
-        $('.slide_view_group').eq(i).css('left', width_to_set_sum + gap *(i+1) + 'px');
+        $('.slide_view_group').eq(i).css('left', width_to_set_sum + gap * (i + 1) + 'px');
     }
 });
 

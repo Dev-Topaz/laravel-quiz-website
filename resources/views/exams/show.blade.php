@@ -298,7 +298,7 @@
                 </div>
                 <div class="group">
                     <div data-role="button-group" data-cls-active="active">
-                        <button class="ribbon-button">
+                        <button class="ribbon-button" id="format_bg_btn">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/design-2.png") }}">
                             </span>
