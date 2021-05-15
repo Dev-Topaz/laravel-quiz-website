@@ -1,3 +1,4 @@
+var remove_link = false;
 var clipboard_str = '';
 
 console.log('ribbon_bar');
@@ -255,8 +256,8 @@ $('#font_picker_trigger').mousedown(function (e) {
 // });
 
 $('#office_color_picker').colorpicker({
-  color:'#ffffff',
-  defaultPalette:'theme'
+    color: '#ffffff',
+    defaultPalette: 'theme'
 });
 
 $('#office_color_picker').mousedown(function (e) {
@@ -551,7 +552,7 @@ function add_line_spacing_after(paragraph_line_spacing_add_after) {
         range.deleteContents();
         range.insertNode(e);
         while (!(e.parentElement.classList.contains('slide_view_question_element'))) {
-             e = e.parentElement
+            e = e.parentElement
         }
         if (paragraph_line_spacing_add_after)
             e.style.marginBottom = '25px';
@@ -570,12 +571,12 @@ function add_line_spacing_before(paragraph_line_spacing_add_before) {
         range.deleteContents();
         range.insertNode(e);
         while (!(e.parentElement.classList.contains('slide_view_question_element'))) {
-             e = e.parentElement
+            e = e.parentElement
         }
         if (paragraph_line_spacing_add_before)
-            e.style.marginTop= '25px';
+            e.style.marginTop = '25px';
         else
-            e.style.marginTop= 'unset';
+            e.style.marginTop = 'unset';
     }
 }
 
@@ -607,10 +608,10 @@ function decrease_indent() {
         range.deleteContents();
         range.insertNode(e);
         while (!(e.parentElement.classList.contains('slide_view_question_element'))) {
-             e = e.parentElement
+            e = e.parentElement
         }
         if (e.style.marginLeft == '' || e.style.marginLeft == '0px')
-            e.style.marginLeft= '0px';
+            e.style.marginLeft = '0px';
         else
             e.style.marginLeft = parseInt(e.style.marginLeft) - 10 + 'px';
     }
@@ -626,10 +627,10 @@ function increase_indent() {
         range.deleteContents();
         range.insertNode(e);
         while (!(e.parentElement.classList.contains('slide_view_question_element'))) {
-             e = e.parentElement
+            e = e.parentElement
         }
         if (e.style.marginLeft == '' || e.style.marginLeft == '0px')
-            e.style.marginLeft= '10px';
+            e.style.marginLeft = '10px';
         else
             e.style.marginLeft = parseInt(e.style.marginLeft) + 10 + 'px';
     }
@@ -658,27 +659,27 @@ $('.quick_style_sample').mousedown(function (e) {
 });
 
 $('#office_color_picker').colorpicker({
-  color:'#ffffff',
-  defaultPalette:'theme'
+    color: '#ffffff',
+    defaultPalette: 'theme'
 });
 
 $('#shape_fill_color_picker').colorpicker({
-  color:'#ffffff',
-  defaultPalette:'theme'
+    color: '#ffffff',
+    defaultPalette: 'theme'
 });
 
 $('#shape_outline_color_picker').colorpicker({
-  color:'#000000',
-  defaultPalette:'theme'
+    color: '#000000',
+    defaultPalette: 'theme'
 });
 
 // triggered when a color is selected.
-$("#shape_fill_color_picker").on("change.color", function(event, color){
-  $('.slide_view_question_element').eq(0).css('background', color);
+$("#shape_fill_color_picker").on("change.color", function (event, color) {
+    $('.slide_view_question_element').eq(0).css('background', color);
 });
 
 $("#shape_outline_color_picker").on("change.color", function (event, color) {
-  $('.slide_view_question_element').eq(0).css('border-color', color);
+    $('.slide_view_question_element').eq(0).css('border-color', color);
 });
 
 
@@ -780,3 +781,115 @@ $('#layout_reset_btn').click(function () {
     var content = sel.cloneContents();
     console.log(content);
 });
+
+
+//================================
+//
+//          Modal
+//
+//================================
+
+var edit_hyperlink_modal = document.getElementById("edit_hyperlink_modal_container");
+var span = document.getElementsByClassName("edit_hyperlink_close_symbol")[0];
+span.onclick = function () {
+    edit_hyperlink_modal.style.display = "none";
+    cancel_hyperlink();
+
+}
+window.onclick = function (event) {
+    if (event.target == edit_hyperlink_modal) {
+        edit_hyperlink_modal.style.display = "none";
+        cancel_hyperlink();
+    }
+}
+
+$('#slide_view_hyperlink_btn').click(function () {
+    console.log('slide_view_hyperlink_btn');
+    $('#hyper_text').val(get_selected_txt());
+    get_ready_for_hyperlink();
+    edit_hyperlink_modal.style.display = "block";
+    remove_link = false;
+});
+
+$('#slide_view_hyperlink_btn').mousedown(function (e) {
+    e.preventDefault();
+});
+
+function get_selected_txt() {
+    var sel = window.getSelection();
+    return (sel.toString());
+}
+
+function get_ready_for_hyperlink() {
+    var sel = window.getSelection();
+    if (sel.rangeCount) {
+        var e = document.createElement('span');
+        // e.style = 'font-family:' + font.value + ';';
+        e.className = "hyperlink";
+        e.innerHTML = sel.toString();
+        var range = sel.getRangeAt(0);
+        range.deleteContents();
+        range.insertNode(e);
+    }
+}
+
+$('#edit_hyperlink_modal_container input').on('change', function () {
+    if ($('input[name=link_type]:checked').val() == 'webpage') {
+        $('#open_in_new_check').css('display', 'block');
+        $('#hyperlink_test_btn').css('display', 'block');
+        // $('#link_address').val('http://');
+    } else {
+        $('#open_in_new_check').css('display', 'none');
+        $('#hyperlink_test_btn').css('display', 'none');
+        $('#link_address').val('');
+    }
+
+});
+
+$('#edit_hyperlink_ok').click(function () {
+    edit_hyperlink_modal.style.display = "none";
+    if (remove_link) return;
+
+    if ($('input[name=link_type]:checked').val() == 'webpage') {
+        console.log($('#link_address').val());
+        console.log($('#hyper_text').val());
+        if (document.getElementById('open_in_new').checked)
+            $('.slide_view_question_element').eq(0).find('span.hyperlink').html('<a target="_blank" href="' + $('#link_address').val() + '">' + $('#hyper_text').val() + '</a>');
+        else
+            $('.slide_view_question_element').eq(0).find('span.hyperlink').html('<a href="' + $('#link_address').val() + '">' + $('#hyper_text').val() + '</a>');
+    } else {
+        $('.slide_view_question_element').eq(0).find('span.hyperlink').html('<a href="mailto:' + $('#link_address').val() + '">' + $('#hyper_text').val() + '</a>');
+    }
+});
+
+$('#hyperlink_test_btn').click(function () {
+    window.open($('#link_address').val(), '_blank');
+});
+
+$('#edit_hyperlink_cancel').click(function () {
+    cancel_hyperlink();
+    edit_hyperlink_modal.style.display = "none";
+});
+
+$('#hyperlink_remove_btn').click(function () {
+    cancel_hyperlink();
+});
+
+function cancel_hyperlink() {
+    remove_link = true;
+    $('.slide_view_question_element').eq(0).find('span.hyperlink').html($('#hyper_text').val());
+    $('.slide_view_question_element').eq(0).find('span.hyperlink').removeClass('hyperlink');
+}
+
+// sel = window.getSelection();
+
+// for(let i = 0; i < sel.rangeCount; i++) {
+//  ranges[i] = sel.getRangeAt(i);
+// }
+// ranges[0].cloneContents()
+// div=document.createElement("div");
+// div.appendChild(content)
+// div.innerHTML
+
+
+// https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment

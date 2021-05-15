@@ -1,3 +1,4 @@
+
 @extends('layouts.quiz')
 
 @section('content')
@@ -1383,17 +1384,37 @@
                                     <div id="shape_effect_shadow_panel">
                                         <div>
                                             <div class="shape_effect_shadow_sample_divider">No Shadow</div>
-                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow/no_shadow.png") }});"></div>
+                                            <div class="shape_effect_shadow_sample"
+                                                style="background-image: url({{ url("/images/ribbon_imgs/shadow/no_shadow.png") }});">
+                                            </div>
                                             <div class="shape_effect_shadow_sample_divider">Variations</div>
-                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow/Screenshot_11_03.png") }});"></div>
-                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow/Screenshot_11_04.png") }});"></div>
-                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow/Screenshot_11_05.png") }});"></div>
-                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow/Screenshot_11_07.png") }});"></div>
-                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow/Screenshot_11_08.png") }});"></div>
-                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow/Screenshot_11_09.png") }});"></div>
-                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow/Screenshot_11_10.png") }});"></div>
-                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow/Screenshot_11_11.png") }});"></div>
-                                            <div class="shape_effect_shadow_sample" style="background-image: url({{ url("/images/ribbon_imgs/shadow/Screenshot_11_12.png") }});"></div>
+                                            <div class="shape_effect_shadow_sample"
+                                                style="background-image: url({{ url("/images/ribbon_imgs/shadow/Screenshot_11_03.png") }});">
+                                            </div>
+                                            <div class="shape_effect_shadow_sample"
+                                                style="background-image: url({{ url("/images/ribbon_imgs/shadow/Screenshot_11_04.png") }});">
+                                            </div>
+                                            <div class="shape_effect_shadow_sample"
+                                                style="background-image: url({{ url("/images/ribbon_imgs/shadow/Screenshot_11_05.png") }});">
+                                            </div>
+                                            <div class="shape_effect_shadow_sample"
+                                                style="background-image: url({{ url("/images/ribbon_imgs/shadow/Screenshot_11_07.png") }});">
+                                            </div>
+                                            <div class="shape_effect_shadow_sample"
+                                                style="background-image: url({{ url("/images/ribbon_imgs/shadow/Screenshot_11_08.png") }});">
+                                            </div>
+                                            <div class="shape_effect_shadow_sample"
+                                                style="background-image: url({{ url("/images/ribbon_imgs/shadow/Screenshot_11_09.png") }});">
+                                            </div>
+                                            <div class="shape_effect_shadow_sample"
+                                                style="background-image: url({{ url("/images/ribbon_imgs/shadow/Screenshot_11_10.png") }});">
+                                            </div>
+                                            <div class="shape_effect_shadow_sample"
+                                                style="background-image: url({{ url("/images/ribbon_imgs/shadow/Screenshot_11_11.png") }});">
+                                            </div>
+                                            <div class="shape_effect_shadow_sample"
+                                                style="background-image: url({{ url("/images/ribbon_imgs/shadow/Screenshot_11_12.png") }});">
+                                            </div>
                                         </div>
                                     </div>
                                 </li>
@@ -1403,32 +1424,82 @@
                                     <div id="shape_effect_glow_panel">
                                         <div style="display: flex; flex-wrap: wrap;">
                                             <div class="shape_effect_glow_sample_divider">No Glow</div>
-                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/no_glow.png") }});"></div>
+                                            <div class="shape_effect_glow_sample"
+                                                style="background-image: url({{ url("/images/ribbon_imgs/glow/no_glow.png") }});">
+                                            </div>
                                             <div class="shape_effect_glow_sample_divider">Glow Variations</div>
-                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_03.png") }});"></div>
-                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_04.png") }});"></div>
-                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_05.png") }});"></div>
-                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_06.png") }});"></div>
-                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_07.png") }});"></div>
-                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_08.png") }});"></div>
-                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_10.png") }});"></div>
-                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_11.png") }});"></div>
-                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_12.png") }});"></div>
-                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_13.png") }});"></div>
-                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_14.png") }});"></div>
-                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_15.png") }});"></div>
-                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_16.png") }});"></div>
-                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_17.png") }});"></div>
-                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_18.png") }});"></div>
-                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_19.png") }});"></div>
-                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_20.png") }});"></div>
-                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_21.png") }});"></div>
-                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_22.png") }});"></div>
-                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_23.png") }});"></div>
-                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_24.png") }});"></div>
-                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_25.png") }});"></div>
-                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_26.png") }});"></div>
-                                            <div class="shape_effect_glow_sample" style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_27.png") }});"></div>
+                                            <div class="shape_effect_glow_sample"
+                                                style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_03.png") }});">
+                                            </div>
+                                            <div class="shape_effect_glow_sample"
+                                                style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_04.png") }});">
+                                            </div>
+                                            <div class="shape_effect_glow_sample"
+                                                style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_05.png") }});">
+                                            </div>
+                                            <div class="shape_effect_glow_sample"
+                                                style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_06.png") }});">
+                                            </div>
+                                            <div class="shape_effect_glow_sample"
+                                                style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_07.png") }});">
+                                            </div>
+                                            <div class="shape_effect_glow_sample"
+                                                style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_08.png") }});">
+                                            </div>
+                                            <div class="shape_effect_glow_sample"
+                                                style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_10.png") }});">
+                                            </div>
+                                            <div class="shape_effect_glow_sample"
+                                                style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_11.png") }});">
+                                            </div>
+                                            <div class="shape_effect_glow_sample"
+                                                style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_12.png") }});">
+                                            </div>
+                                            <div class="shape_effect_glow_sample"
+                                                style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_13.png") }});">
+                                            </div>
+                                            <div class="shape_effect_glow_sample"
+                                                style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_14.png") }});">
+                                            </div>
+                                            <div class="shape_effect_glow_sample"
+                                                style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_15.png") }});">
+                                            </div>
+                                            <div class="shape_effect_glow_sample"
+                                                style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_16.png") }});">
+                                            </div>
+                                            <div class="shape_effect_glow_sample"
+                                                style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_17.png") }});">
+                                            </div>
+                                            <div class="shape_effect_glow_sample"
+                                                style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_18.png") }});">
+                                            </div>
+                                            <div class="shape_effect_glow_sample"
+                                                style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_19.png") }});">
+                                            </div>
+                                            <div class="shape_effect_glow_sample"
+                                                style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_20.png") }});">
+                                            </div>
+                                            <div class="shape_effect_glow_sample"
+                                                style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_21.png") }});">
+                                            </div>
+                                            <div class="shape_effect_glow_sample"
+                                                style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_22.png") }});">
+                                            </div>
+                                            <div class="shape_effect_glow_sample"
+                                                style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_23.png") }});">
+                                            </div>
+                                            <div class="shape_effect_glow_sample"
+                                                style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_24.png") }});">
+                                            </div>
+                                            <div class="shape_effect_glow_sample"
+                                                style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_25.png") }});">
+                                            </div>
+                                            <div class="shape_effect_glow_sample"
+                                                style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_26.png") }});">
+                                            </div>
+                                            <div class="shape_effect_glow_sample"
+                                                style="background-image: url({{ url("/images/ribbon_imgs/glow/Screenshot_10_27.png") }});">
+                                            </div>
                                         </div>
                                     </div>
                                 </li>
@@ -1723,7 +1794,8 @@
                                     From
                                     File...
                                 </li>
-                                <input id="form_view_audio_selector" type="file" data-role="file" style="display: none;">
+                                <input id="form_view_audio_selector" type="file" data-role="file"
+                                    style="display: none;">
                                 <li class="insert_audio" id="form_view_rec_mic_btn"
                                     style="background-image: url({{ url("/images/ribbon_imgs/insert/audio-2.png") }}); border-bottom: 1px dotted gainsboro;">
                                     Record Mic...
@@ -1789,8 +1861,45 @@
     </nav>
 
 
-    <div class="window-content p-2">
+    <div id="edit_hyperlink_modal_container">
 
+        <div class="edit_hyperlink_modal">
+            <div id="editor_window_header">
+                <p class="header_title">Edit Hyperlink</p>
+                <span class="edit_hyperlink_close_symbol">&times;</span>
+            </div>
+            <div id="editor_main_part">
+                <div id='text_bar'>
+                    <label for="hyper_text">Text:</label>
+                    <input type="text" name="hyper_text" id="hyper_text">
+                </div>
+                <div id="link_to_bar">
+                    <label for="">Link to:</label><br>
+                    <input type="radio" name="link_type" id="web_page_link" checked value="webpage">
+                    <label for="web_page_link">Web page</label><br>
+                    <input type="radio" name="link_type" id="email_link" value="email">
+                    <label for="email_link">Email</label><br>
+                </div>
+                <div id="add_edit_bar">
+                    <label for="address">Address: </label>
+                    <input type="text" name="address" id="link_address" value="http://">
+                    <div id="hyperlink_test_btn">Test</div>
+                    <div id="hyperlink_remove_btn">Remove Link</div>
+                </div>
+                <div id="open_in_new_check">
+                    <input type="checkbox" name="open_in_new" id="open_in_new">
+                    <label for="open_in_new">Open in a new browser window</label>
+                </div>
+            </div>
+            <div id="editor_footer_part">
+                <button id="edit_hyperlink_ok">OK</button>
+                <button id="edit_hyperlink_cancel">Cancel</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="window-content p-2">
 
         <div id="content" class="full">
             <div class="post manage_forms">
