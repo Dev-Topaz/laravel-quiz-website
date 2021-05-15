@@ -3,7 +3,7 @@ var clipboard_str = '';
 
 console.log('ribbon_bar');
 
-// $('#target_element').val('');
+// $('#target_element').val();
 
 // template function
 $('#xxxxx').click(function () {
@@ -638,19 +638,151 @@ function increase_indent() {
 
 //=========================================================================
 //
-//          Quick styles
+//          Slide View => Home / Drawing
 //
 //=========================================================================
 
+
+$('#rotate_right').click(function () {
+    console.log('rotate_right');
+    var element = $('.' + $('#target_element').val()).eq(0); // get selected element
+    if (element.attr('rotate') == undefined || element.attr('rotate') == '0') {
+        element.attr('rotate', '90');
+        element.css('transform', 'rotate(90deg)');
+        return;
+    }
+    if (element.attr('rotate') == '90') {
+        element.attr('rotate', '180');
+        element.css('transform', 'rotate(180deg)');
+        return;
+    }
+    if (element.attr('rotate') == '180') {
+        element.attr('rotate', '270');
+        element.css('transform', 'rotate(270deg)');
+        return;
+    }
+    if (element.attr('rotate') == '270') {
+        element.attr('rotate', '0');
+        element.css('transform', 'rotate(0deg)');
+        return;
+    }
+});
+
+$('#rotate_left').click(function () {
+    console.log('rotate_left');
+    var element = $('.' + $('#target_element').val()).eq(0);
+    if (element.attr('rotate') == undefined || element.attr('rotate') == '0') {
+        element.attr('rotate', '270');
+        element.css('transform', 'rotate(270deg)');
+        return;
+    }
+    if (element.attr('rotate') == '270') {
+        element.attr('rotate', '180');
+        element.css('transform', 'rotate(180deg)');
+        return;
+    }
+    if (element.attr('rotate') == '180') {
+        element.attr('rotate', '90');
+        element.css('transform', 'rotate(90deg)');
+        return;
+    }
+    if (element.attr('rotate') == '90') {
+        element.attr('rotate', '0');
+        element.css('transform', 'rotate(0deg)');
+        return;
+    }
+});
+
+
+
+$('#align_right').click(function () {
+    console.log('align_right');
+    $('.slide_view_group').css('left', 'unset');
+    $('.slide_view_group').css('transform', 'none');
+
+    $('.slide_view_group').css('right', '0');
+});
+
+$('#align_left').click(function () {
+    console.log('align_left');
+    $('.slide_view_group').css('right', 'unset');
+    $('.slide_view_group').css('transform', 'none');
+
+    $('.slide_view_group').css('left', '0');
+});
+
+$('#align_center').click(function () {
+    console.log('align_center');
+    $('.slide_view_group').css('left', '50%');
+    $('.slide_view_group').css('transform', 'translateX(-50%)');
+});
+
+$('#align_top').click(function () {
+    console.log('align_top');
+    $('.slide_view_group').css('transform', 'none');
+    $('.slide_view_group').css('bottom', 'unset');
+    $('.slide_view_group').css('top', '0');
+});
+
+$('#align_bottom').click(function () {
+    console.log('align_bottom');
+    $('.slide_view_group').css('transform', 'none');
+    $('.slide_view_group').css('top', 'unset');
+    $('.slide_view_group').css('bottom', '0');
+});
+
+$('#align_middle').click(function () {
+    console.log('align_middle');
+    $('.slide_view_group').css('top', '50%');
+    $('.slide_view_group').css('transform', 'translateY(-50%)');
+});
+
+$('#distribute_vertically').click(function () {
+    console.log('distribute_vertically');
+    var height_sum = 0;
+    ele_count = $('.slide_view_group').length;
+    for (let i = 0; i < ele_count; i++) {
+        height_sum += $('.slide_view_group').eq(i).height();
+    }
+    var gap = (500 - height_sum) / (ele_count + 1);
+    for (let i = 0; i < ele_count; i++) {
+        var height_to_set_sum = 0;
+        for (let j = 0; j < i; j++) {
+            height_to_set_sum += $('.slide_view_group').eq(j).height();
+        }
+        $('.slide_view_group').eq(i).css('top', height_to_set_sum + gap *(i+1) + 'px');
+    }
+});
+
+$('#distribute_horizontally').click(function () {
+    console.log('distribute_horizontally');
+    var width_sum = 0;
+    ele_count = $('.slide_view_group').length;
+    for (let i = 0; i < ele_count; i++) {
+        width_sum += $('.slide_view_group').eq(i).width();
+    }
+    var gap = (666 - width_sum) / (ele_count + 1);
+    for (let i = 0; i < ele_count; i++) {
+        var width_to_set_sum = 0;
+        for (let j = 0; j < i; j++) {
+            width_to_set_sum += $('.slide_view_group').eq(j).width();
+        }
+        $('.slide_view_group').eq(i).css('left', width_to_set_sum + gap *(i+1) + 'px');
+    }
+});
+
 $('.quick_style_sample').click(function () {
-    $('.slide_view_question_element').eq(0).css('border-color', $(this).css('border-color'));
-    $('.slide_view_question_element').eq(0).css('color', $(this).css('color'));
-    $('.slide_view_question_element').eq(0).css('background-image', $(this).css('background-image'));
-    $('.slide_view_question_element').eq(0).css('box-shadow', $(this).css('box-shadow'));
+
+    var element = $('.' + $('#target_element').val()).eq(0); // get selected element
+    // var element = $('.slide_view_question_element').eq(0);
+    element.css('border-color', $(this).css('border-color'));
+    element.css('color', $(this).css('color'));
+    element.css('background-image', $(this).css('background-image'));
+    element.css('box-shadow', $(this).css('box-shadow'));
     if ($(this).css('background').indexOf('repeating-conic-gradient(rgb') == -1) {
-        $('.slide_view_question_element').eq(0).css('background', $(this).css('background'));
+        element.css('background', $(this).css('background'));
     } else {
-        $('.slide_view_question_element').eq(0).css('background', 'rgba' + $(this).css('background').split('repeating-conic-gradient(rgb')[1].split(') 0deg,')[0] + ', 0.7)');
+        element.css('background', 'rgba' + $(this).css('background').split('repeating-conic-gradient(rgb')[1].split(') 0deg,')[0] + ', 0.7)');
     }
 });
 
@@ -675,11 +807,15 @@ $('#shape_outline_color_picker').colorpicker({
 
 // triggered when a color is selected.
 $("#shape_fill_color_picker").on("change.color", function (event, color) {
-    $('.slide_view_question_element').eq(0).css('background', color);
+    var element = $('.' + $('#target_element').val()).eq(0); // get selected element
+
+    element.css('background', color);
 });
 
 $("#shape_outline_color_picker").on("change.color", function (event, color) {
-    $('.slide_view_question_element').eq(0).css('border-color', color);
+    var element = $('.' + $('#target_element').val()).eq(0); // get selected element
+
+    element.css('border-color', color);
 });
 
 

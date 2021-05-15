@@ -1060,7 +1060,7 @@
                             <li style="background-image: url({{ url("/images/ribbon_imgs/align.png") }});"
                                 id="arrange_li_align"><a>Align <strong
                                         style="position: absolute; right: 5px;">></strong></a>
-                                <ul class="arrange_ul_ul" style=" height: 244px;">
+                                <ul class="arrange_ul_ul" style=" height: 196px;">
                                     <li style="background-image: url({{ url("/images/ribbon_imgs/align_left.png") }});"
                                         id="align_left"><a>Align Left</a></li>
                                     <li style="background-image: url({{ url("/images/ribbon_imgs/align_center.png") }});"
@@ -1077,9 +1077,9 @@
                                         id="distribute_horizontally"><a>Distribute Horizontally</a></li>
                                     <li style="background-image: url({{ url("/images/ribbon_imgs/distribute_vertically.png") }});"
                                         id="distribute_vertically"><a>Distribute Vertically</a></li>
-                                    <li style="background-image: url({{ url("/images/ribbon_imgs/checked.png") }});"
+                                    <!-- <li style="background-image: url({{ url("/images/ribbon_imgs/checked.png") }});"
                                         id="align_to_slide"><a>Align to Slide</a></li>
-                                    <li id="align_to_selected_obj"><a>Align Selected Objects</a></li>
+                                    <li id="align_to_selected_obj"><a>Align Selected Objects</a></li> -->
                                 </ul>
                             </li>
                             <li style="background-image: url({{ url("/images/ribbon_imgs/rotate.png") }});"
@@ -1896,7 +1896,6 @@
                 <button id="edit_hyperlink_cancel">Cancel</button>
             </div>
         </div>
-
     </div>
 
     <div class="window-content p-2">
