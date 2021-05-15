@@ -1972,14 +1972,30 @@
     <script src="{{ asset('js/update_quiz.js') }}"></script>
     <script>
         var userSelection = document.getElementsByClassName('quiz_types');
-        for (var i = 0; i < userSelection.length; i++) {
+        var ele_num = userSelection.length;
+        // for (var i = 0; i < ele_num; i++) {
+        //     (function (index) {
+        //         userSelection[index].addEventListener("mousemove", function () {
+        //             if ($('.tooltip_pic').eq(index).css("display") == 'block') return;
+        //             for (let j = 0; j < ele_num; j++) {
+        //                 if (j == index) $('.tooltip_pic').eq(j).fadeIn();
+        //                 else $('.tooltip_pic').eq(j).fadeOut();
+        //             }
+        //         })
+        //     })(i);
+        // }
+
+        for (var i = 0; i < ele_num; i++) {
             (function (index) {
-                userSelection[index].addEventListener("mousemove", function () {
-                    if ($('.tooltip_pic').eq(index).css("display") == 'block') return;
-                    for (let j = 0; j < 22; j++) {
-                        if (j == index) $('.tooltip_pic').eq(j).fadeIn();
-                        else $('.tooltip_pic').eq(j).fadeOut();
-                    }
+                userSelection[index].addEventListener("mouseleave", function () {
+                    $('.tooltip_pic').eq(index).fadeOut();
+                })
+            })(i);
+        }
+        for (var i = 0; i < ele_num; i++) {
+            (function (index) {
+                userSelection[index].addEventListener("mouseenter", function () {
+                    $('.tooltip_pic').eq(index).fadeIn();
                 })
             })(i);
         }
