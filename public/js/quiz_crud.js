@@ -73,6 +73,20 @@ function create_quiz(quiz_type, root_url, token) {
             });
             break;
 
+        case (8):
+            lv.insertAfter(node, {
+                caption: 'Fill in the blank fields in this text:',
+                content: '<i>Fill in the Blanks<i>'
+            });
+            break;
+
+        case (10):
+            lv.insertAfter(node, {
+                caption: 'Drag and drop the words to their ...',
+                content: '<i>Drag the Words<i>'
+            });
+            break;
+
         default:
     }
 

@@ -200,6 +200,19 @@
                 </div>
                 @break
 
+                @case(8)
+                <h4>Text with Blanks</h4>
+                <div contenteditable="true" style="height: 216px;overflow-y: scroll;border: 1px solid black" id="fill_blanks">
+                </div>
+                @break
+
+                @case(10)
+                <h4>Text with Blanks</h4>
+                <div contenteditable="true" style="height: 216px;overflow-y: scroll;border: 1px solid black" id="drag_words">
+{{--                    Drag the <input id="0" value="words" style="max-width: 70px;"> and drop them to the appropriate <input id="1" value="places" style="max-width: 70px;">.--}}
+                </div>
+                @break
+
             @endswitch
 
             <br>

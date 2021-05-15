@@ -94,6 +94,52 @@ function answer_slide2form(answer_element, answer_content) {
             $('#matching_list').html(form_answer);
             break;
 
+        case '8':
+
+            const fill_blank_slide_answer_html = $('.slide_view_answer_element .col-md-12').html();
+            const doc = new DOMParser().parseFromString(fill_blank_slide_answer_html, 'text/html');
+            const arr = [...doc.body.childNodes]
+                .map(child => child.outerHTML || child.textContent);
+            console.log(fill_blank_slide_answer_html, doc, arr);
+
+            let fill_blank_array = answer_content.split('@');
+            let select_item;
+            fill_blank_array.pop();
+
+            let index = 0;
+            for (let i = 0; i < arr.length; i++) {
+                console.log(arr[i].replace(/(<([^>]+)>)/gi, ""));
+                if( arr[i].replace(/(<([^>]+)>)/gi, "") !== '' ) {
+                    form_answer += arr[i];
+                } else {
+                    select_item = fill_blank_array[index].split(';');
+                    select_item.pop();
+                    form_answer += '<select id="' + index + '">'
+                    for (const item of select_item) {
+                        form_answer += '<option value="' + item + '">' + item + '</option>';
+                    }
+                    form_answer += '</select>';
+                    index += 1;
+                }
+            }
+
+            console.log(form_answer);
+            // $('#fill_blanks').html(form_answer);
+            break;
+
+        case '10':
+            let drag_words_array = answer_content.split(';');
+            drag_words_array.pop();
+            const slide_drag_words_question = $('#slide_drag_words_question')[0].outerHTML;
+            const form_answer_input_element = $(slide_drag_words_question);
+            for (let i = 0; i < form_answer_input_element.find('.blank').length; i++) {
+                form_answer_input_element.find('.blank').eq(i).html('<input style="max-width: 70px;" id="' + i + '" value="' + drag_words_array[i] + '">');
+                form_answer_input_element.find('.blank').eq(i).css('padding-right', 0);
+            }
+            form_answer = form_answer_input_element.html();
+            $('#drag_words').html(form_answer);
+            break;
+
         default:
     }
 
@@ -149,13 +195,25 @@ function answer_form2slide() {
 
         case '7':
             answer_element = $('tbody#matching_list tr');
-            for (let i = 0; i <answer_element.length; i++) {
+            for (let i = 0; i < answer_element.length; i++) {
                 slide_answer_element += '<div style="display: flex;justify-content: space-around;padding-bottom: 10px;"><div class="ui-widget-header droppable" style="width: 40%"><p>' + $('tbody#matching_list tr').eq(i).find('label').eq(0).html() + '</p></div><div class="ui-widget-content draggable" style="width: 40%" isdropped=false><p>' + $('tbody#matching_list tr').eq(i).find('label').eq(1).html() + '</p></div></div>';
             }
             break;
+
+        case '10':
+            answer_element = $('#drag_words')[0].outerHTML;
+            const form_answer_input_element = $(answer_element);
+            let word_array = '';
+            for (let i = 0; i < form_answer_input_element.find('.blank').length; i++) {
+                form_answer_input_element.find('.blank').eq(i).html('');
+                form_answer_input_element.find('.blank').eq(i).css('padding-right', '70px');
+            }
+            form_answer = form_answer_input_element.html();
+            $('#slide_drag_words_question').html(form_answer);
+            break;
     }
 
-    $('.slide_view_answer_element').html('<div class="col-md-12">' + slide_answer_element + '</div>');
+    if (typeId !== '10') $('.slide_view_answer_element').html('<div class="col-md-12">' + slide_answer_element + '</div>');
 }
 
 // answer_slide2form($('#answer_element').val(), $('#answer_content').val());
@@ -216,8 +274,8 @@ function answer_store() {
 
         case '7':
             answer_element = $('tbody#matching_list tr');
-            for (let i = 0; i <answer_element.length; i++) {
-                answer +=  $('tbody#matching_list tr').eq(0).find('label').eq(0).html() + ';' + $('tbody#matching_list tr').eq(0).find('label').eq(1).html() + '@';
+            for (let i = 0; i < answer_element.length; i++) {
+                answer += $('tbody#matching_list tr').eq(0).find('label').eq(0).html() + ';' + $('tbody#matching_list tr').eq(0).find('label').eq(1).html() + '@';
             }
             break;
     }
