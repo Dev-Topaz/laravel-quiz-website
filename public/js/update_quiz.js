@@ -205,11 +205,14 @@ function answer_form2slide() {
             const form_answer_input_element = $(answer_element);
             let word_array = '';
             for (let i = 0; i < form_answer_input_element.find('.blank').length; i++) {
+                console.log(form_answer_input_element.find('.blank').eq(i));
+                word_array += '<span style="border: 1px solid gray;background: white;color: black;">' + $('#drag_words .blank input').eq(i).val() + '</span>'
                 form_answer_input_element.find('.blank').eq(i).html('');
                 form_answer_input_element.find('.blank').eq(i).css('padding-right', '70px');
             }
             form_answer = form_answer_input_element.html();
             $('#slide_drag_words_question').html(form_answer);
+            $('#slide_drag_words_answer').html(word_array);
             break;
     }
 
@@ -275,7 +278,14 @@ function answer_store() {
         case '7':
             answer_element = $('tbody#matching_list tr');
             for (let i = 0; i < answer_element.length; i++) {
-                answer += $('tbody#matching_list tr').eq(0).find('label').eq(0).html() + ';' + $('tbody#matching_list tr').eq(0).find('label').eq(1).html() + '@';
+                answer += $('tbody#matching_list tr').eq(i).find('label').eq(0).html() + ';' + $('tbody#matching_list tr').eq(i).find('label').eq(1).html() + '@';
+            }
+            break;
+
+        case '10':
+            answer_element = $('#drag_words .blank input');
+            for (let i = 0; i < answer_element.length; i++) {
+                answer += answer_element.eq(i).val() + ';';
             }
             break;
     }
