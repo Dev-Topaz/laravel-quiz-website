@@ -20,39 +20,39 @@ $('#xxxxx').mousedown(function (e) {
 //=========================================
 
 // Copy btn click function
-$('#slide_view_copy_btn').click(function () {
+$('.copy_btn').click(function () {
     console.log('copy click');
     clipboard_str = get_selected_str();
 });
 
-$('#slide_view_copy_btn').mousedown(function (e) {
+$('.copy_btn').mousedown(function (e) {
     e.preventDefault();
 });
 
 
 // cut function
-$('#slide_view_cut_btn').click(function () {
-    console.log('slide_view_cut_btn');
+$('.cut_btn').click(function () {
+    console.log('cut_btn');
     clipboard_str = get_selected_str();
     console.log('clipboard_str', clipboard_str);
     delete_selected_str();
 });
 
-$('#slide_view_cut_btn').mousedown(function (e) {
+$('.cut_btn').mousedown(function (e) {
     e.preventDefault();
 });
 
 
 // Paste btn click function
-$('#slide_view_paste_btn').click(function () {
-    console.log('slide_view_paste_btn');
+$('.paste_btn').click(function () {
+    console.log('paste_btn');
     paste_str(clipboard_str);
     // window.getSelection().removeAllRanges();
     // sel.focusOffset
     // setCurrentCursorPosition(get_cursor_pos_supposed_to_be(clipboard_str));
 });
 
-$('#slide_view_paste_btn').mousedown(function (e) {
+$('.paste_btn').mousedown(function (e) {
     e.preventDefault();
 });
 
@@ -184,7 +184,7 @@ $('#font_style_clear_btn').click(function () {
 
 var formatting_bold = false;
 
-$('#slide_view_font_bold_btn').click(function () {
+$('.font_bold_btn').click(function () {
     console.log('bold clicked');
     formatting_bold = !formatting_bold;
     // changing_font_size = parseInt($('#font_size_selector').val());
@@ -202,7 +202,7 @@ $('#slide_view_font_strike_btn').click(function () {
 
 var formatting_ital = false;
 
-$('#slide_view_font_ital_btn').click(function () {
+$('.font_ital_btn').click(function () {
     console.log('ital clicked');
 
     formatting_ital = !formatting_ital;
@@ -212,7 +212,7 @@ $('#slide_view_font_ital_btn').click(function () {
 
 var formatting_underline = false;
 
-$('#slide_view_font_underline_btn').click(function () {
+$('.font_underline_btn').click(function () {
     console.log('slide_view_font_underline_btn clicked');
 
     formatting_underline = !formatting_underline;
@@ -222,8 +222,8 @@ $('#slide_view_font_underline_btn').click(function () {
 
 var formatting_subscript = false;
 
-$('#slide_view_font_subscription_btn').click(function () {
-    console.log('slide_view_font_subscription_btn clicked');
+$('.font_subscription_btn').click(function () {
+    console.log('font_subscription_btn clicked');
 
     formatting_subscript = !formatting_subscript;
     // changing_font_size = parseInt($('#font_size_selector').val());
@@ -232,8 +232,8 @@ $('#slide_view_font_subscription_btn').click(function () {
 
 var formatting_superscript = false;
 
-$('#slide_view_font_superscription_btn').click(function () {
-    console.log('slide_view_font_superscription_btn clicked');
+$('.font_superscription_btn').click(function () {
+    console.log('font_superscription_btn clicked');
 
     formatting_superscript = !formatting_superscript;
     // changing_font_size = parseInt($('#font_size_selector').val());
@@ -423,8 +423,8 @@ function changeFont_size(font_size) {
 
 var para_numbering = false;
 
-$('#slide_view_paragraph_style_numbering_btn').click(function () {
-    console.log('slide_view_paragraph_style_numbering_btn');
+$('.numbering_btn').click(function () {
+    console.log('numbering_btn');
     para_numbering = !para_numbering;
     create_numbering(para_numbering);
 });
@@ -452,8 +452,8 @@ function create_numbering(para_numbering) {
 
 var para_bullet = false;
 
-$('#slide_view_paragraph_style_bullet_btn').click(function () {
-    console.log('slide_view_paragraph_style_bullet_btn');
+$('.bullet_btn').click(function () {
+    console.log('bullet_btn');
     para_bullet = !para_bullet;
     create_bullet(para_bullet);
 });
@@ -580,21 +580,25 @@ function add_line_spacing_before(paragraph_line_spacing_add_before) {
     }
 }
 
-$('#slide_view_paragraph_style_decrease_indent_btn').click(function () {
-    console.log('slide_view_paragraph_style_decrease_indent_btn');
+// $('#slide_view_paragraph_style_decrease_indent_btn').click(function () {
+//     console.log('slide_view_paragraph_style_decrease_indent_btn');
+//     decrease_indent();
+// });
+$('.decrease_indent').click(function () {
+    console.log('.decrease_indent');
     decrease_indent();
 });
 
-$('#slide_view_paragraph_style_decrease_indent_btn').mousedown(function (e) {
+$('.decrease_indent').mousedown(function (e) {
     e.preventDefault();
 });
 
-$('#slide_view_paragraph_style_increase_indent_btn').click(function () {
-    console.log('slide_view_paragraph_style_increase_indent_btn');
+$('.increase_indent').click(function () {
+    console.log('increase_indent');
     increase_indent();
 });
 
-$('#slide_view_paragraph_style_increase_indent_btn').mousedown(function (e) {
+$('.increase_indent').mousedown(function (e) {
     e.preventDefault();
 });
 
@@ -744,7 +748,8 @@ $('#distribute_vertically').click(function () {
     for (let i = 0; i < ele_count; i++) {
         height_sum += $('.slide_view_group').eq(i).height();
     }
-    var gap = (500 - height_sum) / (ele_count + 1);
+
+    var gap = ($('#slide_view_container').height() - height_sum) / (ele_count + 1);
     for (let i = 0; i < ele_count; i++) {
         var height_to_set_sum = 0;
         for (let j = 0; j < i; j++) {
@@ -761,7 +766,7 @@ $('#distribute_horizontally').click(function () {
     for (let i = 0; i < ele_count; i++) {
         width_sum += $('.slide_view_group').eq(i).width();
     }
-    var gap = (666 - width_sum) / (ele_count + 1);
+    var gap = ($('#slide_view_container').width() - width_sum) / (ele_count + 1);
     for (let i = 0; i < ele_count; i++) {
         var width_to_set_sum = 0;
         for (let j = 0; j < i; j++) {
@@ -939,15 +944,15 @@ window.onclick = function (event) {
     }
 }
 
-$('#slide_view_hyperlink_btn').click(function () {
-    console.log('slide_view_hyperlink_btn');
+$('.hyperlink_btn').click(function () {
+    console.log('hyperlink_btn');
     $('#hyper_text').val(get_selected_txt());
     get_ready_for_hyperlink();
     edit_hyperlink_modal.style.display = "block";
     remove_link = false;
 });
 
-$('#slide_view_hyperlink_btn').mousedown(function (e) {
+$('.hyperlink_btn').mousedown(function (e) {
     e.preventDefault();
 });
 
