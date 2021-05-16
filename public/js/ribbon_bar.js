@@ -646,6 +646,19 @@ function increase_indent() {
 //
 //=========================================================================
 
+$('.shape_effect_shadow_sample').click(function () {
+    console.log('shape_effect_shadow_sample');
+
+    var element = $('.' + $('#target_element').val()).eq(0); // get selected element
+    element.css('box-shadow', $(this).attr('data-style'));
+});
+$('.shape_effect_glow_sample').click(function () {
+    console.log('shape_effect_glow_sample');
+
+    var element = $('.' + $('#target_element').val()).eq(0); // get selected element
+    element.css('box-shadow', $(this).attr('data-style'));
+});
+
 $('#arrange_bring_forward').click(function () {
     console.log('arrange_bring_forward');
     var element = $('.' + $('#target_element').val()).eq(0); // get selected element
@@ -662,7 +675,7 @@ $('#arrange_bring_front').click(function () {
     console.log('arrange_bring_front');
     var element = $('.' + $('#target_element').val()).eq(0); // get selected element
     var ele_cnt = $('.slide_view_group').length;
-    var max_index = 0;
+    var max_index;
     for (let j = 0; j < ele_cnt; j++) {
         if (parseInt($('.slide_view_group').eq(j).css('z-index')) > max_index)
             max_index = parseInt($('.slide_view_group').eq(j).css('z-index'));
@@ -674,15 +687,13 @@ $('#arrange_send_back').click(function () {
     console.log('arrange_send_back');
     var element = $('.' + $('#target_element').val()).eq(0); // get selected element
     var ele_cnt = $('.slide_view_group').length;
-    var min_index = 0;
+    var min_index;
     for (let j = 0; j < ele_cnt; j++) {
         if (parseInt($('.slide_view_group').eq(j).css('z-index')) < min_index)
             min_index = parseInt($('.slide_view_group').eq(j).css('z-index'));
     }
     element.css('z-index', min_index - 1);
 });
-
-
 
 $('#rotate_right').click(function () {
     console.log('rotate_right');
@@ -824,7 +835,7 @@ $('.quick_style_sample').click(function () {
     element.css('border-color', $(this).css('border-color'));
     element.css('color', $(this).css('color'));
     element.css('background-image', $(this).css('background-image'));
-    element.css('box-shadow', $(this).css('box-shadow'));
+    // element.css('box-shadow', $(this).css('box-shadow'));
     if ($(this).css('background').indexOf('repeating-conic-gradient(rgb') == -1) {
         element.css('background', $(this).css('background'));
     } else {
