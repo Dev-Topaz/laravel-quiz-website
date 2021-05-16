@@ -104,7 +104,7 @@ function answer_slide2form(answer_element, answer_content) {
             let fill_blanks_item_array;
             for (let i = 0; i < fill_blanks_array.length; i++) {
 
-                let element = '<div class="fill_blanks_dropdown_content"></div><div class="fill_blanks_dropdown_arrow" onclick="{$(this).next().toggle();}"><i class="fas fa-chevron-down"></i></div><div class="fill_blanks_dropdown_menu" contenteditable="false"><ul>';
+                let element = '<div class="fill_blanks_dropdown_content"></div><div class="fill_blanks_dropdown_arrow" onclick="{$(\'.fill_blanks_dropdown_menu\').hide();$(this).next().toggle();}"><i class="fas fa-chevron-down"></i></div><div class="fill_blanks_dropdown_menu" contenteditable="false"><ul>';
 
                 fill_blanks_item_array = fill_blanks_array[i].split(';');
                 fill_blanks_item_array.pop();

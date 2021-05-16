@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9d9fd7c1-0dd1-410f-8492-d59f6bb67158" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/QuizController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/QuizController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/fill_blanks.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/fill_blanks.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/update_quiz.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/update_quiz.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/quizes/update.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/quizes/update.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,7 +242,7 @@
       <workItem from="1620987925644" duration="34936000" />
       <workItem from="1621057777523" duration="1723000" />
       <workItem from="1621060404336" duration="3973000" />
-      <workItem from="1621167476861" duration="15612000" />
+      <workItem from="1621167476861" duration="17659000" />
     </task>
     <servers />
   </component>
