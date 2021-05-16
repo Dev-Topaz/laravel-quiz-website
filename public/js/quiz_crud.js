@@ -80,6 +80,13 @@ function create_quiz(quiz_type, root_url, token) {
             });
             break;
 
+        case (9):
+            lv.insertAfter(node, {
+                caption: 'Choose the correct answer in ...',
+                content: '<i>Select from Lists<i>'
+            });
+            break;
+
         case (10):
             lv.insertAfter(node, {
                 caption: 'Drag and drop the words to their ...',
