@@ -29,7 +29,51 @@
                    value="{{ $quiz->answer }}" autocomplete="answer_content" autofocus hidden>
 
             <div>
-                <h4>Multiple Choice Question</h4>
+                @switch($quiz->type_id)
+                    @case(1)
+                    <h4>Multiple Choice Question</h4>
+                    @break
+
+                    @case(2)
+                    <h4>Multiple Response Question</h4>
+                    @break
+
+                    @case(3)
+                    <h4>True/False Question</h4>
+                    @break
+
+                    @case(4)
+                    <h4>Short Answer Question</h4>
+                    @break
+
+                    @case(5)
+                    <h4>Numeric Question</h4>
+                    @break
+
+                    @case(6)
+                    <h4>Sequence Question</h4>
+                    @break
+
+                    @case(7)
+                    <h4>Matching Question</h4>
+                    @break
+
+                    @case(8)
+                    <h4>Fill in the Blanks Question</h4>
+                    @break
+
+                    @case(9)
+                    <h4>Select from Lists Question</h4>
+                    @break
+
+                    @case(10)
+                    <h4>Drag the Words</h4>
+                    @break
+
+                    @case(11)
+                    <h4>Hotspots Question</h4>
+                    @break
+                @endswitch
                 <div contenteditable="true" id="question"
                      style="overflow-y: scroll;width: 100%;border: 1px solid black;height: 70px;color: black"></div>
             </div>
@@ -222,6 +266,12 @@
                 <h4>Text with Blanks</h4>
                 <div contenteditable="true" style="height: 216px;overflow-y: scroll;border: 1px solid black"
                      id="drag_words">
+                </div>
+                @break
+
+                @case(11)
+                <h4>Hotspots</h4>
+                <div style="height: 216px;overflow-y: scroll;" id="hotspots">
                 </div>
                 @break
 
