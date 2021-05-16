@@ -446,7 +446,7 @@ main {
     margin: 10px auto;
 }
 
-.choice_item label, .response_item label, .sequence_item label {
+.form_view_element .choice_item label, .form_view_element .response_item label, .form_view_element .sequence_item label {
     padding: 0 0 0 5px;
     width: 440px;
 }
@@ -621,4 +621,84 @@ main.quiz {
 
 div[contenteditable="true"] {
     outline: none;
+}
+
+.slide_view_element label[data-editable] {
+    display: contents;
+}
+
+#slide_view_container input {
+    color: black;
+}
+
+/**********************************************
+*                                             *
+*            Fill in the Blanks               *
+*                                             *
+***********************************************/
+
+#fill_blanks {
+    height: 216px;
+    overflow-y: scroll;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+
+#fill_blanks .fill_blanks_dropdown {
+    display: inline;
+}
+
+
+#fill_blanks .fill_blanks_dropdown_body {
+    border: 1px solid gray;
+    display: inline;
+}
+
+#fill_blanks .fill_blanks_dropdown_body:hover {
+    border: 1px solid #ee8845;
+}
+
+#fill_blanks .fill_blanks_dropdown_content {
+    display: inline;
+    padding: 0 5px;
+    margin-left: 50px;
+}
+
+#fill_blanks .fill_blanks_dropdown_arrow {
+    border-left: 1px solid transparent;
+    display: inline;
+    cursor: pointer;
+}
+
+#fill_blanks .fill_blanks_dropdown_arrow:hover {
+    border-left: 1px solid #ee8845;
+    background: #fbe5da;
+}
+
+#fill_blanks .fill_blanks_dropdown_arrow i, #fill_blanks .fill_blanks_dropdown_menu i {
+    font-size: 14px;
+}
+
+#fill_blanks .fill_blanks_dropdown_menu {
+    position: absolute;
+    border: 1px solid gray;
+    display: none;
+    left: 0;
+}
+
+#fill_blanks .fill_blanks_dropdown_menu ul {
+    padding: 2px 5px;
+    min-width: 200px;
+    max-height: 130px;
+    overflow-y: scroll;
+}
+
+#fill_blanks .fill_blanks_dropdown_menu ul li {
+    display: flex;
+    justify-content: space-between;
+}
+
+#fill_blanks .fill_blanks_dropdown_menu ul li label {
+    margin-bottom: 0;
 }

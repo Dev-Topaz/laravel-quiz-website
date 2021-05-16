@@ -260,7 +260,7 @@ class QuizController extends Controller
                     'feedback_try_again' => null,
                     'media' => null,
                     'order' => null,
-                    'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%"><div class="col-md-12">Fill in the <input id="0" style="max-width: 100px;"></div></div>',
+                    'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%"><div class="col-md-12">Fill in the <div class="fill_blanks_dropdown" contenteditable="true" style="display: inline;"><div class="fill_blanks_dropdown_body" contenteditable="false"  style="display: inline;"><input id="0" type="text" style="max-width: 100px;"></div></div></div></div>',
                     'question_type' => 'graded',
                     'feedback_type' => 'by_result',
                     'branching' => null,
