@@ -209,6 +209,15 @@
                 </div>
                 @break
 
+                @case(9)
+                <div style="display: flex;justify-content: space-between;">
+                    <h4>Text with Blanks</h4>
+                    <a href="javascript:void(0)" onclick="add_select_lists_dropdown();">Insert Blank</a>
+                </div>
+                <div contenteditable="true" id="select_lists">
+                </div>
+                @break
+
                 @case(10)
                 <h4>Text with Blanks</h4>
                 <div contenteditable="true" style="height: 216px;overflow-y: scroll;border: 1px solid black"
@@ -419,3 +428,4 @@
 <script src="{{ asset('js/sequence.js') }}" defer></script>
 <script src="{{ asset('js/matching.js') }}" defer></script>
 <script src="{{ asset('js/fill_blanks.js') }}" defer></script>
+<script src="{{ asset('js/select_lists.js') }}" defer></script>

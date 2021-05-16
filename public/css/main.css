@@ -627,17 +627,18 @@ div[contenteditable="true"] {
     display: contents;
 }
 
-#slide_view_container input {
+#slide_view_container input, #slide_view_container select {
     color: black;
 }
 
 /**********************************************
 *                                             *
 *            Fill in the Blanks               *
+*           & Select from Lists               *
 *                                             *
 ***********************************************/
 
-#fill_blanks {
+#fill_blanks, #select_lists {
     height: 216px;
     overflow-y: scroll;
     border: 1px solid black;
@@ -645,60 +646,64 @@ div[contenteditable="true"] {
 }
 
 
-#fill_blanks .fill_blanks_dropdown {
+#fill_blanks .fill_blanks_dropdown, #select_lists .select_lists_dropdown {
     display: inline;
 }
 
 
-#fill_blanks .fill_blanks_dropdown_body {
+#fill_blanks .fill_blanks_dropdown_body, #select_lists .select_lists_dropdown_body {
     border: 1px solid gray;
     display: inline;
 }
 
-#fill_blanks .fill_blanks_dropdown_body:hover {
+#fill_blanks .fill_blanks_dropdown_body:hover, #select_lists .select_lists_dropdown_body:hover {
     border: 1px solid #ee8845;
 }
 
-#fill_blanks .fill_blanks_dropdown_content {
+#fill_blanks .fill_blanks_dropdown_content, #select_lists .select_lists_dropdown_content {
     display: inline;
     padding: 0 5px;
     margin-left: 50px;
 }
 
-#fill_blanks .fill_blanks_dropdown_arrow {
+#fill_blanks .fill_blanks_dropdown_arrow, #select_lists .select_lists_dropdown_arrow {
     border-left: 1px solid transparent;
     display: inline;
     cursor: pointer;
 }
 
-#fill_blanks .fill_blanks_dropdown_arrow:hover {
+#fill_blanks .fill_blanks_dropdown_arrow:hover, #select_lists .select_lists_dropdown_arrow:hover {
     border-left: 1px solid #ee8845;
     background: #fbe5da;
 }
 
-#fill_blanks .fill_blanks_dropdown_arrow i, #fill_blanks .fill_blanks_dropdown_menu i {
+#fill_blanks .fill_blanks_dropdown_arrow i, #fill_blanks .fill_blanks_dropdown_menu i, #select_lists .select_lists_dropdown_arrow i, #select_lists .select_lists_dropdown_menu i {
     font-size: 14px;
 }
 
-#fill_blanks .fill_blanks_dropdown_menu {
+#fill_blanks .fill_blanks_dropdown_menu, #select_lists .select_lists_dropdown_menu {
     position: absolute;
     border: 1px solid gray;
     display: none;
     left: 0;
 }
 
-#fill_blanks .fill_blanks_dropdown_menu ul {
+#fill_blanks .fill_blanks_dropdown_menu ul, #select_lists .select_lists_dropdown_menu ul {
     padding: 2px 5px;
-    min-width: 200px;
+    min-width: 220px;
     max-height: 130px;
     overflow-y: scroll;
 }
 
-#fill_blanks .fill_blanks_dropdown_menu ul li {
+#fill_blanks .fill_blanks_dropdown_menu ul li, #select_lists .select_lists_dropdown_menu ul li {
     display: flex;
     justify-content: space-between;
 }
 
-#fill_blanks .fill_blanks_dropdown_menu ul li label {
+#select_lists .select_lists_dropdown_menu ul li div {
+    display: flex;
+}
+
+#fill_blanks .fill_blanks_dropdown_menu ul li label, #select_lists .select_lists_dropdown_menu ul li label {
     margin-bottom: 0;
 }
