@@ -96,35 +96,29 @@ function answer_slide2form(answer_element, answer_content) {
 
         case '8':
 
-            const fill_blank_slide_answer_html = $('.slide_view_answer_element .col-md-12').html();
-            const doc = new DOMParser().parseFromString(fill_blank_slide_answer_html, 'text/html');
-            const arr = [...doc.body.childNodes]
-                .map(child => child.outerHTML || child.textContent);
-            console.log(fill_blank_slide_answer_html, doc, arr);
+            let fill_blanks_array = answer_content.split('@');
+            fill_blanks_array.pop();
+            const fill_blank_slide_answer_html = $('.slide_view_answer_element').html();
+            let form_answer_element = $(fill_blank_slide_answer_html).eq(0);
 
-            let fill_blank_array = answer_content.split('@');
-            let select_item;
-            fill_blank_array.pop();
+            let fill_blanks_item_array;
+            for (let i = 0; i < fill_blanks_array.length; i++) {
 
-            let index = 0;
-            for (let i = 0; i < arr.length; i++) {
-                console.log(arr[i].replace(/(<([^>]+)>)/gi, ""));
-                if( arr[i].replace(/(<([^>]+)>)/gi, "") !== '' ) {
-                    form_answer += arr[i];
-                } else {
-                    select_item = fill_blank_array[index].split(';');
-                    select_item.pop();
-                    form_answer += '<select id="' + index + '">'
-                    for (const item of select_item) {
-                        form_answer += '<option value="' + item + '">' + item + '</option>';
-                    }
-                    form_answer += '</select>';
-                    index += 1;
+                let element = '<div class="fill_blanks_dropdown_content"></div><div class="fill_blanks_dropdown_arrow" onclick="{$(this).next().toggle();}"><i class="fas fa-chevron-down"></i></div><div class="fill_blanks_dropdown_menu" contenteditable="false"><ul>';
+
+                fill_blanks_item_array = fill_blanks_array[i].split(';');
+                fill_blanks_item_array.pop();
+
+                for (let j = 0; j < fill_blanks_item_array.length; j++) {
+                    element += '<li><label data-editable>' + fill_blanks_item_array[j] + '</label><a onclick="{$(this).parent().remove();}"><i class="fas fa-trash-alt"></i></a></li>'
                 }
-            }
 
-            console.log(form_answer);
-            // $('#fill_blanks').html(form_answer);
+                element += '<li><i onclick="add_word($(this));">Add a new word</i></li></ul></div>';
+
+                form_answer_element.find('.fill_blanks_dropdown_body').eq(i).html(element);
+            }
+            form_answer = form_answer_element.html() + '&nbsp';
+            $('#fill_blanks').html(form_answer);
             break;
 
         case '10':
@@ -198,6 +192,20 @@ function answer_form2slide() {
             for (let i = 0; i < answer_element.length; i++) {
                 slide_answer_element += '<div style="display: flex;justify-content: space-around;padding-bottom: 10px;"><div class="ui-widget-header droppable" style="width: 40%"><p>' + $('tbody#matching_list tr').eq(i).find('label').eq(0).html() + '</p></div><div class="ui-widget-content draggable" style="width: 40%" isdropped=false><p>' + $('tbody#matching_list tr').eq(i).find('label').eq(1).html() + '</p></div></div>';
             }
+            break;
+
+        case '8':
+            answer_element = $('#fill_blanks')[0].outerHTML;
+
+            let fill_blanks_slide_element = $(answer_element);
+
+            const fill_blanks_dropdown_elements = fill_blanks_slide_element.find('.fill_blanks_dropdown_body');
+
+            for (let i = 0; i < fill_blanks_dropdown_elements.length; i++) {
+                fill_blanks_dropdown_elements.eq(i).html('<input type="text" id="' + i + '" style="max-width: 100px;">');
+            }
+
+            slide_answer_element = fill_blanks_slide_element.html();
             break;
 
         case '10':
@@ -280,6 +288,26 @@ function answer_store() {
             for (let i = 0; i < answer_element.length; i++) {
                 answer += $('tbody#matching_list tr').eq(i).find('label').eq(0).html() + ';' + $('tbody#matching_list tr').eq(i).find('label').eq(1).html() + '@';
             }
+            break;
+
+        case '8':
+            answer_element = $('#fill_blanks')[0].outerHTML;
+
+            let fill_blanks_slide_element = $(answer_element);
+
+            const fill_blanks_dropdown_elements = fill_blanks_slide_element.find('.fill_blanks_dropdown');
+
+            let dropdown_label_element;
+            for (let i = 0; i < fill_blanks_dropdown_elements.length; i++) {
+                dropdown_label_element = fill_blanks_dropdown_elements.eq(i).find('label');
+                for (let j = 0; j < dropdown_label_element.length; j++) {
+                    answer += dropdown_label_element.eq(j).html() + ';';
+                }
+                answer += '@';
+            }
+
+            console.log(answer);
+
             break;
 
         case '10':

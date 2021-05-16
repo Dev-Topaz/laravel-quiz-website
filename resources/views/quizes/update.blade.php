@@ -201,15 +201,18 @@
                 @break
 
                 @case(8)
-                <h4>Text with Blanks</h4>
-                <div contenteditable="true" style="height: 216px;overflow-y: scroll;border: 1px solid black" id="fill_blanks">
+                <div style="display: flex;justify-content: space-between;">
+                    <h4>Text with Blanks</h4>
+                    <a href="javascript:void(0)" onclick="add_fill_word_dropdown();">Insert Blank</a>
+                </div>
+                <div contenteditable="true" id="fill_blanks">
                 </div>
                 @break
 
                 @case(10)
                 <h4>Text with Blanks</h4>
-                <div contenteditable="true" style="height: 216px;overflow-y: scroll;border: 1px solid black" id="drag_words">
-{{--                    Drag the <input id="0" value="words" style="max-width: 70px;"> and drop them to the appropriate <input id="1" value="places" style="max-width: 70px;">.--}}
+                <div contenteditable="true" style="height: 216px;overflow-y: scroll;border: 1px solid black"
+                     id="drag_words">
                 </div>
                 @break
 
@@ -407,6 +410,7 @@
 
     answer_slide2form($('#answer_element').val(), $('#answer_content').val());
     $('#question').html(question_slide2form($('#question_element').val()));
+
 </script>
 
 <script src="{{ asset('js/multiple_choice.js') }}" defer></script>
@@ -414,3 +418,4 @@
 <script src="{{ asset('js/numeric.js') }}" defer></script>
 <script src="{{ asset('js/sequence.js') }}" defer></script>
 <script src="{{ asset('js/matching.js') }}" defer></script>
+<script src="{{ asset('js/fill_blanks.js') }}" defer></script>
