@@ -285,7 +285,7 @@
                                     <div style="display: flex;">
                                         <a style="padding: 10px;margin: 0 5px;border: 1px dotted gray;" onclick="drawrec()">Rectangle</a>
                                         <a style="padding: 10px;margin: 0 5px;border: 1px dotted gray;" onclick="drawcle()">Circle</a>
-                                        <a style="padding: 10px;margin: 0 5px;border: 1px dotted gray;">Freedom</a>
+                                        <a style="padding: 10px;margin: 0 5px;border: 1px dotted gray;" onclick="drawpoly()">Freedom</a>
                                     </div>
                                 </div>
                             </div>
@@ -296,7 +296,7 @@
                                 <canvas id="hotspots_canvas" height="214" style=""></canvas>
                             </div>
                         </div>
-                        <div style="float: right;"><a href="javascript:void(0)">Change Picture</a></div>
+                        <div style="float: right;"><a href="javascript:void(0)">Change Picture</a><a href="javascript:void(0)" onclick="deleteCanvas()">Delete Shape</a></div>
                     </div>
                     <div id="hotspots_one_column">
                         <h4>Hotspots</h4>
