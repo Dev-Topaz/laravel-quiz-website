@@ -1906,7 +1906,7 @@
         </div>
     </div>
 
-    <link rel="stylesheet" href="{{ asset('js/recording/bootstrap.min.css') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('js/recording/bootstrap.min.css') }}">
     <div id="recording_panel_holder">
         <div id="recording_panel">
             <div class="container" style="background-color: white; padding-top: 30px;">
@@ -2054,7 +2054,7 @@
             <script src="{{ asset('js/recording/WebAudioRecorder.min.js.download') }}"></script>
             <script src="{{ asset('js/recording/RecorderDemo.js.download') }}"></script>
         </div>
-    </div>
+    </div> -->
 
     <div class="window-content p-2">
 
