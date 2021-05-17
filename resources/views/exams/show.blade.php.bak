@@ -1923,7 +1923,7 @@
                     </div>
                 </div>
 
-                <div class="create_form" id="quiz_form">
+                <form method="POST" action="#" class="create_form" id="quiz_form">
                     <div class="content_body">
                         <div class="row">
                             <div class="cell-3">
@@ -1963,7 +1963,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div><!-- /.post -->
         </div><!-- /#content -->
     </div>
