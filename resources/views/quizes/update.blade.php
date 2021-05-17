@@ -279,21 +279,21 @@
                          style="display:none;flex-direction: row;max-width: 100%;margin: 0">
                         <div class="cell-6">
                             <h4>Hotspot</h4>
-                            <div style="border: 1px solid gray;height: 168px;display: flex;align-content: center;justify-content: center;align-items: center;">
+                            <div style="border: 1px solid gray;height: 216px;display: flex;align-content: center;justify-content: center;align-items: center;">
                                 <div>
                                     <div style="display: flex;justify-content: center;">Choose hotspot shape</div>
                                     <div style="display: flex;">
-                                        <div style="padding: 10px;margin: 0 5px;border: 1px dotted gray;">Rectangle</div>
-                                        <div style="padding: 10px;margin: 0 5px;border: 1px dotted gray;">Circle</div>
-                                        <div style="padding: 10px;margin: 0 5px;border: 1px dotted gray;">Freedom</div>
+                                        <a style="padding: 10px;margin: 0 5px;border: 1px dotted gray;" onclick="drawrec()">Rectangle</a>
+                                        <a style="padding: 10px;margin: 0 5px;border: 1px dotted gray;" onclick="drawcle()">Circle</a>
+                                        <a style="padding: 10px;margin: 0 5px;border: 1px dotted gray;">Freedom</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="cell-6">
                             <h4>Picture</h4>
-                            <div style="border: 1px solid gray;">
-                                <img src="#" alt="hotspots_image" id="hotspots_image">
+                            <div style="border: 1px solid gray;" id="hotspots_image_canvas">
+                                <canvas id="hotspots_canvas" height="214" style=""></canvas>
                             </div>
                         </div>
                         <div style="float: right;"><a href="javascript:void(0)">Change Picture</a></div>
