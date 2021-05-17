@@ -6,6 +6,12 @@ var canvas = new fabric.Canvas('hotspots_canvas', {
     selection: false
 });
 
+// canvas.on({
+//     'object:moving': onChange,
+//     'object:scaling': onChange,
+//     'object:rotating': onChange,
+// });
+
 canvas.backgroundColor = '#34AD39';
 canvas.renderAll();
 
@@ -65,9 +71,10 @@ var line, isDown;
 
 function drawcle() {
 
-    var circle, isDown, origX, origY;
+    var circle, isDown, origX, origY, isDraw = false;
     removeEvents();
     canvas.on('mouse:down', function (o) {
+        if (isDraw) return;
         isDown = true;
         var pointer = canvas.getPointer(o.e);
         origX = pointer.x;
@@ -76,18 +83,18 @@ function drawcle() {
             left: pointer.x,
             top: pointer.y,
             radius: 1,
-            strokeWidth: 2,
-            stroke: 'red',
-            fill: 'White',
+            strokeWidth: 3,
+            stroke: '#288f02',
+            fill: '#c1fc85',
             selectable: false,
-            originX: 'center',
-            originY: 'center'
+            originX: 'top',
+            originY: 'left'
         });
         canvas.add(circle);
     });
 
     canvas.on('mouse:move', function (o) {
-        if (!isDown) return;
+        if (!isDown || isDraw) return;
         var pointer = canvas.getPointer(o.e);
         circle.set({
             radius: Math.abs(origX - pointer.x)
@@ -97,14 +104,16 @@ function drawcle() {
 
     canvas.on('mouse:up', function (o) {
         isDown = false;
+        isDraw = true;
     });
 
 }
 
 function drawrec() {
-    var rect, isDown, origX, origY;
+    var rect, isDown, origX, origY, isDraw = false;
     removeEvents();
     canvas.on('mouse:down', function (o) {
+        if (isDraw) return;
         isDown = true;
         var pointer = canvas.getPointer(o.e);
         origX = pointer.x;
@@ -118,14 +127,16 @@ function drawrec() {
             width: pointer.x - origX,
             height: pointer.y - origY,
             angle: 0,
-            fill: 'rgba(255,0,0,0.5)',
+            strokeWidth: 3,
+            stroke: '#288f02',
+            fill: '#c1fc85',
             transparentCorners: false
         });
         canvas.add(rect);
     });
 
     canvas.on('mouse:move', function (o) {
-        if (!isDown) return;
+        if (!isDown || isDraw) return;
         var pointer = canvas.getPointer(o.e);
 
         if (origX > pointer.x) {
@@ -152,6 +163,7 @@ function drawrec() {
 
     canvas.on('mouse:up', function (o) {
         isDown = false;
+        isDraw = true;
     });
 }
 
@@ -160,3 +172,11 @@ function removeEvents() {
     canvas.off('mouse:up');
     canvas.off('mouse:move');
 }
+
+// function onChange(options) {
+//     options.target.setCoords();
+//     canvas.forEachObject(function (obj) {
+//         if (obj === options.target) return;
+//         obj.set('opacity', options.target.intersectsWithObject(obj) ? 0.5 : 1);
+//     });
+// }
