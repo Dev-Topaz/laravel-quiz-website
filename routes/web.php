@@ -34,11 +34,10 @@ Route::group(['middleware' => 'role:manager'], function() {
 
     Route::get('/quizes/{quiz_type}/exam/{exam}', [QuizController::class, 'create']);
     Route::get('/quizes/{quiz}', [QuizController::class, 'show']);
+    Route::post('/hotspots_image_upload', [QuizController::class, 'hotspots_image_upload']);
     Route::post('/quizes', [QuizController::class, 'store']);
     Route::post('/update_theme_style', [QuizController::class, 'update_theme_style']);
     Route::get('/quizes/{quiz}/edit', [QuizController::class, 'edit']);
-//    Route::get('/quizes_form_view/{quiz}/edit', [QuizController::class, 'edit_form_view']);
-//    Route::get('/quizes_slide_view/{quiz}/edit', [QuizController::class, 'edit_slide_view']);
     Route::put('/quizes/{quiz}', [QuizController::class, 'update']);
     Route::delete('/quizes/{quiz}', [QuizController::class, 'destroy']);
 });

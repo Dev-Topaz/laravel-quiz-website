@@ -569,8 +569,12 @@ main {
     display: block;
 }
 
-#main.quiz, #main.quiz #content, main.quiz {
+#main.quiz, main.quiz {
     width: 1366px;
+}
+
+#main.quiz #content {
+    width: 1346px;
 }
 
 main.quiz {
@@ -706,4 +710,47 @@ div[contenteditable="true"] {
 
 #fill_blanks .fill_blanks_dropdown_menu ul li label, #select_lists .select_lists_dropdown_menu ul li label {
     margin-bottom: 0;
+}
+
+/**********************************************
+*                                             *
+*                   Hotspots                  *
+*                                             *
+***********************************************/
+
+#hotspots {
+    height: 216px;
+    border: 1px dotted gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+#hotspots > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#hotspots > div > h5 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#hotspots > div .from_files {
+    width: 70px;
+    height: 70px;
+    background: white;
+    border: 1px solid gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    font-size: 12px;
+}
+
+#hotspots > div .from_files:hover {
+    border: 1px solid #ee8845;
+    background: #fbe5da;
 }

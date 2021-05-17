@@ -5,6 +5,10 @@
                    class="form-control @error('exam_id') is-invalid @enderror" name="exam_id"
                    value="{{ $quiz->exam_group->exam_id }}" required autocomplete="exam_id" autofocus
                    hidden>
+            <input id="quiz_id" type="text"
+                   class="form-control @error('quiz_id') is-invalid @enderror" name="quiz_id"
+                   value="{{ $quiz->id }}" required autocomplete="quiz_id" autofocus
+                   hidden>
             <input id="exam_group_id" type="text"
                    class="form-control @error('exam_group_id') is-invalid @enderror" name="exam_group_id"
                    value="{{ $quiz->exam_group_id }}" required autocomplete="exam_group_id" autofocus
@@ -270,12 +274,51 @@
                 @break
 
                 @case(11)
-                <h4>Hotspots</h4>
-                <div style="height: 216px;border: 1px dotted gray;display: flex;align-items: center;justify-content: center;align-content: center;" id="hotspots">
-                    <div>
-                        Add Picture
+                <div class="hotspots_content">
+                    <div class="row" id="hotspots_two_columns"
+                         style="display:none;flex-direction: row;max-width: 100%;margin: 0">
+                        <div class="cell-6">
+                            <h4>Hotspot</h4>
+                            <div style="border: 1px solid gray;height: 168px;">
+                                <div>
+                                    <div>Choose hotspot shape</div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cell-6">
+                            <h4>Picture</h4>
+                            <div style="border: 1px solid gray;">
+                                <img src="#" alt="hotspots_image" id="hotspots_image">
+                            </div>
+                        </div>
+                        <div style="float: right;"><a href="javascript:void(0)">Change Picture</a></div>
                     </div>
+                    <div id="hotspots_one_column">
+                        <h4>Hotspots</h4>
+                        <div id="hotspots">
+                            <div id="hotspots_only_from_files">
+                                <h5>Add Picture</h5>
+                                <div class="from_files">From File...</div>
+                                <form action="{{ url('/hotspots_image_upload') }}" method="post" id="upload-image-form"
+                                      enctype="multipart/form-data" style="display: none;">
+                                    @csrf
+                                    <div class="form-group">
+                                        <input type="file" name="hotspots_only_from_files_image"
+                                               placeholder="Choose image"
+                                               id="hotspots_only_from_files_image" hidden>
+                                        <span class="text-danger" id="image-input-error"></span>
+                                    </div>
 
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-success"
+                                                id="hotspots_only_from_files_upload_button">Upload
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 @break
 
@@ -483,3 +526,4 @@
 <script src="{{ asset('js/matching.js') }}" defer></script>
 <script src="{{ asset('js/fill_blanks.js') }}" defer></script>
 <script src="{{ asset('js/select_lists.js') }}" defer></script>
+<script src="{{ asset('js/hotspots.js') }}" defer></script>

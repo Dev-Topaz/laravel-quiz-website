@@ -23,3 +23,5 @@ $('body').on('click', '[data-editable]', function(){
   $input.one('blur', save).focus();
 
 });
+
+
