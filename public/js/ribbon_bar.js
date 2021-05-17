@@ -155,7 +155,6 @@ $('#slide_view_font_family_selector').change(function () {
     // changeFont($(this).val());
     document.execCommand('styleWithCSS', false, true);
     document.execCommand('fontName', false, $(this).val());
-
 });
 
 $('#font_size_selector').change(function () {
@@ -171,9 +170,6 @@ $('#font_size_selector').change(function () {
 
 //     document.execCommand('insertHTML', false, spanString);
 // };
-
-
-
 });
 
 var changing_font_size = parseInt($('#font_size_selector').val());
