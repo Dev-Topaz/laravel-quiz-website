@@ -279,10 +279,14 @@
                          style="display:none;flex-direction: row;max-width: 100%;margin: 0">
                         <div class="cell-6">
                             <h4>Hotspot</h4>
-                            <div style="border: 1px solid gray;height: 168px;">
+                            <div style="border: 1px solid gray;height: 168px;display: flex;align-content: center;justify-content: center;align-items: center;">
                                 <div>
-                                    <div>Choose hotspot shape</div>
-                                    <div></div>
+                                    <div style="display: flex;justify-content: center;">Choose hotspot shape</div>
+                                    <div style="display: flex;">
+                                        <div style="padding: 10px;margin: 0 5px;border: 1px dotted gray;">Rectangle</div>
+                                        <div style="padding: 10px;margin: 0 5px;border: 1px dotted gray;">Circle</div>
+                                        <div style="padding: 10px;margin: 0 5px;border: 1px dotted gray;">Freedom</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
