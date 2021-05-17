@@ -94,6 +94,13 @@ function create_quiz(quiz_type, root_url, token) {
             });
             break;
 
+        case (11):
+            lv.insertAfter(node, {
+                caption: 'Click on the correct area in th...',
+                content: '<i>Hotspot<i>'
+            });
+            break;
+
         default:
     }
 

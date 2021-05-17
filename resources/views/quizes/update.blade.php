@@ -271,7 +271,11 @@
 
                 @case(11)
                 <h4>Hotspots</h4>
-                <div style="height: 216px;overflow-y: scroll;" id="hotspots">
+                <div style="height: 216px;border: 1px dotted gray;display: flex;align-items: center;justify-content: center;align-content: center;" id="hotspots">
+                    <div>
+                        Add Picture
+                    </div>
+
                 </div>
                 @break
 
