@@ -31,6 +31,14 @@
                    class="form-control @error('answer_content') is-invalid @enderror"
                    name="answer_content"
                    value="{{ $quiz->answer }}" autocomplete="answer_content" autofocus hidden>
+            <input id="media" type="text"
+                   class="form-control @error('media') is-invalid @enderror"
+                   name="media"
+                   value="{{ $quiz->media }}" autocomplete="media" autofocus hidden>
+            <input id="media_element" type="text"
+                   class="form-control @error('media_element') is-invalid @enderror"
+                   name="media_element"
+                   value="{{ $quiz->media_element }}" autocomplete="media_element" autofocus hidden>
 
             <div>
                 @switch($quiz->type_id)
@@ -78,8 +86,21 @@
                     <h4>Hotspots Question</h4>
                     @break
                 @endswitch
-                <div contenteditable="true" id="question"
-                     style="overflow-y: scroll;width: 100%;border: 1px solid black;height: 70px;color: black"></div>
+                <div class="row" style="width: 100%;margin: 0;">
+                    <div class="cell-9" style="padding: 0;">
+                        <div contenteditable="true" id="question"
+                             style="overflow-y: scroll;width: 100%;border: 1px solid black;height: 70px;color: black"></div>
+                    </div>
+                    <div class="cell-3" style="display: flex;align-items: center;justify-content: center;padding: 0;">
+                        <div id="form_view_pic_video_element">
+                            <a href="javascript:void(0)" style="padding: 0 3px;{{ isset($quiz->media) ? 'display: none' : '' }}" id="form_view_add_picture">Pic</a>
+                            <a href="javascript:void(0)" style="padding: 0 3px;{{ isset($quiz->media) ? 'display: none' : '' }}" id="form_view_add_video">Video</a>
+                            <img src="{{ $quiz->media ?? '#' }}" alt="form_view_media_element" id="form_view_media_element" style="{{ isset($quiz->media) ? 'display: flex' : 'display: none' }};height: 70px" onclick="show_pic_properties()">
+                        </div>
+                        <a href="javascript:void(0)" style="padding: 0 3px;" id="form_view_add_audio">Audio</a>
+                        <input type="file" id="form_view_input_media_element" hidden>
+                    </div>
+                </div>
             </div>
             <br>
 
@@ -300,8 +321,10 @@
                                 <canvas id="hotspots_canvas" height="214" width="287.5"></canvas>
                             </div>
                         </div>
-                        <div style="float: right;"><a href="javascript:void(0)" style="padding: 0 10px" onclick="hotspots_change_picture()">Change
-                                Picture</a><a href="javascript:void(0)" onclick="deleteCanvas()" style="padding: 0 10px">Delete Shape</a></div>
+                        <div style="float: right;"><a href="javascript:void(0)" style="padding: 0 10px"
+                                                      onclick="hotspots_change_picture()">Change
+                                Picture</a><a href="javascript:void(0)" onclick="deleteCanvas()"
+                                              style="padding: 0 10px">Delete Shape</a></div>
                     </div>
                     <div id="hotspots_one_column" style="{{ $quiz->answer == '' ? 'display:flex' : 'display:none'}}">
                         <h4>Hotspots</h4>
@@ -376,8 +399,12 @@
             id="slide_view_container">
             {!! $quiz->question_element !!}
             {!! $quiz->answer_element !!}
-            @if ($quiz->media != null)
-                <div class="slide_view_media_element slide_view_group"></div>
+            @if (isset($quiz->media_element))
+                {!! $quiz->media_element !!}
+            @else
+                <div class="slide_view_media_element slide_view_group">
+                    <img src="#" alt="slide_view_media">
+                </div>
             @endif
         </div>
     </div>
@@ -508,6 +535,19 @@
             <input type="text" id="target_element" value="" hidden>
         </div>
     </div>
+    <div class="cell-4 picture_properties" style="padding: 0 20px;display: none;">
+        <div style="display: flex;justify-content: space-around;align-items: center;">
+            <h3 style="border-bottom: 1px dotted grey;padding: 15px 10px;">Picture Properties</h3>
+            <p style="color: gray;font-size: 18px;" onclick="close_pic_properties()">x</p>
+        </div>
+        <div style="width: 100%;" id="picture_properties_image">
+            <img src="" alt="">
+        </div>
+        <div style="display: flex;justify-content: space-around;">
+            <a href="javascript:void(0)" style="padding:5px" onclick="change_media_pic()">Change</a>
+            <a href="javascript:void(0)" style="padding:5px" onclick="delete_media_pic()">Delete</a>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -536,3 +576,4 @@
 <script src="{{ asset('js/fill_blanks.js') }}" defer></script>
 <script src="{{ asset('js/select_lists.js') }}" defer></script>
 <script src="{{ asset('js/hotspots.js') }}" defer></script>
+<script src="{{ asset('js/form_add_media_audio.js') }}" defer></script>
