@@ -246,7 +246,7 @@ function answer_form2slide() {
 
             let select_element;
             for (let i = 0; i < select_lists_dropdown_elements.length; i++) {
-                select_element = '<select id="'+ i +'"><option value="none">- Select -</option>';
+                select_element = '<select id="' + i + '"><option value="none">- Select -</option>';
                 // <option value="answer 1">Answer 1</option><option value="answer 2">Answer 2</option></select>';
                 for (let j = 0; j < select_lists_dropdown_elements.eq(i).find('label').length; j++) {
                     select_element += '<option value="' + select_lists_dropdown_elements.eq(i).find('label').eq(j).html() + '">' + select_lists_dropdown_elements.eq(i).find('label').eq(j).html() + '</option>';
@@ -271,9 +271,58 @@ function answer_form2slide() {
             $('#slide_drag_words_question').html(form_answer);
             $('#slide_drag_words_answer').html(word_array);
             break;
+
+        case '11':
+            const root_url = $('meta[name=url]').attr('content');
+            var slide_view_canvas = new fabric.Canvas('slide_view_hotspots_canvas');
+
+            var canvas_info = $('#answer_content').val();
+
+            var canvas_bg_url = canvas_info.split('@')[0];
+            var canvas_item_info = canvas_info.split('@')[1];
+
+            var json_bg_url = JSON.parse(canvas_bg_url);
+            var json_canvas_item = JSON.parse(canvas_item_info);
+
+            fabric.Image.fromURL(root_url + '/' + json_bg_url.background, function (img) {
+                slide_view_canvas.setBackgroundImage(img, slide_view_canvas.renderAll.bind(slide_view_canvas), {
+                    scaleX: slide_view_canvas.width / img.width,
+                    scaleY: slide_view_canvas.height / img.height
+                });
+            });
+
+            console.log(json_canvas_item.type);
+
+            if (json_canvas_item.type === 'circle') {
+
+                slide_view_canvas.add(new fabric.Circle({
+                    radius: json_canvas_item.radius,
+                    strokeWidth: 3,
+                    stroke: '#288f02',
+                    fill: '#c1fc8580',
+                    originX: 'center',
+                    originY: 'center',
+                    top: json_canvas_item.top,
+                    left: json_canvas_item.left
+                }));
+            }
+
+            if (json_canvas_item.type === 'rect') {
+
+                slide_view_canvas.add(new fabric.Rect({
+                    width: json_canvas_item.width,
+                    height: json_canvas_item.height,
+                    strokeWidth: 3,
+                    stroke: '#288f02',
+                    fill: '#c1fc8580',
+                    top: json_canvas_item.top,
+                    left: json_canvas_item.left
+                }));
+            }
+            break;
     }
 
-    if (typeId !== '10') $('.slide_view_answer_element').html('<div class="col-md-12">' + slide_answer_element + '</div>');
+    if (typeId !== '10' && typeId !== '11') $('.slide_view_answer_element').html('<div class="col-md-12">' + slide_answer_element + '</div>');
 }
 
 // answer_slide2form($('#answer_element').val(), $('#answer_content').val());
@@ -384,6 +433,28 @@ function answer_store() {
                 answer += answer_element.eq(i).val() + ';';
             }
             break;
+
+        case '11':
+            var canvas = get_canvas();
+            console.log(canvas);
+            console.log(canvas.item(0));
+            var string;
+            if (canvas.item(0) === undefined) {
+                string = '{}';
+            } else {
+                switch (canvas.item(0).get('type')) {
+                    case 'circle':
+                        string = '{"type": "circle", "radius": ' + canvas.item(0).radius + ', "top": ' + canvas.item(0).top + ', "left": ' + canvas.item(0).left + '}';
+                        break;
+                    case 'rect':
+                console.log(canvas.item(0).get('type'));
+                        string = '{"type": "rect", "width": ' + canvas.item(0).width + ', "height": ' + canvas.item(0).height + ', "top": ' + canvas.item(0).top + ', "left": ' + canvas.item(0).left + '}';
+                        break;
+                }
+            }
+            var answer_info = $('#answer_content').val();
+            answer = answer_info.split('@')[0] + '@' + string;
+            break;
     }
 
     $('#answer_content').val(answer);
@@ -399,9 +470,9 @@ function slide_to_form() {
 function form_to_slide() {
     console.log("form2slide");
 
+    answer_store();
     question_form2slide();
     answer_form2slide();
-    answer_store();
 }
 
 function store_theme_style(style) {
@@ -419,4 +490,9 @@ function store_theme_style(style) {
         }).catch((XHttpResponse) => {
         console.log(XHttpResponse);
     });
+}
+
+function add_canvas_item_info(string) {
+    var answer_info = $('#answer_content').val();
+    $('#answer_content').val(answer_info.split('@')[0] + '@' + string);
 }

@@ -35,6 +35,7 @@ $('#hotspots_only_from_files_image').change(function () {
             success: (response) => {
                 if (response) {
                     console.log(response);
+                    $('#answer_content').val('{"background": "' + response + '"}@{}');
                     console.log('Image has been uploaded successfully');
                 }
             },
@@ -64,6 +65,7 @@ var line, isDown;
 
 function drawcle() {
 
+    if( canvas.item(0) !== undefined ) console.log(canvas.item(0));
     var circle, isDown, origX, origY, isDraw = false;
     removeEvents();
     canvas.on('mouse:down', function (o) {
@@ -98,6 +100,7 @@ function drawcle() {
     canvas.on('mouse:up', function (o) {
         isDown = false;
         isDraw = true;
+        console.log(canvas.item(0));
     });
 
 }
@@ -157,7 +160,7 @@ function drawrec() {
     canvas.on('mouse:up', function (o) {
         isDown = false;
         isDraw = true;
-        console.log(canvas);
+
     });
 }
 
@@ -309,4 +312,8 @@ function findLeftPaddingForRoof(roofPoints) {
         }
     }
     return Math.abs(result);
+}
+
+function get_canvas() {
+    return canvas;
 }

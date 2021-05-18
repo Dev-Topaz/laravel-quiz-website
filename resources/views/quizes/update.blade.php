@@ -279,13 +279,17 @@
                          style="display:none;flex-direction: row;max-width: 100%;margin: 0">
                         <div class="cell-6">
                             <h4>Hotspot</h4>
-                            <div style="border: 1px solid gray;height: 216px;display: flex;align-content: center;justify-content: center;align-items: center;">
+                            <div
+                                style="border: 1px solid gray;height: 216px;display: flex;align-content: center;justify-content: center;align-items: center;">
                                 <div>
                                     <div style="display: flex;justify-content: center;">Choose hotspot shape</div>
                                     <div style="display: flex;">
-                                        <a style="padding: 10px;margin: 0 5px;border: 1px dotted gray;" onclick="drawrec()">Rectangle</a>
-                                        <a style="padding: 10px;margin: 0 5px;border: 1px dotted gray;" onclick="drawcle()">Circle</a>
-                                        <a style="padding: 10px;margin: 0 5px;border: 1px dotted gray;" onclick="drawpoly()">Freedom</a>
+                                        <a style="padding: 10px;margin: 0 5px;border: 1px dotted gray;"
+                                           onclick="drawrec()">Rectangle</a>
+                                        <a style="padding: 10px;margin: 0 5px;border: 1px dotted gray;"
+                                           onclick="drawcle()">Circle</a>
+                                        <a style="padding: 10px;margin: 0 5px;border: 1px dotted gray;"
+                                           onclick="drawpoly()">Freedom</a>
                                     </div>
                                 </div>
                             </div>
@@ -293,10 +297,11 @@
                         <div class="cell-6">
                             <h4>Picture</h4>
                             <div style="border: 1px solid gray;" id="hotspots_image_canvas">
-                                <canvas id="hotspots_canvas" height="214" style=""></canvas>
+                                <canvas id="hotspots_canvas" height="214" width="287.5"></canvas>
                             </div>
                         </div>
-                        <div style="float: right;"><a href="javascript:void(0)">Change Picture</a><a href="javascript:void(0)" onclick="deleteCanvas()">Delete Shape</a></div>
+                        <div style="float: right;"><a href="javascript:void(0)" style="padding: 0 10px">Change
+                                Picture</a><a href="javascript:void(0)" onclick="deleteCanvas()" style="padding: 0 10px">Delete Shape</a></div>
                     </div>
                     <div id="hotspots_one_column">
                         <h4>Hotspots</h4>
