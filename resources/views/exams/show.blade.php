@@ -1518,7 +1518,7 @@
                     <span class="title">Drawing</span>
                     <div class="group-divider"></div>
                 </div>
-                <div class="group">
+                <!-- <div class="group">
                     <button class="ribbon-button">
                         <span class="icon">
                             <img src="{{ url("/images/ribbon_imgs/home-25.png") }}">
@@ -1533,7 +1533,7 @@
                     </button>
                     <span class="title">Quiz</span>
                     <div class="group-divider"></div>
-                </div>
+                </div> -->
                 <div class="group">
                     <div class="ribbon-split-button">
                         <button class="ribbon-main">
@@ -1552,13 +1552,13 @@
                             <li class="design_preview_submenu preview_quiz_btn">Preview Quiz</li>
                         </ul>
                     </div>
-                    <button class="ribbon-button">
+                    <!-- <button class="ribbon-button">
                         <span class="icon">
                             <img src="{{ url("/images/ribbon_imgs/home-28.png") }}">
                         </span>
                         <span class="caption">Publish</span>
-                    </button>
-                    <span class="title">Publish</span>
+                    </button> -->
+                    <span class="title">Preview</span>
                     <div class="group-divider"></div>
                 </div>
                 <div class="group">
@@ -1820,7 +1820,7 @@
                     <span class="title">Insert</span>
                     <div class="group-divider"></div>
                 </div>
-                <div class="group">
+                <!-- <div class="group">
                     <button class="ribbon-button">
                         <span class="icon">
                             <img src="{{ url("/images/ribbon_imgs/home-25.png") }}">
@@ -1835,7 +1835,7 @@
                     </button>
                     <span class="title">Quiz</span>
                     <div class="group-divider"></div>
-                </div>
+                </div> -->
                 <div class="group">
                     <div class="ribbon-split-button">
                         <button class="ribbon-main">
@@ -1854,13 +1854,13 @@
                             <li class="design_preview_submenu preview_quiz_btn">Preview Quiz</li>
                         </ul>
                     </div>
-                    <button class="ribbon-button">
+                    <!-- <button class="ribbon-button">
                         <span class="icon">
                             <img src="{{ url("/images/ribbon_imgs/home-28.png") }}">
                         </span>
                         <span class="caption">Publish</span>
-                    </button>
-                    <span class="title">Publish</span>
+                    </button> -->
+                    <span class="title">Preview</span>
                     <div class="group-divider"></div>
                 </div>
                 <div class="group">
