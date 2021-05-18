@@ -469,13 +469,13 @@
                             </li>
                             <input id="slide_view_audio_selector" type="file" data-role="file" style="display: none;">
                             <li class="insert_audio" id="slide_view_rec_mic_btn"
-                                style="background-image: url({{ url("/images/ribbon_imgs/insert/audio-2.png") }}); border-bottom: 1px dotted gainsboro;">
+                                style="background-image: url({{ url("/images/ribbon_imgs/insert/audio-2.png") }});">
                                 Record Mic...
                             </li>
-                            <li class="insert_audio" id="slide_view_mic_settings_btn"
+                            <!-- <li class="insert_audio" id="slide_view_mic_settings_btn"
                                 style="background-image: url({{ url("/images/ribbon_imgs/insert/audio-3.png") }});">
                                 Microphone Settings
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                     <span class="title">Media</span>
@@ -1806,14 +1806,14 @@
                                 <input id="form_view_audio_selector" type="file" data-role="file"
                                     style="display: none;">
                                 <li class="insert_audio" id="form_view_rec_mic_btn"
-                                    style="background-image: url({{ url("/images/ribbon_imgs/insert/audio-2.png") }}); border-bottom: 1px dotted gainsboro;">
+                                    style="background-image: url({{ url("/images/ribbon_imgs/insert/audio-2.png") }});">
                                     Record Mic...
                                 </li>
-                                <li class="insert_audio" id="form_view_mic_settings_btn"
+                                <!-- <li class="insert_audio" id="form_view_mic_settings_btn"
                                     style="background-image: url({{ url("/images/ribbon_imgs/insert/audio-3.png") }});">
                                     Microphone
                                     Settings
-                                </li>
+                                </li> -->
                             </ul>
                         </button>
                     </div>
