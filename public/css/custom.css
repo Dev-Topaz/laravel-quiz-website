@@ -181,10 +181,6 @@ span.icon img {
     border: none !important;
 }
 
-.dropdown-toggle::after {
-    /* visibility: hidden; */
-}
-
 .dropdown-toggle::before {
     visibility: hidden;
 }
@@ -440,25 +436,16 @@ label.file {
 #edit_hyperlink_modal_container {
     font-family: Arial, Helvetica, sans-serif;
     display: none;
-    /* Hidden by default */
     position: fixed;
-    /* Stay in place */
     z-index: 10;
-    /* Sit on top */
     padding-top: 200px;
-    /* Location of the box */
     left: 0;
     top: 0;
     width: 100%;
-    /* Full width */
     height: 100%;
-    /* Full height */
     overflow: auto;
-    /* Enable scroll if needed */
     background-color: rgb(0, 0, 0);
-    /* Fallback color */
     background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
 }
 
 /* Modal Content */
@@ -595,4 +582,34 @@ label[for="open_in_new"] {
 
 #open_in_new_check {
     margin-left: 78px;
+}
+
+#recording_panel_holder {
+    position: fixed;
+    display: none;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+#recording_panel {
+    position: relative;
+    top: 75px;
+}
+
+#close_recording {
+    position: absolute;
+    right: 25px;
+    color: darkgrey;
+    top: -23px;
+    font-size: 29px;
+}
+
+#close_recording:hover {
+    color: black;
 }

@@ -1,3 +1,4 @@
+
 @extends('layouts.quiz')
 
 @section('content')
@@ -980,8 +981,7 @@
                         <div data-role=" buttongroup" style="margin-left: 11px; ">
                             <button id="slide_view_font_subscription_btn" class="button font_subscription_btn" style="background-image: url('{{ url('/images/ribbon_imgs/home/sub.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;
                                             "></button>
-                            <button id="slide_view_font_superscription_btn" class=" button font_superscription_btn"
-                                style="background-image: url('{{ url('/images/ribbon_imgs/home/sup.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;
+                            <button id="slide_view_font_superscription_btn" class=" button font_superscription_btn" style="background-image: url('{{ url('/images/ribbon_imgs/home/sup.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;
                                             "></button>
                         </div>
                     </div>
@@ -1388,40 +1388,31 @@
                                                 style="background-image: url({{ url("/images/ribbon_imgs/shadow/no_shadow.png") }});">
                                             </div>
                                             <div class="shape_effect_shadow_sample_divider">Variations</div>
-                                            <div class="shape_effect_shadow_sample"
-                                                data-style="8px 8px 15px 2px rgba(0, 0, 0, 0.55)"
+                                            <div class="shape_effect_shadow_sample" data-style="8px 8px 15px 2px rgba(0, 0, 0, 0.55)"
                                                 style="background-image: url({{ url("/images/ribbon_imgs/shadow/Screenshot_11_03.png") }});">
                                             </div>
-                                            <div class="shape_effect_shadow_sample"
-                                                data-style="0px 8px 15px 2px rgba(0, 0, 0, 0.55)"
+                                            <div class="shape_effect_shadow_sample" data-style="0px 8px 15px 2px rgba(0, 0, 0, 0.55)"
                                                 style="background-image: url({{ url("/images/ribbon_imgs/shadow/Screenshot_11_04.png") }});">
                                             </div>
-                                            <div class="shape_effect_shadow_sample"
-                                                data-style="-8px 8px 15px 2px rgba(0, 0, 0, 0.55)"
+                                            <div class="shape_effect_shadow_sample" data-style="-8px 8px 15px 2px rgba(0, 0, 0, 0.55)"
                                                 style="background-image: url({{ url("/images/ribbon_imgs/shadow/Screenshot_11_05.png") }});">
                                             </div>
-                                            <div class="shape_effect_shadow_sample"
-                                                data-style="8px 0px 15px 2px rgba(0, 0, 0, 0.55)"
+                                            <div class="shape_effect_shadow_sample" data-style="8px 0px 15px 2px rgba(0, 0, 0, 0.55)"
                                                 style="background-image: url({{ url("/images/ribbon_imgs/shadow/Screenshot_11_07.png") }});">
                                             </div>
-                                            <div class="shape_effect_shadow_sample"
-                                                data-style="0px 0px 15px 2px rgba(0, 0, 0, 0.55)"
+                                            <div class="shape_effect_shadow_sample" data-style="0px 0px 15px 2px rgba(0, 0, 0, 0.55)"
                                                 style="background-image: url({{ url("/images/ribbon_imgs/shadow/Screenshot_11_08.png") }});">
                                             </div>
-                                            <div class="shape_effect_shadow_sample"
-                                                data-style="-8px 0px 15px 2px rgba(0, 0, 0, 0.55)"
+                                            <div class="shape_effect_shadow_sample" data-style="-8px 0px 15px 2px rgba(0, 0, 0, 0.55)"
                                                 style="background-image: url({{ url("/images/ribbon_imgs/shadow/Screenshot_11_09.png") }});">
                                             </div>
-                                            <div class="shape_effect_shadow_sample"
-                                                data-style="8px -8px 15px 2px rgba(0, 0, 0, 0.55)"
+                                            <div class="shape_effect_shadow_sample" data-style="8px -8px 15px 2px rgba(0, 0, 0, 0.55)"
                                                 style="background-image: url({{ url("/images/ribbon_imgs/shadow/Screenshot_11_10.png") }});">
                                             </div>
-                                            <div class="shape_effect_shadow_sample"
-                                                data-style="0px -8px 15px 2px rgba(0, 0, 0, 0.55)"
+                                            <div class="shape_effect_shadow_sample" data-style="0px -8px 15px 2px rgba(0, 0, 0, 0.55)"
                                                 style="background-image: url({{ url("/images/ribbon_imgs/shadow/Screenshot_11_11.png") }});">
                                             </div>
-                                            <div class="shape_effect_shadow_sample"
-                                                data-style="-8px -8px 15px 2px rgba(0, 0, 0, 0.55)"
+                                            <div class="shape_effect_shadow_sample" data-style="-8px -8px 15px 2px rgba(0, 0, 0, 0.55)"
                                                 style="background-image: url({{ url("/images/ribbon_imgs/shadow/Screenshot_11_12.png") }});">
                                             </div>
                                         </div>
@@ -1869,6 +1860,7 @@
         </div>
     </nav>
 
+
     <div id="edit_hyperlink_modal_container">
 
         <div class="edit_hyperlink_modal">
@@ -1906,156 +1898,6 @@
         </div>
     </div>
 
-    <!-- <link rel="stylesheet" href="{{ asset('js/recording/bootstrap.min.css') }}">
-    <div id="recording_panel_holder">
-        <div id="recording_panel">
-            <div class="container" style="background-color: white; padding-top: 30px;">
-                <div class="form-horizontal">
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Audio input</label>
-                        <div class="col-sm-3">
-                            <select id="audio-in-select" class="form-control">
-                                <option value="no-input" selected="">(No input)</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-3">
-                            <input id="audio-in-level" type="range" min="0" max="100" value="0" class="hidden">
-                        </div>
-                        <span id="close_recording">x</span>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-3"></div>
-                        <div class="col-sm-3">
-                            <input id="echo-cancellation" type="checkbox"> Enable echo cancellation
-                        </div>
-                        <div class="col-sm-6 "><strong>Experimental:</strong> cancellation on/off may work
-                            on Chrome only.
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Test tone</label>
-                        <div class="col-sm-3"></div>
-                        <div class="col-sm-3">
-                            <input id="test-tone-level" type="range" min="0" max="100" value="0">
-                        </div>
-                    </div><br>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Recording time limit</label>
-                        <div class="col-sm-3">
-                            <input id="time-limit" type="range" min="1" max="10" value="3">
-                        </div>
-                        <div id="time-limit-text" class="col-sm-6">3 minutes</div>
-                    </div><br>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Encoding</label>
-                        <div class="col-sm-3">
-                            <input type="radio" name="encoding" encoding="wav" checked=""> .wav &nbsp;
-                            <input type="radio" name="encoding" encoding="ogg"> .ogg &nbsp;
-                            <input type="radio" name="encoding" encoding="mp3"> .mp3
-                        </div>
-                        <label id="encoding-option-label" class="col-sm-2 control-label"></label>
-                        <div class="col-sm-2">
-                            <input id="encoding-option" type="range" min="0" max="11" value="6" class="hidden">
-                        </div>
-                        <div id="encoding-option-text" class="col-sm-2"></div>
-                    </div><br>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Encoding process</label>
-                        <div class="col-sm-9">
-                            <input type="radio" name="encoding-process" mode="background" checked=""> Encode on
-                            recording background
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-3"></div>
-                        <div class="col-sm-3">
-                            <input type="radio" name="encoding-process" mode="separate"> Encode after recording (safer)
-                        </div>
-                        <label id="report-interval-label" class="col-sm-2 control-label hidden">Reports every</label>
-                        <div class="col-sm-2">
-                            <input id="report-interval" type="range" min="1" max="5" value="1" class="hidden">
-                        </div>
-                        <div id="report-interval-text" class="col-sm-2 hidden">1 second</div>
-                    </div><br>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Recording buffer size</label>
-                        <div class="col-sm-2">
-                            <input id="buffer-size" type="range" min="0" max="6">
-                        </div>
-                        <div id="buffer-size-text" class="col-sm-7">2048 (browser default)</div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-3"></div>
-                        <div class="col-sm-9 "><strong>Notice: </strong> recording becomes unstable if
-                            buffer size is below
-                            browser default.</div>
-                    </div><br>
-                    <div class="form-group">
-                        <div class="col-sm-3 control-label"><span id="recording"
-                                class="text-danger hidden"><strong>RECORDING</strong></span>&nbsp; <span
-                                id="time-display">00:00</span>
-                        </div>
-                        <div class="col-sm-3">
-                            <button id="record" class="btn btn-danger">RECORD</button>
-                            <button id="cancel" class="btn btn-default hidden">CANCEL</button>
-                        </div>
-                        <div class="col-sm-6"><span id="date-time" class="text-info"></span></div>
-                    </div>
-                </div>
-                <hr>
-                <h3>Recordings</h3>
-                <div id="recording-list"></div>
-            </div>
-            <div id="modal-loading" class="modal fade" aria-hidden="true" style="display: none;">
-                <div class="modal-dialog modal-sm">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Loading WAV encoder ...</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="modal-progress" class="modal fade">
-                <div class="modal-dialog modal-sm">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title"></h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="progress">
-                                <div style="width: 0%;" class="progress-bar"></div>
-                            </div>
-                            <div class="text-center">0%</div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" data-dismiss="modal" class="btn">Cancel</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="modal-error" class="modal fade">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" data-dismiss="modal" class="close">×</button>
-                            <h4 class="modal-title">Error</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="alert alert-warning"></div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" data-dismiss="modal" class="btn btn-primary">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <script src="{{ asset('js/recording/jquery.min.js.download') }}"></script>
-            <script src="{{ asset('js/recording/bootstrap.min.js.download') }}"></script>
-            <script src="{{ asset('js/recording/WebAudioRecorder.min.js.download') }}"></script>
-            <script src="{{ asset('js/recording/RecorderDemo.js.download') }}"></script>
-        </div>
-    </div> -->
-
     <div class="window-content p-2">
 
         <div id="content" class="full">
@@ -2081,7 +1923,7 @@
                     </div>
                 </div>
 
-                <div class="create_form" id="quiz_form">
+                <form method="POST" action="#" class="create_form" id="quiz_form">
                     <div class="content_body">
                         <div class="row">
                             <div class="cell-3">
@@ -2121,7 +1963,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div><!-- /.post -->
         </div><!-- /#content -->
     </div>

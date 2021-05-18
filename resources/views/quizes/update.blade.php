@@ -1,9 +1,18 @@
 <div class="row" style="height: 100%;margin: 0;">
     <div class="cell-8 form_view_element" style="background: #dcdcdc;display: flex;">
         <div style="margin: auto 10px;background: #f1f1f1;width: 100%;padding: 20px;">
+            <input id="select_background_img" type="file" hidden>
             <input id="exam_id" type="text"
                    class="form-control @error('exam_id') is-invalid @enderror" name="exam_id"
                    value="{{ $quiz->exam_group->exam_id }}" required autocomplete="exam_id" autofocus
+                   hidden>
+            <input id="background_img" type="text"
+                   class="form-control @error('background_img') is-invalid @enderror" name="background_img"
+                   value="{{ $quiz->background_img }}" required autocomplete="background_img" autofocus
+                   hidden>
+            <input id="quiz_id" type="text"
+                   class="form-control @error('quiz_id') is-invalid @enderror" name="quiz_id"
+                   value="{{ $quiz->id }}" required autocomplete="quiz_id" autofocus
                    hidden>
             <input id="exam_group_id" type="text"
                    class="form-control @error('exam_group_id') is-invalid @enderror" name="exam_group_id"
@@ -27,11 +36,76 @@
                    class="form-control @error('answer_content') is-invalid @enderror"
                    name="answer_content"
                    value="{{ $quiz->answer }}" autocomplete="answer_content" autofocus hidden>
+            <input id="media" type="text"
+                   class="form-control @error('media') is-invalid @enderror"
+                   name="media"
+                   value="{{ $quiz->media }}" autocomplete="media" autofocus hidden>
+            <input id="media_element" type="text"
+                   class="form-control @error('media_element') is-invalid @enderror"
+                   name="media_element"
+                   value="{{ $quiz->media_element }}" autocomplete="media_element" autofocus hidden>
 
             <div>
-                <h4>Multiple Choice Question</h4>
-                <div contenteditable="true" id="question"
-                     style="overflow-y: scroll;width: 100%;border: 1px solid black;height: 70px;color: black"></div>
+                @switch($quiz->type_id)
+                    @case(1)
+                    <h4>Multiple Choice Question</h4>
+                    @break
+
+                    @case(2)
+                    <h4>Multiple Response Question</h4>
+                    @break
+
+                    @case(3)
+                    <h4>True/False Question</h4>
+                    @break
+
+                    @case(4)
+                    <h4>Short Answer Question</h4>
+                    @break
+
+                    @case(5)
+                    <h4>Numeric Question</h4>
+                    @break
+
+                    @case(6)
+                    <h4>Sequence Question</h4>
+                    @break
+
+                    @case(7)
+                    <h4>Matching Question</h4>
+                    @break
+
+                    @case(8)
+                    <h4>Fill in the Blanks Question</h4>
+                    @break
+
+                    @case(9)
+                    <h4>Select from Lists Question</h4>
+                    @break
+
+                    @case(10)
+                    <h4>Drag the Words</h4>
+                    @break
+
+                    @case(11)
+                    <h4>Hotspots Question</h4>
+                    @break
+                @endswitch
+                <div class="row" style="width: 100%;margin: 0;">
+                    <div class="cell-9" style="padding: 0;">
+                        <div contenteditable="true" id="question"
+                             style="overflow-y: scroll;width: 100%;border: 1px solid black;height: 70px;color: black"></div>
+                    </div>
+                    <div class="cell-3" style="display: flex;align-items: center;justify-content: center;padding: 0;">
+                        <div id="form_view_pic_video_element">
+                            <a href="javascript:void(0)" style="padding: 0 3px;{{ isset($quiz->media) ? 'display: none' : '' }}" id="form_view_add_picture">Pic</a>
+                            <a href="javascript:void(0)" style="padding: 0 3px;{{ isset($quiz->media) ? 'display: none' : '' }}" id="form_view_add_video">Video</a>
+                            <img src="{{ $quiz->media ?? '#' }}" alt="form_view_media_element" id="form_view_media_element" style="{{ isset($quiz->media) ? 'display: flex' : 'display: none' }};height: 70px" onclick="show_pic_properties()">
+                        </div>
+                        <a href="javascript:void(0)" style="padding: 0 3px;" id="form_view_add_audio">Audio</a>
+                        <input type="file" id="form_view_input_media_element" hidden>
+                    </div>
+                </div>
             </div>
             <br>
 
@@ -225,6 +299,66 @@
                 </div>
                 @break
 
+                @case(11)
+                <div class="hotspots_content">
+                    <div class="row" id="hotspots_two_columns"
+                         style="{{ $quiz->answer == '' ? 'display:none' : 'display:flex'}};flex-direction: row;max-width: 100%;margin: 0">
+                        <div class="cell-6">
+                            <h4>Hotspot</h4>
+                            <div
+                                style="border: 1px solid gray;height: 216px;display: flex;align-content: center;justify-content: center;align-items: center;">
+                                <div>
+                                    <div style="display: flex;justify-content: center;">Choose hotspot shape</div>
+                                    <div style="display: flex;">
+                                        <a style="padding: 10px;margin: 0 5px;border: 1px dotted gray;"
+                                           onclick="drawrec()">Rectangle</a>
+                                        <a style="padding: 10px;margin: 0 5px;border: 1px dotted gray;"
+                                           onclick="drawcle()">Circle</a>
+                                        <a style="padding: 10px;margin: 0 5px;border: 1px dotted gray;"
+                                           onclick="drawpoly()">Freedom</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cell-6">
+                            <h4>Picture</h4>
+                            <div style="border: 1px solid gray;" id="hotspots_image_canvas">
+                                <canvas id="hotspots_canvas" height="214" width="287.5"></canvas>
+                            </div>
+                        </div>
+                        <div style="float: right;"><a href="javascript:void(0)" style="padding: 0 10px"
+                                                      onclick="hotspots_change_picture()">Change
+                                Picture</a><a href="javascript:void(0)" onclick="deleteCanvas()"
+                                              style="padding: 0 10px">Delete Shape</a></div>
+                    </div>
+                    <div id="hotspots_one_column" style="{{ $quiz->answer == '' ? 'display:flex' : 'display:none'}}">
+                        <h4>Hotspots</h4>
+                        <div id="hotspots">
+                            <div id="hotspots_only_from_files">
+                                <h5>Add Picture</h5>
+                                <div class="from_files">From File...</div>
+                                <form action="{{ url('/hotspots_image_upload') }}" method="post" id="upload-image-form"
+                                      enctype="multipart/form-data" style="display: none;">
+                                    @csrf
+                                    <div class="form-group">
+                                        <input type="file" name="hotspots_only_from_files_image"
+                                               placeholder="Choose image"
+                                               id="hotspots_only_from_files_image" hidden>
+                                        <span class="text-danger" id="image-input-error"></span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-success"
+                                                id="hotspots_only_from_files_upload_button">Upload
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @break
+
             @endswitch
 
             <br>
@@ -265,14 +399,19 @@
         </div>
     </div>
     <div class="cell-8 slide_view_element" style="background: #dcdcdc;display: none;">
-        <div
-            style="margin: auto 0;width: 100%;height:500px;padding: 20px;{{ $quiz->exam_group->exam->theme_style ?? 'background:white' }}"
+        <div style="margin: auto 0;width: 100%;height:500px;{{ $quiz->exam_group->exam->theme_style ?? 'background:white' }}"
             id="slide_view_container">
-            {!! $quiz->question_element !!}
-            {!! $quiz->answer_element !!}
-            @if ($quiz->media != null)
-                <div class="slide_view_media_element slide_view_group"></div>
-            @endif
+            <div id="quiz_background_container" style="width: 100%;height:100%;padding: 20px;{{ isset($quiz->background_img) ? ('background-image:' . $quiz->background_img . ';') : '' }}">
+                {!! $quiz->question_element !!}
+                {!! $quiz->answer_element !!}
+                @if (isset($quiz->media_element))
+                    {!! $quiz->media_element !!}
+                @else
+                    <div class="slide_view_media_element slide_view_group" style="z-index: 3;">
+                        <img src="#" alt="slide_view_media">
+                    </div>
+                @endif
+            </div>
         </div>
     </div>
     <div class="cell-4 slide_option" style="padding: 0 20px;">
@@ -402,6 +541,19 @@
             <input type="text" id="target_element" value="" hidden>
         </div>
     </div>
+    <div class="cell-4 picture_properties" style="padding: 0 20px;display: none;">
+        <div style="display: flex;justify-content: space-around;align-items: center;">
+            <h3 style="border-bottom: 1px dotted grey;padding: 15px 10px;">Picture Properties</h3>
+            <p style="color: gray;font-size: 18px;" onclick="close_pic_properties()">x</p>
+        </div>
+        <div style="width: 100%;" id="picture_properties_image">
+            <img src="" alt="">
+        </div>
+        <div style="display: flex;justify-content: space-around;">
+            <a href="javascript:void(0)" style="padding:5px" onclick="change_media_pic()">Change</a>
+            <a href="javascript:void(0)" style="padding:5px" onclick="delete_media_pic()">Delete</a>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -429,3 +581,5 @@
 <script src="{{ asset('js/matching.js') }}" defer></script>
 <script src="{{ asset('js/fill_blanks.js') }}" defer></script>
 <script src="{{ asset('js/select_lists.js') }}" defer></script>
+<script src="{{ asset('js/hotspots.js') }}" defer></script>
+<script src="{{ asset('js/form_add_media_audio.js') }}" defer></script>

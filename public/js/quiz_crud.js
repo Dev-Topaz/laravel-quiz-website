@@ -94,6 +94,13 @@ function create_quiz(quiz_type, root_url, token) {
             });
             break;
 
+        case (11):
+            lv.insertAfter(node, {
+                caption: 'Click on the correct area in th...',
+                content: '<i>Hotspot<i>'
+            });
+            break;
+
         default:
     }
 
@@ -145,9 +152,11 @@ function update_quiz() {
     const correct_score = $('.feedback_branching tr:first-child td:nth-child(4) label').html();
     const incorrect_score = $('.feedback_branching tr:nth-child(2) td:nth-child(4) label').html();
     const try_again_score = $('.feedback_branching tr:nth-child(3) td:nth-child(4) label').html();
-    // const media
+    const media = $('#media').val();
+    const background_img = $('#background_img').val();
     // const order
     const answer_element = $('.slide_view_answer_element')[0].outerHTML;
+    const media_element = $('.slide_view_media_element')[0].outerHTML;
     const question_type = Metro.getPlugin('#question_type', 'select').val();
     const feedback_type = Metro.getPlugin('#feedback', 'select').val();
 
@@ -195,10 +204,12 @@ function update_quiz() {
             question_element: question_element,
             answer: answer,
             answer_element: answer_element,
+            media_element: media_element,
             feedback_correct: feedback_correct,
             feedback_incorrect: feedback_incorrect,
             feedback_try_again: feedback_try_again,
-            // media: media,
+            media: media,
+            background_img: background_img,
             // order: order,
             question_type: question_type,
             feedback_type: feedback_type,
