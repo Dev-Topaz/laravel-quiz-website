@@ -399,7 +399,7 @@
         </div>
     </div>
     <div class="cell-8 slide_view_element" style="background: #dcdcdc;display: none;">
-        <div style="margin: auto 0;width: 100%;height:500px;{{ $quiz->exam_group->exam->theme_style ?? 'background:white' }}"
+        <div style="top:50%;transform:translateY(-50%);margin: auto 0;width: 100%;height:500px;{{ $quiz->exam_group->exam->theme_style ?? 'background:white' }}"
             id="slide_view_container">
             <div id="quiz_background_container" style="width: 100%;height:100%;padding: 20px;{{ isset($quiz->background_img) ? ('background-image:' . $quiz->background_img . ';') : '' }}">
                 {!! $quiz->question_element !!}
