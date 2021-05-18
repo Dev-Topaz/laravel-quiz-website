@@ -2,11 +2,116 @@ $('.from_files').click(function () {
     $('#hotspots_only_from_files_image').trigger('click');
 });
 
+function hotspots_change_picture() {
+    $('#hotspots_only_from_files_image').trigger('click');
+}
+
 var canvas = this.__canvas = new fabric.Canvas('hotspots_canvas');
 
 // fabric.Object.prototype.transparentCorners = false;
-canvas.backgroundColor = '#34AD39';
+var root_url = $('meta[name=url]').attr('content');
+
+var canvas_info = $('#answer_content').val();
+
+var canvas_bg_url = canvas_info.split('@')[0];
+var canvas_item_info = canvas_info.split('@')[1];
+
+var json_bg_url = JSON.parse(canvas_bg_url);
+var json_canvas_item = JSON.parse(canvas_item_info);
+
+fabric.Image.fromURL(root_url + '/' + json_bg_url.background, function (img) {
+    canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
+        scaleX: canvas.width / img.width,
+        scaleY: canvas.height / img.height
+    });
+});
+
+console.log(json_canvas_item.type);
+
+if (json_canvas_item.type === 'circle') {
+
+    canvas.add(new fabric.Circle({
+        radius: json_canvas_item.radius,
+        strokeWidth: 3,
+        stroke: '#288f02',
+        fill: '#c1fc8580',
+        originX: 'center',
+        originY: 'center',
+        top: json_canvas_item.top,
+        left: json_canvas_item.left
+    }));
+}
+
+if (json_canvas_item.type === 'rect') {
+
+    canvas.add(new fabric.Rect({
+        width: json_canvas_item.width,
+        height: json_canvas_item.height,
+        strokeWidth: 3,
+        stroke: '#288f02',
+        fill: '#c1fc8580',
+        top: json_canvas_item.top,
+        left: json_canvas_item.left
+    }));
+}
+
+if (json_canvas_item.type === 'polyline') {
+
+    canvas.add(new fabric.Polygon(json_canvas_item.points, {
+        strokeWidth: 3,
+        stroke: '#288f02',
+        fill: '#c1fc8580'
+    }));
+}
 canvas.renderAll();
+
+var slide_view_canvas = new fabric.Canvas('slide_view_hotspots_canvas');
+
+fabric.Image.fromURL(root_url + '/' + json_bg_url.background, function (img) {
+    slide_view_canvas.setBackgroundImage(img, slide_view_canvas.renderAll.bind(slide_view_canvas), {
+        scaleX: slide_view_canvas.width / img.width,
+        scaleY: slide_view_canvas.height / img.height
+    });
+});
+
+console.log(json_canvas_item.type);
+
+if (json_canvas_item.type === 'circle') {
+
+    slide_view_canvas.add(new fabric.Circle({
+        radius: json_canvas_item.radius,
+        strokeWidth: 3,
+        stroke: '#288f02',
+        fill: '#c1fc8580',
+        originX: 'center',
+        originY: 'center',
+        top: json_canvas_item.top,
+        left: json_canvas_item.left
+    }));
+}
+
+if (json_canvas_item.type === 'rect') {
+
+    slide_view_canvas.add(new fabric.Rect({
+        width: json_canvas_item.width,
+        height: json_canvas_item.height,
+        strokeWidth: 3,
+        stroke: '#288f02',
+        fill: '#c1fc8580',
+        top: json_canvas_item.top,
+        left: json_canvas_item.left
+    }));
+}
+
+if (json_canvas_item.type === 'polyline') {
+
+    slide_view_canvas.add(new fabric.Polygon(json_canvas_item.points, {
+        strokeWidth: 3,
+        stroke: '#288f02',
+        fill: '#c1fc8580'
+    }));
+}
+slide_view_canvas.renderAll();
 
 $('#hotspots_only_from_files_image').change(function () {
 
@@ -65,7 +170,7 @@ var line, isDown;
 
 function drawcle() {
 
-    if( canvas.item(0) !== undefined ) console.log(canvas.item(0));
+    if (canvas.item(0) !== undefined) console.log(canvas.item(0));
     var circle, isDown, origX, origY, isDraw = false;
     removeEvents();
     canvas.on('mouse:down', function (o) {
@@ -277,6 +382,8 @@ function makeRoof(roofPoints) {
 
     var left = findLeftPaddingForRoof(roofPoints);
     var top = findTopPaddingForRoof(roofPoints);
+    if (roofPoints.length == 0) return;
+
     roofPoints.push(new Point(roofPoints[0].x, roofPoints[0].y))
     var roof = new fabric.Polyline(roofPoints, {
         fill: '#c1fc8580',

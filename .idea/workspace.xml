@@ -6,32 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9d9fd7c1-0dd1-410f-8492-d59f6bb67158" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/QuizController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/QuizController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60a2be27885a3.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60a2bf9caf333.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60a2bfe7c5b0f.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60a2c02a398da.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60a2c1dfa60d9.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60a2c249e834f.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60a2c2a41691c.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60a2c2efacfa8.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60a2c34d8fef2.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60a2c5e4d1a89.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60a2c75ec1055.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60a2c7cb7a839.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60a2c939252e2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60a2cf5a05fee.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60a2d0c8aab2d.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60a2d2461e15a.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60a2d3ad3633e.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60a2d430a7a43.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60a2d56f9504c.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60a2d9995bbb6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60a2da44ea682.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/hotspots.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/hotspots.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/update_quiz.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/update_quiz.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/exams/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/exams/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/quiz.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/quiz.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/quizes/update.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/quizes/update.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -269,7 +245,7 @@
       <workItem from="1621060404336" duration="3973000" />
       <workItem from="1621167476861" duration="49444000" />
       <workItem from="1621243520337" duration="34132000" />
-      <workItem from="1621308527287" duration="7066000" />
+      <workItem from="1621308527287" duration="11222000" />
     </task>
     <servers />
   </component>

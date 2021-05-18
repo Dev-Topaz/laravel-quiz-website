@@ -319,6 +319,15 @@ function answer_form2slide() {
                     left: json_canvas_item.left
                 }));
             }
+
+            if (json_canvas_item.type === 'polyline') {
+
+                slide_view_canvas.add(new fabric.Polygon(json_canvas_item.points, {
+                    strokeWidth: 3,
+                    stroke: '#288f02',
+                    fill: '#c1fc8580'
+                }));
+            }
             break;
     }
 
@@ -437,7 +446,6 @@ function answer_store() {
         case '11':
             var canvas = get_canvas();
             console.log(canvas);
-            console.log(canvas.item(0));
             var string;
             if (canvas.item(0) === undefined) {
                 string = '{}';
@@ -447,8 +455,10 @@ function answer_store() {
                         string = '{"type": "circle", "radius": ' + canvas.item(0).radius + ', "top": ' + canvas.item(0).top + ', "left": ' + canvas.item(0).left + '}';
                         break;
                     case 'rect':
-                console.log(canvas.item(0).get('type'));
                         string = '{"type": "rect", "width": ' + canvas.item(0).width + ', "height": ' + canvas.item(0).height + ', "top": ' + canvas.item(0).top + ', "left": ' + canvas.item(0).left + '}';
+                        break;
+                    case 'polyline':
+                        string = '{"type": "polyline", "points" : ' + JSON.stringify(canvas.item(0).points) + '}';
                         break;
                 }
             }

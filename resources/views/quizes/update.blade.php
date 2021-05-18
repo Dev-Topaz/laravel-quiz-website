@@ -276,7 +276,7 @@
                 @case(11)
                 <div class="hotspots_content">
                     <div class="row" id="hotspots_two_columns"
-                         style="display:none;flex-direction: row;max-width: 100%;margin: 0">
+                         style="{{ $quiz->answer == '' ? 'display:none' : 'display:flex'}};flex-direction: row;max-width: 100%;margin: 0">
                         <div class="cell-6">
                             <h4>Hotspot</h4>
                             <div
@@ -300,10 +300,10 @@
                                 <canvas id="hotspots_canvas" height="214" width="287.5"></canvas>
                             </div>
                         </div>
-                        <div style="float: right;"><a href="javascript:void(0)" style="padding: 0 10px">Change
+                        <div style="float: right;"><a href="javascript:void(0)" style="padding: 0 10px" onclick="hotspots_change_picture()">Change
                                 Picture</a><a href="javascript:void(0)" onclick="deleteCanvas()" style="padding: 0 10px">Delete Shape</a></div>
                     </div>
-                    <div id="hotspots_one_column">
+                    <div id="hotspots_one_column" style="{{ $quiz->answer == '' ? 'display:flex' : 'display:none'}}">
                         <h4>Hotspots</h4>
                         <div id="hotspots">
                             <div id="hotspots_only_from_files">
