@@ -153,6 +153,7 @@ function update_quiz() {
     const incorrect_score = $('.feedback_branching tr:nth-child(2) td:nth-child(4) label').html();
     const try_again_score = $('.feedback_branching tr:nth-child(3) td:nth-child(4) label').html();
     const media = $('#media').val();
+    const background_img = $('#background_img').val();
     // const order
     const answer_element = $('.slide_view_answer_element')[0].outerHTML;
     const media_element = $('.slide_view_media_element')[0].outerHTML;
@@ -208,6 +209,7 @@ function update_quiz() {
             feedback_incorrect: feedback_incorrect,
             feedback_try_again: feedback_try_again,
             media: media,
+            background_img: background_img,
             // order: order,
             question_type: question_type,
             feedback_type: feedback_type,

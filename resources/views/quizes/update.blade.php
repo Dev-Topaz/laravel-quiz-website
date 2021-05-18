@@ -1,9 +1,14 @@
 <div class="row" style="height: 100%;margin: 0;">
     <div class="cell-8 form_view_element" style="background: #dcdcdc;display: flex;">
         <div style="margin: auto 10px;background: #f1f1f1;width: 100%;padding: 20px;">
+            <input id="select_background_img" type="file" hidden>
             <input id="exam_id" type="text"
                    class="form-control @error('exam_id') is-invalid @enderror" name="exam_id"
                    value="{{ $quiz->exam_group->exam_id }}" required autocomplete="exam_id" autofocus
+                   hidden>
+            <input id="background_img" type="text"
+                   class="form-control @error('background_img') is-invalid @enderror" name="background_img"
+                   value="{{ $quiz->background_img }}" required autocomplete="background_img" autofocus
                    hidden>
             <input id="quiz_id" type="text"
                    class="form-control @error('quiz_id') is-invalid @enderror" name="quiz_id"
@@ -394,18 +399,19 @@
         </div>
     </div>
     <div class="cell-8 slide_view_element" style="background: #dcdcdc;display: none;">
-        <div
-            style="margin: auto 0;width: 100%;height:500px;padding: 20px;{{ $quiz->exam_group->exam->theme_style ?? 'background:white' }}"
+        <div style="margin: auto 0;width: 100%;height:500px;{{ $quiz->exam_group->exam->theme_style ?? 'background:white' }}"
             id="slide_view_container">
-            {!! $quiz->question_element !!}
-            {!! $quiz->answer_element !!}
-            @if (isset($quiz->media_element))
-                {!! $quiz->media_element !!}
-            @else
-                <div class="slide_view_media_element slide_view_group">
-                    <img src="#" alt="slide_view_media">
-                </div>
-            @endif
+            <div id="quiz_background_container" style="width: 100%;height:100%;padding: 20px;{{ isset($quiz->background_img) ? ('background-image:' . $quiz->background_img . ';') : '' }}">
+                {!! $quiz->question_element !!}
+                {!! $quiz->answer_element !!}
+                @if (isset($quiz->media_element))
+                    {!! $quiz->media_element !!}
+                @else
+                    <div class="slide_view_media_element slide_view_group">
+                        <img src="#" alt="slide_view_media">
+                    </div>
+                @endif
+            </div>
         </div>
     </div>
     <div class="cell-4 slide_option" style="padding: 0 20px;">

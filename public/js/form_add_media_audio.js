@@ -76,3 +76,54 @@ $('#form_view_input_media_element').change(function () {
     reader.readAsDataURL(this.files[0]);
 
 });
+
+/*
+*          Quiz background Image
+* */
+
+$('#format_bg_btn').click(function () {
+    $('#select_background_img').trigger('click');
+});
+
+$('#select_background_img').change(function () {
+
+    var root_url = $('meta[name=url]').attr('content');
+
+    let reader = new FileReader();
+
+    reader.onload = (e) => {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        let formData = new FormData();
+        formData.append('image', e.target.result);
+        formData.append('quiz_id', $("#quiz_id").val());
+
+        $.ajax({
+            type: 'POST',
+            url: `/hotspots_image_upload`,
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: (response) => {
+                if (response) {
+                    console.log(response);
+                    $('#quiz_background_container').css('background-image', 'url("' + root_url + '/' + response + '")');
+                    $('#background_img').val('url("' + root_url + '/' + response + '")');
+                    console.log('Image has been uploaded successfully');
+                }
+            },
+            error: function (response) {
+                console.log(response);
+                // $('#image-input-error').text(response.responseJSON.errors.file);
+            }
+        });
+
+    }
+
+    reader.readAsDataURL(this.files[0]);
+
+});
