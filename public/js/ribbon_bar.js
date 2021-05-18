@@ -1000,24 +1000,22 @@ $('#layout_reset_btn').click(function () {
 //
 //================================
 var recording_panel_holder = document.getElementById("recording_panel_holder");
-var recording_panel = document.getElementById("recording_panel");
 
 var edit_hyperlink_modal = document.getElementById("edit_hyperlink_modal_container");
 var span = document.getElementsByClassName("edit_hyperlink_close_symbol")[0];
 span.onclick = function () {
     edit_hyperlink_modal.style.display = "none";
     cancel_hyperlink();
-
 }
+
 window.onclick = function (event) {
     if (event.target == edit_hyperlink_modal) {
         edit_hyperlink_modal.style.display = "none";
         cancel_hyperlink();
     }
-    if (event.target == recording_panel) {
+    if (event.target == recording_panel_holder) {
         recording_panel_holder.style.display = "none";
         $('body').css('overflow', 'auto');
-
     }
 }
 
@@ -1099,8 +1097,6 @@ function cancel_hyperlink() {
     $('.slide_view_question_element').eq(0).find('span.hyperlink').removeClass('hyperlink');
 }
 
-
-
 $('#slide_view_rec_mic_btn').click(function () {
     console.log('slide_view_rec_mic_btn');
     $('#recording_panel_holder').show();
@@ -1120,6 +1116,7 @@ $('#close_recording').click(function () {
     $('#recording_panel_holder').hide();
     $('body').css('overflow', 'auto');
 });
+
 // sel = window.getSelection();
 
 // for(let i = 0; i < sel.rangeCount; i++) {
@@ -1129,6 +1126,5 @@ $('#close_recording').click(function () {
 // div=document.createElement("div");
 // div.appendChild(content)
 // div.innerHTML
-
 
 // https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment

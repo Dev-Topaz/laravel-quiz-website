@@ -587,6 +587,7 @@ label[for="open_in_new"] {
 #recording_panel_holder {
     position: fixed;
     display: none;
+    padding-top: 100px;
     left: 0;
     top: 0;
     width: 100%;
@@ -604,12 +605,18 @@ label[for="open_in_new"] {
 
 #close_recording {
     position: absolute;
-    right: 25px;
+    left: 92.5%;
     color: darkgrey;
-    top: -23px;
     font-size: 29px;
 }
 
 #close_recording:hover {
     color: black;
+}
+
+#sound_rec_iframe {
+    width: 90%;
+    height: 684px;
+    margin: auto;
+    border-radius: 6px;
 }

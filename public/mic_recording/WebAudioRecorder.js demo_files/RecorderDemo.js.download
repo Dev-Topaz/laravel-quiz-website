@@ -6,7 +6,7 @@
   URL = window.URL || window.webkitURL;
 
   audioContext = new AudioContext;
-  audioContext.resume();
+
   if (audioContext.createScriptProcessor == null) {
     audioContext.createScriptProcessor = audioContext.createJavaScriptNode;
   }
