@@ -14,7 +14,7 @@ function delete_media_pic() {
     $('#form_view_media_element').hide();
     $('#media').val('');
     $('.slide_view_media_element').remove();
-    $('#slide_view_container').append('<div class="slide_view_media_element slide_view_group"><img src="#" alt="slide_view_media"></div>');
+    $('#slide_view_container').append('<div class="slide_view_media_element slide_view_group" style="z-index: 3;"><img src="#" alt="slide_view_media"></div>');
 }
 
 function show_pic_properties() {
