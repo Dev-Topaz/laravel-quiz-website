@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9d9fd7c1-0dd1-410f-8492-d59f6bb67158" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizmaker.sql" beforeDir="false" afterPath="$PROJECT_DIR$/quizmaker.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,7 +245,8 @@
       <workItem from="1621167476861" duration="49444000" />
       <workItem from="1621243520337" duration="34132000" />
       <workItem from="1621308527287" duration="14394000" />
-      <workItem from="1621332132633" duration="14967000" />
+      <workItem from="1621332132633" duration="18067000" />
+      <workItem from="1621379278420" duration="6047000" />
     </task>
     <servers />
   </component>
