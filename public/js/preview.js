@@ -112,12 +112,14 @@ function swap_value(a, b) {
     b.html(tmp);
 }
 
+
 /*
 * ************** Rearrange Preview UI *************
 * */
 
 let total_score = 0;
 let correct_quiz_count = 0;
+let hotspots_points = [];
 
 rearrange_preview_ui();
 
@@ -147,6 +149,19 @@ function rearrange_preview_ui() {
                 $('.ui-widget-content').eq(i).html(rearrange_matching[i]);
             }
             break;
+
+        case '11':
+            var root_url = $('meta[name=url]').attr('content');
+
+            var canvas_info = $('#correct_answer').html();
+
+            var canvas_bg_url = canvas_info.split('@')[0];
+
+            var json_bg_url = JSON.parse(canvas_bg_url);
+
+            $('.slide_view_answer_element .col-md-12').html('<div id="image-hotspots" style="width: 287px;position: relative;"><img src="' + root_url + '/' + json_bg_url.background + '" height="214" width="287" onclick="create_hotspots(event)"></div>');
+
+            break;
     }
 }
 
@@ -167,6 +182,18 @@ function shuffle(array) {
     }
 
     return array;
+}
+
+/*
+* ************* For Hotspots UI ***************
+* */
+
+function create_hotspots(event) {
+    var x = event.offsetX;
+    var y = event.offsetY;
+    console.log(x, y);
+    $('#image-hotspots').append('<div style="top: ' + y + 'px;height: 20px;width: 20px;position: absolute;background: #29b160;border-radius: 50%;cursor: pointer;z-index: 200;margin-left: -10px;margin-top: -10px;left: ' + x + 'px;"></div>');
+    hotspots_points.push([x, y]);
 }
 
 /*
@@ -327,8 +354,57 @@ function evulate() {
 
             return drag_words_answer == $('#correct_answer').html();
             break;
+
+        case '11':
+            var root_url = $('meta[name=url]').attr('content');
+
+            var canvas_info = $('#correct_answer').html();
+
+            var canvas_item_info = canvas_info.split('@')[1];
+
+            var json_canvas_item = JSON.parse(canvas_item_info);
+
+            for (let i = 0; i < hotspots_points.length; i++) {
+                switch (json_canvas_item.type) {
+                    case 'circle':
+                        if (Math.pow(json_canvas_item.radius, 2) < Math.pow(hotspots_points[0] - json_canvas_item.left, 2) + Math.pow(hotspots_points[1] - json_canvas_item.top, 2)) return false;
+                        break;
+
+                    case 'rect':
+                        if (hotspots_points[0] < json_canvas_item.left || hotspots_points[0] > json_canvas_item.left + json_canvas_item.width || hotspots_points[1] < json_canvas_item.top || hotspots_points[1] > json_canvas_item.top + json_canvas_item.height) return false;
+                        break;
+
+                    case 'polyline':
+                        if (!(inside(hotspots_points, json_canvas_item.points))) return false;
+                        break;
+                }
+            }
+
+            return true;
+            break;
     }
 }
+
+function inside(point, vs) {
+    // ray-casting algorithm based on
+    // https://wrf.ecse.rpi.edu/Research/Short_Notes/pnpoly.html/pnpoly.html
+
+    var x = point[0], y = point[1];
+
+    console.log(x, y);
+
+    var inside = false;
+    for (var i = 0, j = vs.length - 1; i < vs.length; j = i++) {
+        var xi = vs[i].x, yi = vs[i].y;
+        var xj = vs[j].x, yj = vs[j].y;
+
+        var intersect = ((yi > y) != (yj > y))
+            && (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
+        if (intersect) inside = !inside;
+    }
+
+    return inside;
+};
 
 function incorrect_process() {
     console.log('incorrect_process function');

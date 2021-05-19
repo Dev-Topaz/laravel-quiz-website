@@ -71,8 +71,8 @@ if (canvas_info != '') {
 
     fabric.Image.fromURL(root_url + '/' + json_bg_url.background, function (img) {
         slide_view_canvas.setBackgroundImage(img, slide_view_canvas.renderAll.bind(slide_view_canvas), {
-            scaleX: slide_view_canvas.width / img.width,
-            scaleY: slide_view_canvas.height / img.height
+            scaleX: 287 / img.width,
+            scaleY: 214 / img.height
         });
     });
 
