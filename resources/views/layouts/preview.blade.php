@@ -16,20 +16,17 @@
 
     <!-- Styles -->
 {{--    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">--}}
-    <link href="{{ asset('css/metro-all.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-{{--    <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">--}}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="{{ asset('css/toast.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/preview.css') }}" rel="stylesheet">
+{{--    <link href="{{ asset('css/metro-all.css') }}" rel="stylesheet">--}}
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('css/all.min.css') }}" rel="stylesheet">
-{{--    <link href="{{ asset('css/richtext.min.css') }}" rel="stylesheet">--}}
-{{--    <link href="{{ asset('css/jquery.modal.min.css') }}" rel="stylesheet">--}}
-{{--    <link href="{{ asset('css/evol-colorpicker.min.css') }}" rel="stylesheet">--}}
 
     <!-- Scripts -->
     <link href="{{ asset('css/jquery-ui.min.css') }}" rel="stylesheet">
     <script src="{{ asset('js/jquery3.2.1.min.js') }}"></script>
     <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
-{{--    <script src="{{ asset('js/evol-colorpicker.min.js') }}"></script>--}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.22/fabric.js"></script>
 </head>
 <body>
@@ -37,9 +34,12 @@
     <div id="exam_id" style="display: none;"></div>
     @yield('content')
 </div>
-{{--<script src="{{ asset('js/jquery.modal.min.js') }}" defer></script>--}}
-<script src="{{ asset('js/metro.js') }}" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="{{ asset('js/toast.js') }}" defer></script>
+{{--<script src="{{ asset('js/metro.js') }}" defer></script>--}}
 <script src="{{ asset('js/main.js') }}" defer></script>
+<script src="{{ asset('js/preview.js') }}" defer></script>
 
 </body>
 </html>

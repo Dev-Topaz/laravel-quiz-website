@@ -6,8 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="9d9fd7c1-0dd1-410f-8492-d59f6bb67158" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PreviewController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PreviewController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/form_add_media_audio.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/form_add_media_audio.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/preview.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/preview.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/preview.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/preview.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/quizes/update.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/quizes/update.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -246,7 +249,7 @@
       <workItem from="1621243520337" duration="34132000" />
       <workItem from="1621308527287" duration="14394000" />
       <workItem from="1621332132633" duration="18067000" />
-      <workItem from="1621379278420" duration="6047000" />
+      <workItem from="1621379278420" duration="15599000" />
     </task>
     <servers />
   </component>

@@ -408,7 +408,7 @@
                     {!! $quiz->media_element !!}
                 @else
                     <div class="slide_view_media_element slide_view_group" style="z-index: 3;">
-                        <img src="#" alt="slide_view_media">
+                        <img src="#" alt="slide_view_media" style="width: 100%;height: 100%;">
                     </div>
                 @endif
             </div>

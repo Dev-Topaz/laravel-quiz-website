@@ -19,10 +19,6 @@ class PreviewController extends Controller
     public function preview_slide(string $id) {
         $quizzes = Quiz::where('id', $id)->get();
 
-        foreach ($quizzes as $quiz) {
-            echo $quiz->exam_group->exam->theme_style;
-        }
-
         return view('preview', ['quizzes' => $quizzes]);
     }
 }
