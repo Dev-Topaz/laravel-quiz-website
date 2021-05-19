@@ -316,13 +316,13 @@
                         </button>
                         <span class="ribbon-split dropdown-toggle">Preview</span>
                         <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">
-                            <li class="design_preview_submenu"
+                            <li class="design_preview_submenu preview_slide_btn"
                                 style="background-image: url({{ url("/images/ribbon_imgs/design-pre-1.png") }});">
                                 Preview
                                 Slide
                             </li>
-                            <li class="design_preview_submenu">Preview Group</li>
-                            <li class="design_preview_submenu">Preview Quiz</li>
+                            <li class="design_preview_submenu preview_group_btn">Preview Group</li>
+                            <li class="design_preview_submenu preview_quiz_btn">Preview Quiz</li>
                         </ul>
                     </div>
                     <span class="title">Publish</span>
@@ -490,13 +490,13 @@
                         </button>
                         <span class="ribbon-split dropdown-toggle">Preview</span>
                         <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">
-                            <li class="design_preview_submenu"
+                            <li class="design_preview_submenu preview_slide_btn"
                                 style="background-image: url({{ url("/images/ribbon_imgs/design-pre-1.png") }});">
                                 Preview
                                 Slide
                             </li>
-                            <li class="design_preview_submenu" disabled>Preview Group</li>
-                            <li class="design_preview_submenu">Preview Quiz</li>
+                            <li class="design_preview_submenu preview_group_btn">Preview Group</li>
+                            <li class="design_preview_submenu preview_quiz_btn">Preview Quiz</li>
                         </ul>
                     </div>
                     <span class="title">Publish</span>
@@ -1543,13 +1543,13 @@
                         </button>
                         <span class="ribbon-split dropdown-toggle">Preview</span>
                         <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">
-                            <li class="design_preview_submenu"
+                            <li class="design_preview_submenu preview_slide_btn"
                                 style="background-image: url({{ url("/images/ribbon_imgs/design-pre-1.png") }});">
                                 Preview
                                 Slide
                             </li>
-                            <li class="design_preview_submenu">Preview Group</li>
-                            <li class="design_preview_submenu">Preview Quiz</li>
+                            <li class="design_preview_submenu preview_group_btn">Preview Group</li>
+                            <li class="design_preview_submenu preview_quiz_btn">Preview Quiz</li>
                         </ul>
                     </div>
                     <button class="ribbon-button">
@@ -1845,13 +1845,13 @@
                         </button>
                         <span class="ribbon-split dropdown-toggle">Preview</span>
                         <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">
-                            <li class="design_preview_submenu"
+                            <li class="design_preview_submenu preview_slide_btn"
                                 style="background-image: url({{ url("/images/ribbon_imgs/design-pre-1.png") }});">
                                 Preview
                                 Slide
                             </li>
-                            <li class="design_preview_submenu">Preview Group</li>
-                            <li class="design_preview_submenu">Preview Quiz</li>
+                            <li class="design_preview_submenu preview_group_btn">Preview Group</li>
+                            <li class="design_preview_submenu preview_quiz_btn">Preview Quiz</li>
                         </ul>
                     </div>
                     <button class="ribbon-button">
