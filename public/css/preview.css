@@ -27,3 +27,11 @@
     border-radius: 5px;
     border: 1px solid darkseagreen;
 }
+
+.quiz_hide {
+    display: none;
+}
+
+.quiz_show {
+    display: block;
+}

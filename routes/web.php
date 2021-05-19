@@ -44,6 +44,7 @@ Route::group(['middleware' => 'role:manager'], function() {
 });
 
 Route::get('/preview_slide/{id}', [PreviewController::class, 'preview_slide']);
+Route::get('/preview_exam/{id}', [PreviewController::class, 'preview_exam']);
 
 Route::resource('users', UserController::class);
 Route::resource('exams', ExamController::class);
