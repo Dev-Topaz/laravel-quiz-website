@@ -18,7 +18,7 @@
                 {!! $quiz->media_element !!}
             </div>
             <div id="type_id" style="display: none;">{!! $quiz->type_id !!}</div>
-            <div id="answer" style="display: none;">{!! $quiz->answer !!}</div>
+            <div id="correct_answer" style="display: none;">{!! $quiz->answer !!}</div>
             <div id="attempts" style="display: none;">{!! $quiz->attempts !!}</div>
             <div id="feedback_correct" style="display: none;">{!! $quiz->feedback_correct !!}</div>
             <div id="feedback_incorrect" style="display: none;">{!! $quiz->feedback_incorrect !!}</div>

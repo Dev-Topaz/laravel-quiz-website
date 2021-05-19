@@ -418,26 +418,6 @@ class QuizController extends Controller
      */
     public function edit(Quiz $quiz)
     {
-//        if ($quiz->type_id == 6) {
-//            $sequence_array = explode(';', $quiz->answer);
-//            array_pop($sequence_array);
-//            $quiz->sequence_array = $sequence_array;
-//        }
-//        if ($quiz->type_id == 7) {
-//            $matching = explode('@', $quiz->answer);
-//            array_pop($matching);
-//
-//            $matching_array = [];
-//            $item_array = [];
-//
-//            foreach ($matching as $item) {
-//                array_push($item_array, explode(';', $item)[0]);
-//                array_push($matching_array, explode(';', $item)[1]);
-//            }
-//
-//            $quiz->item_array = $item_array;
-//            $quiz->matching_array = $matching_array;
-//        }
         return view('quizes.update', ['quiz' => $quiz]);
     }
 

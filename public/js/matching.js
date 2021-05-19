@@ -44,8 +44,8 @@ $('#add_matching').click(function () {
 
 });
 
-function swap_value(a, b) {
-    tmp = a.html();
-    a.html(b.html());
-    b.html(tmp);
-}
+// function swap_value(a, b) {
+//     tmp = a.html();
+//     a.html(b.html());
+//     b.html(tmp);
+// }

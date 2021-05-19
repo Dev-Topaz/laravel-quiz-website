@@ -331,7 +331,7 @@
                                 Picture</a><a href="javascript:void(0)" onclick="deleteCanvas()"
                                               style="padding: 0 10px">Delete Shape</a></div>
                     </div>
-                    <div id="hotspots_one_column" style="{{ $quiz->answer == '' ? 'display:flex' : 'display:none'}}">
+                    <div id="hotspots_one_column" style="flex-direction: column;{{ $quiz->answer == '' ? 'display:flex' : 'display:none'}}">
                         <h4>Hotspots</h4>
                         <div id="hotspots">
                             <div id="hotspots_only_from_files">
