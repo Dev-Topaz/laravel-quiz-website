@@ -48,6 +48,10 @@
                    class="form-control @error('video') is-invalid @enderror"
                    name="video"
                    value="{{ $quiz->video }}" autocomplete="video" autofocus hidden>
+            <input id="audio" type="text"
+                   class="form-control @error('audio') is-invalid @enderror"
+                   name="audio"
+                   value="{{ $quiz->audio }}" autocomplete="audio" autofocus hidden>
             <input id="media_element" type="text"
                    class="form-control @error('media_element') is-invalid @enderror"
                    name="media_element"
@@ -116,18 +120,14 @@
                                  id="form_view_media_element"
                                  style="{{ isset($quiz->media) ? 'display: flex' : 'display: none' }};height: 70px"
                                  onclick="show_pic_properties()">
-                            <video height="70"
-                                   style="{{ isset($quiz->video) ? 'display: flex' : 'display: none' }}"
-                                   id="form_view_video_element" onclick="show_video_properties()">
-                                <source src="{{ $quiz->video ?? '#' }}" type="video/mp4">
-                            </video>
+                            <img src="{{ url('/images/add_question.png') }}" alt="" style="padding:0 3px;{{ isset($quiz->video) ? '' : 'display: none' }}" id="form_view_video_element" onclick="show_video_properties()">
                         </div>
-                        <a href="javascript:void(0)" style="padding: 0 3px;" id="form_view_add_audio">Audio</a>
+                        <a href="javascript:void(0)" style="padding: 0 3px;{{ isset($quiz->audio) ? 'display: none' : '' }}" id="form_view_add_audio">Audio</a>
+                        <img src="{{ url('/images/add_question.png') }}" alt="" style="padding:0 3px;{{ isset($quiz->video) ? '' : 'display: none' }}"
+                             id="form_view_audio_mark">
                         <input type="file" id="form_view_input_media_element" hidden>
-                        <form action="{{ url('/upload_video') }}" method="post" id="form_view_upload_video">
-                            @csrf
-                            <input type="file" id="form_view_input_video_element" hidden>
-                        </form>
+                        <input type="file" id="form_view_input_video_element" hidden>
+                        <input type="file" id="form_view_input_audio_element" hidden>
                     </div>
                 </div>
             </div>
@@ -594,6 +594,21 @@
         <div style="display: flex;justify-content: space-around;">
             <a href="javascript:void(0)" style="padding:5px" onclick="change_video()">Change</a>
             <a href="javascript:void(0)" style="padding:5px" onclick="delete_video()">Delete</a>
+        </div>
+    </div>
+    <div class="cell-4 audio_properties" style="padding: 0 20px;display: none;">
+        <div style="display: flex;justify-content: space-around;align-items: center;">
+            <h3 style="border-bottom: 1px dotted grey;padding: 15px 10px;">Audio Properties</h3>
+            <p style="color: gray;font-size: 18px;" onclick="close_audio_properties()">x</p>
+        </div>
+        <div style="width: 100%;" id="audio_properties">
+            <audio controls="controls">
+                <source src="" type="audio/mpeg">
+            </audio>
+        </div>
+        <div style="display: flex;justify-content: space-around;">
+            <a href="javascript:void(0)" style="padding:5px" onclick="change_audio()">Change</a>
+            <a href="javascript:void(0)" style="padding:5px" onclick="delete_audio()">Delete</a>
         </div>
     </div>
 </div>

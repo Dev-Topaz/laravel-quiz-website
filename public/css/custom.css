@@ -318,7 +318,7 @@ span.icon img {
 }
 
 .view_switch_btn {
-    width: 164px;
+    width: 50%;
     height: 31px;
     display: flex;
     align-content: center;

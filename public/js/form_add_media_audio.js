@@ -133,7 +133,7 @@ $('#select_background_img').change(function () {
 * */
 
 $('#form_view_add_video').click(function () {
-    // $('#form_view_input_video_element').trigger('click');
+    $('#form_view_input_video_element').trigger('click');
 });
 
 $('#form_view_input_video_element').change(function () {
@@ -164,9 +164,9 @@ $('#form_view_input_video_element').change(function () {
 
                 if (response.success == 1) { // Uploaded successfully
 
-                    console.log(response);
-                    $('#form_view_video_element source').attr('src', response.filepath);
+                    console.log(response.filepath);
                     $('#video').val(response.filepath);
+                    $('#video_properties_video source').attr('src', $('#video').val()).appendTo($('#video_properties_video source').parent());
                     $('#form_view_add_picture').hide();
                     $('#form_view_add_video').hide();
                     $('#form_view_video_element').show();
@@ -197,7 +197,7 @@ $('#form_view_input_video_element').change(function () {
 function show_video_properties() {
     $('.slide_option').hide();
     $('.video_properties').show();
-    $('#video_properties_video source').attr('src', $('#video').val());
+    // $('#video_properties_video source').attr('src', $('#video').val()).appendTo($('#video_properties_video source').parent());
 
 }
 
@@ -205,3 +205,76 @@ function close_video_properties() {
     $('.slide_option').show();
     $('.video_properties').hide();
 }
+
+function change_video() {
+    $('#form_view_input_video_element').trigger('click');
+}
+
+/*
+* *************** Add Audio
+* */
+$('#form_view_add_audio').click(function () {
+    $('#form_view_input_audio_element').trigger('click');
+});
+
+$('#form_view_input_audio_element').change(function () {
+    console.log('changed');
+    var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
+    var files = $('#form_view_input_audio_element')[0].files;
+
+    if (files.length > 0) {
+        var fd = new FormData();
+
+        // Append data
+        fd.append('file', files[0]);
+        fd.append('_token', CSRF_TOKEN);
+
+        // Hide alert
+        $('#responseMsg').hide();
+
+        // AJAX request
+        $.ajax({
+            url: `/upload_audio`,
+            method: 'post',
+            data: fd,
+            contentType: false,
+            processData: false,
+            dataType: 'json',
+            success: function (response) {
+
+
+                if (response.success == 1) { // Uploaded successfully
+
+                    console.log(response);
+                    $('#form_view_add_audio').hide();
+                    $('#form_view_audio_mark').show();
+                    $('#audio').val(response.filepath);
+                } else if (response.success == 2) { // File not uploaded
+
+                    // Response message
+                    $('#responseMsg').removeClass("alert-success");
+                    $('#responseMsg').addClass("alert-danger");
+                    $('#responseMsg').html(response.message);
+                    $('#responseMsg').show();
+                } else {
+                    // Display Error
+                    $('#err_file').text(response.error);
+                    $('#err_file').removeClass('d-none');
+                    $('#err_file').addClass('d-block');
+                }
+            },
+            error: function (response) {
+                console.log("error : " + JSON.stringify(response));
+            }
+        });
+    } else {
+        alert("Please select a file.");
+    }
+
+});
+
+$('#form_view_audio_mark').click(function () {
+    $('.audio_properties').show();
+    $('.slide_option').hide();
+    $('#audio_properties source').attr('src', $('#audio').val()).appendTo($('#audio_properties source').parent());
+});

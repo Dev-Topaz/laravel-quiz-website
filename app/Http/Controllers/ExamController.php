@@ -49,6 +49,8 @@ class ExamController extends Controller
             'name' => 'required',
             'attempt_number' => 'required',
             'passing_score' => 'required',
+            'screen_height' => 'required',
+            'screen_width' => 'required',
         ]);
 
         $exam = Exam::create([
@@ -58,6 +60,8 @@ class ExamController extends Controller
             'status' => true,
             'attempt_number' => $request->attempt_number,
             'passing_score' => $request->passing_score,
+            'screen_height' => $request->screen_height,
+            'screen_width' => $request->screen_width,
         ]);
 
         ExamGroup::create([
