@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\QuizController;
+use App\Http\Controllers\UploadController;
+use App\Http\Controllers\PreviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +43,12 @@ Route::group(['middleware' => 'role:manager'], function() {
     Route::put('/quizes/{quiz}', [QuizController::class, 'update']);
     Route::delete('/quizes/{quiz}', [QuizController::class, 'destroy']);
 });
+
+Route::get('/preview_slide/{id}', [PreviewController::class, 'preview_slide']);
+Route::get('/preview_group/{id}', [PreviewController::class, 'preview_group']);
+Route::get('/preview_exam/{id}', [PreviewController::class, 'preview_exam']);
+
+Route::post('/upload_video', [UploadController::class, 'upload_video']);
 
 Route::resource('users', UserController::class);
 Route::resource('exams', ExamController::class);

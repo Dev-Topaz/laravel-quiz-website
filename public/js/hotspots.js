@@ -16,102 +16,107 @@ var canvas_info = $('#answer_content').val();
 var canvas_bg_url = canvas_info.split('@')[0];
 var canvas_item_info = canvas_info.split('@')[1];
 
-var json_bg_url = JSON.parse(canvas_bg_url);
-var json_canvas_item = JSON.parse(canvas_item_info);
+if (canvas_info != '') {
 
-fabric.Image.fromURL(root_url + '/' + json_bg_url.background, function (img) {
-    canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
-        scaleX: canvas.width / img.width,
-        scaleY: canvas.height / img.height
+    var json_bg_url = JSON.parse(canvas_bg_url);
+    var json_canvas_item = JSON.parse(canvas_item_info);
+
+    fabric.Image.fromURL(root_url + '/' + json_bg_url.background, function (img) {
+        canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
+            scaleX: canvas.width / img.width,
+            scaleY: canvas.height / img.height
+        });
     });
-});
 
-console.log(json_canvas_item.type);
+    console.log(json_canvas_item.type);
 
-if (json_canvas_item.type === 'circle') {
+    if (json_canvas_item.type === 'circle') {
 
-    canvas.add(new fabric.Circle({
-        radius: json_canvas_item.radius,
-        strokeWidth: 3,
-        stroke: '#288f02',
-        fill: '#c1fc8580',
-        originX: 'center',
-        originY: 'center',
-        top: json_canvas_item.top,
-        left: json_canvas_item.left
-    }));
-}
+        canvas.add(new fabric.Circle({
+            radius: json_canvas_item.radius,
+            strokeWidth: 3,
+            stroke: '#288f02',
+            fill: '#c1fc8580',
+            originX: 'center',
+            originY: 'center',
+            top: json_canvas_item.top,
+            left: json_canvas_item.left
+        }));
+    }
 
-if (json_canvas_item.type === 'rect') {
+    if (json_canvas_item.type === 'rect') {
 
-    canvas.add(new fabric.Rect({
-        width: json_canvas_item.width,
-        height: json_canvas_item.height,
-        strokeWidth: 3,
-        stroke: '#288f02',
-        fill: '#c1fc8580',
-        top: json_canvas_item.top,
-        left: json_canvas_item.left
-    }));
-}
+        canvas.add(new fabric.Rect({
+            width: json_canvas_item.width,
+            height: json_canvas_item.height,
+            strokeWidth: 3,
+            stroke: '#288f02',
+            fill: '#c1fc8580',
+            top: json_canvas_item.top,
+            left: json_canvas_item.left
+        }));
+    }
 
-if (json_canvas_item.type === 'polyline') {
+    if (json_canvas_item.type === 'polyline') {
 
-    canvas.add(new fabric.Polygon(json_canvas_item.points, {
-        strokeWidth: 3,
-        stroke: '#288f02',
-        fill: '#c1fc8580'
-    }));
-}
-canvas.renderAll();
+        canvas.add(new fabric.Polygon(json_canvas_item.points, {
+            strokeWidth: 3,
+            stroke: '#288f02',
+            fill: '#c1fc8580'
+        }));
+    }
+    canvas.renderAll();
 
-var slide_view_canvas = new fabric.Canvas('slide_view_hotspots_canvas');
+    var slide_view_canvas = new fabric.Canvas('slide_view_hotspots_canvas');
 
-fabric.Image.fromURL(root_url + '/' + json_bg_url.background, function (img) {
-    slide_view_canvas.setBackgroundImage(img, slide_view_canvas.renderAll.bind(slide_view_canvas), {
-        scaleX: slide_view_canvas.width / img.width,
-        scaleY: slide_view_canvas.height / img.height
+    fabric.Image.fromURL(root_url + '/' + json_bg_url.background, function (img) {
+        slide_view_canvas.setBackgroundImage(img, slide_view_canvas.renderAll.bind(slide_view_canvas), {
+            scaleX: 287 / img.width,
+            scaleY: 214 / img.height
+        });
     });
-});
 
-console.log(json_canvas_item.type);
+    console.log(json_canvas_item.type);
 
-if (json_canvas_item.type === 'circle') {
+    if (json_canvas_item.type === 'circle') {
 
-    slide_view_canvas.add(new fabric.Circle({
-        radius: json_canvas_item.radius,
-        strokeWidth: 3,
-        stroke: '#288f02',
-        fill: '#c1fc8580',
-        originX: 'center',
-        originY: 'center',
-        top: json_canvas_item.top,
-        left: json_canvas_item.left
-    }));
+        slide_view_canvas.add(new fabric.Circle({
+            radius: json_canvas_item.radius,
+            strokeWidth: 3,
+            stroke: '#288f02',
+            fill: '#c1fc8580',
+            originX: 'center',
+            originY: 'center',
+            top: json_canvas_item.top,
+            left: json_canvas_item.left
+        }));
+    }
+
+    if (json_canvas_item.type === 'rect') {
+
+        slide_view_canvas.add(new fabric.Rect({
+            width: json_canvas_item.width,
+            height: json_canvas_item.height,
+            strokeWidth: 3,
+            stroke: '#288f02',
+            fill: '#c1fc8580',
+            top: json_canvas_item.top,
+            left: json_canvas_item.left
+        }));
+    }
+
+    if (json_canvas_item.type === 'polyline') {
+
+        slide_view_canvas.add(new fabric.Polygon(json_canvas_item.points, {
+            strokeWidth: 3,
+            stroke: '#288f02',
+            fill: '#c1fc8580'
+        }));
+    }
+    slide_view_canvas.renderAll();
 }
 
-if (json_canvas_item.type === 'rect') {
 
-    slide_view_canvas.add(new fabric.Rect({
-        width: json_canvas_item.width,
-        height: json_canvas_item.height,
-        strokeWidth: 3,
-        stroke: '#288f02',
-        fill: '#c1fc8580',
-        top: json_canvas_item.top,
-        left: json_canvas_item.left
-    }));
-}
-
-if (json_canvas_item.type === 'polyline') {
-
-    slide_view_canvas.add(new fabric.Polygon(json_canvas_item.points, {
-        strokeWidth: 3,
-        stroke: '#288f02',
-        fill: '#c1fc8580'
-    }));
-}
-slide_view_canvas.renderAll();
 
 $('#hotspots_only_from_files_image').change(function () {
 

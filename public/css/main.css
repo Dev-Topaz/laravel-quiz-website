@@ -754,3 +754,7 @@ div[contenteditable="true"] {
     border: 1px solid #ee8845;
     background: #fbe5da;
 }
+
+#drag_words {
+    padding: 5px;
+}

@@ -289,4 +289,19 @@ function show_correct_view() {
     }
 }
 
+/*
+*  For Preview
+* */
+var root_url = $('meta[name=url]').attr('content');
 
+$('.preview_quiz_btn').click(function () {
+    window.open(root_url + '/preview_exam/' + $('#exam_id').val());
+});
+
+$('.preview_slide_btn').click(function () {
+    window.open(root_url + '/preview_slide/' + $('#quiz_id').val());
+});
+
+$('.preview_group_btn').click(function () {
+    window.open(root_url + '/preview_group/' + $('#exam_group_id').val());
+});
