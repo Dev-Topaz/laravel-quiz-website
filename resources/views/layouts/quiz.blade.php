@@ -34,7 +34,7 @@
 </head>
 <body>
 <div id="app">
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" style="margin: 0">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
             <!--                    {{ config('app.name', 'Quiz Maker') }}-->
@@ -84,7 +84,7 @@
         </div>
     </nav>
 
-    <main class="py-4 quiz">
+    <main class="quiz">
         @yield('content')
     </main>
 

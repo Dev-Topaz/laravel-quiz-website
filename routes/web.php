@@ -49,6 +49,7 @@ Route::get('/preview_group/{id}', [PreviewController::class, 'preview_group']);
 Route::get('/preview_exam/{id}', [PreviewController::class, 'preview_exam']);
 
 Route::post('/upload_video', [UploadController::class, 'upload_video']);
+Route::post('/upload_audio', [UploadController::class, 'upload_audio']);
 
 Route::resource('users', UserController::class);
 Route::resource('exams', ExamController::class);
