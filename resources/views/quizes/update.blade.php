@@ -111,10 +111,10 @@
                     <div class="cell-3" style="display: flex;align-items: center;justify-content: center;padding: 0;">
                         <div id="form_view_pic_video_element">
                             <a href="javascript:void(0)"
-                               style="padding: 0 3px;{{ (isset($quiz->media) && isset($quiz->video)) ? 'display: none' : '' }}"
+                               style="padding: 0 3px;{{ (isset($quiz->media) || isset($quiz->video)) ? 'display: none' : '' }}"
                                id="form_view_add_picture">Pic</a>
                             <a href="javascript:void(0)"
-                               style="padding: 0 3px;{{ (isset($quiz->media) && isset($quiz->video)) ? 'display: none' : '' }}"
+                               style="padding: 0 3px;{{ (isset($quiz->media) || isset($quiz->video)) ? 'display: none' : '' }}"
                                id="form_view_add_video">Video</a>
                             <img src="{{ $quiz->media ?? '#' }}" alt="form_view_media_element"
                                  id="form_view_media_element"
@@ -431,7 +431,7 @@
                  style="width: 100%;height:100%;padding: 20px;{{ isset($quiz->background_img) ? ('background-image:' . $quiz->background_img . ';') : '' }}">
                 {!! $quiz->question_element !!}
                 {!! $quiz->answer_element !!}
-                @if (isset($quiz->media_element))
+                @if (isset($quiz->media))
                     {!! $quiz->media_element !!}
                 @else
                     <div class="slide_view_media_element slide_view_group" style="z-index: 3;display: none;">
