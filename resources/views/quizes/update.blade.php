@@ -1,5 +1,5 @@
 <div class="row" style="height: 100%;margin: 0;">
-    <div class="cell-8 form_view_element" style="background: #dcdcdc;display: flex;">
+    <div class="cell-9 form_view_element" style="background: #dcdcdc;display: flex;">
         <div style="margin: auto 10px;background: #f1f1f1;width: 100%;padding: 20px;">
             <input id="select_background_img" type="file" hidden>
             <input id="exam_id" type="text"
@@ -423,9 +423,9 @@
             </table>
         </div>
     </div>
-    <div class="cell-8 slide_view_element" style="background: #dcdcdc;display: none;">
+    <div class="cell-9 slide_view_element" style="background: #dcdcdc;display: none;overflow: scroll">
         <div
-            style="top:50%;transform:translateY(-50%);margin: auto 0;width: 100%;height:500px;{{ $quiz->exam_group->exam->theme_style ?? 'background:white' }}"
+            style="top:50%;left:50%;transform:translate(-50%, -50%);margin: auto 0;width: {{ $quiz->exam_group->exam->screen_width }}px;height:{{ $quiz->exam_group->exam->screen_height }}px;{{ $quiz->exam_group->exam->theme_style ?? 'background:white' }}"
             id="slide_view_container">
             <div id="quiz_background_container"
                  style="width: 100%;height:100%;padding: 20px;{{ isset($quiz->background_img) ? ('background-image:' . $quiz->background_img . ';') : '' }}">
@@ -441,7 +441,7 @@
             </div>
         </div>
     </div>
-    <div class="cell-4 slide_option" style="padding: 0 20px;">
+    <div class="cell-3 slide_option" style="padding: 0 20px;">
         <h3 style="border-bottom: 1px dotted grey;padding: 15px 10px;">Slide Options</h3>
         <div>
             <div>
@@ -568,7 +568,7 @@
             <input type="text" id="target_element" value="" hidden>
         </div>
     </div>
-    <div class="cell-4 picture_properties" style="padding: 0 20px;display: none;">
+    <div class="cell-3 picture_properties" style="padding: 0 20px;display: none;">
         <div style="display: flex;justify-content: space-around;align-items: center;">
             <h3 style="border-bottom: 1px dotted grey;padding: 15px 10px;">Picture Properties</h3>
             <p style="color: gray;font-size: 18px;" onclick="close_pic_properties()">x</p>
@@ -581,7 +581,7 @@
             <a href="javascript:void(0)" style="padding:5px" onclick="delete_media_pic()">Delete</a>
         </div>
     </div>
-    <div class="cell-4 video_properties" style="padding: 0 20px;display: none;">
+    <div class="cell-3 video_properties" style="padding: 0 20px;display: none;">
         <div style="display: flex;justify-content: space-around;align-items: center;">
             <h3 style="border-bottom: 1px dotted grey;padding: 15px 10px;">Video Properties</h3>
             <p style="color: gray;font-size: 18px;" onclick="close_video_properties()">x</p>
@@ -596,7 +596,7 @@
             <a href="javascript:void(0)" style="padding:5px" onclick="delete_video()">Delete</a>
         </div>
     </div>
-    <div class="cell-4 audio_properties" style="padding: 0 20px;display: none;">
+    <div class="cell-3 audio_properties" style="padding: 0 20px;display: none;">
         <div style="display: flex;justify-content: space-around;align-items: center;">
             <h3 style="border-bottom: 1px dotted grey;padding: 15px 10px;">Audio Properties</h3>
             <p style="color: gray;font-size: 18px;" onclick="close_audio_properties()">x</p>
