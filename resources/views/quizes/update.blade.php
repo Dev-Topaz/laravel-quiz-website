@@ -6,6 +6,10 @@
                    class="form-control @error('exam_id') is-invalid @enderror" name="exam_id"
                    value="{{ $quiz->exam_group->exam_id }}" required autocomplete="exam_id" autofocus
                    hidden>
+            <input id="exam_group_id" type="text"
+                   class="form-control @error('exam_group_id') is-invalid @enderror" name="exam_group_id"
+                   value="{{ $quiz->exam_group->id }}" required autocomplete="exam_group_id" autofocus
+                   hidden>
             <input id="background_img" type="text"
                    class="form-control @error('background_img') is-invalid @enderror" name="background_img"
                    value="{{ $quiz->background_img }}" required autocomplete="background_img" autofocus
