@@ -614,17 +614,10 @@
 </div>
 
 <script>
-    // $('.slide_view_question_element').click(function (evt) {
-    //     console.log(evt.pageX - $(this).offset().left);
-    //     if(evt.pageX - $(this).offset().left > 10) $(this).draggable({disabled: true});
-    //     else $(this).draggable();
-    // });
-    // $('.slide_view_question_element').mouseup(function () {
-    //     console.log("mouseup");
-    //     $(this).draggable({disabled: true});
-    // });
-    $('.slide_view_group').draggable();
-    $('.slide_view_group').resizable();
+    $(function (){
+        $('.slide_view_group').draggable({ cancel: 'div.cancel_drag'})
+        $('.slide_view_group').resizable();
+    });
 
     answer_slide2form($('#answer_element').val(), $('#answer_content').val());
     $('#question').html(question_slide2form($('#question_element').val()));

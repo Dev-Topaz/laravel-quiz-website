@@ -294,8 +294,8 @@
     //     save_choice_data();
     // });
 
-    $('.slide_view_group').draggable();
-    $('.slide_view_group').resizable();
+    // $('.slide_view_group').draggable();
+    // $('.slide_view_group').resizable();
 
     function question_slide2form(question) {
         const element = $(question);

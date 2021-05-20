@@ -1673,44 +1673,44 @@
                             </span>
                             <span class="caption">Duplicate</span>
                         </button>
-                        <button class="ribbon-icon-button">
-                            <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/home/link.png") }}">
-                            </span>
-                            <span class="caption dropdown-toggle">Link</span>
-                            <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">
-                                <li class="form_view_home_link"
-                                    style="background-image: url({{ url("/images/ribbon_imgs/images/Untitled-1_03.png") }});">
-                                    To
-                                    Slide Above
-                                </li>
-                                <li class="form_view_home_link"
-                                    style="background-image: url({{ url("/images/ribbon_imgs/images/Untitled-1_05.png") }}); border-bottom: 1px dotted grey;">
-                                    To
-                                    Slide Below
-                                </li>
-                                <li class="form_view_home_link"
-                                    style="background-image: url({{ url("/images/ribbon_imgs/images/Untitled-1_06.png") }});">
-                                    To
-                                    Top of Group
-                                </li>
-                                <li class="form_view_home_link"
-                                    style="background-image: url({{ url("/images/ribbon_imgs/images/Untitled-1_07.png") }}); border-bottom: 1px dotted grey;">
-                                    To
-                                    Bottom of Group
-                                </li>
-                                <li class="form_view_home_link"
-                                    style="background-image: url({{ url("/images/ribbon_imgs/images/Untitled-1.png") }});"
-                                    disabled>Unlink
-                                </li>
-                            </ul>
-                        </button>
-                        <button class="ribbon-icon-button">
-                            <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/home/importq.png") }}">
-                            </span>
-                            <span class="caption ">Import Questions</span>
-                        </button>
+{{--                        <button class="ribbon-icon-button">--}}
+{{--                            <span class="icon">--}}
+{{--                                <img src="{{ url("/images/ribbon_imgs/home/link.png") }}">--}}
+{{--                            </span>--}}
+{{--                            <span class="caption dropdown-toggle">Link</span>--}}
+{{--                            <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">--}}
+{{--                                <li class="form_view_home_link"--}}
+{{--                                    style="background-image: url({{ url("/images/ribbon_imgs/images/Untitled-1_03.png") }});">--}}
+{{--                                    To--}}
+{{--                                    Slide Above--}}
+{{--                                </li>--}}
+{{--                                <li class="form_view_home_link"--}}
+{{--                                    style="background-image: url({{ url("/images/ribbon_imgs/images/Untitled-1_05.png") }}); border-bottom: 1px dotted grey;">--}}
+{{--                                    To--}}
+{{--                                    Slide Below--}}
+{{--                                </li>--}}
+{{--                                <li class="form_view_home_link"--}}
+{{--                                    style="background-image: url({{ url("/images/ribbon_imgs/images/Untitled-1_06.png") }});">--}}
+{{--                                    To--}}
+{{--                                    Top of Group--}}
+{{--                                </li>--}}
+{{--                                <li class="form_view_home_link"--}}
+{{--                                    style="background-image: url({{ url("/images/ribbon_imgs/images/Untitled-1_07.png") }}); border-bottom: 1px dotted grey;">--}}
+{{--                                    To--}}
+{{--                                    Bottom of Group--}}
+{{--                                </li>--}}
+{{--                                <li class="form_view_home_link"--}}
+{{--                                    style="background-image: url({{ url("/images/ribbon_imgs/images/Untitled-1.png") }});"--}}
+{{--                                    disabled>Unlink--}}
+{{--                                </li>--}}
+{{--                            </ul>--}}
+{{--                        </button>--}}
+{{--                        <button class="ribbon-icon-button">--}}
+{{--                            <span class="icon">--}}
+{{--                                <img src="{{ url("/images/ribbon_imgs/home/importq.png") }}">--}}
+{{--                            </span>--}}
+{{--                            <span class="caption ">Import Questions</span>--}}
+{{--                        </button>--}}
                     </div>
                     <span class="title">Slide</span>
                     <div class="group-divider"></div>
