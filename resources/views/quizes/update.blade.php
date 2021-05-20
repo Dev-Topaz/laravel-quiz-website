@@ -434,7 +434,7 @@
                 @if (isset($quiz->media_element))
                     {!! $quiz->media_element !!}
                 @else
-                    <div class="slide_view_media_element slide_view_group" style="z-index: 3;">
+                    <div class="slide_view_media_element slide_view_group" style="z-index: 3;display: none;">
                         <img src="#" alt="slide_view_media" style="width: 100%;height: 100%;">
                     </div>
                 @endif
