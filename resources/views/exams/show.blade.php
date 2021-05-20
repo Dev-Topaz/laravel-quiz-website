@@ -1941,7 +1941,7 @@
                 <div class="create_form" id="quiz_form">
                     <div class="content_body">
                         <div class="row">
-                            <div class="cell-3">
+                            <div class="cell-2">
                                 <div style="display: flex; justify-content: space-between;">
                                     <div id="form_view_btn" class="view_switch_btn clicked form_view"
                                         style="background-image: url('{{ url('/images/ribbon_imgs/form_view.png') }}');">
@@ -1964,7 +1964,7 @@
                                                 @else
                                                 @foreach($exam_group->quizes as $quiz)
                                                 <li id="{{ $quiz->id }}"
-                                                    data-caption="{{ substr(strip_tags($quiz->question_element), 0,  29) }}{{ strlen(strip_tags($quiz->question_element)) < 30 ? '' : '...' }}"
+                                                    data-caption="{{ strip_tags($quiz->question_element) }}"
                                                     data-content="<i>{{ $quiz->Quiz_type->name }}</i>"></li>
                                                 @endforeach
                                                 @endif
@@ -1974,7 +1974,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="cell-9" id="quiz_view" style="padding: 0;">
+                            <div class="cell-10" id="quiz_view" style="padding: 0;">
                             </div>
                         </div>
                     </div>

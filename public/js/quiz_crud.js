@@ -40,7 +40,7 @@ function create_quiz(quiz_type, root_url, token) {
 
         case (3):
             lv.insertAfter(node, {
-                caption: 'Choose whether the statement...',
+                caption: 'Choose whether the statement is true or false:',
                 content: '<i>True/False<i>'
             });
             break;
@@ -61,14 +61,14 @@ function create_quiz(quiz_type, root_url, token) {
 
         case (6):
             lv.insertAfter(node, {
-                caption: 'Arrange the following items in the...',
+                caption: 'Arrange the following items in the correct order:',
                 content: '<i>Sequence<i>'
             });
             break;
 
         case (7):
             lv.insertAfter(node, {
-                caption: 'Match the following items with th...',
+                caption: 'Match the following items with their descriptions:',
                 content: '<i>Matching<i>'
             });
             break;
@@ -82,21 +82,21 @@ function create_quiz(quiz_type, root_url, token) {
 
         case (9):
             lv.insertAfter(node, {
-                caption: 'Choose the correct answer in ...',
+                caption: 'Choose the correct answer in each drop-down list:',
                 content: '<i>Select from Lists<i>'
             });
             break;
 
         case (10):
             lv.insertAfter(node, {
-                caption: 'Drag and drop the words to their ...',
+                caption: 'Drag and drop the words to their places:',
                 content: '<i>Drag the Words<i>'
             });
             break;
 
         case (11):
             lv.insertAfter(node, {
-                caption: 'Click on the correct area in th...',
+                caption: 'Click on the correct area in the image.',
                 content: '<i>Hotspot<i>'
             });
             break;

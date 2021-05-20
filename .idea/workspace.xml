@@ -6,47 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="9d9fd7c1-0dd1-410f-8492-d59f6bb67158" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ExamController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ExamController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UploadController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UploadController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/custom.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1621493672_small.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1621493796_small.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1621494045_small.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1621494158_small.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1621494513_small.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1621495110_small.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1621495333_small.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1621495714_small.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1621496021_small.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1621496352_small.webm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1621496411_small.webm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1621496689_small.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1621496991_small.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1621497050_small.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1621499013_small.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60a41440b0968.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60a420bb837fd.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60a42143477a4.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60a426d94c33a.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60a490b6b5cc3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60a491439bd4f.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60a4f8342db0b.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60a4f8f24bc1f.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60a54559b5b2d.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60a545f7100ec.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60a54c4142d89.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60a54cd5541d2.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60a54df3a865a.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60a56b80e0f32.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60a56bf3b2632.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/form_add_media_audio.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/form_add_media_audio.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Quiz.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Quiz.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizmaker.sql" beforeDir="false" afterPath="$PROJECT_DIR$/quizmaker.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/exams/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/exams/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/exams/update.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/exams/update.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/quiz.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/quiz.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/quizes/update.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/quizes/update.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/exams/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/exams/show.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -287,7 +249,7 @@
       <workItem from="1621332132633" duration="18067000" />
       <workItem from="1621379278420" duration="26514000" />
       <workItem from="1621415021587" duration="2262000" />
-      <workItem from="1621418176380" duration="43988000" />
+      <workItem from="1621418176380" duration="47163000" />
     </task>
     <servers />
   </component>
