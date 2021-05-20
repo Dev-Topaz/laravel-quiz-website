@@ -125,7 +125,7 @@ let attempts = 0;
 rearrange_preview_ui();
 
 function rearrange_preview_ui() {
-    switch ($('#type_id').html()) {
+    switch ($('.quiz_show .type_id').html()) {
         case '6':
             var sequence_items = $('#sortable li');
             shuffle(sequence_items)
@@ -258,6 +258,7 @@ function preview() {
 
                 $('#' + next_show_id).removeClass('quiz_hide');
                 $('#' + next_show_id).addClass('quiz_show');
+                rearrange_preview_ui();
                 $('.preview_btn button').html('Submit');
             }
             break;

@@ -127,3 +127,81 @@ $('#select_background_img').change(function () {
     reader.readAsDataURL(this.files[0]);
 
 });
+
+/*
+* ************ Add & Upload Video **************
+* */
+
+$('#form_view_add_video').click(function () {
+    // $('#form_view_input_video_element').trigger('click');
+});
+
+$('#form_view_input_video_element').change(function () {
+    // $('#form_view_upload_video').submit();
+    var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
+    var files = $('#form_view_input_video_element')[0].files;
+
+    if (files.length > 0) {
+        var fd = new FormData();
+
+        // Append data
+        fd.append('file', files[0]);
+        fd.append('_token', CSRF_TOKEN);
+
+        // Hide alert
+        $('#responseMsg').hide();
+
+        // AJAX request
+        $.ajax({
+            url: `/upload_video`,
+            method: 'post',
+            data: fd,
+            contentType: false,
+            processData: false,
+            dataType: 'json',
+            success: function (response) {
+
+
+                if (response.success == 1) { // Uploaded successfully
+
+                    console.log(response);
+                    $('#form_view_video_element source').attr('src', response.filepath);
+                    $('#video').val(response.filepath);
+                    $('#form_view_add_picture').hide();
+                    $('#form_view_add_video').hide();
+                    $('#form_view_video_element').show();
+                } else if (response.success == 2) { // File not uploaded
+
+                    // Response message
+                    $('#responseMsg').removeClass("alert-success");
+                    $('#responseMsg').addClass("alert-danger");
+                    $('#responseMsg').html(response.message);
+                    $('#responseMsg').show();
+                } else {
+                    // Display Error
+                    $('#err_file').text(response.error);
+                    $('#err_file').removeClass('d-none');
+                    $('#err_file').addClass('d-block');
+                }
+            },
+            error: function (response) {
+                console.log("error : " + JSON.stringify(response));
+            }
+        });
+    } else {
+        alert("Please select a file.");
+    }
+
+});
+
+function show_video_properties() {
+    $('.slide_option').hide();
+    $('.video_properties').show();
+    $('#video_properties_video source').attr('src', $('#video').val());
+
+}
+
+function close_video_properties() {
+    $('.slide_option').show();
+    $('.video_properties').hide();
+}

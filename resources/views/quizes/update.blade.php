@@ -40,6 +40,10 @@
                    class="form-control @error('media') is-invalid @enderror"
                    name="media"
                    value="{{ $quiz->media }}" autocomplete="media" autofocus hidden>
+            <input id="video" type="text"
+                   class="form-control @error('video') is-invalid @enderror"
+                   name="video"
+                   value="{{ $quiz->video }}" autocomplete="video" autofocus hidden>
             <input id="media_element" type="text"
                    class="form-control @error('media_element') is-invalid @enderror"
                    name="media_element"
@@ -98,12 +102,28 @@
                     </div>
                     <div class="cell-3" style="display: flex;align-items: center;justify-content: center;padding: 0;">
                         <div id="form_view_pic_video_element">
-                            <a href="javascript:void(0)" style="padding: 0 3px;{{ isset($quiz->media) ? 'display: none' : '' }}" id="form_view_add_picture">Pic</a>
-                            <a href="javascript:void(0)" style="padding: 0 3px;{{ isset($quiz->media) ? 'display: none' : '' }}" id="form_view_add_video">Video</a>
-                            <img src="{{ $quiz->media ?? '#' }}" alt="form_view_media_element" id="form_view_media_element" style="{{ isset($quiz->media) ? 'display: flex' : 'display: none' }};height: 70px" onclick="show_pic_properties()">
+                            <a href="javascript:void(0)"
+                               style="padding: 0 3px;{{ (isset($quiz->media) && isset($quiz->video)) ? 'display: none' : '' }}"
+                               id="form_view_add_picture">Pic</a>
+                            <a href="javascript:void(0)"
+                               style="padding: 0 3px;{{ (isset($quiz->media) && isset($quiz->video)) ? 'display: none' : '' }}"
+                               id="form_view_add_video">Video</a>
+                            <img src="{{ $quiz->media ?? '#' }}" alt="form_view_media_element"
+                                 id="form_view_media_element"
+                                 style="{{ isset($quiz->media) ? 'display: flex' : 'display: none' }};height: 70px"
+                                 onclick="show_pic_properties()">
+                            <video height="70"
+                                   style="{{ isset($quiz->video) ? 'display: flex' : 'display: none' }}"
+                                   id="form_view_video_element" onclick="show_video_properties()">
+                                <source src="{{ $quiz->video ?? '#' }}" type="video/mp4">
+                            </video>
                         </div>
                         <a href="javascript:void(0)" style="padding: 0 3px;" id="form_view_add_audio">Audio</a>
                         <input type="file" id="form_view_input_media_element" hidden>
+                        <form action="{{ url('/upload_video') }}" method="post" id="form_view_upload_video">
+                            @csrf
+                            <input type="file" id="form_view_input_video_element" hidden>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -331,7 +351,8 @@
                                 Picture</a><a href="javascript:void(0)" onclick="deleteCanvas()"
                                               style="padding: 0 10px">Delete Shape</a></div>
                     </div>
-                    <div id="hotspots_one_column" style="flex-direction: column;{{ $quiz->answer == '' ? 'display:flex' : 'display:none'}}">
+                    <div id="hotspots_one_column"
+                         style="flex-direction: column;{{ $quiz->answer == '' ? 'display:flex' : 'display:none'}}">
                         <h4>Hotspots</h4>
                         <div id="hotspots">
                             <div id="hotspots_only_from_files">
@@ -399,9 +420,11 @@
         </div>
     </div>
     <div class="cell-8 slide_view_element" style="background: #dcdcdc;display: none;">
-        <div style="top:50%;transform:translateY(-50%);margin: auto 0;width: 100%;height:500px;{{ $quiz->exam_group->exam->theme_style ?? 'background:white' }}"
+        <div
+            style="top:50%;transform:translateY(-50%);margin: auto 0;width: 100%;height:500px;{{ $quiz->exam_group->exam->theme_style ?? 'background:white' }}"
             id="slide_view_container">
-            <div id="quiz_background_container" style="width: 100%;height:100%;padding: 20px;{{ isset($quiz->background_img) ? ('background-image:' . $quiz->background_img . ';') : '' }}">
+            <div id="quiz_background_container"
+                 style="width: 100%;height:100%;padding: 20px;{{ isset($quiz->background_img) ? ('background-image:' . $quiz->background_img . ';') : '' }}">
                 {!! $quiz->question_element !!}
                 {!! $quiz->answer_element !!}
                 @if (isset($quiz->media_element))
@@ -552,6 +575,21 @@
         <div style="display: flex;justify-content: space-around;">
             <a href="javascript:void(0)" style="padding:5px" onclick="change_media_pic()">Change</a>
             <a href="javascript:void(0)" style="padding:5px" onclick="delete_media_pic()">Delete</a>
+        </div>
+    </div>
+    <div class="cell-4 video_properties" style="padding: 0 20px;display: none;">
+        <div style="display: flex;justify-content: space-around;align-items: center;">
+            <h3 style="border-bottom: 1px dotted grey;padding: 15px 10px;">Video Properties</h3>
+            <p style="color: gray;font-size: 18px;" onclick="close_video_properties()">x</p>
+        </div>
+        <div style="width: 100%;" id="video_properties_video">
+            <video controls="controls">
+                <source src="" type="video/mp4">
+            </video>
+        </div>
+        <div style="display: flex;justify-content: space-around;">
+            <a href="javascript:void(0)" style="padding:5px" onclick="change_video()">Change</a>
+            <a href="javascript:void(0)" style="padding:5px" onclick="delete_video()">Delete</a>
         </div>
     </div>
 </div>
