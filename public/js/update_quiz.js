@@ -172,8 +172,13 @@ function answer_slide2form(answer_element, answer_content) {
             $('#drag_words').html(form_answer);
             break;
 
+        case '12':
+            $('#info_slide').html($(answer_element).find('.cancel_drag').html());
+            break;
+
         case '13':
             $('#quiz_instructions').html($(answer_element).find('.cancel_drag').html());
+            break;
 
         default:
     }
@@ -340,6 +345,10 @@ function answer_form2slide() {
                     fill: '#c1fc8580'
                 }));
             }
+            break;
+
+        case '12':
+            slide_answer_element += '<div contenteditable="true" class="cancel_drag">' + $('#info_slide').html() + '</div>';
             break;
 
         case '13':

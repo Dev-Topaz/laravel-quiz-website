@@ -103,6 +103,13 @@ function create_quiz(quiz_type, root_url, token) {
             });
             break;
 
+        case (12):
+            lv.insertBefore(firstNode, {
+                caption: 'Title',
+                content: '<i>Info Slide</i>'
+            });
+            break;
+
         case (13):
             lv.insertBefore(firstNode, {
                 caption: 'Quiz Instructions',
@@ -166,8 +173,8 @@ function update_quiz() {
     const background_img = $('#background_img').val();
     // const order
     const answer_element = $('.slide_view_answer_element')[0].outerHTML;
-    const media_element = $('.slide_view_media_element')[0].outerHTML;
-    const video_element = $('.slide_view_video_element')[0].outerHTML;
+    const media_element = $('.slide_view_media_element')[0] == undefined ? null : $('.slide_view_media_element')[0].outerHTML;
+    const video_element = $('.slide_view_video_element')[0] == undefined ? null : $('.slide_view_video_element')[0].outerHTML;
     const question_type = Metro.getPlugin('#question_type', 'select').val();
     const feedback_type = Metro.getPlugin('#feedback', 'select').val();
 

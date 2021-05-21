@@ -369,6 +369,35 @@ class QuizController extends Controller
 
                 break;
 
+            case "12":
+                $quiz = Quiz::create([
+                    'exam_group_id' => $request->exam_group_id,
+                    'type_id' => $request->type_id,
+                    'question_element' => '<div class="slide_view_question_element slide_view_group" style="height: 70px;width: 80%;left: 10%;z-index: 3;overflow: hidden;padding:10px;"><div contenteditable="true" class="cancel_drag">Title</div></div>',
+                    'answer' => '',
+                    'feedback_correct' => 'That\'s right! You chose the correct response.',
+                    'feedback_incorrect' => 'You did not choose the correct response.',
+                    'feedback_try_again' => null,
+                    'media' => null,
+                    'order' => null,
+                    'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%;z-index: 3;padding: 10px;"><div class="col-md-12"><div contenteditable="true" class="cancel_drag">Description text</div>',
+                    'question_type' => 'graded',
+                    'feedback_type' => 'by_result',
+                    'branching' => null,
+                    'score' => null,
+                    'attempts' => '1',
+                    'is_limit_time' => false,
+                    'limit_time' => null,
+                    'shuffle_answers' => null,
+                    'partially_correct' => false,
+                    'limit_number_response' => null,
+                    'case_sensitive' => null,
+                    'correct_score' => 0,
+                    'incorrect_score' => 0,
+                    'try_again_score' => null,
+                ]);
+
+                break;
 
             case "13":
                 $quiz = Quiz::create([
