@@ -69,10 +69,10 @@ class ExamController extends Controller
             'exam_id' => $exam->id,
         ]);
 
-        ExamGroup::create([
-            'group_name' => 'Results',
-            'exam_id' => $exam->id,
-        ]);
+//        ExamGroup::create([
+//            'group_name' => 'Results',
+//            'exam_id' => $exam->id,
+//        ]);
 
         return redirect()->route('exams.index')
             ->with('success', 'Exam created successfully.');

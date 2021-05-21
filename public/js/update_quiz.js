@@ -510,7 +510,7 @@ function form_to_slide() {
     answer_form2slide();
     media_form2slide();
 
-    $('#quiz_background_container .slide_view_group').resizable();
+    $('.slide_view_group').resizable();
     $('#quiz_background_container .slide_view_group').draggable({cancel: 'div.cancel_drag'});
     if ($('.slide_view_group_checkbox').length === 0) $('.slide_view_group').append('<input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;">');
 

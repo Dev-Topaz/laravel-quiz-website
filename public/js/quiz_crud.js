@@ -346,8 +346,14 @@ $('.preview_group_btn').click(function () {
     window.open(root_url + '/preview_group/' + $('#exam_group_id').val());
 });
 
-
-// const lv = Metro.getPlugin('#quiz_list', 'listview');
-// lv.addGroup({
-//     caption: 'Question Group'
-// });
+$('#section_Home_FormView > div:first-child > div:nth-child(2) > button:nth-child(2)').click(function () {
+    const lv = Metro.getPlugin('#quiz_list', 'listview');
+    const node = lv.addGroup({
+        caption: 'Question Group',
+    });
+    Metro.getPlugin('#quiz_list', 'listview').add(node, {
+        caption: 'No questions',
+        content: '<i>Add questions<i>'
+    });
+    console.log($(location).attr("href"));
+});

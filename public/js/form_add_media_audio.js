@@ -267,6 +267,14 @@ $('#form_view_input_audio_element').change(function () {
                     $('#form_view_add_audio').hide();
                     $('#form_view_audio_mark').show();
                     $('#audio').val(response.filepath);
+                    $('#audio_properties source').attr('src', $('#audio').val()).appendTo($('#audio_properties source').parent());
+                    var audio = $('#audio_properties audio');
+                    audio[0].pause();
+                    audio[0].load();//suspends and restores all audio element
+
+                    //audio[0].play(); changed based on Sprachprofi's comment below
+                    audio[0].oncanplaythrough = audio[0].play();
+
                 } else if (response.success == 2) { // File not uploaded
 
                     // Response message
@@ -294,5 +302,29 @@ $('#form_view_input_audio_element').change(function () {
 $('#form_view_audio_mark').click(function () {
     $('.audio_properties').show();
     $('.slide_option').hide();
-    $('#audio_properties source').attr('src', $('#audio').val()).appendTo($('#audio_properties source').parent());
+    // $('#audio_properties source').attr('src', $('#audio').val()).appendTo($('#audio_properties source').parent());
+    // var audio = $('#audio_properties audio');
+    // audio[0].pause();
+    // audio[0].load();//suspends and restores all audio element
+    //
+    // //audio[0].play(); changed based on Sprachprofi's comment below
+    // audio[0].oncanplaythrough = audio[0].play();
+    // $('#audio_properties audio')[0].load();
 });
+
+function change_audio() {
+    $('#form_view_input_audio_element').trigger('click');
+}
+
+function delete_audio() {
+    close_audio_properties();
+    $('#audio').val('');
+    $('#audio_properties source').attr('src', $('#audio').val()).appendTo($('#audio_properties source').parent());
+    $('#form_view_add_audio').show();
+    $('#form_view_audio_mark').hide();
+}
+
+function close_audio_properties() {
+    $('.audio_properties').hide();
+    $('.slide_option').show();
+}
