@@ -1105,249 +1105,256 @@
                         <div id="quick_styles_panel_holder" class="ribbon-dropdaown" data-role="dropdown"
                             data-duration="100">
                             <div>
+                                <div class='quick_style_sample_divider'>None</div>
+                                <div>
+                                    <div class="quick_style_sample_none"
+                                        style="border-width: 3px; border-style: solid; border-color: #2b2b2b; background-color: #ffffff; color: #2b2b2b">
+                                        <span>Abc</span></div>
+                                </div>
+                                <div class='quick_style_sample_divider'>Presets</div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-color: #2b2b2b; background-color: #ffffff; color: #2b2b2b">
+                                        style="border-width: 3px; border-style: solid; border-color: #2b2b2b; background-color: #ffffff; color: #2b2b2b">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-color: #959595; background-color: #ffffff; color: #2b2b2b">
+                                        style="border-width: 3px; border-style: solid; border-color: #959595; background-color: #ffffff; color: #2b2b2b">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-color: #df4047; background-color: #ffffff; color: #2b2b2b">
+                                        style="border-width: 3px; border-style: solid; border-color: #df4047; background-color: #ffffff; color: #2b2b2b">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-color: #e97624; background-color: #ffffff; color: #2b2b2b">
+                                        style="border-width: 3px; border-style: solid; border-color: #e97624; background-color: #ffffff; color: #2b2b2b">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-color: #60b952; background-color: #ffffff; color: #2b2b2b">
+                                        style="border-width: 3px; border-style: solid; border-color: #60b952; background-color: #ffffff; color: #2b2b2b">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-color: #5a97d6; background-color: #ffffff; color: #2b2b2b">
+                                        style="border-width: 3px; border-style: solid; border-color: #5a97d6; background-color: #ffffff; color: #2b2b2b">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-color: #319cbc; background-color: #ffffff; color: #2b2b2b">
+                                        style="border-width: 3px; border-style: solid; border-color: #319cbc; background-color: #ffffff; color: #2b2b2b">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-color: #0f0f0f; background-color: #2b2b2b; color: #ffffff">
+                                        style="border-width: 3px; border-style: solid; border-color: #0f0f0f; background-color: #2b2b2b; color: #ffffff">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-color: #7b7b7b; background-color: #959595; color: #ffffff">
+                                        style="border-width: 3px; border-style: solid; border-color: #7b7b7b; background-color: #959595; color: #ffffff">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-color: #b9262e; background-color: #df4047; color: #ffffff">
+                                        style="border-width: 3px; border-style: solid; border-color: #b9262e; background-color: #df4047; color: #ffffff">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-color: #c56014; background-color: #e97624; color: #ffffff">
+                                        style="border-width: 3px; border-style: solid; border-color: #c56014; background-color: #e97624; color: #ffffff">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-color: #509b40; background-color: #60b952; color: #ffffff">
+                                        style="border-width: 3px; border-style: solid; border-color: #509b40; background-color: #60b952; color: #ffffff">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-color: #4575a0; background-color: #5a97d6; color: #ffffff">
+                                        style="border-width: 3px; border-style: solid; border-color: #4575a0; background-color: #5a97d6; color: #ffffff">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-color: #367b96; background-color: #319cbc; color: #ffffff">
+                                        style="border-width: 3px; border-style: solid; border-color: #367b96; background-color: #319cbc; color: #ffffff">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-color: #2b2b2b; background-color: #2b2b2b; color: #ffffff">
+                                        style="border-width: 3px; border-style: solid; border-color: #2b2b2b; background-color: #2b2b2b; color: #ffffff">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-color: #959595; background-color: #959595; color: #ffffff">
+                                        style="border-width: 3px; border-style: solid; border-color: #959595; background-color: #959595; color: #ffffff">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-color: #df4047; background-color: #df4047; color: #ffffff">
+                                        style="border-width: 3px; border-style: solid; border-color: #df4047; background-color: #df4047; color: #ffffff">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-color: #e97624; background-color: #e97624; color: #ffffff">
+                                        style="border-width: 3px; border-style: solid; border-color: #e97624; background-color: #e97624; color: #ffffff">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-color: #60b952; background-color: #60b952; color: #ffffff">
+                                        style="border-width: 3px; border-style: solid; border-color: #60b952; background-color: #60b952; color: #ffffff">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-color: #5a97d6; background-color: #5a97d6; color: #ffffff">
+                                        style="border-width: 3px; border-style: solid; border-color: #5a97d6; background-color: #5a97d6; color: #ffffff">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-color: #319cbc; background-color: #319cbc; color: #ffffff">
+                                        style="border-width: 3px; border-style: solid; border-color: #319cbc; background-color: #319cbc; color: #ffffff">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-color: #2b2b2b; background-image: linear-gradient(#929292, #5f5f5f); color: #2b2b2b">
+                                        style="border-width: 3px; border-style: solid; border-color: #2b2b2b; background-image: linear-gradient(#929292, #5f5f5f); color: #2b2b2b">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-color: #959595; background-image: linear-gradient(#d1d1d1, #c1c1c1); color: #2b2b2b">
+                                        style="border-width: 3px; border-style: solid; border-color: #959595; background-image: linear-gradient(#d1d1d1, #c1c1c1); color: #2b2b2b">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-color: #d73d43; background-image: linear-gradient(#ebacb0, #e28d92); color: #2b2b2b">
+                                        style="border-width: 3px; border-style: solid; border-color: #d73d43; background-image: linear-gradient(#ebacb0, #e28d92); color: #2b2b2b">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-color: #e97624; background-image: linear-gradient(#f2c199, #eaae7b); color: #2b2b2b">
+                                        style="border-width: 3px; border-style: solid; border-color: #e97624; background-image: linear-gradient(#f2c199, #eaae7b); color: #2b2b2b">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-color: #60b952; background-image: linear-gradient(#bfe2b8, #a7d79c); color: #2b2b2b">
+                                        style="border-width: 3px; border-style: solid; border-color: #60b952; background-image: linear-gradient(#bfe2b8, #a7d79c); color: #2b2b2b">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-color: #5a97d6; background-image: linear-gradient(#cfdff2, #b0cbeb); color: #2b2b2b">
+                                        style="border-width: 3px; border-style: solid; border-color: #5a97d6; background-image: linear-gradient(#cfdff2, #b0cbeb); color: #2b2b2b">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-color: #319cbc; background-image: linear-gradient(#81c1d6, #6eb1cb); color: #2b2b2b">
+                                        style="border-width: 3px; border-style: solid; border-color: #319cbc; background-image: linear-gradient(#81c1d6, #6eb1cb); color: #2b2b2b">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-color: #2b2b2b; background-image: linear-gradient(#3e3e3e, #040404); color: #ffffff">
+                                        style="border-width: 3px; border-style: solid; border-color: #2b2b2b; background-image: linear-gradient(#3e3e3e, #040404); color: #ffffff">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-color: #7b7b7b; background-image: linear-gradient(#959595, #8b8b8b); color: #ffffff">
+                                        style="border-width: 3px; border-style: solid; border-color: #7b7b7b; background-image: linear-gradient(#959595, #8b8b8b); color: #ffffff">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-color: #b9262e; background-image: linear-gradient(#df4047, #cc2a30); color: #ffffff">
+                                        style="border-width: 3px; border-style: solid; border-color: #b9262e; background-image: linear-gradient(#df4047, #cc2a30); color: #ffffff">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-color: #e27520; background-image: linear-gradient(#e27520, #cd6c18); color: #ffffff">
+                                        style="border-width: 3px; border-style: solid; border-color: #e27520; background-image: linear-gradient(#e27520, #cd6c18); color: #ffffff">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-color: #579c45; background-image: linear-gradient(#69ba57, #63b350); color: #ffffff">
+                                        style="border-width: 3px; border-style: solid; border-color: #579c45; background-image: linear-gradient(#69ba57, #63b350); color: #ffffff">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-color: #4679c9; background-image: linear-gradient(#6497d5, #5d8bcf); color: #ffffff">
+                                        style="border-width: 3px; border-style: solid; border-color: #4679c9; background-image: linear-gradient(#6497d5, #5d8bcf); color: #ffffff">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-color: #319cbc; background-image: linear-gradient(#459cbc, #4b8fae); color: #ffffff">
+                                        style="border-width: 3px; border-style: solid; border-color: #319cbc; background-image: linear-gradient(#459cbc, #4b8fae); color: #ffffff">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-style: none; box-shadow: 1px 1px 3px grey; background-image: linear-gradient(#3e3e3e, #040404); color: #ffffff">
+                                        style="border-width: 3px; border-style: solid; border-style: none; box-shadow: 1px 1px 3px grey; background-image: linear-gradient(#3e3e3e, #040404); color: #ffffff">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-style: none; box-shadow: 1px 1px 3px grey; background-image: linear-gradient(#959595, #8b8b8b); color: #ffffff">
+                                        style="border-width: 3px; border-style: solid; border-style: none; box-shadow: 1px 1px 3px grey; background-image: linear-gradient(#959595, #8b8b8b); color: #ffffff">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-style: none; box-shadow: 1px 1px 3px grey; background-image: linear-gradient(#df4047, #cc2a30); color: #ffffff">
+                                        style="border-width: 3px; border-style: solid; border-style: none; box-shadow: 1px 1px 3px grey; background-image: linear-gradient(#df4047, #cc2a30); color: #ffffff">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-style: none; box-shadow: 1px 1px 3px grey; background-image: linear-gradient(#e27520, #cd6c18); color: #ffffff">
+                                        style="border-width: 3px; border-style: solid; border-style: none; box-shadow: 1px 1px 3px grey; background-image: linear-gradient(#e27520, #cd6c18); color: #ffffff">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-style: none; box-shadow: 1px 1px 3px grey; background-image: linear-gradient(#69ba57, #63b350); color: #ffffff">
+                                        style="border-width: 3px; border-style: solid; border-style: none; box-shadow: 1px 1px 3px grey; background-image: linear-gradient(#69ba57, #63b350); color: #ffffff">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-style: none; box-shadow: 1px 1px 3px grey; background-image: linear-gradient(#6497d5, #5d8bcf); color: #ffffff">
+                                        style="border-width: 3px; border-style: solid; border-style: none; box-shadow: 1px 1px 3px grey; background-image: linear-gradient(#6497d5, #5d8bcf); color: #ffffff">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-style: none; box-shadow: 1px 1px 3px grey; background-image: linear-gradient(#459cbc, #4b8fae); color: #ffffff">
+                                        style="border-width: 3px; border-style: solid; border-style: none; box-shadow: 1px 1px 3px grey; background-image: linear-gradient(#459cbc, #4b8fae); color: #ffffff">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-style: none; background: repeating-conic-gradient(#585858 0deg 90deg, #646464 0 180deg) 0 0/25% 25%; color: #ffffff">
+                                        style="border-width: 3px; border-style: solid; border-style: none; background: repeating-conic-gradient(#585858 0deg 90deg, #646464 0 180deg) 0 0/25% 25%; color: #ffffff">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-style: none; background: repeating-conic-gradient(#a2a2a2 0deg 90deg, #aeaeae 0 180deg) 0 0/25% 25%; color: #ffffff">
+                                        style="border-width: 3px; border-style: solid; border-style: none; background: repeating-conic-gradient(#a2a2a2 0deg 90deg, #aeaeae 0 180deg) 0 0/25% 25%; color: #ffffff">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-style: none; background: repeating-conic-gradient(#d5666b 0deg 90deg, #e27378 0 180deg) 0 0/25% 25%; color: #ffffff">
+                                        style="border-width: 3px; border-style: solid; border-style: none; background: repeating-conic-gradient(#d5666b 0deg 90deg, #e27378 0 180deg) 0 0/25% 25%; color: #ffffff">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-style: none; background: repeating-conic-gradient(#dc8d53 0deg 90deg, #e9995f 0 180deg) 0 0/25% 25%; color: #ffffff">
+                                        style="border-width: 3px; border-style: solid; border-style: none; background: repeating-conic-gradient(#dc8d53 0deg 90deg, #e9995f 0 180deg) 0 0/25% 25%; color: #ffffff">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-style: none; background: repeating-conic-gradient(#7dbb73 0deg 90deg, #89c780 0 180deg) 0 0/25% 25%; color: #ffffff">
+                                        style="border-width: 3px; border-style: solid; border-style: none; background: repeating-conic-gradient(#7dbb73 0deg 90deg, #89c780 0 180deg) 0 0/25% 25%; color: #ffffff">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-style: none; background: repeating-conic-gradient(#78a3cf 0deg 90deg, #85b0dc 0 180deg) 0 0/25% 25%; color: #ffffff">
+                                        style="border-width: 3px; border-style: solid; border-style: none; background: repeating-conic-gradient(#78a3cf 0deg 90deg, #85b0dc 0 180deg) 0 0/25% 25%; color: #ffffff">
                                         <span>Abc</span></div>
                                 </div>
                                 <div>
                                     <div class="quick_style_sample"
-                                        style="border-style: none; background: repeating-conic-gradient(#5ca7bd 0deg 90deg, #69b3ca 0 180deg) 0 0/25% 25%; color: #ffffff">
+                                        style="border-width: 3px; border-style: solid; border-style: none; background: repeating-conic-gradient(#5ca7bd 0deg 90deg, #69b3ca 0 180deg) 0 0/25% 25%; color: #ffffff">
                                         <span>Abc</span></div>
                                 </div>
                             </div>
@@ -1634,7 +1641,8 @@
                         </ul>
                     </div>
                     <div style="display: flex;flex-direction: column;">
-                        <button class="ribbon-icon-button" onclick="create_quiz(12, '{{ url('/') }}', '{{ csrf_token() }}')">
+                        <button class="ribbon-icon-button"
+                            onclick="create_quiz(12, '{{ url('/') }}', '{{ csrf_token() }}')">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/insert-2.png") }}">
                             </span>
@@ -1656,7 +1664,8 @@
                                 <div style="display: flex;">
                                     <div style="background-color: rgb(71, 114, 255);">
                                         <img class="introduction_slide"
-                                            src="{{ url("/images/ribbon_imgs/home/introduc.png") }}" onclick="create_quiz(13, '{{ url('/') }}', '{{ csrf_token() }}')">
+                                            src="{{ url("/images/ribbon_imgs/home/introduc.png") }}"
+                                            onclick="create_quiz(13, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     </div>
                                 </div>
                             </div>
@@ -1673,44 +1682,46 @@
                             </span>
                             <span class="caption">Duplicate</span>
                         </button>
-{{--                        <button class="ribbon-icon-button">--}}
-{{--                            <span class="icon">--}}
-{{--                                <img src="{{ url("/images/ribbon_imgs/home/link.png") }}">--}}
-{{--                            </span>--}}
-{{--                            <span class="caption dropdown-toggle">Link</span>--}}
-{{--                            <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">--}}
-{{--                                <li class="form_view_home_link"--}}
-{{--                                    style="background-image: url({{ url("/images/ribbon_imgs/images/Untitled-1_03.png") }});">--}}
-{{--                                    To--}}
-{{--                                    Slide Above--}}
-{{--                                </li>--}}
-{{--                                <li class="form_view_home_link"--}}
-{{--                                    style="background-image: url({{ url("/images/ribbon_imgs/images/Untitled-1_05.png") }}); border-bottom: 1px dotted grey;">--}}
-{{--                                    To--}}
-{{--                                    Slide Below--}}
-{{--                                </li>--}}
-{{--                                <li class="form_view_home_link"--}}
-{{--                                    style="background-image: url({{ url("/images/ribbon_imgs/images/Untitled-1_06.png") }});">--}}
-{{--                                    To--}}
-{{--                                    Top of Group--}}
-{{--                                </li>--}}
-{{--                                <li class="form_view_home_link"--}}
-{{--                                    style="background-image: url({{ url("/images/ribbon_imgs/images/Untitled-1_07.png") }}); border-bottom: 1px dotted grey;">--}}
-{{--                                    To--}}
-{{--                                    Bottom of Group--}}
-{{--                                </li>--}}
-{{--                                <li class="form_view_home_link"--}}
-{{--                                    style="background-image: url({{ url("/images/ribbon_imgs/images/Untitled-1.png") }});"--}}
-{{--                                    disabled>Unlink--}}
-{{--                                </li>--}}
-{{--                            </ul>--}}
-{{--                        </button>--}}
-{{--                        <button class="ribbon-icon-button">--}}
-{{--                            <span class="icon">--}}
-{{--                                <img src="{{ url("/images/ribbon_imgs/home/importq.png") }}">--}}
-{{--                            </span>--}}
-{{--                            <span class="caption ">Import Questions</span>--}}
-{{--                        </button>--}}
+                        {{--                        <button class="ribbon-icon-button">--}}
+                        {{--                            <span class="icon">--}}
+                        {{--                                <img src="{{ url("/images/ribbon_imgs/home/link.png") }}">--}}
+                        {{--                            </span>--}}
+                        {{--                            <span class="caption dropdown-toggle">Link</span>--}}
+                        {{--                            <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">--}}
+                        {{--                                <li class="form_view_home_link"--}}
+                        {{--                                    style="background-image: url({{ url("/images/ribbon_imgs/images/Untitled-1_03.png") }});">--}}
+                        {{--                                    To--}}
+                        {{--                                    Slide Above--}}
+                        {{--                                </li>--}}
+                        {{--                                <li class="form_view_home_link"--}}
+                        {{--                                    style="background-image: url({{ url("/images/ribbon_imgs/images/Untitled-1_05.png") }});
+                        border-bottom: 1px dotted grey;">--}}
+                        {{--                                    To--}}
+                        {{--                                    Slide Below--}}
+                        {{--                                </li>--}}
+                        {{--                                <li class="form_view_home_link"--}}
+                        {{--                                    style="background-image: url({{ url("/images/ribbon_imgs/images/Untitled-1_06.png") }});">--}}
+                        {{--                                    To--}}
+                        {{--                                    Top of Group--}}
+                        {{--                                </li>--}}
+                        {{--                                <li class="form_view_home_link"--}}
+                        {{--                                    style="background-image: url({{ url("/images/ribbon_imgs/images/Untitled-1_07.png") }});
+                        border-bottom: 1px dotted grey;">--}}
+                        {{--                                    To--}}
+                        {{--                                    Bottom of Group--}}
+                        {{--                                </li>--}}
+                        {{--                                <li class="form_view_home_link"--}}
+                        {{--                                    style="background-image: url({{ url("/images/ribbon_imgs/images/Untitled-1.png") }});"--}}
+                        {{--                                    disabled>Unlink--}}
+                        {{--                                </li>--}}
+                        {{--                            </ul>--}}
+                        {{--                        </button>--}}
+                        {{--                        <button class="ribbon-icon-button">--}}
+                        {{--                            <span class="icon">--}}
+                        {{--                                <img src="{{ url("/images/ribbon_imgs/home/importq.png") }}">--}}
+                        {{--                            </span>--}}
+                        {{--                            <span class="caption ">Import Questions</span>--}}
+                        {{--                        </button>--}}
                     </div>
                     <span class="title">Slide</span>
                     <div class="group-divider"></div>
@@ -1912,9 +1923,9 @@
             title="W3Schools Free Online Web Tutorials">
         </iframe>
     </div>
-<map name="">
-	<area shape="" href="" coords="" alt="">
-</map>
+    <map name="">
+        <area shape="" href="" coords="" alt="">
+    </map>
     <div class="window-content p-2">
 
         <div id="content" class="full">

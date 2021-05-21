@@ -160,16 +160,16 @@ $('#slide_view_font_family_selector').change(function () {
 $('#font_size_selector').change(function () {
     console.log('font_size_selector changed');
     changeFont_size($(this).val());
-//     document.execCommand('styleWithCSS', false, true);
-//     document.execCommand('fontName', false, 7);
+    //     document.execCommand('styleWithCSS', false, true);
+    //     document.execCommand('fontName', false, 7);
 
-//     var execFontSize = function (size, unit) {
-//     var spanString = $('<span/>', {
-//         'text': document.getSelection()
-//     }).css('font-size', size + unit).prop('outerHTML');
+    //     var execFontSize = function (size, unit) {
+    //     var spanString = $('<span/>', {
+    //         'text': document.getSelection()
+    //     }).css('font-size', size + unit).prop('outerHTML');
 
-//     document.execCommand('insertHTML', false, spanString);
-// };
+    //     document.execCommand('insertHTML', false, spanString);
+    // };
 });
 
 var changing_font_size = parseInt($('#font_size_selector').val());
@@ -664,14 +664,12 @@ function increase_indent() {
 
 $('.shape_effect_shadow_sample').click(function () {
     console.log('shape_effect_shadow_sample');
-
-    var element = $('.' + $('#target_element').val()).eq(0); // get selected element
+    var element = $('.selected_slide_view_group'); // get selected element
     element.css('box-shadow', $(this).attr('data-style'));
 });
 $('.shape_effect_glow_sample').click(function () {
     console.log('shape_effect_glow_sample');
-
-    var element = $('.' + $('#target_element').val()).eq(0); // get selected element
+    var element = $('.selected_slide_view_group'); // get selected element
     element.css('box-shadow', $(this).attr('data-style'));
 });
 
@@ -713,51 +711,57 @@ $('#arrange_send_back').click(function () {
 
 $('#rotate_right').click(function () {
     console.log('rotate_right');
-    var element = $('.' + $('#target_element').val()).eq(0); // get selected element
-    if (element.attr('rotate') == undefined || element.attr('rotate') == '0') {
-        element.attr('rotate', '90');
-        element.css('transform', 'rotate(90deg)');
-        return;
-    }
-    if (element.attr('rotate') == '90') {
-        element.attr('rotate', '180');
-        element.css('transform', 'rotate(180deg)');
-        return;
-    }
-    if (element.attr('rotate') == '180') {
-        element.attr('rotate', '270');
-        element.css('transform', 'rotate(270deg)');
-        return;
-    }
-    if (element.attr('rotate') == '270') {
-        element.attr('rotate', '0');
-        element.css('transform', 'rotate(0deg)');
-        return;
+    var elements = $('.selected_slide_view_group'); // get selected element
+    for (let i = 0; i < elements.length; i++) {
+        element = elements.eq(i);
+        if (element.attr('rotate') == undefined || element.attr('rotate') == '0') {
+            element.attr('rotate', '90');
+            element.css('transform', 'rotate(90deg)');
+            continue;
+        }
+        if (element.attr('rotate') == '90') {
+            element.attr('rotate', '180');
+            element.css('transform', 'rotate(180deg)');
+            continue;
+        }
+        if (element.attr('rotate') == '180') {
+            element.attr('rotate', '270');
+            element.css('transform', 'rotate(270deg)');
+            continue;
+        }
+        if (element.attr('rotate') == '270') {
+            element.attr('rotate', '0');
+            element.css('transform', 'rotate(0deg)');
+            continue;
+        }
     }
 });
 
 $('#rotate_left').click(function () {
     console.log('rotate_left');
-    var element = $('.' + $('#target_element').val()).eq(0);
-    if (element.attr('rotate') == undefined || element.attr('rotate') == '0') {
-        element.attr('rotate', '270');
-        element.css('transform', 'rotate(270deg)');
-        return;
-    }
-    if (element.attr('rotate') == '270') {
-        element.attr('rotate', '180');
-        element.css('transform', 'rotate(180deg)');
-        return;
-    }
-    if (element.attr('rotate') == '180') {
-        element.attr('rotate', '90');
-        element.css('transform', 'rotate(90deg)');
-        return;
-    }
-    if (element.attr('rotate') == '90') {
-        element.attr('rotate', '0');
-        element.css('transform', 'rotate(0deg)');
-        return;
+    var elements = $('.selected_slide_view_group'); // get selected element
+    for (let i = 0; i < elements.length; i++) {
+        element = elements.eq(i)
+        if (element.attr('rotate') == undefined || element.attr('rotate') == '0') {
+            element.attr('rotate', '270');
+            element.css('transform', 'rotate(270deg)');
+            continue;
+        }
+        if (element.attr('rotate') == '270') {
+            element.attr('rotate', '180');
+            element.css('transform', 'rotate(180deg)');
+            continue;
+        }
+        if (element.attr('rotate') == '180') {
+            element.attr('rotate', '90');
+            element.css('transform', 'rotate(90deg)');
+            continue;
+        }
+        if (element.attr('rotate') == '90') {
+            element.attr('rotate', '0');
+            element.css('transform', 'rotate(0deg)');
+            continue;
+        }
     }
 });
 
@@ -765,14 +769,21 @@ $('#rotate_left').click(function () {
 
 $('#align_right').click(function () {
     console.log('align_right');
-    $('.slide_view_group').css('left', 'unset');
-    $('.slide_view_group').css('right', '0');
+    var element = $('.selected_slide_view_group'); // get selected element
+    element.css('left', 'unset');
+    element.css('right', '0');
+    element.css('position', 'absolute');
+    console.log('selected elements ', element.length);
 });
 
 $('#align_left').click(function () {
     console.log('align_left');
-    $('.slide_view_group').css('right', 'unset');
-    $('.slide_view_group').css('left', '0');
+    var element = $('.selected_slide_view_group'); // get selected element
+    element.css('right', 'unset');
+    element.css('left', '0');
+    element.css('position', 'absolute');
+    console.log('selected elements ', element.length);
+
 });
 
 $('#align_center').click(function () {
@@ -780,35 +791,53 @@ $('#align_center').click(function () {
     var parent_width = parent_el.outerWidth();
     console.log('align_center');
 
-    ele_count = $('.slide_view_group').length;
+    var elements = $('.selected_slide_view_group'); // get selected element
+    var ele_count = elements.length;
     for (let i = 0; i < ele_count; i++) {
-        element = $('.slide_view_group').eq(i);
+        element = elements.eq(i);
         element.css('left', (parent_width - element.width()) / 2 + 'px');
-
+        element.css('position', 'absolute');
     }
+    console.log('selected elements ', ele_count);
+
 });
 
 $('#align_top').click(function () {
     console.log('align_top');
-    $('.slide_view_group').css('bottom', 'unset');
-    $('.slide_view_group').css('top', '0');
+    var element = $('.selected_slide_view_group'); // get selected element
+
+    element.css('bottom', 'unset');
+    element.css('top', '0');
+    element.css('position', 'absolute');
+    console.log('selected elements ', element.length);
+
 });
 
 $('#align_bottom').click(function () {
     console.log('align_bottom');
-    $('.slide_view_group').css('top', 'unset');
-    $('.slide_view_group').css('bottom', '0');
+    var element = $('.selected_slide_view_group'); // get selected element
+
+    element.css('top', 'unset');
+    element.css('bottom', '0');
+    element.css('position', 'absolute');
+    console.log('selected elements ', element.length);
+
 });
 
 $('#align_middle').click(function () {
     var parent_el = $('#slide_view_container');
     var parent_height = parent_el.outerHeight();
     console.log('align_middle');
-    ele_count = $('.slide_view_group').length;
+
+    var elements = $('.selected_slide_view_group'); // get selected element
+    var ele_count = elements.length;
     for (let i = 0; i < ele_count; i++) {
-        element = $('.slide_view_group').eq(i);
+        element = elements.eq(i);
         element.css('top', (parent_height - element.height()) / 2 + 'px');
+        element.css('position', 'absolute');
     }
+    console.log('selected elements ', ele_count);
+
 });
 
 $('#distribute_vertically').click(function () {
@@ -848,9 +877,11 @@ $('#distribute_horizontally').click(function () {
 
 $('.quick_style_sample').click(function () {
 
-    var element = $('.' + $('#target_element').val()).eq(0); // get selected element
+    var element = $('.selected_slide_view_group'); // get selected element
     // var element = $('.slide_view_question_element').eq(0);
     element.css('border-color', $(this).css('border-color'));
+    element.css('border-width', $(this).css('border-width'));
+    element.css('border-style', $(this).css('border-style'));
     element.css('color', $(this).css('color'));
     element.css('background-image', $(this).css('background-image'));
     // element.css('box-shadow', $(this).css('box-shadow'));
@@ -859,6 +890,13 @@ $('.quick_style_sample').click(function () {
     } else {
         element.css('background', 'rgba' + $(this).css('background').split('repeating-conic-gradient(rgb')[1].split(') 0deg,')[0] + ', 0.7)');
     }
+});
+
+$('.quick_style_sample_none').click(function () {
+    var element = $('.selected_slide_view_group'); // get selected element
+    element.css('border', 'none');
+    element.css('background', 'none');
+    element.css('color', 'black');
 });
 
 $('.quick_style_sample').mousedown(function (e) {
@@ -882,15 +920,13 @@ $('#shape_outline_color_picker').colorpicker({
 
 // triggered when a color is selected.
 $("#shape_fill_color_picker").on("change.color", function (event, color) {
-    var element = $('.' + $('#target_element').val()).eq(0); // get selected element
-
+    var element = $('.selected_slide_view_group'); // get selected element
     element.css('background', color);
 });
 
 $("#shape_outline_color_picker").on("change.color", function (event, color) {
-    var element = $('.' + $('#target_element').val()).eq(0); // get selected element
-
-    element.css('border-color', color);
+    var element = $('.selected_slide_view_group'); // get selected element
+    element.css('border', '3px solid ' + color);
 });
 
 

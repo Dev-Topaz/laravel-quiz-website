@@ -205,11 +205,12 @@ span.icon img {
     flex-wrap: wrap;
 }
 
-#quick_styles_panel_holder>div>div:hover {
+#quick_styles_panel_holder>div>div:not(.quick_style_sample_divider):hover {
     background-color: rgb(71, 114, 255);
 }
 
-.quick_style_sample {
+.quick_style_sample,
+.quick_style_sample_none {
     width: 40px;
     height: 40px;
     border: 1px solid;
@@ -217,7 +218,8 @@ span.icon img {
     border-radius: 10px;
 }
 
-.quick_style_sample span {
+.quick_style_sample span,
+.quick_style_sample_none span {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -322,9 +324,9 @@ span.icon img {
     height: 31px;
     display: flex;
     align-content: center;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
-    padding-left: 29px;
+    padding-left: 28px;
 }
 
 .view_switch_btn:not(.clicked):hover {
@@ -619,4 +621,10 @@ label[for="open_in_new"] {
     height: 684px;
     margin: auto;
     border-radius: 6px;
+}
+
+.quick_style_sample_divider {
+    width: 467px;
+    text-align: left;
+    margin-inline: 15px;
 }
