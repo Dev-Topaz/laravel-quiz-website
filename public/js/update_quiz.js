@@ -528,16 +528,18 @@ function add_canvas_item_info(string) {
 * */
 $("body").click(function (e) {
     const element = $(e.target);
-    if (element[0].classList.contains('slide_view_group_checkbox')) {
-        if (element.is(':checked')) {
-            element.closest('.slide_view_group').addClass('selected_slide_view_group');
+    if (element.closest('#quiz_background_container').length > 0) {
+        if (element[0].classList.contains('slide_view_group_checkbox')) {
+            if (element.is(':checked')) {
+                element.closest('.slide_view_group').addClass('selected_slide_view_group');
+            } else {
+                element.closest('.slide_view_group').removeClass('selected_slide_view_group');
+            }
         } else {
-            element.closest('.slide_view_group').removeClass('selected_slide_view_group');
+            $('.slide_view_group_checkbox').prop('checked', false);
+            element.closest('.slide_view_group').addClass('selected_slide_view_group');
+            element.closest('.slide_view_group').find('.slide_view_group_checkbox').prop('checked', true);
         }
-    } else {
-        $('.slide_view_group_checkbox').prop('checked', false);
-        element.closest('.slide_view_group').addClass('selected_slide_view_group');
-        element.closest('.slide_view_group').find('.slide_view_group_checkbox').prop('checked', true);
     }
 });
 
