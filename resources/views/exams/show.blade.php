@@ -400,7 +400,7 @@
                             </div>
                         </ul>
                     </div>
-                    <button class="ribbon-button">
+                    <button class="ribbon-button" onclick="create_quiz(12, '{{ url('/') }}', '{{ csrf_token() }}')">
                         <span class="icon">
                             <img src="{{ url("/images/ribbon_imgs/insert-2.png") }}">
                         </span>
@@ -1634,7 +1634,7 @@
                         </ul>
                     </div>
                     <div style="display: flex;flex-direction: column;">
-                        <button class="ribbon-icon-button">
+                        <button class="ribbon-icon-button" onclick="create_quiz(12, '{{ url('/') }}', '{{ csrf_token() }}')">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/insert-2.png") }}">
                             </span>
@@ -1656,7 +1656,7 @@
                                 <div style="display: flex;">
                                     <div style="background-color: rgb(71, 114, 255);">
                                         <img class="introduction_slide"
-                                            src="{{ url("/images/ribbon_imgs/home/introduc.png") }}">
+                                            src="{{ url("/images/ribbon_imgs/home/introduc.png") }}" onclick="create_quiz(13, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     </div>
                                 </div>
                             </div>
@@ -1673,44 +1673,44 @@
                             </span>
                             <span class="caption">Duplicate</span>
                         </button>
-                        <button class="ribbon-icon-button">
-                            <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/home/link.png") }}">
-                            </span>
-                            <span class="caption dropdown-toggle">Link</span>
-                            <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">
-                                <li class="form_view_home_link"
-                                    style="background-image: url({{ url("/images/ribbon_imgs/images/Untitled-1_03.png") }});">
-                                    To
-                                    Slide Above
-                                </li>
-                                <li class="form_view_home_link"
-                                    style="background-image: url({{ url("/images/ribbon_imgs/images/Untitled-1_05.png") }}); border-bottom: 1px dotted grey;">
-                                    To
-                                    Slide Below
-                                </li>
-                                <li class="form_view_home_link"
-                                    style="background-image: url({{ url("/images/ribbon_imgs/images/Untitled-1_06.png") }});">
-                                    To
-                                    Top of Group
-                                </li>
-                                <li class="form_view_home_link"
-                                    style="background-image: url({{ url("/images/ribbon_imgs/images/Untitled-1_07.png") }}); border-bottom: 1px dotted grey;">
-                                    To
-                                    Bottom of Group
-                                </li>
-                                <li class="form_view_home_link"
-                                    style="background-image: url({{ url("/images/ribbon_imgs/images/Untitled-1.png") }});"
-                                    disabled>Unlink
-                                </li>
-                            </ul>
-                        </button>
-                        <button class="ribbon-icon-button">
-                            <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/home/importq.png") }}">
-                            </span>
-                            <span class="caption ">Import Questions</span>
-                        </button>
+{{--                        <button class="ribbon-icon-button">--}}
+{{--                            <span class="icon">--}}
+{{--                                <img src="{{ url("/images/ribbon_imgs/home/link.png") }}">--}}
+{{--                            </span>--}}
+{{--                            <span class="caption dropdown-toggle">Link</span>--}}
+{{--                            <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">--}}
+{{--                                <li class="form_view_home_link"--}}
+{{--                                    style="background-image: url({{ url("/images/ribbon_imgs/images/Untitled-1_03.png") }});">--}}
+{{--                                    To--}}
+{{--                                    Slide Above--}}
+{{--                                </li>--}}
+{{--                                <li class="form_view_home_link"--}}
+{{--                                    style="background-image: url({{ url("/images/ribbon_imgs/images/Untitled-1_05.png") }}); border-bottom: 1px dotted grey;">--}}
+{{--                                    To--}}
+{{--                                    Slide Below--}}
+{{--                                </li>--}}
+{{--                                <li class="form_view_home_link"--}}
+{{--                                    style="background-image: url({{ url("/images/ribbon_imgs/images/Untitled-1_06.png") }});">--}}
+{{--                                    To--}}
+{{--                                    Top of Group--}}
+{{--                                </li>--}}
+{{--                                <li class="form_view_home_link"--}}
+{{--                                    style="background-image: url({{ url("/images/ribbon_imgs/images/Untitled-1_07.png") }}); border-bottom: 1px dotted grey;">--}}
+{{--                                    To--}}
+{{--                                    Bottom of Group--}}
+{{--                                </li>--}}
+{{--                                <li class="form_view_home_link"--}}
+{{--                                    style="background-image: url({{ url("/images/ribbon_imgs/images/Untitled-1.png") }});"--}}
+{{--                                    disabled>Unlink--}}
+{{--                                </li>--}}
+{{--                            </ul>--}}
+{{--                        </button>--}}
+{{--                        <button class="ribbon-icon-button">--}}
+{{--                            <span class="icon">--}}
+{{--                                <img src="{{ url("/images/ribbon_imgs/home/importq.png") }}">--}}
+{{--                            </span>--}}
+{{--                            <span class="caption ">Import Questions</span>--}}
+{{--                        </button>--}}
                     </div>
                     <span class="title">Slide</span>
                     <div class="group-divider"></div>
@@ -1943,7 +1943,7 @@
                 <div class="create_form" id="quiz_form">
                     <div class="content_body">
                         <div class="row">
-                            <div class="cell-3">
+                            <div class="cell-2">
                                 <div style="display: flex; justify-content: space-between;">
                                     <div id="form_view_btn" class="view_switch_btn clicked form_view"
                                         style="background-image: url('{{ url('/images/ribbon_imgs/form_view.png') }}');">
@@ -1966,7 +1966,7 @@
                                                 @else
                                                 @foreach($exam_group->quizes as $quiz)
                                                 <li id="{{ $quiz->id }}"
-                                                    data-caption="{{ substr(strip_tags($quiz->question_element), 0,  29) }}{{ strlen(strip_tags($quiz->question_element)) < 30 ? '' : '...' }}"
+                                                    data-caption="{{ strip_tags($quiz->question_element) }}"
                                                     data-content="<i>{{ $quiz->Quiz_type->name }}</i>"></li>
                                                 @endforeach
                                                 @endif
@@ -1976,7 +1976,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="cell-9" id="quiz_view" style="padding: 0;">
+                            <div class="cell-10" id="quiz_view" style="padding: 0;">
                             </div>
                         </div>
                     </div>

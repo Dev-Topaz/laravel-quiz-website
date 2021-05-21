@@ -82,6 +82,34 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <label for="screen_height" class="col-md-3 col-form-label text-md-right">{{ __('Screen Height')
+                                        }}</label>
+                                    <div class="col-md-7">
+                                        <input id="screen_height" type="number" min="1"
+                                               class="form-control @error('screen_height') is-invalid @enderror" name="screen_height"
+                                               value="{{ $exam->screen_height }}" required autocomplete="screen_height" autofocus>
+                                        @error('screen_height')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="screen_width" class="col-md-3 col-form-label text-md-right">{{ __('Screen Width')
+                                        }}</label>
+                                    <div class="col-md-7">
+                                        <input id="screen_width" type="number" min="1"
+                                               class="form-control @error('screen_width') is-invalid @enderror" name="screen_width"
+                                               value="{{ $exam->screen_width }}" required autocomplete="screen_width" autofocus>
+                                        @error('screen_width')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
                                 <div class="form-group row mb-0">
                                     <div class="col-md-6 offset-md-4">
                                         <button type="submit" class="btn btn-primary">

@@ -17,7 +17,7 @@ function get_choice_item_id() {
     return id;
 }
 
-$('#add_choice').click(function () {
+$('#quiz_view #add_choice').click(function () {
 
     const id = get_choice_item_id();
 

@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\QuizController;
+use App\Http\Controllers\UploadController;
+use App\Http\Controllers\PreviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,14 +36,20 @@ Route::group(['middleware' => 'role:manager'], function() {
 
     Route::get('/quizes/{quiz_type}/exam/{exam}', [QuizController::class, 'create']);
     Route::get('/quizes/{quiz}', [QuizController::class, 'show']);
+    Route::post('/hotspots_image_upload', [QuizController::class, 'hotspots_image_upload']);
     Route::post('/quizes', [QuizController::class, 'store']);
     Route::post('/update_theme_style', [QuizController::class, 'update_theme_style']);
     Route::get('/quizes/{quiz}/edit', [QuizController::class, 'edit']);
-//    Route::get('/quizes_form_view/{quiz}/edit', [QuizController::class, 'edit_form_view']);
-//    Route::get('/quizes_slide_view/{quiz}/edit', [QuizController::class, 'edit_slide_view']);
     Route::put('/quizes/{quiz}', [QuizController::class, 'update']);
     Route::delete('/quizes/{quiz}', [QuizController::class, 'destroy']);
 });
+
+Route::get('/preview_slide/{id}', [PreviewController::class, 'preview_slide']);
+Route::get('/preview_group/{id}', [PreviewController::class, 'preview_group']);
+Route::get('/preview_exam/{id}', [PreviewController::class, 'preview_exam']);
+
+Route::post('/upload_video', [UploadController::class, 'upload_video']);
+Route::post('/upload_audio', [UploadController::class, 'upload_audio']);
 
 Route::resource('users', UserController::class);
 Route::resource('exams', ExamController::class);

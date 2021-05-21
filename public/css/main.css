@@ -26,7 +26,7 @@ main {
     border-radius: 0px;
     float: left;
     width: 1030px;
-    padding: 20px 5px;
+    padding: 20px 0;
     background-color: #fff;
     border-top: 1px solid #eaeded;
     box-shadow: 0 1px 1px 0 rgba(0, 28, 36, 0.5);
@@ -446,7 +446,7 @@ main {
     margin: 10px auto;
 }
 
-.choice_item label, .response_item label, .sequence_item label {
+.form_view_element .choice_item label, .form_view_element .response_item label, .form_view_element .sequence_item label {
     padding: 0 0 0 5px;
     width: 440px;
 }
@@ -569,13 +569,25 @@ main {
     display: block;
 }
 
-#main.quiz, #main.quiz #content, main.quiz {
-    width: 1366px;
+#main.quiz, main.quiz {
+    width: 100%;
+}
+
+#main.quiz #content {
+    width: 100%;
 }
 
 main.quiz {
     display: flex;
     justify-content: center;
+    max-width: 100%;
+    width: 100%;
+}
+
+#main.quiz > h2 {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;
 }
 
 .ribbon-dropdown .col-3 {
@@ -621,4 +633,148 @@ main.quiz {
 
 div[contenteditable="true"] {
     outline: none;
+}
+
+.slide_view_element label[data-editable] {
+    display: contents;
+}
+
+#slide_view_container input, #slide_view_container select {
+    color: black;
+}
+
+/**********************************************
+*                                             *
+*            Fill in the Blanks               *
+*           & Select from Lists               *
+*                                             *
+***********************************************/
+
+#fill_blanks, #select_lists {
+    height: 216px;
+    overflow-y: scroll;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+
+#fill_blanks .fill_blanks_dropdown, #select_lists .select_lists_dropdown {
+    display: inline;
+}
+
+
+#fill_blanks .fill_blanks_dropdown_body, #select_lists .select_lists_dropdown_body {
+    border: 1px solid gray;
+    display: inline;
+}
+
+#fill_blanks .fill_blanks_dropdown_body:hover, #select_lists .select_lists_dropdown_body:hover {
+    border: 1px solid #ee8845;
+}
+
+#fill_blanks .fill_blanks_dropdown_content, #select_lists .select_lists_dropdown_content {
+    display: inline;
+    padding: 0 5px;
+    margin-left: 50px;
+}
+
+#fill_blanks .fill_blanks_dropdown_arrow, #select_lists .select_lists_dropdown_arrow {
+    border-left: 1px solid transparent;
+    display: inline;
+    cursor: pointer;
+}
+
+#fill_blanks .fill_blanks_dropdown_arrow:hover, #select_lists .select_lists_dropdown_arrow:hover {
+    border-left: 1px solid #ee8845;
+    background: #fbe5da;
+}
+
+#fill_blanks .fill_blanks_dropdown_arrow i, #fill_blanks .fill_blanks_dropdown_menu i, #select_lists .select_lists_dropdown_arrow i, #select_lists .select_lists_dropdown_menu i {
+    font-size: 14px;
+}
+
+#fill_blanks .fill_blanks_dropdown_menu, #select_lists .select_lists_dropdown_menu {
+    position: absolute;
+    border: 1px solid gray;
+    display: none;
+    left: 0;
+}
+
+#fill_blanks .fill_blanks_dropdown_menu ul, #select_lists .select_lists_dropdown_menu ul {
+    padding: 2px 5px;
+    min-width: 220px;
+    max-height: 130px;
+    overflow-y: scroll;
+}
+
+#fill_blanks .fill_blanks_dropdown_menu ul li, #select_lists .select_lists_dropdown_menu ul li {
+    display: flex;
+    justify-content: space-between;
+}
+
+#select_lists .select_lists_dropdown_menu ul li div {
+    display: flex;
+}
+
+#fill_blanks .fill_blanks_dropdown_menu ul li label, #select_lists .select_lists_dropdown_menu ul li label {
+    margin-bottom: 0;
+}
+
+/**********************************************
+*                                             *
+*                   Hotspots                  *
+*                                             *
+***********************************************/
+
+#hotspots {
+    height: 216px;
+    border: 1px dotted gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+#hotspots > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#hotspots > div > h5 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#hotspots > div .from_files {
+    width: 70px;
+    height: 70px;
+    background: white;
+    border: 1px solid gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    font-size: 12px;
+}
+
+#hotspots > div .from_files:hover {
+    border: 1px solid #ee8845;
+    background: #fbe5da;
+}
+
+#drag_words {
+    padding: 5px;
+}
+
+.listview.view-content .node > .data .caption {
+    overflow: hidden;
+}
+
+div.slide_view_group:focus {
+    border: 1px solid black;
+}
+
+div.slide_view_group:active {
+    border: 1px solid black;
 }

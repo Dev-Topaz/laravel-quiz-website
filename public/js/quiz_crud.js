@@ -40,7 +40,7 @@ function create_quiz(quiz_type, root_url, token) {
 
         case (3):
             lv.insertAfter(node, {
-                caption: 'Choose whether the statement...',
+                caption: 'Choose whether the statement is true or false:',
                 content: '<i>True/False<i>'
             });
             break;
@@ -56,6 +56,48 @@ function create_quiz(quiz_type, root_url, token) {
             lv.insertAfter(node, {
                 caption: 'Type your response:',
                 content: '<i>Numeric<i>'
+            });
+            break;
+
+        case (6):
+            lv.insertAfter(node, {
+                caption: 'Arrange the following items in the correct order:',
+                content: '<i>Sequence<i>'
+            });
+            break;
+
+        case (7):
+            lv.insertAfter(node, {
+                caption: 'Match the following items with their descriptions:',
+                content: '<i>Matching<i>'
+            });
+            break;
+
+        case (8):
+            lv.insertAfter(node, {
+                caption: 'Fill in the blank fields in this text:',
+                content: '<i>Fill in the Blanks<i>'
+            });
+            break;
+
+        case (9):
+            lv.insertAfter(node, {
+                caption: 'Choose the correct answer in each drop-down list:',
+                content: '<i>Select from Lists<i>'
+            });
+            break;
+
+        case (10):
+            lv.insertAfter(node, {
+                caption: 'Drag and drop the words to their places:',
+                content: '<i>Drag the Words<i>'
+            });
+            break;
+
+        case (11):
+            lv.insertAfter(node, {
+                caption: 'Click on the correct area in the image.',
+                content: '<i>Hotspot<i>'
             });
             break;
 
@@ -110,11 +152,18 @@ function update_quiz() {
     const correct_score = $('.feedback_branching tr:first-child td:nth-child(4) label').html();
     const incorrect_score = $('.feedback_branching tr:nth-child(2) td:nth-child(4) label').html();
     const try_again_score = $('.feedback_branching tr:nth-child(3) td:nth-child(4) label').html();
-    // const media
+    const media = $('#media').val();
+    const video = $('#video').val();
+    const background_img = $('#background_img').val();
     // const order
     const answer_element = $('.slide_view_answer_element')[0].outerHTML;
+    const media_element = $('.slide_view_media_element')[0].outerHTML;
+    const video_element = $('.slide_view_video_element')[0].outerHTML;
     const question_type = Metro.getPlugin('#question_type', 'select').val();
     const feedback_type = Metro.getPlugin('#feedback', 'select').val();
+
+    console.log("media: ", media);
+    console.log("media_element: ", media_element);
 
     let branching;
     if ($('#branching:disabled').length !== 0 || $('#branching').length === 0) {
@@ -160,10 +209,15 @@ function update_quiz() {
             question_element: question_element,
             answer: answer,
             answer_element: answer_element,
+            media_element: media_element,
             feedback_correct: feedback_correct,
             feedback_incorrect: feedback_incorrect,
             feedback_try_again: feedback_try_again,
-            // media: media,
+            media: media,
+            media_element: media_element,
+            video: video,
+            video_element: video_element,
+            background_img: background_img,
             // order: order,
             question_type: question_type,
             feedback_type: feedback_type,
@@ -240,7 +294,26 @@ function show_correct_view() {
     if (is_form_or_slide() === 'slide') {
         $('.form_view_element').hide();
         $('.slide_view_element').show();
+
+        $('.slide_view_group').resizable();
+        $('.slide_view_group').draggable({cancel: 'div.cancel_drag'});
+        if ($('.slide_view_group_checkbox').length === 0) $('.slide_view_group').append('<input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;right: 0;">');
     }
 }
 
+/*
+*  For Preview
+* */
+var root_url = $('meta[name=url]').attr('content');
 
+$('.preview_quiz_btn').click(function () {
+    window.open(root_url + '/preview_exam/' + $('#exam_id').val());
+});
+
+$('.preview_slide_btn').click(function () {
+    window.open(root_url + '/preview_slide/' + $('#quiz_id').val());
+});
+
+$('.preview_group_btn').click(function () {
+    window.open(root_url + '/preview_group/' + $('#exam_group_id').val());
+});
