@@ -120,10 +120,15 @@
                                  id="form_view_media_element"
                                  style="{{ isset($quiz->media) ? 'display: flex' : 'display: none' }};height: 70px"
                                  onclick="show_pic_properties()">
-                            <img src="{{ url('/images/add_question.png') }}" alt="" style="padding:0 3px;{{ isset($quiz->video) ? '' : 'display: none' }}" id="form_view_video_element" onclick="show_video_properties()">
+                            <img src="{{ url('/images/add_question.png') }}" alt=""
+                                 style="padding:0 3px;{{ isset($quiz->video) ? '' : 'display: none' }}"
+                                 id="form_view_video_element" onclick="show_video_properties()">
                         </div>
-                        <a href="javascript:void(0)" style="padding: 0 3px;{{ isset($quiz->audio) ? 'display: none' : '' }}" id="form_view_add_audio">Audio</a>
-                        <img src="{{ url('/images/add_question.png') }}" alt="" style="padding:0 3px;{{ isset($quiz->video) ? '' : 'display: none' }}"
+                        <a href="javascript:void(0)"
+                           style="padding: 0 3px;{{ isset($quiz->audio) ? 'display: none' : '' }}"
+                           id="form_view_add_audio">Audio</a>
+                        <img src="{{ url('/images/add_question.png') }}" alt=""
+                             style="padding:0 3px;{{ isset($quiz->video) ? '' : 'display: none' }}"
                              id="form_view_audio_mark">
                         <input type="file" id="form_view_input_media_element" hidden>
                         <input type="file" id="form_view_input_video_element" hidden>
@@ -614,10 +619,12 @@
 </div>
 
 <script>
-    $(function (){
-        $('.slide_view_group').draggable({ cancel: 'div.cancel_drag'})
-        $('.slide_view_group').resizable();
-    });
+    // setTimeout(function () {
+    //     console.log("settimeout");
+    //     $('.slide_view_group').resizable();
+    //     $('.slide_view_group').draggable({cancel: 'div.cancel_drag'});
+    //     $('.slide_view_group').append('<input type="checkbox" style="position: absolute;top: 0;right: 0;">');
+    // }, 3000);
 
     answer_slide2form($('#answer_element').val(), $('#answer_content').val());
     $('#question').html(question_slide2form($('#question_element').val()));

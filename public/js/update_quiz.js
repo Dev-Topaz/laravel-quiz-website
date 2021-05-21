@@ -490,11 +490,14 @@ function slide_to_form() {
 
 function form_to_slide() {
     console.log("form2slide");
-
     answer_store();
     question_form2slide();
     answer_form2slide();
     media_form2slide();
+
+    $('.slide_view_group').resizable();
+    $('.slide_view_group').draggable({cancel: 'div.cancel_drag'});
+    $('.slide_view_group').append('<input type="checkbox" style="position: absolute;top: 0;right: 0;">');
 }
 
 function store_theme_style(style) {
