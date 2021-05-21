@@ -1912,7 +1912,9 @@
             title="W3Schools Free Online Web Tutorials">
         </iframe>
     </div>
-
+<map name="">
+	<area shape="" href="" coords="" alt="">
+</map>
     <div class="window-content p-2">
 
         <div id="content" class="full">
