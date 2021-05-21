@@ -102,14 +102,25 @@
                     @case(11)
                     <h4>Hotspots Question</h4>
                     @break
+
+                    @case(12)
+                    <h4>Info Slide</h4>
+                    @break
+
+                    @case(13)
+                    <h4>Quiz Instructions</h4>
+                    @break
                 @endswitch
                 <div class="row" style="width: 100%;margin: 0;">
-                    <div class="cell-9" style="padding: 0;">
+                    <div class="cell-{{ $quiz->type_id == 13 || $quiz->type_id == 12 ? '11' : '9'}}"
+                         style="padding: 0;">
                         <div contenteditable="true" id="question"
                              style="overflow-y: scroll;width: 100%;border: 1px solid black;height: 70px;color: black"></div>
                     </div>
-                    <div class="cell-3" style="display: flex;align-items: center;justify-content: center;padding: 0;">
-                        <div id="form_view_pic_video_element">
+                    <div class="cell-{{ $quiz->type_id == 13 || $quiz->type_id == 12 ? '1' : '3'}}"
+                         style="display: flex;align-items: center;justify-content: center;padding: 0;">
+                        <div id="form_view_pic_video_element"
+                             style="{{ $quiz->type_id == 13 || $quiz->type_id == 12 ? 'display:none;' : ''}}">
                             <a href="javascript:void(0)"
                                style="padding: 0 3px;{{ (isset($quiz->media) || isset($quiz->video)) ? 'display: none' : '' }}"
                                id="form_view_add_picture">Pic</a>
@@ -389,12 +400,28 @@
                 </div>
                 @break
 
+                @case(12)
+                <h4>Description</h4>
+                <div contenteditable="true" style="height: 460px;overflow-y: scroll;border: 1px solid black"
+                     id="info_slide">
+                </div>
+                @break
+
+                @case(13)
+                <h4>Description</h4>
+                <div contenteditable="true" style="height: 460px;overflow-y: scroll;border: 1px solid black"
+                     id="quiz_instructions">
+                </div>
+                @break
+
             @endswitch
 
             <br>
 
-            <h4>Feedback and Branching</h4>
-            <table class="table striped feedback_branching" style="margin: 0">
+            <h4 style="{{ $quiz->type_id == 13 || $quiz->type_id == 12 ? 'display:none;' : ''}}">Feedback and
+                Branching</h4>
+            <table class="table striped feedback_branching"
+                   style="margin: 0;{{ $quiz->type_id == 13 || $quiz->type_id == 12 ? 'display:none;' : ''}}">
                 <thead>
                 <tr>
                     <th></th>
@@ -439,14 +466,16 @@
                 @if (isset($quiz->media))
                     {!! $quiz->media_element !!}
                 @else
-                    <div class="slide_view_media_element slide_view_group" style="z-index: 3;display: none;position: absolute;top: 0;left: 0;">
+                    <div class="slide_view_media_element slide_view_group"
+                         style="z-index: 3;display: none;position: absolute;top: 0;left: 0;">
                         <img src="#" alt="slide_view_media" style="width: 100%;height: 100%;">
                     </div>
                 @endif
                 @if (!isset($quiz->media) && isset($quiz->video))
                     {!! $quiz->video_element !!}
                 @else
-                    <div class="slide_view_video_element slide_view_group" style="z-index: 3;display: none;position: absolute;top: 0;left: 0;">
+                    <div class="slide_view_video_element slide_view_group"
+                         style="z-index: 3;display: none;position: absolute;top: 0;left: 0;">
                         <video controls>
                             <source src="#" type="video/mp4">
                         </video>
@@ -457,7 +486,7 @@
     </div>
     <div class="cell-3 slide_option" style="padding: 0 20px;">
         <h3 style="border-bottom: 1px dotted grey;padding: 15px 10px;">Slide Options</h3>
-        <div>
+        <div style="{{ $quiz->type_id == 13 || $quiz->type_id == 12 ? 'display:none;' : ''}}">
             <div>
                 <div class="row" style="padding: 0 10px;">
                     <div class="cell-5">
@@ -481,10 +510,12 @@
                             <select data-role="select" data-filter="false" id="feedback">
                                 <option value="none" {{ $quiz->feedback_type == 'none' ? 'selected' : '' }}>None
                                 </option>
-                                <option value="by_result" {{ $quiz->feedback_type == 'by_result' ? 'selected' : '' }}>By
+                                <option
+                                    value="by_result" {{ $quiz->feedback_type == 'by_result' ? 'selected' : '' }}>By
                                     Result
                                 </option>
-                                <option value="by_choice" {{ $quiz->feedback_type == 'by_choice' ? 'selected' : '' }}>By
+                                <option
+                                    value="by_choice" {{ $quiz->feedback_type == 'by_choice' ? 'selected' : '' }}>By
                                     Choice
                                 </option>
                             </select>
@@ -496,11 +527,13 @@
                             <div class="cell-6">
                                 <select data-role="select" data-filter="false" id="branching">
                                     <option
-                                        value="by_result" {{ $quiz->feedback_type == 'by_result' ? 'selected' : '' }}>By
+                                        value="by_result" {{ $quiz->feedback_type == 'by_result' ? 'selected' : '' }}>
+                                        By
                                         Result
                                     </option>
                                     <option
-                                        value="by_choice" {{ $quiz->feedback_type == 'by_choice' ? 'selected' : '' }}>By
+                                        value="by_choice" {{ $quiz->feedback_type == 'by_choice' ? 'selected' : '' }}>
+                                        By
                                         Choice
                                     </option>
                                 </select>
