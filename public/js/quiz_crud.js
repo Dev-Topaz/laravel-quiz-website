@@ -289,7 +289,7 @@ function show_correct_view() {
 
         $('.slide_view_group').resizable();
         $('.slide_view_group').draggable({cancel: 'div.cancel_drag'});
-        $('.slide_view_group').append('<input type="checkbox" style="position: absolute;top: 0;right: 0;">');
+        if ($('.slide_view_group_checkbox').length === 0) $('.slide_view_group').append('<input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;right: 0;">');
     }
 }
 

@@ -619,12 +619,6 @@
 </div>
 
 <script>
-    // setTimeout(function () {
-    //     console.log("settimeout");
-    //     $('.slide_view_group').resizable();
-    //     $('.slide_view_group').draggable({cancel: 'div.cancel_drag'});
-    //     $('.slide_view_group').append('<input type="checkbox" style="position: absolute;top: 0;right: 0;">');
-    // }, 3000);
 
     answer_slide2form($('#answer_element').val(), $('#answer_content').val());
     $('#question').html(question_slide2form($('#question_element').val()));
