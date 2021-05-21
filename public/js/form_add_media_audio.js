@@ -13,8 +13,9 @@ function delete_media_pic() {
     $('#form_view_add_video').show();
     $('#form_view_media_element').hide();
     $('#media').val('');
+    $('#media_element').val('');
     $('.slide_view_media_element').remove();
-    $('#slide_view_container').append('<div class="slide_view_media_element slide_view_group" style="z-index: 3;display: none;"><img src="#" alt="slide_view_media" style="width: 100%;height: 100%;"></div>');
+    $('#slide_view_container').append('<div class="slide_view_media_element slide_view_group" style="z-index: 3;display: none;position: absolute;top: 0;left: 0;"><img src="#" alt="slide_view_media" style="width: 100%;height: 100%;"></div>');
 }
 
 function show_pic_properties() {
@@ -168,6 +169,11 @@ $('#form_view_input_video_element').change(function () {
                     console.log(response.filepath);
                     $('#video').val(response.filepath);
                     $('#video_properties_video source').attr('src', $('#video').val()).appendTo($('#video_properties_video source').parent());
+                    console.log($('.slide_view_video_element video source'));
+                    $('.slide_view_video_element video source').attr('src', $('#video').val()).appendTo($('.slide_view_video_element video'));
+                    $('.slide_view_video_element').show();
+                    $('.slide_view_video_element video')[0].load();
+
                     $('#form_view_add_picture').hide();
                     $('#form_view_add_video').hide();
                     $('#form_view_video_element').show();
@@ -209,6 +215,17 @@ function close_video_properties() {
 
 function change_video() {
     $('#form_view_input_video_element').trigger('click');
+}
+
+function delete_video() {
+    $('.slide_option').show();
+    $('.video_properties').hide();
+    $('#form_view_add_picture').show();
+    $('#form_view_add_video').show();
+    $('#form_view_video_element').hide();
+    $('#video').val('');
+    $('.slide_view_video_element').remove();
+    $('#slide_view_container').append('<div class="slide_view_video_element slide_view_group" style="z-index: 3;display: none;position: absolute;top: 0;left: 0;"><video controls><source src="#" type="video/mp4"></video></div>');
 }
 
 /*

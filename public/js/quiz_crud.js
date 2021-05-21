@@ -153,12 +153,17 @@ function update_quiz() {
     const incorrect_score = $('.feedback_branching tr:nth-child(2) td:nth-child(4) label').html();
     const try_again_score = $('.feedback_branching tr:nth-child(3) td:nth-child(4) label').html();
     const media = $('#media').val();
+    const video = $('#video').val();
     const background_img = $('#background_img').val();
     // const order
     const answer_element = $('.slide_view_answer_element')[0].outerHTML;
     const media_element = $('.slide_view_media_element')[0].outerHTML;
+    const video_element = $('.slide_view_video_element')[0].outerHTML;
     const question_type = Metro.getPlugin('#question_type', 'select').val();
     const feedback_type = Metro.getPlugin('#feedback', 'select').val();
+
+    console.log("media: ", media);
+    console.log("media_element: ", media_element);
 
     let branching;
     if ($('#branching:disabled').length !== 0 || $('#branching').length === 0) {
@@ -209,6 +214,9 @@ function update_quiz() {
             feedback_incorrect: feedback_incorrect,
             feedback_try_again: feedback_try_again,
             media: media,
+            media_element: media_element,
+            video: video,
+            video_element: video_element,
             background_img: background_img,
             // order: order,
             question_type: question_type,

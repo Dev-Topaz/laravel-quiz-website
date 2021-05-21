@@ -439,8 +439,17 @@
                 @if (isset($quiz->media))
                     {!! $quiz->media_element !!}
                 @else
-                    <div class="slide_view_media_element slide_view_group" style="z-index: 3;display: none;">
+                    <div class="slide_view_media_element slide_view_group" style="z-index: 3;display: none;position: absolute;top: 0;left: 0;">
                         <img src="#" alt="slide_view_media" style="width: 100%;height: 100%;">
+                    </div>
+                @endif
+                @if (!isset($quiz->media) && isset($quiz->video))
+                    {!! $quiz->video_element !!}
+                @else
+                    <div class="slide_view_video_element slide_view_group" style="z-index: 3;display: none;position: absolute;top: 0;left: 0;">
+                        <video controls>
+                            <source src="#" type="video/mp4">
+                        </video>
                     </div>
                 @endif
             </div>
