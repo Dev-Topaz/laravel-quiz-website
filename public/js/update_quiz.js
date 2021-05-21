@@ -30,7 +30,7 @@ function media_form2slide() {
     console.log('media_form2slide');
     if ($('#media_element').val() == '') return;
     $('.slide_view_media_element').remove();
-    $('#slide_view_container').append($('#media_element').val());
+    $('#quiz_background_container').append($('#media_element').val());
 }
 
 function media_slide2form() {
