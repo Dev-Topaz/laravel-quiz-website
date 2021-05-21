@@ -6,7 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="9d9fd7c1-0dd1-410f-8492-d59f6bb67158" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/QuizController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/QuizController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/files/1621507079_small.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/form_add_media_audio.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/form_add_media_audio.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/quiz_crud.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/quiz_crud.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/update_quiz.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/update_quiz.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/quizes/update.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/quizes/update.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -248,7 +253,8 @@
       <workItem from="1621379278420" duration="26514000" />
       <workItem from="1621415021587" duration="2262000" />
       <workItem from="1621418176380" duration="59907000" />
-      <workItem from="1621549363324" duration="10160000" />
+      <workItem from="1621549363324" duration="12390000" />
+      <workItem from="1621568827694" duration="2454000" />
     </task>
     <servers />
   </component>
