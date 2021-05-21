@@ -486,15 +486,19 @@ function slide_to_form() {
 
     answer_slide2form($('.slide_view_answer_element')[0].outerHTML, $('#answer_content').val());
     $('#question').html(question_slide2form($('.slide_view_question_element')[0].outerHTML));
+    $('.slide_view_group_checkbox').remove();
 }
 
 function form_to_slide() {
     console.log("form2slide");
-
     answer_store();
     question_form2slide();
     answer_form2slide();
     media_form2slide();
+
+    $('.slide_view_group').resizable();
+    $('.slide_view_group').draggable({cancel: 'div.cancel_drag'});
+    if ($('.slide_view_group_checkbox').length === 0) $('.slide_view_group').append('<input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;right: 0;">');
 }
 
 function store_theme_style(style) {
@@ -518,3 +522,24 @@ function add_canvas_item_info(string) {
     var answer_info = $('#answer_content').val();
     $('#answer_content').val(answer_info.split('@')[0] + '@' + string);
 }
+
+/*
+* *********** Multiple selection (add class 'selected_slide_view_group')
+* */
+$("body").click(function (e) {
+    const element = $(e.target);
+    if (element.closest('#quiz_background_container').length > 0) {
+        if (element[0].classList.contains('slide_view_group_checkbox')) {
+            if (element.is(':checked')) {
+                element.closest('.slide_view_group').addClass('selected_slide_view_group');
+            } else {
+                element.closest('.slide_view_group').removeClass('selected_slide_view_group');
+            }
+        } else {
+            $('.slide_view_group_checkbox').prop('checked', false);
+            element.closest('.slide_view_group').addClass('selected_slide_view_group');
+            element.closest('.slide_view_group').find('.slide_view_group_checkbox').prop('checked', true);
+        }
+    }
+});
+

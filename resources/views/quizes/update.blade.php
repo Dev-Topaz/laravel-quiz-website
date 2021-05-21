@@ -1,5 +1,5 @@
 <div class="row" style="height: 100%;margin: 0;">
-    <div class="cell-8 form_view_element" style="background: #dcdcdc;display: flex;">
+    <div class="cell-9 form_view_element" style="background: #dcdcdc;display: flex;">
         <div style="margin: auto 10px;background: #f1f1f1;width: 100%;padding: 20px;">
             <input id="select_background_img" type="file" hidden>
             <input id="exam_id" type="text"
@@ -111,19 +111,24 @@
                     <div class="cell-3" style="display: flex;align-items: center;justify-content: center;padding: 0;">
                         <div id="form_view_pic_video_element">
                             <a href="javascript:void(0)"
-                               style="padding: 0 3px;{{ (isset($quiz->media) && isset($quiz->video)) ? 'display: none' : '' }}"
+                               style="padding: 0 3px;{{ (isset($quiz->media) || isset($quiz->video)) ? 'display: none' : '' }}"
                                id="form_view_add_picture">Pic</a>
                             <a href="javascript:void(0)"
-                               style="padding: 0 3px;{{ (isset($quiz->media) && isset($quiz->video)) ? 'display: none' : '' }}"
+                               style="padding: 0 3px;{{ (isset($quiz->media) || isset($quiz->video)) ? 'display: none' : '' }}"
                                id="form_view_add_video">Video</a>
                             <img src="{{ $quiz->media ?? '#' }}" alt="form_view_media_element"
                                  id="form_view_media_element"
                                  style="{{ isset($quiz->media) ? 'display: flex' : 'display: none' }};height: 70px"
                                  onclick="show_pic_properties()">
-                            <img src="{{ url('/images/add_question.png') }}" alt="" style="padding:0 3px;{{ isset($quiz->video) ? '' : 'display: none' }}" id="form_view_video_element" onclick="show_video_properties()">
+                            <img src="{{ url('/images/add_question.png') }}" alt=""
+                                 style="padding:0 3px;{{ isset($quiz->video) ? '' : 'display: none' }}"
+                                 id="form_view_video_element" onclick="show_video_properties()">
                         </div>
-                        <a href="javascript:void(0)" style="padding: 0 3px;{{ isset($quiz->audio) ? 'display: none' : '' }}" id="form_view_add_audio">Audio</a>
-                        <img src="{{ url('/images/add_question.png') }}" alt="" style="padding:0 3px;{{ isset($quiz->video) ? '' : 'display: none' }}"
+                        <a href="javascript:void(0)"
+                           style="padding: 0 3px;{{ isset($quiz->audio) ? 'display: none' : '' }}"
+                           id="form_view_add_audio">Audio</a>
+                        <img src="{{ url('/images/add_question.png') }}" alt=""
+                             style="padding:0 3px;{{ isset($quiz->video) ? '' : 'display: none' }}"
                              id="form_view_audio_mark">
                         <input type="file" id="form_view_input_media_element" hidden>
                         <input type="file" id="form_view_input_video_element" hidden>
@@ -423,25 +428,25 @@
             </table>
         </div>
     </div>
-    <div class="cell-8 slide_view_element" style="background: #dcdcdc;display: none;">
+    <div class="cell-9 slide_view_element" style="background: #dcdcdc;display: none;overflow: scroll">
         <div
-            style="top:50%;transform:translateY(-50%);margin: auto 0;width: 100%;height:500px;{{ $quiz->exam_group->exam->theme_style ?? 'background:white' }}"
+            style="top:50%;left:50%;transform:translate(-50%, -50%);margin: auto 0;width: {{ $quiz->exam_group->exam->screen_width }}px;height:{{ $quiz->exam_group->exam->screen_height }}px;{{ $quiz->exam_group->exam->theme_style ?? 'background:white' }}"
             id="slide_view_container">
             <div id="quiz_background_container"
                  style="width: 100%;height:100%;padding: 20px;{{ isset($quiz->background_img) ? ('background-image:' . $quiz->background_img . ';') : '' }}">
                 {!! $quiz->question_element !!}
                 {!! $quiz->answer_element !!}
-                @if (isset($quiz->media_element))
+                @if (isset($quiz->media))
                     {!! $quiz->media_element !!}
                 @else
-                    <div class="slide_view_media_element slide_view_group" style="z-index: 3;">
+                    <div class="slide_view_media_element slide_view_group" style="z-index: 3;display: none;">
                         <img src="#" alt="slide_view_media" style="width: 100%;height: 100%;">
                     </div>
                 @endif
             </div>
         </div>
     </div>
-    <div class="cell-4 slide_option" style="padding: 0 20px;">
+    <div class="cell-3 slide_option" style="padding: 0 20px;">
         <h3 style="border-bottom: 1px dotted grey;padding: 15px 10px;">Slide Options</h3>
         <div>
             <div>
@@ -568,7 +573,7 @@
             <input type="text" id="target_element" value="" hidden>
         </div>
     </div>
-    <div class="cell-4 picture_properties" style="padding: 0 20px;display: none;">
+    <div class="cell-3 picture_properties" style="padding: 0 20px;display: none;">
         <div style="display: flex;justify-content: space-around;align-items: center;">
             <h3 style="border-bottom: 1px dotted grey;padding: 15px 10px;">Picture Properties</h3>
             <p style="color: gray;font-size: 18px;" onclick="close_pic_properties()">x</p>
@@ -581,7 +586,7 @@
             <a href="javascript:void(0)" style="padding:5px" onclick="delete_media_pic()">Delete</a>
         </div>
     </div>
-    <div class="cell-4 video_properties" style="padding: 0 20px;display: none;">
+    <div class="cell-3 video_properties" style="padding: 0 20px;display: none;">
         <div style="display: flex;justify-content: space-around;align-items: center;">
             <h3 style="border-bottom: 1px dotted grey;padding: 15px 10px;">Video Properties</h3>
             <p style="color: gray;font-size: 18px;" onclick="close_video_properties()">x</p>
@@ -596,7 +601,7 @@
             <a href="javascript:void(0)" style="padding:5px" onclick="delete_video()">Delete</a>
         </div>
     </div>
-    <div class="cell-4 audio_properties" style="padding: 0 20px;display: none;">
+    <div class="cell-3 audio_properties" style="padding: 0 20px;display: none;">
         <div style="display: flex;justify-content: space-around;align-items: center;">
             <h3 style="border-bottom: 1px dotted grey;padding: 15px 10px;">Audio Properties</h3>
             <p style="color: gray;font-size: 18px;" onclick="close_audio_properties()">x</p>
@@ -614,17 +619,6 @@
 </div>
 
 <script>
-    // $('.slide_view_question_element').click(function (evt) {
-    //     console.log(evt.pageX - $(this).offset().left);
-    //     if(evt.pageX - $(this).offset().left > 10) $(this).draggable({disabled: true});
-    //     else $(this).draggable();
-    // });
-    // $('.slide_view_question_element').mouseup(function () {
-    //     console.log("mouseup");
-    //     $(this).draggable({disabled: true});
-    // });
-    $('.slide_view_group').draggable();
-    $('.slide_view_group').resizable();
 
     answer_slide2form($('#answer_element').val(), $('#answer_content').val());
     $('#question').html(question_slide2form($('#question_element').val()));

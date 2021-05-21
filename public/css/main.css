@@ -766,3 +766,15 @@ div[contenteditable="true"] {
 #drag_words {
     padding: 5px;
 }
+
+.listview.view-content .node > .data .caption {
+    overflow: hidden;
+}
+
+div.slide_view_group:focus {
+    border: 1px solid black;
+}
+
+div.slide_view_group:active {
+    border: 1px solid black;
+}
