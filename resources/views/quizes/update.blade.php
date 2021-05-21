@@ -131,15 +131,15 @@
                                  id="form_view_media_element"
                                  style="{{ isset($quiz->media) ? 'display: flex' : 'display: none' }};height: 70px"
                                  onclick="show_pic_properties()">
-                            <img src="{{ url('/images/add_question.png') }}" alt=""
-                                 style="padding:0 3px;{{ isset($quiz->video) ? '' : 'display: none' }}"
+                            <img src="{{ url('/images/icons/video_icon.png') }}" alt=""
+                                 style="height: 70px;padding:0 3px;{{ isset($quiz->video) ? '' : 'display: none' }}"
                                  id="form_view_video_element" onclick="show_video_properties()">
                         </div>
                         <a href="javascript:void(0)"
                            style="padding: 0 3px;{{ isset($quiz->audio) ? 'display: none' : '' }}"
                            id="form_view_add_audio">Audio</a>
-                        <img src="{{ url('/images/add_question.png') }}" alt=""
-                             style="padding:0 3px;{{ isset($quiz->video) ? '' : 'display: none' }}"
+                        <img src="{{ url('/images/icons/audio_icon.png') }}" alt=""
+                             style="height: 70px;padding:0 3px;{{ isset($quiz->audio) ? '' : 'display: none' }}"
                              id="form_view_audio_mark">
                         <input type="file" id="form_view_input_media_element" hidden>
                         <input type="file" id="form_view_input_video_element" hidden>

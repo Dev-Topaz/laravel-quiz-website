@@ -263,7 +263,7 @@ function update_quiz() {
 
 function remove_resizable_tag(string) {
     var tmp_element;
-    if(string != null) {
+    if (string != null) {
         tmp_element = $(string);
         tmp_element.children('.ui-resizable-handle').remove();
         return tmp_element[0].outerHTML;
@@ -345,3 +345,9 @@ $('.preview_slide_btn').click(function () {
 $('.preview_group_btn').click(function () {
     window.open(root_url + '/preview_group/' + $('#exam_group_id').val());
 });
+
+
+// const lv = Metro.getPlugin('#quiz_list', 'listview');
+// lv.addGroup({
+//     caption: 'Question Group'
+// });
