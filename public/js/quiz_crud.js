@@ -158,7 +158,7 @@ function update_quiz() {
     console.log('Updating quiz now...');
 
     const typeId = $('#type_id').val();
-    const question_element = $('.slide_view_question_element')[0].outerHTML;
+    let question_element = $('.slide_view_question_element')[0].outerHTML;
 
     const answer = $('#answer_content').val();
 
@@ -172,14 +172,16 @@ function update_quiz() {
     const video = $('#video').val();
     const background_img = $('#background_img').val();
     // const order
-    const answer_element = $('.slide_view_answer_element')[0].outerHTML;
-    const media_element = $('.slide_view_media_element')[0] == undefined ? null : $('.slide_view_media_element')[0].outerHTML;
-    const video_element = $('.slide_view_video_element')[0] == undefined ? null : $('.slide_view_video_element')[0].outerHTML;
+    let answer_element = $('.slide_view_answer_element')[0].outerHTML;
+    let media_element = $('.slide_view_media_element')[0] == undefined ? null : $('.slide_view_media_element')[0].outerHTML;
+    let video_element = $('.slide_view_video_element')[0] == undefined ? null : $('.slide_view_video_element')[0].outerHTML;
     const question_type = Metro.getPlugin('#question_type', 'select').val();
     const feedback_type = Metro.getPlugin('#feedback', 'select').val();
 
-    console.log("media: ", media);
-    console.log("media_element: ", media_element);
+    question_element = remove_resizable_tag(question_element);
+    answer_element = remove_resizable_tag(answer_element);
+    media_element = remove_resizable_tag(media_element);
+    video_element = remove_resizable_tag(video_element);
 
     let branching;
     if ($('#branching:disabled').length !== 0 || $('#branching').length === 0) {
@@ -257,6 +259,16 @@ function update_quiz() {
         console.log(XHttpResponse);
     });
 
+}
+
+function remove_resizable_tag(string) {
+    var tmp_element;
+    if(string != null) {
+        tmp_element = $(string);
+        tmp_element.children('.ui-resizable-handle').remove();
+        return tmp_element[0].outerHTML;
+    }
+    return null;
 }
 
 function delete_quiz() {
