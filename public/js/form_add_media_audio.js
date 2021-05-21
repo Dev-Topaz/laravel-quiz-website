@@ -15,7 +15,7 @@ function delete_media_pic() {
     $('#media').val('');
     $('#media_element').val('');
     $('.slide_view_media_element').remove();
-    $('#slide_view_container').append('<div class="slide_view_media_element slide_view_group" style="z-index: 3;display: none;position: absolute;top: 0;left: 0;"><img src="#" alt="slide_view_media" style="width: 100%;height: 100%;"></div>');
+    $('#quiz_background_container').append('<div class="slide_view_media_element slide_view_group" style="z-index: 3;display: none;position: absolute;top: 0;left: 0;"><img src="#" alt="slide_view_media" style="width: 100%;height: 100%;"></div>');
 }
 
 function show_pic_properties() {
@@ -225,7 +225,7 @@ function delete_video() {
     $('#form_view_video_element').hide();
     $('#video').val('');
     $('.slide_view_video_element').remove();
-    $('#slide_view_container').append('<div class="slide_view_video_element slide_view_group" style="z-index: 3;display: none;position: absolute;top: 0;left: 0;"><video controls><source src="#" type="video/mp4"></video></div>');
+    $('#quiz_background_container').append('<div class="slide_view_video_element slide_view_group" style="z-index: 3;display: none;position: absolute;top: 0;left: 0;"><video controls><source src="#" type="video/mp4"></video></div>');
 }
 
 /*
