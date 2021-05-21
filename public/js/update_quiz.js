@@ -496,7 +496,7 @@ function form_to_slide() {
 
     $('.slide_view_group').resizable();
     $('.slide_view_group').draggable({cancel: 'div.cancel_drag'});
-    if ($('.slide_view_group_checkbox').length === 0) $('.slide_view_group').append('<input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;right: 0;">');
+    if ($('.slide_view_group_checkbox').length === 0) $('.slide_view_group').append('<input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;">');
 
     // if ($('#video').val() !== '' && $('#video').val() !== undefined) {
     //     $('.slide_view_video_element video source').attr('src', $('#video').val()).appendTo($('.slide_view_video_element video source').parent());
