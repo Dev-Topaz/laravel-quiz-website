@@ -400,7 +400,7 @@
                             </div>
                         </ul>
                     </div>
-                    <button class="ribbon-button">
+                    <button class="ribbon-button" onclick="create_quiz(12, '{{ url('/') }}', '{{ csrf_token() }}')">
                         <span class="icon">
                             <img src="{{ url("/images/ribbon_imgs/insert-2.png") }}">
                         </span>
@@ -1634,7 +1634,7 @@
                         </ul>
                     </div>
                     <div style="display: flex;flex-direction: column;">
-                        <button class="ribbon-icon-button">
+                        <button class="ribbon-icon-button" onclick="create_quiz(12, '{{ url('/') }}', '{{ csrf_token() }}')">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/insert-2.png") }}">
                             </span>
@@ -1656,7 +1656,7 @@
                                 <div style="display: flex;">
                                     <div style="background-color: rgb(71, 114, 255);">
                                         <img class="introduction_slide"
-                                            src="{{ url("/images/ribbon_imgs/home/introduc.png") }}">
+                                            src="{{ url("/images/ribbon_imgs/home/introduc.png") }}" onclick="create_quiz(13, '{{ url('/') }}', '{{ csrf_token() }}')">
                                     </div>
                                 </div>
                             </div>
