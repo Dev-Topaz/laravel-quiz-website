@@ -162,8 +162,8 @@ function update_quiz() {
     const question_type = Metro.getPlugin('#question_type', 'select').val();
     const feedback_type = Metro.getPlugin('#feedback', 'select').val();
 
-    console.log("video: ", video);
-    console.log("video_element: ", video_element);
+    console.log("media: ", media);
+    console.log("media_element: ", media_element);
 
     let branching;
     if ($('#branching:disabled').length !== 0 || $('#branching').length === 0) {
