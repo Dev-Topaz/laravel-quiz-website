@@ -621,7 +621,7 @@
             <p style="color: gray;font-size: 18px;" onclick="close_pic_properties()">x</p>
         </div>
         <div style="width: 100%;" id="picture_properties_image">
-            <img src="" alt="">
+            <img src="{{ $quiz->media ?? '' }}" alt="">
         </div>
         <div style="display: flex;justify-content: space-around;">
             <a href="javascript:void(0)" style="padding:5px" onclick="change_media_pic()">Change</a>
@@ -635,7 +635,7 @@
         </div>
         <div style="width: 100%;" id="video_properties_video">
             <video controls="controls">
-                <source src="" type="video/mp4">
+                <source src="{{ $quiz->video ?? '' }}" type="video/mp4">
             </video>
         </div>
         <div style="display: flex;justify-content: space-around;">
@@ -650,7 +650,7 @@
         </div>
         <div style="width: 100%;" id="audio_properties">
             <audio controls="controls">
-                <source src="" type="audio/mpeg">
+                <source src="{{ $quiz->audio ?? '' }}" type="audio/mpeg">
             </audio>
         </div>
         <div style="display: flex;justify-content: space-around;">

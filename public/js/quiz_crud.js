@@ -170,6 +170,7 @@ function update_quiz() {
     const try_again_score = $('.feedback_branching tr:nth-child(3) td:nth-child(4) label').html();
     const media = $('#media').val();
     const video = $('#video').val();
+    const audio = $('#audio').val();
     const background_img = $('#background_img').val();
     // const order
     let answer_element = $('.slide_view_answer_element')[0].outerHTML;
@@ -219,6 +220,8 @@ function update_quiz() {
     const token = $('meta[name=csrf-token]').attr('content');
     const quizId = $('#quiz_list').find('.current').attr('id');
 
+    console.log(audio);
+
     $.ajax({
         url: root_url + '/quizes/' + quizId,
         type: 'PUT',
@@ -234,6 +237,7 @@ function update_quiz() {
             media: media,
             media_element: media_element,
             video: video,
+            audio: audio,
             video_element: video_element,
             background_img: background_img,
             // order: order,

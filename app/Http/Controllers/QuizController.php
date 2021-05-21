@@ -497,6 +497,7 @@ class QuizController extends Controller
         $quiz->feedback_try_again = $request->feedback_try_again;
         $quiz->media = $request->media;
         $quiz->video = $request->video;
+        $quiz->audio = $request->audio;
         $quiz->media_element = $request->media_element;
         $quiz->video_element = $request->video_element;
         $quiz->background_img = $request->background_img;
