@@ -1,20 +1,20 @@
-$("body").click(function (e) {
-    if (jQuery.inArray('slide_view_question_element', e.target.classList) !== -1 || $(e.target).parents(".slide_view_question_element").length) {
-        $('#target_element').val('slide_view_question_element');
-        return;
-    }
-    if (jQuery.inArray('slide_view_answer_element', e.target.classList) !== -1 || $(e.target).parents(".slide_view_answer_element").length) {
-        $('#target_element').val('slide_view_answer_element');
-        return;
-    }
-    if (jQuery.inArray('slide_view_media_element', e.target.classList) !== -1 || $(e.target).parents(".slide_view_media_element").length) {
-        console.log('slide_view_media_element');
-        $('#target_element').val('slide_view_media_element');
-        return;
-    }
-    $('#target_element').val('common_element');
-    return;
-});
+// $("body").click(function (e) {
+//     if (jQuery.inArray('slide_view_question_element', e.target.classList) !== -1 || $(e.target).parents(".slide_view_question_element").length) {
+//         $('#target_element').val('slide_view_question_element');
+//         return;
+//     }
+//     if (jQuery.inArray('slide_view_answer_element', e.target.classList) !== -1 || $(e.target).parents(".slide_view_answer_element").length) {
+//         $('#target_element').val('slide_view_answer_element');
+//         return;
+//     }
+//     if (jQuery.inArray('slide_view_media_element', e.target.classList) !== -1 || $(e.target).parents(".slide_view_media_element").length) {
+//         console.log('slide_view_media_element');
+//         $('#target_element').val('slide_view_media_element');
+//         return;
+//     }
+//     $('#target_element').val('common_element');
+//     return;
+// });
 
 
 function question_slide2form(question) {
@@ -171,6 +171,9 @@ function answer_slide2form(answer_element, answer_content) {
             form_answer = form_answer_input_element.html();
             $('#drag_words').html(form_answer);
             break;
+
+        case '13':
+            $('#quiz_instructions').html($(answer_element).find('.cancel_drag').html());
 
         default:
     }
@@ -337,6 +340,10 @@ function answer_form2slide() {
                     fill: '#c1fc8580'
                 }));
             }
+            break;
+
+        case '13':
+            slide_answer_element += '<div contenteditable="true" class="cancel_drag">' + $('#quiz_instructions').html() + '</div>';
             break;
     }
 

@@ -102,14 +102,18 @@
                     @case(11)
                     <h4>Hotspots Question</h4>
                     @break
+
+                    @case(13)
+                    <h4>Quiz Instructions</h4>
+                    @break
                 @endswitch
                 <div class="row" style="width: 100%;margin: 0;">
-                    <div class="cell-9" style="padding: 0;">
+                    <div class="cell-{{ $quiz->type_id == 13 ? '11' : '9'}}" style="padding: 0;">
                         <div contenteditable="true" id="question"
                              style="overflow-y: scroll;width: 100%;border: 1px solid black;height: 70px;color: black"></div>
                     </div>
-                    <div class="cell-3" style="display: flex;align-items: center;justify-content: center;padding: 0;">
-                        <div id="form_view_pic_video_element">
+                    <div class="cell-{{ $quiz->type_id == 13 ? '1' : '3'}}" style="display: flex;align-items: center;justify-content: center;padding: 0;">
+                        <div id="form_view_pic_video_element" style="{{ $quiz->type_id == 13 ? 'display:none;' : ''}}">
                             <a href="javascript:void(0)"
                                style="padding: 0 3px;{{ (isset($quiz->media) || isset($quiz->video)) ? 'display: none' : '' }}"
                                id="form_view_add_picture">Pic</a>
@@ -389,43 +393,52 @@
                 </div>
                 @break
 
+                @case(13)
+                <h4>Description</h4>
+                <div contenteditable="true" style="height: 460px;overflow-y: scroll;border: 1px solid black"
+                     id="quiz_instructions">
+                </div>
+                @break
+
             @endswitch
 
             <br>
 
-            <h4>Feedback and Branching</h4>
-            <table class="table striped feedback_branching" style="margin: 0">
-                <thead>
-                <tr>
-                    <th></th>
-                    <th>Feedback</th>
-                    <th>Branching</th>
-                    <th>Score</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Correct:</td>
-                    <td><label class="choice_label" data-editable>{{ $quiz->feedback_correct }}</label></td>
-                    <td></td>
-                    <td><label class="choice_label" data-editable>{{ $quiz->correct_score }}</label></td>
-                </tr>
-                <tr>
-                    <td>Incorrect:</td>
-                    <td><label class="choice_label" data-editable>{{ $quiz->feedback_incorrect }}</label></td>
-                    <td></td>
-                    <td><label class="choice_label" data-editable>{{ $quiz->incorrect_score }}</label></td>
-                </tr>
-                @if ($quiz->feedback_try_again != null)
+            @if ($quiz->type_id != 13)
+                <h4>Feedback and Branching</h4>
+                <table class="table striped feedback_branching" style="margin: 0">
+                    <thead>
                     <tr>
-                        <td>Try Again:</td>
-                        <td><label class="choice_label" data-editable>{{ $quiz->feedback_try_again }}</label></td>
-                        <td>None</td>
-                        <td><label class="choice_label" data-editable>{{ $quiz->try_again_score }}</label></td>
+                        <th></th>
+                        <th>Feedback</th>
+                        <th>Branching</th>
+                        <th>Score</th>
                     </tr>
-                @endif
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Correct:</td>
+                        <td><label class="choice_label" data-editable>{{ $quiz->feedback_correct }}</label></td>
+                        <td></td>
+                        <td><label class="choice_label" data-editable>{{ $quiz->correct_score }}</label></td>
+                    </tr>
+                    <tr>
+                        <td>Incorrect:</td>
+                        <td><label class="choice_label" data-editable>{{ $quiz->feedback_incorrect }}</label></td>
+                        <td></td>
+                        <td><label class="choice_label" data-editable>{{ $quiz->incorrect_score }}</label></td>
+                    </tr>
+                    @if ($quiz->feedback_try_again != null)
+                        <tr>
+                            <td>Try Again:</td>
+                            <td><label class="choice_label" data-editable>{{ $quiz->feedback_try_again }}</label></td>
+                            <td>None</td>
+                            <td><label class="choice_label" data-editable>{{ $quiz->try_again_score }}</label></td>
+                        </tr>
+                    @endif
+                    </tbody>
+                </table>
+            @endif
         </div>
     </div>
     <div class="cell-9 slide_view_element" style="background: #dcdcdc;display: none;overflow: scroll">

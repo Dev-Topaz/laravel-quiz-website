@@ -20,13 +20,15 @@ function create_quiz(quiz_type, root_url, token) {
     const parentNode = $('.current').closest('.node-group');
     const groupId = parentNode.attr('id');
     const node = parentNode.find('li:last');
+    const firstParentNode = $('.node-group:first');
+    const firstNode = firstParentNode.find('li:first');
 
 
     switch (quiz_type) {
         case (1):
             lv.insertAfter(node, {
                 caption: 'Select the correct answer option:',
-                content: '<i>Multiple Choice<i>'
+                content: '<i>Multiple Choice</i>'
             });
             break;
 
@@ -34,70 +36,77 @@ function create_quiz(quiz_type, root_url, token) {
         case (2):
             lv.insertAfter(node, {
                 caption: 'Select one or more correct answers:',
-                content: '<i>Multiple Response<i>'
+                content: '<i>Multiple Response</i>'
             });
             break;
 
         case (3):
             lv.insertAfter(node, {
                 caption: 'Choose whether the statement is true or false:',
-                content: '<i>True/False<i>'
+                content: '<i>True/False</i>'
             });
             break;
 
         case (4):
             lv.insertAfter(node, {
                 caption: 'Type your response:',
-                content: '<i>Short Answer<i>'
+                content: '<i>Short Answer</i>'
             });
             break;
 
         case (5):
             lv.insertAfter(node, {
                 caption: 'Type your response:',
-                content: '<i>Numeric<i>'
+                content: '<i>Numeric</i>'
             });
             break;
 
         case (6):
             lv.insertAfter(node, {
                 caption: 'Arrange the following items in the correct order:',
-                content: '<i>Sequence<i>'
+                content: '<i>Sequence</i>'
             });
             break;
 
         case (7):
             lv.insertAfter(node, {
                 caption: 'Match the following items with their descriptions:',
-                content: '<i>Matching<i>'
+                content: '<i>Matching</i>'
             });
             break;
 
         case (8):
             lv.insertAfter(node, {
                 caption: 'Fill in the blank fields in this text:',
-                content: '<i>Fill in the Blanks<i>'
+                content: '<i>Fill in the Blanks</i>'
             });
             break;
 
         case (9):
             lv.insertAfter(node, {
                 caption: 'Choose the correct answer in each drop-down list:',
-                content: '<i>Select from Lists<i>'
+                content: '<i>Select from Lists</i>'
             });
             break;
 
         case (10):
             lv.insertAfter(node, {
                 caption: 'Drag and drop the words to their places:',
-                content: '<i>Drag the Words<i>'
+                content: '<i>Drag the Words</i>'
             });
             break;
 
         case (11):
             lv.insertAfter(node, {
                 caption: 'Click on the correct area in the image.',
-                content: '<i>Hotspot<i>'
+                content: '<i>Hotspot</i>'
+            });
+            break;
+
+        case (13):
+            lv.insertBefore(firstNode, {
+                caption: 'Quiz Instructions',
+                content: '<i>Quiz Instructions</i>'
             });
             break;
 
