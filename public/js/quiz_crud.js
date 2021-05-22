@@ -370,3 +370,57 @@ $('#section_Home_FormView > div:first-child > div:nth-child(2) > button:nth-chil
     });
     console.log($(location).attr("href"));
 });
+
+$('#duplicate_btn').click(function () {
+    const lv = Metro.getPlugin('#quiz_list', 'listview');
+
+    if ($('.current').length == 0) {
+        alert("Choose a quiz to duplicate.")
+        return;
+    }
+
+    const parentNode = $('.current').closest('.node-group');
+    const groupId = parentNode.attr('id');
+    const node = parentNode.find('li.current');
+
+    if (node.attr('data-content') == '<i>Info Slide</i>' || node.attr('data-content') == '<i>Quiz Instructions</i>') {
+        alert("This slide can't be duplicated!")
+        return;
+    }
+
+    lv.insertAfter(node, {
+        caption: node.attr('data-caption'),
+        content: node.attr('data-content')
+    });
+
+    $('#quiz_list').find('.current').removeClass('current current-select');
+    node.next().addClass('current current-select');
+
+    let order = parentNode.find('li').index(node.next());
+    const id = node.attr('id');
+    const root_url = $('meta[name=url]').attr('content');
+    const token = $('meta[name=csrf-token]').attr('content');
+
+    $.ajax({
+        url: root_url + '/duplicate_quiz',
+        type: 'POST',
+        data: {
+            _token: token,
+            id: id,
+            order: order,
+        },
+        success: function (data) {
+            quizId = data;
+            node.next().attr('id', quizId);
+
+            $.get(root_url + "/quizes/" + quizId + "/edit", function (data, status) {
+                $('#quiz_view').html(data);
+                show_correct_view();
+            }).catch((XHttpResponse) => {
+                console.log(XHttpResponse);
+            });
+        }
+    }).catch((XHttpResponse) => {
+        console.log(XHttpResponse);
+    });
+});

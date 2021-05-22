@@ -1676,7 +1676,7 @@
                 </div>
                 <div class="group">
                     <div style="display: flex;flex-direction: column;">
-                        <button class="ribbon-icon-button">
+                        <button class="ribbon-icon-button" id="duplicate_btn">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/home/dupli.png") }}">
                             </span>

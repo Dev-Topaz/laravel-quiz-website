@@ -38,6 +38,7 @@ Route::group(['middleware' => 'role:manager'], function() {
     Route::get('/quizes/{quiz}', [QuizController::class, 'show']);
     Route::post('/hotspots_image_upload', [QuizController::class, 'hotspots_image_upload']);
     Route::post('/update_quiz_index', [QuizController::class, 'update_quiz_index']);
+    Route::post('/duplicate_quiz', [QuizController::class, 'duplicate_quiz']);
     Route::post('/quizes', [QuizController::class, 'store']);
     Route::post('/update_theme_style', [QuizController::class, 'update_theme_style']);
     Route::get('/quizes/{quiz}/edit', [QuizController::class, 'edit']);

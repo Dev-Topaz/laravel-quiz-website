@@ -601,4 +601,20 @@ class QuizController extends Controller
         return $quiz->id;
     }
 
+    public function duplicate_quiz(Request $request)
+    {
+        $order_updating_quizzes = Quiz::where('order', '>=', $request->order)->get();
+        foreach ($order_updating_quizzes as $item) {
+            $item->order = $item->order + 1;
+            $item->save();
+        }
+
+        $quiz = Quiz::find($request->id);
+        $replicate = $quiz->replicate();
+        $replicate->order = $request->order;
+        $replicate->save();
+
+        return $replicate->id;
+    }
+
 }
