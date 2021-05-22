@@ -117,7 +117,6 @@ if (canvas_info != '') {
 }
 
 
-
 $('#hotspots_only_from_files_image').change(function () {
 
     canvas.setBackgroundColor('', canvas.renderAll.bind(canvas));

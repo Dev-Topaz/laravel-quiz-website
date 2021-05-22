@@ -19,14 +19,17 @@ function create_quiz(quiz_type, root_url, token) {
     const lv = Metro.getPlugin('#quiz_list', 'listview');
     const parentNode = $('.current').closest('.node-group');
     const groupId = parentNode.attr('id');
-    const node = parentNode.find('li:last');
+    const node = parentNode.find('li.current');
+    // const node = parentNode.find('li:last');
+    const firstParentNode = $('.node-group:first');
+    const firstNode = firstParentNode.find('li:first');
 
 
     switch (quiz_type) {
         case (1):
             lv.insertAfter(node, {
                 caption: 'Select the correct answer option:',
-                content: '<i>Multiple Choice<i>'
+                content: '<i>Multiple Choice</i>'
             });
             break;
 
@@ -34,70 +37,84 @@ function create_quiz(quiz_type, root_url, token) {
         case (2):
             lv.insertAfter(node, {
                 caption: 'Select one or more correct answers:',
-                content: '<i>Multiple Response<i>'
+                content: '<i>Multiple Response</i>'
             });
             break;
 
         case (3):
             lv.insertAfter(node, {
                 caption: 'Choose whether the statement is true or false:',
-                content: '<i>True/False<i>'
+                content: '<i>True/False</i>'
             });
             break;
 
         case (4):
             lv.insertAfter(node, {
                 caption: 'Type your response:',
-                content: '<i>Short Answer<i>'
+                content: '<i>Short Answer</i>'
             });
             break;
 
         case (5):
             lv.insertAfter(node, {
                 caption: 'Type your response:',
-                content: '<i>Numeric<i>'
+                content: '<i>Numeric</i>'
             });
             break;
 
         case (6):
             lv.insertAfter(node, {
                 caption: 'Arrange the following items in the correct order:',
-                content: '<i>Sequence<i>'
+                content: '<i>Sequence</i>'
             });
             break;
 
         case (7):
             lv.insertAfter(node, {
                 caption: 'Match the following items with their descriptions:',
-                content: '<i>Matching<i>'
+                content: '<i>Matching</i>'
             });
             break;
 
         case (8):
             lv.insertAfter(node, {
                 caption: 'Fill in the blank fields in this text:',
-                content: '<i>Fill in the Blanks<i>'
+                content: '<i>Fill in the Blanks</i>'
             });
             break;
 
         case (9):
             lv.insertAfter(node, {
                 caption: 'Choose the correct answer in each drop-down list:',
-                content: '<i>Select from Lists<i>'
+                content: '<i>Select from Lists</i>'
             });
             break;
 
         case (10):
             lv.insertAfter(node, {
                 caption: 'Drag and drop the words to their places:',
-                content: '<i>Drag the Words<i>'
+                content: '<i>Drag the Words</i>'
             });
             break;
 
         case (11):
             lv.insertAfter(node, {
                 caption: 'Click on the correct area in the image.',
-                content: '<i>Hotspot<i>'
+                content: '<i>Hotspot</i>'
+            });
+            break;
+
+        case (12):
+            lv.insertBefore(firstNode, {
+                caption: 'Title',
+                content: '<i>Info Slide</i>'
+            });
+            break;
+
+        case (13):
+            lv.insertBefore(firstNode, {
+                caption: 'Quiz Instructions',
+                content: '<i>Quiz Instructions</i>'
             });
             break;
 
@@ -105,12 +122,23 @@ function create_quiz(quiz_type, root_url, token) {
     }
 
     $('#quiz_list').find('.current').removeClass('current current-select');
-    node.next().addClass('current current-select');
+    if (quiz_type == 12 || quiz_type == 13) {
+        parentNode.find('li').eq(0).addClass('current current-select');
+    } else {
+        node.next().addClass('current current-select');
+    }
+
+    let order = parentNode.find('li').index(node.next());
+    if (node.attr('id') === 'none' || node.attr('id') === undefined) order = 0;
+    if (quiz_type == 12 || quiz_type == 13) order = 0;
+    console.log(order);
+    // return;
 
     $.post(root_url + "/quizes", {
             '_token': token,
             'type_id': quiz_type,
             'exam_group_id': groupId,
+            'order': order,
         },
         function (data, status) {
             quizId = data;
@@ -126,7 +154,6 @@ function create_quiz(quiz_type, root_url, token) {
         }).catch((XHttpResponse) => {
         console.log(XHttpResponse);
     });
-
 }
 
 function update_quiz() {
@@ -142,7 +169,7 @@ function update_quiz() {
     console.log('Updating quiz now...');
 
     const typeId = $('#type_id').val();
-    const question_element = $('.slide_view_question_element')[0].outerHTML;
+    let question_element = $('.slide_view_question_element')[0].outerHTML;
 
     const answer = $('#answer_content').val();
 
@@ -154,16 +181,19 @@ function update_quiz() {
     const try_again_score = $('.feedback_branching tr:nth-child(3) td:nth-child(4) label').html();
     const media = $('#media').val();
     const video = $('#video').val();
+    const audio = $('#audio').val();
     const background_img = $('#background_img').val();
     // const order
-    const answer_element = $('.slide_view_answer_element')[0].outerHTML;
-    const media_element = $('.slide_view_media_element')[0].outerHTML;
-    const video_element = $('.slide_view_video_element')[0].outerHTML;
+    let answer_element = $('.slide_view_answer_element')[0].outerHTML;
+    let media_element = $('.slide_view_media_element')[0] == undefined ? null : $('.slide_view_media_element')[0].outerHTML;
+    let video_element = $('.slide_view_video_element')[0] == undefined ? null : $('.slide_view_video_element')[0].outerHTML;
     const question_type = Metro.getPlugin('#question_type', 'select').val();
     const feedback_type = Metro.getPlugin('#feedback', 'select').val();
 
-    console.log("media: ", media);
-    console.log("media_element: ", media_element);
+    question_element = remove_resizable_tag(question_element);
+    answer_element = remove_resizable_tag(answer_element);
+    media_element = remove_resizable_tag(media_element);
+    video_element = remove_resizable_tag(video_element);
 
     let branching;
     if ($('#branching:disabled').length !== 0 || $('#branching').length === 0) {
@@ -216,6 +246,7 @@ function update_quiz() {
             media: media,
             media_element: media_element,
             video: video,
+            audio: audio,
             video_element: video_element,
             background_img: background_img,
             // order: order,
@@ -241,6 +272,18 @@ function update_quiz() {
         console.log(XHttpResponse);
     });
 
+}
+
+function remove_resizable_tag(string) {
+    var tmp_element;
+    if (string != null) {
+        tmp_element = $(string);
+        tmp_element.removeClass('.selected_slide_view_group');
+        tmp_element.children('.ui-resizable-handle').remove();
+        tmp_element.children('input[type=checkbox]').remove();
+        return tmp_element[0].outerHTML;
+    }
+    return null;
 }
 
 function delete_quiz() {
@@ -297,7 +340,7 @@ function show_correct_view() {
 
         $('.slide_view_group').resizable();
         $('.slide_view_group').draggable({cancel: 'div.cancel_drag'});
-        if ($('.slide_view_group_checkbox').length === 0) $('.slide_view_group').append('<input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;right: 0;">');
+        if ($('.slide_view_group_checkbox').length === 0) $('.slide_view_group').append('<input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;">');
     }
 }
 
@@ -316,4 +359,70 @@ $('.preview_slide_btn').click(function () {
 
 $('.preview_group_btn').click(function () {
     window.open(root_url + '/preview_group/' + $('#exam_group_id').val());
+});
+
+$('#section_Home_FormView > div:first-child > div:nth-child(2) > button:nth-child(2)').click(function () {
+    const lv = Metro.getPlugin('#quiz_list', 'listview');
+    const node = lv.addGroup({
+        caption: 'Question Group',
+    });
+    Metro.getPlugin('#quiz_list', 'listview').add(node, {
+        caption: 'No questions',
+        content: '<i>Add questions<i>'
+    });
+    console.log($(location).attr("href"));
+});
+
+$('#duplicate_btn').click(function () {
+    const lv = Metro.getPlugin('#quiz_list', 'listview');
+
+    if ($('.current').length == 0) {
+        alert("Choose a quiz to duplicate.")
+        return;
+    }
+
+    const parentNode = $('.current').closest('.node-group');
+    const groupId = parentNode.attr('id');
+    const node = parentNode.find('li.current');
+
+    if (node.attr('data-content') == '<i>Info Slide</i>' || node.attr('data-content') == '<i>Quiz Instructions</i>') {
+        alert("This slide can't be duplicated!")
+        return;
+    }
+
+    lv.insertAfter(node, {
+        caption: node.attr('data-caption'),
+        content: node.attr('data-content')
+    });
+
+    $('#quiz_list').find('.current').removeClass('current current-select');
+    node.next().addClass('current current-select');
+
+    let order = parentNode.find('li').index(node.next());
+    const id = node.attr('id');
+    const root_url = $('meta[name=url]').attr('content');
+    const token = $('meta[name=csrf-token]').attr('content');
+
+    $.ajax({
+        url: root_url + '/duplicate_quiz',
+        type: 'POST',
+        data: {
+            _token: token,
+            id: id,
+            order: order,
+        },
+        success: function (data) {
+            quizId = data;
+            node.next().attr('id', quizId);
+
+            $.get(root_url + "/quizes/" + quizId + "/edit", function (data, status) {
+                $('#quiz_view').html(data);
+                show_correct_view();
+            }).catch((XHttpResponse) => {
+                console.log(XHttpResponse);
+            });
+        }
+    }).catch((XHttpResponse) => {
+        console.log(XHttpResponse);
+    });
 });

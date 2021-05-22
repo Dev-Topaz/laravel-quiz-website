@@ -102,14 +102,25 @@
                     @case(11)
                     <h4>Hotspots Question</h4>
                     @break
+
+                    @case(12)
+                    <h4>Info Slide</h4>
+                    @break
+
+                    @case(13)
+                    <h4>Quiz Instructions</h4>
+                    @break
                 @endswitch
                 <div class="row" style="width: 100%;margin: 0;">
-                    <div class="cell-9" style="padding: 0;">
+                    <div class="cell-{{ $quiz->type_id == 13 || $quiz->type_id == 12 ? '11' : '9'}}"
+                         style="padding: 0;">
                         <div contenteditable="true" id="question"
                              style="overflow-y: scroll;width: 100%;border: 1px solid black;height: 70px;color: black"></div>
                     </div>
-                    <div class="cell-3" style="display: flex;align-items: center;justify-content: center;padding: 0;">
-                        <div id="form_view_pic_video_element">
+                    <div class="cell-{{ $quiz->type_id == 13 || $quiz->type_id == 12 ? '1' : '3'}}"
+                         style="display: flex;align-items: center;justify-content: center;padding: 0;">
+                        <div id="form_view_pic_video_element"
+                             style="{{ $quiz->type_id == 13 || $quiz->type_id == 12 ? 'display:none;' : ''}}">
                             <a href="javascript:void(0)"
                                style="padding: 0 3px;{{ (isset($quiz->media) || isset($quiz->video)) ? 'display: none' : '' }}"
                                id="form_view_add_picture">Pic</a>
@@ -120,15 +131,15 @@
                                  id="form_view_media_element"
                                  style="{{ isset($quiz->media) ? 'display: flex' : 'display: none' }};height: 70px"
                                  onclick="show_pic_properties()">
-                            <img src="{{ url('/images/add_question.png') }}" alt=""
-                                 style="padding:0 3px;{{ isset($quiz->video) ? '' : 'display: none' }}"
+                            <img src="{{ url('/images/icons/video_icon.png') }}" alt=""
+                                 style="height: 70px;padding:0 3px;{{ isset($quiz->video) ? '' : 'display: none' }}"
                                  id="form_view_video_element" onclick="show_video_properties()">
                         </div>
                         <a href="javascript:void(0)"
                            style="padding: 0 3px;{{ isset($quiz->audio) ? 'display: none' : '' }}"
                            id="form_view_add_audio">Audio</a>
-                        <img src="{{ url('/images/add_question.png') }}" alt=""
-                             style="padding:0 3px;{{ isset($quiz->video) ? '' : 'display: none' }}"
+                        <img src="{{ url('/images/icons/audio_icon.png') }}" alt=""
+                             style="height: 70px;padding:0 3px;{{ isset($quiz->audio) ? '' : 'display: none' }}"
                              id="form_view_audio_mark">
                         <input type="file" id="form_view_input_media_element" hidden>
                         <input type="file" id="form_view_input_video_element" hidden>
@@ -352,7 +363,7 @@
                         <div class="cell-6">
                             <h4>Picture</h4>
                             <div style="border: 1px solid gray;" id="hotspots_image_canvas">
-                                <canvas id="hotspots_canvas" height="214" width="287.5"></canvas>
+                                <canvas id="hotspots_canvas" height="214"></canvas>
                             </div>
                         </div>
                         <div style="float: right;"><a href="javascript:void(0)" style="padding: 0 10px"
@@ -389,12 +400,28 @@
                 </div>
                 @break
 
+                @case(12)
+                <h4>Description</h4>
+                <div contenteditable="true" style="height: 460px;overflow-y: scroll;border: 1px solid black"
+                     id="info_slide">
+                </div>
+                @break
+
+                @case(13)
+                <h4>Description</h4>
+                <div contenteditable="true" style="height: 460px;overflow-y: scroll;border: 1px solid black"
+                     id="quiz_instructions">
+                </div>
+                @break
+
             @endswitch
 
             <br>
 
-            <h4>Feedback and Branching</h4>
-            <table class="table striped feedback_branching" style="margin: 0">
+            <h4 style="{{ $quiz->type_id == 13 || $quiz->type_id == 12 ? 'display:none;' : ''}}">Feedback and
+                Branching</h4>
+            <table class="table striped feedback_branching"
+                   style="margin: 0;{{ $quiz->type_id == 13 || $quiz->type_id == 12 ? 'display:none;' : ''}}">
                 <thead>
                 <tr>
                     <th></th>
@@ -433,20 +460,22 @@
             style="top:50%;left:50%;transform:translate(-50%, -50%);margin: auto 0;width: {{ $quiz->exam_group->exam->screen_width }}px;height:{{ $quiz->exam_group->exam->screen_height }}px;{{ $quiz->exam_group->exam->theme_style ?? 'background:white' }}"
             id="slide_view_container">
             <div id="quiz_background_container"
-                 style="width: 100%;height:100%;padding: 20px;{{ isset($quiz->background_img) ? ('background-image:' . $quiz->background_img . ';') : '' }}">
+                 style="width: 100%;height:100%;padding: 20px;{{ isset($quiz->background_img) ? ('background-image:' . $quiz->background_img . ';background-size: 100% 100%;background-repeat:no-repeat;') : '' }}">
                 {!! $quiz->question_element !!}
                 {!! $quiz->answer_element !!}
                 @if (isset($quiz->media))
                     {!! $quiz->media_element !!}
                 @else
-                    <div class="slide_view_media_element slide_view_group" style="z-index: 3;display: none;position: absolute;top: 0;left: 0;">
+                    <div class="slide_view_media_element slide_view_group"
+                         style="z-index: 1;display: none;position: absolute;top: 0;left: 0;">
                         <img src="#" alt="slide_view_media" style="width: 100%;height: 100%;">
                     </div>
                 @endif
                 @if (!isset($quiz->media) && isset($quiz->video))
                     {!! $quiz->video_element !!}
                 @else
-                    <div class="slide_view_video_element slide_view_group" style="z-index: 3;display: none;position: absolute;top: 0;left: 0;">
+                    <div class="slide_view_video_element slide_view_group"
+                         style="z-index: 1;display: none;position: absolute;top: 0;left: 0;">
                         <video controls>
                             <source src="#" type="video/mp4">
                         </video>
@@ -457,7 +486,7 @@
     </div>
     <div class="cell-3 slide_option" style="padding: 0 20px;">
         <h3 style="border-bottom: 1px dotted grey;padding: 15px 10px;">Slide Options</h3>
-        <div>
+        <div style="{{ $quiz->type_id == 13 || $quiz->type_id == 12 ? 'display:none;' : ''}}">
             <div>
                 <div class="row" style="padding: 0 10px;">
                     <div class="cell-5">
@@ -481,10 +510,12 @@
                             <select data-role="select" data-filter="false" id="feedback">
                                 <option value="none" {{ $quiz->feedback_type == 'none' ? 'selected' : '' }}>None
                                 </option>
-                                <option value="by_result" {{ $quiz->feedback_type == 'by_result' ? 'selected' : '' }}>By
+                                <option
+                                    value="by_result" {{ $quiz->feedback_type == 'by_result' ? 'selected' : '' }}>By
                                     Result
                                 </option>
-                                <option value="by_choice" {{ $quiz->feedback_type == 'by_choice' ? 'selected' : '' }}>By
+                                <option
+                                    value="by_choice" {{ $quiz->feedback_type == 'by_choice' ? 'selected' : '' }}>By
                                     Choice
                                 </option>
                             </select>
@@ -496,11 +527,13 @@
                             <div class="cell-6">
                                 <select data-role="select" data-filter="false" id="branching">
                                     <option
-                                        value="by_result" {{ $quiz->feedback_type == 'by_result' ? 'selected' : '' }}>By
+                                        value="by_result" {{ $quiz->feedback_type == 'by_result' ? 'selected' : '' }}>
+                                        By
                                         Result
                                     </option>
                                     <option
-                                        value="by_choice" {{ $quiz->feedback_type == 'by_choice' ? 'selected' : '' }}>By
+                                        value="by_choice" {{ $quiz->feedback_type == 'by_choice' ? 'selected' : '' }}>
+                                        By
                                         Choice
                                     </option>
                                 </select>
@@ -588,7 +621,7 @@
             <p style="color: gray;font-size: 18px;" onclick="close_pic_properties()">x</p>
         </div>
         <div style="width: 100%;" id="picture_properties_image">
-            <img src="" alt="">
+            <img src="{{ $quiz->media ?? '' }}" alt="">
         </div>
         <div style="display: flex;justify-content: space-around;">
             <a href="javascript:void(0)" style="padding:5px" onclick="change_media_pic()">Change</a>
@@ -602,7 +635,7 @@
         </div>
         <div style="width: 100%;" id="video_properties_video">
             <video controls="controls">
-                <source src="" type="video/mp4">
+                <source src="{{ $quiz->video ?? '' }}" type="video/mp4">
             </video>
         </div>
         <div style="display: flex;justify-content: space-around;">
@@ -617,7 +650,7 @@
         </div>
         <div style="width: 100%;" id="audio_properties">
             <audio controls="controls">
-                <source src="" type="audio/mpeg">
+                <source src="{{ $quiz->audio ?? '' }}" type="audio/mpeg">
             </audio>
         </div>
         <div style="display: flex;justify-content: space-around;">

@@ -15,7 +15,7 @@ function delete_media_pic() {
     $('#media').val('');
     $('#media_element').val('');
     $('.slide_view_media_element').remove();
-    $('#slide_view_container').append('<div class="slide_view_media_element slide_view_group" style="z-index: 3;display: none;position: absolute;top: 0;left: 0;"><img src="#" alt="slide_view_media" style="width: 100%;height: 100%;"></div>');
+    $('#quiz_background_container').append('<div class="slide_view_media_element slide_view_group" style="z-index: 3;display: none;position: absolute;top: 0;left: 0;"><img src="#" alt="slide_view_media" style="width: 100%;height: 100%;"></div>');
 }
 
 function show_pic_properties() {
@@ -88,6 +88,7 @@ $('#format_bg_btn').click(function () {
 });
 
 $('#select_background_img').change(function () {
+    console.log("bg changed");
 
     var root_url = $('meta[name=url]').attr('content');
 
@@ -225,7 +226,7 @@ function delete_video() {
     $('#form_view_video_element').hide();
     $('#video').val('');
     $('.slide_view_video_element').remove();
-    $('#slide_view_container').append('<div class="slide_view_video_element slide_view_group" style="z-index: 3;display: none;position: absolute;top: 0;left: 0;"><video controls><source src="#" type="video/mp4"></video></div>');
+    $('#quiz_background_container').append('<div class="slide_view_video_element slide_view_group" style="z-index: 3;display: none;position: absolute;top: 0;left: 0;"><video controls><source src="#" type="video/mp4"></video></div>');
 }
 
 /*
@@ -267,6 +268,14 @@ $('#form_view_input_audio_element').change(function () {
                     $('#form_view_add_audio').hide();
                     $('#form_view_audio_mark').show();
                     $('#audio').val(response.filepath);
+                    $('#audio_properties source').attr('src', $('#audio').val()).appendTo($('#audio_properties source').parent());
+                    var audio = $('#audio_properties audio');
+                    audio[0].pause();
+                    audio[0].load();//suspends and restores all audio element
+
+                    //audio[0].play(); changed based on Sprachprofi's comment below
+                    audio[0].oncanplaythrough = audio[0].play();
+
                 } else if (response.success == 2) { // File not uploaded
 
                     // Response message
@@ -294,5 +303,29 @@ $('#form_view_input_audio_element').change(function () {
 $('#form_view_audio_mark').click(function () {
     $('.audio_properties').show();
     $('.slide_option').hide();
-    $('#audio_properties source').attr('src', $('#audio').val()).appendTo($('#audio_properties source').parent());
+    // $('#audio_properties source').attr('src', $('#audio').val()).appendTo($('#audio_properties source').parent());
+    // var audio = $('#audio_properties audio');
+    // audio[0].pause();
+    // audio[0].load();//suspends and restores all audio element
+    //
+    // //audio[0].play(); changed based on Sprachprofi's comment below
+    // audio[0].oncanplaythrough = audio[0].play();
+    // $('#audio_properties audio')[0].load();
 });
+
+function change_audio() {
+    $('#form_view_input_audio_element').trigger('click');
+}
+
+function delete_audio() {
+    close_audio_properties();
+    $('#audio').val('');
+    $('#audio_properties source').attr('src', $('#audio').val()).appendTo($('#audio_properties source').parent());
+    $('#form_view_add_audio').show();
+    $('#form_view_audio_mark').hide();
+}
+
+function close_audio_properties() {
+    $('.audio_properties').hide();
+    $('.slide_option').show();
+}
