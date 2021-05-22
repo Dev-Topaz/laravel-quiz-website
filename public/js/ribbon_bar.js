@@ -441,8 +441,9 @@ var para_numbering = false;
 
 $('.numbering_btn').click(function () {
     console.log('numbering_btn');
-    para_numbering = !para_numbering;
-    create_numbering(para_numbering);
+    // para_numbering = !para_numbering;
+    // create_numbering(para_numbering);
+    document.execCommand('insertOrderedList');
 });
 
 function create_numbering(para_numbering) {
@@ -470,8 +471,9 @@ var para_bullet = false;
 
 $('.bullet_btn').click(function () {
     console.log('bullet_btn');
-    para_bullet = !para_bullet;
-    create_bullet(para_bullet);
+    // para_bullet = !para_bullet;
+    // create_bullet(para_bullet);
+    document.execCommand('insertUnorderedList', false);
 });
 
 function create_bullet(para_bullet) {
