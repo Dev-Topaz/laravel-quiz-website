@@ -12,7 +12,7 @@
             <li id="section_insert" style="display: none;"><a href="#section_Insert">Insert</a></li>
             <li id="section_design" style="display: none;"><a href="#section_Design">Design</a></li>
         </ul>
-        <div class="content-holder" style="height: 118px;">
+        <div class="content-holder" style="height: 104px;">
             <div class="section" id="section_main">
                 <div class="group">
                     <button class="ribbon-button"><span class="icon"><span class="mif-share"></span></span><span
@@ -301,7 +301,7 @@
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/design-2.png") }}">
                             </span>
-                            <span class="caption">Format <br> Background</span>
+                            <span class="caption" style="line-height: 11px;">Format <br> Background</span>
                         </button>
                     </div>
                     <span class="title">Settings</span>
@@ -551,26 +551,26 @@
                                 style="position: absolute; width: 600px;">
                                 <div style="display: flex;flex-wrap: wrap;">
                                     <div class="layout_panel_divider">Default</div>
-                                    <div id="layout_default" class="layout_panel_img_holder"><img
+                                    <div id="layout_default" class="layout_panel_img_holder" data-questyle="8 4 92 30" data-anstyle="44 4 92 48" data-medstyle=""><img
                                             src="{{ url("/images/ribbon_imgs/images/layout_ver_01.png") }}"></div>
                                     <div class="layout_panel_divider">Side Panel</div>
-                                    <div id="layout_side_panel_01" class="layout_panel_img_holder"><img
+                                    <div id="layout_side_panel_01" class="layout_panel_img_holder" data-questyle="8 44 52 30" data-anstyle="44 44 52 48" data-medstyle="8 4 37 84"><img
                                             src="{{ url("/images/ribbon_imgs/images/side_panel_01.png") }}"></div>
-                                    <div id="layout_side_panel_02" class="layout_panel_img_holder"><img
+                                    <div id="layout_side_panel_02" class="layout_panel_img_holder" data-questyle="8 4 52 30" data-anstyle="44 4 52 48" data-medstyle="8 59 37 84"><img
                                             src="{{ url("/images/ribbon_imgs/images/side_panel_02.png") }}"></div>
-                                    <div id="layout_side_panel_03" class="layout_panel_img_holder"><img
+                                    <div id="layout_side_panel_03" class="layout_panel_img_holder" data-questyle="8 4 52 30" data-anstyle="8 59 37 84" data-medstyle="44 4 52 48"><img
                                             src="{{ url("/images/ribbon_imgs/images/side_panel_03.png") }}"></div>
                                     <div class="layout_panel_divider">Horizontal</div>
-                                    <div id="layout_horizontal_01" class="layout_panel_img_holder"><img
+                                    <div id="layout_horizontal_01" class="layout_panel_img_holder" data-questyle="8 4 92 26" data-anstyle="66 4 92 26" data-medstyle="37 4 92 26"><img
                                             src="{{ url("/images/ribbon_imgs/images/layout_hor_03.png") }}"></div>
-                                    <div id="layout_horizontal_02" class="layout_panel_img_holder"><img
+                                    <div id="layout_horizontal_02" class="layout_panel_img_holder" data-questyle="37 4 92 26" data-anstyle="66 4 92 26" data-medstyle="8 4 92 26"><img
                                             src="{{ url("/images/ribbon_imgs/images/layout_hor_04.png") }}"></div>
                                     <div class="layout_panel_divider">Balanced Content</div>
-                                    <div id="layout_balanced_01" class="layout_panel_img_holder"><img
+                                    <div id="layout_balanced_01" class="layout_panel_img_holder" data-questyle="8 4 92 26" data-anstyle="38 4 45 54" data-medstyle="38 51 45 54"><img
                                             src="{{ url("/images/ribbon_imgs/images/balance_01.png") }}"></div>
-                                    <div id="layout_balanced_02" class="layout_panel_img_holder"><img
+                                    <div id="layout_balanced_02" class="layout_panel_img_holder" data-questyle="8 4 92 26" data-anstyle="38 51 45 54" data-medstyle="38 4 45 54"><img
                                             src="{{ url("/images/ribbon_imgs/images/balance_02.png") }}"></div>
-                                    <div id="layout_balanced_03" class="layout_panel_img_holder"><img
+                                    <div id="layout_balanced_03" class="layout_panel_img_holder" data-questyle="38 4 45 54" data-anstyle="38 51 45 54" data-medstyle="8 4 92 26"><img
                                             src="{{ url("/images/ribbon_imgs/images/balance_03.png") }}"></div>
                                 </div>
                             </div>
@@ -1085,12 +1085,12 @@
                             <li style="background-image: url({{ url("/images/ribbon_imgs/rotate.png") }});"
                                 id="arrange_li_rotate"><a>Rotate <strong
                                         style="position: absolute; right: 5px;">></strong></a>
-                                <ul class="arrange_ul_ul" style="height: 76px;">
+                                <ul class="arrange_ul_ul" style="height: 52px;">
                                     <li style="background-image: url({{ url("/images/ribbon_imgs/rotate_right.png") }});"
                                         id="rotate_right"><a>Rotate Right</a></li>
                                     <li style="background-image: url({{ url("/images/ribbon_imgs/rotate_left.png") }});"
                                         id="rotate_left"><a>Rotate Left</a></li>
-                                    <li id="rotate_options"><a>More Rotation Options...</a></li>
+                                    <!-- <li id="rotate_options"><a>More Rotation Options...</a></li> -->
                                 </ul>
                             </li>
                         </ul>

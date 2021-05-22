@@ -628,3 +628,7 @@ label[for="open_in_new"] {
     text-align: left;
     margin-inline: 15px;
 }
+
+.ui-resizable {
+    position: absolute !important;
+}
