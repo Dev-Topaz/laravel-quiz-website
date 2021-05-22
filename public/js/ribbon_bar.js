@@ -857,9 +857,9 @@ $('#align_right').click(function () {
     var el_num = elements.length;
     for (let i = 0; i < el_num; i++) {
         var element = elements.eq(i);
-        element.css('left', parent_width - element.width());
+        element.css('left', parent_width - element.outerWidth());
     }
-    console.log('selected elements ', element.length);
+    console.log('selected elements ', el_num);
 });
 
 
@@ -872,7 +872,7 @@ $('#align_center').click(function () {
     var ele_count = elements.length;
     for (let i = 0; i < ele_count; i++) {
         element = elements.eq(i);
-        element.css('left', (parent_width - element.width()) / 2 + 'px');
+        element.css('left', (parent_width - element.outerWidth()) / 2 + 'px');
     }
     console.log('selected elements ', ele_count);
 
@@ -896,7 +896,7 @@ $('#align_bottom').click(function () {
         var element = elements.eq(i);
         element.css('top', parent_height - element.outerHeight());
     }
-    console.log('selected elements ', element.length);
+    console.log('selected elements ', el_num);
 
 });
 
@@ -937,13 +937,13 @@ $('#distribute_horizontally').click(function () {
     var elements = $('.selected_slide_view_group'); // get selected element
     ele_count = elements.length;
     for (let i = 0; i < ele_count; i++) {
-        width_sum += elements.eq(i).width();
+        width_sum += elements.eq(i).outerWidth();
     }
     var gap = ($('#slide_view_container').width() - width_sum) / (ele_count + 1);
     for (let i = 0; i < ele_count; i++) {
         var width_to_set_sum = 0;
         for (let j = 0; j < i; j++) {
-            width_to_set_sum += elements.eq(j).width();
+            width_to_set_sum += elements.eq(j).outerWidth();
         }
         elements.eq(i).css('left', width_to_set_sum + gap * (i + 1) + 'px');
     }
@@ -1362,9 +1362,49 @@ $('#layout_reset_btn').click(function () {
 });
 
 
+$('#layout_column_01_btn').click(function () {
+    console.log('layout_column_01_btn');
+    var element = $('.selected_slide_view_group').eq(0); // get selected element
+    if (element.find('.choice_item').length > 0) {
+        element.find('.choice_item').eq(0).parent().css('display', 'flex');
+        element.find('.choice_item').eq(0).parent().css('flex-direction', 'row');
+        element.find('.choice_item').eq(0).parent().css('flex-wrap', 'wrap');
+        element.find('.choice_item').css('flex', '0 0 100%');
+    }
+});
 
+$('#layout_column_02_btn').click(function () {
+    console.log('layout_column_02_btn');
+    var element = $('.selected_slide_view_group').eq(0); // get selected element
+    if (element.find('.choice_item').length > 0) {
+        element.find('.choice_item').eq(0).parent().css('display', 'flex');
+        element.find('.choice_item').eq(0).parent().css('flex-direction', 'row');
+        element.find('.choice_item').eq(0).parent().css('flex-wrap', 'wrap');
+        element.find('.choice_item').css('flex', '0 0 50%');
+    }
+});
 
+$('#layout_column_03_btn').click(function () {
+    console.log('layout_column_03_btn');
+    var element = $('.selected_slide_view_group').eq(0); // get selected element
+    if (element.find('.choice_item').length > 0) {
+        element.find('.choice_item').eq(0).parent().css('display', 'flex');
+        element.find('.choice_item').eq(0).parent().css('flex-direction', 'row');
+        element.find('.choice_item').eq(0).parent().css('flex-wrap', 'wrap');
+        element.find('.choice_item').css('flex', '0 0 33.3%');
+    }
+});
 
+$('#layout_column_04_btn').click(function () {
+    console.log('layout_column_04_btn');
+    var element = $('.selected_slide_view_group').eq(0); // get selected element
+    if (element.find('.choice_item').length > 0) {
+        element.find('.choice_item').eq(0).parent().css('display', 'flex');
+        element.find('.choice_item').eq(0).parent().css('flex-direction', 'row');
+        element.find('.choice_item').eq(0).parent().css('flex-wrap', 'wrap');
+        element.find('.choice_item').css('flex', '0 0 25%');
+    }
+});
 
 
 // sel = window.getSelection();
