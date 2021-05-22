@@ -12,7 +12,7 @@
         <div id="quiz_list_container-{{ $quiz->id }}" class="quiz_list_container {{ $key == 0 ? 'quiz_show' : 'quiz_hide' }}"
              style="margin:0 auto;width: {{ $quiz->exam_group->exam->screen_width }}px;height: {{ $quiz->exam_group->exam->screen_height }}px;{{ $quiz->exam_group->exam->theme_style ?? 'background:white' }}" >
             <div class="quiz_item_container"
-                 style="{{ isset($quiz->background_img) ? ('background-image:' . $quiz->background_img . ';') : '' }}">
+                 style="{{ isset($quiz->background_img) ? ('background-image:' . $quiz->background_img . ';background-size:100% 100%;background-repeat: no-repeat;') : '' }}">
                 {!! $quiz->question_element !!}
                 {!! $quiz->answer_element !!}
                 {!! $quiz->media_element !!}

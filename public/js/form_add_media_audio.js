@@ -88,6 +88,7 @@ $('#format_bg_btn').click(function () {
 });
 
 $('#select_background_img').change(function () {
+    console.log("bg changed");
 
     var root_url = $('meta[name=url]').attr('content');
 

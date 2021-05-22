@@ -19,11 +19,16 @@
 
 function question_slide2form(question) {
     const element = $(question);
+    element.removeClass('.selected_slide_view_group');
+    element.children('.ui-resizable-handle').remove();
+    element.children('input[type=checkbox]').remove();
+    console.log(element.html());
     return element.html();
 }
 
 function question_form2slide() {
-    $('.slide_view_question_element').html($('#question').html());
+    console.log($('#question > div.cancel_drag').eq(0).html());
+    $('.slide_view_question_element > div.cancel_drag').html($('#question > div.cancel_drag').eq(0).html());
 }
 
 function media_form2slide() {
@@ -356,7 +361,7 @@ function answer_form2slide() {
             break;
     }
 
-    if (typeId !== '10' && typeId !== '11') $('.slide_view_answer_element').html('<div class="col-md-12">' + slide_answer_element + '</div>');
+    if (typeId !== '10' && typeId !== '11') $('.slide_view_answer_element > .col-md-12').html(slide_answer_element);
 }
 
 // answer_slide2form($('#answer_element').val(), $('#answer_content').val());

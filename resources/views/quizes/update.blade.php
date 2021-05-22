@@ -363,7 +363,7 @@
                         <div class="cell-6">
                             <h4>Picture</h4>
                             <div style="border: 1px solid gray;" id="hotspots_image_canvas">
-                                <canvas id="hotspots_canvas" height="214" width="287.5"></canvas>
+                                <canvas id="hotspots_canvas" height="214"></canvas>
                             </div>
                         </div>
                         <div style="float: right;"><a href="javascript:void(0)" style="padding: 0 10px"
@@ -460,14 +460,14 @@
             style="top:50%;left:50%;transform:translate(-50%, -50%);margin: auto 0;width: {{ $quiz->exam_group->exam->screen_width }}px;height:{{ $quiz->exam_group->exam->screen_height }}px;{{ $quiz->exam_group->exam->theme_style ?? 'background:white' }}"
             id="slide_view_container">
             <div id="quiz_background_container"
-                 style="width: 100%;height:100%;padding: 20px;{{ isset($quiz->background_img) ? ('background-image:' . $quiz->background_img . ';') : '' }}">
+                 style="width: 100%;height:100%;padding: 20px;{{ isset($quiz->background_img) ? ('background-image:' . $quiz->background_img . ';background-size: 100% 100%;background-repeat:no-repeat;') : '' }}">
                 {!! $quiz->question_element !!}
                 {!! $quiz->answer_element !!}
                 @if (isset($quiz->media))
                     {!! $quiz->media_element !!}
                 @else
                     <div class="slide_view_media_element slide_view_group"
-                         style="z-index: 3;display: none;position: relative;top: 0;left: 0;">
+                         style="z-index: 1;display: none;position: absolute;top: 0;left: 0;">
                         <img src="#" alt="slide_view_media" style="width: 100%;height: 100%;">
                     </div>
                 @endif
@@ -475,7 +475,7 @@
                     {!! $quiz->video_element !!}
                 @else
                     <div class="slide_view_video_element slide_view_group"
-                         style="z-index: 3;display: none;position: relative;top: 0;left: 0;">
+                         style="z-index: 1;display: none;position: absolute;top: 0;left: 0;">
                         <video controls>
                             <source src="#" type="video/mp4">
                         </video>

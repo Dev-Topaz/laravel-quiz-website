@@ -278,7 +278,9 @@ function remove_resizable_tag(string) {
     var tmp_element;
     if (string != null) {
         tmp_element = $(string);
+        tmp_element.removeClass('.selected_slide_view_group');
         tmp_element.children('.ui-resizable-handle').remove();
+        tmp_element.children('input[type=checkbox]').remove();
         return tmp_element[0].outerHTML;
     }
     return null;

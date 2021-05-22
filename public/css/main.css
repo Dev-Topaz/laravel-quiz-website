@@ -778,3 +778,8 @@ div.slide_view_group:focus {
 div.slide_view_group:active {
     border: 1px solid black;
 }
+
+.canvas-container {
+    left: 50%;
+    transform: translateX(-50%);
+}
