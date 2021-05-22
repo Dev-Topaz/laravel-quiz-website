@@ -19,7 +19,8 @@ function create_quiz(quiz_type, root_url, token) {
     const lv = Metro.getPlugin('#quiz_list', 'listview');
     const parentNode = $('.current').closest('.node-group');
     const groupId = parentNode.attr('id');
-    const node = parentNode.find('li:last');
+    const node = parentNode.find('li.current');
+    // const node = parentNode.find('li:last');
     const firstParentNode = $('.node-group:first');
     const firstNode = firstParentNode.find('li:first');
 
@@ -123,10 +124,16 @@ function create_quiz(quiz_type, root_url, token) {
     $('#quiz_list').find('.current').removeClass('current current-select');
     node.next().addClass('current current-select');
 
+    let order = parentNode.find('li').index(node.next());
+    if (node.attr('id') === 'none' || node.attr('id') === undefined) order = 0;
+    console.log(order);
+    // return;
+
     $.post(root_url + "/quizes", {
             '_token': token,
             'type_id': quiz_type,
             'exam_group_id': groupId,
+            'order': order,
         },
         function (data, status) {
             quizId = data;
@@ -142,7 +149,6 @@ function create_quiz(quiz_type, root_url, token) {
         }).catch((XHttpResponse) => {
         console.log(XHttpResponse);
     });
-
 }
 
 function update_quiz() {
@@ -219,8 +225,6 @@ function update_quiz() {
     const root_url = $('meta[name=url]').attr('content');
     const token = $('meta[name=csrf-token]').attr('content');
     const quizId = $('#quiz_list').find('.current').attr('id');
-
-    console.log(audio);
 
     $.ajax({
         url: root_url + '/quizes/' + quizId,

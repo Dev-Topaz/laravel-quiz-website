@@ -1,8 +1,8 @@
-$('.middle_form_bar').click(function() {
+$('.middle_form_bar').click(function () {
     $(this).next().toggle();
 });
 
-$('body').on('click', '[data-editable]', function(){
+$('body').on('click', '[data-editable]', function () {
 
     console.log("clicked");
 
@@ -10,7 +10,7 @@ $('body').on('click', '[data-editable]', function(){
 
     const $input = $('<div contenteditable="true" class="form_view_textbox_editable" style="border: 1px solid black;width: 100%;overflow-y: scroll;">' + $el.html() + '</div>');
     // const $input = $('<input style="margin: 0 40px 0 5px;"/>').val($el.text());
-    $el.replaceWith( $input );
+    $el.replaceWith($input);
 
     const save = function () {
         const $label = $('<label data-editable />').html($input.html());
@@ -20,8 +20,42 @@ $('body').on('click', '[data-editable]', function(){
         $input.replaceWith($label);
     };
 
-  $input.one('blur', save).focus();
+    $input.one('blur', save).focus();
 
 });
 
+$(function () {
+    var fromIndex, toIndex;
+    $('.listview li ul').sortable({
+        start: function (event, ui) {
+            fromIndex = get_order(ui.item[0]);
+        },
 
+        stop: function (event, ui) {
+            toIndex = get_order(ui.item[0]);
+
+            const root_url = $('meta[name=url]').attr('content');
+            const token = $('meta[name=csrf-token]').attr('content');
+
+            $.ajax({
+                url: root_url + '/update_quiz_index',
+                type: 'POST',
+                data: {
+                    _token: token,
+                    fromIndex: fromIndex,
+                    toIndex: toIndex,
+                },
+                success: function (data) {
+                    alert('Quiz Index updated successfully');
+                }
+            }).catch((XHttpResponse) => {
+                console.log(XHttpResponse);
+            });
+        },
+    });
+
+    function get_order(ui) {
+        const parentNode = ui.closest('.node-group');
+        return $(parentNode).find('li').index(ui);
+    }
+});

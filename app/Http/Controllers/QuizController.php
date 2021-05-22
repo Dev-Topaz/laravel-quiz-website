@@ -38,19 +38,25 @@ class QuizController extends Controller
     public function store(Request $request)
     {
 
+        $order_updating_quizzes = Quiz::where('order', '>=', $request->order)->get();
+        foreach ($order_updating_quizzes as $item) {
+            $item->order = $item->order + 1;
+            $item->save();
+        }
+
         switch ($request->type_id) {
             case "1":
                 $quiz = Quiz::create([
                     'exam_group_id' => $request->exam_group_id,
                     'type_id' => $request->type_id,
-                    'question_element' => '<div class="slide_view_question_element slide_view_group" style="height: 70px;width: 80%;left: 10%;z-index: 3;overflow: hidden;padding:10px;"><div class="cancel_drag" contenteditable="true">Select the correct answer option:</div></div>',
+                    'question_element' => '<div class="slide_view_question_element slide_view_group" style="height: 70px;width: 80%;left: 10%;z-index: 3;overflow: hidden;padding:10px;position: relative;"><div class="cancel_drag" contenteditable="true">Select the correct answer option:</div></div>',
                     'answer' => '1',
                     'feedback_correct' => 'That\'s right! You chose the correct response.',
                     'feedback_incorrect' => 'You did not choose the correct response.',
                     'feedback_try_again' => null,
                     'media' => null,
-                    'order' => null,
-                    'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%;z-index: 3;"><div class="col-md-12"><div class="choice_item"><input type="radio" id="1" name="answer" value="1" style="padding-right: 10px;"><label for="1">Option 1</label></div><div class="choice_item"><input type="radio" id="2" name="answer" value="2" style="padding-right: 10px;"><label for="2">Option 2</label></div><div class="choice_item"><input type="radio" id="3" name="answer" value="3" style="padding-right: 10px;"><label for="3">Option 3</label></div></div></div>',
+                    'order' => $request->order,
+                    'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%;z-index: 3;position: relative;"><div class="col-md-12"><div class="choice_item"><input type="radio" id="1" name="answer" value="1" style="padding-right: 10px;"><label for="1">Option 1</label></div><div class="choice_item"><input type="radio" id="2" name="answer" value="2" style="padding-right: 10px;"><label for="2">Option 2</label></div><div class="choice_item"><input type="radio" id="3" name="answer" value="3" style="padding-right: 10px;"><label for="3">Option 3</label></div></div></div>',
                     'question_type' => 'graded',
                     'feedback_type' => 'by_result',
                     'branching' => 'by_result',
@@ -79,7 +85,7 @@ class QuizController extends Controller
                     'feedback_incorrect' => 'You did not choose the correct response.',
                     'feedback_try_again' => null,
                     'media' => null,
-                    'order' => null,
+                    'order' => $request->order,
                     'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%;z-index: 3;"><div class="col-md-12"><div class="response_item"><input type="checkbox" id="1" name="answer" value="1" style="padding-right: 10px;"><label for="1">Option 1</label></div><div class="response_item"><input type="checkbox" id="2" name="answer" value="2" style="padding-right: 10px;"><label for="2">Option 2</label></div><div class="response_item"><input type="checkbox" id="3" name="answer" value="3" style="padding-right: 10px;"><label for="3">Option 3</label></div></div></div>',
                     'question_type' => 'graded',
                     'feedback_type' => 'by_result',
@@ -109,7 +115,7 @@ class QuizController extends Controller
                     'feedback_incorrect' => 'You did not choose the correct response.',
                     'feedback_try_again' => null,
                     'media' => null,
-                    'order' => null,
+                    'order' => $request->order,
                     'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%;z-index: 3;"><div class="col-md-12"><div class="choice_item"><input type="radio" id="true" name="answer" value="1" style="padding-right: 10px;"><label for="true">True</label></div><div class="choice_item"><input type="radio" id="false" name="answer" value="0" style="padding-right: 10px;"><label for="0">False</label></div></div></div>',
                     'question_type' => 'graded',
                     'feedback_type' => 'by_result',
@@ -139,7 +145,7 @@ class QuizController extends Controller
                     'feedback_incorrect' => 'You did not choose the correct response.',
                     'feedback_try_again' => null,
                     'media' => null,
-                    'order' => null,
+                    'order' => $request->order,
                     'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%;z-index: 3;"><div class="col-md-12"><input id="answer" type="text" class="form-control" name="answer" autocomplete="answer"></div></div>',
                     'question_type' => 'graded',
                     'feedback_type' => 'by_result',
@@ -169,7 +175,7 @@ class QuizController extends Controller
                     'feedback_incorrect' => 'You did not choose the correct response.',
                     'feedback_try_again' => null,
                     'media' => null,
-                    'order' => null,
+                    'order' => $request->order,
                     'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%;z-index: 3;"><div class="col-md-12"><input id="answer" type="number" class="form-control" name="answer" autocomplete="answer"></div></div>',
                     'question_type' => 'graded',
                     'feedback_type' => 'by_result',
@@ -199,7 +205,7 @@ class QuizController extends Controller
                     'feedback_incorrect' => 'You did not choose the correct response.',
                     'feedback_try_again' => null,
                     'media' => null,
-                    'order' => null,
+                    'order' => $request->order,
                     'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%;z-index: 3;"><div class="col-md-12"><ul id="sortable"><li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><label class="sequence_label" data-editable>Option 1</label></li><li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><label class="sequence_label" data-editable>Option 2</label></li><li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><label class="sequence_label" data-editable>Option 3</label></li><li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><label class="sequence_label" data-editable>Option 4</label></li></ul></div></div>',
                     'question_type' => 'graded',
                     'feedback_type' => 'by_result',
@@ -229,7 +235,7 @@ class QuizController extends Controller
                     'feedback_incorrect' => 'You did not choose the correct response.',
                     'feedback_try_again' => null,
                     'media' => null,
-                    'order' => null,
+                    'order' => $request->order,
                     'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%;z-index: 3;"><div class="col-md-12"><div style="display: flex;justify-content: space-around;padding-bottom: 10px;"><div class="ui-widget-header droppable" style="width: 40%"><p>Item 1</p></div><div class="ui-widget-content draggable" style="width: 40%" isdropped=false><p>Match 1</p></div></div><div style="display: flex;justify-content: space-around;padding-bottom: 10px;"><div class="ui-widget-header droppable" style="width: 40%"><p>Item 2</p></div><div class="ui-widget-content draggable" style="width: 40%" isdropped=false><p>Match 2</p></div></div><div style="display: flex;justify-content: space-around;padding-bottom: 10px;"><div class="ui-widget-header droppable" style="width: 40%"><p>Item 3</p></div><div class="ui-widget-content draggable" style="width: 40%" isdropped=false><p>Match 3</p></div></div></div></div>',
                     'question_type' => 'graded',
                     'feedback_type' => 'by_result',
@@ -259,7 +265,7 @@ class QuizController extends Controller
                     'feedback_incorrect' => 'You did not choose the correct response.',
                     'feedback_try_again' => null,
                     'media' => null,
-                    'order' => null,
+                    'order' => $request->order,
                     'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%;z-index: 3;"><div class="col-md-12">Fill in the <div class="fill_blanks_dropdown" contenteditable="true" style="display: inline;"><div class="fill_blanks_dropdown_body" contenteditable="false"  style="display: inline;"><input id="0" type="text" style="max-width: 100px;"></div></div></div></div>',
                     'question_type' => 'graded',
                     'feedback_type' => 'by_result',
@@ -289,7 +295,7 @@ class QuizController extends Controller
                     'feedback_incorrect' => 'You did not choose the correct response.',
                     'feedback_try_again' => null,
                     'media' => null,
-                    'order' => null,
+                    'order' => $request->order,
                     'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%;z-index: 3;"><div class="col-md-12">Choose the correct <div class="select_lists_dropdown" contenteditable="true" style="display: inline;"><div class="select_lists_dropdown_body" contenteditable="false"  style="display: inline;"><select id="0"><option value="none">- Select -</option><option value="answer 1">Answer 1</option><option value="answer 2">Answer 2</option></select></div></div></div></div>',
                     'question_type' => 'graded',
                     'feedback_type' => 'by_result',
@@ -319,7 +325,7 @@ class QuizController extends Controller
                     'feedback_incorrect' => 'You did not choose the correct response.',
                     'feedback_try_again' => null,
                     'media' => null,
-                    'order' => null,
+                    'order' => $request->order,
                     'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%;z-index: 3;"><div class="col-md-12"><div id="slide_drag_words_question">Drag the <div class="blank" style="display:inline;width: 70px;height: 100%;border: 1px solid grey;background: white;"></div> and drop them to the appropriate <div class="blank" style="display:inline;width: 70px;height: 100%;border: 1px solid grey;background: white;"></div> .</div><div id="slide_drag_words_answer"><span style="border: 1px solid gray;background: white;color: black;">words</span><span style="border: 1px solid gray;background: white;color:black;">places</span></div></div></div>',
                     'question_type' => 'graded',
                     'feedback_type' => 'by_result',
@@ -349,7 +355,7 @@ class QuizController extends Controller
                     'feedback_incorrect' => 'You did not choose the correct response.',
                     'feedback_try_again' => null,
                     'media' => null,
-                    'order' => null,
+                    'order' => $request->order,
                     'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%;z-index: 3;"><div class="col-md-12"><canvas id="slide_view_hotspots_canvas" height="214" width="287.5"></canvas></div></div>',
                     'question_type' => 'graded',
                     'feedback_type' => 'by_result',
@@ -379,7 +385,7 @@ class QuizController extends Controller
                     'feedback_incorrect' => 'You did not choose the correct response.',
                     'feedback_try_again' => null,
                     'media' => null,
-                    'order' => null,
+                    'order' => $request->order,
                     'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%;z-index: 3;padding: 10px;"><div class="col-md-12"><div contenteditable="true" class="cancel_drag">Description text</div>',
                     'question_type' => 'graded',
                     'feedback_type' => 'by_result',
@@ -409,7 +415,7 @@ class QuizController extends Controller
                     'feedback_incorrect' => 'You did not choose the correct response.',
                     'feedback_try_again' => null,
                     'media' => null,
-                    'order' => null,
+                    'order' => $request->order,
                     'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%;z-index: 3;padding: 10px;"><div class="col-md-12"><div contenteditable="true" class="cancel_drag"><div>Before attempting, carefully read the question text.</div><div>Then choose the correct answer.</div><div>Click on “Submit” to confirm your answer.</div><div>Use the Question List in the upper left corner to jump to a certain question.</div></div></div></div>',
                     'question_type' => 'graded',
                     'feedback_type' => 'by_result',
@@ -501,7 +507,7 @@ class QuizController extends Controller
         $quiz->media_element = $request->media_element;
         $quiz->video_element = $request->video_element;
         $quiz->background_img = $request->background_img;
-        $quiz->order = $request->order;
+//        $quiz->order = $request->order;
         $quiz->answer_element = $request->answer_element;
         $quiz->question_type = $request->question_type;
         $quiz->feedback_type = $request->feedback_type;
@@ -546,7 +552,8 @@ class QuizController extends Controller
         return true;
     }
 
-    public function hotspots_image_upload(Request $request) {
+    public function hotspots_image_upload(Request $request)
+    {
 
         $folderPath = "images/upload/";
 
@@ -554,10 +561,44 @@ class QuizController extends Controller
         $image_type_aux = explode("image/", $image_parts[0]);
         $image_type = $image_type_aux[1];
         $image_base64 = base64_decode($image_parts[1]);
-        $file = $folderPath . uniqid() . '.'.$image_type;
+        $file = $folderPath . uniqid() . '.' . $image_type;
 
         file_put_contents($file, $image_base64);
 
         return $file;
     }
+
+    public function update_quiz_index(Request $request)
+    {
+
+        $fromIndex = $request->fromIndex;
+        $toIndex = $request->toIndex;
+
+        $quiz = Quiz::where('order', $fromIndex)->get()[0];
+
+        if ($fromIndex > $toIndex) {
+            $quizzes = Quiz::where('order', '<', $fromIndex)->where('order', '>=', $toIndex)->get();
+            foreach ($quizzes as $item) {
+                echo $item->id;
+                $item->order = $item->order + 1;
+                $item->save();
+            }
+        }
+
+        if ($fromIndex < $toIndex) {
+            $quizzes = Quiz::where('order', '>', $fromIndex)->where('order', '<=', $toIndex)->get();
+            foreach ($quizzes as $item) {
+                echo $item->id;
+                $item->order = $item->order - 1;
+                $item->save();
+            }
+        }
+
+        echo $quiz->id;
+        $quiz->order = $toIndex;
+        $quiz->save();
+
+        return $quiz->id;
+    }
+
 }
