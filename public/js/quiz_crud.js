@@ -122,10 +122,15 @@ function create_quiz(quiz_type, root_url, token) {
     }
 
     $('#quiz_list').find('.current').removeClass('current current-select');
-    node.next().addClass('current current-select');
+    if (quiz_type == 12 || quiz_type == 13) {
+        parentNode.find('li').eq(0).addClass('current current-select');
+    } else {
+        node.next().addClass('current current-select');
+    }
 
     let order = parentNode.find('li').index(node.next());
     if (node.attr('id') === 'none' || node.attr('id') === undefined) order = 0;
+    if (quiz_type == 12 || quiz_type == 13) order = 0;
     console.log(order);
     // return;
 
