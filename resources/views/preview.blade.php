@@ -16,6 +16,10 @@
                 {!! $quiz->question_element !!}
                 {!! $quiz->answer_element !!}
                 {!! $quiz->media_element !!}
+                {!! $quiz->video_element !!}
+                <audio controls autoplay id="quiz_list_audio-{{ $quiz->id }}" style="display: none;">
+                    <source src="{{ $quiz->audio }}" type="audio/mpeg">
+                </audio>
             </div>
             <div class="type_id" style="display: none;">{!! $quiz->type_id !!}</div>
             <div class="correct_answer" style="display: none;">{!! $quiz->answer !!}</div>
