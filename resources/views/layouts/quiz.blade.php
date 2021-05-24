@@ -31,8 +31,10 @@
     <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('js/evol-colorpicker.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.22/fabric.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
 </head>
 <body>
+<div class="se-pre-con"></div>
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" style="margin: 0">
         <div class="container">

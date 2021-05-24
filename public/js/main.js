@@ -2,6 +2,12 @@ $('.middle_form_bar').click(function () {
     $(this).next().toggle();
 });
 
+// $(document).on('load', function () {
+    console.log("loaded!!!");
+    // Animate loader off screen
+    $(".se-pre-con").fadeOut(1000);
+// });
+
 $('body').on('click', '[data-editable]', function () {
 
     console.log("clicked");

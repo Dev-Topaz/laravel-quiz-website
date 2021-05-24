@@ -476,7 +476,7 @@
                 @else
                     <div class="slide_view_video_element slide_view_group"
                          style="z-index: 1;display: none;position: absolute;top: 0;left: 0;">
-                        <video controls>
+                        <video controls style="width: 100%;">
                             <source src="#" type="video/mp4">
                         </video>
                     </div>

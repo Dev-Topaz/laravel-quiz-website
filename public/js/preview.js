@@ -242,11 +242,16 @@ function preview() {
 
         case 'Continue':
             attempts = 0;
-            console.log($('.quiz_show').attr('id'));
-            console.log($('.quiz_show').next().attr('id'));
+            console.log($('.quiz_show').attr('id').split('-')[1]);
+            console.log($('.quiz_show').next().attr('id').split('-')[1]);
 
             var current_show_id = $('.quiz_show').attr('id');
             var next_show_id = $('.quiz_show').next().attr('id');
+
+            $('#quiz_list_audio-' + current_show_id.split('-')[1])[0].pause();
+            $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].pause();
+            $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].currentTime = 0;
+            $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].play();
 
             if (next_show_id === undefined) {
 
@@ -261,6 +266,8 @@ function preview() {
                 rearrange_preview_ui();
                 $('.preview_btn button').html('Submit');
             }
+
+
             break;
 
         case 'See Result':
