@@ -48,7 +48,7 @@ $('#form_view_input_media_element').change(function () {
 
         $.ajax({
             type: 'POST',
-            url: `/hotspots_image_upload`,
+            url: root_url + '/hotspots_image_upload',
             data: formData,
             contentType: false,
             processData: false,
@@ -107,7 +107,7 @@ $('#select_background_img').change(function () {
 
         $.ajax({
             type: 'POST',
-            url: `/hotspots_image_upload`,
+            url: root_url + '/hotspots_image_upload',
             data: formData,
             contentType: false,
             processData: false,
@@ -141,6 +141,7 @@ $('#form_view_add_video').click(function () {
 
 $('#form_view_input_video_element').change(function () {
     // $('#form_view_upload_video').submit();
+    var root_url = $('meta[name=url]').attr('content');
     var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
     var files = $('#form_view_input_video_element')[0].files;
 
@@ -156,7 +157,7 @@ $('#form_view_input_video_element').change(function () {
 
         // AJAX request
         $.ajax({
-            url: `/upload_video`,
+            url: root_url + '/upload_video',
             method: 'post',
             data: fd,
             contentType: false,
@@ -238,6 +239,7 @@ $('#form_view_add_audio').click(function () {
 
 $('#form_view_input_audio_element').change(function () {
     console.log('changed');
+    var root_url = $('meta[name=url]').attr('content');
     var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
     var files = $('#form_view_input_audio_element')[0].files;
 
@@ -253,7 +255,7 @@ $('#form_view_input_audio_element').change(function () {
 
         // AJAX request
         $.ajax({
-            url: `/upload_audio`,
+            url: root_url + '/upload_audio',
             method: 'post',
             data: fd,
             contentType: false,
