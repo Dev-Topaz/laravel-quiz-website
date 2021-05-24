@@ -121,6 +121,7 @@ $('#hotspots_only_from_files_image').change(function () {
 
     canvas.setBackgroundColor('', canvas.renderAll.bind(canvas));
     canvas.setBackgroundImage(0, canvas.renderAll.bind(canvas));
+    var root_url = $('meta[name=url]').attr('content');
 
     let reader = new FileReader();
 
@@ -137,7 +138,7 @@ $('#hotspots_only_from_files_image').change(function () {
 
         $.ajax({
             type: 'POST',
-            url: `/hotspots_image_upload`,
+            url: root_url + '/hotspots_image_upload',
             data: formData,
             contentType: false,
             processData: false,

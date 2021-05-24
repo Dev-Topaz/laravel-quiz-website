@@ -22,7 +22,7 @@ function question_slide2form(question) {
     element.removeClass('.selected_slide_view_group');
     element.children('.ui-resizable-handle').remove();
     element.children('input[type=checkbox]').remove();
-    console.log(element.html());
+
     return element.html();
 }
 
