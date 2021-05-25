@@ -414,17 +414,17 @@ function evulate() {
             for (let i = 0; i < hotspots_points.length; i++) {
                 switch (json_canvas_item.type) {
                     case 'circle':
-                        // console.log(hotspots_points);
-                        // console.log(json_canvas_item);
-                        if (Math.pow(json_canvas_item.radius, 2) < Math.pow(hotspots_points[0] - json_canvas_item.left, 2) + Math.pow(hotspots_points[1] - json_canvas_item.top, 2)) return false;
+                        console.log(hotspots_points);
+                        console.log(json_canvas_item);
+                        if (Math.pow(json_canvas_item.radius, 2) < Math.pow(hotspots_points[0][0] - json_canvas_item.left, 2) + Math.pow(hotspots_points[0][1] - json_canvas_item.top, 2)) return false;
                         break;
 
                     case 'rect':
-                        if (hotspots_points[0] < json_canvas_item.left || hotspots_points[0] > json_canvas_item.left + json_canvas_item.width || hotspots_points[1] < json_canvas_item.top || hotspots_points[1] > json_canvas_item.top + json_canvas_item.height) return false;
+                        if (hotspots_points[0][0] < json_canvas_item.left || hotspots_points[0][0] > json_canvas_item.left + json_canvas_item.width || hotspots_points[0][1] < json_canvas_item.top || hotspots_points[0][1] > json_canvas_item.top + json_canvas_item.height) return false;
                         break;
 
                     case 'polyline':
-                        if (!(inside(hotspots_points, json_canvas_item.points))) return false;
+                        if (!(inside(hotspots_points[0], json_canvas_item.points))) return false;
                         break;
                 }
             }
