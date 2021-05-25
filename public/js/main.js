@@ -65,3 +65,13 @@ $(function () {
         return $(parentNode).find('li').index(ui);
     }
 });
+
+function show_preload() {
+    $('.se-pre-con').show();
+    $('.se-pre-con').addClass('se-pre-con-show');
+}
+
+function hide_preload() {
+    $('.se-pre-con').hide();
+    $('.se-pre-con').removeClass('se-pre-con-show');
+}

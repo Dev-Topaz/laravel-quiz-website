@@ -1,22 +1,3 @@
-// $("body").click(function (e) {
-//     if (jQuery.inArray('slide_view_question_element', e.target.classList) !== -1 || $(e.target).parents(".slide_view_question_element").length) {
-//         $('#target_element').val('slide_view_question_element');
-//         return;
-//     }
-//     if (jQuery.inArray('slide_view_answer_element', e.target.classList) !== -1 || $(e.target).parents(".slide_view_answer_element").length) {
-//         $('#target_element').val('slide_view_answer_element');
-//         return;
-//     }
-//     if (jQuery.inArray('slide_view_media_element', e.target.classList) !== -1 || $(e.target).parents(".slide_view_media_element").length) {
-//         console.log('slide_view_media_element');
-//         $('#target_element').val('slide_view_media_element');
-//         return;
-//     }
-//     $('#target_element').val('common_element');
-//     return;
-// });
-
-
 function question_slide2form(question) {
     const element = $(question);
     element.removeClass('.selected_slide_view_group');
@@ -519,10 +500,6 @@ function form_to_slide() {
     $('#quiz_background_container .slide_view_group').draggable({cancel: 'div.cancel_drag'});
     if ($('.slide_view_group_checkbox').length === 0) $('.slide_view_group').append('<input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;">');
 
-    // if ($('#video').val() !== '' && $('#video').val() !== undefined) {
-    //     $('.slide_view_video_element video source').attr('src', $('#video').val()).appendTo($('.slide_view_video_element video source').parent());
-    //     $('.slide_view_video_element').show();
-    // }
 }
 
 function store_theme_style(style) {
@@ -560,6 +537,7 @@ $("body").click(function (e) {
                 element.closest('.slide_view_group').removeClass('selected_slide_view_group');
             }
         } else {
+            $('.slide_view_group').removeClass('selected_slide_view_group');
             $('.slide_view_group_checkbox').prop('checked', false);
             element.closest('.slide_view_group').addClass('selected_slide_view_group');
             element.closest('.slide_view_group').find('.slide_view_group_checkbox').prop('checked', true);
@@ -567,3 +545,150 @@ $("body").click(function (e) {
     }
 });
 
+/*
+********************** inserting slide view textbox ***********************
+*  */
+$('#insert_textbox_btn').click(function () {
+    $('.slide_view_group').removeClass('just_added_slide_view_element');
+    $('#quiz_background_container').append('<div class="slide_view_group just_added_slide_view_element other_slide_view_element" style="height: 70px;width: 80%;left: 10%;z-index: 3;overflow: hidden;padding:10px;position:absolute;"><div class="cancel_drag" contenteditable="true">Type Text Content</div><input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;"></div>');
+    $('.just_added_slide_view_element').draggable({cancel: 'div.cancel_drag'}).resizable();
+});
+
+/*
+* ************************ inserting slide view picture *******************
+ * */
+$('#slide_view_picture_import_btn').click(function () {
+    console.log('slide_view_picture_import_btn');
+    $('#slide_view_picture_file_selector').trigger('click');
+});
+
+$('#slide_view_picture_file_selector').change(function () {
+    var root_url = $('meta[name=url]').attr('content');
+
+    let reader = new FileReader();
+
+    reader.onload = (e) => {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        let formData = new FormData();
+        formData.append('image', e.target.result);
+        formData.append('quiz_id', $("#quiz_id").val());
+
+        show_preload();
+        $.ajax({
+            type: 'POST',
+            url: root_url + '/hotspots_image_upload',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: (response) => {
+                if (response) {
+                    console.log(response);
+                    $('.slide_view_group').removeClass('just_added_slide_view_element');
+                    $('#quiz_background_container').append(`<div class="slide_view_group just_added_slide_view_element other_slide_view_element" style="left: 10%;z-index: 1;overflow: hidden;padding:10px;position:absolute;"><img src="${root_url}/${response}" style="width: 100%;height: 100%;"><input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;"></div>`);
+                    $('.just_added_slide_view_element').draggable({cancel: 'div.cancel_drag'}).resizable();
+                }
+                hide_preload();
+            },
+            error: function (response) {
+                console.log(response);
+                hide_preload();
+            }
+        });
+    }
+
+    reader.readAsDataURL(this.files[0]);
+});
+
+/*
+* **************** insert video file at slide view ***************
+* */
+$('#slide_view_video_file_btn').click(function () {
+    console.log('slide_view_video_file_btn');
+    $('#slide_view_video_file_selector').trigger('click');
+});
+
+$('#slide_view_video_file_selector').change(function () {
+    var root_url = $('meta[name=url]').attr('content');
+    var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
+    var files = $('#slide_view_video_file_selector')[0].files;
+
+    if (files.length > 0) {
+        var fd = new FormData();
+
+        // Append data
+        fd.append('file', files[0]);
+        fd.append('_token', CSRF_TOKEN);
+
+        // Hide alert
+        $('#responseMsg').hide();
+
+        show_preload();
+        // AJAX request
+        $.ajax({
+            url: root_url + '/upload_video',
+            method: 'post',
+            data: fd,
+            contentType: false,
+            processData: false,
+            dataType: 'json',
+            success: function (response) {
+
+
+                if (response.success == 1) { // Uploaded successfully
+
+                    console.log(response.filepath);
+                    $('.slide_view_group').removeClass('just_added_slide_view_element');
+                    $('#quiz_background_container').append(`<div class="slide_view_group just_added_slide_view_element other_slide_view_element" style="left: 10%;z-index: 1;overflow: hidden;padding:10px;position:absolute;"><video controls style="width: 100%;"><source src="${response.filepath}" type="video/mp4"></video><input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;"></div>`);
+                    $('.just_added_slide_view_element').draggable({cancel: 'div.cancel_drag'}).resizable();
+                } else if (response.success == 2) { // File not uploaded
+
+                    // Response message
+                    $('#responseMsg').removeClass("alert-success");
+                    $('#responseMsg').addClass("alert-danger");
+                    $('#responseMsg').html(response.message);
+                    $('#responseMsg').show();
+                } else {
+                    // Display Error
+                    $('#err_file').text(response.error);
+                    $('#err_file').removeClass('d-none');
+                    $('#err_file').addClass('d-block');
+                }
+                hide_preload();
+            },
+            error: function (response) {
+                console.log("error : " + JSON.stringify(response));
+                hide_preload();
+            }
+        });
+    } else {
+        alert("Please select a file.");
+    }
+});
+
+/*
+* ************** other buttons at ribbon bars *******************
+* */
+$('#form_view_picture_btn').click(function () {
+    console.log('form_view_picture_btn');
+    $('#form_view_input_media_element').trigger('click');
+});
+
+$('#form_view_video_file_btn').click(function () {
+    console.log('form_view_video_file_btn');
+    $('#form_view_input_video_element').trigger('click');
+});
+
+$('#slide_view_insert_audio_btn').click(function () {
+    console.log('slide_view_insert_audio_btn');
+    $('#form_view_input_audio_element').trigger('click');
+});
+
+$('#form_view_import_audio_file_btn').click(function () {
+    console.log('form_view_import_audio_file_btn');
+    $('#form_view_input_audio_element').trigger('click');
+});

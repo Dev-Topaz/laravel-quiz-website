@@ -53,7 +53,7 @@ class QuizController extends Controller
                     'answer' => '1',
                     'feedback_correct' => 'That\'s right! You chose the correct response.',
                     'feedback_incorrect' => 'You did not choose the correct response.',
-                    'feedback_try_again' => null,
+                    'feedback_try_again' => 'You did not choose the correct response. Try again.',
                     'media' => null,
                     'order' => $request->order,
                     'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%;z-index: 2;"><div class="col-md-12"><div class="choice_item"><input type="radio" id="1" name="answer" value="1" style="padding-right: 10px;"><label for="1">Option 1</label></div><div class="choice_item"><input type="radio" id="2" name="answer" value="2" style="padding-right: 10px;"><label for="2">Option 2</label></div><div class="choice_item"><input type="radio" id="3" name="answer" value="3" style="padding-right: 10px;"><label for="3">Option 3</label></div></div></div>',
@@ -70,7 +70,7 @@ class QuizController extends Controller
                     'case_sensitive' => null,
                     'correct_score' => 10,
                     'incorrect_score' => 0,
-                    'try_again_score' => null,
+                    'try_again_score' => 0,
                 ]);
 
                 break;
@@ -83,7 +83,7 @@ class QuizController extends Controller
                     'answer' => '1;',
                     'feedback_correct' => 'That\'s right! You chose the correct response.',
                     'feedback_incorrect' => 'You did not choose the correct response.',
-                    'feedback_try_again' => null,
+                    'feedback_try_again' => 'You did not choose the correct response. Try again.',
                     'media' => null,
                     'order' => $request->order,
                     'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%;z-index: 2;"><div class="col-md-12"><div class="response_item"><input type="checkbox" id="1" name="answer" value="1" style="padding-right: 10px;"><label for="1">Option 1</label></div><div class="response_item"><input type="checkbox" id="2" name="answer" value="2" style="padding-right: 10px;"><label for="2">Option 2</label></div><div class="response_item"><input type="checkbox" id="3" name="answer" value="3" style="padding-right: 10px;"><label for="3">Option 3</label></div></div></div>',
@@ -100,7 +100,7 @@ class QuizController extends Controller
                     'case_sensitive' => null,
                     'correct_score' => 10,
                     'incorrect_score' => 0,
-                    'try_again_score' => null,
+                    'try_again_score' => 0,
                 ]);
 
                 break;
@@ -113,7 +113,7 @@ class QuizController extends Controller
                     'answer' => '1',
                     'feedback_correct' => 'That\'s right! You chose the correct response.',
                     'feedback_incorrect' => 'You did not choose the correct response.',
-                    'feedback_try_again' => null,
+                    'feedback_try_again' => 'You did not choose the correct response. Try again.',
                     'media' => null,
                     'order' => $request->order,
                     'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%;z-index: 2;"><div class="col-md-12"><div class="choice_item"><input type="radio" id="true" name="answer" value="1" style="padding-right: 10px;"><label for="true">True</label></div><div class="choice_item"><input type="radio" id="false" name="answer" value="0" style="padding-right: 10px;"><label for="0">False</label></div></div></div>',
@@ -130,7 +130,7 @@ class QuizController extends Controller
                     'case_sensitive' => null,
                     'correct_score' => 10,
                     'incorrect_score' => 0,
-                    'try_again_score' => null,
+                    'try_again_score' => 0,
                 ]);
 
                 break;
@@ -143,7 +143,7 @@ class QuizController extends Controller
                     'answer' => 'Correct Answer 1',
                     'feedback_correct' => 'That\'s right! You chose the correct response.',
                     'feedback_incorrect' => 'You did not choose the correct response.',
-                    'feedback_try_again' => null,
+                    'feedback_try_again' => 'You did not choose the correct response. Try again.',
                     'media' => null,
                     'order' => $request->order,
                     'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%;z-index: 2;"><div class="col-md-12"><input id="answer" type="text" class="form-control" name="answer" autocomplete="answer"></div></div>',
@@ -160,7 +160,7 @@ class QuizController extends Controller
                     'case_sensitive' => false,
                     'correct_score' => 10,
                     'incorrect_score' => 0,
-                    'try_again_score' => null,
+                    'try_again_score' => 0,
                 ]);
 
                 break;
@@ -173,7 +173,7 @@ class QuizController extends Controller
                     'answer' => '=;0;@',
                     'feedback_correct' => 'That\'s right! You chose the correct response.',
                     'feedback_incorrect' => 'You did not choose the correct response.',
-                    'feedback_try_again' => null,
+                    'feedback_try_again' => 'You did not choose the correct response. Try again.',
                     'media' => null,
                     'order' => $request->order,
                     'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%;z-index: 2;"><div class="col-md-12"><input id="answer" type="number" class="form-control" name="answer" autocomplete="answer"></div></div>',
@@ -190,7 +190,7 @@ class QuizController extends Controller
                     'case_sensitive' => null,
                     'correct_score' => 10,
                     'incorrect_score' => 0,
-                    'try_again_score' => null,
+                    'try_again_score' => 0,
                 ]);
 
                 break;
@@ -203,7 +203,7 @@ class QuizController extends Controller
                     'answer' => 'Option 1;Option 2;Option 3;Option 4;',
                     'feedback_correct' => 'That\'s right! You chose the correct response.',
                     'feedback_incorrect' => 'You did not choose the correct response.',
-                    'feedback_try_again' => null,
+                    'feedback_try_again' => 'You did not choose the correct response. Try again.',
                     'media' => null,
                     'order' => $request->order,
                     'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%;z-index: 2;"><div class="col-md-12"><ul id="sortable"><li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><label class="sequence_label" data-editable>Option 1</label></li><li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><label class="sequence_label" data-editable>Option 2</label></li><li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><label class="sequence_label" data-editable>Option 3</label></li><li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><label class="sequence_label" data-editable>Option 4</label></li></ul></div></div>',
@@ -220,7 +220,7 @@ class QuizController extends Controller
                     'case_sensitive' => null,
                     'correct_score' => 10,
                     'incorrect_score' => 0,
-                    'try_again_score' => null,
+                    'try_again_score' => 0,
                 ]);
 
                 break;
@@ -233,7 +233,7 @@ class QuizController extends Controller
                     'answer' => 'Item 1;Match 1@Item 2;Match 2@Item 3;Match 3@',
                     'feedback_correct' => 'That\'s right! You chose the correct response.',
                     'feedback_incorrect' => 'You did not choose the correct response.',
-                    'feedback_try_again' => null,
+                    'feedback_try_again' => 'You did not choose the correct response. Try again.',
                     'media' => null,
                     'order' => $request->order,
                     'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%;z-index: 2;"><div class="col-md-12"><div style="display: flex;justify-content: space-around;padding-bottom: 10px;"><div class="ui-widget-header droppable" style="width: 40%"><p>Item 1</p></div><div class="ui-widget-content draggable" style="width: 40%" isdropped=false><p>Match 1</p></div></div><div style="display: flex;justify-content: space-around;padding-bottom: 10px;"><div class="ui-widget-header droppable" style="width: 40%"><p>Item 2</p></div><div class="ui-widget-content draggable" style="width: 40%" isdropped=false><p>Match 2</p></div></div><div style="display: flex;justify-content: space-around;padding-bottom: 10px;"><div class="ui-widget-header droppable" style="width: 40%"><p>Item 3</p></div><div class="ui-widget-content draggable" style="width: 40%" isdropped=false><p>Match 3</p></div></div></div></div>',
@@ -250,7 +250,7 @@ class QuizController extends Controller
                     'case_sensitive' => null,
                     'correct_score' => 10,
                     'incorrect_score' => 0,
-                    'try_again_score' => null,
+                    'try_again_score' => 0,
                 ]);
 
                 break;
@@ -263,7 +263,7 @@ class QuizController extends Controller
                     'answer' => 'blanks;@',
                     'feedback_correct' => 'That\'s right! You chose the correct response.',
                     'feedback_incorrect' => 'You did not choose the correct response.',
-                    'feedback_try_again' => null,
+                    'feedback_try_again' => 'You did not choose the correct response. Try again.',
                     'media' => null,
                     'order' => $request->order,
                     'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%;z-index: 2;"><div class="col-md-12">Fill in the <div class="fill_blanks_dropdown" contenteditable="true" style="display: inline;"><div class="fill_blanks_dropdown_body" contenteditable="false"  style="display: inline;"><input id="0" type="text" style="max-width: 100px;"></div></div></div></div>',
@@ -280,7 +280,7 @@ class QuizController extends Controller
                     'case_sensitive' => false,
                     'correct_score' => 10,
                     'incorrect_score' => 0,
-                    'try_again_score' => null,
+                    'try_again_score' => 0,
                 ]);
 
                 break;
@@ -293,7 +293,7 @@ class QuizController extends Controller
                     'answer' => 'answer 1;',
                     'feedback_correct' => 'That\'s right! You chose the correct response.',
                     'feedback_incorrect' => 'You did not choose the correct response.',
-                    'feedback_try_again' => null,
+                    'feedback_try_again' => 'You did not choose the correct response. Try again.',
                     'media' => null,
                     'order' => $request->order,
                     'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%;z-index: 2;"><div class="col-md-12">Choose the correct <div class="select_lists_dropdown" contenteditable="true" style="display: inline;"><div class="select_lists_dropdown_body" contenteditable="false"  style="display: inline;"><select id="0"><option value="none">- Select -</option><option value="answer 1">Answer 1</option><option value="answer 2">Answer 2</option></select></div></div></div></div>',
@@ -310,7 +310,7 @@ class QuizController extends Controller
                     'case_sensitive' => null,
                     'correct_score' => 10,
                     'incorrect_score' => 0,
-                    'try_again_score' => null,
+                    'try_again_score' => 0,
                 ]);
 
                 break;
@@ -323,7 +323,7 @@ class QuizController extends Controller
                     'answer' => 'words;places;',
                     'feedback_correct' => 'That\'s right! You chose the correct response.',
                     'feedback_incorrect' => 'You did not choose the correct response.',
-                    'feedback_try_again' => null,
+                    'feedback_try_again' => 'You did not choose the correct response. Try again.',
                     'media' => null,
                     'order' => $request->order,
                     'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%;z-index: 2;"><div class="col-md-12"><div id="slide_drag_words_question">Drag the <div class="blank" style="display:inline;width: 70px;height: 100%;border: 1px solid grey;background: white;"></div> and drop them to the appropriate <div class="blank" style="display:inline;width: 70px;height: 100%;border: 1px solid grey;background: white;"></div> .</div><div id="slide_drag_words_answer"><span style="border: 1px solid gray;background: white;color: black;">words</span><span style="border: 1px solid gray;background: white;color:black;">places</span></div></div></div>',
@@ -340,7 +340,7 @@ class QuizController extends Controller
                     'case_sensitive' => null,
                     'correct_score' => 10,
                     'incorrect_score' => 0,
-                    'try_again_score' => null,
+                    'try_again_score' => 0,
                 ]);
 
                 break;
@@ -353,7 +353,7 @@ class QuizController extends Controller
                     'answer' => '',
                     'feedback_correct' => 'That\'s right! You chose the correct response.',
                     'feedback_incorrect' => 'You did not choose the correct response.',
-                    'feedback_try_again' => null,
+                    'feedback_try_again' => 'You did not choose the correct response. Try again.',
                     'media' => null,
                     'order' => $request->order,
                     'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%;z-index: 2;"><div class="col-md-12"><canvas id="slide_view_hotspots_canvas" height="214"></canvas></div></div>',
@@ -370,7 +370,7 @@ class QuizController extends Controller
                     'case_sensitive' => null,
                     'correct_score' => 10,
                     'incorrect_score' => 0,
-                    'try_again_score' => null,
+                    'try_again_score' => 0,
                 ]);
 
                 break;
@@ -383,7 +383,7 @@ class QuizController extends Controller
                     'answer' => '',
                     'feedback_correct' => 'That\'s right! You chose the correct response.',
                     'feedback_incorrect' => 'You did not choose the correct response.',
-                    'feedback_try_again' => null,
+                    'feedback_try_again' => 'You did not choose the correct response. Try again.',
                     'media' => null,
                     'order' => $request->order,
                     'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%;z-index: 2;padding: 10px;position:absolute;"><div class="col-md-12"><div contenteditable="true" class="cancel_drag">Description text</div>',
@@ -400,7 +400,7 @@ class QuizController extends Controller
                     'case_sensitive' => null,
                     'correct_score' => 0,
                     'incorrect_score' => 0,
-                    'try_again_score' => null,
+                    'try_again_score' => 0,
                 ]);
 
                 break;
@@ -413,7 +413,7 @@ class QuizController extends Controller
                     'answer' => '',
                     'feedback_correct' => 'That\'s right! You chose the correct response.',
                     'feedback_incorrect' => 'You did not choose the correct response.',
-                    'feedback_try_again' => null,
+                    'feedback_try_again' => 'You did not choose the correct response. Try again.',
                     'media' => null,
                     'order' => $request->order,
                     'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%;z-index: 2;padding: 10px;position:absolute;"><div class="col-md-12"><div contenteditable="true" class="cancel_drag"><div>Before attempting, carefully read the question text.</div><div>Then choose the correct answer.</div><div>Click on “Submit” to confirm your answer.</div><div>Use the Question List in the upper left corner to jump to a certain question.</div></div></div></div>',
@@ -430,7 +430,7 @@ class QuizController extends Controller
                     'case_sensitive' => null,
                     'correct_score' => 0,
                     'incorrect_score' => 0,
-                    'try_again_score' => null,
+                    'try_again_score' => 0,
                 ]);
 
                 break;
@@ -523,6 +523,7 @@ class QuizController extends Controller
         $quiz->correct_score = $request->correct_score;
         $quiz->incorrect_score = $request->incorrect_score;
         $quiz->try_again_score = $request->try_again_score;
+        $quiz->other_elements = $request->other_elements;
 
         $quiz->save();
 

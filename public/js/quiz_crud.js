@@ -1,16 +1,40 @@
-function onNodeClick(node) {
+let prev_id = '';
+
+function show_quiz_editor(node) {
     const root_url = $('meta[name=url]').attr('content');
     const quizId = node.attr('id');
 
     if (quizId === 'none') return;
+    if (quizId === undefined) return;
 
+    show_preload();
     $.get(root_url + "/quizes/" + quizId + "/edit", function (data, status) {
         $('#quiz_view').html(data);
         show_correct_view();
+        hide_preload();
     }).catch((XHttpResponse) => {
         console.log(XHttpResponse);
+        hide_preload();
     });
+}
 
+function onNodeClick(node) {
+
+    if (prev_id === '') {
+        show_quiz_editor(node);
+        prev_id = node.attr('id');
+        return;
+    }
+
+    if (prev_id === node.attr('id')) return;
+
+    if (confirm('You are going to leave this quiz. Some data will be lost. Are you sure you want to continue?')) {
+        show_quiz_editor(node);
+        prev_id = node.attr('id');
+    } else {
+        $('#quiz_list').find('.current').removeClass('current current-select');
+        $('#quiz_list li#' + prev_id).addClass('current current-select');
+    }
 }
 
 function create_quiz(quiz_type, root_url, token) {
@@ -140,6 +164,7 @@ function create_quiz(quiz_type, root_url, token) {
         return;
     }
 
+    show_preload();
     $.post(root_url + "/quizes", {
             '_token': token,
             'type_id': quiz_type,
@@ -154,11 +179,14 @@ function create_quiz(quiz_type, root_url, token) {
             $.get(root_url + "/quizes/" + quizId + "/edit", function (data, status) {
                 $('#quiz_view').html(data);
                 show_correct_view();
+                hide_preload();
             }).catch((XHttpResponse) => {
                 console.log(XHttpResponse);
+                hide_preload();
             });
         }).catch((XHttpResponse) => {
         console.log(XHttpResponse);
+        hide_preload();
     });
 }
 
@@ -182,9 +210,9 @@ function update_quiz() {
     const feedback_correct = $('.feedback_branching tr:first-child td:nth-child(2) label').html();
     const feedback_incorrect = $('.feedback_branching tr:nth-child(2) td:nth-child(2) label').html();
     const feedback_try_again = $('.feedback_branching tr:nth-child(3) td:nth-child(2) label').html();
-    const correct_score = $('.feedback_branching tr:first-child td:nth-child(4) label').html();
-    const incorrect_score = $('.feedback_branching tr:nth-child(2) td:nth-child(4) label').html();
-    const try_again_score = $('.feedback_branching tr:nth-child(3) td:nth-child(4) label').html();
+    const correct_score = $('.feedback_branching tr:first-child td:nth-child(3) label').html();
+    const incorrect_score = $('.feedback_branching tr:nth-child(2) td:nth-child(3) label').html();
+    const try_again_score = $('.feedback_branching tr:nth-child(3) td:nth-child(3) label').html();
     const media = $('#media').val();
     const video = $('#video').val();
     const audio = $('#audio').val();
@@ -208,12 +236,12 @@ function update_quiz() {
         branching = Metro.getPlugin('#branching', 'select').val();
     }
 
-    const score = Metro.getPlugin('#score', 'select').val();
+    // const score = Metro.getPlugin('#score', 'select').val();
     const attempts = Metro.getPlugin('#attempts', 'select').val();
 
-    let is_limit_time = $('#is_limit_time').is(":checked");
-    is_limit_time = is_limit_time === 'true' ? 1 : 0;
-    if ($('#is_limit_time').length === 0) is_limit_time = null;
+    // let is_limit_time = $('#is_limit_time').is(":checked");
+    // is_limit_time = is_limit_time === 'true' ? 1 : 0;
+    // if ($('#is_limit_time').length === 0) is_limit_time = null;
 
     const limit_time = $('#limit_time').val();
 
@@ -233,10 +261,20 @@ function update_quiz() {
     case_sensitive = case_sensitive === 'true' ? 1 : 0;
     if ($('#case_sensitive').length === 0) case_sensitive = null;
 
+    console.log($('.other_slide_view_element').length);
+
+    let other_elements = '';
+    for (let i = 0; i < $('.other_slide_view_element').length; i++) {
+        other_elements += remove_resizable_tag($('.other_slide_view_element').eq(i)[0].outerHTML);
+    }
+
+    console.log(other_elements);
+
     const root_url = $('meta[name=url]').attr('content');
     const token = $('meta[name=csrf-token]').attr('content');
     const quizId = $('#quiz_list').find('.current').attr('id');
 
+    show_preload();
     $.ajax({
         url: root_url + '/quizes/' + quizId,
         type: 'PUT',
@@ -259,10 +297,10 @@ function update_quiz() {
             question_type: question_type,
             feedback_type: feedback_type,
             branching: branching,
-            score: score,
+            // score: score,
             attempts: attempts,
-            is_limit_time: is_limit_time,
-            limit_time: limit_time,
+            // is_limit_time: is_limit_time,
+            // limit_time: limit_time,
             shuffle_answers: shuffle_answers,
             partially_correct: partially_correct,
             limit_number_response: limit_number_response,
@@ -270,12 +308,15 @@ function update_quiz() {
             correct_score: correct_score,
             incorrect_score: incorrect_score,
             try_again_score: try_again_score,
+            other_elements: other_elements,
         },
         success: function (data) {
             alert('Quiz updated successfully');
+            hide_preload();
         }
     }).catch((XHttpResponse) => {
         console.log(XHttpResponse);
+        hide_preload();
     });
 
 }
@@ -284,7 +325,7 @@ function remove_resizable_tag(string) {
     var tmp_element;
     if (string != null) {
         tmp_element = $(string);
-        tmp_element.removeClass('.selected_slide_view_group');
+        tmp_element.removeClass('selected_slide_view_group');
         tmp_element.children('.ui-resizable-handle').remove();
         tmp_element.children('input[type=checkbox]').remove();
         return tmp_element[0].outerHTML;
@@ -298,6 +339,7 @@ function delete_quiz() {
     const node = $('#quiz_list').find('.current');
     const quizId = node.attr('id');
 
+    show_preload();
     $.ajax({
         url: root_url + '/quizes/' + quizId,
         type: 'DELETE',
@@ -321,9 +363,11 @@ function delete_quiz() {
             node.remove();
             $('#quiz_view').html('');
             alert('Quiz deleted successfully');
+            hide_preload();
         }
     }).catch((XHttpResponse) => {
         console.log(XHttpResponse);
+        hide_preload();
     });
 
 }
@@ -409,6 +453,7 @@ $('#duplicate_btn').click(function () {
     const root_url = $('meta[name=url]').attr('content');
     const token = $('meta[name=csrf-token]').attr('content');
 
+    show_preload();
     $.ajax({
         url: root_url + '/duplicate_quiz',
         type: 'POST',
@@ -424,11 +469,14 @@ $('#duplicate_btn').click(function () {
             $.get(root_url + "/quizes/" + quizId + "/edit", function (data, status) {
                 $('#quiz_view').html(data);
                 show_correct_view();
+                hide_preload();
             }).catch((XHttpResponse) => {
                 console.log(XHttpResponse);
+                hide_preload();
             });
         }
     }).catch((XHttpResponse) => {
         console.log(XHttpResponse);
+        hide_preload();
     });
 });

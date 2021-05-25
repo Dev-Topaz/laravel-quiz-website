@@ -206,6 +206,10 @@ function create_hotspots(event) {
 function preview() {
     switch ($('.preview_btn button').html()) {
         case 'Submit':
+            if ($('.quiz_show .question_type').html() != 'graded') {
+                $('.preview_btn button').html('Continue');
+                return;
+            }
             if (evulate()) {
                 attempts += 1;
                 total_score += parseInt($('.quiz_show .correct_score').html());
