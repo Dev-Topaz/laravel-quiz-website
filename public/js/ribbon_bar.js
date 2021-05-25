@@ -1059,15 +1059,6 @@ $('#form_view_video_file_selector').change(function () {
     console.log('Form View Video File selected => ', $(this).val());
 });
 
-$('#slide_view_video_file_btn').click(function () {
-    console.log('slide_view_video_file_btn');
-    $('#slide_view_video_file_selector').trigger('click');
-});
-
-$('#slide_view_video_file_selector').change(function () {
-    console.log('Slide View Video File selected => ', $(this).val());
-});
-
 $('#slide_view_insert_audio_btn').click(function () {
     console.log('slide_view_insert_audio_btn');
     $('#slide_view_audio_selector').trigger('click');
