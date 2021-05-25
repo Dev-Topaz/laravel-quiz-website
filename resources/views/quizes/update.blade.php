@@ -426,7 +426,7 @@
                 <tr>
                     <th></th>
                     <th>Feedback</th>
-                    <th>Branching</th>
+{{--                    <th>Branching</th>--}}
                     <th>Score</th>
                 </tr>
                 </thead>
@@ -434,20 +434,20 @@
                 <tr>
                     <td>Correct:</td>
                     <td><label class="choice_label" data-editable>{{ $quiz->feedback_correct }}</label></td>
-                    <td></td>
+{{--                    <td></td>--}}
                     <td><label class="choice_label" data-editable>{{ $quiz->correct_score }}</label></td>
                 </tr>
                 <tr>
                     <td>Incorrect:</td>
                     <td><label class="choice_label" data-editable>{{ $quiz->feedback_incorrect }}</label></td>
-                    <td></td>
+{{--                    <td></td>--}}
                     <td><label class="choice_label" data-editable>{{ $quiz->incorrect_score }}</label></td>
                 </tr>
                 @if ($quiz->feedback_try_again != null)
                     <tr>
                         <td>Try Again:</td>
                         <td><label class="choice_label" data-editable>{{ $quiz->feedback_try_again }}</label></td>
-                        <td>None</td>
+{{--                        <td>None</td>--}}
                         <td><label class="choice_label" data-editable>{{ $quiz->try_again_score }}</label></td>
                     </tr>
                 @endif
@@ -520,39 +520,39 @@
                                 </option>
                             </select>
                         </div>
-                        @if (isset($quiz->branching))
-                            <div class="cell-6">
-                                <label for="branching" name="branching">Branching:</label>
-                            </div>
-                            <div class="cell-6">
-                                <select data-role="select" data-filter="false" id="branching">
-                                    <option
-                                        value="by_result" {{ $quiz->feedback_type == 'by_result' ? 'selected' : '' }}>
-                                        By
-                                        Result
-                                    </option>
-                                    <option
-                                        value="by_choice" {{ $quiz->feedback_type == 'by_choice' ? 'selected' : '' }}>
-                                        By
-                                        Choice
-                                    </option>
-                                </select>
-                            </div>
-                        @endif
-                        <div class="cell-6">
-                            <label for="score" name="score">Score:</label>
-                        </div>
-                        <div class="cell-6">
-                            <select data-role="select" data-filter="false"
-                                    id="score" {{ !isset($quiz->score) ? 'disabled' : '' }}>
-                                <option value="by_result" {{ $quiz->score == 'by_result' ? 'selected' : '' }}>By
-                                    Result
-                                </option>
-                                <option value="by_choice" {{ $quiz->score == 'by_choice' ? 'selected' : '' }}>By
-                                    Choice
-                                </option>
-                            </select>
-                        </div>
+{{--                        @if (isset($quiz->branching))--}}
+{{--                            <div class="cell-6">--}}
+{{--                                <label for="branching" name="branching">Branching:</label>--}}
+{{--                            </div>--}}
+{{--                            <div class="cell-6">--}}
+{{--                                <select data-role="select" data-filter="false" id="branching">--}}
+{{--                                    <option--}}
+{{--                                        value="by_result" {{ $quiz->feedback_type == 'by_result' ? 'selected' : '' }}>--}}
+{{--                                        By--}}
+{{--                                        Result--}}
+{{--                                    </option>--}}
+{{--                                    <option--}}
+{{--                                        value="by_choice" {{ $quiz->feedback_type == 'by_choice' ? 'selected' : '' }}>--}}
+{{--                                        By--}}
+{{--                                        Choice--}}
+{{--                                    </option>--}}
+{{--                                </select>--}}
+{{--                            </div>--}}
+{{--                        @endif--}}
+{{--                        <div class="cell-6">--}}
+{{--                            <label for="score" name="score">Score:</label>--}}
+{{--                        </div>--}}
+{{--                        <div class="cell-6">--}}
+{{--                            <select data-role="select" data-filter="false"--}}
+{{--                                    id="score" {{ !isset($quiz->score) ? 'disabled' : '' }}>--}}
+{{--                                <option value="by_result" {{ $quiz->score == 'by_result' ? 'selected' : '' }}>By--}}
+{{--                                    Result--}}
+{{--                                </option>--}}
+{{--                                <option value="by_choice" {{ $quiz->score == 'by_choice' ? 'selected' : '' }}>By--}}
+{{--                                    Choice--}}
+{{--                                </option>--}}
+{{--                            </select>--}}
+{{--                        </div>--}}
                         <div class="cell-6">
                             <label for="attempts" name="attempts">Attempts:</label>
                         </div>
@@ -573,16 +573,16 @@
                                 </option>
                             </select>
                         </div>
-                        <div class="cell-7">
-                            <input type="checkbox" data-role="checkbox" id="is_limit_time"
-                                   data-caption="Limit time to answer the question:" {{ $quiz->is_limit_time ? 'checked' : '' }}>
-                        </div>
-                        <div class="cell-5">
-                            <input class="mt-1" type="time" data-role="input" id="limit_time"
-                                   {{ $quiz->is_limit_time ? '' : 'disabled' }}
-                                   data-clear-button="false"
-                                   value="{{ $quiz->is_limit_time ? $quiz->limit_time : '01:00' }}">
-                        </div>
+{{--                        <div class="cell-7">--}}
+{{--                            <input type="checkbox" data-role="checkbox" id="is_limit_time"--}}
+{{--                                   data-caption="Limit time to answer the question:" {{ $quiz->is_limit_time ? 'checked' : '' }}>--}}
+{{--                        </div>--}}
+{{--                        <div class="cell-5">--}}
+{{--                            <input class="mt-1" type="time" data-role="input" id="limit_time"--}}
+{{--                                   {{ $quiz->is_limit_time ? '' : 'disabled' }}--}}
+{{--                                   data-clear-button="false"--}}
+{{--                                   value="{{ $quiz->is_limit_time ? $quiz->limit_time : '01:00' }}">--}}
+{{--                        </div>--}}
                         @if (isset($quiz->shuffle_answers))
                             <div class="cell-12">
                                 <input type="checkbox" data-role="checkbox" id="shuffle_answers"

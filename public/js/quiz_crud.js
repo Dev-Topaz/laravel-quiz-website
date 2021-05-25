@@ -208,12 +208,12 @@ function update_quiz() {
         branching = Metro.getPlugin('#branching', 'select').val();
     }
 
-    const score = Metro.getPlugin('#score', 'select').val();
+    // const score = Metro.getPlugin('#score', 'select').val();
     const attempts = Metro.getPlugin('#attempts', 'select').val();
 
-    let is_limit_time = $('#is_limit_time').is(":checked");
-    is_limit_time = is_limit_time === 'true' ? 1 : 0;
-    if ($('#is_limit_time').length === 0) is_limit_time = null;
+    // let is_limit_time = $('#is_limit_time').is(":checked");
+    // is_limit_time = is_limit_time === 'true' ? 1 : 0;
+    // if ($('#is_limit_time').length === 0) is_limit_time = null;
 
     const limit_time = $('#limit_time').val();
 
@@ -259,10 +259,10 @@ function update_quiz() {
             question_type: question_type,
             feedback_type: feedback_type,
             branching: branching,
-            score: score,
+            // score: score,
             attempts: attempts,
-            is_limit_time: is_limit_time,
-            limit_time: limit_time,
+            // is_limit_time: is_limit_time,
+            // limit_time: limit_time,
             shuffle_answers: shuffle_answers,
             partially_correct: partially_correct,
             limit_number_response: limit_number_response,
