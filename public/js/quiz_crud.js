@@ -134,6 +134,12 @@ function create_quiz(quiz_type, root_url, token) {
     console.log(order);
     // return;
 
+    console.log(groupId);
+    if (groupId === undefined) {
+        alert('Choose a quiz and then insert a new quiz');
+        return;
+    }
+
     $.post(root_url + "/quizes", {
             '_token': token,
             'type_id': quiz_type,
