@@ -210,9 +210,9 @@ function update_quiz() {
     const feedback_correct = $('.feedback_branching tr:first-child td:nth-child(2) label').html();
     const feedback_incorrect = $('.feedback_branching tr:nth-child(2) td:nth-child(2) label').html();
     const feedback_try_again = $('.feedback_branching tr:nth-child(3) td:nth-child(2) label').html();
-    const correct_score = $('.feedback_branching tr:first-child td:nth-child(4) label').html();
-    const incorrect_score = $('.feedback_branching tr:nth-child(2) td:nth-child(4) label').html();
-    const try_again_score = $('.feedback_branching tr:nth-child(3) td:nth-child(4) label').html();
+    const correct_score = $('.feedback_branching tr:first-child td:nth-child(3) label').html();
+    const incorrect_score = $('.feedback_branching tr:nth-child(2) td:nth-child(3) label').html();
+    const try_again_score = $('.feedback_branching tr:nth-child(3) td:nth-child(3) label').html();
     const media = $('#media').val();
     const video = $('#video').val();
     const audio = $('#audio').val();
