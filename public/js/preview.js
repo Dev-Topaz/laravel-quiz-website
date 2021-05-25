@@ -154,13 +154,15 @@ function rearrange_preview_ui() {
         case '11':
             var root_url = $('meta[name=url]').attr('content');
 
-            var canvas_info = $('#correct_answer').html();
+            var canvas_info = $('.quiz_show .correct_answer').html();
+
+            console.log(canvas_info);
 
             var canvas_bg_url = canvas_info.split('@')[0];
 
             var json_bg_url = JSON.parse(canvas_bg_url);
 
-            $('.slide_view_answer_element .col-md-12').html('<div id="image-hotspots" style="width: 287px;position: relative;"><img src="' + root_url + '/' + json_bg_url.background + '" height="214" width="287" onclick="create_hotspots(event)"></div>');
+            $('.slide_view_answer_element .col-md-12').html('<div id="image-hotspots" style="position: relative;width: 300px;height: 214px;left: 50%;transform: translateX(-50%)"><img src="' + root_url + '/' + json_bg_url.background + '" height="214" width="300" onclick="create_hotspots(event)" style="position: relative;left: 50%;transform: translateX(-50%)"></div>');
 
             break;
     }
@@ -242,21 +244,20 @@ function preview() {
 
         case 'Continue':
             attempts = 0;
-            console.log($('.quiz_show').attr('id').split('-')[1]);
-            console.log($('.quiz_show').next().attr('id').split('-')[1]);
 
             var current_show_id = $('.quiz_show').attr('id');
             var next_show_id = $('.quiz_show').next().attr('id');
 
             $('#quiz_list_audio-' + current_show_id.split('-')[1])[0].pause();
-            $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].pause();
-            $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].currentTime = 0;
-            $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].play();
 
             if (next_show_id === undefined) {
 
                 $('.preview_btn button').html('See Result');
             } else {
+
+                $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].pause();
+                $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].currentTime = 0;
+                $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].play();
 
                 $('#' + current_show_id).removeClass('quiz_show');
                 $('#' + current_show_id).addClass('quiz_hide');
@@ -413,6 +414,8 @@ function evulate() {
             for (let i = 0; i < hotspots_points.length; i++) {
                 switch (json_canvas_item.type) {
                     case 'circle':
+                        // console.log(hotspots_points);
+                        // console.log(json_canvas_item);
                         if (Math.pow(json_canvas_item.radius, 2) < Math.pow(hotspots_points[0] - json_canvas_item.left, 2) + Math.pow(hotspots_points[1] - json_canvas_item.top, 2)) return false;
                         break;
 

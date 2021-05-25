@@ -1926,7 +1926,7 @@
     <map name="">
         <area shape="" href="" coords="" alt="">
     </map>
-    <div class="window-content p-2">
+    <div class="p-2">
 
         <div id="content" class="full">
             <div class="post manage_forms">
