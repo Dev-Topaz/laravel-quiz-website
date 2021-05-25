@@ -663,3 +663,26 @@ $('#slide_view_video_file_selector').change(function () {
         alert("Please select a file.");
     }
 });
+
+/*
+* ************** other buttons at ribbon bars *******************
+* */
+$('#form_view_picture_btn').click(function () {
+    console.log('form_view_picture_btn');
+    $('#form_view_input_media_element').trigger('click');
+});
+
+$('#form_view_video_file_btn').click(function () {
+    console.log('form_view_video_file_btn');
+    $('#form_view_input_video_element').trigger('click');
+});
+
+$('#slide_view_insert_audio_btn').click(function () {
+    console.log('slide_view_insert_audio_btn');
+    $('#form_view_input_audio_element').trigger('click');
+});
+
+$('#form_view_import_audio_file_btn').click(function () {
+    console.log('form_view_import_audio_file_btn');
+    $('#form_view_input_audio_element').trigger('click');
+});
