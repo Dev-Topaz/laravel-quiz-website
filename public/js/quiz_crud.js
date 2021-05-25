@@ -30,7 +30,6 @@ function onNodeClick(node) {
         prev_id = node.attr('id');
     } else {
         $('#quiz_list').find('.current').removeClass('current current-select');
-        console.log(prev_id);
         $('#quiz_list li#' + prev_id).addClass('current current-select');
     }
 }
@@ -255,6 +254,15 @@ function update_quiz() {
     case_sensitive = case_sensitive === 'true' ? 1 : 0;
     if ($('#case_sensitive').length === 0) case_sensitive = null;
 
+    console.log($('.other_slide_view_element').length);
+
+    let other_elements = '';
+    for (let i = 0; i < $('.other_slide_view_element').length; i++) {
+        other_elements += remove_resizable_tag($('.other_slide_view_element').eq(i)[0].outerHTML);
+    }
+
+    console.log(other_elements);
+
     const root_url = $('meta[name=url]').attr('content');
     const token = $('meta[name=csrf-token]').attr('content');
     const quizId = $('#quiz_list').find('.current').attr('id');
@@ -292,6 +300,7 @@ function update_quiz() {
             correct_score: correct_score,
             incorrect_score: incorrect_score,
             try_again_score: try_again_score,
+            other_elements: other_elements,
         },
         success: function (data) {
             alert('Quiz updated successfully');

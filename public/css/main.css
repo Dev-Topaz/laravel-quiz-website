@@ -798,3 +798,11 @@ if it's not present, don't show loader */
 	z-index: 9999;
 	background: url(../images/Preloader_2.gif) center no-repeat #fff;
 }
+
+#quiz_list li.node-group > .data {
+    background: #e8e8e8;
+}
+
+.quiz #main {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}

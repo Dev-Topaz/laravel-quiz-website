@@ -523,6 +523,7 @@ class QuizController extends Controller
         $quiz->correct_score = $request->correct_score;
         $quiz->incorrect_score = $request->incorrect_score;
         $quiz->try_again_score = $request->try_again_score;
+        $quiz->other_elements = $request->other_elements;
 
         $quiz->save();
 

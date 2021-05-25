@@ -560,6 +560,7 @@ $("body").click(function (e) {
                 element.closest('.slide_view_group').removeClass('selected_slide_view_group');
             }
         } else {
+            $('.slide_view_group').removeClass('selected_slide_view_group');
             $('.slide_view_group_checkbox').prop('checked', false);
             element.closest('.slide_view_group').addClass('selected_slide_view_group');
             element.closest('.slide_view_group').find('.slide_view_group_checkbox').prop('checked', true);
@@ -567,3 +568,11 @@ $("body").click(function (e) {
     }
 });
 
+/*
+********************** inserting slide view textbox ***********************
+*  */
+$('#insert_textbox_btn').click(function () {
+    $('.slide_view_group').removeClass('just_added_slide_view_element');
+    $('#quiz_background_container').append('<div class="slide_view_group just_added_slide_view_element other_slide_view_element" style="height: 70px;width: 80%;left: 10%;z-index: 3;overflow: hidden;padding:10px;position:absolute;"><div class="cancel_drag" contenteditable="true">Type Text Content</div><input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;"></div>');
+    $('.just_added_slide_view_element').draggable({cancel: 'div.cancel_drag'}).resizable();
+});
