@@ -338,6 +338,7 @@ function delete_quiz() {
     const token = $('meta[name=csrf-token]').attr('content');
     const node = $('#quiz_list').find('.current');
     const quizId = node.attr('id');
+    prev_id = '';
 
     show_preload();
     $.ajax({
