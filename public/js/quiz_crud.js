@@ -1,8 +1,11 @@
-function onNodeClick(node) {
+let prev_id = '';
+
+function show_quiz_editor(node) {
     const root_url = $('meta[name=url]').attr('content');
     const quizId = node.attr('id');
 
     if (quizId === 'none') return;
+    if (quizId === undefined) return;
 
     $.get(root_url + "/quizes/" + quizId + "/edit", function (data, status) {
         $('#quiz_view').html(data);
@@ -10,7 +13,26 @@ function onNodeClick(node) {
     }).catch((XHttpResponse) => {
         console.log(XHttpResponse);
     });
+}
 
+function onNodeClick(node) {
+
+    if (prev_id === '') {
+        show_quiz_editor(node);
+        prev_id = node.attr('id');
+        return;
+    }
+
+    if (prev_id === node.attr('id')) return;
+
+    if (confirm('You are going to leave this quiz. Some data will be lost. Are you sure you want to continue?')) {
+        show_quiz_editor(node);
+        prev_id = node.attr('id');
+    } else {
+        $('#quiz_list').find('.current').removeClass('current current-select');
+        console.log(prev_id);
+        $('#quiz_list li#' + prev_id).addClass('current current-select');
+    }
 }
 
 function create_quiz(quiz_type, root_url, token) {
