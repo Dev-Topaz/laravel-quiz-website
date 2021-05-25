@@ -576,3 +576,51 @@ $('#insert_textbox_btn').click(function () {
     $('#quiz_background_container').append('<div class="slide_view_group just_added_slide_view_element other_slide_view_element" style="height: 70px;width: 80%;left: 10%;z-index: 3;overflow: hidden;padding:10px;position:absolute;"><div class="cancel_drag" contenteditable="true">Type Text Content</div><input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;"></div>');
     $('.just_added_slide_view_element').draggable({cancel: 'div.cancel_drag'}).resizable();
 });
+
+/*
+* ************************ inserting slide view picture *******************
+// * */
+$('#slide_view_picture_import_btn').click(function () {
+    console.log('slide_view_picture_import_btn');
+    $('#slide_view_picture_file_selector').trigger('click');
+});
+
+$('#slide_view_picture_file_selector').change(function () {
+    var root_url = $('meta[name=url]').attr('content');
+
+    let reader = new FileReader();
+
+    reader.onload = (e) => {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        let formData = new FormData();
+        formData.append('image', e.target.result);
+        formData.append('quiz_id', $("#quiz_id").val());
+
+        $.ajax({
+            type: 'POST',
+            url: root_url + '/hotspots_image_upload',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: (response) => {
+                if (response) {
+                    console.log(response);
+                    $('.slide_view_group').removeClass('just_added_slide_view_element');
+                    $('#quiz_background_container').append(`<div class="slide_view_group just_added_slide_view_element other_slide_view_element" style="left: 10%;z-index: 1;overflow: hidden;padding:10px;position:absolute;"><img src="${root_url}/${response}" style="width: 100%;height: 100%;"><input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;"></div>`);
+                    $('.just_added_slide_view_element').draggable({cancel: 'div.cancel_drag'}).resizable();
+                }
+            },
+            error: function (response) {
+                console.log(response);
+                // $('#image-input-error').text(response.responseJSON.errors.file);
+            }
+        });
+    }
+
+    reader.readAsDataURL(this.files[0]);
+});

@@ -1041,15 +1041,6 @@ $('.design_themes_panels').mousedown(function (e) {
 //
 //====================================================
 
-$('#slide_view_picture_import_btn').click(function () {
-    console.log('slide_view_picture_import_btn');
-    $('#slide_view_picture_file_selector').trigger('click');
-});
-
-$('#slide_view_picture_file_selector').change(function () {
-    console.log('Slide View Picture File selected => ', $(this).val());
-});
-
 $('#form_view_picture_btn').click(function () {
     console.log('form_view_picture_btn');
     $('#form_view_picture_selector').trigger('click');
