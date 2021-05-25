@@ -463,6 +463,9 @@
                  style="width: 100%;height:100%;padding: 20px;{{ isset($quiz->background_img) ? ('background-image:' . $quiz->background_img . ';') : '' }}background-size: 100% 100%;background-repeat:no-repeat;">
                 {!! $quiz->question_element !!}
                 {!! $quiz->answer_element !!}
+                @if (isset($quiz->other_elements))
+                    {!! $quiz->other_elements !!}
+                @endif
                 @if (isset($quiz->media))
                     {!! $quiz->media_element !!}
                 @else
