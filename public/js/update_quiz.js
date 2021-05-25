@@ -482,10 +482,10 @@ function answer_store() {
             } else {
                 switch (canvas.item(0).get('type')) {
                     case 'circle':
-                        string = '{"type": "circle", "radius": ' + canvas.item(0).radius + ', "top": ' + canvas.item(0).top + ', "left": ' + canvas.item(0).left + '}';
+                        string = '{"type": "circle", "radius": ' + (canvas.item(0).oCoords.mb.x - canvas.item(0).oCoords.bl.x) + ', "top": ' + canvas.item(0).top + ', "left": ' + canvas.item(0).left + '}';
                         break;
                     case 'rect':
-                        string = '{"type": "rect", "width": ' + canvas.item(0).width + ', "height": ' + canvas.item(0).height + ', "top": ' + canvas.item(0).top + ', "left": ' + canvas.item(0).left + '}';
+                        string = '{"type": "rect", "width": ' + (canvas.item(0).oCoords.br.x - canvas.item(0).oCoords.bl.x) + ', "height": ' + (canvas.item(0).oCoords.bl.y - canvas.item(0).oCoords.tl.y) + ', "top": ' + canvas.item(0).top + ', "left": ' + canvas.item(0).left + '}';
                         break;
                     case 'polyline':
                         string = '{"type": "polyline", "points" : ' + JSON.stringify(canvas.item(0).points) + '}';

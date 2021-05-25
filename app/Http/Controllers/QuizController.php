@@ -356,7 +356,7 @@ class QuizController extends Controller
                     'feedback_try_again' => null,
                     'media' => null,
                     'order' => $request->order,
-                    'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%;z-index: 2;"><div class="col-md-12"><canvas id="slide_view_hotspots_canvas" height="214" width="287.5"></canvas></div></div>',
+                    'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%;z-index: 2;"><div class="col-md-12"><canvas id="slide_view_hotspots_canvas" height="214"></canvas></div></div>',
                     'question_type' => 'graded',
                     'feedback_type' => 'by_result',
                     'branching' => null,
