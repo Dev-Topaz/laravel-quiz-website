@@ -46,6 +46,7 @@ $('#form_view_input_media_element').change(function () {
         formData.append('image', e.target.result);
         formData.append('quiz_id', $("#quiz_id").val());
 
+        show_preload();
         $.ajax({
             type: 'POST',
             url: root_url + '/hotspots_image_upload',
@@ -61,9 +62,11 @@ $('#form_view_input_media_element').change(function () {
                     $('#media_element').val($('.slide_view_media_element')[0].outerHTML);
                     console.log('Image has been uploaded successfully');
                 }
+                hide_preload();
             },
             error: function (response) {
                 console.log(response);
+                hide_preload();
                 // $('#image-input-error').text(response.responseJSON.errors.file);
             }
         });
@@ -105,6 +108,7 @@ $('#select_background_img').change(function () {
         formData.append('image', e.target.result);
         formData.append('quiz_id', $("#quiz_id").val());
 
+        show_preload();
         $.ajax({
             type: 'POST',
             url: root_url + '/hotspots_image_upload',
@@ -118,9 +122,11 @@ $('#select_background_img').change(function () {
                     $('#background_img').val('url("' + root_url + '/' + response + '")');
                     console.log('Image has been uploaded successfully');
                 }
+                hide_preload();
             },
             error: function (response) {
                 console.log(response);
+                hide_preload();
                 // $('#image-input-error').text(response.responseJSON.errors.file);
             }
         });
@@ -155,6 +161,7 @@ $('#form_view_input_video_element').change(function () {
         // Hide alert
         $('#responseMsg').hide();
 
+        show_preload();
         // AJAX request
         $.ajax({
             url: root_url + '/upload_video',
@@ -192,9 +199,11 @@ $('#form_view_input_video_element').change(function () {
                     $('#err_file').removeClass('d-none');
                     $('#err_file').addClass('d-block');
                 }
+                hide_preload();
             },
             error: function (response) {
                 console.log("error : " + JSON.stringify(response));
+                hide_preload();
             }
         });
     } else {
@@ -253,6 +262,7 @@ $('#form_view_input_audio_element').change(function () {
         // Hide alert
         $('#responseMsg').hide();
 
+        show_preload();
         // AJAX request
         $.ajax({
             url: root_url + '/upload_audio',
@@ -291,9 +301,11 @@ $('#form_view_input_audio_element').change(function () {
                     $('#err_file').removeClass('d-none');
                     $('#err_file').addClass('d-block');
                 }
+                hide_preload();
             },
             error: function (response) {
                 console.log("error : " + JSON.stringify(response));
+                hide_preload();
             }
         });
     } else {

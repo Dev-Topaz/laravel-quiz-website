@@ -578,6 +578,7 @@ $('#slide_view_picture_file_selector').change(function () {
         formData.append('image', e.target.result);
         formData.append('quiz_id', $("#quiz_id").val());
 
+        show_preload();
         $.ajax({
             type: 'POST',
             url: root_url + '/hotspots_image_upload',
@@ -591,9 +592,11 @@ $('#slide_view_picture_file_selector').change(function () {
                     $('#quiz_background_container').append(`<div class="slide_view_group just_added_slide_view_element other_slide_view_element" style="left: 10%;z-index: 1;overflow: hidden;padding:10px;position:absolute;"><img src="${root_url}/${response}" style="width: 100%;height: 100%;"><input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;"></div>`);
                     $('.just_added_slide_view_element').draggable({cancel: 'div.cancel_drag'}).resizable();
                 }
+                hide_preload();
             },
             error: function (response) {
                 console.log(response);
+                hide_preload();
             }
         });
     }
@@ -624,6 +627,7 @@ $('#slide_view_video_file_selector').change(function () {
         // Hide alert
         $('#responseMsg').hide();
 
+        show_preload();
         // AJAX request
         $.ajax({
             url: root_url + '/upload_video',
@@ -654,9 +658,11 @@ $('#slide_view_video_file_selector').change(function () {
                     $('#err_file').removeClass('d-none');
                     $('#err_file').addClass('d-block');
                 }
+                hide_preload();
             },
             error: function (response) {
                 console.log("error : " + JSON.stringify(response));
+                hide_preload();
             }
         });
     } else {

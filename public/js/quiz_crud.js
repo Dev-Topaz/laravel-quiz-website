@@ -7,11 +7,14 @@ function show_quiz_editor(node) {
     if (quizId === 'none') return;
     if (quizId === undefined) return;
 
+    show_preload();
     $.get(root_url + "/quizes/" + quizId + "/edit", function (data, status) {
         $('#quiz_view').html(data);
         show_correct_view();
+        hide_preload();
     }).catch((XHttpResponse) => {
         console.log(XHttpResponse);
+        hide_preload();
     });
 }
 
@@ -161,6 +164,7 @@ function create_quiz(quiz_type, root_url, token) {
         return;
     }
 
+    show_preload();
     $.post(root_url + "/quizes", {
             '_token': token,
             'type_id': quiz_type,
@@ -175,11 +179,14 @@ function create_quiz(quiz_type, root_url, token) {
             $.get(root_url + "/quizes/" + quizId + "/edit", function (data, status) {
                 $('#quiz_view').html(data);
                 show_correct_view();
+                hide_preload();
             }).catch((XHttpResponse) => {
                 console.log(XHttpResponse);
+                hide_preload();
             });
         }).catch((XHttpResponse) => {
         console.log(XHttpResponse);
+        hide_preload();
     });
 }
 
@@ -267,6 +274,7 @@ function update_quiz() {
     const token = $('meta[name=csrf-token]').attr('content');
     const quizId = $('#quiz_list').find('.current').attr('id');
 
+    show_preload();
     $.ajax({
         url: root_url + '/quizes/' + quizId,
         type: 'PUT',
@@ -304,9 +312,11 @@ function update_quiz() {
         },
         success: function (data) {
             alert('Quiz updated successfully');
+            hide_preload();
         }
     }).catch((XHttpResponse) => {
         console.log(XHttpResponse);
+        hide_preload();
     });
 
 }
@@ -329,6 +339,7 @@ function delete_quiz() {
     const node = $('#quiz_list').find('.current');
     const quizId = node.attr('id');
 
+    show_preload();
     $.ajax({
         url: root_url + '/quizes/' + quizId,
         type: 'DELETE',
@@ -352,9 +363,11 @@ function delete_quiz() {
             node.remove();
             $('#quiz_view').html('');
             alert('Quiz deleted successfully');
+            hide_preload();
         }
     }).catch((XHttpResponse) => {
         console.log(XHttpResponse);
+        hide_preload();
     });
 
 }
@@ -440,6 +453,7 @@ $('#duplicate_btn').click(function () {
     const root_url = $('meta[name=url]').attr('content');
     const token = $('meta[name=csrf-token]').attr('content');
 
+    show_preload();
     $.ajax({
         url: root_url + '/duplicate_quiz',
         type: 'POST',
@@ -455,11 +469,14 @@ $('#duplicate_btn').click(function () {
             $.get(root_url + "/quizes/" + quizId + "/edit", function (data, status) {
                 $('#quiz_view').html(data);
                 show_correct_view();
+                hide_preload();
             }).catch((XHttpResponse) => {
                 console.log(XHttpResponse);
+                hide_preload();
             });
         }
     }).catch((XHttpResponse) => {
         console.log(XHttpResponse);
+        hide_preload();
     });
 });

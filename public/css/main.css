@@ -806,3 +806,7 @@ if it's not present, don't show loader */
 .quiz #main {
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
 }
+
+.se-pre-con-show {
+    background-color: #fff8;
+}
