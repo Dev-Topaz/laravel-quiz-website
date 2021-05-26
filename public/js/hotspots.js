@@ -193,7 +193,7 @@ function drawcle() {
             fill: '#c1fc8580',
             originX: 'center',
             originY: 'center',
-            transparentCorners: false
+            // transparentCorners: false
         });
         canvas.add(circle);
     });
@@ -208,6 +208,10 @@ function drawcle() {
     });
 
     canvas.on('mouse:up', function (o) {
+        if (isDown) {
+            canvas.getActiveObject().remove();
+            canvas.add(circle);
+        }
         isDown = false;
         isDraw = true;
         console.log(canvas.item(0));
@@ -268,6 +272,10 @@ function drawrec() {
     });
 
     canvas.on('mouse:up', function (o) {
+        if (isDown) {
+            canvas.getActiveObject().remove();
+            canvas.add(rect);
+        }
         isDown = false;
         isDraw = true;
 

@@ -122,7 +122,7 @@ let correct_quiz_count = 0;
 let hotspots_points = [];
 let attempts = 0;
 
-rearrange_preview_ui();
+// rearrange_preview_ui();
 
 function rearrange_preview_ui() {
     switch ($('.quiz_show .type_id').html()) {
@@ -162,7 +162,7 @@ function rearrange_preview_ui() {
 
             var json_bg_url = JSON.parse(canvas_bg_url);
 
-            $('.slide_view_answer_element .col-md-12').html('<div id="image-hotspots" style="position: relative;width: 300px;height: 214px;left: 50%;transform: translateX(-50%)"><img src="' + root_url + '/' + json_bg_url.background + '" height="214" width="300" onclick="create_hotspots(event)" style="position: relative;left: 50%;transform: translateX(-50%)"></div>');
+            $('.quiz_show .slide_view_answer_element .col-md-12').html('<div id="image-hotspots" style="position: relative;width: 300px;height: 214px;left: 50%;transform: translateX(-50%)"><img src="' + root_url + '/' + json_bg_url.background + '" height="214" width="300" onclick="create_hotspots(event)" style="position: relative;left: 50%;transform: translateX(-50%)"></div>');
 
             break;
     }
@@ -229,21 +229,7 @@ function preview() {
             break;
 
         case 'Try again':
-            if (evulate()) {
-                total_score += parseInt($('.quiz_show .correct_score').html());
-                correct_quiz_count += 1;
-                $.toast({
-                    title: 'Correct',
-                    content: $('.quiz_show .feedback_correct').html(),
-                    type: 'success',
-                    delay: 3000,
-                    dismissible: true,
-                });
-                $('.preview_btn button').html('Continue');
-            } else {
-                attempts += 1;
-                incorrect_process();
-            }
+            $('.preview_btn button').html('Submit');
             break;
 
         case 'Continue':
@@ -438,6 +424,9 @@ function evulate() {
     }
 }
 
+/*
+* ************* method for hotspot polygen ***********************
+* */
 function inside(point, vs) {
     // ray-casting algorithm based on
     // https://wrf.ecse.rpi.edu/Research/Short_Notes/pnpoly.html/pnpoly.html

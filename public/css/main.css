@@ -818,3 +818,11 @@ if it's not present, don't show loader */
 .ui-state-default label {
     display: inline-block !important;
 }
+
+.quiz #main .slide_view_group {
+    border: 1px dotted grey;
+}
+
+.quiz #main .selected_slide_view_group {
+    overflow: unset !important;
+}
