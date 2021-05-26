@@ -200,6 +200,8 @@ function update_quiz() {
         slide_to_form();
     }
 
+    if ($('.slide_view_group_checkbox').length === 0) $('.slide_view_group').append('<input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;">');
+
     console.log('Updating quiz now...');
 
     const typeId = $('#type_id').val();
