@@ -602,6 +602,8 @@ $('#slide_view_picture_file_selector').change(function () {
     }
 
     reader.readAsDataURL(this.files[0]);
+
+    $('#slide_view_picture_file_selector').val('');
 });
 
 /*
@@ -668,6 +670,8 @@ $('#slide_view_video_file_selector').change(function () {
     } else {
         alert("Please select a file.");
     }
+
+    $('#slide_view_video_file_selector').val('');
 });
 
 /*
