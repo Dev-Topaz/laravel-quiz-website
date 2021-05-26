@@ -229,21 +229,7 @@ function preview() {
             break;
 
         case 'Try again':
-            if (evulate()) {
-                total_score += parseInt($('.quiz_show .correct_score').html());
-                correct_quiz_count += 1;
-                $.toast({
-                    title: 'Correct',
-                    content: $('.quiz_show .feedback_correct').html(),
-                    type: 'success',
-                    delay: 3000,
-                    dismissible: true,
-                });
-                $('.preview_btn button').html('Continue');
-            } else {
-                attempts += 1;
-                incorrect_process();
-            }
+            $('.preview_btn button').html('Submit');
             break;
 
         case 'Continue':
