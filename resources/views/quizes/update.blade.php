@@ -2,6 +2,10 @@
     <div class="cell-9 form_view_element" style="background: #dcdcdc;display: flex;">
         <div style="margin: auto 10px;background: #f1f1f1;width: 100%;padding: 20px;">
             <input id="select_background_img" type="file" hidden>
+            <input id="tmp_quiz_database_values" type="text"
+                   class="form-control @error('tmp_quiz_database_values') is-invalid @enderror" name="tmp_quiz_database_values"
+                   value="{{ $quiz->question_element }}{{ $quiz->answer }}{{ $quiz->answer_element }}{{ $quiz->media_element }}{{ $quiz->feedback_correct }}{{ $quiz->feedback_incorrect }}{{ $quiz->feedback_try_again }}{{ $quiz->media }}{{ $quiz->media_element }}{{ $quiz->video }}{{ $quiz->audio }}{{ $quiz->video_element }}{{ $quiz->background_img }}{{ $quiz->question_type }}{{ $quiz->feedback_type }}{{ $quiz->branching }}{{ $quiz->attempts }}{{ $quiz->shuffle_answers }}{{ $quiz->partially_correct }}{{ $quiz->limit_number_response }}{{ $quiz->case_sensitive }}{{ $quiz->correct_score }}{{ $quiz->incorrect_score }}{{ $quiz->try_again_score }}{{ $quiz->other_elements }}" required autocomplete="tmp_quiz_database_values" autofocus
+                   hidden>
             <input id="exam_id" type="text"
                    class="form-control @error('exam_id') is-invalid @enderror" name="exam_id"
                    value="{{ $quiz->exam_group->exam_id }}" required autocomplete="exam_id" autofocus
@@ -18,10 +22,10 @@
                    class="form-control @error('quiz_id') is-invalid @enderror" name="quiz_id"
                    value="{{ $quiz->id }}" required autocomplete="quiz_id" autofocus
                    hidden>
-            <input id="exam_group_id" type="text"
-                   class="form-control @error('exam_group_id') is-invalid @enderror" name="exam_group_id"
-                   value="{{ $quiz->exam_group_id }}" required autocomplete="exam_group_id" autofocus
-                   hidden>
+{{--            <input id="exam_group_id" type="text"--}}
+{{--                   class="form-control @error('exam_group_id') is-invalid @enderror" name="exam_group_id"--}}
+{{--                   value="{{ $quiz->exam_group_id }}" required autocomplete="exam_group_id" autofocus--}}
+{{--                   hidden>--}}
             <input id="type_id" type="text"
                    class="form-control @error('type_id') is-invalid @enderror" name="type_id"
                    value="{{ $quiz->type_id }}" required autocomplete="type_id" autofocus
