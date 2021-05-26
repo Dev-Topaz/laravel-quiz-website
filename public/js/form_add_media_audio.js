@@ -79,6 +79,7 @@ $('#form_view_input_media_element').change(function () {
     }
 
     reader.readAsDataURL(this.files[0]);
+    $('#form_view_input_media_element').val('');
 
 });
 
@@ -135,6 +136,7 @@ $('#select_background_img').change(function () {
 
     reader.readAsDataURL(this.files[0]);
 
+    $('#select_background_img').val('');
 });
 
 /*
@@ -210,6 +212,7 @@ $('#form_view_input_video_element').change(function () {
         alert("Please select a file.");
     }
 
+    $('#form_view_input_video_element').val('');
 });
 
 function show_video_properties() {
@@ -311,7 +314,7 @@ $('#form_view_input_audio_element').change(function () {
     } else {
         alert("Please select a file.");
     }
-
+    $('#form_view_input_audio_element').val('');
 });
 
 $('#form_view_audio_mark').click(function () {

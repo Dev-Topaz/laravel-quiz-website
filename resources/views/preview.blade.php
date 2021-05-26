@@ -17,6 +17,7 @@
                 {!! $quiz->answer_element !!}
                 {!! $quiz->media_element !!}
                 {!! $quiz->video_element !!}
+                {!! $quiz->other_elements !!}
                 <audio controls autoplay id="quiz_list_audio-{{ $quiz->id }}" style="display: none;">
                     <source src="{{ $quiz->audio }}" type="audio/mpeg">
                 </audio>
