@@ -31,7 +31,7 @@
 // });
 
 $(function () {
-    $('#matching_list').sortable();
+    $('#matching_list').sortable({'cancel': 'div[contenteditable=true]'});
 });
 
 $('#add_matching').click(function () {
