@@ -239,7 +239,7 @@ function delete_video() {
     $('#form_view_video_element').hide();
     $('#video').val('');
     $('.slide_view_video_element').remove();
-    $('#quiz_background_container').append('<div class="slide_view_video_element slide_view_group" style="z-index: 3;display: none;position: absolute;top: 0;left: 0;"><video controls><source src="#" type="video/mp4"></video></div>');
+    $('#quiz_background_container').append('<div class="slide_view_video_element slide_view_group" style="z-index: 3;display: none;position: absolute;top: 0;left: 0;"><video controls style="height: 100%;width: 100%;"><source src="#" type="video/mp4"></video></div>');
 }
 
 /*
@@ -345,4 +345,8 @@ function delete_audio() {
 function close_audio_properties() {
     $('.audio_properties').hide();
     $('.slide_option').show();
+}
+
+function upload_blob(blob) {
+    console.log(blob);
 }

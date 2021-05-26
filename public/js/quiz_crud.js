@@ -124,8 +124,6 @@ function is_edited() {
 
     const tmp_values = question_element + answer + answer_element + media_element + feedback_correct + feedback_incorrect + feedback_try_again + media + media_element + video + audio + video_element + background_img + question_type + feedback_type + branching + attempts + shuffle_answers + partially_correct + limit_number_response + case_sensitive + correct_score + incorrect_score + try_again_score + other_elements;
 
-    console.log(tmp_values.replaceAll(/\s/g, ''));
-    console.log($('#tmp_quiz_database_values').val().replaceAll(/\s/g, ''));
     if (tmp_values.replaceAll(/\s/g, '') == $('#tmp_quiz_database_values').val().replaceAll(/\s/g, '')) {
         return false;
     } else {
