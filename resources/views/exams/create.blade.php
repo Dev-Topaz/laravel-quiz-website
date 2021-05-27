@@ -87,7 +87,7 @@
                                     <div class="col-md-7">
                                         <input id="screen_height" type="number" min="1"
                                                class="form-control @error('screen_height') is-invalid @enderror" name="screen_height"
-                                               value="{{ old('screen_height') }}" required autocomplete="screen_height" autofocus>
+                                               value="450" required autocomplete="screen_height" autofocus>
                                         @error('screen_height')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -101,7 +101,7 @@
                                     <div class="col-md-7">
                                         <input id="screen_width" type="number" min="1"
                                                class="form-control @error('screen_width') is-invalid @enderror" name="screen_width"
-                                               value="{{ old('screen_width') }}" required autocomplete="screen_width" autofocus>
+                                               value="940" required autocomplete="screen_width" autofocus>
                                         @error('screen_width')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

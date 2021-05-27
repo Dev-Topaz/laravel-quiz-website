@@ -116,6 +116,14 @@
                     @case(13)
                     <h4>Quiz Instructions</h4>
                     @break
+
+                    @case(14)
+                    <h4>Quiz Results</h4>
+                    @break
+
+                    @case(15)
+                    <h4>Quiz Results</h4>
+                    @break
                 @endswitch
                 <div class="row" style="width: 100%;margin: 0;">
                     <div class="cell-{{ $quiz->type_id == 13 || $quiz->type_id == 12 ? '11' : '9'}}"
@@ -424,10 +432,10 @@
 
             <br>
 
-            <h4 style="{{ $quiz->type_id == 13 || $quiz->type_id == 12 ? 'display:none;' : ''}}">Feedback and
+            <h4 style="{{ $quiz->type_id > 11 ? 'display:none;' : ''}}">Feedback and
                 Branching</h4>
             <table class="table striped feedback_branching"
-                   style="margin: 0;{{ $quiz->type_id == 13 || $quiz->type_id == 12 ? 'display:none;' : ''}}">
+                   style="margin: 0;{{ $quiz->type_id > 11 ? 'display:none;' : ''}}">
                 <thead>
                 <tr>
                     <th></th>
@@ -490,12 +498,21 @@
                         </video>
                     </div>
                 @endif
+                @if ($quiz->type_id > 13)
+                    <div class="slide_view_group"
+                         style="top: 100px;width: 80%;left: 10%;z-index: 3;overflow: hidden;padding:10px;position:absolute;">
+                        <div contenteditable="true">
+                            <div class="cancel_drag">Your Score: %%</div>
+                            <div class="cancel_drag">Passing Score: %%</div>
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
     <div class="cell-3 slide_option" style="padding: 0 20px;">
         <h3 style="border-bottom: 1px dotted grey;padding: 15px 10px;">Slide Options</h3>
-        <div style="{{ $quiz->type_id == 13 || $quiz->type_id == 12 ? 'display:none;' : ''}}">
+        <div style="{{ $quiz->type_id > 11 ? 'display:none;' : ''}}">
             <div>
                 <div class="row" style="padding: 0 10px;">
                     <div class="cell-5">
