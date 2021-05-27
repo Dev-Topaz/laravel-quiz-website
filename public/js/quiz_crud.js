@@ -272,7 +272,7 @@ function create_quiz(quiz_type, root_url, token) {
         },
         function (data, status) {
             quizId = data;
-            node.next().attr('id', quizId);
+            parentNode.find('li').eq(0).attr('id', quizId);
             if (node.attr('id') === 'none' || node.attr('id') === undefined) node.remove();
 
             $.get(root_url + "/quizes/" + quizId + "/edit", function (data, status) {
