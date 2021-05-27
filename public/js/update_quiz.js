@@ -25,7 +25,7 @@ function question_form2slide() {
 
 function answer_slide2form(answer_element, answer_content) {
     const typeId = $('#type_id').val();
-    const element = $(answer_element);
+    const element = $(answer_element)
 
     let form_answer = '';
     switch (typeId) {
@@ -284,6 +284,8 @@ function answer_form2slide() {
             var canvas_bg_url = canvas_info.split('@')[0];
             var canvas_item_info = canvas_info.split('@')[1];
 
+            console.log(canvas_info);
+
             var json_bg_url = JSON.parse(canvas_bg_url);
             var json_canvas_item = JSON.parse(canvas_item_info);
 
@@ -468,7 +470,7 @@ function answer_store() {
                     case 'rect':
                         string = '{"type": "rect", "width": ' + (canvas.item(0).oCoords.br.x - canvas.item(0).oCoords.bl.x) + ', "height": ' + (canvas.item(0).oCoords.bl.y - canvas.item(0).oCoords.tl.y) + ', "top": ' + canvas.item(0).top + ', "left": ' + canvas.item(0).left + '}';
                         break;
-                    case 'polyline':
+                    case 'polygon':
                         string = '{"type": "polyline", "points" : ' + JSON.stringify(canvas.item(0).points) + '}';
                         break;
                 }

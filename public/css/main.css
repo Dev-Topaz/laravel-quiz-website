@@ -571,6 +571,7 @@ main {
 
 #main.quiz, main.quiz {
     width: 100%;
+    padding: 0;
 }
 
 #main.quiz #content {

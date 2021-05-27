@@ -122,7 +122,7 @@ let correct_quiz_count = 0;
 let hotspots_points = [];
 let attempts = 0;
 
-// rearrange_preview_ui();
+rearrange_preview_ui();
 
 function rearrange_preview_ui() {
     switch ($('.quiz_show .type_id').html()) {
