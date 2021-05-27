@@ -347,19 +347,19 @@ function update_quiz() {
     const limit_time = $('#limit_time').val();
 
     let shuffle_answers = $('#shuffle_answers').is(":checked");
-    shuffle_answers = shuffle_answers === 'true' ? 1 : 0;
+    shuffle_answers = shuffle_answers ? 1 : 0;
     if ($('#shuffle_answers').length === 0) shuffle_answers = null;
 
     let partially_correct = $('#partially_correct').is(":checked");
-    partially_correct = partially_correct === 'true' ? 1 : 0;
+    partially_correct = partially_correct ? 1 : 0;
     if ($('#partially_correct').length === 0) partially_correct = null;
 
     let limit_number_response = $('#limit_number_response').is(":checked");
-    limit_number_response = limit_number_response === 'true' ? 1 : 0;
+    limit_number_response = limit_number_response ? 1 : 0;
     if ($('#limit_number_response').length === 0) limit_number_response = null;
 
     let case_sensitive = $('#case_sensitive').is(":checked");
-    case_sensitive = case_sensitive === 'true' ? 1 : 0;
+    case_sensitive = case_sensitive ? 1 : 0;
     if ($('#case_sensitive').length === 0) case_sensitive = null;
 
     console.log($('.other_slide_view_element').length);

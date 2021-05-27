@@ -126,6 +126,36 @@ rearrange_preview_ui();
 
 function rearrange_preview_ui() {
     switch ($('.quiz_show .type_id').html()) {
+        case '1':
+            console.log($('.quiz_show .shuffle_answers').html());
+            if ($('.quiz_show .shuffle_answers').html() == 0) return;
+
+            var choice_items = $('.quiz_show .choice_item');
+            shuffle(choice_items);
+
+            var rearrange_choice_items = '';
+            for (let i = 0; i < choice_items.length; i++) {
+                rearrange_choice_items += choice_items[i].outerHTML;
+            }
+
+            $('.quiz_show .slide_view_answer_element .col-md-12').html(rearrange_choice_items);
+            break;
+
+        case '2':
+            console.log($('.quiz_show .shuffle_answers').html());
+            if ($('.quiz_show .shuffle_answers').html() == 0) return;
+
+            var response_items = $('.quiz_show .response_item');
+            shuffle(response_items);
+
+            var rearrange_response_items = '';
+            for (let i = 0; i < response_items.length; i++) {
+                rearrange_response_items += response_items[i].outerHTML;
+            }
+
+            $('.quiz_show .slide_view_answer_element .col-md-12').html(rearrange_response_items);
+            break;
+
         case '6':
             var sequence_items = $('#sortable li');
             shuffle(sequence_items)
@@ -232,13 +262,15 @@ function preview() {
                 attempts += 1;
                 total_score += parseInt($('.quiz_show .correct_score').html());
                 correct_quiz_count += 1;
-                $.toast({
-                    title: 'Correct',
-                    content: $('.quiz_show .feedback_correct').html(),
-                    type: 'success',
-                    delay: 3000,
-                    dismissible: true,
-                });
+                if ($('.quiz_show .feedback_type').html() != 'none') {
+                    $.toast({
+                        title: 'Correct',
+                        content: $('.quiz_show .feedback_correct').html(),
+                        type: 'success',
+                        delay: 3000,
+                        dismissible: true,
+                    });
+                }
                 $('.preview_btn button').html('Continue');
             } else {
                 attempts += 1;
@@ -283,8 +315,9 @@ function preview() {
         case 'See Result':
             if (total_score < parseInt($('.quiz_show .passing_score').html())) {
                 var current_show_id = $('.quiz_show').attr('id');
-                var next_show_id = $('.quiz_show').next().next().attr('id');
 
+                var next_show_id = $('.quiz_show').next().next().attr('id');
+                if (next_show_id === undefined) return;
 
                 $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].pause();
                 $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].currentTime = 0;
@@ -298,8 +331,9 @@ function preview() {
                 rearrange_preview_ui();
             } else {
                 var current_show_id = $('.quiz_show').attr('id');
-                var next_show_id = $('.quiz_show').next().attr('id');
 
+                var next_show_id = $('.quiz_show').next().attr('id');
+                if (next_show_id === undefined) return;
 
                 $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].pause();
                 $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].currentTime = 0;
@@ -341,7 +375,11 @@ function evulate() {
             break;
 
         case '4':
-            return $('.quiz_show #answer').val() == $('.quiz_show .correct_answer').html();
+            if ($('.quiz_show .case_sensitive').html() == 0) {
+                return $('.quiz_show #answer').val().toUpperCase() == $('.quiz_show .correct_answer').html().toUpperCase();
+            } else {
+                return $('.quiz_show #answer').val() == $('.quiz_show .correct_answer').html();
+            }
             break;
 
         case '5':
@@ -416,10 +454,18 @@ function evulate() {
             correct_answer_array.pop();
 
             let answer_array_items;
-            for (let i = 0; i < correct_answer_array.length; i++) {
-                answer_array_items = correct_answer_array[i].split(';');
-                answer_array_items.pop();
-                if (answer_array_items.indexOf($('.quiz_show .slide_view_answer_element input').eq(i).val()) == -1) return false;
+            if ($('.quiz_show .case_sensitive').html() == 0) {
+                for (let i = 0; i < correct_answer_array.length; i++) {
+                    answer_array_items = correct_answer_array[i].toUpperCase().split(';');
+                    answer_array_items.pop();
+                    if (answer_array_items.indexOf($('.quiz_show .slide_view_answer_element input').eq(i).val().toUpperCase()) == -1) return false;
+                }
+            } else {
+                for (let i = 0; i < correct_answer_array.length; i++) {
+                    answer_array_items = correct_answer_array[i].split(';');
+                    answer_array_items.pop();
+                    if (answer_array_items.indexOf($('.quiz_show .slide_view_answer_element input').eq(i).val()) == -1) return false;
+                }
             }
 
             return true;
@@ -506,25 +552,27 @@ function incorrect_process() {
     if (attempts == parseInt($('.quiz_show .attempts').html())) {
         total_score += parseInt($('.quiz_show .incorrect_score').html());
         $('.preview_btn button').html('Continue');
-        $.toast({
-            title: 'Incorrect',
-            content: $('.quiz_show .feedback_incorrect').html(),
-            type: 'error',
-            delay: 3000,
-            dismissible: true,
-        });
+        if ($('.quiz_show .feedback_type').html() != 'none') {
+            $.toast({
+                title: 'Incorrect',
+                content: $('.quiz_show .feedback_incorrect').html(),
+                type: 'error',
+                delay: 3000,
+                dismissible: true,
+            });
+        }
     } else {
         total_score += parseInt($('.quiz_show .try_again_score').html());
         $('.preview_btn button').html('Try again');
-        $.toast({
-            title: 'Incorrect',
-            content: $('.quiz_show .feedback_incorrect').html(),
-            type: 'error',
-            delay: 3000,
-            dismissible: true,
-        });
+        if ($('.quiz_show .feedback_type').html() != 'none') {
+            $.toast({
+                title: 'Incorrect',
+                content: $('.quiz_show .feedback_incorrect').html(),
+                type: 'error',
+                delay: 3000,
+                dismissible: true,
+            });
+        }
     }
     console.log('incorrect_process function');
 }
-
-

@@ -541,10 +541,10 @@
                                     value="by_result" {{ $quiz->feedback_type == 'by_result' ? 'selected' : '' }}>By
                                     Result
                                 </option>
-                                <option
-                                    value="by_choice" {{ $quiz->feedback_type == 'by_choice' ? 'selected' : '' }}>By
-                                    Choice
-                                </option>
+{{--                                <option--}}
+{{--                                    value="by_choice" {{ $quiz->feedback_type == 'by_choice' ? 'selected' : '' }}>By--}}
+{{--                                    Choice--}}
+{{--                                </option>--}}
                             </select>
                         </div>
                         {{--                        @if (isset($quiz->branching))--}}
@@ -617,13 +617,13 @@
                             </div>
                         @endif
                         @if (isset($quiz->partially_correct))
-                            <div class="cell-12">
+                            <div class="cell-12" style="display: none;">
                                 <input type="checkbox" data-role="checkbox" id="partially_correct"
                                        data-caption="Accept partially correct answer" {{ $quiz->partially_correct ? 'checked' : '' }}>
                             </div>
                         @endif
                         @if (isset($quiz->limit_number_response))
-                            <div class="cell-12">
+                            <div class="cell-12" style="display: none;">
                                 <input type="checkbox" data-role="checkbox" id="limit_number_response"
                                        data-caption="Limit number of response" {{ $quiz->limit_response ? 'checked' : '' }}>
                             </div>

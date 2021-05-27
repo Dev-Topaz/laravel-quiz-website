@@ -32,6 +32,9 @@
             <div class="incorrect_score" style="display: none;">{!! $quiz->incorrect_score !!}</div>
             <div class="try_again_score" style="display: none;">{!! $quiz->try_again_score !!}</div>
             <div class="question_type" style="display: none;">{!! $quiz->question_type !!}</div>
+            <div class="feedback_type" style="display: none;">{!! $quiz->feedback_type !!}</div>
+            <div class="shuffle_answers" style="display: none;">{!! $quiz->shuffle_answers !!}</div>
+            <div class="case_sensitive" style="display: none;">{!! $quiz->case_sensitive !!}</div>
             <div class="passing_score" style="display: none;">{!! $quiz->exam_group->exam->passing_score !!}</div>
         </div>
     @endforeach
