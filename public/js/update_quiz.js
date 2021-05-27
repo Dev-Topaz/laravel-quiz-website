@@ -284,8 +284,6 @@ function answer_form2slide() {
             var canvas_bg_url = canvas_info.split('@')[0];
             var canvas_item_info = canvas_info.split('@')[1];
 
-            console.log(canvas_info);
-
             var json_bg_url = JSON.parse(canvas_bg_url);
             var json_canvas_item = JSON.parse(canvas_item_info);
 
@@ -525,6 +523,19 @@ function add_canvas_item_info(string) {
     var answer_info = $('#answer_content').val();
     $('#answer_content').val(answer_info.split('@')[0] + '@' + string);
 }
+
+/*
+* ************ Remove other slide view elements *****************
+* */
+$('body').keydown(function (e) {
+    console.log(e.keyCode);
+
+    if (e.keyCode == 46) {
+        if ($('.other_slide_view_element.selected_slide_view_group').length > 0) {
+            $('.other_slide_view_element.selected_slide_view_group').remove();
+        }
+    }
+});
 
 /*
 * *********** Multiple selection (add class 'selected_slide_view_group')
