@@ -1322,8 +1322,6 @@ $('.layout_panel_img_holder').click(function () {
         $('.slide_view_media_element').css('top', parseInt(media_style[0]) - (parseInt(media_style[3]) / picture_element_ratio * ratio_to_be_changed - parseInt(media_style[3]))/2 + '%');
     }
 
-
-
     if (video_element_ratio < ratio_to_be_changed) {
         $('.slide_view_video_element').css('top', media_style[0] + '%');
         // $('.slide_view_video_element').css('height', media_style[3] + '%');
