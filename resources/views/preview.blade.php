@@ -32,6 +32,7 @@
             <div class="incorrect_score" style="display: none;">{!! $quiz->incorrect_score !!}</div>
             <div class="try_again_score" style="display: none;">{!! $quiz->try_again_score !!}</div>
             <div class="question_type" style="display: none;">{!! $quiz->question_type !!}</div>
+            <div class="passing_score" style="display: none;">{!! $quiz->exam_group->exam->passing_score !!}</div>
         </div>
     @endforeach
     <div class="preview_btn">

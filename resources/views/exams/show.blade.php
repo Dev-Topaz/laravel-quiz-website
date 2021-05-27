@@ -2113,6 +2113,7 @@
                                         <ul data-role="listview" data-view="content" id="quiz_list"
                                             data-on-node-click="onNodeClick">
                                             @foreach ($exam->exam_groups as $exam_group)
+                                                @if ($exam_group->group_name != 'Results')
                                                 <li data-caption="{{ $exam_group->group_name }}"
                                                     id="{{ $exam_group->id }}">
                                                     <ul>
@@ -2128,6 +2129,26 @@
                                                         @endif
                                                     </ul>
                                                 </li>
+                                                @endif
+                                            @endforeach
+                                            @foreach ($exam->exam_groups as $exam_group)
+                                                @if ($exam_group->group_name == 'Results')
+                                                <li data-caption="{{ $exam_group->group_name }}"
+                                                    id="{{ $exam_group->id }}">
+                                                    <ul>
+                                                        @if (count($exam_group->quizes) == 0)
+                                                            <li id="none" data-caption="No questions"
+                                                                data-content="<i>Add questions</i>"></li>
+                                                        @else
+                                                            @foreach($exam_group->quizes as $quiz)
+                                                                <li id="{{ $quiz->id }}"
+                                                                    data-caption="{{ strip_tags($quiz->question_element) }}"
+                                                                    data-content="<i>{{ $quiz->Quiz_type->name }}</i>"></li>
+                                                            @endforeach
+                                                        @endif
+                                                    </ul>
+                                                </li>
+                                                @endif
                                             @endforeach
                                         </ul>
                                     </div>

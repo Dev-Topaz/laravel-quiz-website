@@ -165,6 +165,24 @@ function rearrange_preview_ui() {
             $('.quiz_show .slide_view_answer_element .col-md-12').html('<div id="image-hotspots" style="position: relative;width: 300px;height: 214px;left: 50%;transform: translateX(-50%)"><img src="' + root_url + '/' + json_bg_url.background + '" height="214" width="300" onclick="create_hotspots(event)" style="position: relative;left: 50%;transform: translateX(-50%)"></div>');
 
             break;
+
+        case '14':
+            let passed_score_html = $('.quiz_show .slide_view_answer_element .col-md-12').html();
+            console.log(passed_score_html);
+            passed_score_html = passed_score_html.split('%%')[0] + total_score + passed_score_html.split('%%')[1];
+            passed_score_html = passed_score_html.split('##')[0] + $('.quiz_show .passing_score').html() + passed_score_html.split('##')[1];
+            console.log(passed_score_html);
+
+            $('.quiz_show .slide_view_answer_element .col-md-12').html(passed_score_html);
+            break;
+
+        case '15':
+            let failed_score_html = $('.quiz_show .slide_view_answer_element .col-md-12').html();
+            failed_score_html = failed_score_html.split('%%')[0] + total_score + failed_score_html.split('%%')[1];
+            failed_score_html = failed_score_html.split('##')[0] + $('.quiz_show .passing_score').html() + failed_score_html.split('##')[1];
+
+            $('.quiz_show .slide_view_answer_element .col-md-12').html(failed_score_html);
+            break;
     }
 }
 
@@ -237,10 +255,11 @@ function preview() {
 
             var current_show_id = $('.quiz_show').attr('id');
             var next_show_id = $('.quiz_show').next().attr('id');
+            var type_id = $('.quiz_show').next().find('.type_id').html();
 
             $('#quiz_list_audio-' + current_show_id.split('-')[1])[0].pause();
 
-            if (next_show_id === undefined) {
+            if (next_show_id === undefined || type_id == 14 || type_id == 15) {
 
                 $('.preview_btn button').html('See Result');
             } else {
@@ -262,7 +281,42 @@ function preview() {
             break;
 
         case 'See Result':
-            alert('Correct answers: ' + correct_quiz_count + ', Total Score: ' + total_score);
+            if (total_score < parseInt($('.quiz_show .passing_score').html())) {
+                var current_show_id = $('.quiz_show').attr('id');
+                var next_show_id = $('.quiz_show').next().next().attr('id');
+
+
+                $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].pause();
+                $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].currentTime = 0;
+                $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].play();
+
+                $('#' + current_show_id).removeClass('quiz_show');
+                $('#' + current_show_id).addClass('quiz_hide');
+
+                $('#' + next_show_id).removeClass('quiz_hide');
+                $('#' + next_show_id).addClass('quiz_show');
+                rearrange_preview_ui();
+            } else {
+                var current_show_id = $('.quiz_show').attr('id');
+                var next_show_id = $('.quiz_show').next().attr('id');
+
+
+                $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].pause();
+                $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].currentTime = 0;
+                $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].play();
+
+                $('#' + current_show_id).removeClass('quiz_show');
+                $('#' + current_show_id).addClass('quiz_hide');
+
+                $('#' + next_show_id).removeClass('quiz_hide');
+                $('#' + next_show_id).addClass('quiz_show');
+                rearrange_preview_ui();
+            }
+            $('.preview_btn button').html('Close');
+            break;
+
+        case 'Close':
+            window.close();
             break;
     }
 }

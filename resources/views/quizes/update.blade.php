@@ -126,15 +126,15 @@
                     @break
                 @endswitch
                 <div class="row" style="width: 100%;margin: 0;">
-                    <div class="cell-{{ $quiz->type_id == 13 || $quiz->type_id == 12 ? '11' : '9'}}"
+                    <div class="cell-{{ $quiz->type_id > 11 ? '11' : '9'}}"
                          style="padding: 0;">
                         <div contenteditable="true" id="question"
                              style="overflow-y: scroll;width: 100%;border: 1px solid black;height: 70px;color: black"></div>
                     </div>
-                    <div class="cell-{{ $quiz->type_id == 13 || $quiz->type_id == 12 ? '1' : '3'}}"
+                    <div class="cell-{{ $quiz->type_id > 11 ? '1' : '3'}}"
                          style="display: flex;align-items: center;justify-content: center;padding: 0;">
                         <div id="form_view_pic_video_element"
-                             style="{{ $quiz->type_id == 13 || $quiz->type_id == 12 ? 'display:none;' : ''}}">
+                             style="{{ $quiz->type_id > 11 ? 'display:none;' : ''}}">
                             <a href="javascript:void(0)"
                                style="padding: 0 3px;{{ (isset($quiz->media) || isset($quiz->video)) ? 'display: none' : '' }}"
                                id="form_view_add_picture">Pic</a>
@@ -428,6 +428,16 @@
                 </div>
                 @break
 
+                @case(14)
+                <div contenteditable="true" style="height: 460px;">
+                </div>
+                @break
+
+                @case(15)
+                <div contenteditable="true" style="height: 460px;">
+                </div>
+                @break
+
             @endswitch
 
             <br>
@@ -496,15 +506,6 @@
                         <video controls style="width: 100%;height: 100%">
                             <source src="#" type="video/mp4">
                         </video>
-                    </div>
-                @endif
-                @if ($quiz->type_id > 13)
-                    <div class="slide_view_group"
-                         style="top: 100px;width: 80%;left: 10%;z-index: 3;overflow: hidden;padding:10px;position:absolute;">
-                        <div contenteditable="true">
-                            <div class="cancel_drag">Your Score: %%</div>
-                            <div class="cancel_drag">Passing Score: %%</div>
-                        </div>
                     </div>
                 @endif
             </div>

@@ -44,6 +44,7 @@ function onNodeClick(node) {
 }
 
 function is_edited() {
+    if ($('.slide_view_question_element').length == 0) return false;
     if (is_form_or_slide() === 'form') {
         form_to_slide();
     }
@@ -142,6 +143,10 @@ function create_quiz(quiz_type, root_url, token) {
     const firstParentNode = $('.node-group:first');
     const firstNode = firstParentNode.find('li:first');
 
+    if (parentNode.attr('data-caption') == 'Results') {
+        alert('You can\'t insert quizzes at Results Group!');
+        return;
+    }
 
     switch (quiz_type) {
         case (1):
@@ -433,6 +438,12 @@ function delete_quiz() {
     const root_url = $('meta[name=url]').attr('content');
     const token = $('meta[name=csrf-token]').attr('content');
     const node = $('#quiz_list').find('.current');
+
+    if (node.closest('.node-group').attr('data-caption') == 'Results') {
+        alert('You can\'t this slide!');
+        return;
+    }
+
     const quizId = node.attr('id');
     prev_id = '';
 
@@ -521,6 +532,11 @@ $('#question_group_btn').click(function () {
         content: '<i>Add questions<i>'
     });
 
+    console.log($('#quiz_list li:nth-last-child(2)'));
+    const element = $('#quiz_list li:nth-last-child(2)')[0].outerHTML;
+    $('#quiz_list li:nth-last-child(2)').remove();
+    $('#quiz_list').append(element);
+
     const root_url = $('meta[name=url]').attr('content');
     const token = $('meta[name=csrf-token]').attr('content');
 
@@ -536,6 +552,7 @@ $('#question_group_btn').click(function () {
         },
         success: function (data) {
             node.attr('id', data);
+
             hide_preload();
         }
     }).catch((XHttpResponse) => {
@@ -594,6 +611,11 @@ $('#duplicate_btn').click(function () {
     const parentNode = $('.current').closest('.node-group');
     const groupId = parentNode.attr('id');
     const node = parentNode.find('li.current');
+
+    if (parentNode.attr('data-caption') == 'Results') {
+        alert('You can\'t duplicate at Results Group!');
+        return;
+    }
 
     if (node.attr('data-content') == '<i>Info Slide</i>' || node.attr('data-content') == '<i>Quiz Instructions</i>') {
         alert("This slide can't be duplicated!")
