@@ -6,6 +6,7 @@ function hotspots_change_picture() {
     $('#hotspots_only_from_files_image').trigger('click');
 }
 
+var canvas;
 var canvas = this.__canvas = new fabric.Canvas('hotspots_canvas');
 
 // fabric.Object.prototype.transparentCorners = false;
