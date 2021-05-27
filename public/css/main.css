@@ -827,3 +827,7 @@ if it's not present, don't show loader */
 .quiz #main .selected_slide_view_group {
     overflow: unset !important;
 }
+
+#quiz_list li.current-group > .data {
+    background-color: #fbd8be !important;
+}

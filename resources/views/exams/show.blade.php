@@ -2,6 +2,7 @@
 
 @section('content')
 <div id="main" class="quiz">
+    <input type="text" id="exam_id" value="{{ $exam->id }}" hidden>
     <h2>{{ $exam->name }}</h2>
 
 
@@ -1648,7 +1649,7 @@
                             </span>
                             <span class="caption">Info Slide</span>
                         </button>
-                        <button class="ribbon-icon-button">
+                        <button class="ribbon-icon-button" id="question_group_btn">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/home/qgroup.png") }}">
                             </span>
@@ -1938,6 +1939,10 @@
                                 Score: {{ $exam->passing_score }}</p>
                         </div>
                         <div style="float: right">
+                            <button type="button" class="quiz_handle_button" onclick="delete_question_group()"><i
+                                    class="fas fa-trash"></i>Delete
+                                Question Group
+                            </button>
                             <button type="button" class="quiz_handle_button" onclick="update_quiz()"><i
                                     class="fas fa-trash"></i>Update
                                 Quiz

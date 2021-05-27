@@ -459,7 +459,7 @@ function delete_quiz() {
 
             node.remove();
             $('#quiz_view').html('');
-            alert('Quiz deleted successfully');
+            alert('Quiz Group deleted successfully');
             hide_preload();
         }
     }).catch((XHttpResponse) => {
@@ -508,7 +508,10 @@ $('.preview_group_btn').click(function () {
     window.open(root_url + '/preview_group/' + $('#exam_group_id').val());
 });
 
-$('#section_Home_FormView > div:first-child > div:nth-child(2) > button:nth-child(2)').click(function () {
+/*
+* ************ create question group **************
+* */
+$('#question_group_btn').click(function () {
     const lv = Metro.getPlugin('#quiz_list', 'listview');
     const node = lv.addGroup({
         caption: 'Question Group',
@@ -517,8 +520,68 @@ $('#section_Home_FormView > div:first-child > div:nth-child(2) > button:nth-chil
         caption: 'No questions',
         content: '<i>Add questions<i>'
     });
-    console.log($(location).attr("href"));
+
+    const root_url = $('meta[name=url]').attr('content');
+    const token = $('meta[name=csrf-token]').attr('content');
+
+    const exam_id = $('#exam_id').val();
+
+    show_preload();
+    $.ajax({
+        url: root_url + '/add_exam_group',
+        type: 'POST',
+        data: {
+            _token: token,
+            exam_id: exam_id,
+        },
+        success: function (data) {
+            node.attr('id', data);
+            hide_preload();
+        }
+    }).catch((XHttpResponse) => {
+        console.log(XHttpResponse);
+        hide_preload();
+    });
 });
+
+/*
+* ***************** Delete question group *****************
+* */
+function delete_question_group() {
+    if ($('.current-group').length == 0) {
+        alert('Please choose question group to remove.');
+    }
+
+    const root_url = $('meta[name=url]').attr('content');
+    const token = $('meta[name=csrf-token]').attr('content');
+    const node = $('#quiz_list').find('.current-group');
+    const groupId = node.attr('id');
+
+    show_preload();
+    $.ajax({
+        url: root_url + '/exam_groups/' + groupId,
+        type: 'DELETE',
+        data: {
+            id: groupId,
+            _token: token,
+
+        },
+        success: function (data) {
+
+            node.remove();
+            $('#quiz_view').html('');
+            alert('Quiz deleted successfully');
+            hide_preload();
+        }
+    }).catch((XHttpResponse) => {
+        console.log(XHttpResponse);
+        hide_preload();
+    });
+}
+
+/*
+* **************** Duplicate quiz ***************
+* */
 
 $('#duplicate_btn').click(function () {
     const lv = Metro.getPlugin('#quiz_list', 'listview');
