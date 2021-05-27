@@ -670,7 +670,6 @@
 </div>
 
 <script>
-
     answer_slide2form($('#answer_element').val(), $('#answer_content').val());
     $('#question').html(question_slide2form($('#question_element').val()));
 
