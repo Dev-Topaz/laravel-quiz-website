@@ -382,6 +382,7 @@ function preview() {
             const root_url = $('meta[name=url]').attr('content');
             const token = $('meta[name=csrf-token]').attr('content');
 
+            show_preload();
             $.ajax({
                 url: root_url + '/send-mail',
                 type: 'POST',
