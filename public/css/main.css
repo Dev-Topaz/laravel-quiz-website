@@ -832,3 +832,17 @@ if it's not present, don't show loader */
 #quiz_list li.current-group > .data {
     background-color: #fbd8be !important;
 }
+
+#slide_drag_words_question .blank {
+    padding-left: 70px;
+}
+
+#slide_drag_words_answer {
+    padding: 5px;
+}
+
+#slide_drag_words_answer span {
+    margin: 0 5px;
+    padding: 1px 5px;
+    border-radius: 5px;
+}

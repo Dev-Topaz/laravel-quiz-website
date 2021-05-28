@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9d9fd7c1-0dd1-410f-8492-d59f6bb67158" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/update_quiz.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/update_quiz.js" afterDir="false" />
-    </list>
+    <list default="true" id="9d9fd7c1-0dd1-410f-8492-d59f6bb67158" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -254,7 +251,7 @@
       <workItem from="1621886412799" duration="68582000" />
       <workItem from="1622070692015" duration="3726000" />
       <workItem from="1622175135376" duration="17936000" />
-      <workItem from="1622233944485" duration="6120000" />
+      <workItem from="1622233944485" duration="6951000" />
     </task>
     <servers />
   </component>
