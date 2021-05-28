@@ -602,13 +602,13 @@ $('#duplicate_btn').click(function () {
 * ************* get quiz state ***************
 * */
 function get_quiz_state() {
-    if (is_form_or_slide() === 'form') {
-        form_to_slide();
-    }
-
-    if (is_form_or_slide() === 'slide') {
-        slide_to_form();
-    }
+    // if (is_form_or_slide() === 'form') {
+    //     form_to_slide();
+    // }
+    //
+    // if (is_form_or_slide() === 'slide') {
+    //     slide_to_form();
+    // }
 
     if ($('.slide_view_group_checkbox').length === 0) $('.slide_view_group').append('<input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;">');
 

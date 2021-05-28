@@ -8,7 +8,6 @@ function question_slide2form(question) {
 }
 
 function question_form2slide() {
-    console.log($('#question > div.cancel_drag').eq(0).html());
     $('.slide_view_question_element > div.cancel_drag').html($('#question > div.cancel_drag').eq(0).html());
 }
 
@@ -265,7 +264,6 @@ function answer_form2slide() {
             const form_answer_input_element = $(answer_element);
             let word_array = '';
             for (let i = 0; i < form_answer_input_element.find('.blank').length; i++) {
-                console.log(form_answer_input_element.find('.blank').eq(i));
                 word_array += '<span style="border: 1px solid gray;background: white;color: black;">' + $('#drag_words .blank input').eq(i).val() + '</span>'
                 form_answer_input_element.find('.blank').eq(i).html('');
                 form_answer_input_element.find('.blank').eq(i).css('padding-right', '70px');
@@ -500,7 +498,6 @@ function slide_to_form() {
 }
 
 function form_to_slide() {
-    console.log("form2slide");
     answer_store();
     question_form2slide();
     answer_form2slide();
