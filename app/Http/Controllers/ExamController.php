@@ -61,6 +61,7 @@ class ExamController extends Controller
             'author_id' => Auth::user()->id,
             'status' => true,
             'attempt_number' => $request->attempt_number,
+            'stuff_emails' => $request->stuff_emails,
             'passing_score' => $request->passing_score,
             'screen_height' => $request->screen_height,
             'screen_width' => $request->screen_width,

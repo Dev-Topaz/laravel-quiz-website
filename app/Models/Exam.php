@@ -11,7 +11,7 @@ class Exam extends Model
 
     protected $table = 'exams';
     protected $primaryKey = 'id';
-    protected $fillable = ['name', 'description', 'author_id', 'attempt_number', 'status', 'passing_score', 'screen_height', 'screen_width'];
+    protected $fillable = ['name', 'description', 'author_id', 'attempt_number', 'status', 'passing_score', 'screen_height', 'screen_width', 'stuff_emails'];
 
     public function exam_groups()
     {

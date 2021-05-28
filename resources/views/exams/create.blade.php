@@ -82,6 +82,20 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
+                                    <label for="stuff_emails" class="col-md-3 col-form-label text-md-right">{{ __('Stuff Emails')
+                                        }}</label>
+                                    <div class="col-md-7">
+                                        <input id="stuff_emails" type="text"
+                                               class="form-control @error('stuff_emails') is-invalid @enderror" name="stuff_emails"
+                                               autocomplete="stuff_emails" autofocus>
+                                        @error('stuff_emails')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
                                     <label for="screen_height" class="col-md-3 col-form-label text-md-right">{{ __('Screen Height')
                                         }}</label>
                                     <div class="col-md-7">
