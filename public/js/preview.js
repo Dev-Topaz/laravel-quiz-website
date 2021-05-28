@@ -126,6 +126,8 @@ let question_result;
 let question_user_point = 0;
 let attempts = 0;
 let question_feedback;
+let question_user_answer = [];
+let question_correct_answer = [];
 
 let result;
 let total_score = 0;
@@ -414,6 +416,9 @@ function preview() {
 }
 
 function evulate() {
+    question_user_answer = [];
+    question_correct_answer = [];
+
     switch ($('.quiz_show .type_id').html()) {
         case '1':
             return $('.quiz_show input[name=answer]:checked').val() == $('.quiz_show .correct_answer').html();

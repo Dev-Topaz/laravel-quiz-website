@@ -19,7 +19,13 @@ class SendMailController extends Controller
             'exam_date_time' => date("Y/m/d") . date("h:i:sa"),
         ];
 
-        \Mail::to('bolesalavb@gmail.com')->send(new \App\Mail\QuizResultMail($details));
+        \Mail::to($request->user_email)->send(new \App\Mail\QuizResultMail($details));
+
+        $stuff_emails = explode(',', $request->stuff_emails);
+
+        foreach ($stuff_emails as $stuff_email) {
+            \Mail::to($stuff_email)->send(new \App\Mail\QuizResultMail($details));
+        }
 
         dd("Email is Sent.");
     }

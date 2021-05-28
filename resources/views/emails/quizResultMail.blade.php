@@ -71,7 +71,7 @@
                             <tr style="height: 20px">
                                 <td>Result&nbsp;</td>
                                 <td><strong><b><span
-                                                style="color: #09a23f"><b>{{ $details['data']->result }}</b></span></b></strong>
+                                                style="{{ $details['data']->result == 'Pass' ? 'color: #09a23f' : 'color: #e90b0b' }}"><b>{{ $details['data']->result }}</b></span></b></strong>
                                 </td>
                             </tr>
                             </tbody>
@@ -106,7 +106,7 @@
                         <tr align="left">
                             <td style="font: 13px Open Sans;padding-bottom:36px">
                   <span style="line-height: 12px"><b>Question
-                      {{ intval($question['quizId']) + 1 }} <span style="color:#70AD47">{{ $question['question_result'] }}</span></b></span><br>
+                      {{ intval($question['quizId']) + 1 }} <span style="{{ $question['question_result'] == 'Correct' ? 'color:#70AD47' : 'color:#CD1212'}}">{{ $question['question_result'] }}</span></b></span><br>
                                 <span
                                     style="line-height: 20px">Points:&nbsp;1/1&nbsp;&nbsp;|&nbsp;&nbsp;Attempts:&nbsp;{{ $question['question_user_attempts'] }}/{{ $question['question_attempts'] }}</span>
                                 <br>{!! $question['question_content'] !!}<br>
