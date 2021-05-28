@@ -20,9 +20,7 @@ use App\Http\Controllers\SendMailController;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+Route::get('/', [ExamController::class, 'index']);
 
 Auth::routes();
 

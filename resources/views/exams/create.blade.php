@@ -85,7 +85,7 @@
                                     <label for="stuff_emails" class="col-md-3 col-form-label text-md-right">{{ __('Stuff Emails')
                                         }}</label>
                                     <div class="col-md-7">
-                                        <input id="stuff_emails" type="text"
+                                        <input id="stuff_emails" type="text" value="rto@civilsafety.edu.au,robert@civilsafety.edu.au"
                                                class="form-control @error('stuff_emails') is-invalid @enderror" name="stuff_emails"
                                                autocomplete="stuff_emails" autofocus>
                                         @error('stuff_emails')
