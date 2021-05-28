@@ -175,7 +175,7 @@ function create_quiz(quiz_type, root_url, token) {
         node.next().addClass('current current-select');
     }
 
-    let order = parentNode.find('li').index(node.next());
+    let order = parseInt(node.attr('order')) + 1;
     if (node.attr('id') === 'none' || node.attr('id') === undefined) order = 0;
     if (quiz_type == 12 || quiz_type == 13) order = 0;
     // return;
@@ -195,11 +195,20 @@ function create_quiz(quiz_type, root_url, token) {
         function (data, status) {
             quizId = data;
 
+            for (let i = 0; i < $('#quiz_list li.node').length; i++) {
+                if (parseInt($('#quiz_list li.node').eq(i).attr('order')) >= order) {
+                    $('#quiz_list li.node').eq(i).attr('order', parseInt($('#quiz_list li.node').eq(i).attr('order')) + 1);
+                }
+            }
+
             if(quiz_type == '12' || quiz_type == '13') {
                 parentNode.find('li').eq(0).attr('id', quizId);
+                parentNode.find('li').eq(0).attr('order', order);
             } else {
                 node.next().attr('id', quizId);
+                node.next().attr('order', order);
             }
+
 
             if (node.attr('id') === 'none' || node.attr('id') === undefined) node.remove();
 

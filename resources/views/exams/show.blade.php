@@ -2122,7 +2122,7 @@
                                                                 data-content="<i>Add questions</i>"></li>
                                                         @else
                                                             @foreach($exam_group->quizes as $quiz)
-                                                                <li id="{{ $quiz->id }}"
+                                                                <li id="{{ $quiz->id }}" order="{{ $quiz->order }}"
                                                                     data-caption="{{ strip_tags($quiz->question_element) }}"
                                                                     data-content="<i>{{ $quiz->Quiz_type->name }}</i>"></li>
                                                             @endforeach
@@ -2141,7 +2141,7 @@
                                                                 data-content="<i>Add questions</i>"></li>
                                                         @else
                                                             @foreach($exam_group->quizes as $quiz)
-                                                                <li id="{{ $quiz->id }}"
+                                                                <li id="{{ $quiz->id }}" order="{{ $quiz->order }}"
                                                                     data-caption="{{ strip_tags($quiz->question_element) }}"
                                                                     data-content="<i>{{ $quiz->Quiz_type->name }}</i>"></li>
                                                             @endforeach
