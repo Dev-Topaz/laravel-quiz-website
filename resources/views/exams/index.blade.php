@@ -81,7 +81,7 @@
                                     <div class="form_option">
                                         <a href="{{ url('/exams') }}/{{$exam->id}}/edit"><i class="fas fa-edit"></i>Edit Exam</a>
                                     </div>
-                                    
+
                                     <div class="form_option">
                                         <a href="{{ url('/exams') }}/{{$exam->id}}"><i class="far fa-eye"></i>Edit Quizs of this Exam</a>
                                     </div>
@@ -95,7 +95,7 @@
                                     <div class="form_option_separator"></div>
                                     @endhasrole
                                     <div class="form_option option_expandable">
-                                        <a class="mf_link_theme" href="#" title="Theme"><i class="far fa-play-circle"></i><span class="option_text">Start Exam</span></a>
+                                        <a class="mf_link_theme" href="{{ url('/preview_exam') }}/{{ $exam->id }}" title="Theme"><i class="far fa-play-circle"></i><span class="option_text">Start Exam</span></a>
                                     </div>
                                 </div>
 
