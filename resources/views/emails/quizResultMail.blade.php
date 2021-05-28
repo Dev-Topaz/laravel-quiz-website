@@ -108,7 +108,7 @@
                   <span style="line-height: 12px"><b>Question
                       {{ intval($question['quizId']) + 1 }} <span style="{{ $question['question_result'] == 'Correct' ? 'color:#70AD47' : 'color:#CD1212'}}">{{ $question['question_result'] }}</span></b></span><br>
                                 <span
-                                    style="line-height: 20px">Points:&nbsp;1/1&nbsp;&nbsp;|&nbsp;&nbsp;Attempts:&nbsp;{{ $question['question_user_attempts'] }}/{{ $question['question_attempts'] }}</span>
+                                    style="line-height: 20px">Points:&nbsp;{{ $question['question_user_point'] }}/{{ $question['question_point'] }}&nbsp;&nbsp;|&nbsp;&nbsp;Attempts:&nbsp;{{ $question['question_user_attempts'] }}/{{ $question['question_attempts'] }}</span>
                                 <br>{!! $question['question_content'] !!}<br>
 {{--                                <table style="width:100%;border-collapse:collapse">--}}
 {{--                                    <tbody>--}}
