@@ -7,6 +7,7 @@ use App\Http\Controllers\QuizController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\PreviewController;
 use App\Http\Controllers\ExamGroupController;
+use App\Http\Controllers\SendMailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,15 +60,5 @@ Route::get('/preview_exam/{id}', [PreviewController::class, 'preview_exam']);
 Route::resource('users', UserController::class);
 Route::resource('exams', ExamController::class);
 
-Route::get('send-mail', function () {
-
-    $details = [
-        'title' => 'Mail from Quiz Maker',
-        'body' => 'This is for testing email using smtp'
-    ];
-
-    \Mail::to('bolesalavb@gmail.com')->send(new \App\Mail\QuizResultMail($details));
-
-    dd("Email is Sent.");
-});
+Route::post('/send-mail', [SendMailController::class, 'send_mail'])->name('send-mail');
 

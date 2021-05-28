@@ -117,10 +117,20 @@ function swap_value(a, b) {
 * ************** Rearrange Preview UI *************
 * */
 
+const user_name = $('#user_name').html();
+const user_email = $('#user_email').html();
+
+let quizzes = [];
+let quizId = 0;
+let question_result;
+let question_user_point = 0;
+let attempts = 0;
+let question_feedback;
+
+let result;
 let total_score = 0;
 let correct_quiz_count = 0;
 let hotspots_points = [];
-let attempts = 0;
 
 rearrange_preview_ui();
 
@@ -255,12 +265,14 @@ function preview() {
     switch ($('.preview_btn button').html()) {
         case 'Submit':
             if ($('.quiz_show .question_type').html() != 'graded') {
+                question_result = 'Survey';
                 $('.preview_btn button').html('Continue');
                 return;
             }
             if (evulate()) {
                 attempts += 1;
                 total_score += parseInt($('.quiz_show .correct_score').html());
+                question_user_point += parseInt($('.quiz_show .correct_score').html());
                 correct_quiz_count += 1;
                 if ($('.quiz_show .feedback_type').html() != 'none') {
                     $.toast({
@@ -271,6 +283,8 @@ function preview() {
                         dismissible: true,
                     });
                 }
+                question_feedback = $('.quiz_show .feedback_correct').html();
+                question_result = 'Correct';
                 $('.preview_btn button').html('Continue');
             } else {
                 attempts += 1;
@@ -283,7 +297,21 @@ function preview() {
             break;
 
         case 'Continue':
+
+            quizzes.push({
+                quizId: quizId,
+                question_result: question_result,
+                question_content: $('.quiz_show .slide_view_question_element').html(),
+                question_point: $('.quiz_show .correct_score').html(),
+                question_user_point: question_user_point,
+                question_attempts: $('.quiz_show .attempts').html(),
+                question_user_attempts: attempts,
+                question_feedback: question_feedback,
+            });
+
             attempts = 0;
+            question_user_point = 0;
+            quizId++;
 
             var current_show_id = $('.quiz_show').attr('id');
             var next_show_id = $('.quiz_show').next().attr('id');
@@ -314,6 +342,7 @@ function preview() {
 
         case 'See Result':
             if (total_score < parseInt($('.quiz_show .passing_score').html())) {
+                result = 'Fail';
                 var current_show_id = $('.quiz_show').attr('id');
 
                 var next_show_id = $('.quiz_show').next().next().attr('id');
@@ -330,6 +359,7 @@ function preview() {
                 $('#' + next_show_id).addClass('quiz_show');
                 rearrange_preview_ui();
             } else {
+                result = 'Pass';
                 var current_show_id = $('.quiz_show').attr('id');
 
                 var next_show_id = $('.quiz_show').next().attr('id');
@@ -346,6 +376,34 @@ function preview() {
                 $('#' + next_show_id).addClass('quiz_show');
                 rearrange_preview_ui();
             }
+
+            const root_url = $('meta[name=url]').attr('content');
+            const token = $('meta[name=csrf-token]').attr('content');
+
+            $.ajax({
+                url: root_url + '/send-mail',
+                type: 'POST',
+                data: {
+                    _token: token,
+                    user_name: user_name,
+                    user_email: user_email,
+                    stuff_emails: $('.quiz_show .stuff_emails').html(),
+                    exam_answered: correct_quiz_count,
+                    exam_question_count: quizId,
+                    exam_user_score: total_score,
+                    exam_passing_score: $('.quiz_show .passing_score').html(),
+                    result: result,
+                    quizzes: quizzes,
+                },
+                success: function (data) {
+                    console.log('success');
+                    hide_preload();
+                }
+            }).catch((XHttpResponse) => {
+                console.log(XHttpResponse);
+                hide_preload();
+            });
+
             $('.preview_btn button').html('Close');
             break;
 
@@ -550,7 +608,12 @@ function inside(point, vs) {
 
 function incorrect_process() {
     if (attempts == parseInt($('.quiz_show .attempts').html())) {
+
         total_score += parseInt($('.quiz_show .incorrect_score').html());
+        question_user_point += parseInt($('.quiz_show .incorrect_score').html());
+        question_result = 'Wrong';
+        question_feedback = $('.quiz_show .feedback_incorrect').html();
+
         $('.preview_btn button').html('Continue');
         if ($('.quiz_show .feedback_type').html() != 'none') {
             $.toast({
@@ -563,11 +626,14 @@ function incorrect_process() {
         }
     } else {
         total_score += parseInt($('.quiz_show .try_again_score').html());
+        question_user_point += parseInt($('.quiz_show .try_again_score').html());
+        question_feedback = $('.quiz_show .feedback_try_again').html();
+
         $('.preview_btn button').html('Try again');
         if ($('.quiz_show .feedback_type').html() != 'none') {
             $.toast({
                 title: 'Incorrect',
-                content: $('.quiz_show .feedback_incorrect').html(),
+                content: $('.quiz_show .feedback_try_again').html(),
                 type: 'error',
                 delay: 3000,
                 dismissible: true,
