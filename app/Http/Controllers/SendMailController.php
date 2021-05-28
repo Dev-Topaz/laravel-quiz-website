@@ -16,7 +16,7 @@ class SendMailController extends Controller
     {
         $details = [
             'data' => $request,
-            'exam_date_time' => date("Y/m/d") . date("h:i:sa"),
+            'exam_date_time' => date("Y/m/d") . ' ' . date("h:i:sa"),
         ];
 
         \Mail::to($request->user_email)->send(new \App\Mail\QuizResultMail($details));
