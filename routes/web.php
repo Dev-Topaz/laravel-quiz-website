@@ -21,12 +21,12 @@ use App\Http\Controllers\SendMailController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //Route::get('/initial_roles', [App\Http\Controllers\PermissionController::class, 'Permission']);
 Route::group(['middleware' => 'role:manager'], function () {
 
