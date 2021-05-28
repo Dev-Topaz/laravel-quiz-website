@@ -342,6 +342,14 @@ function answer_form2slide() {
         case '13':
             slide_answer_element += '<div contenteditable="true" class="cancel_drag">' + $('#quiz_instructions').html() + '</div>';
             break;
+
+        case '14':
+            slide_answer_element = $($('#answer_content').val()).find('.col-md-12').html();
+            break;
+
+        case '15':
+            slide_answer_element = $($('#answer_content').val()).find('.col-md-12').html();
+            break;
     }
 
     if (typeId !== '10' && typeId !== '11') $('.slide_view_answer_element > .col-md-12').html(slide_answer_element);
