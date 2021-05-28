@@ -3,9 +3,9 @@ $('.middle_form_bar').click(function () {
 });
 
 // $(document).on('load', function () {
-    console.log("loaded!!!");
-    // Animate loader off screen
-    $(".se-pre-con").fadeOut(1000);
+console.log("loaded!!!");
+// Animate loader off screen
+$(".se-pre-con").fadeOut(1000);
 // });
 
 $('body').on('click', '[data-editable]', function () {
@@ -34,11 +34,11 @@ $(function () {
     var fromIndex, toIndex;
     $('.listview li ul').sortable({
         start: function (event, ui) {
-            fromIndex = get_order(ui.item[0]);
+            fromIndex = get_order(ui.item);
         },
 
         stop: function (event, ui) {
-            toIndex = get_order(ui.item[0]);
+            toIndex = get_order(ui.item.next());
 
             const root_url = $('meta[name=url]').attr('content');
             const token = $('meta[name=csrf-token]').attr('content');
@@ -52,6 +52,22 @@ $(function () {
                     toIndex: toIndex,
                 },
                 success: function (data) {
+                    if (fromIndex > toIndex) {
+                        for (let i = 0; i < $('#quiz_list li.node').length; i++) {
+                            if (parseInt($('#quiz_list li.node').eq(i).attr('order')) >= toIndex && parseInt($('#quiz_list li.node').eq(i).attr('order')) < fromIndex) {
+                                $('#quiz_list li.node').eq(i).attr('order', parseInt($('#quiz_list li.node').eq(i).attr('order')) + 1);
+                            }
+                        }
+                    }
+
+                    if (fromIndex < toIndex) {
+                        for (let i = 0; i < $('#quiz_list li.node').length; i++) {
+                            if (parseInt($('#quiz_list li.node').eq(i).attr('order')) <= toIndex && parseInt($('#quiz_list li.node').eq(i).attr('order')) > fromIndex) {
+                                $('#quiz_list li.node').eq(i).attr('order', parseInt($('#quiz_list li.node').eq(i).attr('order')) - 1);
+                            }
+                        }
+                    }
+                    ui.item.attr('order', toIndex);
                     alert('Quiz Index updated successfully');
                 }
             }).catch((XHttpResponse) => {
@@ -61,8 +77,8 @@ $(function () {
     });
 
     function get_order(ui) {
-        const parentNode = ui.closest('.node-group');
-        return $(parentNode).find('li').index(ui);
+        console.log(ui.attr('order'));
+        return ui.attr('order');
     }
 });
 
