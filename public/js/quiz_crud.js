@@ -46,9 +46,6 @@ function onNodeClick(node) {
 function is_edited() {
     if ($('.slide_view_question_element').length == 0) return false;
 
-    console.log(get_quiz_state().replaceAll(/\s/g, ''));
-    console.log($('#tmp_quiz_database_values').val().replaceAll(/\s/g, '').replaceAll('null', ''));
-
     if (get_quiz_state().replaceAll(/\s/g, '') == $('#tmp_quiz_database_values').val().replaceAll(/\s/g, '').replaceAll('null', '')) {
         return false;
     } else {
@@ -638,7 +635,6 @@ function get_quiz_state() {
     const question_type = Metro.getPlugin('#question_type', 'select').val();
     const feedback_type = Metro.getPlugin('#feedback', 'select').val();
 
-    console.log(answer_element);
     question_element = remove_resizable_tag(question_element);
     answer_element = remove_resizable_tag(answer_element);
     media_element = remove_resizable_tag(media_element);

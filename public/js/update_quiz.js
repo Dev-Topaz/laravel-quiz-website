@@ -12,7 +12,6 @@ function question_form2slide() {
 }
 
 // function media_form2slide() {
-//     console.log('media_form2slide');
 //     if ($('#media_element').val() == '') return;
 //     $('.slide_view_media_element').remove();
 //     $('#quiz_background_container').append($('#media_element').val());
@@ -52,7 +51,6 @@ function answer_slide2form(answer_element, answer_content) {
             break;
 
         case '5':
-            console.log(answer_content);
             let numeric_answer_array = answer_content.split('@');
             numeric_answer_array.pop();
 
@@ -66,7 +64,6 @@ function answer_slide2form(answer_element, answer_content) {
             break;
 
         case '6':
-            console.log(answer_content);
             let sequence_answer_array = answer_content.split(';');
             sequence_answer_array.pop();
 
@@ -77,7 +74,6 @@ function answer_slide2form(answer_element, answer_content) {
             break;
 
         case '7':
-            console.log(answer_content);
             let matching_answer_array = answer_content.split('@');
             matching_answer_array.pop();
 
@@ -119,7 +115,6 @@ function answer_slide2form(answer_element, answer_content) {
 
             let select_lists_array = answer_content.split(';');
             select_lists_array.pop();
-            console.log(select_lists_array);
             const select_lists_slide_answer_html = $('.slide_view_answer_element').html();
             let select_lists_form_answer_element = $(select_lists_slide_answer_html).eq(0);
 
@@ -131,7 +126,6 @@ function answer_slide2form(answer_element, answer_content) {
                 let element = '<div class="select_lists_dropdown_content"></div><div class="select_lists_dropdown_arrow" onclick="{$(this).next().toggle();}"><i class="fas fa-chevron-down"></i></div><div class="select_lists_dropdown_menu" contenteditable="false"><ul>';
 
                 for (let j = 1; j < select_lists_item_array.length; j++) {
-                    console.log(select_lists_item_array.eq(j).html());
                     element += '<li><div><input type="radio" name="' + i + '" value="' + select_lists_item_array.eq(j).html() + '"' + (select_lists_item_array.eq(j).attr('value') === select_lists_array[i] ? 'checked' : '') + '><label data-editable>' + select_lists_item_array.eq(j).html() + '</label></div><a onclick="{$(this).parent().remove();}"><i class="fas fa-trash-alt"></i></a></li>';
                 }
 
@@ -294,8 +288,6 @@ function answer_form2slide() {
                 });
             });
 
-            console.log(json_canvas_item.type);
-
             if (json_canvas_item.type === 'circle') {
 
                 slide_view_canvas.add(new fabric.Circle({
@@ -372,7 +364,6 @@ function answer_store() {
         case '2':
             var selected = $("input[type='checkbox'][name='answer']:checked");
             for (const selectedElement of selected) {
-                console.log($(selectedElement).val());
                 answer += $(selectedElement).val() + ';';
             }
             break;
@@ -382,12 +373,10 @@ function answer_store() {
             if (selected.length > 0) {
                 answer = selected.val();
             }
-            console.log(answer);
             break;
 
         case '4':
             answer = $('#short_answer').val();
-            console.log(answer);
             break;
 
         case '5':
@@ -433,7 +422,6 @@ function answer_store() {
                 answer += '@';
             }
 
-            console.log(answer);
 
             break;
 
@@ -448,11 +436,8 @@ function answer_store() {
             let name;
             for (let i = 0; i < select_lists_dropdown_elements.length; i++) {
                 name = select_lists_dropdown_elements.eq(i).find('input').eq(0).attr('name');
-                console.log($("input[type='radio'][name='" + name + "']:checked").val());
                 answer += $("input[type='radio'][name='" + name + "']:checked").val() + ';';
             }
-
-            console.log(answer);
 
             break;
 
@@ -465,7 +450,6 @@ function answer_store() {
 
         case '11':
             var canvas = get_canvas();
-            console.log(canvas);
             var string;
             if (canvas.item(0) === undefined) {
                 string = '{}';
@@ -491,7 +475,6 @@ function answer_store() {
 }
 
 function slide_to_form() {
-    console.log("slide2form");
 
     answer_slide2form($('.slide_view_answer_element')[0].outerHTML, $('#answer_content').val());
     $('#question').html(question_slide2form($('.slide_view_question_element')[0].outerHTML));
@@ -511,7 +494,6 @@ function form_to_slide() {
 }
 
 function store_theme_style(style) {
-    console.log(style);
     const root_url = $('meta[name=url]').attr('content');
     const token = $('meta[name=csrf-token]').attr('content');
     const examId = $('#exam_id').val();
@@ -536,7 +518,6 @@ function add_canvas_item_info(string) {
 * ************ Remove other slide view elements *****************
 * */
 $('body').keydown(function (e) {
-    console.log(e.keyCode);
 
     if (e.keyCode == 46) {
         if ($('.other_slide_view_element.selected_slide_view_group').length > 0) {
@@ -579,7 +560,6 @@ $('#insert_textbox_btn').click(function () {
 * ************************ inserting slide view picture *******************
  * */
 $('#slide_view_picture_import_btn').click(function () {
-    console.log('slide_view_picture_import_btn');
     $('#slide_view_picture_file_selector').trigger('click');
 });
 
@@ -608,7 +588,6 @@ $('#slide_view_picture_file_selector').change(function () {
             processData: false,
             success: (response) => {
                 if (response) {
-                    console.log(response);
                     $('.slide_view_group').removeClass('just_added_slide_view_element');
                     $('#quiz_background_container').append(`<div class="slide_view_group just_added_slide_view_element other_slide_view_element" style="left: 10%;z-index: 1;overflow: hidden;padding:10px;position:absolute;"><img src="${root_url}/${response}" style="width: 100%;height: 100%;"><input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;"></div>`);
                     $('.just_added_slide_view_element').draggable({cancel: 'div.cancel_drag'}).resizable();
@@ -631,7 +610,6 @@ $('#slide_view_picture_file_selector').change(function () {
 * **************** insert video file at slide view ***************
 * */
 $('#slide_view_video_file_btn').click(function () {
-    console.log('slide_view_video_file_btn');
     $('#slide_view_video_file_selector').trigger('click');
 });
 
@@ -664,7 +642,6 @@ $('#slide_view_video_file_selector').change(function () {
 
                 if (response.success == 1) { // Uploaded successfully
 
-                    console.log(response.filepath);
                     $('.slide_view_group').removeClass('just_added_slide_view_element');
                     $('#quiz_background_container').append(`<div class="slide_view_group just_added_slide_view_element other_slide_view_element" style="left: 10%;z-index: 1;overflow: hidden;padding:10px;position:absolute;"><video controls style="width: 100%;"><source src="${response.filepath}" type="video/mp4"></video><input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;"></div>`);
                     $('.just_added_slide_view_element').draggable({cancel: 'div.cancel_drag'}).resizable();
@@ -699,21 +676,17 @@ $('#slide_view_video_file_selector').change(function () {
 * ************** other buttons at ribbon bars *******************
 * */
 $('#form_view_picture_btn').click(function () {
-    console.log('form_view_picture_btn');
     $('#form_view_input_media_element').trigger('click');
 });
 
 $('#form_view_video_file_btn').click(function () {
-    console.log('form_view_video_file_btn');
     $('#form_view_input_video_element').trigger('click');
 });
 
 $('#slide_view_insert_audio_btn').click(function () {
-    console.log('slide_view_insert_audio_btn');
     $('#form_view_input_audio_element').trigger('click');
 });
 
 $('#form_view_import_audio_file_btn').click(function () {
-    console.log('form_view_import_audio_file_btn');
     $('#form_view_input_audio_element').trigger('click');
 });

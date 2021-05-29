@@ -637,8 +637,8 @@
                     </div>
                 </div>
             </div>
-            <div class="form_view_element">preview</div>
-            <div class="slide_view_element" style="display: none">Slide Layer</div>
+{{--            <div class="form_view_element">preview</div>--}}
+{{--            <div class="slide_view_element" style="display: none">Slide Layer</div>--}}
             <input type="text" id="target_element" value="" hidden>
         </div>
     </div>
