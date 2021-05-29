@@ -502,9 +502,9 @@ $(window).resize(function () {
 });
 
 function fit_slide_view() {
-    console.log($('.slide_view_element').width());
-    const zoom = ($('.slide_view_element').width() - 30) / parseInt($('#screen_width').val());
-    console.log(zoom);
+    const zoom_width = ($('.slide_view_element').width() - 30) / parseInt($('#screen_width').val());
+    const zoom_height = ($('.slide_view_element').height() - 30) / parseInt($('#screen_height').val());
+    const zoom = Math.min(zoom_width, zoom_height);
     $('#slide_view_container').css('zoom', zoom);
 }
 
