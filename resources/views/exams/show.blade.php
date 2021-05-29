@@ -134,7 +134,8 @@
                                 <div>
                                     <div class="design_themes_panels_divider">No theme</div>
                                     <div class="design_themes_panels"
-                                        style="font-family: Calibri; color: #000000; background-image: unset; background-size: 100% 100%; "><span>Aa</span></div>
+                                         style="font-family: Calibri; color: #000000; background-image: unset; background-size: 100% 100%; ">
+                                        <span>Aa</span></div>
                                     <div class="design_themes_panels_divider">Office</div>
                                     <div class="design_themes_panels" title="White Lines"
                                          style="font-family: Calibri; color: #4d4d4d; background-image: url( {{url('/images/theme_backgrounds/white_lines.png')}} ); background-size: 100% 100%; ">
@@ -1075,7 +1076,8 @@
                             </div>
                         </div>
                         <div>
-                            <span id="font_color_display_letter" style="margin-right: -3px; border-bottom: 2px solid black;">A</span>
+                            <span id="font_color_display_letter"
+                                  style="margin-right: -3px; border-bottom: 2px solid black;">A</span>
                             <button class="dropdown-toggle" id="font_picker_trigger"
                                     style="background: #f5f6f7;"></button>
                             <!-- <input type="color" name="" id="font_color_picker"> -->
@@ -2098,40 +2100,40 @@
                                             data-on-node-click="onNodeClick">
                                             @foreach ($exam->exam_groups as $exam_group)
                                                 @if ($exam_group->group_name != 'Results')
-                                                <li data-caption="{{ $exam_group->group_name }}"
-                                                    id="{{ $exam_group->id }}">
-                                                    <ul>
-                                                        @if (count($exam_group->quizes) == 0)
-                                                            <li id="none" data-caption="No questions"
-                                                                data-content="<i>Add questions</i>"></li>
-                                                        @else
-                                                            @foreach($exam_group->quizes as $quiz)
-                                                                <li id="{{ $quiz->id }}" order="{{ $quiz->order }}"
-                                                                    data-caption="{{ strip_tags($quiz->question_element) }}"
-                                                                    data-content="<i>{{ $quiz->Quiz_type->name }}</i>"></li>
-                                                            @endforeach
-                                                        @endif
-                                                    </ul>
-                                                </li>
+                                                    <li data-caption="{{ $exam_group->group_name }}"
+                                                        id="{{ $exam_group->id }}">
+                                                        <ul>
+                                                            @if (count($exam_group->quizes) == 0)
+                                                                <li id="none" data-caption="No questions"
+                                                                    data-content="<i>Add questions</i>"></li>
+                                                            @else
+                                                                @foreach($exam_group->quizes as $quiz)
+                                                                    <li id="{{ $quiz->id }}" order="{{ $quiz->order }}"
+                                                                        data-caption="{{ strip_tags($quiz->question_element) }}"
+                                                                        data-content="<i>{{ $quiz->Quiz_type->name }}</i>"></li>
+                                                                @endforeach
+                                                            @endif
+                                                        </ul>
+                                                    </li>
                                                 @endif
                                             @endforeach
                                             @foreach ($exam->exam_groups as $exam_group)
                                                 @if ($exam_group->group_name == 'Results')
-                                                <li data-caption="{{ $exam_group->group_name }}"
-                                                    id="{{ $exam_group->id }}">
-                                                    <ul>
-                                                        @if (count($exam_group->quizes) == 0)
-                                                            <li id="none" data-caption="No questions"
-                                                                data-content="<i>Add questions</i>"></li>
-                                                        @else
-                                                            @foreach($exam_group->quizes as $quiz)
-                                                                <li id="{{ $quiz->id }}" order="{{ $quiz->order }}"
-                                                                    data-caption="{{ strip_tags($quiz->question_element) }}"
-                                                                    data-content="<i>{{ $quiz->Quiz_type->name }}</i>"></li>
-                                                            @endforeach
-                                                        @endif
-                                                    </ul>
-                                                </li>
+                                                    <li data-caption="{{ $exam_group->group_name }}"
+                                                        id="{{ $exam_group->id }}">
+                                                        <ul>
+                                                            @if (count($exam_group->quizes) == 0)
+                                                                <li id="none" data-caption="No questions"
+                                                                    data-content="<i>Add questions</i>"></li>
+                                                            @else
+                                                                @foreach($exam_group->quizes as $quiz)
+                                                                    <li id="{{ $quiz->id }}" order="{{ $quiz->order }}"
+                                                                        data-caption="{{ strip_tags($quiz->question_element) }}"
+                                                                        data-content="<i>{{ $quiz->Quiz_type->name }}</i>"></li>
+                                                                @endforeach
+                                                            @endif
+                                                        </ul>
+                                                    </li>
                                                 @endif
                                             @endforeach
                                         </ul>
@@ -2186,6 +2188,8 @@
                 $("#section_insert").hide();
                 $("#section_design").hide();
                 slide_to_form();
+
+                if ($('.form_view_element').length > 0) store_quiz_state();
             });
 
 
@@ -2206,6 +2210,8 @@
                 $("#section_insert").show();
                 $("#section_design").show();
                 form_to_slide();
+
+                if ($('.form_view_element').length > 0) store_quiz_state();
             });
 
         </script>

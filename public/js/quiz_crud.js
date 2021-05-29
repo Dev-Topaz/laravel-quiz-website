@@ -46,7 +46,7 @@ function onNodeClick(node) {
 function is_edited() {
     if ($('.slide_view_question_element').length == 0) return false;
 
-    if (get_quiz_state().replaceAll(/\s/g, '') == $('#tmp_quiz_database_values').val().replaceAll(/\s/g, '').replaceAll('null', '')) {
+    if (remove_zoom_style(get_quiz_state().replaceAll(/\s/g, '')) == remove_zoom_style($('#tmp_quiz_database_values').val().replaceAll(/\s/g, '').replaceAll('null', ''))) {
         return false;
     } else {
         return true;
@@ -691,4 +691,16 @@ function store_quiz_state() {
     setTimeout(function () {
         $('#tmp_quiz_database_values').val(get_quiz_state());
     }, 100);
+}
+
+/*
+* *********** remove zoom style ***************
+* */
+function remove_zoom_style(string) {
+    if (string.indexOf('zoom:') == -1) return string;
+
+    var tmp_1 = string.split('zoom:');
+    var tmp_2 = tmp_1[1].split(';');
+    tmp_2.shift();
+    return (tmp_1[0] + tmp_2.join(';'));
 }
