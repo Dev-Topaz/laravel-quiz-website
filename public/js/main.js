@@ -43,6 +43,8 @@ $(function () {
             const root_url = $('meta[name=url]').attr('content');
             const token = $('meta[name=csrf-token]').attr('content');
 
+            const exam_id = $('#exam_id').val();
+
             $.ajax({
                 url: root_url + '/update_quiz_index',
                 type: 'POST',
@@ -50,6 +52,7 @@ $(function () {
                     _token: token,
                     fromIndex: fromIndex,
                     toIndex: toIndex,
+                    exam_id: exam_id,
                 },
                 success: function (data) {
                     if (fromIndex > toIndex) {

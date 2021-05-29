@@ -185,11 +185,14 @@ function create_quiz(quiz_type, root_url, token) {
         return;
     }
 
+    const exam_id = $('#exam_id').val();
+
     show_preload();
     $.post(root_url + "/quizes", {
             '_token': token,
             'type_id': quiz_type,
             'exam_group_id': groupId,
+            'exam_id': exam_id,
             'order': order,
         },
         function (data, status) {

@@ -40,8 +40,10 @@ class QuizController extends Controller
 
         $order_updating_quizzes = Quiz::where('order', '>=', $request->order)->get();
         foreach ($order_updating_quizzes as $item) {
-            $item->order = $item->order + 1;
-            $item->save();
+            if ($item->exam_group->exam->id == $request->exam_id) {
+                $item->order = $item->order + 1;
+                $item->save();
+            }
         }
 
         switch ($request->type_id) {
@@ -580,18 +582,20 @@ class QuizController extends Controller
         if ($fromIndex > $toIndex) {
             $quizzes = Quiz::where('order', '<', $fromIndex)->where('order', '>=', $toIndex)->get();
             foreach ($quizzes as $item) {
-                echo $item->id;
-                $item->order = $item->order + 1;
-                $item->save();
+                if ($item->exam_group->exam->id == $request->exam_id) {
+                    $item->order = $item->order + 1;
+                    $item->save();
+                }
             }
         }
 
         if ($fromIndex < $toIndex) {
             $quizzes = Quiz::where('order', '>', $fromIndex)->where('order', '<=', $toIndex)->get();
             foreach ($quizzes as $item) {
-                echo $item->id;
-                $item->order = $item->order - 1;
-                $item->save();
+                if ($item->exam_group->exam->id == $request->exam_id) {
+                    $item->order = $item->order - 1;
+                    $item->save();
+                }
             }
         }
 
@@ -604,13 +608,16 @@ class QuizController extends Controller
 
     public function duplicate_quiz(Request $request)
     {
+        $quiz = Quiz::find($request->id);
+
         $order_updating_quizzes = Quiz::where('order', '>=', $request->order)->get();
         foreach ($order_updating_quizzes as $item) {
-            $item->order = $item->order + 1;
-            $item->save();
+            if ($item->exam_group->exam->id == $quiz->exam_group->exam->id) {
+                $item->order = $item->order + 1;
+                $item->save();
+            }
         }
 
-        $quiz = Quiz::find($request->id);
         $replicate = $quiz->replicate();
         $replicate->order = $request->order;
         $replicate->save();
