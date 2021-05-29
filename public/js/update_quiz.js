@@ -351,6 +351,7 @@ function answer_form2slide() {
     }
 
     if (typeId !== '10' && typeId !== '11') $('.slide_view_answer_element > .col-md-12').html(slide_answer_element);
+    $('.slide_view_answer_element > .col-md-12').attr('style', '');
 }
 
 // answer_slide2form($('#answer_element').val(), $('#answer_content').val());
