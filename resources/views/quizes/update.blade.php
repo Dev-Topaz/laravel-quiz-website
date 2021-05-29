@@ -369,7 +369,7 @@
                                         <a style="padding: 10px;margin: 0 5px;border: 1px dotted gray;"
                                            onclick="drawcle()">Circle</a>
                                         <a style="padding: 10px;margin: 0 5px;border: 1px dotted gray;"
-                                           onclick="drawpoly()">Freedom</a>
+                                           onclick="drawpoly()">Polygon</a>
                                     </div>
                                 </div>
                             </div>

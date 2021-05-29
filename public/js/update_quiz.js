@@ -461,8 +461,9 @@ function answer_store() {
                     case 'rect':
                         string = '{"type": "rect", "width": ' + (canvas.item(0).oCoords.br.x - canvas.item(0).oCoords.bl.x) + ', "height": ' + (canvas.item(0).oCoords.bl.y - canvas.item(0).oCoords.tl.y) + ', "top": ' + canvas.item(0).top + ', "left": ' + canvas.item(0).left + '}';
                         break;
-                    case 'polygon':
+                    default:
                         string = '{"type": "polyline", "points" : ' + JSON.stringify(canvas.item(0).points) + '}';
+                        console.log(string);
                         break;
                 }
             }
