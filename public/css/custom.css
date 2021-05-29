@@ -1,4 +1,9 @@
 /* Overrides of metro css */
+
+#slide_view_container {
+    background-color: white !important;
+}
+
 span.icon img {
     margin: auto !important;
 }
@@ -47,7 +52,7 @@ span.icon img {
 }
 
 .design_themes_panels:hover {
-    box-shadow: 1px 1px 3px 3px rgb(71 114 255);
+    box-shadow: 1px 1px 4px 2px rgb(126 130 142);
 }
 
 .design_themes_panels span {
