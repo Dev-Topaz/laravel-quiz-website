@@ -485,6 +485,7 @@ function form_to_slide() {
     answer_store();
     question_form2slide();
     answer_form2slide();
+    fit_slide_view();
     // media_form2slide();
 
     $('.slide_view_group').resizable();
@@ -492,6 +493,22 @@ function form_to_slide() {
     if ($('.slide_view_group_checkbox').length === 0) $('.slide_view_group').append('<input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;">');
 
 }
+
+/*
+* *********** fit size of slide view ********************
+* */
+$(window).resize(function () {
+    fit_slide_view();
+});
+
+function fit_slide_view() {
+    console.log($('.slide_view_element').width());
+    const zoom = ($('.slide_view_element').width() - 30) / parseInt($('#screen_width').val());
+    console.log(zoom);
+    $('#slide_view_container').css('zoom', zoom);
+}
+
+/**************************************************************/
 
 function store_theme_style(style) {
     const root_url = $('meta[name=url]').attr('content');

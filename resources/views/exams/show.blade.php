@@ -3,6 +3,8 @@
 @section('content')
     <div id="main" class="quiz">
         <input type="text" id="exam_id" value="{{ $exam->id }}" hidden>
+        <input type="text" id="screen_height" value="{{ $exam->screen_height }}" hidden>
+        <input type="text" id="screen_width" value="{{ $exam->screen_width }}" hidden>
         <h2>{{ $exam->name }}</h2>
 
 

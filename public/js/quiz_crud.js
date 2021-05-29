@@ -431,6 +431,7 @@ function show_correct_view() {
     if (is_form_or_slide() === 'slide') {
         $('.form_view_element').hide();
         $('.slide_view_element').show();
+        fit_slide_view();
 
         $('.slide_view_group').resizable();
         $('.slide_view_group').draggable({cancel: 'div.cancel_drag'});
