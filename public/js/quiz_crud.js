@@ -434,7 +434,7 @@ function show_correct_view() {
         fit_slide_view();
 
         $('.slide_view_group').resizable();
-        $('.slide_view_group').draggable({cancel: 'div.cancel_drag'});
+        $('.slide_view_group').draggable({cancel: 'div.cancel_drag', containment: $(this).closest('.slide_view_element')});
         if ($('.slide_view_group_checkbox').length === 0) $('.slide_view_group').append('<input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;">');
     }
 }
@@ -445,7 +445,7 @@ function show_correct_view() {
 var root_url = $('meta[name=url]').attr('content');
 
 $('.preview_quiz_btn').click(function () {
-    window.open(root_url + '/preview_exam/' + $('#exam_id').val());
+    window.open(root_url + '/preview_exam/' + $('#exam_id').val() + '&');
 });
 
 $('.preview_slide_btn').click(function () {

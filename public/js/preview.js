@@ -264,6 +264,9 @@ function create_hotspots(event) {
 * */
 
 function preview() {
+    const root_url = $('meta[name=url]').attr('content');
+    const token = $('meta[name=csrf-token]').attr('content');
+
     switch ($('.preview_btn button').html()) {
         case 'Submit':
             if ($('.quiz_show .question_type').html() != 'graded') {
@@ -345,75 +348,82 @@ function preview() {
             break;
 
         case 'See Result':
-            if (total_score < parseInt($('.quiz_show .passing_score').html())) {
-                result = 'Fail';
-                var current_show_id = $('.quiz_show').attr('id');
+            if ($('#is_quiz').html() != '0') {
 
-                var next_show_id = $('.quiz_show').next().next().attr('id');
-                if (next_show_id === undefined) return;
+                if (total_score < parseInt($('.quiz_show .passing_score').html())) {
+                    result = 'Fail';
+                    var current_show_id = $('.quiz_show').attr('id');
 
-                $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].pause();
-                $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].currentTime = 0;
-                $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].play();
+                    var next_show_id = $('.quiz_show').next().next().attr('id');
+                    if (next_show_id === undefined) return;
 
-                $('#' + current_show_id).removeClass('quiz_show');
-                $('#' + current_show_id).addClass('quiz_hide');
+                    $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].pause();
+                    $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].currentTime = 0;
+                    $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].play();
 
-                $('#' + next_show_id).removeClass('quiz_hide');
-                $('#' + next_show_id).addClass('quiz_show');
-                rearrange_preview_ui();
-            } else {
-                result = 'Pass';
-                var current_show_id = $('.quiz_show').attr('id');
+                    $('#' + current_show_id).removeClass('quiz_show');
+                    $('#' + current_show_id).addClass('quiz_hide');
 
-                var next_show_id = $('.quiz_show').next().attr('id');
-                if (next_show_id === undefined) return;
+                    $('#' + next_show_id).removeClass('quiz_hide');
+                    $('#' + next_show_id).addClass('quiz_show');
+                    rearrange_preview_ui();
+                } else {
+                    result = 'Pass';
+                    var current_show_id = $('.quiz_show').attr('id');
 
-                $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].pause();
-                $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].currentTime = 0;
-                $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].play();
+                    var next_show_id = $('.quiz_show').next().attr('id');
+                    if (next_show_id === undefined) return;
 
-                $('#' + current_show_id).removeClass('quiz_show');
-                $('#' + current_show_id).addClass('quiz_hide');
+                    $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].pause();
+                    $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].currentTime = 0;
+                    $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].play();
 
-                $('#' + next_show_id).removeClass('quiz_hide');
-                $('#' + next_show_id).addClass('quiz_show');
-                rearrange_preview_ui();
-            }
+                    $('#' + current_show_id).removeClass('quiz_show');
+                    $('#' + current_show_id).addClass('quiz_hide');
 
-            const root_url = $('meta[name=url]').attr('content');
-            const token = $('meta[name=csrf-token]').attr('content');
-
-            show_preload();
-            $.ajax({
-                url: root_url + '/send-mail',
-                type: 'POST',
-                data: {
-                    _token: token,
-                    user_name: user_name,
-                    user_email: user_email,
-                    stuff_emails: $('.quiz_show .stuff_emails').html(),
-                    exam_answered: correct_quiz_count,
-                    exam_question_count: quizId,
-                    exam_user_score: total_score,
-                    exam_passing_score: $('.quiz_show .passing_score').html(),
-                    result: result,
-                    quizzes: quizzes,
-                },
-                success: function (data) {
-                    console.log('success');
-                    hide_preload();
+                    $('#' + next_show_id).removeClass('quiz_hide');
+                    $('#' + next_show_id).addClass('quiz_show');
+                    rearrange_preview_ui();
                 }
-            }).catch((XHttpResponse) => {
-                console.log(XHttpResponse);
-                hide_preload();
-            });
+
+
+                show_preload();
+                $.ajax({
+                    url: root_url + '/send-mail',
+                    type: 'POST',
+                    data: {
+                        _token: token,
+                        user_name: user_name,
+                        user_email: user_email,
+                        stuff_emails: $('.quiz_show .stuff_emails').html(),
+                        exam_answered: correct_quiz_count,
+                        exam_question_count: quizId,
+                        exam_user_score: total_score,
+                        exam_passing_score: $('.quiz_show .passing_score').html(),
+                        result: result,
+                        quizzes: quizzes,
+                    },
+                    success: function (data) {
+                        console.log('success');
+                        hide_preload();
+                    }
+                }).catch((XHttpResponse) => {
+                    console.log(XHttpResponse);
+                    hide_preload();
+                });
+            } else {
+                alert('Answered: ' + correct_quiz_count + '/' + quizId + ', Total Score: ' + total_score);
+            }
 
             $('.preview_btn button').html('Close');
             break;
 
         case 'Close':
-            window.close();
+            if ($('#is_quiz').html() == '1') {
+                location.replace(root_url + '/exams');
+            } else {
+                window.close();
+            }
             break;
     }
 }
@@ -450,7 +460,7 @@ function evulate() {
         case '3':
             question_user_answer.push($('.quiz_show input[name=answer]:checked').next().html());
             question_correct_answer.push($('.quiz_show input[value=' + $('.quiz_show .correct_answer').html() + ']').next().html());
-            
+
             return $('.quiz_show input[name=answer]:checked').val() == $('.quiz_show .correct_answer').html();
             break;
 
@@ -688,18 +698,18 @@ function compare_arrays(array1, array2) {
     sorted_array1 = array1.sort(s);
     sorted_array2 = array2.sort(s);
 
-    var is_same = (sorted_array1.length == sorted_array2.length) && sorted_array1.every(function(element, index) {
-        return element === sorted_array2[index]; 
+    var is_same = (sorted_array1.length == sorted_array2.length) && sorted_array1.every(function (element, index) {
+        return element === sorted_array2[index];
     });
 
     return is_same;
 }
 
-function s(x,y){
-    var pre = ['string' , 'number' , 'bool']
-    if(typeof x!== typeof y )return pre.indexOf(typeof y) - pre.indexOf(typeof x);
+function s(x, y) {
+    var pre = ['string', 'number', 'bool']
+    if (typeof x !== typeof y) return pre.indexOf(typeof y) - pre.indexOf(typeof x);
 
-    if(x === y)return 0;
-    else return (x > y)?1:-1;
+    if (x === y) return 0;
+    else return (x > y) ? 1 : -1;
 
 }

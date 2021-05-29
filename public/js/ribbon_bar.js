@@ -1107,8 +1107,8 @@ $('#close_recording').click(function () {
 //
 //===================================
 
-var picture_element_ratio = 0;
-var video_element_ratio = 0;
+var picture_element_ratio = 1;
+var video_element_ratio = 1;
 
 var applied_layout = false;
 var question_style_top;
@@ -1165,65 +1165,65 @@ $('.layout_panel_img_holder').click(function () {
     $('.slide_view_answer_element').css('width', answer_style[2] + '%');
     $('.slide_view_answer_element').css('height', answer_style[3] + '%');
 
-    if ($('.slide_view_media_element').css('display') != 'none') {
-        picture_element_ratio = $('.slide_view_media_element').width() / $('.slide_view_media_element').height();
-    }
-
-    if ($('.slide_view_video_element').css('display') != 'none') {
-        video_element_ratio = $('.slide_view_video_element ').width() / $('.slide_view_video_element').height();
-    }
-
     var container_ratio = $('#quiz_background_container').width() / $('#quiz_background_container').height();
     var ratio_to_be_changed = container_ratio * media_style[2] / media_style[3];
 
-
-
-    if (picture_element_ratio < ratio_to_be_changed) {
-        $('.slide_view_media_element').css('top', media_style[0] + '%');
-        $('.slide_view_media_element').css('height', media_style[3] + '%');
-        $('.slide_view_media_element').css('width', parseInt(media_style[2]) / ratio_to_be_changed * picture_element_ratio + '%');
-        $('.slide_view_media_element').css('left', parseInt(media_style[1]) - (parseInt(media_style[2]) / ratio_to_be_changed * picture_element_ratio - parseInt(media_style[2])) / 2 + '%');
-    } else {
-        $('.slide_view_media_element').css('left', media_style[1] + '%');
-        $('.slide_view_media_element').css('width', media_style[2] + '%');
-        $('.slide_view_media_element').css('height', parseInt(media_style[3]) / picture_element_ratio * ratio_to_be_changed + '%');
-        $('.slide_view_media_element').css('top', parseInt(media_style[0]) - (parseInt(media_style[3]) / picture_element_ratio * ratio_to_be_changed - parseInt(media_style[3]))/2 + '%');
+    if ($('.slide_view_media_element').find('img').eq(0).attr('src') != '#') {
+        if ($('.slide_view_media_element').css('display') != 'none') {
+            picture_element_ratio = $('.slide_view_media_element').width() / $('.slide_view_media_element').height();
+        }
+        if (picture_element_ratio < ratio_to_be_changed) {
+            $('.slide_view_media_element').css('top', media_style[0] + '%');
+            $('.slide_view_media_element').css('height', media_style[3] + '%');
+            $('.slide_view_media_element').css('width', parseInt(media_style[2]) / ratio_to_be_changed * picture_element_ratio + '%');
+            $('.slide_view_media_element').css('left', parseInt(media_style[1]) - (parseInt(media_style[2]) / ratio_to_be_changed * picture_element_ratio - parseInt(media_style[2])) / 2 + '%');
+        } else {
+            $('.slide_view_media_element').css('left', media_style[1] + '%');
+            $('.slide_view_media_element').css('width', media_style[2] + '%');
+            $('.slide_view_media_element').css('height', parseInt(media_style[3]) / picture_element_ratio * ratio_to_be_changed + '%');
+            $('.slide_view_media_element').css('top', parseInt(media_style[0]) - (parseInt(media_style[3]) / picture_element_ratio * ratio_to_be_changed - parseInt(media_style[3])) / 2 + '%');
+        }
     }
 
-    if (video_element_ratio < ratio_to_be_changed) {
-        $('.slide_view_video_element').css('top', media_style[0] + '%');
-        // $('.slide_view_video_element').css('height', media_style[3] + '%');
-        $('.slide_view_video_element').css('width', parseInt(media_style[3]) * video_element_ratio / container_ratio + '%');
-        $('.slide_view_video_element').css('left', parseInt(media_style[1]) + (parseInt(media_style[2]) - parseInt(media_style[3]) * video_element_ratio / container_ratio) / 2 + '%');
-    } else {
-        $('.slide_view_video_element').css('left', media_style[1] + '%');
-        $('.slide_view_video_element').css('width', media_style[2] + '%');
-        $('.slide_view_video_element').css('top', parseInt(media_style[0]) - (parseInt(media_style[2]) / video_element_ratio * container_ratio - parseInt(media_style[3]))/2 + '%');
-        // $('.slide_view_video_element').css('height', parseInt(media_style[3]) / picture_element_ratio * ratio_to_be_changed + '%');
-    }
+    if ($('.slide_view_video_element').find('source').eq(0).attr('src') != '#') {
+        if ($('.slide_view_video_element').css('display') != 'none') {
+            video_element_ratio = $('.slide_view_video_element ').width() / $('.slide_view_video_element').height();
+        }
 
+        if (video_element_ratio < ratio_to_be_changed) {
+            $('.slide_view_video_element').css('top', media_style[0] + '%');
+            // $('.slide_view_video_element').css('height', media_style[3] + '%');
+            $('.slide_view_video_element').css('width', parseInt(media_style[3]) * video_element_ratio / container_ratio + '%');
+            $('.slide_view_video_element').css('left', parseInt(media_style[1]) + (parseInt(media_style[2]) - parseInt(media_style[3]) * video_element_ratio / container_ratio) / 2 + '%');
+        } else {
+            $('.slide_view_video_element').css('left', media_style[1] + '%');
+            $('.slide_view_video_element').css('width', media_style[2] + '%');
+            $('.slide_view_video_element').css('top', parseInt(media_style[0]) - (parseInt(media_style[2]) / video_element_ratio * container_ratio - parseInt(media_style[3])) / 2 + '%');
+            // $('.slide_view_video_element').css('height', parseInt(media_style[3]) / picture_element_ratio * ratio_to_be_changed + '%');
+        }
+    }
 });
 
 
 $('#layout_reset_btn').click(function () {
 
     if (applied_layout) {
-         $('.slide_view_question_element').css('top', question_style_top);
-         $('.slide_view_question_element').css('left', question_style_left);
-         $('.slide_view_question_element').css('width', question_style_width);
-         $('.slide_view_question_element').css('height', question_style_height);
-         $('.slide_view_answer_element').css('top', answer_style_top);
-         $('.slide_view_answer_element').css('left', answer_style_left);
-         $('.slide_view_answer_element').css('width', answer_style_width);
-         $('.slide_view_answer_element').css('height', answer_style_height);
-         $('.slide_view_media_element').css('top', picture_style_top);
-         $('.slide_view_media_element').css('left', picture_style_left);
-         $('.slide_view_media_element').css('width', picture_style_width);
-         $('.slide_view_media_element').css('height', picture_style_height);
-         $('.slide_view_video_element').css('top', video_style_top);
-         $('.slide_view_video_element').css('left', video_style_left);
-         $('.slide_view_video_element').css('width', video_style_width);
-         $('.slide_view_video_element').css('height', video_style_height);
+        $('.slide_view_question_element').css('top', question_style_top);
+        $('.slide_view_question_element').css('left', question_style_left);
+        $('.slide_view_question_element').css('width', question_style_width);
+        $('.slide_view_question_element').css('height', question_style_height);
+        $('.slide_view_answer_element').css('top', answer_style_top);
+        $('.slide_view_answer_element').css('left', answer_style_left);
+        $('.slide_view_answer_element').css('width', answer_style_width);
+        $('.slide_view_answer_element').css('height', answer_style_height);
+        $('.slide_view_media_element').css('top', picture_style_top);
+        $('.slide_view_media_element').css('left', picture_style_left);
+        $('.slide_view_media_element').css('width', picture_style_width);
+        $('.slide_view_media_element').css('height', picture_style_height);
+        $('.slide_view_video_element').css('top', video_style_top);
+        $('.slide_view_video_element').css('left', video_style_left);
+        $('.slide_view_video_element').css('width', video_style_width);
+        $('.slide_view_video_element').css('height', video_style_height);
     }
 
 });

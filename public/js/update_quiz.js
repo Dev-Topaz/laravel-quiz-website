@@ -490,7 +490,7 @@ function form_to_slide() {
     // media_form2slide();
 
     $('.slide_view_group').resizable();
-    $('#quiz_background_container .slide_view_group').draggable({cancel: 'div.cancel_drag'});
+    $('#quiz_background_container .slide_view_group').draggable({cancel: 'div.cancel_drag', containment: $(this).closest('.slide_view_element')});
     if ($('.slide_view_group_checkbox').length === 0) $('.slide_view_group').append('<input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;">');
 
 }

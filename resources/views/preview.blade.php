@@ -1,6 +1,7 @@
 @extends('layouts.preview')
 
 @section('content')
+    <div id="is_quiz" style="display: none;">{{ $is_quiz }}</div>
     <div id="user_name" style="display: none;">{{ $user->name }}</div>
     <div id="user_email" style="display: none;">{{ $user->email }}</div>
     {{--        <div class="question_menu_bar" style="margin: 0 auto;width: 656px;">--}}
