@@ -46,9 +46,10 @@ $('#form_view_input_media_element').change(function () {
         formData.append('image', e.target.result);
         formData.append('quiz_id', $("#quiz_id").val());
 
+        show_preload();
         $.ajax({
             type: 'POST',
-            url: `/hotspots_image_upload`,
+            url: root_url + '/hotspots_image_upload',
             data: formData,
             contentType: false,
             processData: false,
@@ -61,9 +62,11 @@ $('#form_view_input_media_element').change(function () {
                     $('#media_element').val($('.slide_view_media_element')[0].outerHTML);
                     console.log('Image has been uploaded successfully');
                 }
+                hide_preload();
             },
             error: function (response) {
                 console.log(response);
+                hide_preload();
                 // $('#image-input-error').text(response.responseJSON.errors.file);
             }
         });
@@ -76,6 +79,7 @@ $('#form_view_input_media_element').change(function () {
     }
 
     reader.readAsDataURL(this.files[0]);
+    $('#form_view_input_media_element').val('');
 
 });
 
@@ -88,6 +92,7 @@ $('#format_bg_btn').click(function () {
 });
 
 $('#select_background_img').change(function () {
+    console.log("bg changed");
 
     var root_url = $('meta[name=url]').attr('content');
 
@@ -104,9 +109,10 @@ $('#select_background_img').change(function () {
         formData.append('image', e.target.result);
         formData.append('quiz_id', $("#quiz_id").val());
 
+        show_preload();
         $.ajax({
             type: 'POST',
-            url: `/hotspots_image_upload`,
+            url: root_url + '/hotspots_image_upload',
             data: formData,
             contentType: false,
             processData: false,
@@ -117,9 +123,11 @@ $('#select_background_img').change(function () {
                     $('#background_img').val('url("' + root_url + '/' + response + '")');
                     console.log('Image has been uploaded successfully');
                 }
+                hide_preload();
             },
             error: function (response) {
                 console.log(response);
+                hide_preload();
                 // $('#image-input-error').text(response.responseJSON.errors.file);
             }
         });
@@ -128,6 +136,7 @@ $('#select_background_img').change(function () {
 
     reader.readAsDataURL(this.files[0]);
 
+    $('#select_background_img').val('');
 });
 
 /*
@@ -140,6 +149,7 @@ $('#form_view_add_video').click(function () {
 
 $('#form_view_input_video_element').change(function () {
     // $('#form_view_upload_video').submit();
+    var root_url = $('meta[name=url]').attr('content');
     var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
     var files = $('#form_view_input_video_element')[0].files;
 
@@ -153,9 +163,10 @@ $('#form_view_input_video_element').change(function () {
         // Hide alert
         $('#responseMsg').hide();
 
+        show_preload();
         // AJAX request
         $.ajax({
-            url: `/upload_video`,
+            url: root_url + '/upload_video',
             method: 'post',
             data: fd,
             contentType: false,
@@ -190,15 +201,18 @@ $('#form_view_input_video_element').change(function () {
                     $('#err_file').removeClass('d-none');
                     $('#err_file').addClass('d-block');
                 }
+                hide_preload();
             },
             error: function (response) {
                 console.log("error : " + JSON.stringify(response));
+                hide_preload();
             }
         });
     } else {
         alert("Please select a file.");
     }
 
+    $('#form_view_input_video_element').val('');
 });
 
 function show_video_properties() {
@@ -225,7 +239,7 @@ function delete_video() {
     $('#form_view_video_element').hide();
     $('#video').val('');
     $('.slide_view_video_element').remove();
-    $('#quiz_background_container').append('<div class="slide_view_video_element slide_view_group" style="z-index: 3;display: none;position: absolute;top: 0;left: 0;"><video controls><source src="#" type="video/mp4"></video></div>');
+    $('#quiz_background_container').append('<div class="slide_view_video_element slide_view_group" style="z-index: 3;display: none;position: absolute;top: 0;left: 0;"><video controls style="height: 100%;width: 100%;"><source src="#" type="video/mp4"></video></div>');
 }
 
 /*
@@ -237,6 +251,7 @@ $('#form_view_add_audio').click(function () {
 
 $('#form_view_input_audio_element').change(function () {
     console.log('changed');
+    var root_url = $('meta[name=url]').attr('content');
     var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
     var files = $('#form_view_input_audio_element')[0].files;
 
@@ -250,9 +265,10 @@ $('#form_view_input_audio_element').change(function () {
         // Hide alert
         $('#responseMsg').hide();
 
+        show_preload();
         // AJAX request
         $.ajax({
-            url: `/upload_audio`,
+            url: root_url + '/upload_audio',
             method: 'post',
             data: fd,
             contentType: false,
@@ -267,6 +283,14 @@ $('#form_view_input_audio_element').change(function () {
                     $('#form_view_add_audio').hide();
                     $('#form_view_audio_mark').show();
                     $('#audio').val(response.filepath);
+                    $('#audio_properties source').attr('src', $('#audio').val()).appendTo($('#audio_properties source').parent());
+                    var audio = $('#audio_properties audio');
+                    audio[0].pause();
+                    audio[0].load();//suspends and restores all audio element
+
+                    //audio[0].play(); changed based on Sprachprofi's comment below
+                    audio[0].oncanplaythrough = audio[0].play();
+
                 } else if (response.success == 2) { // File not uploaded
 
                     // Response message
@@ -280,19 +304,49 @@ $('#form_view_input_audio_element').change(function () {
                     $('#err_file').removeClass('d-none');
                     $('#err_file').addClass('d-block');
                 }
+                hide_preload();
             },
             error: function (response) {
                 console.log("error : " + JSON.stringify(response));
+                hide_preload();
             }
         });
     } else {
         alert("Please select a file.");
     }
-
+    $('#form_view_input_audio_element').val('');
 });
 
 $('#form_view_audio_mark').click(function () {
     $('.audio_properties').show();
     $('.slide_option').hide();
-    $('#audio_properties source').attr('src', $('#audio').val()).appendTo($('#audio_properties source').parent());
+    // $('#audio_properties source').attr('src', $('#audio').val()).appendTo($('#audio_properties source').parent());
+    // var audio = $('#audio_properties audio');
+    // audio[0].pause();
+    // audio[0].load();//suspends and restores all audio element
+    //
+    // //audio[0].play(); changed based on Sprachprofi's comment below
+    // audio[0].oncanplaythrough = audio[0].play();
+    // $('#audio_properties audio')[0].load();
 });
+
+function change_audio() {
+    $('#form_view_input_audio_element').trigger('click');
+}
+
+function delete_audio() {
+    close_audio_properties();
+    $('#audio').val('');
+    $('#audio_properties source').attr('src', $('#audio').val()).appendTo($('#audio_properties source').parent());
+    $('#form_view_add_audio').show();
+    $('#form_view_audio_mark').hide();
+}
+
+function close_audio_properties() {
+    $('.audio_properties').hide();
+    $('.slide_option').show();
+}
+
+function upload_blob(blob) {
+    console.log(blob);
+}

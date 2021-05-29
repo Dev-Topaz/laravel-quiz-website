@@ -31,6 +31,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.22/fabric.js"></script>
 </head>
 <body>
+<div class="se-pre-con"></div>
 <div id="preview_container">
     <div id="exam_id" style="display: none;"></div>
     @yield('content')

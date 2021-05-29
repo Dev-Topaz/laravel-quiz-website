@@ -71,7 +71,7 @@ if (canvas_info != '') {
 
     fabric.Image.fromURL(root_url + '/' + json_bg_url.background, function (img) {
         slide_view_canvas.setBackgroundImage(img, slide_view_canvas.renderAll.bind(slide_view_canvas), {
-            scaleX: 287 / img.width,
+            scaleX: 300 / img.width,
             scaleY: 214 / img.height
         });
     });
@@ -117,11 +117,11 @@ if (canvas_info != '') {
 }
 
 
-
 $('#hotspots_only_from_files_image').change(function () {
 
     canvas.setBackgroundColor('', canvas.renderAll.bind(canvas));
     canvas.setBackgroundImage(0, canvas.renderAll.bind(canvas));
+    var root_url = $('meta[name=url]').attr('content');
 
     let reader = new FileReader();
 
@@ -138,7 +138,7 @@ $('#hotspots_only_from_files_image').change(function () {
 
         $.ajax({
             type: 'POST',
-            url: `/hotspots_image_upload`,
+            url: root_url + '/hotspots_image_upload',
             data: formData,
             contentType: false,
             processData: false,
@@ -193,7 +193,7 @@ function drawcle() {
             fill: '#c1fc8580',
             originX: 'center',
             originY: 'center',
-            transparentCorners: false
+            // transparentCorners: false
         });
         canvas.add(circle);
     });
@@ -208,6 +208,10 @@ function drawcle() {
     });
 
     canvas.on('mouse:up', function (o) {
+        if (isDown) {
+            canvas.getActiveObject().remove();
+            canvas.add(circle);
+        }
         isDown = false;
         isDraw = true;
         console.log(canvas.item(0));
@@ -268,6 +272,10 @@ function drawrec() {
     });
 
     canvas.on('mouse:up', function (o) {
+        if (isDown) {
+            canvas.getActiveObject().remove();
+            canvas.add(rect);
+        }
         isDown = false;
         isDraw = true;
 
@@ -322,7 +330,32 @@ function drawpoly() {
 var x = 0;
 var y = 0;
 
+console.log(fabric.util);
+
+// document.getElementsByClassName("upper-canvas")[0].addEventListener('dblclick', function () {
+//
+//     if (lines.length == 0) return;
+//     drawingObject.type = "";
+//     lines.forEach(function (value, index, ar) {
+//         canvas.remove(value);
+//     });
+//     //canvas.remove(lines[lineCounter - 1]);
+//     roof = makeRoof(roofPoints);
+//     canvas.add(roof);
+//     canvas.renderAll();
+//
+//     console.log("double click");
+//     //clear arrays
+//     roofPoints = [];
+//     lines = [];
+//     lineCounter = 0;
+//
+// });
+
 fabric.util.addListener(window, 'dblclick', function () {
+
+    if (lines.length == 0) return;
+
     drawingObject.type = "";
     lines.forEach(function (value, index, ar) {
         canvas.remove(value);

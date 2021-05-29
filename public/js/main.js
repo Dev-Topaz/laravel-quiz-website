@@ -1,8 +1,14 @@
-$('.middle_form_bar').click(function() {
+$('.middle_form_bar').click(function () {
     $(this).next().toggle();
 });
 
-$('body').on('click', '[data-editable]', function(){
+// $(document).on('load', function () {
+console.log("loaded!!!");
+// Animate loader off screen
+$(".se-pre-con").fadeOut(1000);
+// });
+
+$('body').on('click', '[data-editable]', function () {
 
     console.log("clicked");
 
@@ -10,7 +16,7 @@ $('body').on('click', '[data-editable]', function(){
 
     const $input = $('<div contenteditable="true" class="form_view_textbox_editable" style="border: 1px solid black;width: 100%;overflow-y: scroll;">' + $el.html() + '</div>');
     // const $input = $('<input style="margin: 0 40px 0 5px;"/>').val($el.text());
-    $el.replaceWith( $input );
+    $el.replaceWith($input);
 
     const save = function () {
         const $label = $('<label data-editable />').html($input.html());
@@ -20,8 +26,68 @@ $('body').on('click', '[data-editable]', function(){
         $input.replaceWith($label);
     };
 
-  $input.one('blur', save).focus();
+    $input.one('blur', save).focus();
 
 });
 
+$(function () {
+    var fromIndex, toIndex;
+    $('.listview li ul').sortable({
+        start: function (event, ui) {
+            fromIndex = get_order(ui.item);
+        },
 
+        stop: function (event, ui) {
+            toIndex = get_order(ui.item.next());
+
+            const root_url = $('meta[name=url]').attr('content');
+            const token = $('meta[name=csrf-token]').attr('content');
+
+            $.ajax({
+                url: root_url + '/update_quiz_index',
+                type: 'POST',
+                data: {
+                    _token: token,
+                    fromIndex: fromIndex,
+                    toIndex: toIndex,
+                },
+                success: function (data) {
+                    if (fromIndex > toIndex) {
+                        for (let i = 0; i < $('#quiz_list li.node').length; i++) {
+                            if (parseInt($('#quiz_list li.node').eq(i).attr('order')) >= toIndex && parseInt($('#quiz_list li.node').eq(i).attr('order')) < fromIndex) {
+                                $('#quiz_list li.node').eq(i).attr('order', parseInt($('#quiz_list li.node').eq(i).attr('order')) + 1);
+                            }
+                        }
+                    }
+
+                    if (fromIndex < toIndex) {
+                        for (let i = 0; i < $('#quiz_list li.node').length; i++) {
+                            if (parseInt($('#quiz_list li.node').eq(i).attr('order')) <= toIndex && parseInt($('#quiz_list li.node').eq(i).attr('order')) > fromIndex) {
+                                $('#quiz_list li.node').eq(i).attr('order', parseInt($('#quiz_list li.node').eq(i).attr('order')) - 1);
+                            }
+                        }
+                    }
+                    ui.item.attr('order', toIndex);
+                    alert('Quiz Index updated successfully');
+                }
+            }).catch((XHttpResponse) => {
+                console.log(XHttpResponse);
+            });
+        },
+    });
+
+    function get_order(ui) {
+        console.log(ui.attr('order'));
+        return ui.attr('order');
+    }
+});
+
+function show_preload() {
+    $('.se-pre-con').show();
+    $('.se-pre-con').addClass('se-pre-con-show');
+}
+
+function hide_preload() {
+    $('.se-pre-con').hide();
+    $('.se-pre-con').removeClass('se-pre-con-show');
+}

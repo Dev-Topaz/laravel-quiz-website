@@ -15,7 +15,7 @@ class ExamGroup extends Model
 
     public function quizes()
     {
-        return $this->hasMany(Quiz::class, 'exam_group_id', 'id');
+        return $this->hasMany(Quiz::class, 'exam_group_id', 'id')->orderBy('order');
     }
 
     public function exam() {

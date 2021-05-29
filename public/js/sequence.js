@@ -1,5 +1,5 @@
 $(function () {
-    $('tbody#sequence_list').sortable();
+    $('tbody#sequence_list').sortable({'cancel': 'div[contenteditable=true]'});
 });
 $('#add_sequence').click(function () {
     let element;

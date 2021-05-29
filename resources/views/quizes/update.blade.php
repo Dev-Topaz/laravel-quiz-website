@@ -2,6 +2,12 @@
     <div class="cell-9 form_view_element" style="background: #dcdcdc;display: flex;">
         <div style="margin: auto 10px;background: #f1f1f1;width: 100%;padding: 20px;">
             <input id="select_background_img" type="file" hidden>
+            <input id="tmp_quiz_database_values" type="text"
+                   class="form-control @error('tmp_quiz_database_values') is-invalid @enderror"
+                   name="tmp_quiz_database_values"
+                   value="{{ $quiz->question_element }}{{ $quiz->answer }}{{ $quiz->answer_element }}{{ $quiz->media_element }}{{ $quiz->feedback_correct }}{{ $quiz->feedback_incorrect }}{{ $quiz->feedback_try_again }}{{ $quiz->media }}{{ $quiz->media_element }}{{ $quiz->video }}{{ $quiz->audio }}{{ $quiz->video_element }}{{ $quiz->background_img }}{{ $quiz->question_type }}{{ $quiz->feedback_type }}{{ $quiz->branching }}{{ $quiz->attempts }}{{ $quiz->shuffle_answers }}{{ $quiz->partially_correct }}{{ $quiz->limit_number_response }}{{ $quiz->case_sensitive }}{{ $quiz->correct_score }}{{ $quiz->incorrect_score }}{{ $quiz->try_again_score }}{{ $quiz->other_elements }}"
+                   required autocomplete="tmp_quiz_database_values" autofocus
+                   hidden>
             <input id="exam_id" type="text"
                    class="form-control @error('exam_id') is-invalid @enderror" name="exam_id"
                    value="{{ $quiz->exam_group->exam_id }}" required autocomplete="exam_id" autofocus
@@ -18,10 +24,10 @@
                    class="form-control @error('quiz_id') is-invalid @enderror" name="quiz_id"
                    value="{{ $quiz->id }}" required autocomplete="quiz_id" autofocus
                    hidden>
-            <input id="exam_group_id" type="text"
-                   class="form-control @error('exam_group_id') is-invalid @enderror" name="exam_group_id"
-                   value="{{ $quiz->exam_group_id }}" required autocomplete="exam_group_id" autofocus
-                   hidden>
+            {{--            <input id="exam_group_id" type="text"--}}
+            {{--                   class="form-control @error('exam_group_id') is-invalid @enderror" name="exam_group_id"--}}
+            {{--                   value="{{ $quiz->exam_group_id }}" required autocomplete="exam_group_id" autofocus--}}
+            {{--                   hidden>--}}
             <input id="type_id" type="text"
                    class="form-control @error('type_id') is-invalid @enderror" name="type_id"
                    value="{{ $quiz->type_id }}" required autocomplete="type_id" autofocus
@@ -110,17 +116,25 @@
                     @case(13)
                     <h4>Quiz Instructions</h4>
                     @break
+
+                    @case(14)
+                    <h4>Quiz Results</h4>
+                    @break
+
+                    @case(15)
+                    <h4>Quiz Results</h4>
+                    @break
                 @endswitch
                 <div class="row" style="width: 100%;margin: 0;">
-                    <div class="cell-{{ $quiz->type_id == 13 || $quiz->type_id == 12 ? '11' : '9'}}"
+                    <div class="cell-{{ $quiz->type_id > 11 ? '11' : '9'}}"
                          style="padding: 0;">
                         <div contenteditable="true" id="question"
                              style="overflow-y: scroll;width: 100%;border: 1px solid black;height: 70px;color: black"></div>
                     </div>
-                    <div class="cell-{{ $quiz->type_id == 13 || $quiz->type_id == 12 ? '1' : '3'}}"
+                    <div class="cell-{{ $quiz->type_id > 11 ? '1' : '3'}}"
                          style="display: flex;align-items: center;justify-content: center;padding: 0;">
                         <div id="form_view_pic_video_element"
-                             style="{{ $quiz->type_id == 13 || $quiz->type_id == 12 ? 'display:none;' : ''}}">
+                             style="{{ $quiz->type_id > 11 ? 'display:none;' : ''}}">
                             <a href="javascript:void(0)"
                                style="padding: 0 3px;{{ (isset($quiz->media) || isset($quiz->video)) ? 'display: none' : '' }}"
                                id="form_view_add_picture">Pic</a>
@@ -131,15 +145,15 @@
                                  id="form_view_media_element"
                                  style="{{ isset($quiz->media) ? 'display: flex' : 'display: none' }};height: 70px"
                                  onclick="show_pic_properties()">
-                            <img src="{{ url('/images/add_question.png') }}" alt=""
-                                 style="padding:0 3px;{{ isset($quiz->video) ? '' : 'display: none' }}"
+                            <img src="{{ url('/images/icons/video_icon.png') }}" alt=""
+                                 style="height: 70px;padding:0 3px;{{ isset($quiz->video) ? '' : 'display: none' }}"
                                  id="form_view_video_element" onclick="show_video_properties()">
                         </div>
                         <a href="javascript:void(0)"
                            style="padding: 0 3px;{{ isset($quiz->audio) ? 'display: none' : '' }}"
                            id="form_view_add_audio">Audio</a>
-                        <img src="{{ url('/images/add_question.png') }}" alt=""
-                             style="padding:0 3px;{{ isset($quiz->video) ? '' : 'display: none' }}"
+                        <img src="{{ url('/images/icons/audio_icon.png') }}" alt=""
+                             style="height: 70px;padding:0 3px;{{ isset($quiz->audio) ? '' : 'display: none' }}"
                              id="form_view_audio_mark">
                         <input type="file" id="form_view_input_media_element" hidden>
                         <input type="file" id="form_view_input_video_element" hidden>
@@ -363,7 +377,7 @@
                         <div class="cell-6">
                             <h4>Picture</h4>
                             <div style="border: 1px solid gray;" id="hotspots_image_canvas">
-                                <canvas id="hotspots_canvas" height="214" width="287.5"></canvas>
+                                <canvas id="hotspots_canvas" height="214"></canvas>
                             </div>
                         </div>
                         <div style="float: right;"><a href="javascript:void(0)" style="padding: 0 10px"
@@ -414,19 +428,29 @@
                 </div>
                 @break
 
+                @case(14)
+                <div contenteditable="true" style="height: 460px;">
+                </div>
+                @break
+
+                @case(15)
+                <div contenteditable="true" style="height: 460px;">
+                </div>
+                @break
+
             @endswitch
 
             <br>
 
-            <h4 style="{{ $quiz->type_id == 13 || $quiz->type_id == 12 ? 'display:none;' : ''}}">Feedback and
+            <h4 style="{{ $quiz->type_id > 11 ? 'display:none;' : ''}}">Feedback and
                 Branching</h4>
             <table class="table striped feedback_branching"
-                   style="margin: 0;{{ $quiz->type_id == 13 || $quiz->type_id == 12 ? 'display:none;' : ''}}">
+                   style="margin: 0;{{ $quiz->type_id > 11 ? 'display:none;' : ''}}">
                 <thead>
                 <tr>
                     <th></th>
                     <th>Feedback</th>
-                    <th>Branching</th>
+                    {{--                    <th>Branching</th>--}}
                     <th>Score</th>
                 </tr>
                 </thead>
@@ -434,20 +458,20 @@
                 <tr>
                     <td>Correct:</td>
                     <td><label class="choice_label" data-editable>{{ $quiz->feedback_correct }}</label></td>
-                    <td></td>
+                    {{--                    <td></td>--}}
                     <td><label class="choice_label" data-editable>{{ $quiz->correct_score }}</label></td>
                 </tr>
                 <tr>
                     <td>Incorrect:</td>
                     <td><label class="choice_label" data-editable>{{ $quiz->feedback_incorrect }}</label></td>
-                    <td></td>
+                    {{--                    <td></td>--}}
                     <td><label class="choice_label" data-editable>{{ $quiz->incorrect_score }}</label></td>
                 </tr>
                 @if ($quiz->feedback_try_again != null)
                     <tr>
                         <td>Try Again:</td>
                         <td><label class="choice_label" data-editable>{{ $quiz->feedback_try_again }}</label></td>
-                        <td>None</td>
+                        {{--                        <td>None</td>--}}
                         <td><label class="choice_label" data-editable>{{ $quiz->try_again_score }}</label></td>
                     </tr>
                 @endif
@@ -460,14 +484,17 @@
             style="top:50%;left:50%;transform:translate(-50%, -50%);margin: auto 0;width: {{ $quiz->exam_group->exam->screen_width }}px;height:{{ $quiz->exam_group->exam->screen_height }}px;{{ $quiz->exam_group->exam->theme_style ?? 'background:white' }}"
             id="slide_view_container">
             <div id="quiz_background_container"
-                 style="width: 100%;height:100%;padding: 20px;{{ isset($quiz->background_img) ? ('background-image:' . $quiz->background_img . ';') : '' }}">
+                 style="font-size: 1rem;width: 100%;height:100%;padding: 20px;{{ isset($quiz->background_img) ? ('background-image:' . $quiz->background_img . ';') : '' }}background-size: 100% 100%;background-repeat:no-repeat;">
                 {!! $quiz->question_element !!}
                 {!! $quiz->answer_element !!}
+                @if (isset($quiz->other_elements))
+                    {!! $quiz->other_elements !!}
+                @endif
                 @if (isset($quiz->media))
                     {!! $quiz->media_element !!}
                 @else
                     <div class="slide_view_media_element slide_view_group"
-                         style="z-index: 3;display: none;position: absolute;top: 0;left: 0;">
+                         style="z-index: 1;display: none;position: absolute;top: 0;left: 0;">
                         <img src="#" alt="slide_view_media" style="width: 100%;height: 100%;">
                     </div>
                 @endif
@@ -475,8 +502,8 @@
                     {!! $quiz->video_element !!}
                 @else
                     <div class="slide_view_video_element slide_view_group"
-                         style="z-index: 3;display: none;position: absolute;top: 0;left: 0;">
-                        <video controls>
+                         style="z-index: 1;display: none;position: absolute;top: 0;left: 0;">
+                        <video controls style="width: 100%;height: 100%">
                             <source src="#" type="video/mp4">
                         </video>
                     </div>
@@ -486,7 +513,7 @@
     </div>
     <div class="cell-3 slide_option" style="padding: 0 20px;">
         <h3 style="border-bottom: 1px dotted grey;padding: 15px 10px;">Slide Options</h3>
-        <div style="{{ $quiz->type_id == 13 || $quiz->type_id == 12 ? 'display:none;' : ''}}">
+        <div style="{{ $quiz->type_id > 11 ? 'display:none;' : ''}}">
             <div>
                 <div class="row" style="padding: 0 10px;">
                     <div class="cell-5">
@@ -514,45 +541,45 @@
                                     value="by_result" {{ $quiz->feedback_type == 'by_result' ? 'selected' : '' }}>By
                                     Result
                                 </option>
-                                <option
-                                    value="by_choice" {{ $quiz->feedback_type == 'by_choice' ? 'selected' : '' }}>By
-                                    Choice
-                                </option>
+{{--                                <option--}}
+{{--                                    value="by_choice" {{ $quiz->feedback_type == 'by_choice' ? 'selected' : '' }}>By--}}
+{{--                                    Choice--}}
+{{--                                </option>--}}
                             </select>
                         </div>
-                        @if (isset($quiz->branching))
-                            <div class="cell-6">
-                                <label for="branching" name="branching">Branching:</label>
-                            </div>
-                            <div class="cell-6">
-                                <select data-role="select" data-filter="false" id="branching">
-                                    <option
-                                        value="by_result" {{ $quiz->feedback_type == 'by_result' ? 'selected' : '' }}>
-                                        By
-                                        Result
-                                    </option>
-                                    <option
-                                        value="by_choice" {{ $quiz->feedback_type == 'by_choice' ? 'selected' : '' }}>
-                                        By
-                                        Choice
-                                    </option>
-                                </select>
-                            </div>
-                        @endif
-                        <div class="cell-6">
-                            <label for="score" name="score">Score:</label>
-                        </div>
-                        <div class="cell-6">
-                            <select data-role="select" data-filter="false"
-                                    id="score" {{ !isset($quiz->score) ? 'disabled' : '' }}>
-                                <option value="by_result" {{ $quiz->score == 'by_result' ? 'selected' : '' }}>By
-                                    Result
-                                </option>
-                                <option value="by_choice" {{ $quiz->score == 'by_choice' ? 'selected' : '' }}>By
-                                    Choice
-                                </option>
-                            </select>
-                        </div>
+                        {{--                        @if (isset($quiz->branching))--}}
+                        {{--                            <div class="cell-6">--}}
+                        {{--                                <label for="branching" name="branching">Branching:</label>--}}
+                        {{--                            </div>--}}
+                        {{--                            <div class="cell-6">--}}
+                        {{--                                <select data-role="select" data-filter="false" id="branching">--}}
+                        {{--                                    <option--}}
+                        {{--                                        value="by_result" {{ $quiz->feedback_type == 'by_result' ? 'selected' : '' }}>--}}
+                        {{--                                        By--}}
+                        {{--                                        Result--}}
+                        {{--                                    </option>--}}
+                        {{--                                    <option--}}
+                        {{--                                        value="by_choice" {{ $quiz->feedback_type == 'by_choice' ? 'selected' : '' }}>--}}
+                        {{--                                        By--}}
+                        {{--                                        Choice--}}
+                        {{--                                    </option>--}}
+                        {{--                                </select>--}}
+                        {{--                            </div>--}}
+                        {{--                        @endif--}}
+                        {{--                        <div class="cell-6">--}}
+                        {{--                            <label for="score" name="score">Score:</label>--}}
+                        {{--                        </div>--}}
+                        {{--                        <div class="cell-6">--}}
+                        {{--                            <select data-role="select" data-filter="false"--}}
+                        {{--                                    id="score" {{ !isset($quiz->score) ? 'disabled' : '' }}>--}}
+                        {{--                                <option value="by_result" {{ $quiz->score == 'by_result' ? 'selected' : '' }}>By--}}
+                        {{--                                    Result--}}
+                        {{--                                </option>--}}
+                        {{--                                <option value="by_choice" {{ $quiz->score == 'by_choice' ? 'selected' : '' }}>By--}}
+                        {{--                                    Choice--}}
+                        {{--                                </option>--}}
+                        {{--                            </select>--}}
+                        {{--                        </div>--}}
                         <div class="cell-6">
                             <label for="attempts" name="attempts">Attempts:</label>
                         </div>
@@ -573,16 +600,16 @@
                                 </option>
                             </select>
                         </div>
-                        <div class="cell-7">
-                            <input type="checkbox" data-role="checkbox" id="is_limit_time"
-                                   data-caption="Limit time to answer the question:" {{ $quiz->is_limit_time ? 'checked' : '' }}>
-                        </div>
-                        <div class="cell-5">
-                            <input class="mt-1" type="time" data-role="input" id="limit_time"
-                                   {{ $quiz->is_limit_time ? '' : 'disabled' }}
-                                   data-clear-button="false"
-                                   value="{{ $quiz->is_limit_time ? $quiz->limit_time : '01:00' }}">
-                        </div>
+                        {{--                        <div class="cell-7">--}}
+                        {{--                            <input type="checkbox" data-role="checkbox" id="is_limit_time"--}}
+                        {{--                                   data-caption="Limit time to answer the question:" {{ $quiz->is_limit_time ? 'checked' : '' }}>--}}
+                        {{--                        </div>--}}
+                        {{--                        <div class="cell-5">--}}
+                        {{--                            <input class="mt-1" type="time" data-role="input" id="limit_time"--}}
+                        {{--                                   {{ $quiz->is_limit_time ? '' : 'disabled' }}--}}
+                        {{--                                   data-clear-button="false"--}}
+                        {{--                                   value="{{ $quiz->is_limit_time ? $quiz->limit_time : '01:00' }}">--}}
+                        {{--                        </div>--}}
                         @if (isset($quiz->shuffle_answers))
                             <div class="cell-12">
                                 <input type="checkbox" data-role="checkbox" id="shuffle_answers"
@@ -590,13 +617,13 @@
                             </div>
                         @endif
                         @if (isset($quiz->partially_correct))
-                            <div class="cell-12">
+                            <div class="cell-12" style="display: none;">
                                 <input type="checkbox" data-role="checkbox" id="partially_correct"
                                        data-caption="Accept partially correct answer" {{ $quiz->partially_correct ? 'checked' : '' }}>
                             </div>
                         @endif
                         @if (isset($quiz->limit_number_response))
-                            <div class="cell-12">
+                            <div class="cell-12" style="display: none;">
                                 <input type="checkbox" data-role="checkbox" id="limit_number_response"
                                        data-caption="Limit number of response" {{ $quiz->limit_response ? 'checked' : '' }}>
                             </div>
@@ -621,7 +648,7 @@
             <p style="color: gray;font-size: 18px;" onclick="close_pic_properties()">x</p>
         </div>
         <div style="width: 100%;" id="picture_properties_image">
-            <img src="" alt="">
+            <img src="{{ $quiz->media ?? '' }}" alt="">
         </div>
         <div style="display: flex;justify-content: space-around;">
             <a href="javascript:void(0)" style="padding:5px" onclick="change_media_pic()">Change</a>
@@ -635,7 +662,7 @@
         </div>
         <div style="width: 100%;" id="video_properties_video">
             <video controls="controls">
-                <source src="" type="video/mp4">
+                <source src="{{ $quiz->video ?? '' }}" type="video/mp4">
             </video>
         </div>
         <div style="display: flex;justify-content: space-around;">
@@ -650,7 +677,7 @@
         </div>
         <div style="width: 100%;" id="audio_properties">
             <audio controls="controls">
-                <source src="" type="audio/mpeg">
+                <source src="{{ $quiz->audio ?? '' }}" type="audio/mpeg">
             </audio>
         </div>
         <div style="display: flex;justify-content: space-around;">
@@ -661,18 +688,43 @@
 </div>
 
 <script>
-
     answer_slide2form($('#answer_element').val(), $('#answer_content').val());
     $('#question').html(question_slide2form($('#question_element').val()));
 
 </script>
 
-<script src="{{ asset('js/multiple_choice.js') }}" defer></script>
-<script src="{{ asset('js/multiple_response.js') }}" defer></script>
-<script src="{{ asset('js/numeric.js') }}" defer></script>
-<script src="{{ asset('js/sequence.js') }}" defer></script>
-<script src="{{ asset('js/matching.js') }}" defer></script>
-<script src="{{ asset('js/fill_blanks.js') }}" defer></script>
-<script src="{{ asset('js/select_lists.js') }}" defer></script>
-<script src="{{ asset('js/hotspots.js') }}" defer></script>
+@switch($quiz->type_id)
+    @case(1)
+    <script src="{{ asset('js/multiple_choice.js') }}" defer></script>
+    @break
+
+    @case(2)
+    <script src="{{ asset('js/multiple_response.js') }}" defer></script>
+    @break
+
+    @case(5)
+    <script src="{{ asset('js/numeric.js') }}" defer></script>
+    @break
+
+    @case(6)
+    <script src="{{ asset('js/sequence.js') }}" defer></script>
+    @break
+
+    @case(7)
+    <script src="{{ asset('js/matching.js') }}" defer></script>
+    @break
+
+    @case(8)
+    <script src="{{ asset('js/fill_blanks.js') }}" defer></script>
+    @break
+
+    @case(9)
+    <script src="{{ asset('js/select_lists.js') }}" defer></script>
+    @break
+
+    @case(11)
+    <script src="{{ asset('js/hotspots.js') }}" defer></script>
+    @break
+
+@endswitch
 <script src="{{ asset('js/form_add_media_audio.js') }}" defer></script>

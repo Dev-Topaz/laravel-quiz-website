@@ -117,15 +117,57 @@ function swap_value(a, b) {
 * ************** Rearrange Preview UI *************
 * */
 
+const user_name = $('#user_name').html();
+const user_email = $('#user_email').html();
+
+let quizzes = [];
+let quizId = 0;
+let question_result;
+let question_user_point = 0;
+let attempts = 0;
+let question_feedback;
+let question_user_answer = [];
+let question_correct_answer = [];
+
+let result;
 let total_score = 0;
 let correct_quiz_count = 0;
 let hotspots_points = [];
-let attempts = 0;
 
 rearrange_preview_ui();
 
 function rearrange_preview_ui() {
     switch ($('.quiz_show .type_id').html()) {
+        case '1':
+            console.log($('.quiz_show .shuffle_answers').html());
+            if ($('.quiz_show .shuffle_answers').html() == 0) return;
+
+            var choice_items = $('.quiz_show .choice_item');
+            shuffle(choice_items);
+
+            var rearrange_choice_items = '';
+            for (let i = 0; i < choice_items.length; i++) {
+                rearrange_choice_items += choice_items[i].outerHTML;
+            }
+
+            $('.quiz_show .slide_view_answer_element .col-md-12').html(rearrange_choice_items);
+            break;
+
+        case '2':
+            console.log($('.quiz_show .shuffle_answers').html());
+            if ($('.quiz_show .shuffle_answers').html() == 0) return;
+
+            var response_items = $('.quiz_show .response_item');
+            shuffle(response_items);
+
+            var rearrange_response_items = '';
+            for (let i = 0; i < response_items.length; i++) {
+                rearrange_response_items += response_items[i].outerHTML;
+            }
+
+            $('.quiz_show .slide_view_answer_element .col-md-12').html(rearrange_response_items);
+            break;
+
         case '6':
             var sequence_items = $('#sortable li');
             shuffle(sequence_items)
@@ -154,14 +196,34 @@ function rearrange_preview_ui() {
         case '11':
             var root_url = $('meta[name=url]').attr('content');
 
-            var canvas_info = $('#correct_answer').html();
+            var canvas_info = $('.quiz_show .correct_answer').html();
+
+            console.log(canvas_info);
 
             var canvas_bg_url = canvas_info.split('@')[0];
 
             var json_bg_url = JSON.parse(canvas_bg_url);
 
-            $('.slide_view_answer_element .col-md-12').html('<div id="image-hotspots" style="width: 287px;position: relative;"><img src="' + root_url + '/' + json_bg_url.background + '" height="214" width="287" onclick="create_hotspots(event)"></div>');
+            $('.quiz_show .slide_view_answer_element .col-md-12').html('<div id="image-hotspots" style="position: relative;width: 300px;height: 214px;left: 50%;transform: translateX(-50%)"><img src="' + root_url + '/' + json_bg_url.background + '" height="214" width="300" onclick="create_hotspots(event)" style="position: relative;left: 50%;transform: translateX(-50%)"></div>');
 
+            break;
+
+        case '14':
+            let passed_score_html = $('.quiz_show .slide_view_answer_element .col-md-12').html();
+            console.log(passed_score_html);
+            passed_score_html = passed_score_html.split('%%')[0] + total_score + passed_score_html.split('%%')[1];
+            passed_score_html = passed_score_html.split('##')[0] + $('.quiz_show .passing_score').html() + passed_score_html.split('##')[1];
+            console.log(passed_score_html);
+
+            $('.quiz_show .slide_view_answer_element .col-md-12').html(passed_score_html);
+            break;
+
+        case '15':
+            let failed_score_html = $('.quiz_show .slide_view_answer_element .col-md-12').html();
+            failed_score_html = failed_score_html.split('%%')[0] + total_score + failed_score_html.split('%%')[1];
+            failed_score_html = failed_score_html.split('##')[0] + $('.quiz_show .passing_score').html() + failed_score_html.split('##')[1];
+
+            $('.quiz_show .slide_view_answer_element .col-md-12').html(failed_score_html);
             break;
     }
 }
@@ -204,17 +266,27 @@ function create_hotspots(event) {
 function preview() {
     switch ($('.preview_btn button').html()) {
         case 'Submit':
+            if ($('.quiz_show .question_type').html() != 'graded') {
+                question_result = 'Survey';
+                $('.preview_btn button').html('Continue');
+                return;
+            }
             if (evulate()) {
                 attempts += 1;
                 total_score += parseInt($('.quiz_show .correct_score').html());
+                question_user_point += parseInt($('.quiz_show .correct_score').html());
                 correct_quiz_count += 1;
-                $.toast({
-                    title: 'Correct',
-                    content: $('.quiz_show .feedback_correct').html(),
-                    type: 'success',
-                    delay: 3000,
-                    dismissible: true,
-                });
+                if ($('.quiz_show .feedback_type').html() != 'none') {
+                    $.toast({
+                        title: 'Correct',
+                        content: $('.quiz_show .feedback_correct').html(),
+                        type: 'success',
+                        delay: 3000,
+                        dismissible: true,
+                    });
+                }
+                question_feedback = $('.quiz_show .feedback_correct').html();
+                question_result = 'Correct';
                 $('.preview_btn button').html('Continue');
             } else {
                 attempts += 1;
@@ -223,35 +295,42 @@ function preview() {
             break;
 
         case 'Try again':
-            if (evulate()) {
-                total_score += parseInt($('.quiz_show .correct_score').html());
-                correct_quiz_count += 1;
-                $.toast({
-                    title: 'Correct',
-                    content: $('.quiz_show .feedback_correct').html(),
-                    type: 'success',
-                    delay: 3000,
-                    dismissible: true,
-                });
-                $('.preview_btn button').html('Continue');
-            } else {
-                attempts += 1;
-                incorrect_process();
-            }
+            $('.preview_btn button').html('Submit');
             break;
 
         case 'Continue':
+
+            quizzes.push({
+                quizId: quizId,
+                question_result: question_result,
+                question_content: $('.quiz_show .slide_view_question_element').html(),
+                question_point: $('.quiz_show .correct_score').html(),
+                question_user_point: question_user_point,
+                question_user_answer: question_user_answer,
+                question_correct_answer: question_correct_answer,
+                question_attempts: $('.quiz_show .attempts').html(),
+                question_user_attempts: attempts,
+                question_feedback: question_feedback,
+            });
+
             attempts = 0;
-            console.log($('.quiz_show').attr('id'));
-            console.log($('.quiz_show').next().attr('id'));
+            question_user_point = 0;
+            quizId++;
 
             var current_show_id = $('.quiz_show').attr('id');
             var next_show_id = $('.quiz_show').next().attr('id');
+            var type_id = $('.quiz_show').next().find('.type_id').html();
 
-            if (next_show_id === undefined) {
+            $('#quiz_list_audio-' + current_show_id.split('-')[1])[0].pause();
+
+            if (next_show_id === undefined || type_id == 14 || type_id == 15) {
 
                 $('.preview_btn button').html('See Result');
             } else {
+
+                $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].pause();
+                $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].currentTime = 0;
+                $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].play();
 
                 $('#' + current_show_id).removeClass('quiz_show');
                 $('#' + current_show_id).addClass('quiz_hide');
@@ -261,35 +340,129 @@ function preview() {
                 rearrange_preview_ui();
                 $('.preview_btn button').html('Submit');
             }
+
+
             break;
 
         case 'See Result':
-            alert('Correct answers: ' + correct_quiz_count + ', Total Score: ' + total_score);
+            if (total_score < parseInt($('.quiz_show .passing_score').html())) {
+                result = 'Fail';
+                var current_show_id = $('.quiz_show').attr('id');
+
+                var next_show_id = $('.quiz_show').next().next().attr('id');
+                if (next_show_id === undefined) return;
+
+                $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].pause();
+                $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].currentTime = 0;
+                $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].play();
+
+                $('#' + current_show_id).removeClass('quiz_show');
+                $('#' + current_show_id).addClass('quiz_hide');
+
+                $('#' + next_show_id).removeClass('quiz_hide');
+                $('#' + next_show_id).addClass('quiz_show');
+                rearrange_preview_ui();
+            } else {
+                result = 'Pass';
+                var current_show_id = $('.quiz_show').attr('id');
+
+                var next_show_id = $('.quiz_show').next().attr('id');
+                if (next_show_id === undefined) return;
+
+                $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].pause();
+                $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].currentTime = 0;
+                $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].play();
+
+                $('#' + current_show_id).removeClass('quiz_show');
+                $('#' + current_show_id).addClass('quiz_hide');
+
+                $('#' + next_show_id).removeClass('quiz_hide');
+                $('#' + next_show_id).addClass('quiz_show');
+                rearrange_preview_ui();
+            }
+
+            const root_url = $('meta[name=url]').attr('content');
+            const token = $('meta[name=csrf-token]').attr('content');
+
+            show_preload();
+            $.ajax({
+                url: root_url + '/send-mail',
+                type: 'POST',
+                data: {
+                    _token: token,
+                    user_name: user_name,
+                    user_email: user_email,
+                    stuff_emails: $('.quiz_show .stuff_emails').html(),
+                    exam_answered: correct_quiz_count,
+                    exam_question_count: quizId,
+                    exam_user_score: total_score,
+                    exam_passing_score: $('.quiz_show .passing_score').html(),
+                    result: result,
+                    quizzes: quizzes,
+                },
+                success: function (data) {
+                    console.log('success');
+                    hide_preload();
+                }
+            }).catch((XHttpResponse) => {
+                console.log(XHttpResponse);
+                hide_preload();
+            });
+
+            $('.preview_btn button').html('Close');
+            break;
+
+        case 'Close':
+            window.close();
             break;
     }
 }
 
 function evulate() {
+    question_user_answer = [];
+    question_correct_answer = [];
+
     switch ($('.quiz_show .type_id').html()) {
         case '1':
-            return $('.quiz_show input[name=answer]:checked').val() == $('.quiz_show .correct_answer').html();
+            question_user_answer.push($('.quiz_show input[name=answer]:checked').next().html());
+            question_correct_answer.push($('.quiz_show input[value=' + $('.quiz_show .correct_answer').html() + ']').next().html());
+
+            return compare_arrays(question_user_answer, question_correct_answer);
             break;
 
         case '2':
             var selected_checkbox = $(".quiz_show input[name='answer']:checked");
-            var response_answer = '';
-            for (const selectedElement of selected_checkbox) {
-                response_answer += $(selectedElement).val() + ';';
+
+            for (var i = 0; i < selected_checkbox.length; i++) {
+                question_user_answer.push(selected_checkbox.eq(i).next().html());
             }
-            return response_answer == $('.quiz_show .correct_answer').html();
+
+            let correct_response_answer_array = $('.quiz_show .correct_answer').html().split(';');
+            correct_response_answer_array.pop();
+            for (var i = 0; i < correct_response_answer_array.length; i++) {
+                question_correct_answer.push($('.quiz_show input[value=' + correct_response_answer_array[i] + ']').next().html());
+            }
+
+            return compare_arrays(question_user_answer, question_correct_answer);
+            // return response_answer == $('.quiz_show .correct_answer').html();
             break;
 
         case '3':
+            question_user_answer.push($('.quiz_show input[name=answer]:checked').next().html());
+            question_correct_answer.push($('.quiz_show input[value=' + $('.quiz_show .correct_answer').html() + ']').next().html());
+            
             return $('.quiz_show input[name=answer]:checked').val() == $('.quiz_show .correct_answer').html();
             break;
 
         case '4':
-            return $('.quiz_show #answer').val() == $('.quiz_show .correct_answer').html();
+            question_user_answer.push($('.quiz_show #answer').val());
+            question_correct_answer.push($('.quiz_show .correct_answer').html());
+
+            if ($('.quiz_show .case_sensitive').html() == 0) {
+                return $('.quiz_show #answer').val().toUpperCase() == $('.quiz_show .correct_answer').html().toUpperCase();
+            } else {
+                return $('.quiz_show #answer').val() == $('.quiz_show .correct_answer').html();
+            }
             break;
 
         case '5':
@@ -297,6 +470,9 @@ function evulate() {
             var correct_answer = $('.quiz_show .correct_answer').html();
             var numeric_answer_array = correct_answer.split('@');
             numeric_answer_array.pop();
+
+            question_user_answer.push($('.quiz_show #answer').val());
+            question_correct_answer = numeric_answer_array;
 
             for (let numeric_item of numeric_answer_array) {
                 numeric_item = numeric_item.replace("&lt;", "<").replace("&lt;", "<").replace("&gt;", ">");
@@ -343,6 +519,9 @@ function evulate() {
                 sequence_answer += sequence_items.eq(i).find('label').html() + ';';
             }
 
+            question_user_answer = sequence_answer;
+            question_correct_answer = $('.quiz_show .correct_answer').html();
+
             return sequence_answer == $('.quiz_show .correct_answer').html();
             break;
 
@@ -355,6 +534,9 @@ function evulate() {
                 matching_answer += matching_items.eq(i).find('p').eq(0).html() + ';' + matching_items.eq(i).find('p').eq(1).html() + '@';
             }
 
+            question_user_answer = matching_answer;
+            question_correct_answer = $('.quiz_show .correct_answer').html();
+
             return matching_answer == $('.quiz_show .correct_answer').html();
             break;
 
@@ -364,10 +546,18 @@ function evulate() {
             correct_answer_array.pop();
 
             let answer_array_items;
-            for (let i = 0; i < correct_answer_array.length; i++) {
-                answer_array_items = correct_answer_array[i].split(';');
-                answer_array_items.pop();
-                if (answer_array_items.indexOf($('.quiz_show .slide_view_answer_element input').eq(i).val()) == -1) return false;
+            if ($('.quiz_show .case_sensitive').html() == 0) {
+                for (let i = 0; i < correct_answer_array.length; i++) {
+                    answer_array_items = correct_answer_array[i].toUpperCase().split(';');
+                    answer_array_items.pop();
+                    if (answer_array_items.indexOf($('.quiz_show .slide_view_answer_element input').eq(i).val().toUpperCase()) == -1) return false;
+                }
+            } else {
+                for (let i = 0; i < correct_answer_array.length; i++) {
+                    answer_array_items = correct_answer_array[i].split(';');
+                    answer_array_items.pop();
+                    if (answer_array_items.indexOf($('.quiz_show .slide_view_answer_element input').eq(i).val()) == -1) return false;
+                }
             }
 
             return true;
@@ -381,6 +571,8 @@ function evulate() {
                 select_lists_answer += select_lists_items.eq(i).val() + ';';
             }
 
+            question_user_answer = select_lists_answer;
+            question_correct_answer = $('.quiz_show .correct_answer').html();
             return select_lists_answer == $('.quiz_show .correct_answer').html();
             break;
 
@@ -391,6 +583,8 @@ function evulate() {
                 drag_words_answer += drag_words_array[i] + ';';
             }
 
+            question_user_answer = drag_words_answer;
+            question_correct_answer = $('.quiz_show .correct_answer').html();
             return drag_words_answer == $('.quiz_show .correct_answer').html();
             break;
 
@@ -406,15 +600,17 @@ function evulate() {
             for (let i = 0; i < hotspots_points.length; i++) {
                 switch (json_canvas_item.type) {
                     case 'circle':
-                        if (Math.pow(json_canvas_item.radius, 2) < Math.pow(hotspots_points[0] - json_canvas_item.left, 2) + Math.pow(hotspots_points[1] - json_canvas_item.top, 2)) return false;
+                        console.log(hotspots_points);
+                        console.log(json_canvas_item);
+                        if (Math.pow(json_canvas_item.radius, 2) < Math.pow(hotspots_points[0][0] - json_canvas_item.left, 2) + Math.pow(hotspots_points[0][1] - json_canvas_item.top, 2)) return false;
                         break;
 
                     case 'rect':
-                        if (hotspots_points[0] < json_canvas_item.left || hotspots_points[0] > json_canvas_item.left + json_canvas_item.width || hotspots_points[1] < json_canvas_item.top || hotspots_points[1] > json_canvas_item.top + json_canvas_item.height) return false;
+                        if (hotspots_points[0][0] < json_canvas_item.left || hotspots_points[0][0] > json_canvas_item.left + json_canvas_item.width || hotspots_points[0][1] < json_canvas_item.top || hotspots_points[0][1] > json_canvas_item.top + json_canvas_item.height) return false;
                         break;
 
                     case 'polyline':
-                        if (!(inside(hotspots_points, json_canvas_item.points))) return false;
+                        if (!(inside(hotspots_points[0], json_canvas_item.points))) return false;
                         break;
                 }
             }
@@ -424,6 +620,9 @@ function evulate() {
     }
 }
 
+/*
+* ************* method for hotspot polygen ***********************
+* */
 function inside(point, vs) {
     // ray-casting algorithm based on
     // https://wrf.ecse.rpi.edu/Research/Short_Notes/pnpoly.html/pnpoly.html
@@ -447,27 +646,60 @@ function inside(point, vs) {
 
 function incorrect_process() {
     if (attempts == parseInt($('.quiz_show .attempts').html())) {
+
         total_score += parseInt($('.quiz_show .incorrect_score').html());
+        question_user_point += parseInt($('.quiz_show .incorrect_score').html());
+        question_result = 'Wrong';
+        question_feedback = $('.quiz_show .feedback_incorrect').html();
+
         $('.preview_btn button').html('Continue');
-        $.toast({
-            title: 'Incorrect',
-            content: $('.quiz_show .feedback_incorrect').html(),
-            type: 'error',
-            delay: 3000,
-            dismissible: true,
-        });
+        if ($('.quiz_show .feedback_type').html() != 'none') {
+            $.toast({
+                title: 'Incorrect',
+                content: $('.quiz_show .feedback_incorrect').html(),
+                type: 'error',
+                delay: 3000,
+                dismissible: true,
+            });
+        }
     } else {
         total_score += parseInt($('.quiz_show .try_again_score').html());
+        question_user_point += parseInt($('.quiz_show .try_again_score').html());
+        question_feedback = $('.quiz_show .feedback_try_again').html();
+
         $('.preview_btn button').html('Try again');
-        $.toast({
-            title: 'Incorrect',
-            content: $('.quiz_show .feedback_incorrect').html(),
-            type: 'error',
-            delay: 3000,
-            dismissible: true,
-        });
+        if ($('.quiz_show .feedback_type').html() != 'none') {
+            $.toast({
+                title: 'Incorrect',
+                content: $('.quiz_show .feedback_try_again').html(),
+                type: 'error',
+                delay: 3000,
+                dismissible: true,
+            });
+        }
     }
     console.log('incorrect_process function');
 }
 
+/*
+*************** Compare 2 arrays ***************
+*/
+function compare_arrays(array1, array2) {
+    sorted_array1 = array1.sort(s);
+    sorted_array2 = array2.sort(s);
 
+    var is_same = (sorted_array1.length == sorted_array2.length) && sorted_array1.every(function(element, index) {
+        return element === sorted_array2[index]; 
+    });
+
+    return is_same;
+}
+
+function s(x,y){
+    var pre = ['string' , 'number' , 'bool']
+    if(typeof x!== typeof y )return pre.indexOf(typeof y) - pre.indexOf(typeof x);
+
+    if(x === y)return 0;
+    else return (x > y)?1:-1;
+
+}

@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9d9fd7c1-0dd1-410f-8492-d59f6bb67158" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="9d9fd7c1-0dd1-410f-8492-d59f6bb67158" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -173,7 +171,7 @@
     <property name="go.vendoring.notification.had.been.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/quiz_form_view" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -248,7 +246,13 @@
       <workItem from="1621415021587" duration="2262000" />
       <workItem from="1621418176380" duration="59907000" />
       <workItem from="1621549363324" duration="12390000" />
-      <workItem from="1621568827694" duration="13212000" />
+      <workItem from="1621568827694" duration="65019000" />
+      <workItem from="1621880982936" duration="3429000" />
+      <workItem from="1621886412799" duration="68582000" />
+      <workItem from="1622070692015" duration="3726000" />
+      <workItem from="1622175135376" duration="17936000" />
+      <workItem from="1622233944485" duration="7822000" />
+      <workItem from="1622250964677" duration="1799000" />
     </task>
     <servers />
   </component>
@@ -266,7 +270,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/ribbon_bar" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>
@@ -282,6 +286,11 @@
         <entry key="Branch">
           <value>
             <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="main" />
+                </option>
+              </RecentGroup>
               <RecentGroup>
                 <option name="FILTER_VALUES">
                   <option value="origin/ribbon_bar" />
