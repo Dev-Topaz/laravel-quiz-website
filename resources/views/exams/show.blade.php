@@ -130,8 +130,9 @@
                             <div id="design_themes_panel_holder" class="ribbon-dropdaown" data-role="dropdown"
                                  data-duration="100">
                                 <div>
-                                    <div class="design_themes_panels_divider">This Quiz</div>
-                                    <div class="design_themes_panels"><span>Aa</span></div>
+                                    <div class="design_themes_panels_divider">No theme</div>
+                                    <div class="design_themes_panels"
+                                        style="font-family: Calibri; color: #000000; background-image: unset; background-size: 100% 100%; "><span>Aa</span></div>
                                     <div class="design_themes_panels_divider">Office</div>
                                     <div class="design_themes_panels" title="White Lines"
                                          style="font-family: Calibri; color: #4d4d4d; background-image: url( {{url('/images/theme_backgrounds/white_lines.png')}} ); background-size: 100% 100%; ">
@@ -529,7 +530,7 @@
                             </span>
                                 <span class="caption">Copy</span>
                             </button>
-                            <button id="format_painter_btn" class="ribbon-icon-button">
+                            <button id="format_painter_btn" class="ribbon-icon-button" disabled>
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/home-4.png") }}">
                             </span>
@@ -627,7 +628,7 @@
                         <span class="title">Layout</span>
                         <div class="group-divider"></div>
                     </div>
-                    <div class="group" style="flex: 0 0 273px; flex-wrap: wrap;">
+                    <div class="group" style="flex: 0 0 280px; flex-wrap: wrap;">
                         <div style="display: flex; align-items: center;">
                             <select id="slide_view_font_family_selector"
                                     style="font-size: 12px; outline: none; width: 131px; height: 25px;">
@@ -682,7 +683,6 @@
                                     Medium
                                 </option>
                                 <option style="font-family: 'Blippo';" value="Blippo">Blippo</option>
-                                <option style="font-family: 'Blippo';" value="Blippo">Blippo</option>
                                 <option style="font-family: 'Bodoni MT';" value="Bodoni MT">Bodoni MT</option>
                                 <option style="font-family: 'Book Antiqua';" value="Book Antiqua">Book Antiqua</option>
                                 <option style="font-family: 'Bookman';" value="Bookman">Bookman</option>
@@ -724,10 +724,6 @@
                                 <option style="font-family: 'Corbel';" value="Corbel">Corbel</option>
                                 <option style="font-family: 'Cordia New';" value="Cordia New">Cordia New</option>
                                 <option style="font-family: 'CordiaUPC';" value="CordiaUPC">CordiaUPC</option>
-                                <option style="font-family: 'Coronet script';" value="Coronet script">Coronet script
-                                </option>
-                                <option style="font-family: 'Coronetscript';" value="Coronetscript">Coronetscript
-                                </option>
                                 <option style="font-family: 'Courier';" value="Courier">Courier</option>
                                 <option style="font-family: 'Courier New';" value="Courier New">Courier New</option>
                                 <option style="font-family: 'DaunPenh';" value="DaunPenh">DaunPenh</option>
@@ -761,7 +757,6 @@
                                 <option style="font-family: 'Georgia';" value="Georgia">Georgia</option>
                                 <option style="font-family: 'Georgia Pro';" value="Georgia Pro">Georgia Pro</option>
                                 <option style="font-family: 'Gill Sans';" value="Gill Sans">Gill Sans</option>
-                                <option style="font-family: 'Gill Sans';" value="Gill Sans">Gill Sans</option>
                                 <option style="font-family: 'Gill Sans Nova';" value="Gill Sans Nova">Gill Sans Nova
                                 </option>
                                 <option style="font-family: 'Gisha';" value="Gisha">Gisha</option>
@@ -779,7 +774,6 @@
                                     MDL2 Assets
                                 </option>
                                 <option style="font-family: 'Impact';" value="Impact">Impact</option>
-                                <option style="font-family: 'Impact';" value="Impact">Impact</option>
                                 <option style="font-family: 'Ink Free';" value="Ink Free">Ink Free</option>
                                 <option style="font-family: 'IrisUPC';" value="IrisUPC">IrisUPC</option>
                                 <option style="font-family: 'Iskoola Pota';" value="Iskoola Pota">Iskoola Pota</option>
@@ -794,7 +788,6 @@
                                 <option style="font-family: 'Khmer UI';" value="Khmer UI">Khmer UI</option>
                                 <option style="font-family: 'KodchiangUPC';" value="KodchiangUPC">KodchiangUPC</option>
                                 <option style="font-family: 'Kokila';" value="Kokila">Kokila</option>
-                                <option style="font-family: 'Korean';" value="Korean">Korean</option>
                                 <option style="font-family: 'Lao';" value="Lao">Lao</option>
                                 <option style="font-family: 'Lao UI';" value="Lao UI">Lao UI</option>
                                 <option style="font-family: 'Latha';" value="Latha">Latha</option>
@@ -834,8 +827,6 @@
                                     Malgun Gothic Semilight
                                 </option>
                                 <option style="font-family: 'Mangal';" value="Mangal">Mangal</option>
-                                <option style="font-family: 'Marker Felt';" value="Marker Felt">Marker Felt</option>
-                                <option style="font-family: 'Marlett';" value="Marlett">Marlett</option>
                                 <option style="font-family: 'Meiryo';" value="Meiryo">Meiryo</option>
                                 <option style="font-family: 'Meiryo UI';" value="Meiryo UI">Meiryo UI</option>
                                 <option style="font-family: 'Microsoft Himalaya';" value="Microsoft Himalaya">Microsoft
@@ -881,7 +872,6 @@
                                 <option style="font-family: 'MingLiU-ExtB';" value="MingLiU-ExtB">MingLiU-ExtB</option>
                                 <option style="font-family: 'Miriam';" value="Miriam">Miriam</option>
                                 <option style="font-family: 'Monaco';" value="Monaco">Monaco</option>
-                                <option style="font-family: 'Monaco';" value="Monaco">Monaco</option>
                                 <option style="font-family: 'Mongolian Baiti';" value="Mongolian Baiti">Mongolian Baiti
                                 </option>
                                 <option style="font-family: 'MoolBoran';" value="MoolBoran">MoolBoran</option>
@@ -906,7 +896,6 @@
                                 <option style="font-family: 'No automatic language associations';"
                                         value="No automatic language associations">No automatic language associations
                                 </option>
-                                <option style="font-family: 'Noto';" value="Noto">Noto</option>
                                 <option style="font-family: 'Noto';" value="Noto">Noto</option>
                                 <option style="font-family: 'NSimSun';" value="NSimSun">NSimSun</option>
                                 <option style="font-family: 'Nyala';" value="Nyala">Nyala</option>
@@ -972,9 +961,7 @@
                                 <option style="font-family: 'Sitka';" value="Sitka">Sitka</option>
                                 <option style="font-family: 'Snell Roundhan';" value="Snell Roundhan">Snell Roundhan
                                 </option>
-                                <option style="font-family: 'Snell Roundhan';" value="Snell Roundhan">Snell Roundhan
                                 </option>
-                                <option style="font-family: 'Stencil Std';" value="Stencil Std">Stencil Std</option>
                                 <option style="font-family: 'Stencil Std';" value="Stencil Std">Stencil Std</option>
                                 <option style="font-family: 'Sylfaen';" value="Sylfaen">Sylfaen</option>
                                 <option style="font-family: 'Symbol';" value="Symbol">Symbol</option>
@@ -991,8 +978,6 @@
                                     Chinese
                                 </option>
                                 <option style="font-family: 'Trattatello';" value="Trattatello">Trattatello</option>
-                                <option style="font-family: 'Trattatello';" value="Trattatello">Trattatello</option>
-                                <option style="font-family: 'Trebuchet MS';" value="Trebuchet MS">Trebuchet MS</option>
                                 <option style="font-family: 'Trebuchet MS';" value="Trebuchet MS">Trebuchet MS</option>
                                 <option style="font-family: 'Tunga';" value="Tunga">Tunga</option>
                                 <option style="font-family: 'UD Digi Kyokasho';" value="UD Digi Kyokasho">UD Digi
@@ -1014,16 +999,13 @@
                                     Typesetting
                                 </option>
                                 <option style="font-family: 'URW Chancery';" value="URW Chancery">URW Chancery</option>
-                                <option style="font-family: 'URW Chancery';" value="URW Chancery">URW Chancery</option>
                                 <option style="font-family: 'Utsaah';" value="Utsaah">Utsaah</option>
                                 <option style="font-family: 'Vani';" value="Vani">Vani</option>
                                 <option style="font-family: 'Verdana';" value="Verdana">Verdana</option>
                                 <option style="font-family: 'Verdana Pro';" value="Verdana Pro">Verdana Pro</option>
                                 <option style="font-family: 'Vijaya';" value="Vijaya">Vijaya</option>
                                 <option style="font-family: 'Vrinda';" value="Vrinda">Vrinda</option>
-                                <option style="font-family: 'Webdings';" value="Webdings">Webdings</option>
                                 <option style="font-family: 'Westminster';" value="Westminster">Westminster</option>
-                                <option style="font-family: 'Wingdings';" value="Wingdings">Wingdings</option>
                                 <option style="font-family: 'Yu Gothic';" value="Yu Gothic">Yu Gothic</option>
                                 <option style="font-family: 'Yu Gothic UI';" value="Yu Gothic UI">Yu Gothic UI</option>
                                 <option style="font-family: 'Yu Mincho';" value="Yu Mincho">Yu Mincho</option>
@@ -1091,9 +1073,9 @@
                             </div>
                         </div>
                         <div>
-                            <span id="font_color_display_letter" style="border-bottom: 2px solid black;">A</span>
+                            <span id="font_color_display_letter" style="margin-right: -3px; border-bottom: 2px solid black;">A</span>
                             <button class="dropdown-toggle" id="font_picker_trigger"
-                                    style="margin-left: 5px;background: #f5f6f7;"></button>
+                                    style="background: #f5f6f7;"></button>
                             <!-- <input type="color" name="" id="font_color_picker"> -->
                             <div id="office_color_picker" class="ribbon-dropdown" data-role="dropdown"
                                  data-duration="100"
@@ -1130,7 +1112,7 @@
                         </div>
                         <div class="dropdown-button">
                             <button class="button dropdown-toggle" id="line_height_selector"
-                                    style="margin-left: 10px; width: 44px; margin-top: 3px; height: 23px; background-image: url({{ url("/images/ribbon_imgs/home-19.png") }}); background-repeat: no-repeat; background-position-y: center; background-position-x: 5px;"></button>
+                                    style="margin-left: 10px; width: 44px; height: 23px; background-image: url({{ url("/images/ribbon_imgs/home-19.png") }}); background-repeat: no-repeat; background-position-y: center; background-position-x: 5px;"></button>
                             <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100"
                                 style="transform: translate(10px, -10px);">
                                 <li id="paragraph_line_spacing_100"><a>1,0</a></li>
