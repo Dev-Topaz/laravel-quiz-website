@@ -40,7 +40,7 @@ class QuizController extends Controller
 
         $order_updating_quizzes = Quiz::where('order', '>=', $request->order)->get();
         foreach ($order_updating_quizzes as $item) {
-            if ($item->exam_group->exam->id == $request->exam_id) {
+            if ($item->exam_group->exam_id == $request->exam_id) {
                 $item->order = $item->order + 1;
                 $item->save();
             }
@@ -582,7 +582,7 @@ class QuizController extends Controller
         if ($fromIndex > $toIndex) {
             $quizzes = Quiz::where('order', '<', $fromIndex)->where('order', '>=', $toIndex)->get();
             foreach ($quizzes as $item) {
-                if ($item->exam_group->exam->id == $request->exam_id) {
+                if ($item->exam_group->exam_id == $request->exam_id) {
                     $item->order = $item->order + 1;
                     $item->save();
                 }
@@ -592,7 +592,7 @@ class QuizController extends Controller
         if ($fromIndex < $toIndex) {
             $quizzes = Quiz::where('order', '>', $fromIndex)->where('order', '<=', $toIndex)->get();
             foreach ($quizzes as $item) {
-                if ($item->exam_group->exam->id == $request->exam_id) {
+                if ($item->exam_group->exam_id == $request->exam_id) {
                     $item->order = $item->order - 1;
                     $item->save();
                 }
@@ -612,7 +612,7 @@ class QuizController extends Controller
 
         $order_updating_quizzes = Quiz::where('order', '>=', $request->order)->get();
         foreach ($order_updating_quizzes as $item) {
-            if ($item->exam_group->exam->id == $quiz->exam_group->exam->id) {
+            if ($item->exam_group->exam_id == $quiz->exam_group->exam_id) {
                 $item->order = $item->order + 1;
                 $item->save();
             }
