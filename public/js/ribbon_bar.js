@@ -799,7 +799,7 @@ $('#rotate_left').click(function () {
 
 $('#align_left').click(function () {
     var element = $('.selected_slide_view_group'); // get selected element
-    element.css('left', '0');
+    element.css('left', '20px');
 });
 
 $('#align_right').click(function () {
@@ -810,7 +810,7 @@ $('#align_right').click(function () {
     var el_num = elements.length;
     for (let i = 0; i < el_num; i++) {
         var element = elements.eq(i);
-        element.css('left', parent_width - element.outerWidth());
+        element.css('left', parent_width - element.outerWidth() - 20);
     }
 });
 
@@ -830,7 +830,7 @@ $('#align_center').click(function () {
 
 $('#align_top').click(function () {
     var element = $('.selected_slide_view_group'); // get selected element
-    element.css('top', '0');
+    element.css('top', '20px');
 
 });
 
@@ -841,7 +841,7 @@ $('#align_bottom').click(function () {
     var el_num = elements.length;
     for (let i = 0; i < el_num; i++) {
         var element = elements.eq(i);
-        element.css('top', parent_height - element.outerHeight());
+        element.css('top', parent_height - element.outerHeight() - 20);
     }
 
 });
