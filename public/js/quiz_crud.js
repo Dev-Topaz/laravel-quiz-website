@@ -434,7 +434,7 @@ function show_correct_view() {
         fit_slide_view();
 
         $('.slide_view_group').resizable();
-        $('.slide_view_group').draggable({cancel: 'div.cancel_drag', containment: $(this).closest('.slide_view_element')});
+        $('.slide_view_group').draggable({cancel: 'div.cancel_drag', containment: 'parent'});
         if ($('.slide_view_group_checkbox').length === 0) $('.slide_view_group').append('<input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;">');
     }
 }
