@@ -618,4 +618,18 @@ class QuizController extends Controller
         return $replicate->id;
     }
 
+    public function bg_apply_all(Request $request)
+    {
+        $exam_groups = Exam::find($request->exam_id)->exam_groups;
+
+        foreach ($exam_groups as $exam_group) {
+            $quizzes = $exam_group->quizes;
+            foreach ($quizzes as $quiz) {
+                $quiz->background_img = $request->background_img;
+                $quiz->save();
+            }
+        }
+
+        return $quizzes;
+    }
 }

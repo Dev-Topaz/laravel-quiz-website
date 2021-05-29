@@ -655,6 +655,20 @@
             <a href="javascript:void(0)" style="padding:5px" onclick="delete_media_pic()">Delete</a>
         </div>
     </div>
+    <div class="cell-3 background_properties" style="padding: 0 20px;display: none;">
+        <div style="display: flex;justify-content: space-around;align-items: center;">
+            <h3 style="border-bottom: 1px dotted grey;padding: 15px 10px;">Background Properties</h3>
+            <p style="color: gray;font-size: 18px;" onclick="close_background_properties()">x</p>
+        </div>
+        <div style="width: 100%;" id="background_properties_image">
+            <img src="{{ isset($quiz->background_img) ? explode('"', $quiz->background_img)[1] : '' }}" alt="">
+        </div>
+        <div style="display: flex;justify-content: space-around;">
+            <a href="javascript:void(0)" style="padding:5px" onclick="change_background_pic()">Change</a>
+            <a href="javascript:void(0)" style="padding:5px" onclick="apply_all()">Apply All</a>
+            <a href="javascript:void(0)" style="padding:5px" onclick="delete_background_pic()">Delete</a>
+        </div>
+    </div>
     <div class="cell-3 video_properties" style="padding: 0 20px;display: none;">
         <div style="display: flex;justify-content: space-around;align-items: center;">
             <h3 style="border-bottom: 1px dotted grey;padding: 15px 10px;">Video Properties</h3>

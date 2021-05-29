@@ -88,8 +88,50 @@ $('#form_view_input_media_element').change(function () {
 * */
 
 $('#format_bg_btn').click(function () {
-    $('#select_background_img').trigger('click');
+    $('.background_properties').show();
+    $('.slide_option').hide();
 });
+
+function change_background_pic() {
+    $('#select_background_img').trigger('click');
+}
+
+function close_background_properties() {
+    $('.background_properties').hide();
+    $('.slide_option').show();
+}
+
+function apply_all() {
+    const root_url = $('meta[name=url]').attr('content');
+    const token = $('meta[name=csrf-token]').attr('content');
+    const background_img = $('#background_img').val();
+    const exam_id = $('#exam_id').val();
+
+    show_preload();
+    $.ajax({
+        url: root_url + '/bg_apply_all',
+        type: 'POST',
+        data: {
+            _token: token,
+            exam_id: exam_id,
+            background_img: background_img,
+        },
+        success: function (data) {
+            alert('Background of All Quiz updated successfully');
+            store_quiz_state();
+            hide_preload();
+        }
+    }).catch((XHttpResponse) => {
+        console.log(XHttpResponse);
+        hide_preload();
+    });
+}
+
+function delete_background_pic() {
+    $('#quiz_background_container').css('background-image', 'unset');
+    $('#background_properties_image img').attr('src', '');
+    $('#background_img').val('');
+}
 
 $('#select_background_img').change(function () {
     console.log("bg changed");
@@ -120,6 +162,7 @@ $('#select_background_img').change(function () {
                 if (response) {
                     console.log(response);
                     $('#quiz_background_container').css('background-image', 'url("' + root_url + '/' + response + '")');
+                    $('#background_properties_image img').attr('src', root_url + '/' + response);
                     $('#background_img').val('url("' + root_url + '/' + response + '")');
                     console.log('Image has been uploaded successfully');
                 }

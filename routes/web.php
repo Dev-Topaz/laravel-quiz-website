@@ -41,6 +41,7 @@ Route::group(['middleware' => 'role:manager'], function () {
     Route::post('/duplicate_quiz', [QuizController::class, 'duplicate_quiz']);
     Route::post('/quizes', [QuizController::class, 'store']);
     Route::post('/update_theme_style', [QuizController::class, 'update_theme_style']);
+    Route::post('/bg_apply_all', [QuizController::class, 'bg_apply_all']);
     Route::get('/quizes/{quiz}/edit', [QuizController::class, 'edit']);
     Route::put('/quizes/{quiz}', [QuizController::class, 'update']);
     Route::delete('/quizes/{quiz}', [QuizController::class, 'destroy']);
