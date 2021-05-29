@@ -591,7 +591,7 @@ function decrease_indent() {
         var range = sel.getRangeAt(0);
         range.deleteContents();
         range.insertNode(e);
-        while (!(e.parentElement.classList.contains('slide_view_question_element'))) {
+        while (!((e.parentElement.classList.contains('slide_view_question_element')) || (e.parentElement.classList.contains('form_view_question_element')))) {
             e = e.parentElement
         }
         if (e.style.marginLeft == '' || e.style.marginLeft == '0px')
@@ -610,7 +610,7 @@ function increase_indent() {
         var range = sel.getRangeAt(0);
         range.deleteContents();
         range.insertNode(e);
-        while (!(e.parentElement.classList.contains('slide_view_question_element'))) {
+        while (!((e.parentElement.classList.contains('slide_view_question_element')) || (e.parentElement.classList.contains('form_view_question_element')))) {
             e = e.parentElement
         }
         if (e.style.marginLeft == '' || e.style.marginLeft == '0px')

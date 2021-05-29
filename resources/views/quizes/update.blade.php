@@ -128,7 +128,7 @@
                 <div class="row" style="width: 100%;margin: 0;">
                     <div class="cell-{{ $quiz->type_id > 11 ? '11' : '9'}}"
                          style="padding: 0;">
-                        <div contenteditable="true" id="question"
+                        <div contenteditable="true" id="question" class="form_view_question_element"
                              style="overflow-y: scroll;width: 100%;border: 1px solid black;height: 70px;color: black"></div>
                     </div>
                     <div class="cell-{{ $quiz->type_id > 11 ? '1' : '3'}}"
