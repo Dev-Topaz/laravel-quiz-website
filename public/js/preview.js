@@ -306,6 +306,8 @@ function preview() {
                 question_content: $('.quiz_show .slide_view_question_element').html(),
                 question_point: $('.quiz_show .correct_score').html(),
                 question_user_point: question_user_point,
+                question_user_answer: question_user_answer,
+                question_correct_answer: question_correct_answer,
                 question_attempts: $('.quiz_show .attempts').html(),
                 question_user_attempts: attempts,
                 question_feedback: question_feedback,
@@ -422,23 +424,40 @@ function evulate() {
 
     switch ($('.quiz_show .type_id').html()) {
         case '1':
-            return $('.quiz_show input[name=answer]:checked').val() == $('.quiz_show .correct_answer').html();
+            question_user_answer.push($('.quiz_show input[name=answer]:checked').next().html());
+            question_correct_answer.push($('.quiz_show input[value=' + $('.quiz_show .correct_answer').html() + ']').next().html());
+
+            return compare_arrays(question_user_answer, question_correct_answer);
             break;
 
         case '2':
             var selected_checkbox = $(".quiz_show input[name='answer']:checked");
-            var response_answer = '';
-            for (const selectedElement of selected_checkbox) {
-                response_answer += $(selectedElement).val() + ';';
+
+            for (var i = 0; i < selected_checkbox.length; i++) {
+                question_user_answer.push(selected_checkbox.eq(i).next().html());
             }
-            return response_answer == $('.quiz_show .correct_answer').html();
+
+            let correct_response_answer_array = $('.quiz_show .correct_answer').html().split(';');
+            correct_response_answer_array.pop();
+            for (var i = 0; i < correct_response_answer_array.length; i++) {
+                question_correct_answer.push($('.quiz_show input[value=' + correct_response_answer_array[i] + ']').next().html());
+            }
+
+            return compare_arrays(question_user_answer, question_correct_answer);
+            // return response_answer == $('.quiz_show .correct_answer').html();
             break;
 
         case '3':
+            question_user_answer.push($('.quiz_show input[name=answer]:checked').next().html());
+            question_correct_answer.push($('.quiz_show input[value=' + $('.quiz_show .correct_answer').html() + ']').next().html());
+            
             return $('.quiz_show input[name=answer]:checked').val() == $('.quiz_show .correct_answer').html();
             break;
 
         case '4':
+            question_user_answer.push($('.quiz_show #answer').val());
+            question_correct_answer.push($('.quiz_show .correct_answer').html());
+
             if ($('.quiz_show .case_sensitive').html() == 0) {
                 return $('.quiz_show #answer').val().toUpperCase() == $('.quiz_show .correct_answer').html().toUpperCase();
             } else {
@@ -451,6 +470,9 @@ function evulate() {
             var correct_answer = $('.quiz_show .correct_answer').html();
             var numeric_answer_array = correct_answer.split('@');
             numeric_answer_array.pop();
+
+            question_user_answer.push($('.quiz_show #answer').val());
+            question_correct_answer = numeric_answer_array;
 
             for (let numeric_item of numeric_answer_array) {
                 numeric_item = numeric_item.replace("&lt;", "<").replace("&lt;", "<").replace("&gt;", ">");
@@ -497,6 +519,9 @@ function evulate() {
                 sequence_answer += sequence_items.eq(i).find('label').html() + ';';
             }
 
+            question_user_answer = sequence_answer;
+            question_correct_answer = $('.quiz_show .correct_answer').html();
+
             return sequence_answer == $('.quiz_show .correct_answer').html();
             break;
 
@@ -508,6 +533,9 @@ function evulate() {
                 if (matching_items.eq(i).css('justify-content') != 'center') return false;
                 matching_answer += matching_items.eq(i).find('p').eq(0).html() + ';' + matching_items.eq(i).find('p').eq(1).html() + '@';
             }
+
+            question_user_answer = matching_answer;
+            question_correct_answer = $('.quiz_show .correct_answer').html();
 
             return matching_answer == $('.quiz_show .correct_answer').html();
             break;
@@ -543,6 +571,8 @@ function evulate() {
                 select_lists_answer += select_lists_items.eq(i).val() + ';';
             }
 
+            question_user_answer = select_lists_answer;
+            question_correct_answer = $('.quiz_show .correct_answer').html();
             return select_lists_answer == $('.quiz_show .correct_answer').html();
             break;
 
@@ -553,6 +583,8 @@ function evulate() {
                 drag_words_answer += drag_words_array[i] + ';';
             }
 
+            question_user_answer = drag_words_answer;
+            question_correct_answer = $('.quiz_show .correct_answer').html();
             return drag_words_answer == $('.quiz_show .correct_answer').html();
             break;
 
@@ -647,4 +679,27 @@ function incorrect_process() {
         }
     }
     console.log('incorrect_process function');
+}
+
+/*
+*************** Compare 2 arrays ***************
+*/
+function compare_arrays(array1, array2) {
+    sorted_array1 = array1.sort(s);
+    sorted_array2 = array2.sort(s);
+
+    var is_same = (sorted_array1.length == sorted_array2.length) && sorted_array1.every(function(element, index) {
+        return element === sorted_array2[index]; 
+    });
+
+    return is_same;
+}
+
+function s(x,y){
+    var pre = ['string' , 'number' , 'bool']
+    if(typeof x!== typeof y )return pre.indexOf(typeof y) - pre.indexOf(typeof x);
+
+    if(x === y)return 0;
+    else return (x > y)?1:-1;
+
 }

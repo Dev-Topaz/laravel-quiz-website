@@ -86,19 +86,22 @@
                   <span style="line-height: 12px"><b>Question
                       {{ intval($question['quizId']) + 1 }} <span style="color:#5B9BD5">Survey</span></b></span><br>
                                 <span><b>{{ $question['question_content'] }}<br></b></span><br>
-{{--                                <table style="width:100%;border-collapse:collapse">--}}
-{{--                                    <tbody>--}}
-{{--                                    <tr style="background-color:#F3F3F3">--}}
-{{--                                        <td colspan="2" style="border: 1px solid #E0E0E0;padding:5px">--}}
-{{--                                            User Answer--}}
-{{--                                        </td>--}}
-{{--                                    </tr>--}}
-{{--                                    <tr>--}}
-{{--                                        <td style="border: 1px solid #E0E0E0;padding:5px">--}}
-{{--                                        </td>--}}
-{{--                                    </tr>--}}
-{{--                                    </tbody>--}}
-{{--                                </table>--}}
+                                <table style="width:100%;border-collapse:collapse">
+                                    <tbody>
+                                    <tr style="background-color:#F3F3F3">
+                                        <td colspan="2" style="border: 1px solid #E0E0E0;padding:5px">
+                                            User Answer
+                                        </td>
+                                    </tr>
+                                    @foreach ($question['question_user_answer'] as $item)
+                                    <tr>
+                                        <td style="border: 1px solid #E0E0E0;padding:5px">
+                                            {{ $item }}
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
                                 <br>
                             </td>
                         </tr>
@@ -110,29 +113,29 @@
                                 <span
                                     style="line-height: 20px">Points:&nbsp;{{ $question['question_user_point'] }}/{{ $question['question_point'] }}&nbsp;&nbsp;|&nbsp;&nbsp;Attempts:&nbsp;{{ $question['question_user_attempts'] }}/{{ $question['question_attempts'] }}</span>
                                 <br>{!! $question['question_content'] !!}<br>
-{{--                                <table style="width:100%;border-collapse:collapse">--}}
-{{--                                    <tbody>--}}
-{{--                                    <tr style="background-color:#F3F3F3">--}}
-{{--                                        <td style="border: 1px solid #E0E0E0;padding:5px">--}}
-{{--                                            User Answer--}}
-{{--                                        </td>--}}
-{{--                                        <td style="border: 1px solid #E0E0E0;padding:5px">--}}
-{{--                                            Correct Answer--}}
-{{--                                        </td>--}}
-{{--                                    </tr>--}}
-{{--                                    <tr>--}}
-{{--                                        <td style="border: 1px solid #E0E0E0;padding:5px">--}}
-{{--                                            15--}}
-{{--                                            x 86 = 1290--}}
-{{--                                            Cauliflowers.--}}
-{{--                                        </td>--}}
-{{--                                        <td style="border: 1px solid #E0E0E0;padding:5px">--}}
-{{--                                            15 x 86 = 1290--}}
-{{--                                            Cauliflowers.--}}
-{{--                                        </td>--}}
-{{--                                    </tr>--}}
-{{--                                    </tbody>--}}
-{{--                                </table>--}}
+                                <table style="width:100%;border-collapse:collapse">
+                                    <tbody>
+                                    <tr style="background-color:#F3F3F3">
+                                        <td style="border: 1px solid #E0E0E0;padding:5px">
+                                            User Answer
+                                        </td>
+                                        <td style="border: 1px solid #E0E0E0;padding:5px">
+                                            Correct Answer
+                                        </td>
+                                    </tr>
+                                    @for ($i = 0; $i < $question['question_user_answer'].length; $i++)
+
+                                    <tr>
+                                        <td style="border: 1px solid #E0E0E0;padding:5px">
+                                            {{ $question['$question_user_answer'][i] }}
+                                        </td>
+                                        <td style="border: 1px solid #E0E0E0;padding:5px">
+                                            {{ $question['$question_correct_answer'][i] }}
+                                        </td>
+                                    </tr>
+                                    @endfor
+                                    </tbody>
+                                </table>
                                 <br>
                                 <span><b>Feedback:</b>{{ $question['question_feedback'] }}</span>
                             </td>
