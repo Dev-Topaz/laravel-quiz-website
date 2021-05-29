@@ -127,10 +127,10 @@
 
                                     <tr>
                                         <td style="border: 1px solid #E0E0E0;padding:5px">
-                                            {{ $question['$question_user_answer'][i] }}
+                                            {{ $question['question_user_answer'][i] }}
                                         </td>
                                         <td style="border: 1px solid #E0E0E0;padding:5px">
-                                            {{ $question['$question_correct_answer'][i] }}
+                                            {{ $question['question_correct_answer'][i] }}
                                         </td>
                                     </tr>
                                     @endfor
