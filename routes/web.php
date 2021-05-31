@@ -25,7 +25,6 @@ Route::get('/', [ExamController::class, 'index']);
 Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-//Route::get('/initial_roles', [App\Http\Controllers\PermissionController::class, 'Permission']);
 Route::group(['middleware' => 'role:manager'], function () {
 
     Route::get('/admin', function () {

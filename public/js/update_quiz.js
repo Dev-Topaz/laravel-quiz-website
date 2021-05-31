@@ -480,6 +480,8 @@ function slide_to_form() {
     answer_slide2form($('.slide_view_answer_element')[0].outerHTML, $('#answer_content').val());
     $('#question').html(question_slide2form($('.slide_view_question_element')[0].outerHTML));
     $('.slide_view_group_checkbox').remove();
+    // $('.slide_view_answer_freeze_element').remove();
+
 }
 
 function form_to_slide() {
@@ -492,6 +494,7 @@ function form_to_slide() {
     $('.slide_view_group').resizable();
     $('#quiz_background_container .slide_view_group').draggable({cancel: 'div.cancel_drag', containment: 'parent'});
     if ($('.slide_view_group_checkbox').length === 0) $('.slide_view_group').append('<input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;">');
+    // $('.slide_view_answer_element').prepend('<div class="slide_view_answer_freeze_element" style="width: 100%;height: 100%;position: absolute;z-index: 100;"></div>')
 
 }
 
