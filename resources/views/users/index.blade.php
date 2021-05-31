@@ -13,7 +13,7 @@
                         </div>
 
                         <div style="float: right;margin-right: 5px">
-                            <a href="#" id="button_add_user" class="bb_button bb_small bb_green">
+                            <a href="{{ route('users.create') }}" id="button_add_user" class="bb_button bb_small bb_green">
                                 <span class="icon-user-plus" style="margin-right: 5px"></span>Create New User!
                             </a>
                         </div>
@@ -123,7 +123,7 @@
                     {{--                    <img style="position: absolute;right:35px;top:-12px" src="images/icons/29_blue.png">--}}
                     {{--                </div>--}}
 
-                    <div id="entries_container">
+                    <a id="entries_container">
                         <table width="100%" cellspacing="0" cellpadding="0" border="0" id="entries_table">
                             <thead>
                             <tr>
@@ -154,7 +154,7 @@
                                                                      value="{{ $user->id }}"></td>
                                         <td class="me_number">{{$user->id}}</td>
                                         <td>
-                                            <div>{{$user->name}}</div>
+                                            <a href="{{ url('/users') }}/{{ $user->id }}/edit">{{$user->name}}</a>
                                         </td>
                                         <td>
                                             <div>{{$user->email}}</div>
@@ -168,7 +168,7 @@
                                                 @endif
                                             </div>
                                         </td>
-                                        <td>
+                                        <td class="active_col">
                                             @if($user->active)
                                                 Active
                                             @else
@@ -240,33 +240,5 @@
         <div class="clear"></div>
 
     </div>
-    <script>
-        $('#user_delete').click(function () {
-
-            let selected_Ids = [];
-
-            for (let i = 0; i < $('input[type=checkbox]:checked').length; i++) {
-                selected_Ids.push($('input[type=checkbox]:checked').eq(i).val());
-            }
-
-            const root_url = $('meta[name=url]').attr('content');
-            const token = $('meta[name=csrf-token]').attr('content');
-
-            $.ajax({
-                url: root_url + '/delete_selected_users',
-                type: 'POST',
-                data: {
-                    _token: token,
-                    selected_Ids: selected_Ids,
-                },
-                success: function (data) {
-                    for (let i = 0; i < data.length; i++) {
-                        $('#row_' + data[i]).remove();
-                    }
-                }
-            }).catch((XHttpResponse) => {
-                console.log(XHttpResponse);
-            });
-        });
-    </script>
+    <script src="{{ asset('js/user_crud.js') }}"></script>
 @endsection

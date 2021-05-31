@@ -50,6 +50,7 @@ Route::group(['middleware' => 'role:manager'], function () {
     Route::post('/add_exam_group', [ExamGroupController::class, 'default_store']);
     Route::delete('/exam_groups/{exam_group}', [ExamGroupController::class, 'destroy']);
     Route::post('/delete_selected_users', [UserController::class, 'destroy_selected_users']);
+    Route::post('/suspend_selected_users', [UserController::class, 'suspend_selected_users']);
 });
 
 Route::get('/preview_slide/{id}', [PreviewController::class, 'preview_slide']);
