@@ -49,6 +49,7 @@ Route::group(['middleware' => 'role:manager'], function () {
     Route::post('/upload_video', [UploadController::class, 'upload_video']);
     Route::post('/add_exam_group', [ExamGroupController::class, 'default_store']);
     Route::delete('/exam_groups/{exam_group}', [ExamGroupController::class, 'destroy']);
+    Route::post('/delete_selected_users', [UserController::class, 'destroy_selected_users']);
 });
 
 Route::get('/preview_slide/{id}', [PreviewController::class, 'preview_slide']);

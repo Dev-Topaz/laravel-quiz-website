@@ -92,6 +92,18 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        return $user;
+    }
+
+    public function destroy_selected_users(Request $request)
+    {
+        foreach ($request->selected_Ids as $id) {
+            $user = User::find($id);
+            $user->delete();
+        }
+
+        return $request->selected_Ids;
     }
 }
