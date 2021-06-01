@@ -2056,31 +2056,6 @@
 
             <div id="content" class="full">
                 <div class="post manage_forms">
-                    <div class="content_header">
-                        <div class="content_header_title">
-                            <div style="float: left">
-                                <p>{{ $exam->description }}</p>
-                                <p>Attempt Number: {{ $exam->attempt_number }}, Passing
-                                    Score: {{ $exam->passing_score }}</p>
-                            </div>
-                            <div style="float: right">
-                                <button type="button" class="quiz_handle_button" onclick="delete_question_group()"><i
-                                        class="fas fa-trash"></i>Delete
-                                    Question Group
-                                </button>
-                                <button type="button" class="quiz_handle_button" onclick="update_quiz()"><i
-                                        class="fas fa-save"></i>Update
-                                    Quiz
-                                </button>
-                                <button type="button" class="quiz_handle_button" onclick="delete_quiz()"><i
-                                        class="fas fa-trash"></i>Delete
-                                    Quiz
-                                </button>
-                            </div>
-                            <div style="clear: both; height: 1px"></div>
-                        </div>
-                    </div>
-
                     <div class="create_form" id="quiz_form">
                         <div class="content_body">
                             <div class="row">

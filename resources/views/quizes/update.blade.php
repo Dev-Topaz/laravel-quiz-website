@@ -513,8 +513,8 @@
     </div>
     <div class="cell-3 slide_option" style="padding: 0 20px;">
         <h3 style="border-bottom: 1px dotted grey;padding: 15px 10px;">Slide Options</h3>
-        <div style="{{ $quiz->type_id > 11 ? 'display:none;' : ''}}">
-            <div>
+        <div>
+            <div style="{{ $quiz->type_id > 11 ? 'display:none;' : ''}}">
                 <div class="row" style="padding: 0 10px;">
                     <div class="cell-5">
                         <label for="question_type" style="font-size: 16px;">Question type:</label>
@@ -541,10 +541,10 @@
                                     value="by_result" {{ $quiz->feedback_type == 'by_result' ? 'selected' : '' }}>By
                                     Result
                                 </option>
-{{--                                <option--}}
-{{--                                    value="by_choice" {{ $quiz->feedback_type == 'by_choice' ? 'selected' : '' }}>By--}}
-{{--                                    Choice--}}
-{{--                                </option>--}}
+                                {{--                                <option--}}
+                                {{--                                    value="by_choice" {{ $quiz->feedback_type == 'by_choice' ? 'selected' : '' }}>By--}}
+                                {{--                                    Choice--}}
+                                {{--                                </option>--}}
                             </select>
                         </div>
                         {{--                        @if (isset($quiz->branching))--}}
@@ -637,8 +637,23 @@
                     </div>
                 </div>
             </div>
-{{--            <div class="form_view_element">preview</div>--}}
-{{--            <div class="slide_view_element" style="display: none">Slide Layer</div>--}}
+            <div id="question_control_btn_container">
+                <button type="button" class="quiz_handle_button" onclick="delete_question_group()"><i
+                        class="fas fa-trash"></i>
+                    <span>Delete
+                        Question Group</span>
+                </button>
+                <button type="button" class="quiz_handle_button" onclick="update_quiz()"><i
+                        class="fas fa-save"></i><span>Update
+                    Quiz</span>
+                </button>
+                <button type="button" class="quiz_handle_button" onclick="delete_quiz()"><i
+                        class="fas fa-trash"></i><span>Delete
+                        Quiz</span>
+                </button>
+            </div>
+            {{--            <div class="form_view_element">preview</div>--}}
+            {{--            <div class="slide_view_element" style="display: none">Slide Layer</div>--}}
             <input type="text" id="target_element" value="" hidden>
         </div>
     </div>

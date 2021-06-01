@@ -905,3 +905,16 @@ if it's not present, don't show loader */
     font-size: 18px;
     line-height: 3;
 }
+
+#question_control_btn_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#question_control_btn_container button {
+    margin-top: 15px;
+    padding: 10px;
+    font-size: 16px !important;
+    width: 80%;
+}

@@ -208,6 +208,10 @@ function rearrange_preview_ui() {
 
             break;
 
+        case '13':
+            $('#preview_container .preview_btn button').html('Start Quiz');
+            break;
+
         case '14':
             let passed_score_html = $('.quiz_show .slide_view_answer_element .col-md-12').html();
             console.log(passed_score_html);
@@ -293,6 +297,40 @@ function preview() {
 
         case 'Try again':
             $('.preview_btn button').html('Submit');
+            break;
+
+        case 'Start Quiz':
+
+            $('#preview_toast').fadeOut(1500);
+
+            attempts = 0;
+            question_user_point = 0;
+
+            var current_show_id = $('.quiz_show').attr('id');
+            var next_show_id = $('.quiz_show').next().attr('id');
+            var type_id = $('.quiz_show').next().find('.type_id').html();
+
+            $('#quiz_list_audio-' + current_show_id.split('-')[1])[0].pause();
+
+            if (next_show_id === undefined || type_id == 14 || type_id == 15) {
+
+                $('.preview_btn button').html('See Result');
+            } else {
+
+                $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].pause();
+                $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].currentTime = 0;
+                $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].play();
+
+                $('#' + current_show_id).removeClass('quiz_show');
+                $('#' + current_show_id).addClass('quiz_hide');
+
+                $('#' + next_show_id).removeClass('quiz_hide');
+                $('#' + next_show_id).addClass('quiz_show');
+                rearrange_preview_ui();
+                $('.preview_btn button').html('Submit');
+            }
+
+
             break;
 
         case 'Continue':
