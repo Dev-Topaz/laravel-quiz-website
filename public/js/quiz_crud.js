@@ -9,6 +9,9 @@ function show_quiz_editor(node) {
 
     show_preload();
     $.get(root_url + "/quizes/" + quizId + "/edit", function (data, status) {
+        $('.selected_preview_item').removeClass('selected_preview_item');
+        $('#preview_item-' + quizId).addClass('selected_preview_item');
+
         $('#quiz_view').html(data);
         show_correct_view();
         store_quiz_state();
@@ -36,6 +39,10 @@ function onNodeClick(node) {
         } else {
             $('#quiz_list').find('.current').removeClass('current current-select');
             $('#quiz_list li#' + prev_id).addClass('current current-select');
+
+            console.log(prev_id);
+            $('.selected_preview_item').removeClass('selected_preview_item');
+            $('#preview_item-' + prev_id).addClass('selected_preview_item');
         }
     } else {
         show_quiz_editor(node);
@@ -201,7 +208,7 @@ function create_quiz(quiz_type, root_url, token) {
                 }
             }
 
-            if(quiz_type == '12' || quiz_type == '13') {
+            if (quiz_type == '12' || quiz_type == '13') {
                 parentNode.find('li').eq(0).attr('id', quizId);
                 parentNode.find('li').eq(0).attr('order', order);
             } else {
@@ -712,6 +719,6 @@ function remove_zoom_style(string) {
 * */
 $('.preview_item').click(function () {
     $('#' + $(this).attr('id').split('-')[1]).trigger('click');
-    $('.selected_preview_item').removeClass('selected_preview_item');
-    $(this).addClass('selected_preview_item');
+    // $('.selected_preview_item').removeClass('selected_preview_item');
+    // $(this).addClass('selected_preview_item');
 });
