@@ -221,6 +221,18 @@ function create_quiz(quiz_type, root_url, token) {
 
             $.get(root_url + "/quizes/" + quizId + "/edit", function (data, status) {
                 $('#quiz_view').html(data);
+
+                const element = '<div id="preview_item-' + quizId + '" class="preview_item selected_preview_item">' + $('#quiz_view .slide_view_element').html().replace('top:50%;left:50%;transform:translate(-50%, -50%);', '') + '</div>';
+                $(element).insertAfter($('#preview_item-' + prev_id));
+
+                $('#preview_item-' + quizId + ' > div').css({
+                    'margin': 'auto',
+                    'zoom': $('#preview_item-' + prev_id + ' > div').css('zoom'),
+                });
+
+                $('.selected_preview_item').removeClass('selected_preview_item');
+                $('#preview_item-' + quizId).addClass('selected_preview_item');
+
                 show_correct_view();
                 store_quiz_state();
                 hide_preload();
@@ -717,7 +729,9 @@ function remove_zoom_style(string) {
 /*
 * *************** slide view quiz list *************************
 * */
-$('.preview_item').click(function () {
+// $('#slide_view_quiz_list .preview_item').click(function () {
+$('#slide_view_quiz_list').on('click', '.preview_item', function () {
+    console.log($(this).attr('id').split('-')[1]);
     $('#' + $(this).attr('id').split('-')[1]).trigger('click');
     // $('.selected_preview_item').removeClass('selected_preview_item');
     // $(this).addClass('selected_preview_item');
