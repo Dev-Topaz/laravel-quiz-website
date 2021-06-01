@@ -44,7 +44,7 @@ function onNodeClick(node) {
 }
 
 function is_edited() {
-    if ($('.slide_view_question_element').length == 0) return false;
+    if ($('#quiz_view .slide_view_question_element').length == 0) return false;
 
     if (remove_zoom_style(get_quiz_state().replaceAll(/\s/g, '')) == remove_zoom_style($('#tmp_quiz_database_values').val().replaceAll(/\s/g, '').replaceAll('null', ''))) {
         return false;
@@ -239,11 +239,11 @@ function update_quiz() {
         slide_to_form();
     }
 
-    if ($('.slide_view_group_checkbox').length === 0) $('.slide_view_group').append('<input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;">');
+    if ($('#quiz_view .slide_view_group_checkbox').length === 0) $('#quiz_view .slide_view_group').append('<input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;">');
 
 
     const typeId = $('#type_id').val();
-    let question_element = $('.slide_view_question_element')[0].outerHTML;
+    let question_element = $('#quiz_view .slide_view_question_element')[0].outerHTML;
 
     const answer = $('#answer_content').val();
 
@@ -258,9 +258,9 @@ function update_quiz() {
     const audio = $('#audio').val();
     const background_img = $('#background_img').val();
     // const order
-    let answer_element = $('.slide_view_answer_element')[0].outerHTML;
-    let media_element = $('.slide_view_media_element')[0] == undefined ? null : $('.slide_view_media_element')[0].outerHTML;
-    let video_element = $('.slide_view_video_element')[0] == undefined ? null : $('.slide_view_video_element')[0].outerHTML;
+    let answer_element = $('#quiz_view .slide_view_answer_element')[0].outerHTML;
+    let media_element = $('#quiz_view .slide_view_media_element')[0] == undefined ? null : $('#quiz_view .slide_view_media_element')[0].outerHTML;
+    let video_element = $('#quiz_view .slide_view_video_element')[0] == undefined ? null : $('#quiz_view .slide_view_video_element')[0].outerHTML;
     const question_type = Metro.getPlugin('#question_type', 'select').val();
     const feedback_type = Metro.getPlugin('#feedback', 'select').val();
 
@@ -303,8 +303,8 @@ function update_quiz() {
 
 
     let other_elements = '';
-    for (let i = 0; i < $('.other_slide_view_element').length; i++) {
-        other_elements += remove_resizable_tag($('.other_slide_view_element').eq(i)[0].outerHTML);
+    for (let i = 0; i < $('#quiz_view .other_slide_view_element').length; i++) {
+        other_elements += remove_resizable_tag($('#quiz_view .other_slide_view_element').eq(i)[0].outerHTML);
     }
 
 
@@ -611,11 +611,11 @@ function get_quiz_state() {
     //     slide_to_form();
     // }
 
-    if ($('.slide_view_group_checkbox').length === 0) $('.slide_view_group').append('<input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;">');
+    if ($('#quiz_view .slide_view_group_checkbox').length === 0) $('.slide_view_group').append('<input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;">');
 
 
     const typeId = $('#type_id').val();
-    let question_element = $('.slide_view_question_element')[0].outerHTML;
+    let question_element = $('#quiz_view .slide_view_question_element')[0].outerHTML;
 
     const answer = $('#answer_content').val();
 
@@ -630,9 +630,9 @@ function get_quiz_state() {
     const audio = $('#audio').val();
     const background_img = $('#background_img').val();
     // const order
-    let answer_element = $('.slide_view_answer_element')[0].outerHTML;
-    let media_element = $('.slide_view_media_element')[0] == undefined ? null : $('.slide_view_media_element')[0].outerHTML;
-    let video_element = $('.slide_view_video_element')[0] == undefined ? null : $('.slide_view_video_element')[0].outerHTML;
+    let answer_element = $('#quiz_view .slide_view_answer_element')[0].outerHTML;
+    let media_element = $('#quiz_view .slide_view_media_element')[0] == undefined ? null : $('#quiz_view .slide_view_media_element')[0].outerHTML;
+    let video_element = $('#quiz_view .slide_view_video_element')[0] == undefined ? null : $('#quiz_view .slide_view_video_element')[0].outerHTML;
     const question_type = Metro.getPlugin('#question_type', 'select').val();
     const feedback_type = Metro.getPlugin('#feedback', 'select').val();
 
@@ -675,8 +675,8 @@ function get_quiz_state() {
 
 
     let other_elements = '';
-    for (let i = 0; i < $('.other_slide_view_element').length; i++) {
-        other_elements += remove_resizable_tag($('.other_slide_view_element').eq(i)[0].outerHTML);
+    for (let i = 0; i < $('#quiz_view .other_slide_view_element').length; i++) {
+        other_elements += remove_resizable_tag($('#quiz_view .other_slide_view_element').eq(i)[0].outerHTML);
     }
 
     const tmp_values = question_element + answer + answer_element + media_element + feedback_correct + feedback_incorrect + feedback_try_again + media + media_element + video + audio + video_element + background_img + question_type + feedback_type + branching + attempts + shuffle_answers + partially_correct + limit_number_response + case_sensitive + correct_score + incorrect_score + try_again_score + other_elements;

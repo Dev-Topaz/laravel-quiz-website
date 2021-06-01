@@ -8,7 +8,7 @@ function question_slide2form(question) {
 }
 
 function question_form2slide() {
-    $('.slide_view_question_element > div.cancel_drag').html($('#question > div.cancel_drag').eq(0).html());
+    $('#quiz_view .slide_view_question_element > div.cancel_drag').html($('#question > div.cancel_drag').eq(0).html());
 }
 
 // function media_form2slide() {
@@ -263,8 +263,8 @@ function answer_form2slide() {
                 form_answer_input_element.find('.blank').eq(i).css('padding-right', '70px');
             }
             form_answer = form_answer_input_element.html();
-            $('#slide_drag_words_question').html(form_answer);
-            $('#slide_drag_words_answer').html(word_array);
+            $('#quiz_view #slide_drag_words_question').html(form_answer);
+            $('#quiz_view #slide_drag_words_answer').html(word_array);
             break;
 
         case '11':
@@ -342,8 +342,8 @@ function answer_form2slide() {
             break;
     }
 
-    if (typeId !== '10' && typeId !== '11') $('.slide_view_answer_element > .col-md-12').html(slide_answer_element);
-    $('.slide_view_answer_element > .col-md-12').attr('style', '');
+    if (typeId !== '10' && typeId !== '11') $('#quiz_view .slide_view_answer_element > .col-md-12').html(slide_answer_element);
+    $('#quiz_view .slide_view_answer_element > .col-md-12').attr('style', '');
 }
 
 // answer_slide2form($('#answer_element').val(), $('#answer_content').val());
@@ -477,8 +477,8 @@ function answer_store() {
 
 function slide_to_form() {
 
-    answer_slide2form($('.slide_view_answer_element')[0].outerHTML, $('#answer_content').val());
-    $('#question').html(question_slide2form($('.slide_view_question_element')[0].outerHTML));
+    answer_slide2form($('#quiz_view .slide_view_answer_element')[0].outerHTML, $('#answer_content').val());
+    $('#question').html(question_slide2form($('#quiz_view .slide_view_question_element')[0].outerHTML));
     $('.slide_view_group_checkbox').remove();
     // $('.slide_view_answer_freeze_element').remove();
 
@@ -492,9 +492,9 @@ function form_to_slide() {
     fit_slide_view_quiz_list();
     // media_form2slide();
 
-    $('.slide_view_group').resizable();
-    $('#quiz_background_container .slide_view_group').draggable({cancel: 'div.cancel_drag', containment: 'parent'});
-    if ($('.slide_view_group_checkbox').length === 0) $('.slide_view_group').append('<input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;">');
+    $('#quiz_view .slide_view_group').resizable();
+    $('#quiz_view #quiz_background_container .slide_view_group').draggable({cancel: 'div.cancel_drag', containment: 'parent'});
+    if ($('#quiz_view .slide_view_group_checkbox').length === 0) $('#quiz_view .slide_view_group').append('<input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;">');
     // $('.slide_view_answer_element').prepend('<div class="slide_view_answer_freeze_element" style="width: 100%;height: 100%;position: absolute;z-index: 100;"></div>')
 
 }
@@ -548,8 +548,8 @@ function add_canvas_item_info(string) {
 $('body').keydown(function (e) {
 
     if (e.keyCode == 46) {
-        if ($('.other_slide_view_element.selected_slide_view_group').length > 0) {
-            $('.other_slide_view_element.selected_slide_view_group').remove();
+        if ($('#quiz_view .other_slide_view_element.selected_slide_view_group').length > 0) {
+            $('#quiz_view .other_slide_view_element.selected_slide_view_group').remove();
         }
     }
 });
