@@ -406,6 +406,8 @@ function delete_quiz() {
             }
 
             node.remove();
+            $('#preview_item-' + quizId).remove();
+
             $('#quiz_view').html('');
             alert('Quiz Group deleted successfully');
             hide_preload();
