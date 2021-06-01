@@ -2115,14 +2115,14 @@
                                         </ul>
                                     </div>
                                     <div id="slide_view_quiz_list"
-                                         style="overflow-y: scroll;height: 650px;display: none;padding-top: 60px;">
+                                         style="overflow-y: scroll;height: 650px;display: none;">
                                         @foreach ($exam->exam_groups as $exam_group)
                                             @if ($exam_group->group_name != 'Results')
                                                 @foreach($exam_group->quizes as $quiz)
-                                                    <div class="preview_item">
+                                                    <div id="preview_item-{{ $quiz->id }}" class="preview_item">
                                                         <div
-                                                            style="zoom:0.3;top:50%;left:50%;transform:translate(-50%, -50%);margin: auto 0;width: {{ $quiz->exam_group->exam->screen_width }}px;height:{{ $quiz->exam_group->exam->screen_height }}px;{{ $quiz->exam_group->exam->theme_style ?? 'background:white' }}"
-                                                            id="slide_view_container">
+                                                            style="margin: auto;width: {{ $quiz->exam_group->exam->screen_width }}px;height:{{ $quiz->exam_group->exam->screen_height }}px;{{ $quiz->exam_group->exam->theme_style ?? 'background:white' }}"
+                                                        >
                                                             <div id="quiz_background_container"
                                                                  style="font-size: 1rem;width: 100%;height:100%;padding: 20px;{{ isset($quiz->background_img) ? ('background-image:' . $quiz->background_img . ';') : '' }}background-size: 100% 100%;background-repeat:no-repeat;">
                                                                 {!! $quiz->question_element !!}
@@ -2161,10 +2161,10 @@
                                         @foreach ($exam->exam_groups as $exam_group)
                                             @if ($exam_group->group_name == 'Results')
                                                 @foreach($exam_group->quizes as $quiz)
-                                                    <div class="preview_item">
+                                                    <div id="preview_item-{{ $quiz->id }}" class="preview_item">
                                                         <div
-                                                            style="zoom:0.3;top:50%;left:50%;transform:translate(-50%, -50%);margin: auto 0;width: {{ $quiz->exam_group->exam->screen_width }}px;height:{{ $quiz->exam_group->exam->screen_height }}px;{{ $quiz->exam_group->exam->theme_style ?? 'background:white' }}"
-                                                            id="slide_view_container">
+                                                            style="margin: auto;width: {{ $quiz->exam_group->exam->screen_width }}px;height:{{ $quiz->exam_group->exam->screen_height }}px;{{ $quiz->exam_group->exam->theme_style ?? 'background:white' }}"
+                                                        >
                                                             <div id="quiz_background_container"
                                                                  style="font-size: 1rem;width: 100%;height:100%;padding: 20px;{{ isset($quiz->background_img) ? ('background-image:' . $quiz->background_img . ';') : '' }}background-size: 100% 100%;background-repeat:no-repeat;">
                                                                 {!! $quiz->question_element !!}

@@ -704,3 +704,12 @@ function remove_zoom_style(string) {
     tmp_2.shift();
     return (tmp_1[0] + tmp_2.join(';'));
 }
+
+/*
+* *************** slide view quiz list *************************
+* */
+$('.preview_item').click(function () {
+    $('#' + $(this).attr('id').split('-')[1]).trigger('click');
+    $('.selected_preview_item').removeClass('selected_preview_item');
+    $(this).addClass('selected_preview_item');
+});

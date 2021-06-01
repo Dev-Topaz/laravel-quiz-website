@@ -489,6 +489,7 @@ function form_to_slide() {
     question_form2slide();
     answer_form2slide();
     fit_slide_view();
+    fit_slide_view_quiz_list();
     // media_form2slide();
 
     $('.slide_view_group').resizable();
@@ -503,6 +504,7 @@ function form_to_slide() {
 * */
 $(window).resize(function () {
     fit_slide_view();
+    fit_slide_view_quiz_list();
 });
 
 function fit_slide_view() {
@@ -510,6 +512,11 @@ function fit_slide_view() {
     const zoom_height = ($('.slide_view_element').height() - 30) / parseInt($('#screen_height').val());
     const zoom = Math.min(zoom_width, zoom_height);
     $('#slide_view_container').css('zoom', zoom);
+}
+
+function fit_slide_view_quiz_list() {
+    const zoom = ($('#slide_view_quiz_list').width() - 40) / parseInt($('#screen_width').val());
+    $('.preview_item > div').css('zoom', zoom);
 }
 
 /**************************************************************/
@@ -711,3 +718,4 @@ $('#slide_view_insert_audio_btn').click(function () {
 $('#form_view_import_audio_file_btn').click(function () {
     $('#form_view_input_audio_element').trigger('click');
 });
+

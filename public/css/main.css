@@ -922,3 +922,12 @@ if it's not present, don't show loader */
 .preview_item {
     margin: 15px 0;
 }
+
+.preview_item > div {
+    pointer-events: none;
+}
+
+#slide_view_quiz_list .selected_preview_item {
+    padding: 5px;
+    border: 2px solid;
+}
