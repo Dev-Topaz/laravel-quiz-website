@@ -134,13 +134,13 @@
                     <div class="cell-{{ $quiz->type_id > 11 ? '1' : '3'}}"
                          style="display: flex;align-items: center;justify-content: center;padding: 0;">
                         <div id="form_view_pic_video_element"
-                             style="{{ $quiz->type_id > 11 ? 'display:none;' : ''}}">
+                             style="{{ $quiz->type_id > 11 ? 'display:none;' : 'display:flex;'}}">
                             <a href="javascript:void(0)"
                                style="padding: 0 3px;{{ (isset($quiz->media) || isset($quiz->video)) ? 'display: none' : '' }}"
-                               id="form_view_add_picture">Pic</a>
+                               id="form_view_add_picture"><img src="{{ url('/images/icons/add_picture_normal.png') }}" alt="pic"></a>
                             <a href="javascript:void(0)"
                                style="padding: 0 3px;{{ (isset($quiz->media) || isset($quiz->video)) ? 'display: none' : '' }}"
-                               id="form_view_add_video">Video</a>
+                               id="form_view_add_video"><img src="{{ url('/images/icons/add_video_normal.png') }}" alt="video"></a>
                             <img src="{{ $quiz->media ?? '#' }}" alt="form_view_media_element"
                                  id="form_view_media_element"
                                  style="{{ isset($quiz->media) ? 'display: flex' : 'display: none' }};height: 70px"
@@ -151,7 +151,7 @@
                         </div>
                         <a href="javascript:void(0)"
                            style="padding: 0 3px;{{ isset($quiz->audio) ? 'display: none' : '' }}"
-                           id="form_view_add_audio">Audio</a>
+                           id="form_view_add_audio"><img src="{{ url('/images/icons/add_audio_normal.png') }}" alt="audio"></a>
                         <img src="{{ url('/images/icons/audio_icon.png') }}" alt=""
                              style="height: 70px;padding:0 3px;{{ isset($quiz->audio) ? '' : 'display: none' }}"
                              id="form_view_audio_mark">

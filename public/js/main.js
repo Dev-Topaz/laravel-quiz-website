@@ -32,13 +32,18 @@ $('body').on('click', '[data-editable]', function () {
 
 $(function () {
     var fromIndex, toIndex;
+    var fromId, toId;
+
     $('.listview li ul').sortable({
         start: function (event, ui) {
             fromIndex = get_order(ui.item);
+            fromId = ui.item.attr('id');
         },
 
         stop: function (event, ui) {
             toIndex = get_order(ui.item.next());
+            toId = ui.item.next().attr('id');
+            console.log(fromId, toId);
 
             const root_url = $('meta[name=url]').attr('content');
             const token = $('meta[name=csrf-token]').attr('content');
@@ -55,6 +60,11 @@ $(function () {
                     exam_id: exam_id,
                 },
                 success: function (data) {
+
+                    const element = $('#preview_item-' + fromId)[0].outerHTML;
+                    $('#preview_item-' + fromId).remove();
+                    $(element).insertBefore($('#preview_item-' + toId));
+
                     if (fromIndex > toIndex) {
                         for (let i = 0; i < $('#quiz_list li.node').length; i++) {
                             if (parseInt($('#quiz_list li.node').eq(i).attr('order')) >= toIndex && parseInt($('#quiz_list li.node').eq(i).attr('order')) < fromIndex) {
