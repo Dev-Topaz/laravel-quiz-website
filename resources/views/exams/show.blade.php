@@ -2070,7 +2070,8 @@
                                             Slide View
                                         </div>
                                     </div>
-                                    <div class="content_body_main " style="overflow-y: scroll;height: 650px;">
+                                    <div class="content_body_main " id="form_view_quiz_list"
+                                         style="overflow-y: scroll;height: 650px;">
                                         <ul data-role="listview" data-view="content" id="quiz_list"
                                             data-on-node-click="onNodeClick">
                                             @foreach ($exam->exam_groups as $exam_group)
@@ -2113,6 +2114,93 @@
                                             @endforeach
                                         </ul>
                                     </div>
+                                    <div id="slide_view_quiz_list"
+                                         style="overflow-y: scroll;height: 650px;display: none;padding-top: 60px;">
+                                        @foreach ($exam->exam_groups as $exam_group)
+                                            @if ($exam_group->group_name != 'Results')
+                                                @foreach($exam_group->quizes as $quiz)
+                                                    <div class="preview_item">
+                                                        <div
+                                                            style="zoom:0.3;top:50%;left:50%;transform:translate(-50%, -50%);margin: auto 0;width: {{ $quiz->exam_group->exam->screen_width }}px;height:{{ $quiz->exam_group->exam->screen_height }}px;{{ $quiz->exam_group->exam->theme_style ?? 'background:white' }}"
+                                                            id="slide_view_container">
+                                                            <div id="quiz_background_container"
+                                                                 style="font-size: 1rem;width: 100%;height:100%;padding: 20px;{{ isset($quiz->background_img) ? ('background-image:' . $quiz->background_img . ';') : '' }}background-size: 100% 100%;background-repeat:no-repeat;">
+                                                                {!! $quiz->question_element !!}
+                                                                {!! $quiz->answer_element !!}
+                                                                @if (isset($quiz->other_elements))
+                                                                    {!! $quiz->other_elements !!}
+                                                                @endif
+                                                                @if (isset($quiz->media))
+                                                                    {!! $quiz->media_element !!}
+                                                                @else
+                                                                    <div
+                                                                        class="slide_view_media_element slide_view_group"
+                                                                        style="z-index: 1;display: none;position: absolute;top: 0;left: 0;">
+                                                                        <img src="#" alt="slide_view_media"
+                                                                             style="width: 100%;height: 100%;">
+                                                                    </div>
+                                                                @endif
+                                                                @if (!isset($quiz->media) && isset($quiz->video))
+                                                                    {!! $quiz->video_element !!}
+                                                                @else
+                                                                    <div
+                                                                        class="slide_view_video_element slide_view_group"
+                                                                        style="z-index: 1;display: none;position: absolute;top: 0;left: 0;">
+                                                                        <video controls
+                                                                               style="width: 100%;height: 100%">
+                                                                            <source src="#" type="video/mp4">
+                                                                        </video>
+                                                                    </div>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            @endif
+                                        @endforeach
+                                        @foreach ($exam->exam_groups as $exam_group)
+                                            @if ($exam_group->group_name == 'Results')
+                                                @foreach($exam_group->quizes as $quiz)
+                                                    <div class="preview_item">
+                                                        <div
+                                                            style="zoom:0.3;top:50%;left:50%;transform:translate(-50%, -50%);margin: auto 0;width: {{ $quiz->exam_group->exam->screen_width }}px;height:{{ $quiz->exam_group->exam->screen_height }}px;{{ $quiz->exam_group->exam->theme_style ?? 'background:white' }}"
+                                                            id="slide_view_container">
+                                                            <div id="quiz_background_container"
+                                                                 style="font-size: 1rem;width: 100%;height:100%;padding: 20px;{{ isset($quiz->background_img) ? ('background-image:' . $quiz->background_img . ';') : '' }}background-size: 100% 100%;background-repeat:no-repeat;">
+                                                                {!! $quiz->question_element !!}
+                                                                {!! $quiz->answer_element !!}
+                                                                @if (isset($quiz->other_elements))
+                                                                    {!! $quiz->other_elements !!}
+                                                                @endif
+                                                                @if (isset($quiz->media))
+                                                                    {!! $quiz->media_element !!}
+                                                                @else
+                                                                    <div
+                                                                        class="slide_view_media_element slide_view_group"
+                                                                        style="z-index: 1;display: none;position: absolute;top: 0;left: 0;">
+                                                                        <img src="#" alt="slide_view_media"
+                                                                             style="width: 100%;height: 100%;">
+                                                                    </div>
+                                                                @endif
+                                                                @if (!isset($quiz->media) && isset($quiz->video))
+                                                                    {!! $quiz->video_element !!}
+                                                                @else
+                                                                    <div
+                                                                        class="slide_view_video_element slide_view_group"
+                                                                        style="z-index: 1;display: none;position: absolute;top: 0;left: 0;">
+                                                                        <video controls
+                                                                               style="width: 100%;height: 100%">
+                                                                            <source src="#" type="video/mp4">
+                                                                        </video>
+                                                                    </div>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            @endif
+                                        @endforeach
+                                    </div>
                                 </div>
                                 <div class="cell-10" id="quiz_view" style="padding: 0;">
                                 </div>
@@ -2150,6 +2238,9 @@
                 $('.form_view_element').show();
                 $('.slide_view_element').hide();
 
+                $('#form_view_quiz_list').show();
+                $('#slide_view_quiz_list').hide();
+
                 if ($(this).hasClass('clicked')) return;
                 $(this).toggleClass('clicked');
                 $('#slide_view_btn').toggleClass('clicked');
@@ -2171,6 +2262,9 @@
             $('#slide_view_btn').click(function () {
                 $('.form_view_element').hide();
                 $('.slide_view_element').show();
+
+                $('#form_view_quiz_list').hide();
+                $('#slide_view_quiz_list').show();
 
                 if ($(this).hasClass('clicked')) return;
                 $(this).toggleClass('clicked');
