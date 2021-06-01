@@ -788,16 +788,25 @@ div.slide_view_group:active {
 /* Paste this css to your style sheet file or under head tag */
 /* This only works with JavaScript,
 if it's not present, don't show loader */
-.no-js #loader { display: none;  }
-.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+.no-js #loader {
+    display: none;
+}
+
+.js #loader {
+    display: block;
+    position: absolute;
+    left: 100px;
+    top: 0;
+}
+
 .se-pre-con {
-	position: fixed;
-	left: 0px;
-	top: 0px;
-	width: 100%;
-	height: 100%;
-	z-index: 9999;
-	background: url(../images/Preloader_2.gif) center no-repeat #fff;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url(../images/Preloader_2.gif) center no-repeat #fff;
 }
 
 #quiz_list li.node-group > .data {
@@ -805,7 +814,7 @@ if it's not present, don't show loader */
 }
 
 .quiz #main {
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 .se-pre-con-show {
@@ -822,7 +831,7 @@ if it's not present, don't show loader */
 
 .quiz #main .slide_view_group {
     border: 1px dotted grey;
-        box-shadow: rgb(255 255 255) 0px 0px 1px 1px;
+    box-shadow: rgb(255 255 255) 0px 0px 1px 1px;
 }
 
 .quiz #main .selected_slide_view_group {
@@ -857,4 +866,42 @@ if it's not present, don't show loader */
 
 #quiz_view .slide_view_answer_element .col-md-12 {
     pointer-events: none;
+}
+
+/*
+****************** Preview Modal ******************
+*/
+#preview_container {
+    position: relative;
+}
+
+#preview_toast {
+    position: absolute;
+    width: 450px;
+    background: white;
+    left: 50%;
+    z-index: 1000;
+    margin-left: -225px;
+    bottom: 100px;
+    border-radius: 10px;
+    box-shadow: grey 1px 1px 10px 3px;
+}
+
+#preview_toast_title {
+    height: 45px;
+    width: 100%;
+    background: red;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    align-items: center;
+    color: white;
+    padding-left: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#preview_toast_body {
+    padding: 10px 25px;
+    font-size: 18px;
+    line-height: 3;
 }

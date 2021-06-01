@@ -15,12 +15,12 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-{{--    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">--}}
+    {{--    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">--}}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link href="{{ asset('css/toast.css') }}" rel="stylesheet">
+{{--    <link href="{{ asset('css/toast.css') }}" rel="stylesheet">--}}
     <link href="{{ asset('css/jquery.hotspot.css') }}" rel="stylesheet">
     <link href="{{ asset('css/preview.css') }}" rel="stylesheet">
-{{--    <link href="{{ asset('css/metro-all.css') }}" rel="stylesheet">--}}
+    {{--    <link href="{{ asset('css/metro-all.css') }}" rel="stylesheet">--}}
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('css/all.min.css') }}" rel="stylesheet">
 
@@ -33,16 +33,42 @@
 <body>
 <div class="se-pre-con"></div>
 <div id="preview_container">
+    <div id="preview_toast" style="display: none;">
+        <div id="preview_toast_title">Incorrect</div>
+        <div id="preview_toast_body">You didn't choose the correct answer.</div>
+    </div>
     <div id="exam_id" style="display: none;"></div>
     @yield('content')
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="{{ asset('js/toast.js') }}" defer></script>
+{{--<script src="{{ asset('js/toast.js') }}" defer></script>--}}
 <script src="{{ asset('js/jquery.hotspot.js') }}" defer></script>
 {{--<script src="{{ asset('js/metro.js') }}" defer></script>--}}
 <script src="{{ asset('js/main.js') }}" defer></script>
 <script src="{{ asset('js/preview.js') }}" defer></script>
+<script>
+    function show_modal(type, title, content) {
+        switch (type) {
+            case 'error':
+                $('#preview_toast_title').css('background', '#D55F51');
+                break;
+
+            case 'success':
+                $('#preview_toast_title').css('background', '#6BBA4A');
+                break;
+        }
+
+        $('#preview_toast_title').html(title);
+        $('#preview_toast_body').html(content);
+        $('#preview_toast').fadeIn(500);
+        setTimeout(function () {
+            $('#preview_toast').fadeOut(1500);
+        }, 3000);
+
+        return type + ': ' + title + ': ' + content;
+    }
+</script>
 
 </body>
 </html>

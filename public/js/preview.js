@@ -280,13 +280,7 @@ function preview() {
                 question_user_point += parseInt($('.quiz_show .correct_score').html());
                 correct_quiz_count += 1;
                 if ($('.quiz_show .feedback_type').html() != 'none') {
-                    $.toast({
-                        title: 'Correct',
-                        content: $('.quiz_show .feedback_correct').html(),
-                        type: 'success',
-                        delay: 3000,
-                        dismissible: true,
-                    });
+                    show_modal('success', 'Correct', $('.quiz_show .feedback_correct').html());
                 }
                 question_feedback = $('.quiz_show .feedback_correct').html();
                 question_result = 'Correct';
@@ -302,6 +296,8 @@ function preview() {
             break;
 
         case 'Continue':
+
+            $('#preview_toast').fadeOut(1500);
 
             quizzes.push({
                 quizId: quizId,
@@ -664,13 +660,7 @@ function incorrect_process() {
 
         $('.preview_btn button').html('Continue');
         if ($('.quiz_show .feedback_type').html() != 'none') {
-            $.toast({
-                title: 'Incorrect',
-                content: $('.quiz_show .feedback_incorrect').html(),
-                type: 'error',
-                delay: 3000,
-                dismissible: true,
-            });
+            show_modal('error', 'Incorrect', $('.quiz_show .feedback_incorrect').html());
         }
     } else {
         total_score += parseInt($('.quiz_show .try_again_score').html());
@@ -679,13 +669,7 @@ function incorrect_process() {
 
         $('.preview_btn button').html('Try again');
         if ($('.quiz_show .feedback_type').html() != 'none') {
-            $.toast({
-                title: 'Incorrect',
-                content: $('.quiz_show .feedback_try_again').html(),
-                type: 'error',
-                delay: 3000,
-                dismissible: true,
-            });
+            show_modal('error', 'Incorrect', $('.quiz_show .feedback_try_again').html());
         }
     }
     console.log('incorrect_process function');
