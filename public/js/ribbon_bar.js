@@ -153,17 +153,19 @@ $('#slide_view_font_family_selector').change(function () {
     }
 });
 
+var changing_font_size = parseInt($('#font_size_selector').val());
+var changing_font_size_for_answer_element = parseInt($('#font_size_selector').val());
+
 $('#font_size_selector').change(function () {
     var element = $('.selected_slide_view_group'); // get selected element
     if (element.hasClass('slide_view_answer_element')) {
         element.css('font-size', $(this).val() + 'px');
+        changing_font_size_for_answer_element = parseInt($('#font_size_selector').val());
     } else {
         changeFont_size($(this).val());
+        changing_font_size = parseInt($('#font_size_selector').val());
     }
 });
-
-var changing_font_size = parseInt($('#font_size_selector').val());
-var changing_font_size_for_answer_element = parseInt($('#font_size_selector').val());
 
 $('#font_size_bigger_btn').click(function () {
     var element = $('.selected_slide_view_group'); // get selected element
