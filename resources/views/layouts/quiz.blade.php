@@ -35,12 +35,20 @@
 </head>
 <body>
 <div class="se-pre-con"></div>
-<div id="question_save_alert">
-    <div id="alert_content">Some changes will be lost. Are you sure you want to continue?</div>
-    <div id="alert_btn">
+<div id="question_save_alert" class="quiz_dialog">
+    <div id="alert_content" class="quiz_dialog_content">Some changes will be lost. Are you sure you want to continue?</div>
+    <div id="alert_btn" class="quiz_dialog_btn">
         <button id="alert_save" class="button success">Save and Continue</button>
         <button id="alert_not_save" class="button alert" style="margin-bottom: 0">Continue without Saving</button>
         <button id="alert_cancel" class="button light">Cancel</button>
+    </div>
+</div>
+<div id="delete_confirm_dialog" class="quiz_dialog">
+    <input id="delete_dialog_id" type="text" hidden>
+    <div id="delete_dialog_content" class="quiz_dialog_content">Are you sure you want to delete?</div>
+    <div id="delete_dialog_btn" class="quiz_dialog_btn">
+        <button id="delete_yes" class="button success">OK</button>
+        <button id="delete_no" class="button light">Cancel</button>
     </div>
 </div>
 <div id="app">

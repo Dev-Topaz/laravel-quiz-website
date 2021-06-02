@@ -19,6 +19,9 @@ function show_quiz_editor(node) {
         hide_preload();
     }).catch((XHttpResponse) => {
         console.log(XHttpResponse);
+        if (XHttpResponse.responseJSON.message == '' && XHttpResponse.status == 404) {
+            window.location.href = '/';
+        }
         hide_preload();
     });
 }
@@ -272,10 +275,16 @@ function create_quiz(quiz_type, root_url, token) {
                 prev_id = quizId;
             }).catch((XHttpResponse) => {
                 console.log(XHttpResponse);
+                if (XHttpResponse.responseJSON.message == '' && XHttpResponse.status == 404) {
+                    window.location.href = '/';
+                }
                 hide_preload();
             });
         }).catch((XHttpResponse) => {
         console.log(XHttpResponse);
+        if (XHttpResponse.responseJSON.message == '' && XHttpResponse.status == 404) {
+            window.location.href = '/';
+        }
         hide_preload();
     });
 }
@@ -412,6 +421,9 @@ function update_quiz(is_alert_save) {
         }
     }).catch((XHttpResponse) => {
         console.log(XHttpResponse);
+        if (XHttpResponse.responseJSON.message == '' && XHttpResponse.status == 404) {
+            window.location.href = '/';
+        }
         hide_preload();
     });
 
@@ -429,17 +441,52 @@ function remove_resizable_tag(string) {
     return null;
 }
 
-function delete_quiz() {
-    const root_url = $('meta[name=url]').attr('content');
-    const token = $('meta[name=csrf-token]').attr('content');
-    const node = $('#quiz_list').find('.current');
+function show_delete_dialog(string, element) {
+    if (string == 'question') {
 
-    if (node.closest('.node-group').attr('data-caption') == 'Results') {
-        alert('You can\'t this slide!');
-        return;
+        const node = $('#quiz_list').find('.current');
+
+        if (node.closest('.node-group').attr('data-caption') == 'Results') {
+            alert('You can\'t this slide!');
+            return;
+        }
+
+        const quizId = string + '-' + node.attr('id');
+        $('#delete_dialog_id').val(quizId);
     }
 
-    const quizId = node.attr('id');
+    if (string == 'group') {
+        const groupId = string + '-' + $(element).attr('id').split('-')[1];
+        $('#delete_dialog_id').val(groupId);
+    }
+
+    $('#delete_confirm_dialog').fadeIn(500);
+};
+
+$('#delete_no').click(function () {
+    $('#delete_confirm_dialog').fadeOut(500);
+});
+
+$('#delete_yes').click(function () {
+    $('#delete_confirm_dialog').fadeOut(500);
+
+    const dialog_id = $('#delete_dialog_id').val();
+
+    if (dialog_id.split('-')[0] == 'question') {
+        delete_quiz(dialog_id.split('-')[1]);
+    }
+
+    if (dialog_id.split('-')[0] == 'group') {
+        delete_question_group(dialog_id.split('-')[1]);
+    }
+});
+
+function delete_quiz(quizId) {
+    const root_url = $('meta[name=url]').attr('content');
+    const token = $('meta[name=csrf-token]').attr('content');
+
+    const node = $('#quiz_list').find('.current');
+
     prev_id = '';
 
     show_preload();
@@ -471,6 +518,9 @@ function delete_quiz() {
         }
     }).catch((XHttpResponse) => {
         console.log(XHttpResponse);
+        if (XHttpResponse.responseJSON.message == '' && XHttpResponse.status == 404) {
+            window.location.href = '/';
+        }
         hide_preload();
     });
 
@@ -552,6 +602,9 @@ $('#question_group_btn').click(function () {
         }
     }).catch((XHttpResponse) => {
         console.log(XHttpResponse);
+        if (XHttpResponse.responseJSON.message == '' && XHttpResponse.status == 404) {
+            window.location.href = '/';
+        }
         hide_preload();
     });
 });
@@ -559,7 +612,7 @@ $('#question_group_btn').click(function () {
 /*
 * ***************** Delete question group *****************
 * */
-function delete_question_group(element) {
+function delete_question_group(groupId) {
 
     // if ($('.current-group').length == 0) {
     //     alert('Please choose question group to remove.');
@@ -567,8 +620,7 @@ function delete_question_group(element) {
 
     const root_url = $('meta[name=url]').attr('content');
     const token = $('meta[name=csrf-token]').attr('content');
-    const node = $('#' + $(element).attr('id').split('-')[1]);
-    const groupId = $(element).attr('id').split('-')[1];
+    const node = $('#' + groupId);
 
     show_preload();
     $.ajax({
@@ -588,6 +640,9 @@ function delete_question_group(element) {
         }
     }).catch((XHttpResponse) => {
         console.log(XHttpResponse);
+        if (XHttpResponse.responseJSON.message == '' && XHttpResponse.status == 404) {
+            window.location.href = '/';
+        }
         hide_preload();
     });
 }
@@ -662,11 +717,17 @@ $('#duplicate_btn').click(function () {
                 hide_preload();
             }).catch((XHttpResponse) => {
                 console.log(XHttpResponse);
+                if (XHttpResponse.responseJSON.message == '' && XHttpResponse.status == 404) {
+                    window.location.href = '/';
+                }
                 hide_preload();
             });
         }
     }).catch((XHttpResponse) => {
         console.log(XHttpResponse);
+        if (XHttpResponse.responseJSON.message == '' && XHttpResponse.status == 404) {
+            window.location.href = '/';
+        }
         hide_preload();
     });
 });

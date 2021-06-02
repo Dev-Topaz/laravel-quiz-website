@@ -1004,7 +1004,7 @@ if it's not present, don't show loader */
 /*
 ************** Question Save Alert ******************
 */
-#question_save_alert {
+.quiz_dialog {
     position: absolute;
     background: white;
     width: 560px;
@@ -1017,20 +1017,20 @@ if it's not present, don't show loader */
     display: none;
 }
 
-#question_save_alert #alert_content {
+.quiz_dialog .quiz_dialog_content {
     padding: 30px;
     font-size: 20px;
     font-weight: bold;
 }
 
-#question_save_alert #alert_btn {
+.quiz_dialog .quiz_dialog_btn {
     display: flex;
     padding-bottom: 20px;
     align-items: center;
     justify-content: flex-end;
 }
 
-#question_save_alert #alert_btn button {
+.quiz_dialog .quiz_dialog_btn button {
     margin-right: 10px;
     border-radius: 5px;
 }

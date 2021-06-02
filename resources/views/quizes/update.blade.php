@@ -672,11 +672,11 @@
             <div id="question_control_btn_container">
                 <button type="button" class="quiz_handle_button" onclick="update_quiz()"><i
                         class="fas fa-save"></i><span>Update
-                    Quiz</span>
+                    Question</span>
                 </button>
-                <button type="button" class="quiz_handle_button" onclick="delete_quiz()"><i
+                <button type="button" class="quiz_handle_button" onclick="show_delete_dialog('question', this)"><i
                         class="fas fa-trash"></i><span>Delete
-                        Quiz</span>
+                        Question</span>
                 </button>
             </div>
             {{--            <div class="form_view_element">preview</div>--}}
