@@ -107,7 +107,7 @@ function create_quiz(quiz_type, root_url, token) {
     const firstNode = firstParentNode.find('li:first');
 
     if (parentNode.attr('data-caption') == 'Results') {
-        alert('You can\'t insert quizzes at Results Group!');
+        show_modal('error', 'Warning', 'You can\'t insert quizzes at Results Group!');
         return;
     }
 
@@ -220,7 +220,7 @@ function create_quiz(quiz_type, root_url, token) {
     // return;
 
     if (groupId === undefined) {
-        alert('Choose a quiz and then insert a new quiz');
+        show_modal('error', 'Warning', 'Choose a quiz and then insert a new quiz');
         return;
     }
 
@@ -411,7 +411,7 @@ function update_quiz(is_alert_save) {
             other_elements: other_elements,
         },
         success: function (data) {
-            alert('Quiz updated successfully');
+            show_modal('success', 'Success', 'Quiz updated successfully');
             store_quiz_state();
             if (is_alert_save) {
                 show_quiz_editor(clicked_node);
@@ -447,7 +447,7 @@ function show_delete_dialog(string, element) {
         const node = $('#quiz_list').find('.current');
 
         if (node.closest('.node-group').attr('data-caption') == 'Results') {
-            alert('You can\'t this slide!');
+            show_modal('error', 'Warning', 'You can\'t this slide!');
             return;
         }
 
@@ -513,7 +513,7 @@ function delete_quiz(quizId) {
             $('#preview_item-' + quizId).remove();
 
             $('#quiz_view').html('');
-            alert('Quiz Group deleted successfully');
+            show_modal('success', 'Success', 'Quiz Group deleted successfully');
             hide_preload();
         }
     }).catch((XHttpResponse) => {
@@ -614,10 +614,6 @@ $('#question_group_btn').click(function () {
 * */
 function delete_question_group(groupId) {
 
-    // if ($('.current-group').length == 0) {
-    //     alert('Please choose question group to remove.');
-    // }
-
     const root_url = $('meta[name=url]').attr('content');
     const token = $('meta[name=csrf-token]').attr('content');
     const node = $('#' + groupId);
@@ -635,7 +631,7 @@ function delete_question_group(groupId) {
 
             node.remove();
             $('#quiz_view').html('');
-            alert('Quiz deleted successfully');
+            show_modal('success', 'Success', 'Quiz deleted successfully');
             hide_preload();
         }
     }).catch((XHttpResponse) => {
@@ -655,7 +651,7 @@ $('#duplicate_btn').click(function () {
     const lv = Metro.getPlugin('#quiz_list', 'listview');
 
     if ($('.current').length == 0) {
-        alert("Choose a quiz to duplicate.")
+        show_modal('error', 'Warning', 'Choose a quiz to duplicate');
         return;
     }
 
@@ -664,12 +660,12 @@ $('#duplicate_btn').click(function () {
     const node = parentNode.find('li.current');
 
     if (parentNode.attr('data-caption') == 'Results') {
-        alert('You can\'t duplicate at Results Group!');
+        show_modal('error', 'Warning', 'You can\'t duplicate at Results Group!');
         return;
     }
 
     if (node.attr('data-content') == '<i>Info Slide</i>' || node.attr('data-content') == '<i>Quiz Instructions</i>') {
-        alert("This slide can't be duplicated!")
+        show_modal('error', 'Warning', 'This slide can\'t be duplicated!');
         return;
     }
 

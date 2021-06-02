@@ -1034,3 +1034,9 @@ if it's not present, don't show loader */
     margin-right: 10px;
     border-radius: 5px;
 }
+
+#quiz_layout #preview_toast {
+    display: block;
+    bottom: unset;
+    top: 75px;
+}

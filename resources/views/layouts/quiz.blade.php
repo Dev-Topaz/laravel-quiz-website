@@ -33,10 +33,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.22/fabric.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
 </head>
-<body>
+<body id="quiz_layout">
 <div class="se-pre-con"></div>
 <div id="question_save_alert" class="quiz_dialog">
-    <div id="alert_content" class="quiz_dialog_content">Some changes will be lost. Are you sure you want to continue?</div>
+    <div id="alert_content" class="quiz_dialog_content">Some changes will be lost. Are you sure you want to continue?
+    </div>
     <div id="alert_btn" class="quiz_dialog_btn">
         <button id="alert_save" class="button success">Save and Continue</button>
         <button id="alert_not_save" class="button alert" style="margin-bottom: 0">Continue without Saving</button>
@@ -50,6 +51,10 @@
         <button id="delete_yes" class="button success">OK</button>
         <button id="delete_no" class="button light">Cancel</button>
     </div>
+</div>
+<div id="preview_toast" style="display: none;">
+    <div id="preview_toast_title">Incorrect</div>
+    <div id="preview_toast_body">You didn't choose the correct answer.</div>
 </div>
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" style="margin: 0">
@@ -115,6 +120,27 @@
 {{--    <script src="{{ asset('js/jquery.richtext.min.js') }}" defer></script>--}}
 
 <script>
+    function show_modal(type, title, content) {
+        switch (type) {
+            case 'error':
+                $('#preview_toast_title').css('background', '#D55F51');
+                break;
+
+            case 'success':
+                $('#preview_toast_title').css('background', '#6BBA4A');
+                break;
+        }
+
+        $('#preview_toast_title').html(title);
+        $('#preview_toast_body').html(content);
+        $('#preview_toast').fadeIn(500);
+        setTimeout(function () {
+            $('#preview_toast').fadeOut(500);
+        }, 3000);
+
+        return type + ': ' + title + ': ' + content;
+    }
+
     function fetchsequencelist() {
         let list = '';
         let length = $('.sequence_item label').length;
