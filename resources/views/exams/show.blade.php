@@ -2305,5 +2305,16 @@
                 // if ($('.form_view_element').length > 0) store_quiz_state();
             });
 
+            $(document).ready(function () {
+                console.log($('#form_view_quiz_list .node-group > div.data'));
+                for (let i = 0; i < $('#form_view_quiz_list .node-group > div.data').length - 1; i++) {
+                    $('#form_view_quiz_list .node-group > div.data').eq(i).append('<i class="fas fa-trash" id="delete_group_icon-' + $('#form_view_quiz_list .node-group').eq(i).attr('id') + '" style="font-size: 12px;" onclick="delete_question_group(this)"></i>');
+                    $('#form_view_quiz_list .node-group > div.data').eq(i).css({
+                        'display': 'flex',
+                        'align-items': 'center',
+                        'justify-content': 'space-around',
+                    });
+                }
+            });
         </script>
 @endsection

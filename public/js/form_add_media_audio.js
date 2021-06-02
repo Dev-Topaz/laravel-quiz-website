@@ -14,8 +14,8 @@ function delete_media_pic() {
     $('#form_view_media_element').hide();
     $('#media').val('');
     $('#media_element').val('');
-    $('.slide_view_media_element').remove();
-    $('#quiz_background_container').append('<div class="slide_view_media_element slide_view_group" style="z-index: 3;display: none;position: absolute;top: 0;left: 0;"><img src="#" alt="slide_view_media" style="width: 100%;height: 100%;"></div>');
+    $('#quiz_view .slide_view_media_element').remove();
+    $('#quiz_view #quiz_background_container').append('<div class="slide_view_media_element slide_view_group" style="z-index: 3;display: none;position: absolute;top: 0;left: 0;"><img src="#" alt="slide_view_media" style="width: 100%;height: 100%;"></div>');
 }
 
 function show_pic_properties() {
@@ -57,9 +57,9 @@ $('#form_view_input_media_element').change(function () {
                 if (response) {
                     console.log(response);
                     $('#media').val(root_url + '/' + response);
-                    $('.slide_view_media_element img').attr('src', root_url + '/' + response);
-                    $('.slide_view_media_element').show();
-                    $('#media_element').val($('.slide_view_media_element')[0].outerHTML);
+                    $('#quiz_view .slide_view_media_element img').attr('src', root_url + '/' + response);
+                    $('#quiz_view .slide_view_media_element').show();
+                    $('#media_element').val($('#quiz_view .slide_view_media_element')[0].outerHTML);
                     console.log('Image has been uploaded successfully');
                 }
                 hide_preload();
@@ -128,7 +128,7 @@ function apply_all() {
 }
 
 function delete_background_pic() {
-    $('#quiz_background_container').css('background-image', 'unset');
+    $('#quiz_view #quiz_background_container').css('background-image', 'unset');
     $('#background_properties_image img').attr('src', '');
     $('#background_img').val('');
 }
@@ -161,7 +161,7 @@ $('#select_background_img').change(function () {
             success: (response) => {
                 if (response) {
                     console.log(response);
-                    $('#quiz_background_container').css('background-image', 'url("' + root_url + '/' + response + '")');
+                    $('#quiz_view #quiz_background_container').css('background-image', 'url("' + root_url + '/' + response + '")');
                     $('#background_properties_image img').attr('src', root_url + '/' + response);
                     $('#background_img').val('url("' + root_url + '/' + response + '")');
                     console.log('Image has been uploaded successfully');
@@ -224,9 +224,9 @@ $('#form_view_input_video_element').change(function () {
                     $('#video').val(response.filepath);
                     $('#video_properties_video source').attr('src', $('#video').val()).appendTo($('#video_properties_video source').parent());
                     console.log($('.slide_view_video_element video source'));
-                    $('.slide_view_video_element video source').attr('src', $('#video').val()).appendTo($('.slide_view_video_element video'));
-                    $('.slide_view_video_element').show();
-                    $('.slide_view_video_element video')[0].load();
+                    $('#quiz_view .slide_view_video_element video source').attr('src', $('#video').val()).appendTo($('#quiz_view .slide_view_video_element video'));
+                    $('#quiz_view .slide_view_video_element').show();
+                    $('#quiz_view .slide_view_video_element video')[0].load();
 
                     $('#form_view_add_picture').hide();
                     $('#form_view_add_video').hide();
@@ -281,8 +281,8 @@ function delete_video() {
     $('#form_view_add_video').show();
     $('#form_view_video_element').hide();
     $('#video').val('');
-    $('.slide_view_video_element').remove();
-    $('#quiz_background_container').append('<div class="slide_view_video_element slide_view_group" style="z-index: 3;display: none;position: absolute;top: 0;left: 0;"><video controls style="height: 100%;width: 100%;"><source src="#" type="video/mp4"></video></div>');
+    $('#quiz_view .slide_view_video_element').remove();
+    $('#quiz_view #quiz_background_container').append('<div class="slide_view_video_element slide_view_group" style="z-index: 3;display: none;position: absolute;top: 0;left: 0;"><video controls style="height: 100%;width: 100%;"><source src="#" type="video/mp4"></video></div>');
 }
 
 /*

@@ -670,11 +670,6 @@
                 </div>
             </div>
             <div id="question_control_btn_container">
-                <button type="button" class="quiz_handle_button" onclick="delete_question_group()"><i
-                        class="fas fa-trash"></i>
-                    <span>Delete
-                        Question Group</span>
-                </button>
                 <button type="button" class="quiz_handle_button" onclick="update_quiz()"><i
                         class="fas fa-save"></i><span>Update
                     Quiz</span>

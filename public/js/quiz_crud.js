@@ -559,15 +559,16 @@ $('#question_group_btn').click(function () {
 /*
 * ***************** Delete question group *****************
 * */
-function delete_question_group() {
-    if ($('.current-group').length == 0) {
-        alert('Please choose question group to remove.');
-    }
+function delete_question_group(element) {
+
+    // if ($('.current-group').length == 0) {
+    //     alert('Please choose question group to remove.');
+    // }
 
     const root_url = $('meta[name=url]').attr('content');
     const token = $('meta[name=csrf-token]').attr('content');
-    const node = $('#quiz_list').find('.current-group');
-    const groupId = node.attr('id');
+    const node = $('#' + $(element).attr('id').split('-')[1]);
+    const groupId = $(element).attr('id').split('-')[1];
 
     show_preload();
     $.ajax({
