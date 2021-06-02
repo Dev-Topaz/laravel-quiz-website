@@ -144,6 +144,7 @@ function get_cursor_pos_supposed_to_be(str) {
 
 $('#slide_view_font_family_selector').change(function () {
     // changeFont($(this).val());
+
     document.execCommand('styleWithCSS', false, true);
     document.execCommand('fontName', false, $(this).val());
 });

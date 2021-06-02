@@ -35,6 +35,14 @@
 </head>
 <body>
 <div class="se-pre-con"></div>
+<div id="question_save_alert">
+    <div id="alert_content">Some changes will be lost. Are you sure you want to continue?</div>
+    <div id="alert_btn">
+        <button id="alert_save" class="button success">Save and Continue</button>
+        <button id="alert_not_save" class="button alert" style="margin-bottom: 0">Continue without Saving</button>
+        <button id="alert_cancel" class="button light">Cancel</button>
+    </div>
+</div>
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" style="margin: 0">
         <div class="container">

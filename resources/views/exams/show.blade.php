@@ -2052,7 +2052,7 @@
         <map name="">
             <area shape="" href="" coords="" alt="">
         </map>
-        <div class="p-2">
+        <div class="p-0">
 
             <div id="content" class="full">
                 <div class="post manage_forms">

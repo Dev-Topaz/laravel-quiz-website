@@ -26,6 +26,7 @@
                     <source src="{{ $quiz->audio }}" type="audio/mpeg">
                 </audio>
             </div>
+            <div class="quiz_id" style="display: none;">{!! $quiz->id !!}</div>
             <div class="type_id" style="display: none;">{!! $quiz->type_id !!}</div>
             <div class="correct_answer" style="display: none;">{!! $quiz->answer !!}</div>
             <div class="attempts" style="display: none;">{!! $quiz->attempts !!}</div>

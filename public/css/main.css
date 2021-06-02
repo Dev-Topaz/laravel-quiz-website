@@ -588,7 +588,7 @@ main.quiz {
 #main.quiz > h2 {
     font-size: 20px;
     font-weight: bold;
-    padding: 5px;
+    padding: 2px 5px;
 }
 
 .ribbon-dropdown .col-3 {
@@ -772,14 +772,6 @@ div[contenteditable="true"] {
     overflow: hidden;
 }
 
-div.slide_view_group:focus {
-    border: 1px solid black;
-}
-
-div.slide_view_group:active {
-    border: 1px solid black;
-}
-
 .canvas-container {
     left: 50%;
     transform: translateX(-50%);
@@ -930,4 +922,115 @@ if it's not present, don't show loader */
 #slide_view_quiz_list .selected_preview_item {
     padding: 5px;
     border: 2px solid;
+}
+
+/*
+******** image popup modal ***************
+*/
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (Image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+/* Caption of Modal Image (Image Text) - Same Width as the Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+/* Add Animation - Zoom in the Modal */
+.modal-content, #caption {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
+    }
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px) {
+    .modal-content {
+        width: 100%;
+    }
+}
+
+/*
+************** Question Save Alert ******************
+*/
+#question_save_alert {
+    position: absolute;
+    background: white;
+    width: 560px;
+    left: 50%;
+    margin-left: -280px;
+    top: 75px;
+    box-shadow: grey 2px 2px 6px 2px;
+    z-index: 1000;
+    border-radius: 10px;
+    display: none;
+}
+
+#question_save_alert #alert_content {
+    padding: 30px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#question_save_alert #alert_btn {
+    display: flex;
+    padding-bottom: 20px;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+#question_save_alert #alert_btn button {
+    margin-right: 10px;
+    border-radius: 5px;
 }

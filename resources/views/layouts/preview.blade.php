@@ -17,7 +17,7 @@
     <!-- Styles -->
     {{--    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">--}}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-{{--    <link href="{{ asset('css/toast.css') }}" rel="stylesheet">--}}
+    {{--    <link href="{{ asset('css/toast.css') }}" rel="stylesheet">--}}
     <link href="{{ asset('css/jquery.hotspot.css') }}" rel="stylesheet">
     <link href="{{ asset('css/preview.css') }}" rel="stylesheet">
     {{--    <link href="{{ asset('css/metro-all.css') }}" rel="stylesheet">--}}
@@ -32,6 +32,14 @@
 </head>
 <body>
 <div class="se-pre-con"></div>
+<div id="imagePopup" class="modal">
+
+    <span class="close">&times;</span>
+
+    <img class="modal-content" id="img01">
+
+    <div id="caption"></div>
+</div>
 <div id="preview_container">
     <div id="preview_toast" style="display: none;">
         <div id="preview_toast_title">Incorrect</div>
@@ -68,6 +76,15 @@
 
         return type + ': ' + title + ': ' + content;
     }
+
+    function image_popup(img_url) {
+        $('#imagePopup').fadeIn(500);
+        $('#imagePopup .modal-content').attr('src', img_url);
+    }
+
+    $('#imagePopup span.close').click(function () {
+        $('#imagePopup').fadeOut(500);
+    });
 </script>
 
 </body>

@@ -579,9 +579,9 @@ $("body").click(function (e) {
 ********************** inserting slide view textbox ***********************
 *  */
 $('#insert_textbox_btn').click(function () {
-    $('.slide_view_group').removeClass('just_added_slide_view_element');
-    $('#quiz_background_container').append('<div class="slide_view_group just_added_slide_view_element other_slide_view_element" style="height: 70px;width: 80%;left: 10%;z-index: 3;overflow: hidden;padding:10px;position:absolute;"><div class="cancel_drag" contenteditable="true">Type Text Content</div><input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;"></div>');
-    $('.just_added_slide_view_element').draggable({cancel: 'div.cancel_drag'}).resizable();
+    $('#quiz_view .slide_view_group').removeClass('just_added_slide_view_element');
+    $('#quiz_view #quiz_background_container').append('<div class="slide_view_group just_added_slide_view_element other_slide_view_element" style="height: 70px;width: 80%;left: 10%;z-index: 3;overflow: hidden;padding:10px;position:absolute;"><div class="cancel_drag" contenteditable="true">Type Text Content</div><input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;"></div>');
+    $('#quiz_view .just_added_slide_view_element').draggable({cancel: 'div.cancel_drag'}).resizable();
 });
 
 /*
@@ -616,9 +616,9 @@ $('#slide_view_picture_file_selector').change(function () {
             processData: false,
             success: (response) => {
                 if (response) {
-                    $('.slide_view_group').removeClass('just_added_slide_view_element');
-                    $('#quiz_background_container').append(`<div class="slide_view_group just_added_slide_view_element other_slide_view_element" style="left: 10%;z-index: 1;overflow: hidden;padding:10px;position:absolute;"><img src="${root_url}/${response}" style="width: 100%;height: 100%;"><input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;"></div>`);
-                    $('.just_added_slide_view_element').draggable({cancel: 'div.cancel_drag'}).resizable();
+                    $('#quiz_view .slide_view_group').removeClass('just_added_slide_view_element');
+                    $('#quiz_view #quiz_background_container').append(`<div class="slide_view_group just_added_slide_view_element other_slide_view_element" style="left: 10%;z-index: 1;overflow: hidden;padding:10px;position:absolute;"><img src="${root_url}/${response}" style="width: 100%;height: 100%;"><input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;"></div>`);
+                    $('#quiz_view .just_added_slide_view_element').draggable({cancel: 'div.cancel_drag'}).resizable();
                 }
                 hide_preload();
             },
@@ -670,9 +670,9 @@ $('#slide_view_video_file_selector').change(function () {
 
                 if (response.success == 1) { // Uploaded successfully
 
-                    $('.slide_view_group').removeClass('just_added_slide_view_element');
-                    $('#quiz_background_container').append(`<div class="slide_view_group just_added_slide_view_element other_slide_view_element" style="left: 10%;z-index: 1;overflow: hidden;padding:10px;position:absolute;"><video controls style="width: 100%;"><source src="${response.filepath}" type="video/mp4"></video><input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;"></div>`);
-                    $('.just_added_slide_view_element').draggable({cancel: 'div.cancel_drag'}).resizable();
+                    $('#quiz_view .slide_view_group').removeClass('just_added_slide_view_element');
+                    $('#quiz_view #quiz_background_container').append(`<div class="slide_view_group just_added_slide_view_element other_slide_view_element" style="left: 10%;z-index: 1;overflow: hidden;padding:10px;position:absolute;"><video controls style="width: 100%;"><source src="${response.filepath}" type="video/mp4"></video><input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;"></div>`);
+                    $('#quiz_view .just_added_slide_view_element').draggable({cancel: 'div.cancel_drag'}).resizable();
                 } else if (response.success == 2) { // File not uploaded
 
                     // Response message

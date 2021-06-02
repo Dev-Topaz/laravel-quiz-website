@@ -637,7 +637,7 @@
                     </div>
                 </div>
             </div>
-            <div class="preview_item">
+            <div class="preview_item" style="display: none">
                 <div
                     style="zoom:0.3;top:50%;left:50%;transform:translate(-50%, -50%);margin: auto 0;width: {{ $quiz->exam_group->exam->screen_width }}px;height:{{ $quiz->exam_group->exam->screen_height }}px;{{ $quiz->exam_group->exam->theme_style ?? 'background:white' }}"
                     id="slide_view_container">

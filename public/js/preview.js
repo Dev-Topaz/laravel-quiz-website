@@ -1,3 +1,5 @@
+$('div').attr('contenteditable', 'false');
+
 /*
 * ************ Fit Quiz size ********************
 * */
@@ -136,6 +138,13 @@ let hotspots_points = [];
 
 rearrange_preview_ui();
 
+function change_input_id_label_for(element_array, quiz_id) {
+    for (let i = 0; i < element_array.length; i++) {
+        element_array.eq(i).find('input').eq(0).attr('id', quiz_id + '_' + element_array.eq(i).find('input').eq(0).attr('id'));
+        element_array.eq(i).find('label').eq(0).attr('for', quiz_id + '_' + element_array.eq(i).find('label').eq(0).attr('for'));
+    }
+}
+
 function rearrange_preview_ui() {
     switch ($('.quiz_show .type_id').html()) {
         case '1':
@@ -143,6 +152,8 @@ function rearrange_preview_ui() {
             if ($('.quiz_show .shuffle_answers').html() == 0) return;
 
             var choice_items = $('.quiz_show .choice_item');
+            change_input_id_label_for(choice_items, $('.quiz_show .quiz_id').html());
+
             shuffle(choice_items);
 
             var rearrange_choice_items = '';
@@ -158,6 +169,8 @@ function rearrange_preview_ui() {
             if ($('.quiz_show .shuffle_answers').html() == 0) return;
 
             var response_items = $('.quiz_show .response_item');
+            change_input_id_label_for(response_items, $('.quiz_show .quiz_id').html());
+
             shuffle(response_items);
 
             var rearrange_response_items = '';
@@ -735,3 +748,7 @@ function s(x, y) {
     else return (x > y) ? 1 : -1;
 
 }
+
+$('.quiz_show .slide_view_media_element').click(function () {
+    image_popup($(this).find('img').attr('src'));
+});

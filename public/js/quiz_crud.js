@@ -1,4 +1,5 @@
 let prev_id = '';
+let clicked_node;
 
 function show_quiz_editor(node) {
     const root_url = $('meta[name=url]').attr('content');
@@ -22,7 +23,36 @@ function show_quiz_editor(node) {
     });
 }
 
+$('#alert_save').click(function () {
+    console.log('alert_save');
+    update_quiz(true);
+
+    $('#question_save_alert').fadeOut(300);
+});
+
+$('#alert_not_save').click(function () {
+    console.log('alert_not_save');
+    show_quiz_editor(clicked_node);
+    prev_id = clicked_node.attr('id');
+
+    $('#question_save_alert').fadeOut(300);
+});
+
+$('#alert_cancel').click(function () {
+    console.log('alert_cancel');
+    $('#quiz_list').find('.current').removeClass('current current-select');
+    $('#quiz_list li#' + prev_id).addClass('current current-select');
+
+    console.log(prev_id);
+    // $('.selected_preview_item').removeClass('selected_preview_item');
+    // $('#preview_item-' + prev_id).addClass('selected_preview_item');
+
+    $('#question_save_alert').fadeOut(300);
+});
+
 function onNodeClick(node) {
+
+    clicked_node = node;
 
     if (prev_id === '') {
         show_quiz_editor(node);
@@ -33,17 +63,19 @@ function onNodeClick(node) {
     if (prev_id === node.attr('id')) return;
     if (is_edited()) {
 
-        if (confirm('You are going to leave this quiz. Some data will be lost. Are you sure you want to continue?')) {
-            show_quiz_editor(node);
-            prev_id = node.attr('id');
-        } else {
-            $('#quiz_list').find('.current').removeClass('current current-select');
-            $('#quiz_list li#' + prev_id).addClass('current current-select');
+        $('#question_save_alert').fadeIn(300);
 
-            console.log(prev_id);
-            $('.selected_preview_item').removeClass('selected_preview_item');
-            $('#preview_item-' + prev_id).addClass('selected_preview_item');
-        }
+        // if (confirm('You are going to leave this quiz. Some data will be lost. Are you sure you want to continue?')) {
+        //     show_quiz_editor(node);
+        //     prev_id = node.attr('id');
+        // } else {
+        //     $('#quiz_list').find('.current').removeClass('current current-select');
+        //     $('#quiz_list li#' + prev_id).addClass('current current-select');
+        //
+        //     console.log(prev_id);
+        //     $('.selected_preview_item').removeClass('selected_preview_item');
+        //     $('#preview_item-' + prev_id).addClass('selected_preview_item');
+        // }
     } else {
         show_quiz_editor(node);
         prev_id = node.attr('id');
@@ -248,7 +280,7 @@ function create_quiz(quiz_type, root_url, token) {
     });
 }
 
-function update_quiz() {
+function update_quiz(is_alert_save) {
 
     if (is_form_or_slide() === 'form') {
         form_to_slide();
@@ -331,9 +363,11 @@ function update_quiz() {
     const token = $('meta[name=csrf-token]').attr('content');
     const quizId = $('#quiz_list').find('.current').attr('id');
 
+    console.log(root_url + '/quizes/' + (is_alert_save ? prev_id : quizId));
+
     show_preload();
     $.ajax({
-        url: root_url + '/quizes/' + quizId,
+        url: root_url + '/quizes/' + (is_alert_save ? prev_id : quizId),
         type: 'PUT',
         data: {
             _token: token,
@@ -370,6 +404,10 @@ function update_quiz() {
         success: function (data) {
             alert('Quiz updated successfully');
             store_quiz_state();
+            if (is_alert_save) {
+                show_quiz_editor(clicked_node);
+                prev_id = clicked_node.attr('id');
+            }
             hide_preload();
         }
     }).catch((XHttpResponse) => {
@@ -652,6 +690,8 @@ function get_quiz_state() {
 
     const answer = $('#answer_content').val();
 
+    const question = $('#question').html();
+
     const feedback_correct = $('.feedback_branching tr:first-child td:nth-child(2) label').html();
     const feedback_incorrect = $('.feedback_branching tr:nth-child(2) td:nth-child(2) label').html();
     const feedback_try_again = $('.feedback_branching tr:nth-child(3) td:nth-child(2) label').html();
@@ -712,7 +752,7 @@ function get_quiz_state() {
         other_elements += remove_resizable_tag($('#quiz_view .other_slide_view_element').eq(i)[0].outerHTML);
     }
 
-    const tmp_values = question_element + answer + answer_element + media_element + feedback_correct + feedback_incorrect + feedback_try_again + media + media_element + video + audio + video_element + background_img + question_type + feedback_type + branching + attempts + shuffle_answers + partially_correct + limit_number_response + case_sensitive + correct_score + incorrect_score + try_again_score + other_elements;
+    const tmp_values = question + question_element + answer + answer_element + media_element + feedback_correct + feedback_incorrect + feedback_try_again + media + media_element + video + audio + video_element + background_img + question_type + feedback_type + branching + attempts + shuffle_answers + partially_correct + limit_number_response + case_sensitive + correct_score + incorrect_score + try_again_score + other_elements;
 
     return tmp_values;
 }
