@@ -570,17 +570,20 @@ $('.preview_group_btn').click(function () {
 * */
 $('#question_group_btn').click(function () {
     const lv = Metro.getPlugin('#quiz_list', 'listview');
-    const node = lv.addGroup({
+    let node = lv.addGroup({
         caption: 'Question Group',
     });
+    node.remove();
+    node.insertBefore($('#quiz_list li.node-group:last-child'));
+
     Metro.getPlugin('#quiz_list', 'listview').add(node, {
         caption: 'No questions',
         content: '<i>Add questions<i>'
     });
 
-    const element = $('#quiz_list li:nth-last-child(2)')[0].outerHTML;
-    $('#quiz_list li:nth-last-child(2)').remove();
-    $('#quiz_list').append(element);
+    // const element = $('#quiz_list li:nth-last-child(2)')[0].outerHTML;
+    // $('#quiz_list li:nth-last-child(2)').remove();
+    // $('#quiz_list').append(element);
 
     const root_url = $('meta[name=url]').attr('content');
     const token = $('meta[name=csrf-token]').attr('content');
@@ -597,7 +600,12 @@ $('#question_group_btn').click(function () {
         },
         success: function (data) {
             node.attr('id', data);
-
+            node.children('div.data').append('<i class="fas fa-trash" id="delete_group_icon-' + data + '" style="font-size: 12px;" onclick="show_delete_dialog(\'group\', this)"></i>');
+            node.children('div.data').css({
+                'display': 'flex',
+                'align-items': 'center',
+                'justify-content': 'space-around',
+            });
             hide_preload();
         }
     }).catch((XHttpResponse) => {
@@ -629,9 +637,13 @@ function delete_question_group(groupId) {
         },
         success: function (data) {
 
+            for (let i = 0; i < data.length; i++) {
+                $('#preview_item-' + data[i]).remove();
+            }
+
             node.remove();
             $('#quiz_view').html('');
-            show_modal('success', 'Success', 'Quiz deleted successfully');
+            show_modal('success', 'Success', 'Question Group deleted successfully');
             hide_preload();
         }
     }).catch((XHttpResponse) => {

@@ -40,9 +40,11 @@ class QuizController extends Controller
 
         $order_updating_quizzes = Quiz::where('order', '>=', $request->order)->get();
         foreach ($order_updating_quizzes as $item) {
-            if ($item->exam_group->exam_id == $request->exam_id) {
-                $item->order = $item->order + 1;
-                $item->save();
+            if (isset($item->exam_group)) {
+                if ($item->exam_group->exam_id == $request->exam_id) {
+                    $item->order = $item->order + 1;
+                    $item->save();
+                }
             }
         }
 

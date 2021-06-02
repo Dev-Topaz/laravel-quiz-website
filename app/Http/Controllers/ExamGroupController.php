@@ -24,8 +24,16 @@ class ExamGroupController extends Controller
     public function destroy(ExamGroup $exam_group)
     {
 
+        $quizzes_id_array = [];
+
+        $quizzes = $exam_group->quizes;
+
+        foreach ($quizzes as $quiz) {
+            array_push($quizzes_id_array, $quiz->id);
+        }
+
         $exam_group->delete();
 
-        return $exam_group->id;
+        return $quizzes_id_array;
     }
 }
