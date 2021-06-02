@@ -258,7 +258,17 @@ function create_quiz(quiz_type, root_url, token) {
                 $('#quiz_view').html(data);
 
                 const element = '<div id="preview_item-' + quizId + '" class="preview_item selected_preview_item">' + $('#quiz_view .slide_view_element').html().replace('top:50%;left:50%;transform:translate(-50%, -50%);', '') + '</div>';
-                $(element).insertAfter($('#preview_item-' + prev_id));
+
+                if (prev_id == undefined || prev_id == 'none' || prev_id == '') {
+                    if ($('#slide_view_quiz_list .preview_item').length == 2) {
+                        $('#slide_view_quiz_list').prepend(element);
+                    } else {
+                        const tmp_id = $('.node.current').closest('.node-group').prev().find('.listview').eq(0).find('li.node').last().eq(0).attr('id');
+                        $(element).insertAfter($('#preview_item-' + tmp_id));
+                    }
+                } else {
+                    $(element).insertAfter($('#preview_item-' + prev_id));
+                }
 
                 $('#preview_item-' + quizId + ' > div').css({
                     'margin': 'auto',
