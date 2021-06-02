@@ -163,32 +163,34 @@ $('#font_size_selector').change(function () {
 });
 
 var changing_font_size = parseInt($('#font_size_selector').val());
+var changing_font_size_for_answer_element = parseInt($('#font_size_selector').val());
 
 $('#font_size_bigger_btn').click(function () {
-
-    changing_font_size += 2;
     var element = $('.selected_slide_view_group'); // get selected element
     if (element.hasClass('slide_view_answer_element')) {
-        element.css('font-size', changing_font_size);
+        changing_font_size_for_answer_element += 2
+        element.css('font-size', changing_font_size_for_answer_element);
+        $('#font_size_selector').val(changing_font_size_for_answer_element);
     } else {
+        changing_font_size += 2;
         changeFont_size(changing_font_size);
+        $('#font_size_selector').val(changing_font_size);
     }
-    $('#font_size_selector').val(changing_font_size);
     // document.execCommand('styleWithCSS', false, true);
     // document.execCommand('increaseFontSize');
 });
 
 $('#font_size_smaller_btn').click(function () {
-
-    changing_font_size -= 2;
     var element = $('.selected_slide_view_group'); // get selected element
     if (element.hasClass('slide_view_answer_element')) {
-        element.css('font-size', changing_font_size);
+        changing_font_size_for_answer_element -= 2
+        element.css('font-size', changing_font_size_for_answer_element);
+        $('#font_size_selector').val(changing_font_size_for_answer_element);
     } else {
+        changing_font_size -= 2;
         changeFont_size(changing_font_size);
+        $('#font_size_selector').val(changing_font_size);
     }
-    $('#font_size_selector').val(changing_font_size);
-
     // document.execCommand('styleWithCSS', false, true);
     // document.execCommand('decreaseFontSize');
 });
