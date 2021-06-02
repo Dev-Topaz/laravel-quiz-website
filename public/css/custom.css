@@ -648,14 +648,14 @@ div[contenteditable='true'] ul {
     list-style: inside;
 }
 
-.choice_item,
-.response_item {
+.slide_view_element .choice_item,
+.slide_view_element .response_item {
     display: flex;
     align-items: center;
 }
 
-.choice_item label,
-.response_item label {
+.slide_view_element .choice_item label,
+.slide_view_element .response_item label {
     margin-bottom: 0;
 }
 

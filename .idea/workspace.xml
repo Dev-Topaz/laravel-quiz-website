@@ -6,17 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="9d9fd7c1-0dd1-410f-8492-d59f6bb67158" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/navbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/navbar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/preview.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/preview.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/custom.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/quiz_crud.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/quiz_crud.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/ribbon_bar.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/ribbon_bar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/update_quiz.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/update_quiz.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/exams/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/exams/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/preview.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/preview.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/quiz.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/quiz.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/preview.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/preview.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/quizes/update.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/quizes/update.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,7 +183,7 @@
     <property name="go.vendoring.notification.had.been.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/quiz_form_view" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.editor" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -274,7 +267,7 @@
       <workItem from="1622250964677" duration="22518000" />
       <workItem from="1622282333496" duration="1679000" />
       <workItem from="1622419542978" duration="27139000" />
-      <workItem from="1622516675673" duration="42055000" />
+      <workItem from="1622516675673" duration="44757000" />
     </task>
     <servers />
   </component>

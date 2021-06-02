@@ -2277,7 +2277,7 @@
                 $("#section_design").hide();
                 slide_to_form();
 
-                if ($('.form_view_element').length > 0) store_quiz_state();
+                // if ($('.form_view_element').length > 0) store_quiz_state();
             });
 
 
@@ -2302,7 +2302,7 @@
                 $("#section_design").show();
                 form_to_slide();
 
-                if ($('.form_view_element').length > 0) store_quiz_state();
+                // if ($('.form_view_element').length > 0) store_quiz_state();
             });
 
         </script>

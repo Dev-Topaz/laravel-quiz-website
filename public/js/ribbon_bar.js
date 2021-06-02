@@ -144,11 +144,6 @@ function get_cursor_pos_supposed_to_be(str) {
 
 $('#slide_view_font_family_selector').change(function () {
     // changeFont($(this).val());
-<<<<<<< HEAD
-
-    document.execCommand('styleWithCSS', false, true);
-    document.execCommand('fontName', false, $(this).val());
-=======
     var element = $('.selected_slide_view_group'); // get selected element
     if (element.hasClass('slide_view_answer_element')) {
         element.css('font-family', $(this).val());
@@ -156,7 +151,6 @@ $('#slide_view_font_family_selector').change(function () {
         document.execCommand('styleWithCSS', false, true);
         document.execCommand('fontName', false, $(this).val());
     }
->>>>>>> 270616a673a402ef438df164ef02d7f623a1c558
 });
 
 var changing_font_size = parseInt($('#font_size_selector').val());
