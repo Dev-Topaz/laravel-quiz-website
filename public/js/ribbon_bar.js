@@ -144,87 +144,150 @@ function get_cursor_pos_supposed_to_be(str) {
 
 $('#slide_view_font_family_selector').change(function () {
     // changeFont($(this).val());
+<<<<<<< HEAD
 
     document.execCommand('styleWithCSS', false, true);
     document.execCommand('fontName', false, $(this).val());
+=======
+    var element = $('.selected_slide_view_group'); // get selected element
+    if (element.hasClass('slide_view_answer_element')) {
+        element.css('font-family', $(this).val());
+    } else {
+        document.execCommand('styleWithCSS', false, true);
+        document.execCommand('fontName', false, $(this).val());
+    }
+>>>>>>> 270616a673a402ef438df164ef02d7f623a1c558
 });
 
 $('#font_size_selector').change(function () {
-    changeFont_size($(this).val());
-    //     document.execCommand('styleWithCSS', false, true);
-    //     document.execCommand('fontName', false, 7);
-
-    //     var execFontSize = function (size, unit) {
-    //     var spanString = $('<span/>', {
-    //         'text': document.getSelection()
-    //     }).css('font-size', size + unit).prop('outerHTML');
-
-    //     document.execCommand('insertHTML', false, spanString);
-    // };
+    var element = $('.selected_slide_view_group'); // get selected element
+    if (element.hasClass('slide_view_answer_element')) {
+        element.css('font-size', $(this).val() + 'px');
+    } else {
+        changeFont_size($(this).val());
+    }
 });
 
 var changing_font_size = parseInt($('#font_size_selector').val());
+var changing_font_size_for_answer_element = parseInt($('#font_size_selector').val());
 
 $('#font_size_bigger_btn').click(function () {
-
-    changing_font_size += 2;
-    changeFont_size(changing_font_size);
+    var element = $('.selected_slide_view_group'); // get selected element
+    if (element.hasClass('slide_view_answer_element')) {
+        changing_font_size_for_answer_element += 2
+        element.css('font-size', changing_font_size_for_answer_element);
+        $('#font_size_selector').val(changing_font_size_for_answer_element);
+    } else {
+        changing_font_size += 2;
+        changeFont_size(changing_font_size);
+        $('#font_size_selector').val(changing_font_size);
+    }
     // document.execCommand('styleWithCSS', false, true);
     // document.execCommand('increaseFontSize');
 });
 
 $('#font_size_smaller_btn').click(function () {
-
-    changing_font_size -= 2;
-    changeFont_size(changing_font_size);
-
+    var element = $('.selected_slide_view_group'); // get selected element
+    if (element.hasClass('slide_view_answer_element')) {
+        changing_font_size_for_answer_element -= 2
+        element.css('font-size', changing_font_size_for_answer_element);
+        $('#font_size_selector').val(changing_font_size_for_answer_element);
+    } else {
+        changing_font_size -= 2;
+        changeFont_size(changing_font_size);
+        $('#font_size_selector').val(changing_font_size);
+    }
     // document.execCommand('styleWithCSS', false, true);
     // document.execCommand('decreaseFontSize');
 });
 
 $('#font_style_clear_btn').click(function () {
-
-    clear_formatting();
+    var element = $('.selected_slide_view_group'); // get selected element
+    if (element.hasClass('slide_view_answer_element')) {
+        element.css('font-size', '16px');
+        element.css('font-style', 'normal');
+        element.css('font-family', 'Arial');
+        element.css('color', 'black');
+        element.css('text-decoration', 'none');
+        element.find('label').css('text-decoration', 'none');
+    } else {
+        clear_formatting();
+    }
 });
 
 var formatting_bold = false;
 
 $('.font_bold_btn').click(function () {
-    formatting_bold = !formatting_bold;
     // toggle_bold(formatting_bold);
-    document.execCommand('styleWithCSS', false, true);
-    document.execCommand('bold');
+
+    var element = $('.selected_slide_view_group'); // get selected element
+    if (element.hasClass('slide_view_answer_element')) {
+        formatting_bold = !formatting_bold;
+        if (formatting_bold) {
+            element.css('font-weight', 'bold');
+        } else {
+            element.css('font-weight', 'normal');
+        }
+    } else {
+        document.execCommand('styleWithCSS', false, true);
+        document.execCommand('bold');
+    }
+
+
 });
 
 var formatting_strike = false;
 
 $('#slide_view_font_strike_btn').click(function () {
-    formatting_strike = !formatting_strike;
-    // toggle_strike(formatting_strike);
-    document.execCommand('styleWithCSS', false, true);
-    document.execCommand('strikeThrough');
+
+    var element = $('.selected_slide_view_group'); // get selected element
+    if (element.hasClass('slide_view_answer_element')) {
+        formatting_strike = !formatting_strike;
+        if (formatting_strike) {
+            element.find('label').css('text-decoration', 'line-through');
+        } else {
+            element.find('label').css('text-decoration', 'none');
+        }
+    } else {
+        document.execCommand('styleWithCSS', false, true);
+        document.execCommand('strikeThrough');
+    }
 });
 
 var formatting_ital = false;
 
 $('.font_ital_btn').click(function () {
-
-    formatting_ital = !formatting_ital;
-
-    // toggle_ital(formatting_ital);
-    document.execCommand('styleWithCSS', false, true);
-    document.execCommand('italic');
+    var element = $('.selected_slide_view_group'); // get selected element
+    if (element.hasClass('slide_view_answer_element')) {
+        formatting_ital = !formatting_ital;
+        if (formatting_ital) {
+            element.css('font-style', 'italic');
+        } else {
+            element.css('font-style', 'normal');
+        }
+    } else {
+        document.execCommand('styleWithCSS', false, true);
+        document.execCommand('italic');
+    }
 });
 
 var formatting_underline = false;
 
 $('.font_underline_btn').click(function () {
-
-    formatting_underline = !formatting_underline;
-
-    // toggle_underline(formatting_underline);
-    document.execCommand('styleWithCSS', false, true);
-    document.execCommand('underline');
+    var element = $('.selected_slide_view_group'); // get selected element
+    if (element.hasClass('slide_view_answer_element')) {
+        formatting_underline = !formatting_underline;
+        if (formatting_underline) {
+            element.css('text-decoration', 'underline');
+            element.find('label').css('text-decoration', 'underline');
+        } else {
+            element.css('text-decoration', 'none');
+            element.find('label').css('text-decoration', 'none');
+        }
+    } else {
+        document.execCommand('styleWithCSS', false, true);
+        document.execCommand('underline');
+    }
 });
 
 var formatting_subscript = false;
@@ -260,10 +323,17 @@ $('#office_color_picker').mousedown(function (e) {
 });
 
 $("#office_color_picker").on("change.color", function (event, color) {
+
+    var element = $('.selected_slide_view_group'); // get selected element
+    if (element.hasClass('slide_view_answer_element')) {
+        element.css('color', color);
+    } else {
+        document.execCommand('styleWithCSS', false, true);
+        document.execCommand('foreColor', false, color);
+    }
+
     // event.preventDefault();
     // change_font_color(color);
-    document.execCommand('styleWithCSS', false, true);
-    document.execCommand('foreColor', false, color);
 });
 
 
@@ -1306,3 +1376,62 @@ $('#layout_column_04_btn').click(function () {
 // div.innerHTML
 
 // https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment
+
+$('#xxxxxxx').click(function () {
+    $('#yyyyyyy').trigger('click');
+});
+
+$('#design_section_preview_btn_top').click(function (e) {
+        e.stopPropagation();
+    $('#design_section_preview_btn_bottom').trigger('click');
+});
+
+$('#theme_select_btn_top').click(function (e) {
+        e.stopPropagation();
+    $('#theme_select_btn_bottom').trigger('click');
+});
+
+$('#insert_section_slide_btn_top').click(function (e) {
+       e.stopPropagation();
+    $('#insert_section_slide_btn_bottom').trigger('click');
+});
+
+$('#insert_section_audio_btn_top').click(function (e) {
+        e.stopPropagation();
+    $('#slide_view_insert_audio_btn').trigger('click');
+});
+
+$('#insert_section_question_btn_top').click(function (e) {
+        e.stopPropagation();
+    $('#insert_section_question_btn_bottom').trigger('click');
+});
+
+$('#slideview_home_preview_btn_top').click(function (e) {
+        e.stopPropagation();
+    $('#slideview_home_preview_btn_bottom').trigger('click');
+});
+
+$('#slideview_quick_styles_btn_top').click(function (e) {
+        e.stopPropagation();
+    $('#slideview_quick_styles_btn_bottom').trigger('click');
+});
+
+$('#slideview_arrange_btn_top').click(function (e) {
+        e.stopPropagation();
+    $('#slideview_arrange_btn_down').trigger('click');
+});
+
+$('#select_question_btn').click(function (e) {
+    e.stopPropagation();
+        $('#select_question_dropdown').trigger('click');
+});
+
+$('#formview_preview_btn').click(function (e) {
+    e.stopPropagation();
+    $('#formview_preview_dropdown').trigger('click');
+});
+
+$('#font_color_display_letter').click(function (e) {
+    e.stopPropagation();
+    $('#font_picker_trigger').trigger('click');
+});
