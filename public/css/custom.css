@@ -315,6 +315,7 @@ span.icon img {
     margin-right: -7px;
     z-index: 2;
     position: relative;
+    cursor:  pointer;
 }
 
 #font_color_picker {
@@ -645,4 +646,19 @@ div[contenteditable='true'] ol {
 
 div[contenteditable='true'] ul {
     list-style: inside;
+}
+
+.choice_item,
+.response_item {
+    display: flex;
+    align-items: center;
+}
+
+.choice_item label,
+.response_item label {
+    margin-bottom: 0;
+}
+
+#design_themes_panel_holder {
+    z-index: 5;
 }

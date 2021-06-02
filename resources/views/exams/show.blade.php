@@ -123,12 +123,12 @@
                 <div class="section" id="section_Design">
                     <div class="group">
                         <div class="ribbon-split-button">
-                            <button class="ribbon-main">
+                            <button class="ribbon-main" id="theme_select_btn_top">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/design-1.png") }}">
                             </span>
                             </button>
-                            <span class="ribbon-split dropdown-toggle">Themes</span>
+                            <span class="ribbon-split dropdown-toggle" id="theme_select_btn_bottom">Themes</span>
                             <div id="design_themes_panel_holder" class="ribbon-dropdaown" data-role="dropdown"
                                  data-duration="100">
                                 <div>
@@ -314,14 +314,14 @@
                     </div>
                     <div class="group">
                         <div class="ribbon-split-button">
-                            <button class="ribbon-main">
+                            <button class="ribbon-main" id="design_section_preview_btn_top">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/design-3.png") }}">
                             </span>
                             </button>
-                            <span class="ribbon-split dropdown-toggle">Preview</span>
+                            <span class="ribbon-split dropdown-toggle" >Preview</span>
                             <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">
-                                <li class="design_preview_submenu preview_slide_btn"
+                                <li class="design_preview_submenu preview_slide_btn"  id="design_section_preview_btn_bottom"
                                     style="background-image: url({{ url("/images/ribbon_imgs/design-pre-1.png") }});">
                                     Preview
                                     Slide
@@ -339,12 +339,12 @@
                 <div class="section" id="section_Insert">
                     <div class="group">
                         <div class="ribbon-split-button">
-                            <button class="ribbon-main">
+                            <button class="ribbon-main" id="insert_section_question_btn_top">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/insert-1.png") }}">
                             </span>
                             </button>
-                            <span class="ribbon-split dropdown-toggle">Question</span>
+                            <span class="ribbon-split dropdown-toggle" id="insert_section_question_btn_bottom">Question</span>
                             <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">
                                 <div id="quiz_types_panel">
                                     <div>
@@ -460,12 +460,12 @@
                         </button>
                         <input id="slide_view_video_file_selector" type="file" data-role="file" style="display: none;">
                         <div class="ribbon-split-button">
-                            <button class="ribbon-main">
+                            <button class="ribbon-main" id="insert_section_audio_btn_top">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/insert-10.png") }}">
                             </span>
                             </button>
-                            <span class="ribbon-split dropdown-toggle">Audio</span>
+                            <span class="ribbon-split dropdown-toggle" >Audio</span>
                             <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100"
                                 style="width: 150px; text-align: left;">
                                 <li class="insert_audio" id="slide_view_insert_audio_btn"
@@ -490,14 +490,14 @@
                     </div>
                     <div class="group">
                         <div class="ribbon-split-button">
-                            <button class="ribbon-main">
+                            <button class="ribbon-main" id="insert_section_slide_btn_top">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/insert-11.png") }}">
                             </span>
                             </button>
                             <span class="ribbon-split dropdown-toggle">Preview</span>
                             <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">
-                                <li class="design_preview_submenu preview_slide_btn"
+                                <li class="design_preview_submenu preview_slide_btn" id="insert_section_slide_btn_bottom"
                                     style="background-image: url({{ url("/images/ribbon_imgs/design-pre-1.png") }});">
                                     Preview
                                     Slide
@@ -533,12 +533,12 @@
                             </span>
                                 <span class="caption">Copy</span>
                             </button>
-                            <button id="format_painter_btn" class="ribbon-icon-button" disabled>
+                            <!-- <button id="format_painter_btn" class="ribbon-icon-button" disabled>
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/home-4.png") }}">
                             </span>
                                 <span class="caption">Format Painter</span>
-                            </button>
+                            </button> -->
                         </div>
                         <span class="title">Clipboard</span>
                         <div class="group-divider"></div>
@@ -1019,28 +1019,50 @@
                                     style="font-size: 12px; outline: none; height: 25px; margin-right: 7px;">
                                 <option value='8'>8</option>
                                 <option value='10'>10</option>
-                                <option value='12' selected="selected">12</option>
-                                <option value='16'>16</option>
+                                <option value='12'>12</option>
+                                <option value='14'>14</option>
+                                <option value='16' selected="selected">16</option>
+                                <option value='18'>18</option>
                                 <option value='20'>20</option>
+                                <option value='22'>22</option>
                                 <option value='24'>24</option>
+                                <option value='26'>26</option>
                                 <option value='28'>28</option>
+                                <option value='30'>30</option>
                                 <option value='32'>32</option>
+                                <option value='34'>34</option>
                                 <option value='36'>36</option>
+                                <option value='38'>38</option>
                                 <option value='40'>40</option>
+                                <option value='42'>42</option>
                                 <option value='44'>44</option>
+                                <option value='46'>46</option>
                                 <option value='48'>48</option>
+                                <option value='50'>50</option>
                                 <option value='52'>52</option>
+                                <option value='54'>54</option>
                                 <option value='56'>56</option>
+                                <option value='58'>58</option>
                                 <option value='60'>60</option>
+                                <option value='62'>62</option>
                                 <option value='64'>64</option>
+                                <option value='66'>66</option>
                                 <option value='68'>68</option>
+                                <option value='70'>70</option>
                                 <option value='72'>72</option>
+                                <option value='74'>74</option>
                                 <option value='76'>76</option>
+                                <option value='78'>78</option>
                                 <option value='80'>80</option>
+                                <option value='82'>82</option>
                                 <option value='84'>84</option>
                                 <option value='88'>88</option>
+                                <option value='90'>90</option>
                                 <option value='92'>92</option>
+                                <option value='94'>94</option>
                                 <option value='96'>96</option>
+                                <option value='98'>98</option>
+                                <option value='100'>100</option>
                             </select>
                             <div>
                                 <button class="button" id="font_size_bigger_btn"
@@ -1052,7 +1074,7 @@
                             </div>
                         </div>
                         <div style="display: flex;">
-                            <div data-role="buttongroup" data-mode="multi" data-cls-active="bg-grey fg-white">
+                            <div>
                                 <button id="slide_view_font_bold_btn" class="button font_bold_btn"
                                         style="background-image: url('{{ url('/images/ribbon_imgs/home/bold.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;
                                             "></button>
@@ -1134,12 +1156,12 @@
                     </div>
                     <div class="group">
                         <div class="ribbon-split-button">
-                            <button class="ribbon-main">
+                            <button class="ribbon-main" id="slideview_arrange_btn_top">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/home-20.png") }}">
                             </span>
                             </button>
-                            <span class="ribbon-split dropdown-toggle">Arrange</span>
+                            <span class="ribbon-split dropdown-toggle" id="slideview_arrange_btn_down">Arrange</span>
                             <ul id="arrange_ul" class="ribbon-dropdown" data-role="dropdown" data-duration="100">
                                 <li class="subtitle_li">Order Objects</li>
                                 <li style="background-image: url({{ url("/images/ribbon_imgs/arrange_bring_to_front.png") }});"
@@ -1190,12 +1212,12 @@
                             </ul>
                         </div>
                         <div class="ribbon-split-button">
-                            <button class="ribbon-main">
+                            <button class="ribbon-main" id="slideview_quick_styles_btn_top">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/home-21.png") }}">
                             </span>
                             </button>
-                            <span class="ribbon-split dropdown-toggle" style="line-height: 1.3;">Quick<br>Styles</span>
+                            <span class="ribbon-split dropdown-toggle" style="line-height: 1.3;"  id="slideview_quick_styles_btn_bottom">Quick<br>Styles</span>
                             <div id="quick_styles_panel_holder" class="ribbon-dropdaown" data-role="dropdown"
                                  data-duration="100">
                                 <div>
@@ -1662,15 +1684,15 @@
                     <div class="group-divider"></div>
                 </div> -->
                     <div class="group">
-                        <div class="ribbon-split-button">
-                            <button class="ribbon-main">
+                        <div class="ribbon-split-button" >
+                            <button class="ribbon-main" id="slideview_home_preview_btn_top">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/home-27.png") }}">
                             </span>
                             </button>
-                            <span class="ribbon-split dropdown-toggle">Preview</span>
+                            <span class="ribbon-split dropdown-toggle" >Preview</span>
                             <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">
-                                <li class="design_preview_submenu preview_slide_btn"
+                                <li class="design_preview_submenu preview_slide_btn"  id="slideview_home_preview_btn_bottom"
                                     style="background-image: url({{ url("/images/ribbon_imgs/design-pre-1.png") }});">
                                     Preview
                                     Slide
@@ -1694,12 +1716,12 @@
                 <div class="section" id="section_Home_FormView">
                     <div class="group">
                         <div class="ribbon-split-button">
-                            <button class="ribbon-main">
+                            <button class="ribbon-main" id="select_question_btn">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/insert-1.png") }}">
                             </span>
                             </button>
-                            <span class="ribbon-split dropdown-toggle">Question</span>
+                            <span class="ribbon-split dropdown-toggle" id="select_question_dropdown">Question</span>
                             <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">
                                 <div id="quiz_types_panel_2">
                                     <div>
@@ -1975,14 +1997,14 @@
                 </div> -->
                     <div class="group">
                         <div class="ribbon-split-button">
-                            <button class="ribbon-main">
+                            <button class="ribbon-main" id="formview_preview_btn">
                             <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/home-27.png") }}">
+                                <img src="{{ url("/images/ribbon_imgs/home-27.png") }}"  >
                             </span>
                             </button>
                             <span class="ribbon-split dropdown-toggle">Preview</span>
-                            <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">
-                                <li class="design_preview_submenu preview_slide_btn"
+                            <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100" >
+                                <li class="design_preview_submenu preview_slide_btn" id="formview_preview_dropdown"
                                     style="background-image: url({{ url("/images/ribbon_imgs/design-pre-1.png") }});">
                                     Preview
                                     Slide
