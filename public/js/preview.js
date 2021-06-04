@@ -146,6 +146,12 @@ function change_input_id_label_for(element_array, quiz_id) {
 }
 
 function rearrange_preview_ui() {
+
+    $('#question_number').html(quizId + 1);
+    $('#question_point span').html($('.quiz_show .correct_score').html());
+    $('#total_point').html(total_score);
+    $('#passing_score').html($('.quiz_show .passing_score').html())
+
     switch ($('.quiz_show .type_id').html()) {
         case '1':
             console.log($('.quiz_show .shuffle_answers').html());
