@@ -94,7 +94,7 @@ function answer_slide2form(answer_element, answer_content) {
             let fill_blanks_item_array;
             for (let i = 0; i < fill_blanks_array.length; i++) {
 
-                let element = '<div class="fill_blanks_dropdown_content"></div><div class="fill_blanks_dropdown_arrow" onclick="{$(this).next().toggle();}"><i class="fas fa-chevron-down"></i></div><div class="fill_blanks_dropdown_menu" contenteditable="false"><ul>';
+                let element = '<div class="fill_blanks_dropdown_content"></div><div class="fill_blanks_dropdown_arrow" onclick="toggle_fill_blanks_dropdown(this)"><i class="fas fa-chevron-down"></i></div><div class="fill_blanks_dropdown_menu" contenteditable="false"><ul>';
 
                 fill_blanks_item_array = fill_blanks_array[i].split(';');
                 fill_blanks_item_array.pop();
@@ -124,7 +124,7 @@ function answer_slide2form(answer_element, answer_content) {
 
                 select_lists_item_array = select_lists_form_answer_element.find('.select_lists_dropdown_body').eq(i).find('option');
 
-                let element = '<div class="select_lists_dropdown_content"></div><div class="select_lists_dropdown_arrow" onclick="{$(this).next().toggle();}"><i class="fas fa-chevron-down"></i></div><div class="select_lists_dropdown_menu" contenteditable="false"><ul>';
+                let element = '<div class="select_lists_dropdown_content"></div><div class="select_lists_dropdown_arrow" onclick="toggle_select_lists_dropdown(this);"><i class="fas fa-chevron-down"></i></div><div class="select_lists_dropdown_menu" contenteditable="false"><ul>';
 
                 for (let j = 1; j < select_lists_item_array.length; j++) {
                     element += '<li><div><input type="radio" name="' + i + '" value="' + select_lists_item_array.eq(j).html() + '"' + (select_lists_item_array.eq(j).attr('value') === select_lists_array[i] ? 'checked' : '') + '><label data-editable>' + select_lists_item_array.eq(j).html() + '</label></div><a onclick="{$(this).parent().remove();}"><i class="fas fa-trash-alt"></i></a></li>';

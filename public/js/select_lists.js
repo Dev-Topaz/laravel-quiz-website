@@ -8,5 +8,27 @@ function add_select_lists_word(element) {
 }
 
 function add_select_lists_dropdown() {
-    $('#select_lists').append('<div class="select_lists_dropdown" contenteditable="true" style="display: inline;"><div class="select_lists_dropdown_body" contenteditable="false"  style="display: inline;"><div class="select_lists_dropdown_content"></div><div class="select_lists_dropdown_arrow" onclick="{$(this).next().toggle();}"><i class="fas fa-chevron-down"></i></div><div class="select_lists_dropdown_menu" contenteditable="false"><ul><li><i onclick="add_select_lists_word($(this));">Add a new word</i></li></ul></div></div></div>&nbsp');
+    $('#select_lists').append('<div class="select_lists_dropdown" contenteditable="true" style="display: inline;"><div class="select_lists_dropdown_body" contenteditable="false"  style="display: inline;"><div class="select_lists_dropdown_content"></div><div class="select_lists_dropdown_arrow" onclick="toggle_select_lists_dropdown(this);"><i class="fas fa-chevron-down"></i></div><div class="select_lists_dropdown_menu" contenteditable="false"><ul><li><i onclick="add_select_lists_word($(this));">Add a new word</i></li></ul></div></div></div>&nbsp');
+}
+
+
+function toggle_select_lists_dropdown(element) {
+
+    hide_select_lists_dropdown_except_one($(element).next());
+
+    if($(element).next().css('display') == 'none') {
+        $(element).next().show();
+    } else {
+        $(element).next().hide();
+    }
+}
+
+function hide_select_lists_dropdown_except_one(element) {
+
+    var dropdownCollection = $('.select_lists_dropdown_menu');
+    var index = dropdownCollection.index(element);
+
+    for (let i = 0; i <dropdownCollection.length; i++) {
+        if (i != index) dropdownCollection.eq(i).hide();
+    }
 }
