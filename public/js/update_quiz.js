@@ -572,8 +572,8 @@ $("body").click(function (e) {
                 element.closest('.slide_view_group').removeClass('selected_slide_view_group');
             }
         } else {
-            $('.slide_view_group').removeClass('selected_slide_view_group');
-            $('.slide_view_group_checkbox').prop('checked', false);
+            $('#quiz_view .slide_view_group').removeClass('selected_slide_view_group');
+            $('#quiz_view .slide_view_group_checkbox').prop('checked', false);
             element.closest('.slide_view_group').addClass('selected_slide_view_group');
             element.closest('.slide_view_group').find('.slide_view_group_checkbox').prop('checked', true);
         }

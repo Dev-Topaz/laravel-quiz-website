@@ -855,3 +855,4 @@ function remove_zoom_style(string) {
 $('#slide_view_quiz_list').on('click', '.preview_item', function () {
     $('#' + $(this).attr('id').split('-')[1]).trigger('click');
 });
+

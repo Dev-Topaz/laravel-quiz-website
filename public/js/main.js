@@ -18,8 +18,19 @@ $('body').on('click', '[data-editable]', function () {
     // const $input = $('<input style="margin: 0 40px 0 5px;"/>').val($el.text());
     $el.replaceWith($input);
 
+    $('.form_view_textbox_editable').keydown(function (e) {
+        if ($(this).closest('.question_score').length > 0) {
+            if (!((e.keyCode > 47 && e.keyCode < 58) || (e.keyCode > 95 && e.keyCode < 106) || e.keyCode == 8 || e.keyCode == 46 )) e.preventDefault();
+        }
+    });
+
     const save = function () {
-        const $label = $('<label data-editable />').html($input.html());
+        let $label = $('<label data-editable />').html($input.html());
+
+        if ($input.html() == '') {
+            if ($input.closest('.question_score').length > 0) $label = $('<label data-editable />').html('0');
+        }
+
         if ($input.closest('#select_lists').length > 0) {
             $input.prev().val($input.html());
         }

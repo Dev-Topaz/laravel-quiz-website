@@ -23,8 +23,6 @@
                 </div>
             </div>
 
-            <!-- testing git  -->
-
             <div class="content_body">
                 <div class="content_body_main ">
                     <ul id="mf_form_list">

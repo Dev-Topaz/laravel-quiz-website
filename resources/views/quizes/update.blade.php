@@ -459,20 +459,20 @@
                     <td>Correct:</td>
                     <td><label class="choice_label" data-editable>{{ $quiz->feedback_correct }}</label></td>
                     {{--                    <td></td>--}}
-                    <td><label class="choice_label" data-editable>{{ $quiz->correct_score }}</label></td>
+                    <td class="question_score"><label class="choice_label" data-editable>{{ $quiz->correct_score }}</label></td>
                 </tr>
                 <tr>
                     <td>Incorrect:</td>
                     <td><label class="choice_label" data-editable>{{ $quiz->feedback_incorrect }}</label></td>
                     {{--                    <td></td>--}}
-                    <td><label class="choice_label" data-editable>{{ $quiz->incorrect_score }}</label></td>
+                    <td class="question_score"><label class="choice_label" data-editable>{{ $quiz->incorrect_score }}</label></td>
                 </tr>
                 @if ($quiz->feedback_try_again != null)
                     <tr>
                         <td>Try Again:</td>
                         <td><label class="choice_label" data-editable>{{ $quiz->feedback_try_again }}</label></td>
                         {{--                        <td>None</td>--}}
-                        <td><label class="choice_label" data-editable>{{ $quiz->try_again_score }}</label></td>
+                        <td class="question_score"><label class="choice_label" data-editable>{{ $quiz->try_again_score }}</label></td>
                     </tr>
                 @endif
                 </tbody>
