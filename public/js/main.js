@@ -8,19 +8,26 @@ console.log("loaded!!!");
 $(".se-pre-con").fadeOut(1000);
 // });
 
+var label_prev_content = '';
+
 $('body').on('click', '[data-editable]', function () {
 
     console.log("clicked");
 
     const $el = $(this);
 
-    const $input = $('<div contenteditable="true" class="form_view_textbox_editable" style="border: 1px solid black;width: 100%;overflow-y: scroll;">' + $el.html() + '</div>');
+    label_prev_content = $el.html();
+
+    let $input = $('<div contenteditable="true" class="form_view_textbox_editable" style="border: 1px solid black;width: 100%;overflow-y: scroll;">' + $el.html() + '</div>');
+    if ($input.html().indexOf('Type') != -1 && $input.html().indexOf('content') != -1 && $input.html().indexOf('...') != -1) {
+        $input = $('<div contenteditable="true" class="form_view_textbox_editable" style="border: 1px solid black;width: 100%;overflow-y: scroll;"></div>');
+    }
     // const $input = $('<input style="margin: 0 40px 0 5px;"/>').val($el.text());
     $el.replaceWith($input);
 
     $('.form_view_textbox_editable').keydown(function (e) {
         if ($(this).closest('.question_score').length > 0) {
-            if (!((e.keyCode > 47 && e.keyCode < 58) || (e.keyCode > 95 && e.keyCode < 106) || e.keyCode == 8 || e.keyCode == 46 )) e.preventDefault();
+            if (!((e.keyCode > 47 && e.keyCode < 58) || (e.keyCode > 95 && e.keyCode < 106) || e.keyCode == 8 || e.keyCode == 46)) e.preventDefault();
         }
     });
 
@@ -28,7 +35,11 @@ $('body').on('click', '[data-editable]', function () {
         let $label = $('<label data-editable />').html($input.html());
 
         if ($input.html() == '') {
-            if ($input.closest('.question_score').length > 0) $label = $('<label data-editable />').html('0');
+            if ($input.closest('.question_score').length > 0) {
+                $label = $('<label data-editable />').html('0');
+            } else {
+                $label = $('<label data-editable />').html(label_prev_content);
+            }
         }
 
         if ($input.closest('#select_lists').length > 0) {
