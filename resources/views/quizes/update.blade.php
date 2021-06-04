@@ -143,7 +143,7 @@
                                id="form_view_add_video"><img src="{{ url('/images/icons/add_video_normal.png') }}" alt="video"></a>
                             <img src="{{ $quiz->media ?? '#' }}" alt="form_view_media_element"
                                  id="form_view_media_element"
-                                 style="{{ isset($quiz->media) ? 'display: flex' : 'display: none' }};height: 70px"
+                                 style="{{ isset($quiz->media) ? 'display: flex' : 'display: none' }};height: 70px;max-width: 135px;"
                                  onclick="show_pic_properties()">
                             <img src="{{ url('/images/icons/video_icon.png') }}" alt=""
                                  style="height: 70px;padding:0 3px;{{ isset($quiz->video) ? '' : 'display: none' }}"
