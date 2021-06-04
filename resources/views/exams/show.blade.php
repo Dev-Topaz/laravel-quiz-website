@@ -16,110 +16,6 @@
                 <li id="section_design" style="display: none;"><a href="#section_Design">Design</a></li>
             </ul>
             <div class="content-holder" style="height: 104px;">
-                <div class="section" id="section_main">
-                    <div class="group">
-                        <button class="ribbon-button"><span class="icon"><span class="mif-share"></span></span><span
-                                class="caption">Share</span></button>
-                        <button class="ribbon-button"><span class="icon"><span class="mif-envelop"></span></span><span
-                                class="caption">Email</span></button>
-                        <div>
-                            <button class="ribbon-button dropdown-toggle">
-                            <span class="icon">
-                                <span class="mif-file-zip fg-cyan"></span>
-                            </span>
-                                <span class="caption">Compress</span>
-                            </button>
-                            <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">
-
-                            </ul>
-                        </div>
-                        <div class="group-divider"></div>
-                        <div class="pl-1 pr-1 d-flex flex-column">
-                            <button class="ribbon-tool-button">
-                                <span class="mif-location"></span>
-                            </button>
-                            <div>
-                                <button class="ribbon-tool-button dropdown-toggle">
-                                    <span class="mif-alarm fg-red"></span>
-                                </button>
-                                <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">
-
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="group-divider"></div>
-                        <div class="ribbon-split-button">
-                            <button class="ribbon-main">
-                            <span class="icon">
-                                <span class="mif-cogs"></span>
-                            </span>
-                            </button>
-                            <span class="ribbon-split dropdown-toggle">Options</span>
-                            <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">
-
-                            </ul>
-                        </div>
-                        <div class="group-divider"></div>
-                        <div class="d-flex flex-column">
-                            <button class="ribbon-icon-button" disabled>
-                            <span class="icon">
-                                <span class="mif-apple"></span>
-                            </span>
-                                <span class="caption">Apple</span>
-                            </button>
-                            <div>
-                                <button class="ribbon-icon-button dropdown-toggle">
-                                <span class="icon">
-                                    <span class="mif-apps"></span>
-                                </span>
-                                    <span class="caption">Apps</span>
-                                </button>
-                                <ul class="ribbon-dropdown" data-role="dropdown">
-
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="ribbon-toggle-group">
-                            <button class="ribbon-icon-button" disabled>
-                            <span class="icon">
-                                <span class="mif-list"></span>
-                            </span>
-                                <span class="caption">List</span>
-                            </button>
-                            <button class="ribbon-icon-button disabled">
-                            <span class="icon">
-                                <span class="mif-apps"></span>
-                            </span>
-                                <span class="caption">Content</span>
-                            </button>
-                            <button class="ribbon-icon-button">
-                            <span class="icon">
-                                <span class="mif-table"></span>
-                            </span>
-                                <span class="caption">Icons</span>
-                            </button>
-                            <button class="ribbon-icon-button">
-                            <span class="icon">
-                                <span class="mif-image"></span>
-                            </span>
-                                <span class="caption">Small icons</span>
-                            </button>
-                            <button class="ribbon-icon-button">
-                            <span class="icon">
-                                <span class="mif-images"></span>
-                            </span>
-                                <span class="caption">Large icons</span>
-                            </button>
-                            <button class="ribbon-icon-button">
-                            <span class="icon">
-                                <span class="mif-windows"></span>
-                            </span>
-                                <span class="caption">Tiles</span>
-                            </button>
-                        </div>
-                        <span class="title">ribbon controls</span>
-                    </div>
-                </div>
                 <div class="section" id="section_Design">
                     <div class="group">
                         <div class="ribbon-split-button">
@@ -1017,6 +913,7 @@
                             </select>
                             <select id="font_size_selector"
                                     style="font-size: 12px; outline: none; height: 25px; margin-right: 7px;">
+                                <option value='6'>6</option>
                                 <option value='8'>8</option>
                                 <option value='10'>10</option>
                                 <option value='12'>12</option>
@@ -1198,7 +1095,7 @@
                                     <li id="align_to_selected_obj"><a>Align Selected Objects</a></li> -->
                                     </ul>
                                 </li>
-                                <li style="background-image: url({{ url("/images/ribbon_imgs/rotate.png") }});"
+<!--                                 <li style="background-image: url({{ url("/images/ribbon_imgs/rotate.png") }});"
                                     id="arrange_li_rotate"><a>Rotate <strong
                                             style="position: absolute; right: 5px;">></strong></a>
                                     <ul class="arrange_ul_ul" style="height: 52px;">
@@ -1206,9 +1103,9 @@
                                             id="rotate_right"><a>Rotate Right</a></li>
                                         <li style="background-image: url({{ url("/images/ribbon_imgs/rotate_left.png") }});"
                                             id="rotate_left"><a>Rotate Left</a></li>
-                                        <!-- <li id="rotate_options"><a>More Rotation Options...</a></li> -->
+                                        <li id="rotate_options"><a>More Rotation Options...</a></li>
                                     </ul>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
                         <div class="ribbon-split-button">
@@ -2266,15 +2163,18 @@
                 if ($(this).hasClass('clicked')) return;
                 $(this).toggleClass('clicked');
                 $('#slide_view_btn').toggleClass('clicked');
+
+                $('.tabs-holder li').removeClass('active');
                 $("#section_home_form").addClass('active');
-                $("#section_Home_SlideView").removeClass('active');
-                $("#section_Insert").removeClass('active');
-                $("#section_Design").removeClass('active');
-                $("#section_Home_FormView").addClass('active');
+
                 $("#section_home_slide").hide();
-                $("#section_home_form").show();
                 $("#section_insert").hide();
                 $("#section_design").hide();
+                $("#section_home_form").show();
+
+                $('.content-holder .section').removeClass('active');
+                $("#section_Home_FormView").addClass('active');
+
                 slide_to_form();
 
                 // if ($('.form_view_element').length > 0) store_quiz_state();
@@ -2291,15 +2191,18 @@
                 if ($(this).hasClass('clicked')) return;
                 $(this).toggleClass('clicked');
                 $('#form_view_btn').toggleClass('clicked'); //for main branch comment
+
+                $('.tabs-holder li').removeClass('active');
                 $("#section_home_slide").addClass('active');
-                $("#section_Home_FormView").removeClass('active');
-                $("#section_Insert").removeClass('active');
-                $("#section_Design").removeClass('active');
-                $("#section_Home_SlideView").addClass('active');
-                $("#section_home_slide").show();
+
                 $("#section_home_form").hide();
+                $("#section_home_slide").show();
                 $("#section_insert").show();
                 $("#section_design").show();
+
+                $('.content-holder .section').removeClass('active');
+                $("#section_Home_SlideView").addClass('active');
+
                 form_to_slide();
 
                 // if ($('.form_view_element').length > 0) store_quiz_state();

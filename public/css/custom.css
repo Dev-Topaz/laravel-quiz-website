@@ -315,7 +315,7 @@ span.icon img {
     margin-right: -7px;
     z-index: 2;
     position: relative;
-    cursor:  pointer;
+    cursor: pointer;
 }
 
 #font_color_picker {
@@ -661,4 +661,20 @@ div[contenteditable='true'] ul {
 
 #design_themes_panel_holder {
     z-index: 5;
+}
+
+#section_home_form {
+    margin-left: 3px;
+}
+
+#add_edit_bar div:hover {
+    background: #c6c6c6;
+}
+
+#add_edit_bar div {
+    cursor: pointer;
+}
+
+#editor_footer_part button:hover {
+    background: #c6c6c6;
 }
