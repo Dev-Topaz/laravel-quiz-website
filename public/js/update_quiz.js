@@ -527,8 +527,6 @@ function fit_slide_view_quiz_list() {
 
 function store_theme_style(style) {
 
-
-
     const root_url = $('meta[name=url]').attr('content');
     const token = $('meta[name=csrf-token]').attr('content');
     const examId = $('#exam_id').val();

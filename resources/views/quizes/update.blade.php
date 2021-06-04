@@ -706,7 +706,7 @@
             <img src="{{ isset($quiz->background_img) ? explode('"', $quiz->background_img)[1] : '' }}" alt="">
         </div>
         <div style="display: flex;justify-content: space-around;">
-            <a href="javascript:void(0)" style="padding:5px" onclick="change_background_pic()">Change</a>
+            <a id="change_background_tag" href="javascript:void(0)" style="padding:5px" onclick="change_background_pic()">Change</a>
             <a href="javascript:void(0)" style="padding:5px" onclick="apply_all()">Apply All</a>
             <a href="javascript:void(0)" style="padding:5px" onclick="delete_background_pic()">Delete</a>
         </div>

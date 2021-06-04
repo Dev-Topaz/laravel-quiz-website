@@ -89,6 +89,11 @@ $('#form_view_input_media_element').change(function () {
 
 $('#format_bg_btn').click(function () {
     $('.background_properties').show();
+
+    if ($('#background_properties_image img').attr('src') == '') {
+        $('#change_background_tag').html('Open');
+    }
+
     $('.slide_option').hide();
 });
 
@@ -131,10 +136,10 @@ function delete_background_pic() {
     $('#quiz_view #quiz_background_container').css('background-image', 'unset');
     $('#background_properties_image img').attr('src', '');
     $('#background_img').val('');
+    $('#change_background_tag').html('Open');
 }
 
 $('#select_background_img').change(function () {
-    console.log("bg changed");
 
     var root_url = $('meta[name=url]').attr('content');
 
@@ -164,6 +169,7 @@ $('#select_background_img').change(function () {
                     $('#quiz_view #quiz_background_container').css('background-image', 'url("' + root_url + '/' + response + '")');
                     $('#background_properties_image img').attr('src', root_url + '/' + response);
                     $('#background_img').val('url("' + root_url + '/' + response + '")');
+                    $('#change_background_tag').html('Change');
                     console.log('Image has been uploaded successfully');
                 }
                 hide_preload();
