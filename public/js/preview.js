@@ -13,23 +13,23 @@ zoomScale = (h - 30 - 42) / elementHeight;
 
 // setZoom(zoomScale, document.getElementsByClassName('quiz_list_container')[0]);
 
-function setZoom(zoom, el) {
-
-    transformOrigin = [0, 0];
-    el = el || instance.getContainer();
-    var p = ["webkit", "moz", "ms", "o"],
-        s = "scale(" + zoom + ")",
-        oString = (transformOrigin[0] * 100) + "% " + (transformOrigin[1] * 100) + "%";
-
-    for (var i = 0; i < p.length; i++) {
-        el.style[p[i] + "Transform"] = s;
-        el.style[p[i] + "TransformOrigin"] = oString;
-    }
-
-    el.style["transform"] = s;
-    el.style["transformOrigin"] = oString;
-
-}
+// function setZoom(zoom, el) {
+//
+//     transformOrigin = [0, 0];
+//     el = el || instance.getContainer();
+//     var p = ["webkit", "moz", "ms", "o"],
+//         s = "scale(" + zoom + ")",
+//         oString = (transformOrigin[0] * 100) + "% " + (transformOrigin[1] * 100) + "%";
+//
+//     for (var i = 0; i < p.length; i++) {
+//         el.style[p[i] + "Transform"] = s;
+//         el.style[p[i] + "TransformOrigin"] = oString;
+//     }
+//
+//     el.style["transform"] = s;
+//     el.style["transformOrigin"] = oString;
+//
+// }
 
 /*
 * For Sequence UI
@@ -292,6 +292,11 @@ function preview() {
 
     switch ($('.preview_btn button').html()) {
         case 'Submit':
+            if (!is_completed_question()) {
+                show_modal('error', 'Warning', 'You must complete the question before submitting.');
+                return;
+            }
+
             if ($('.quiz_show .question_type').html() != 'graded') {
                 question_result = 'Survey';
                 $('.preview_btn button').html('Continue');
@@ -478,6 +483,73 @@ function preview() {
                 window.close();
             }
             break;
+    }
+}
+
+function is_completed_question() {
+    switch ($('.quiz_show .type_id').html()) {
+        case '1':
+            if ($('.quiz_show input[name=answer]:checked').length > 0) return true;
+            return false;
+            break;
+
+        case '2':
+            if ($('.quiz_show input[name=answer]:checked').length > 0) return true;
+            return false;
+            break;
+
+        case '3':
+            if ($('.quiz_show input[name=answer]:checked').length > 0) return true;
+            return false;
+            break;
+
+        case '4':
+            if ($('.quiz_show #answer').val() != '') return true;
+            return false;
+            break;
+
+        case '5':
+            if ($('.quiz_show #answer').val() != '') return true;
+            return false;
+            break;
+
+        case '8':
+
+            for (let i = 0; i <$('.quiz_show .slide_view_answer_element input').length; i++) {
+                if ($('.quiz_show .slide_view_answer_element input').eq(i).val() == '') return false;
+            }
+            return true;
+            break;
+
+        case '9':
+            const select_lists_items = $('.quiz_show .slide_view_answer_element select');
+
+            for (let i = 0; i < select_lists_items.length; i++) {
+                if (select_lists_items.eq(i).val() == 'none') return false;
+            }
+
+            return true;
+            break;
+
+        case '10':
+            console.log(drag_words_array);
+            console.log($('.quiz_show .slide_view_answer_element .blank').length);
+            if (drag_words_array.length != $('.quiz_show .slide_view_answer_element .blank').length) return false;
+
+            for (let i = 0; i < drag_words_array.length; i++) {
+                if (drag_words_array[i] == undefined) return false;
+            }
+
+            return true;
+            break;
+
+        case '11':
+            if (hotspots_points.length > 0) return true;
+            return false;
+            break;
+
+        default:
+            return true;
     }
 }
 
