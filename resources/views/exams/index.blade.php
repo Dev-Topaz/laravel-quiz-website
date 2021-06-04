@@ -8,7 +8,7 @@
             <div class="content_header">
                 <div class="content_header_title">
                     <div style="float: left">
-                        <h2>Exam Manager
+                        <h2>Exam Management
                         </h2>
                         <p>Create, edit and manage your exams</p>
                     </div>
