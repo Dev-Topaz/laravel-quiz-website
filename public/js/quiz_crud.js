@@ -1,5 +1,6 @@
 let prev_id = '';
 let clicked_node;
+let is_active_real_time_update_slide_view_nav = false;
 
 function show_quiz_editor(node) {
     const root_url = $('meta[name=url]').attr('content');
@@ -31,6 +32,7 @@ $('#alert_save').click(function () {
     update_quiz(true);
 
     $('#question_save_alert').fadeOut(300);
+    real_time_update_slide_view_nav_active();
 });
 
 $('#alert_not_save').click(function () {
@@ -39,6 +41,7 @@ $('#alert_not_save').click(function () {
     prev_id = clicked_node.attr('id');
 
     $('#question_save_alert').fadeOut(300);
+    real_time_update_slide_view_nav_active();
 });
 
 $('#alert_cancel').click(function () {
@@ -51,6 +54,7 @@ $('#alert_cancel').click(function () {
     // $('#preview_item-' + prev_id).addClass('selected_preview_item');
 
     $('#question_save_alert').fadeOut(300);
+    real_time_update_slide_view_nav_active();
 });
 
 function onNodeClick(node) {
@@ -58,12 +62,15 @@ function onNodeClick(node) {
     clicked_node = node;
 
     if (prev_id === '') {
+        real_time_update_slide_view_nav_inactive()
         show_quiz_editor(node);
         prev_id = node.attr('id');
+        real_time_update_slide_view_nav_active();
         return;
     }
 
     if (prev_id === node.attr('id')) return;
+    real_time_update_slide_view_nav_inactive();
     if (is_edited()) {
 
         $('#question_save_alert').fadeIn(300);
@@ -71,6 +78,7 @@ function onNodeClick(node) {
     } else {
         show_quiz_editor(node);
         prev_id = node.attr('id');
+        real_time_update_slide_view_nav_active();
     }
 }
 
@@ -998,3 +1006,24 @@ $('#slide_view_quiz_list').on('click', '.preview_item', function () {
     $('#' + $(this).attr('id').split('-')[1]).trigger('click');
 });
 
+/*
+* ***************** real-time update at left navigation for question list ****************
+* */
+function real_time_update_slide_view_nav_active() {
+    is_active_real_time_update_slide_view_nav = true;
+}
+
+function real_time_update_slide_view_nav_inactive() {
+    is_active_real_time_update_slide_view_nav = false;
+}
+
+setInterval(function () {
+    if ($('#quiz_list .node.current').length > 0 && is_active_real_time_update_slide_view_nav) {
+        if ($('#quiz_view .slide_view_element').html() != undefined) $('#preview_item-' + $('#quiz_list .node.current').attr('id')).html($('#quiz_view .slide_view_element').html().replace('top: 50%; left: 50%; transform: translate(-50%, -50%);', '').replace('top:50%;left:50%;transform:translate(-50%, -50%);', ''));
+        $('#preview_item-' + $('#quiz_list .node.current').attr('id') + ' > div').css({
+            'margin': 'auto',
+            'zoom': ($('#slide_view_quiz_list').width() - 40) / parseInt($('#screen_width').val()),
+        });
+        $('#' + $('#quiz_list .node.current').attr('id') + ' .data .caption').html($('#question').html().replace(/(<([^>]+)>)/gi, ''));
+    }
+}, 3000);

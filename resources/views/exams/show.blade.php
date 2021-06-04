@@ -215,9 +215,10 @@
                                 <img src="{{ url("/images/ribbon_imgs/design-3.png") }}">
                             </span>
                             </button>
-                            <span class="ribbon-split dropdown-toggle" >Preview</span>
+                            <span class="ribbon-split dropdown-toggle">Preview</span>
                             <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">
-                                <li class="design_preview_submenu preview_slide_btn"  id="design_section_preview_btn_bottom"
+                                <li class="design_preview_submenu preview_slide_btn"
+                                    id="design_section_preview_btn_bottom"
                                     style="background-image: url({{ url("/images/ribbon_imgs/design-pre-1.png") }});">
                                     Preview
                                     Slide
@@ -240,7 +241,8 @@
                                 <img src="{{ url("/images/ribbon_imgs/insert-1.png") }}">
                             </span>
                             </button>
-                            <span class="ribbon-split dropdown-toggle" id="insert_section_question_btn_bottom">Question</span>
+                            <span class="ribbon-split dropdown-toggle"
+                                  id="insert_section_question_btn_bottom">Question</span>
                             <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">
                                 <div id="quiz_types_panel">
                                     <div>
@@ -361,7 +363,7 @@
                                 <img src="{{ url("/images/ribbon_imgs/insert-10.png") }}">
                             </span>
                             </button>
-                            <span class="ribbon-split dropdown-toggle" >Audio</span>
+                            <span class="ribbon-split dropdown-toggle">Audio</span>
                             <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100"
                                 style="width: 150px; text-align: left;">
                                 <li class="insert_audio" id="slide_view_insert_audio_btn"
@@ -393,7 +395,8 @@
                             </button>
                             <span class="ribbon-split dropdown-toggle">Preview</span>
                             <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">
-                                <li class="design_preview_submenu preview_slide_btn" id="insert_section_slide_btn_bottom"
+                                <li class="design_preview_submenu preview_slide_btn"
+                                    id="insert_section_slide_btn_bottom"
                                     style="background-image: url({{ url("/images/ribbon_imgs/design-pre-1.png") }});">
                                     Preview
                                     Slide
@@ -429,7 +432,7 @@
                             </span>
                                 <span class="caption">Copy</span>
                             </button>
-                            <!-- <button id="format_painter_btn" class="ribbon-icon-button" disabled>
+                        <!-- <button id="format_painter_btn" class="ribbon-icon-button" disabled>
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/home-4.png") }}">
                             </span>
@@ -1095,7 +1098,7 @@
                                     <li id="align_to_selected_obj"><a>Align Selected Objects</a></li> -->
                                     </ul>
                                 </li>
-<!--                                 <li style="background-image: url({{ url("/images/ribbon_imgs/rotate.png") }});"
+                            <!--                                 <li style="background-image: url({{ url("/images/ribbon_imgs/rotate.png") }});"
                                     id="arrange_li_rotate"><a>Rotate <strong
                                             style="position: absolute; right: 5px;">></strong></a>
                                     <ul class="arrange_ul_ul" style="height: 52px;">
@@ -1114,7 +1117,8 @@
                                 <img src="{{ url("/images/ribbon_imgs/home-21.png") }}">
                             </span>
                             </button>
-                            <span class="ribbon-split dropdown-toggle" style="line-height: 1.3;"  id="slideview_quick_styles_btn_bottom">Quick<br>Styles</span>
+                            <span class="ribbon-split dropdown-toggle" style="line-height: 1.3;"
+                                  id="slideview_quick_styles_btn_bottom">Quick<br>Styles</span>
                             <div id="quick_styles_panel_holder" class="ribbon-dropdaown" data-role="dropdown"
                                  data-duration="100">
                                 <div>
@@ -1581,15 +1585,16 @@
                     <div class="group-divider"></div>
                 </div> -->
                     <div class="group">
-                        <div class="ribbon-split-button" >
+                        <div class="ribbon-split-button">
                             <button class="ribbon-main" id="slideview_home_preview_btn_top">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/home-27.png") }}">
                             </span>
                             </button>
-                            <span class="ribbon-split dropdown-toggle" >Preview</span>
+                            <span class="ribbon-split dropdown-toggle">Preview</span>
                             <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">
-                                <li class="design_preview_submenu preview_slide_btn"  id="slideview_home_preview_btn_bottom"
+                                <li class="design_preview_submenu preview_slide_btn"
+                                    id="slideview_home_preview_btn_bottom"
                                     style="background-image: url({{ url("/images/ribbon_imgs/design-pre-1.png") }});">
                                     Preview
                                     Slide
@@ -1896,11 +1901,11 @@
                         <div class="ribbon-split-button">
                             <button class="ribbon-main" id="formview_preview_btn">
                             <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/home-27.png") }}"  >
+                                <img src="{{ url("/images/ribbon_imgs/home-27.png") }}">
                             </span>
                             </button>
                             <span class="ribbon-split dropdown-toggle">Preview</span>
-                            <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100" >
+                            <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">
                                 <li class="design_preview_submenu preview_slide_btn" id="formview_preview_dropdown"
                                     style="background-image: url({{ url("/images/ribbon_imgs/design-pre-1.png") }});">
                                     Preview
