@@ -336,6 +336,7 @@ function preview() {
 
             $('#quiz_list_audio-' + current_show_id.split('-')[1])[0].pause();
 
+
             if (next_show_id === undefined || type_id == 14 || type_id == 15) {
 
                 $('.preview_btn button').html('See Result');
@@ -351,6 +352,11 @@ function preview() {
                 $('#' + next_show_id).removeClass('quiz_hide');
                 $('#' + next_show_id).addClass('quiz_show');
                 rearrange_preview_ui();
+
+                if (type_id == 12) {
+                    $('.preview_btn button').html('Continue');
+                    return;
+                }
                 $('.preview_btn button').html('Submit');
             }
 
@@ -374,9 +380,12 @@ function preview() {
                 question_feedback: question_feedback,
             });
 
+
             attempts = 0;
             question_user_point = 0;
-            quizId++;
+
+
+            if ($('.quiz_show').find('.type_id').html() != 12) quizId++;
 
             var current_show_id = $('.quiz_show').attr('id');
             var next_show_id = $('.quiz_show').next().attr('id');
@@ -399,6 +408,10 @@ function preview() {
                 $('#' + next_show_id).removeClass('quiz_hide');
                 $('#' + next_show_id).addClass('quiz_show');
                 rearrange_preview_ui();
+                if (type_id == 12) {
+                    $('.preview_btn button').html('Continue');
+                    return;
+                }
                 $('.preview_btn button').html('Submit');
             }
 
@@ -710,7 +723,6 @@ function evulate() {
             correct_answer_array.pop();
 
             let answer_array_items;
-
 
 
             if ($('.quiz_show .partially_correct').html() == '1') {
