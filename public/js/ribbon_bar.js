@@ -5,8 +5,7 @@ var clipboard_str = '';
 // $('#target_element').val();
 
 // template function
-$('#xxxxx').click(function () {
-});
+$('#xxxxx').click(function () {});
 $('#xxxxx').mousedown(function (e) {
     e.preventDefault();
 });
@@ -142,70 +141,158 @@ function get_cursor_pos_supposed_to_be(str) {
 //  **********************************
 //=========================================
 
+// Font Family Select
 $('#slide_view_font_family_selector').change(function () {
     // changeFont($(this).val());
     var element = $('.selected_slide_view_group'); // get selected element
     if (element.hasClass('slide_view_answer_element')) {
         element.css('font-family', $(this).val());
+        if (element.find('label').length > 0) element.find('label').css('font-family', $(this).val());
+        if (element.find('.ui-widget-header').length > 0) element.find('.ui-widget-header').css('font-family', $(this).val());
+        if (element.find('.ui-widget-content').length > 0) element.find('.ui-widget-content').css('font-family', $(this).val());
+        if (element.find('#slide_drag_words_answer').length > 0) element.find('#slide_drag_words_answer').find('span').css('font-family', $(this).val());
+        if (element.find('.select_lists_dropdown_body').length > 0) element.find('.select_lists_dropdown_body').find('select').css('font-family', $(this).val());
+       
     } else {
         document.execCommand('styleWithCSS', false, true);
         document.execCommand('fontName', false, $(this).val());
     }
 });
 
-var changing_font_size = parseInt($('#font_size_selector').val());
+var fontSize = 16;
 var changing_font_size_for_answer_element = parseInt($('#font_size_selector').val());
 
+// Font size select
 $('#font_size_selector').change(function () {
     var element = $('.selected_slide_view_group'); // get selected element
     if (element.hasClass('slide_view_answer_element')) {
         element.css('font-size', $(this).val() + 'px');
+        if (element.find('label').length > 0) element.find('label').css('font-size', $(this).val() + 'px');
+        if (element.find('.ui-widget-header').length > 0) element.find('.ui-widget-header').css('font-size', $(this).val() + 'px');
+        if (element.find('.ui-widget-content').length > 0) element.find('.ui-widget-content').css('font-size', $(this).val() + 'px');
+        if (element.find('#slide_drag_words_answer').length > 0) element.find('#slide_drag_words_answer').find('span').css('font-size', $(this).val() + 'px');
+        if (element.find('.select_lists_dropdown_body').length > 0) element.find('.select_lists_dropdown_body').find('select').css('font-size', $(this).val() + 'px');
+
         changing_font_size_for_answer_element = parseInt($('#font_size_selector').val());
     } else {
-        changeFont_size($(this).val());
-        changing_font_size = parseInt($('#font_size_selector').val());
+        fontSize = parseInt($('#font_size_selector').val());
+        document.execCommand("fontSize", false, "1");
+        resetFont();
     }
 });
 
+function resetFont() {
+    $("font[size=1]").removeAttr("size").css("font-size", fontSize + "px");
+    var tmp = $('.slide_view_question_element.selected_slide_view_group .cancel_drag').html();
+    tmp = tmp.split('x-small').join(fontSize + 'px');
+    $('.slide_view_question_element.selected_slide_view_group .cancel_drag').html(tmp);
+}
+
+// Font size increase
 $('#font_size_bigger_btn').click(function () {
     var element = $('.selected_slide_view_group'); // get selected element
     if (element.hasClass('slide_view_answer_element')) {
-        changing_font_size_for_answer_element += 2
+        if (changing_font_size_for_answer_element < 100) changing_font_size_for_answer_element += 2;
         element.css('font-size', changing_font_size_for_answer_element);
+        if (element.find('label').length > 0) element.find('label').css('font-size', changing_font_size_for_answer_element);
+        if (element.find('.ui-widget-header').length > 0) element.find('.ui-widget-header').css('font-size', changing_font_size_for_answer_element);
+        if (element.find('.ui-widget-content').length > 0) element.find('.ui-widget-content').css('font-size', changing_font_size_for_answer_element);
+        if (element.find('#slide_drag_words_answer').length > 0) element.find('#slide_drag_words_answer').find('span').css('font-size', changing_font_size_for_answer_element);
+        if (element.find('.select_lists_dropdown_body').length > 0) element.find('.select_lists_dropdown_body').find('select').css('font-size', changing_font_size_for_answer_element);
+
         $('#font_size_selector').val(changing_font_size_for_answer_element);
     } else {
-        changing_font_size += 2;
-        changeFont_size(changing_font_size);
-        $('#font_size_selector').val(changing_font_size);
+        if (fontSize < 100) fontSize += 2;
+        document.execCommand("fontSize", false, "1");
+        $('#font_size_selector').val(fontSize);
+        resetFont();
     }
-    // document.execCommand('styleWithCSS', false, true);
-    // document.execCommand('increaseFontSize');
 });
 
+// Font size decrease
 $('#font_size_smaller_btn').click(function () {
     var element = $('.selected_slide_view_group'); // get selected element
     if (element.hasClass('slide_view_answer_element')) {
-        changing_font_size_for_answer_element -= 2
+        if (changing_font_size_for_answer_element > 6) changing_font_size_for_answer_element -= 2;
         element.css('font-size', changing_font_size_for_answer_element);
+        if (element.find('label').length > 0) element.find('label').css('font-size', changing_font_size_for_answer_element);
+        if (element.find('.ui-widget-header').length > 0) element.find('.ui-widget-header').css('font-size', changing_font_size_for_answer_element);
+        if (element.find('.ui-widget-content').length > 0) element.find('.ui-widget-content').css('font-size', changing_font_size_for_answer_element);
+        if (element.find('#slide_drag_words_answer').length > 0) element.find('#slide_drag_words_answer').find('span').css('font-size', changing_font_size_for_answer_element);
+        if (element.find('.select_lists_dropdown_body').length > 0) element.find('.select_lists_dropdown_body').find('select').css('font-size', changing_font_size_for_answer_element);
+
         $('#font_size_selector').val(changing_font_size_for_answer_element);
     } else {
-        changing_font_size -= 2;
-        changeFont_size(changing_font_size);
-        $('#font_size_selector').val(changing_font_size);
+        if (fontSize > 6) fontSize -= 2;
+        document.execCommand("fontSize", false, "1");
+        $('#font_size_selector').val(fontSize);
+        resetFont();
     }
-    // document.execCommand('styleWithCSS', false, true);
-    // document.execCommand('decreaseFontSize');
+
 });
 
+// Font style clear
 $('#font_style_clear_btn').click(function () {
+
+    $('#slide_view_font_family_selector').val('Arial');
+    $('#font_size_selector').val('16');
+    fontSize = 16;
+    changing_font_size_for_answer_element = 16;
+
     var element = $('.selected_slide_view_group'); // get selected element
     if (element.hasClass('slide_view_answer_element')) {
         element.css('font-size', '16px');
         element.css('font-style', 'normal');
+        element.css('font-weight', 'normal');
         element.css('font-family', 'Arial');
         element.css('color', 'black');
         element.css('text-decoration', 'none');
-        element.find('label').css('text-decoration', 'none');
+
+        if (element.find('label').length > 0) {
+            element.find('label').css('font-size', '16px');
+            element.find('label').css('font-style', 'normal');
+            element.find('label').css('font-weight', 'normal');
+            element.find('label').css('font-family', 'Arial');
+            element.find('label').css('color', 'black');
+            element.find('label').css('text-decoration', 'none');
+        }
+
+        if (element.find('.ui-widget-header').length > 0) {
+            element.find('.ui-widget-header').css('font-size', '16px');
+            element.find('.ui-widget-header').css('font-style', 'normal');
+            element.find('.ui-widget-header').css('font-weight', 'normal');
+            element.find('.ui-widget-header').css('font-family', 'Arial');
+            element.find('.ui-widget-header').css('color', 'black');
+            element.find('.ui-widget-header').css('text-decoration', 'none');
+        }
+
+        if (element.find('.ui-widget-content').length > 0) {
+            element.find('.ui-widget-content').css('font-size', '16px');
+            element.find('.ui-widget-content').css('font-style', 'normal');
+            element.find('.ui-widget-content').css('font-weight', 'normal');
+            element.find('.ui-widget-content').css('font-family', 'Arial');
+            element.find('.ui-widget-content').css('color', 'black');
+            element.find('.ui-widget-content').css('text-decoration', 'none');
+        }
+
+        if (element.find('#slide_drag_words_answer').length > 0) {
+            element.find('#slide_drag_words_answer').find('span').css('font-size', '16px');
+            element.find('#slide_drag_words_answer').find('span').css('font-style', 'normal');
+            element.find('#slide_drag_words_answer').find('span').css('font-weight', 'normal');
+            element.find('#slide_drag_words_answer').find('span').css('font-family', 'Arial');
+            element.find('#slide_drag_words_answer').find('span').css('color', 'black');
+            element.find('#slide_drag_words_answer').find('span').css('text-decoration', 'none');
+        } 
+
+        if (element.find('.select_lists_dropdown_body').length > 0) {
+            element.find('.select_lists_dropdown_body').find('select').css('font-size', '16px');
+            element.find('.select_lists_dropdown_body').find('select').css('font-style', 'normal');
+            element.find('.select_lists_dropdown_body').find('select').css('font-weight', 'normal');
+            element.find('.select_lists_dropdown_body').find('select').css('font-family', 'Arial');
+            element.find('.select_lists_dropdown_body').find('select').css('color', 'black');
+            element.find('.select_lists_dropdown_body').find('select').css('text-decoration', 'none');
+        }
+
     } else {
         clear_formatting();
     }
@@ -213,6 +300,7 @@ $('#font_style_clear_btn').click(function () {
 
 var formatting_bold = false;
 
+// Font bold toggle
 $('.font_bold_btn').click(function () {
     // toggle_bold(formatting_bold);
 
@@ -221,28 +309,46 @@ $('.font_bold_btn').click(function () {
         formatting_bold = !formatting_bold;
         if (formatting_bold) {
             element.css('font-weight', 'bold');
+            if (element.find('label').length > 0) element.find('label').css('font-weight', 'bold');
+            if (element.find('.ui-widget-header').length > 0) element.find('.ui-widget-header').css('font-weight', 'bold');
+            if (element.find('.ui-widget-content').length > 0) element.find('.ui-widget-content').css('font-weight', 'bold');
+            if (element.find('#slide_drag_words_answer').length > 0) element.find('#slide_drag_words_answer').find('span').css('font-weight', 'bold');
+            if (element.find('.select_lists_dropdown_body').length > 0) element.find('.select_lists_dropdown_body').find('select').css('font-weight', 'bold');
         } else {
             element.css('font-weight', 'normal');
+            if (element.find('label').length > 0) element.find('label').css('font-weight', 'normal');
+            if (element.find('.ui-widget-header').length > 0) element.find('.ui-widget-header').css('font-weight', 'normal');
+            if (element.find('.ui-widget-content').length > 0) element.find('.ui-widget-content').css('font-weight', 'normal');
+            if (element.find('#slide_drag_words_answer').length > 0) element.find('#slide_drag_words_answer').find('span').css('font-weight', 'normal');
+            if (element.find('.select_lists_dropdown_body').length > 0) element.find('.select_lists_dropdown_body').find('select').css('font-weight', 'normal');
         }
     } else {
         document.execCommand('styleWithCSS', false, true);
         document.execCommand('bold');
     }
-
-
 });
 
 var formatting_strike = false;
 
+// Font strikethrough toggle
 $('#slide_view_font_strike_btn').click(function () {
-
     var element = $('.selected_slide_view_group'); // get selected element
     if (element.hasClass('slide_view_answer_element')) {
         formatting_strike = !formatting_strike;
         if (formatting_strike) {
-            element.find('label').css('text-decoration', 'line-through');
+            element.css('text-decoration', 'line-through');
+            if (element.find('label').length > 0) element.find('label').css('text-decoration', 'line-through');
+            if (element.find('.ui-widget-header').length > 0) element.find('.ui-widget-header').css('text-decoration', 'line-through');
+            if (element.find('.ui-widget-content').length > 0) element.find('.ui-widget-content').css('text-decoration', 'line-through');
+            if (element.find('#slide_drag_words_answer').length > 0) element.find('#slide_drag_words_answer').find('span').css('text-decoration', 'line-through');
+            if (element.find('.select_lists_dropdown_body').length > 0) element.find('.select_lists_dropdown_body').find('select').css('text-decoration', 'line-through');
         } else {
-            element.find('label').css('text-decoration', 'none');
+            element.css('text-decoration', 'none');
+            if (element.find('label').length > 0) element.find('label').css('text-decoration', 'none');
+            if (element.find('.ui-widget-header').length > 0) element.find('.ui-widget-header').css('text-decoration', 'none');
+            if (element.find('.ui-widget-content').length > 0) element.find('.ui-widget-content').css('text-decoration', 'none');
+            if (element.find('#slide_drag_words_answer').length > 0) element.find('#slide_drag_words_answer').find('span').css('text-decoration', 'none');
+            if (element.find('.select_lists_dropdown_body').length > 0) element.find('.select_lists_dropdown_body').find('select').css('text-decoration', 'none');
         }
     } else {
         document.execCommand('styleWithCSS', false, true);
@@ -252,14 +358,26 @@ $('#slide_view_font_strike_btn').click(function () {
 
 var formatting_ital = false;
 
+// Font italic toggle
 $('.font_ital_btn').click(function () {
     var element = $('.selected_slide_view_group'); // get selected element
     if (element.hasClass('slide_view_answer_element')) {
         formatting_ital = !formatting_ital;
         if (formatting_ital) {
             element.css('font-style', 'italic');
+            if (element.find('label').length > 0) element.find('label').css('font-style', 'italic');
+            if (element.find('.ui-widget-header').length > 0) element.find('.ui-widget-header').css('font-style', 'italic');
+            if (element.find('.ui-widget-content').length > 0) element.find('.ui-widget-content').css('font-style', 'italic');
+            if (element.find('#slide_drag_words_answer').length > 0) element.find('#slide_drag_words_answer').find('span').css('font-style', 'italic');
+            if (element.find('.select_lists_dropdown_body').length > 0) element.find('.select_lists_dropdown_body').find('select').css('font-style', 'italic');
+
         } else {
             element.css('font-style', 'normal');
+            if (element.find('label').length > 0) element.find('label').css('font-style', 'normal');
+            if (element.find('.ui-widget-header').length > 0) element.find('.ui-widget-header').css('font-style', 'normal');
+            if (element.find('.ui-widget-content').length > 0) element.find('.ui-widget-content').css('font-style', 'normal');
+            if (element.find('#slide_drag_words_answer').length > 0) element.find('#slide_drag_words_answer').find('span').css('font-style', 'normal');
+            if (element.find('.select_lists_dropdown_body').length > 0) element.find('.select_lists_dropdown_body').find('select').css('font-style', 'normal');
         }
     } else {
         document.execCommand('styleWithCSS', false, true);
@@ -268,17 +386,25 @@ $('.font_ital_btn').click(function () {
 });
 
 var formatting_underline = false;
-
+// Font underline toggle
 $('.font_underline_btn').click(function () {
     var element = $('.selected_slide_view_group'); // get selected element
     if (element.hasClass('slide_view_answer_element')) {
         formatting_underline = !formatting_underline;
         if (formatting_underline) {
             element.css('text-decoration', 'underline');
-            element.find('label').css('text-decoration', 'underline');
+            if (element.find('label').length > 0) element.find('label').css('text-decoration', 'underline');
+            if (element.find('.ui-widget-header').length > 0) element.find('.ui-widget-header').css('text-decoration', 'underline');
+            if (element.find('.ui-widget-content').length > 0) element.find('.ui-widget-content').css('text-decoration', 'underline');
+            if (element.find('#slide_drag_words_answer').length > 0) element.find('#slide_drag_words_answer').find('span').css('text-decoration', 'underline');
+            if (element.find('.select_lists_dropdown_body').length > 0) element.find('.select_lists_dropdown_body').find('select').css('text-decoration', 'underline');
         } else {
             element.css('text-decoration', 'none');
-            element.find('label').css('text-decoration', 'none');
+            if (element.find('label').length > 0) element.find('label').css('text-decoration', 'none');
+            if (element.find('.ui-widget-header').length > 0) element.find('.ui-widget-header').css('text-decoration', 'none');
+            if (element.find('.ui-widget-content').length > 0) element.find('.ui-widget-content').css('text-decoration', 'none');
+            if (element.find('#slide_drag_words_answer').length > 0) element.find('#slide_drag_words_answer').find('span').css('text-decoration', 'none');
+            if (element.find('.select_lists_dropdown_body').length > 0) element.find('.select_lists_dropdown_body').find('select').css('text-decoration', 'none');
         }
     } else {
         document.execCommand('styleWithCSS', false, true);
@@ -290,6 +416,7 @@ var formatting_subscript = false;
 
 $('.font_subscription_btn').click(function () {
 
+
     formatting_subscript = !formatting_subscript;
     // toggle_subscript(formatting_subscript);
     document.execCommand('styleWithCSS', false, true);
@@ -299,11 +426,12 @@ $('.font_subscription_btn').click(function () {
 var formatting_superscript = false;
 
 $('.font_superscription_btn').click(function () {
+
+
     formatting_superscript = !formatting_superscript;
     // toggle_superscript(formatting_superscript);
     document.execCommand('styleWithCSS', false, true);
     document.execCommand('superscript');
-
 });
 
 $('#font_picker_trigger').click(function () {
@@ -318,20 +446,26 @@ $('#office_color_picker').mousedown(function (e) {
     e.preventDefault();
 });
 
+// Font color select
 $("#office_color_picker").on("change.color", function (event, color) {
-
     var element = $('.selected_slide_view_group'); // get selected element
     if (element.hasClass('slide_view_answer_element')) {
         element.css('color', color);
+        if (element.find('label').length > 0) element.find('label').css('color', color);
+        if (element.find('.ui-widget-header').length > 0) element.find('.ui-widget-header').css('color', color);
+        if (element.find('.ui-widget-content').length > 0) element.find('.ui-widget-content').css('color', color);
+        if (element.find('#slide_drag_words_answer').length > 0) element.find('#slide_drag_words_answer').find('span').css('color', color);
+        if (element.find('.select_lists_dropdown_body').length > 0) element.find('.select_lists_dropdown_body').find('select').css('color', color);
+
     } else {
         document.execCommand('styleWithCSS', false, true);
         document.execCommand('foreColor', false, color);
     }
 
+    if (element.find('span').length > 0) element.find('span').css('color', color);
     // event.preventDefault();
     // change_font_color(color);
 });
-
 
 function change_font_color(color) {
     var sel = window.getSelection();
@@ -373,7 +507,6 @@ function toggle_subscript(formatting_subscript) {
         range.insertNode(e);
     }
 }
-
 
 function toggle_strike(formatting_strike) {
     var sel = window.getSelection();
@@ -482,6 +615,8 @@ var para_numbering = false;
 $('.numbering_btn').click(function () {
     // para_numbering = !para_numbering;
     // create_numbering(para_numbering);
+
+
     document.execCommand('insertOrderedList');
 });
 
@@ -506,6 +641,8 @@ var para_bullet = false;
 $('.bullet_btn').click(function () {
     // para_bullet = !para_bullet;
     // create_bullet(para_bullet);
+
+    
     document.execCommand('insertUnorderedList', false);
 });
 
@@ -527,16 +664,22 @@ function create_bullet(para_bullet) {
 $('#paragraph_align_left').click(function () {
     var element = $('.selected_slide_view_group'); // get selected element
     element.css('text-align', 'left');
+    if (element.find('.choice_item').length > 0) element.find('.choice_item').css('justify-content', 'flex-start');
+    if (element.find('.response_item').length > 0) element.find('.response_item').css('justify-content', 'flex-start');
 });
 
 $('#paragraph_align_center').click(function () {
     var element = $('.selected_slide_view_group'); // get selected element
     element.css('text-align', 'center');
+    if (element.find('.choice_item').length > 0) element.find('.choice_item').css('justify-content', 'center');
+    if (element.find('.response_item').length > 0) element.find('.response_item').css('justify-content', 'center');
 });
 
 $('#paragraph_align_right').click(function () {
     var element = $('.selected_slide_view_group'); // get selected element
     element.css('text-align', 'right');
+    if (element.find('.choice_item').length > 0) element.find('.choice_item').css('justify-content', 'flex-end');
+    if (element.find('.response_item').length > 0) element.find('.response_item').css('justify-content', 'flex-end');
 });
 
 $('#paragraph_align_justify').click(function () {
@@ -642,6 +785,7 @@ $('.decrease_indent').mousedown(function (e) {
 });
 
 $('.increase_indent').click(function () {
+
     increase_indent();
 });
 
@@ -1062,13 +1206,11 @@ var edit_hyperlink_modal = document.getElementById("edit_hyperlink_modal_contain
 var span = document.getElementsByClassName("edit_hyperlink_close_symbol")[0];
 span.onclick = function () {
     edit_hyperlink_modal.style.display = "none";
-    cancel_hyperlink();
 }
 
 window.onclick = function (event) {
     if (event.target == edit_hyperlink_modal) {
         edit_hyperlink_modal.style.display = "none";
-        cancel_hyperlink();
     }
     if (event.target == recording_panel_holder) {
         recording_panel_holder.style.display = "none";
@@ -1076,9 +1218,11 @@ window.onclick = function (event) {
     }
 }
 
+var selected_html;
+
 $('.hyperlink_btn').click(function () {
     $('#hyper_text').val(get_selected_txt());
-    get_ready_for_hyperlink();
+    selected_html = saveSelection();
     edit_hyperlink_modal.style.display = "block";
     remove_link = false;
 });
@@ -1092,64 +1236,76 @@ function get_selected_txt() {
     return (sel.toString());
 }
 
-function get_ready_for_hyperlink() {
-    var sel = window.getSelection();
-    if (sel.rangeCount) {
-        var e = document.createElement('span');
-        // e.style = 'font-family:' + font.value + ';';
-        e.className = "hyperlink";
-        e.innerHTML = sel.toString();
-        var range = sel.getRangeAt(0);
-        range.deleteContents();
-        range.insertNode(e);
-    }
-}
-
-$('#edit_hyperlink_modal_container input').on('change', function () {
+$('#link_to_bar input').on('click', function () {
     if ($('input[name=link_type]:checked').val() == 'webpage') {
         $('#open_in_new_check').css('display', 'block');
         $('#hyperlink_test_btn').css('display', 'block');
-        // $('#link_address').val('http://');
+        $('#link_address').val('http://');
     } else {
         $('#open_in_new_check').css('display', 'none');
         $('#hyperlink_test_btn').css('display', 'none');
         $('#link_address').val('');
     }
-
 });
 
 $('#edit_hyperlink_ok').click(function () {
     edit_hyperlink_modal.style.display = "none";
-    if (remove_link) return;
-
+    restoreSelection(selected_html);
+    if (remove_link) {
+        document.execCommand('insertHTML', false, '<span>' + $('#hyper_text').val() + '</span>');
+        return;
+    };
     if ($('input[name=link_type]:checked').val() == 'webpage') {
         if (document.getElementById('open_in_new').checked)
-            $('.slide_view_question_element').eq(0).find('span.hyperlink').html('<a target="_blank" href="' + $('#link_address').val() + '">' + $('#hyper_text').val() + '</a>');
+            document.execCommand('insertHTML', false, '<a style="font-size:' + fontSize + 'px;" href="' + $('#link_address').val() + '" target="_blank">' + $('#hyper_text').val() + '</a>');
         else
-            $('.slide_view_question_element').eq(0).find('span.hyperlink').html('<a href="' + $('#link_address').val() + '">' + $('#hyper_text').val() + '</a>');
+            document.execCommand('insertHTML', false, '<a style="font-size:' + fontSize + 'px;" href="' + $('#link_address').val() + '">' + $('#hyper_text').val() + '</a>');
     } else {
-        $('.slide_view_question_element').eq(0).find('span.hyperlink').html('<a href="mailto:' + $('#link_address').val() + '">' + $('#hyper_text').val() + '</a>');
+        document.execCommand('insertHTML', false, '<a style="font-size:' + fontSize + 'px;" href="mailto:' + $('#link_address').val() + '">' + $('#hyper_text').val() + '</a>');
     }
 });
+
+function saveSelection() {
+    if (window.getSelection) {
+        sel = window.getSelection();
+        if (sel.getRangeAt && sel.rangeCount) {
+            var ranges = [];
+            for (var i = 0, len = sel.rangeCount; i < len; ++i) {
+                ranges.push(sel.getRangeAt(i));
+            }
+            return ranges;
+        }
+    } else if (document.selection && document.selection.createRange) {
+        return document.selection.createRange();
+    }
+    return null;
+}
+
+function restoreSelection(savedSel) {
+    if (savedSel) {
+        if (window.getSelection) {
+            sel = window.getSelection();
+            sel.removeAllRanges();
+            for (var i = 0, len = savedSel.length; i < len; ++i) {
+                sel.addRange(savedSel[i]);
+            }
+        } else if (document.selection && savedSel.select) {
+            savedSel.select();
+        }
+    }
+}
 
 $('#hyperlink_test_btn').click(function () {
     window.open($('#link_address').val(), '_blank');
 });
 
 $('#edit_hyperlink_cancel').click(function () {
-    cancel_hyperlink();
     edit_hyperlink_modal.style.display = "none";
 });
 
 $('#hyperlink_remove_btn').click(function () {
-    cancel_hyperlink();
-});
-
-function cancel_hyperlink() {
     remove_link = true;
-    $('.slide_view_question_element').eq(0).find('span.hyperlink').html($('#hyper_text').val());
-    $('.slide_view_question_element').eq(0).find('span.hyperlink').removeClass('hyperlink');
-}
+});
 
 $('#slide_view_rec_mic_btn').click(function () {
     $('#recording_panel_holder').show();
@@ -1159,9 +1315,7 @@ $('#slide_view_rec_mic_btn').click(function () {
 $('#form_view_rec_mic_btn').click(function () {
     $('#recording_panel_holder').show();
     $('body').css('overflow', 'hidden');
-
 });
-
 
 $('#close_recording').click(function () {
     $('#recording_panel_holder').hide();
@@ -1174,10 +1328,10 @@ $('#close_recording').click(function () {
 //
 //===================================
 
-var picture_element_ratio = 1;
-var video_element_ratio = 1;
+var picture_element_ratio = 0;
+var video_element_ratio = 0;
 
-var applied_layout = false;
+var layout_applied = false;
 var question_style_top;
 var question_style_left;
 var question_style_width;
@@ -1195,10 +1349,9 @@ var video_style_left;
 var video_style_width;
 var video_style_height;
 
-
 $('.layout_panel_img_holder').click(function () {
 
-    if (!applied_layout) {
+    if (!layout_applied) {
         question_style_top = $('.slide_view_question_element').css('top');
         question_style_left = $('.slide_view_question_element').css('left');
         question_style_width = $('.slide_view_question_element').css('width');
@@ -1215,7 +1368,7 @@ $('.layout_panel_img_holder').click(function () {
         video_style_left = $('.slide_view_video_element').css('left');
         video_style_width = $('.slide_view_video_element').css('width');
         video_style_height = $('.slide_view_video_element').css('height');
-        applied_layout = true;
+        layout_applied = true;
     }
 
 
@@ -1235,10 +1388,11 @@ $('.layout_panel_img_holder').click(function () {
     var container_ratio = $('#quiz_background_container').width() / $('#quiz_background_container').height();
     var ratio_to_be_changed = container_ratio * media_style[2] / media_style[3];
 
-    if ($('.slide_view_media_element').find('img').eq(0).attr('src') != '#') {
-        if ($('.slide_view_media_element').css('display') != 'none') {
-            picture_element_ratio = $('.slide_view_media_element').width() / $('.slide_view_media_element').height();
-        }
+    if ($('.slide_view_element .slide_view_media_element').find('img').eq(0).attr('src') != '#') {
+        // if ($('.slide_view_element .slide_view_media_element').css('display') != 'none') {
+            if (picture_element_ratio == 0)
+            picture_element_ratio = $('.slide_view_element .slide_view_media_element').width() / $('.slide_view_element .slide_view_media_element').height();
+        // }
         if (picture_element_ratio < ratio_to_be_changed) {
             $('.slide_view_media_element').css('top', media_style[0] + '%');
             $('.slide_view_media_element').css('height', media_style[3] + '%');
@@ -1252,10 +1406,11 @@ $('.layout_panel_img_holder').click(function () {
         }
     }
 
-    if ($('.slide_view_video_element').find('source').eq(0).attr('src') != '#') {
-        if ($('.slide_view_video_element').css('display') != 'none') {
-            video_element_ratio = $('.slide_view_video_element ').width() / $('.slide_view_video_element').height();
-        }
+    if ($('.slide_view_element .slide_view_video_element').find('source').eq(0).attr('src') != '#') {
+        // if ($('.slide_view_element .slide_view_video_element').css('display') != 'none') {
+            if (video_element_ratio == 0)
+            video_element_ratio = $('.slide_view_element .slide_view_video_element ').width() / $('.slide_view_element .slide_view_video_element').height();
+        // }
 
         if (video_element_ratio < ratio_to_be_changed) {
             $('.slide_view_video_element').css('top', media_style[0] + '%');
@@ -1273,8 +1428,7 @@ $('.layout_panel_img_holder').click(function () {
 
 
 $('#layout_reset_btn').click(function () {
-
-    if (applied_layout) {
+    if (layout_applied) {
         $('.slide_view_question_element').css('top', question_style_top);
         $('.slide_view_question_element').css('left', question_style_left);
         $('.slide_view_question_element').css('width', question_style_width);
@@ -1378,48 +1532,48 @@ $('#xxxxxxx').click(function () {
 });
 
 $('#design_section_preview_btn_top').click(function (e) {
-        e.stopPropagation();
+    e.stopPropagation();
     $('#design_section_preview_btn_bottom').trigger('click');
 });
 
 $('#theme_select_btn_top').click(function (e) {
-        e.stopPropagation();
+    e.stopPropagation();
     $('#theme_select_btn_bottom').trigger('click');
 });
 
 $('#insert_section_slide_btn_top').click(function (e) {
-       e.stopPropagation();
+    e.stopPropagation();
     $('#insert_section_slide_btn_bottom').trigger('click');
 });
 
 $('#insert_section_audio_btn_top').click(function (e) {
-        e.stopPropagation();
+    e.stopPropagation();
     $('#slide_view_insert_audio_btn').trigger('click');
 });
 
 $('#insert_section_question_btn_top').click(function (e) {
-        e.stopPropagation();
+    e.stopPropagation();
     $('#insert_section_question_btn_bottom').trigger('click');
 });
 
 $('#slideview_home_preview_btn_top').click(function (e) {
-        e.stopPropagation();
+    e.stopPropagation();
     $('#slideview_home_preview_btn_bottom').trigger('click');
 });
 
 $('#slideview_quick_styles_btn_top').click(function (e) {
-        e.stopPropagation();
+    e.stopPropagation();
     $('#slideview_quick_styles_btn_bottom').trigger('click');
 });
 
 $('#slideview_arrange_btn_top').click(function (e) {
-        e.stopPropagation();
+    e.stopPropagation();
     $('#slideview_arrange_btn_down').trigger('click');
 });
 
 $('#select_question_btn').click(function (e) {
     e.stopPropagation();
-        $('#select_question_dropdown').trigger('click');
+    $('#select_question_dropdown').trigger('click');
 });
 
 $('#formview_preview_btn').click(function (e) {
@@ -1427,7 +1581,32 @@ $('#formview_preview_btn').click(function (e) {
     $('#formview_preview_dropdown').trigger('click');
 });
 
+$('#font_color_display_letter').mousedown(function (e) {
+    e.preventDefault();
+});
+
 $('#font_color_display_letter').click(function (e) {
     e.stopPropagation();
     $('#font_picker_trigger').trigger('click');
 });
+
+function init_styling_and_layout() {
+    picture_element_ratio = 0;
+    video_element_ratio = 0;
+    layout_applied = false;
+
+    formatting_bold = false;
+    formatting_strike = false;
+    formatting_ital = false;
+    formatting_underline = false;
+    formatting_subscript = false;
+    formatting_superscript = false;
+
+    $('#slide_view_font_family_selector').val('Arial');
+    $('#font_size_selector').val('16');
+    fontSize = 16;
+    changing_font_size_for_answer_element = 16;
+}
+
+
+// init_styling_and_layout()   when leaving current quiz, on a new quiz
