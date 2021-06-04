@@ -2209,7 +2209,10 @@
             });
 
             $(document).ready(function () {
-                console.log($('#form_view_quiz_list .node-group > div.data'));
+                console.log($('#form_view_quiz_list .node').eq(0));
+                if ($('#form_view_quiz_list .node').length > 0) {
+                    $('#form_view_quiz_list .node').eq(0).trigger('click');
+                }
                 for (let i = 0; i < $('#form_view_quiz_list .node-group > div.data').length - 1; i++) {
                     $('#form_view_quiz_list .node-group > div.data').eq(i).append('<i class="fas fa-trash" id="delete_group_icon-' + $('#form_view_quiz_list .node-group').eq(i).attr('id') + '" style="font-size: 12px;" onclick="show_delete_dialog(\'group\', this)"></i>');
                     $('#form_view_quiz_list .node-group > div.data').eq(i).css({
