@@ -120,7 +120,7 @@ class QuizController extends Controller
                     'feedback_try_again' => 'You did not choose the correct response. Try again.',
                     'media' => null,
                     'order' => $request->order,
-                    'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%;z-index: 2;position:absolute;overflow:hidden;"><div class="col-md-12"><div class="choice_item"><input type="radio" id="true" name="answer" value="1" style="padding-right: 10px;"><label for="true">True</label></div><div class="choice_item"><input type="radio" id="false" name="answer" value="0" style="padding-right: 10px;"><label for="0">False</label></div></div></div>',
+                    'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%;z-index: 2;position:absolute;overflow:hidden;"><div class="col-md-12"><div class="choice_item"><input type="radio" id="true" name="answer" value="1" style="padding-right: 10px;"><label for="true">True</label></div><div class="choice_item"><input type="radio" id="false" name="answer" value="0" style="padding-right: 10px;"><label for="false">False</label></div></div></div>',
                     'question_type' => 'graded',
                     'feedback_type' => 'by_result',
                     'branching' => null,
