@@ -403,7 +403,7 @@ function answer_store() {
         case '7':
             answer_element = $('tbody#matching_list tr');
             for (let i = 0; i < answer_element.length; i++) {
-                answer += $('tbody#matching_list tr').eq(i).find('label').eq(0).html() + ';' + $('tbody#matching_list tr').eq(i).find('label').eq(1).html() + '@';
+                answer += $('#quiz_view .slide_view_answer_element .ui-widget-header').eq(i).html() + ';' + $('#quiz_view .slide_view_answer_element .ui-widget-content').eq(i).html() + '@';
             }
             break;
 

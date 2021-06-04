@@ -1,4 +1,4 @@
-$('div').attr('contenteditable', 'false');
+$('div.quiz_item_container .slide_view_question_element').attr('contenteditable', 'false');
 
 /*
 * ************ Fit Quiz size ********************
@@ -666,13 +666,13 @@ function evulate() {
             // detect matching
             for (let i = 0; i < matching_items.length; i++) {
                 if (matching_items.eq(i).css('justify-content') != 'center') return false;
-                matching_answer += matching_items.eq(i).find('p').eq(0).html() + ';' + matching_items.eq(i).find('p').eq(1).html() + '@';
+                matching_answer += matching_items.eq(i).find('.ui-widget-header').eq(0).html() + ';' + matching_items.eq(i).find('.ui-widget-content').eq(0).html() + '@';
             }
 
-            question_user_answer = matching_answer;
-            question_correct_answer = $('.quiz_show .correct_answer').html();
+            question_user_answer = matching_answer.replaceAll('<p>', '').replaceAll('</p>', '');
+            question_correct_answer = $('.quiz_show .correct_answer').html().replaceAll('<p>', '').replaceAll('</p>', '');
 
-            return matching_answer == $('.quiz_show .correct_answer').html();
+            return question_user_answer == question_correct_answer;
             break;
 
         case '8':
