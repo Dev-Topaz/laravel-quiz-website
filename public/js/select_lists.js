@@ -8,6 +8,13 @@ function add_select_lists_word(element) {
 }
 
 function add_select_lists_dropdown() {
+    if ($('#select_lists div').length > 0) {
+        if (!$('#select_lists > div:last-child').hasClass('select_lists_dropdown')) {
+            $('#select_lists > div:last-child').append('<div class="select_lists_dropdown" contenteditable="true" style="display: inline;"><div class="select_lists_dropdown_body" contenteditable="false"  style="display: inline;"><div class="select_lists_dropdown_content"></div><div class="select_lists_dropdown_arrow" onclick="toggle_select_lists_dropdown(this);"><i class="fas fa-chevron-down"></i></div><div class="select_lists_dropdown_menu" contenteditable="false"><ul><li><i onclick="add_select_lists_word($(this));">Add a new word</i></li></ul></div></div></div>&nbsp');
+            return;
+        }
+    }
+
     $('#select_lists').append('<div class="select_lists_dropdown" contenteditable="true" style="display: inline;"><div class="select_lists_dropdown_body" contenteditable="false"  style="display: inline;"><div class="select_lists_dropdown_content"></div><div class="select_lists_dropdown_arrow" onclick="toggle_select_lists_dropdown(this);"><i class="fas fa-chevron-down"></i></div><div class="select_lists_dropdown_menu" contenteditable="false"><ul><li><i onclick="add_select_lists_word($(this));">Add a new word</i></li></ul></div></div></div>&nbsp');
 }
 
