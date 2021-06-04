@@ -8,7 +8,7 @@ function question_slide2form(question) {
 }
 
 function question_form2slide() {
-    $('#quiz_view .slide_view_question_element > div.cancel_drag').html($('#question > div.cancel_drag').eq(0).html());
+    $('#quiz_view .slide_view_question_element > div.cancel_drag').html($('#question').html());
 }
 
 // function media_form2slide() {
