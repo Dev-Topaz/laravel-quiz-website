@@ -421,7 +421,7 @@ function update_quiz(is_alert_save) {
             other_elements: other_elements,
         },
         success: function (data) {
-            show_modal('success', 'Success', 'Quiz updated successfully');
+            show_modal('success', 'Success', 'Question updated successfully');
             store_quiz_state();
             if (is_alert_save) {
                 show_quiz_editor(clicked_node);
@@ -523,7 +523,7 @@ function delete_quiz(quizId) {
             $('#preview_item-' + quizId).remove();
 
             $('#quiz_view').html('');
-            show_modal('success', 'Success', 'Quiz Group deleted successfully');
+            show_modal('success', 'Success', 'Question deleted successfully');
             hide_preload();
         }
     }).catch((XHttpResponse) => {

@@ -23,7 +23,7 @@ function question_form2slide() {
 
 function answer_slide2form(answer_element, answer_content) {
     const typeId = $('#type_id').val();
-    const element = $(answer_element)
+    const element = $(answer_element);
 
     let form_answer = '';
     switch (typeId) {
@@ -88,7 +88,7 @@ function answer_slide2form(answer_element, answer_content) {
 
             let fill_blanks_array = answer_content.split('@');
             fill_blanks_array.pop();
-            const fill_blank_slide_answer_html = $('.slide_view_answer_element').html();
+            const fill_blank_slide_answer_html = $('#quiz_view .slide_view_answer_element').html();
             let form_answer_element = $(fill_blank_slide_answer_html).eq(0);
 
             let fill_blanks_item_array;
@@ -108,6 +108,7 @@ function answer_slide2form(answer_element, answer_content) {
                 form_answer_element.find('.fill_blanks_dropdown_body').eq(i).html(element);
             }
             form_answer = form_answer_element.html() + '&nbsp';
+
             $('#fill_blanks').html(form_answer);
             break;
 
@@ -115,7 +116,7 @@ function answer_slide2form(answer_element, answer_content) {
 
             let select_lists_array = answer_content.split(';');
             select_lists_array.pop();
-            const select_lists_slide_answer_html = $('.slide_view_answer_element').html();
+            const select_lists_slide_answer_html = $('#quiz_view .slide_view_answer_element').html();
             let select_lists_form_answer_element = $(select_lists_slide_answer_html).eq(0);
 
             let select_lists_item_array;
@@ -495,7 +496,7 @@ function form_to_slide() {
     $('#quiz_view .slide_view_group').resizable();
     $('#quiz_view #quiz_background_container .slide_view_group').draggable({cancel: 'div.cancel_drag', containment: 'parent'});
     if ($('#quiz_view .slide_view_group_checkbox').length === 0) $('#quiz_view .slide_view_group').append('<input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;">');
-    // $('.slide_view_answer_element').prepend('<div class="slide_view_answer_freeze_element" style="width: 100%;height: 100%;position: absolute;z-index: 100;"></div>')
+    // $('#quiz_view .slide_view_answer_element').prepend('<div class="slide_view_answer_freeze_element" style="width: 100%;height: 100%;position: absolute;z-index: 100;"></div>')
 
 }
 
