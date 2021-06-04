@@ -626,7 +626,7 @@
                             </div>
                         @endif
                         @if (isset($quiz->partially_correct))
-                            <div class="cell-12" style="display: none;">
+                            <div class="cell-12">
                                 <input type="checkbox" data-role="checkbox" id="partially_correct"
                                        data-caption="Accept partially correct answer" {{ $quiz->partially_correct ? 'checked' : '' }}>
                             </div>

@@ -515,7 +515,7 @@ function is_completed_question() {
 
         case '8':
 
-            for (let i = 0; i <$('.quiz_show .slide_view_answer_element input').length; i++) {
+            for (let i = 0; i < $('.quiz_show .slide_view_answer_element input').length; i++) {
                 if ($('.quiz_show .slide_view_answer_element input').eq(i).val() == '') return false;
             }
             return true;
@@ -576,6 +576,13 @@ function evulate() {
             correct_response_answer_array.pop();
             for (var i = 0; i < correct_response_answer_array.length; i++) {
                 question_correct_answer.push($('.quiz_show input[value=' + correct_response_answer_array[i] + ']').next().html());
+            }
+
+            if ($('.quiz_show .partially_correct').html() == '1') {
+                for (let i = 0; i < question_user_answer.length; i++) {
+                    if (question_correct_answer.indexOf(question_user_answer[i]) != -1) return true;
+                }
+                return false;
             }
 
             return compare_arrays(question_user_answer, question_correct_answer);
@@ -657,20 +664,42 @@ function evulate() {
             question_user_answer = sequence_answer;
             question_correct_answer = $('.quiz_show .correct_answer').html();
 
+            if ($('.quiz_show .partially_correct').html() == '1') {
+                var correct_answer_array = question_correct_answer.split(';');
+                correct_answer_array.pop();
+                for (let i = 0; i < sequence_items.length; i++) {
+                    if (correct_answer_array.indexOf(sequence_items.eq(i).find('label').html()) != -1) return true;
+                }
+                return false;
+            }
+
             return sequence_answer == $('.quiz_show .correct_answer').html();
             break;
 
         case '7':
             const matching_items = $('.quiz_show .slide_view_answer_element .col-md-12 > div');
             let matching_answer = '';
+
             // detect matching
             for (let i = 0; i < matching_items.length; i++) {
                 if (matching_items.eq(i).css('justify-content') != 'center') return false;
                 matching_answer += matching_items.eq(i).find('.ui-widget-header').eq(0).html() + ';' + matching_items.eq(i).find('.ui-widget-content').eq(0).html() + '@';
             }
-
             question_user_answer = matching_answer.replaceAll('<p>', '').replaceAll('</p>', '');
             question_correct_answer = $('.quiz_show .correct_answer').html().replaceAll('<p>', '').replaceAll('</p>', '');
+
+
+            if ($('.quiz_show .partially_correct').html() == '1') {
+                var correct_answer_array = question_correct_answer.split('@');
+                correct_answer_array.pop();
+                var user_answer_array = question_user_answer.split('@');
+                user_answer_array.pop();
+
+                for (let i = 0; i < user_answer_array.length; i++) {
+                    if (correct_answer_array.indexOf(user_answer_array[i]) != -1) return true;
+                }
+                return false;
+            }
 
             return question_user_answer == question_correct_answer;
             break;
@@ -681,6 +710,29 @@ function evulate() {
             correct_answer_array.pop();
 
             let answer_array_items;
+
+
+
+            if ($('.quiz_show .partially_correct').html() == '1') {
+                if ($('.quiz_show .case_sensitive').html() == 0) {
+                    for (let i = 0; i < correct_answer_array.length; i++) {
+                        answer_array_items = correct_answer_array[i].toUpperCase().split(';');
+                        answer_array_items.pop();
+                        if (answer_array_items.indexOf($('.quiz_show .slide_view_answer_element input').eq(i).val().toUpperCase()) != -1) return true;
+                    }
+                } else {
+                    for (let i = 0; i < correct_answer_array.length; i++) {
+                        answer_array_items = correct_answer_array[i].split(';');
+                        answer_array_items.pop();
+                        console.log(answer_array_items);
+                        console.log($('.quiz_show .slide_view_answer_element input').eq(i).val());
+                        if (answer_array_items.indexOf($('.quiz_show .slide_view_answer_element input').eq(i).val()) != -1) return true;
+                    }
+                }
+
+                return false;
+            }
+
             if ($('.quiz_show .case_sensitive').html() == 0) {
                 for (let i = 0; i < correct_answer_array.length; i++) {
                     answer_array_items = correct_answer_array[i].toUpperCase().split(';');
@@ -708,6 +760,19 @@ function evulate() {
 
             question_user_answer = select_lists_answer;
             question_correct_answer = $('.quiz_show .correct_answer').html();
+
+            if ($('.quiz_show .partially_correct').html() == '1') {
+                var correct_answer_array = question_correct_answer.split(';');
+                correct_answer_array.pop();
+                var user_answer_array = question_user_answer.split(';');
+                user_answer_array.pop();
+                for (let i = 0; i < question_user_answer.length; i++) {
+                    if (question_user_answer[i] == question_correct_answer[i]) return true;
+                }
+
+                return false;
+            }
+
             return select_lists_answer == $('.quiz_show .correct_answer').html();
             break;
 
@@ -720,6 +785,19 @@ function evulate() {
 
             question_user_answer = drag_words_answer;
             question_correct_answer = $('.quiz_show .correct_answer').html();
+
+            if ($('.quiz_show .partially_correct').html() == '1') {
+                var correct_answer_array = question_correct_answer.split(';');
+                correct_answer_array.pop();
+                var user_answer_array = question_user_answer.split(';');
+                user_answer_array.pop();
+                for (let i = 0; i < question_user_answer.length; i++) {
+                    if (question_user_answer[i] == question_correct_answer[i]) return true;
+                }
+
+                return false;
+            }
+
             return drag_words_answer == $('.quiz_show .correct_answer').html();
             break;
 
