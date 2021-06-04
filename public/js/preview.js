@@ -385,7 +385,7 @@ function preview() {
             $('#quiz_list_audio-' + current_show_id.split('-')[1])[0].pause();
 
             if (next_show_id === undefined || type_id == 14 || type_id == 15) {
-
+                rearrange_preview_ui();
                 $('.preview_btn button').html('See Result');
             } else {
 
