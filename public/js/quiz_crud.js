@@ -290,6 +290,138 @@ function create_quiz(quiz_type, root_url, token) {
     });
 }
 
+function update_and_show_preview(url) {
+    if (is_form_or_slide() === 'form') {
+        form_to_slide();
+    }
+
+    if (is_form_or_slide() === 'slide') {
+        slide_to_form();
+    }
+
+    if ($('#quiz_view .slide_view_group_checkbox').length === 0) $('#quiz_view .slide_view_group').append('<input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;">');
+
+
+    const typeId = $('#type_id').val();
+    let question_element = $('#quiz_view .slide_view_question_element')[0].outerHTML;
+
+    const answer = $('#answer_content').val();
+
+    const feedback_correct = $('.feedback_branching tr:first-child td:nth-child(2) label').html();
+    const feedback_incorrect = $('.feedback_branching tr:nth-child(2) td:nth-child(2) label').html();
+    const feedback_try_again = $('.feedback_branching tr:nth-child(3) td:nth-child(2) label').html();
+    const correct_score = $('.feedback_branching tr:first-child td:nth-child(3) label').html();
+    const incorrect_score = $('.feedback_branching tr:nth-child(2) td:nth-child(3) label').html();
+    const try_again_score = $('.feedback_branching tr:nth-child(3) td:nth-child(3) label').html();
+    const media = $('#media').val();
+    const video = $('#video').val();
+    const audio = $('#audio').val();
+    const background_img = $('#background_img').val();
+    // const order
+    let answer_element = $('#quiz_view .slide_view_answer_element')[0].outerHTML;
+    let media_element = $('#quiz_view .slide_view_media_element')[0] == undefined ? null : $('#quiz_view .slide_view_media_element')[0].outerHTML;
+    let video_element = $('#quiz_view .slide_view_video_element')[0] == undefined ? null : $('#quiz_view .slide_view_video_element')[0].outerHTML;
+    const question_type = Metro.getPlugin('#question_type', 'select').val();
+    const feedback_type = Metro.getPlugin('#feedback', 'select').val();
+
+    question_element = remove_resizable_tag(question_element);
+    answer_element = remove_resizable_tag(answer_element);
+    media_element = remove_resizable_tag(media_element);
+    video_element = remove_resizable_tag(video_element);
+
+    let branching;
+    if ($('#branching:disabled').length !== 0 || $('#branching').length === 0) {
+        branching = null;
+    } else {
+        branching = Metro.getPlugin('#branching', 'select').val();
+    }
+
+    // const score = Metro.getPlugin('#score', 'select').val();
+    const attempts = Metro.getPlugin('#attempts', 'select').val();
+
+    // let is_limit_time = $('#is_limit_time').is(":checked");
+    // is_limit_time = is_limit_time === 'true' ? 1 : 0;
+    // if ($('#is_limit_time').length === 0) is_limit_time = null;
+
+    const limit_time = $('#limit_time').val();
+
+    let shuffle_answers = $('#shuffle_answers').is(":checked");
+    shuffle_answers = shuffle_answers ? 1 : 0;
+    if ($('#shuffle_answers').length === 0) shuffle_answers = null;
+
+    let partially_correct = $('#partially_correct').is(":checked");
+    partially_correct = partially_correct ? 1 : 0;
+    if ($('#partially_correct').length === 0) partially_correct = null;
+
+    let limit_number_response = $('#limit_number_response').is(":checked");
+    limit_number_response = limit_number_response ? 1 : 0;
+    if ($('#limit_number_response').length === 0) limit_number_response = null;
+
+    let case_sensitive = $('#case_sensitive').is(":checked");
+    case_sensitive = case_sensitive ? 1 : 0;
+    if ($('#case_sensitive').length === 0) case_sensitive = null;
+
+
+    let other_elements = '';
+    for (let i = 0; i < $('#quiz_view .other_slide_view_element').length; i++) {
+        other_elements += remove_resizable_tag($('#quiz_view .other_slide_view_element').eq(i)[0].outerHTML);
+    }
+
+
+    const root_url = $('meta[name=url]').attr('content');
+    const token = $('meta[name=csrf-token]').attr('content');
+    const quizId = $('#quiz_list').find('.current').attr('id');
+
+    show_preload();
+    $.ajax({
+        url: root_url + '/quizes/' + quizId,
+        type: 'PUT',
+        data: {
+            _token: token,
+            question_element: question_element,
+            answer: answer,
+            answer_element: answer_element,
+            media_element: media_element,
+            feedback_correct: feedback_correct,
+            feedback_incorrect: feedback_incorrect,
+            feedback_try_again: feedback_try_again,
+            media: media,
+            media_element: media_element,
+            video: video,
+            audio: audio,
+            video_element: video_element,
+            background_img: background_img,
+            // order: order,
+            question_type: question_type,
+            feedback_type: feedback_type,
+            branching: branching,
+            // score: score,
+            attempts: attempts,
+            // is_limit_time: is_limit_time,
+            // limit_time: limit_time,
+            shuffle_answers: shuffle_answers,
+            partially_correct: partially_correct,
+            limit_number_response: limit_number_response,
+            case_sensitive: case_sensitive,
+            correct_score: correct_score,
+            incorrect_score: incorrect_score,
+            try_again_score: try_again_score,
+            other_elements: other_elements,
+        },
+        success: function (data) {
+            store_quiz_state();
+            hide_preload();
+            window.open(url);
+        }
+    }).catch((XHttpResponse) => {
+        console.log(XHttpResponse);
+        if (XHttpResponse.responseJSON.message == '' && XHttpResponse.status == 404) {
+            window.location.href = '/';
+        }
+        hide_preload();
+    });
+}
+
 function update_quiz(is_alert_save) {
 
     if (is_form_or_slide() === 'form') {
@@ -565,15 +697,15 @@ function show_correct_view() {
 var root_url = $('meta[name=url]').attr('content');
 
 $('.preview_quiz_btn').click(function () {
-    window.open(root_url + '/preview_exam/' + $('#exam_id').val() + '&');
+    update_and_show_preview(root_url + '/preview_exam/' + $('#exam_id').val() + '&');
 });
 
 $('.preview_slide_btn').click(function () {
-    window.open(root_url + '/preview_slide/' + $('#quiz_id').val());
+    update_and_show_preview(root_url + '/preview_slide/' + $('#quiz_id').val());
 });
 
 $('.preview_group_btn').click(function () {
-    window.open(root_url + '/preview_group/' + $('#exam_group_id').val());
+    update_and_show_preview(root_url + '/preview_group/' + $('#exam_group_id').val());
 });
 
 /*
