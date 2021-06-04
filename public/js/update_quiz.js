@@ -142,7 +142,7 @@ function answer_slide2form(answer_element, answer_content) {
         case '10':
             let drag_words_array = answer_content.split(';');
             drag_words_array.pop();
-            const slide_drag_words_question = $('#slide_drag_words_question')[0].outerHTML;
+            const slide_drag_words_question = $('#quiz_view #slide_drag_words_question')[0].outerHTML;
             const form_answer_input_element = $(slide_drag_words_question);
             for (let i = 0; i < form_answer_input_element.find('.blank').length; i++) {
                 form_answer_input_element.find('.blank').eq(i).html('<input style="max-width: 70px;" id="' + i + '" value="' + drag_words_array[i] + '">');

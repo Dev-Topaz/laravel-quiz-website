@@ -137,10 +137,12 @@
                              style="{{ $quiz->type_id > 11 ? 'display:none;' : 'display:flex;'}}">
                             <a href="javascript:void(0)"
                                style="padding: 0 3px;{{ (isset($quiz->media) || isset($quiz->video)) ? 'display: none' : '' }}"
-                               id="form_view_add_picture"><img src="{{ url('/images/icons/add_picture_normal.png') }}" alt="pic"></a>
+                               id="form_view_add_picture"><img src="{{ url('/images/icons/add_picture_normal.png') }}"
+                                                               alt="pic"></a>
                             <a href="javascript:void(0)"
                                style="padding: 0 3px;{{ (isset($quiz->media) || isset($quiz->video)) ? 'display: none' : '' }}"
-                               id="form_view_add_video"><img src="{{ url('/images/icons/add_video_normal.png') }}" alt="video"></a>
+                               id="form_view_add_video"><img src="{{ url('/images/icons/add_video_normal.png') }}"
+                                                             alt="video"></a>
                             <img src="{{ $quiz->media ?? '#' }}" alt="form_view_media_element"
                                  id="form_view_media_element"
                                  style="{{ isset($quiz->media) ? 'display: flex' : 'display: none' }};height: 70px;max-width: 135px;"
@@ -151,7 +153,8 @@
                         </div>
                         <a href="javascript:void(0)"
                            style="padding: 0 3px;{{ isset($quiz->audio) ? 'display: none' : '' }}"
-                           id="form_view_add_audio"><img src="{{ url('/images/icons/add_audio_normal.png') }}" alt="audio"></a>
+                           id="form_view_add_audio"><img src="{{ url('/images/icons/add_audio_normal.png') }}"
+                                                         alt="audio"></a>
                         <img src="{{ url('/images/icons/audio_icon.png') }}" alt=""
                              style="height: 70px;padding:0 3px;{{ isset($quiz->audio) ? '' : 'display: none' }}"
                              id="form_view_audio_mark">
@@ -347,7 +350,10 @@
                 @break
 
                 @case(10)
-                <h4>Text with Blanks</h4>
+                <div style="display: flex;justify-content: space-between;">
+                    <h4>Text with Blanks</h4>
+                    <a href="javascript:void(0)" onclick="add_drag_words_insert();">Insert Blank</a>
+                </div>
                 <div contenteditable="true" style="height: 216px;overflow-y: scroll;border: 1px solid black"
                      id="drag_words">
                 </div>
@@ -459,20 +465,23 @@
                     <td>Correct:</td>
                     <td><label class="choice_label" data-editable>{{ $quiz->feedback_correct }}</label></td>
                     {{--                    <td></td>--}}
-                    <td class="question_score"><label class="choice_label" data-editable>{{ $quiz->correct_score }}</label></td>
+                    <td class="question_score"><label class="choice_label"
+                                                      data-editable>{{ $quiz->correct_score }}</label></td>
                 </tr>
                 <tr>
                     <td>Incorrect:</td>
                     <td><label class="choice_label" data-editable>{{ $quiz->feedback_incorrect }}</label></td>
                     {{--                    <td></td>--}}
-                    <td class="question_score"><label class="choice_label" data-editable>{{ $quiz->incorrect_score }}</label></td>
+                    <td class="question_score"><label class="choice_label"
+                                                      data-editable>{{ $quiz->incorrect_score }}</label></td>
                 </tr>
                 @if ($quiz->feedback_try_again != null)
                     <tr>
                         <td>Try Again:</td>
                         <td><label class="choice_label" data-editable>{{ $quiz->feedback_try_again }}</label></td>
                         {{--                        <td>None</td>--}}
-                        <td class="question_score"><label class="choice_label" data-editable>{{ $quiz->try_again_score }}</label></td>
+                        <td class="question_score"><label class="choice_label"
+                                                          data-editable>{{ $quiz->try_again_score }}</label></td>
                     </tr>
                 @endif
                 </tbody>
@@ -706,7 +715,8 @@
             <img src="{{ isset($quiz->background_img) ? explode('"', $quiz->background_img)[1] : '' }}" alt="">
         </div>
         <div style="display: flex;justify-content: space-around;">
-            <a id="change_background_tag" href="javascript:void(0)" style="padding:5px" onclick="change_background_pic()">Change</a>
+            <a id="change_background_tag" href="javascript:void(0)" style="padding:5px"
+               onclick="change_background_pic()">Change</a>
             <a href="javascript:void(0)" style="padding:5px" onclick="apply_all()">Apply All</a>
             <a href="javascript:void(0)" style="padding:5px" onclick="delete_background_pic()">Delete</a>
         </div>
@@ -776,6 +786,10 @@
 
     @case(9)
     <script src="{{ asset('js/select_lists.js') }}" defer></script>
+    @break
+
+    @case(10)
+    <script src="{{ asset('js/drag_words.js') }}" defer></script>
     @break
 
     @case(11)
