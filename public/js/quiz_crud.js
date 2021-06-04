@@ -482,6 +482,13 @@ $('#delete_yes').click(function () {
     }
 });
 
+function get_next_node_element(node) {
+    var nodeCollection = $('.node');
+    var index = nodeCollection.index(node);
+
+    return nodeCollection.eq(index + 1);
+}
+
 function delete_quiz(quizId) {
     const root_url = $('meta[name=url]').attr('content');
     const token = $('meta[name=csrf-token]').attr('content');
@@ -509,6 +516,9 @@ function delete_quiz(quizId) {
                     content: '<i>Add questions<i>'
                 });
             }
+
+            console.log(get_next_node_element(node));
+            get_next_node_element(node).trigger('click');
 
             node.remove();
             $('#preview_item-' + quizId).remove();

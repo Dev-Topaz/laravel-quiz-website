@@ -1005,12 +1005,12 @@ if it's not present, don't show loader */
 ************** Question Save Alert ******************
 */
 .quiz_dialog {
-    position: absolute;
+    position: fixed;
     background: white;
     width: 560px;
     left: 50%;
     margin-left: -280px;
-    top: 75px;
+    top: 195px;
     box-shadow: grey 2px 2px 6px 2px;
     z-index: 1000;
     border-radius: 10px;
@@ -1036,7 +1036,8 @@ if it's not present, don't show loader */
 }
 
 #quiz_layout #preview_toast {
+    position: fixed;
     display: block;
     bottom: unset;
-    top: 75px;
+    top: 195px;
 }
