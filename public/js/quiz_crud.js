@@ -188,7 +188,7 @@ function create_quiz(quiz_type, root_url, token) {
             break;
 
         case (12):
-            lv.insertBefore(firstNode, {
+            lv.insertAfter(node, {
                 caption: 'Title',
                 content: '<i>Info Slide</i>'
             });
@@ -205,7 +205,7 @@ function create_quiz(quiz_type, root_url, token) {
     }
 
     $('#quiz_list').find('.current').removeClass('current current-select');
-    if (quiz_type == 12 || quiz_type == 13) {
+    if (quiz_type == 13) {
         parentNode.find('li').eq(0).addClass('current current-select');
     } else {
         node.next().addClass('current current-select');
@@ -213,7 +213,7 @@ function create_quiz(quiz_type, root_url, token) {
 
     let order = parseInt(node.attr('order')) + 1;
     if (node.attr('id') === 'none' || node.attr('id') === undefined) order = 0;
-    if (quiz_type == 12 || quiz_type == 13) order = 0;
+    if (quiz_type == 13) order = 0;
     // return;
 
     if (groupId === undefined) {
@@ -240,7 +240,7 @@ function create_quiz(quiz_type, root_url, token) {
                 }
             }
 
-            if (quiz_type == '12' || quiz_type == '13') {
+            if (quiz_type == '13') {
                 parentNode.find('li').eq(0).attr('id', quizId);
                 parentNode.find('li').eq(0).attr('order', order);
             } else {
