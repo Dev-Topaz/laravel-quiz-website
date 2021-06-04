@@ -19,7 +19,7 @@
 }
 
 .preview_btn button {
-    z-index: 1000;
+    z-index: 10;
     background-color: green;
     font-size: 20px;
     color: white;
