@@ -68,17 +68,6 @@ function onNodeClick(node) {
 
         $('#question_save_alert').fadeIn(300);
 
-        // if (confirm('You are going to leave this quiz. Some data will be lost. Are you sure you want to continue?')) {
-        //     show_quiz_editor(node);
-        //     prev_id = node.attr('id');
-        // } else {
-        //     $('#quiz_list').find('.current').removeClass('current current-select');
-        //     $('#quiz_list li#' + prev_id).addClass('current current-select');
-        //
-        //     console.log(prev_id);
-        //     $('.selected_preview_item').removeClass('selected_preview_item');
-        //     $('#preview_item-' + prev_id).addClass('selected_preview_item');
-        // }
     } else {
         show_quiz_editor(node);
         prev_id = node.attr('id');
@@ -258,6 +247,8 @@ function create_quiz(quiz_type, root_url, token) {
                 $('#quiz_view').html(data);
 
                 const element = '<div id="preview_item-' + quizId + '" class="preview_item selected_preview_item">' + $('#quiz_view .slide_view_element').html().replace('top:50%;left:50%;transform:translate(-50%, -50%);', '') + '</div>';
+
+                console.log(prev_id);
 
                 if (prev_id == undefined || prev_id == 'none' || prev_id == '') {
                     if ($('#slide_view_quiz_list .preview_item').length == 2) {

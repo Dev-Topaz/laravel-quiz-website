@@ -2209,7 +2209,6 @@
             });
 
             $(document).ready(function () {
-                console.log($('#form_view_quiz_list .node').eq(0));
                 if ($('#form_view_quiz_list .node').length > 0) {
                     $('#form_view_quiz_list .node').eq(0).trigger('click');
                 }

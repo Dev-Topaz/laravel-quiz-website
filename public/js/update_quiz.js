@@ -481,7 +481,8 @@ function slide_to_form() {
     answer_slide2form($('#quiz_view .slide_view_answer_element')[0].outerHTML, $('#answer_content').val());
     $('#question').html(question_slide2form($('#quiz_view .slide_view_question_element')[0].outerHTML));
     $('.slide_view_group_checkbox').remove();
-    // $('.slide_view_answer_freeze_element').remove();
+
+    store_quiz_state();
 
 }
 
@@ -496,6 +497,8 @@ function form_to_slide() {
     $('#quiz_view .slide_view_group').resizable();
     $('#quiz_view #quiz_background_container .slide_view_group').draggable({cancel: 'div.cancel_drag', containment: 'parent'});
     if ($('#quiz_view .slide_view_group_checkbox').length === 0) $('#quiz_view .slide_view_group').append('<input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;">');
+
+    store_quiz_state();
     // $('#quiz_view .slide_view_answer_element').prepend('<div class="slide_view_answer_freeze_element" style="width: 100%;height: 100%;position: absolute;z-index: 100;"></div>')
 
 }
@@ -523,6 +526,9 @@ function fit_slide_view_quiz_list() {
 /**************************************************************/
 
 function store_theme_style(style) {
+
+
+
     const root_url = $('meta[name=url]').attr('content');
     const token = $('meta[name=csrf-token]').attr('content');
     const examId = $('#exam_id').val();

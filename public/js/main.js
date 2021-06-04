@@ -81,7 +81,7 @@ $(function () {
                         }
                     }
                     ui.item.attr('order', toIndex);
-                    alert('Quiz Index updated successfully');
+                    show_modal('success', 'Success', 'Question Index updated successfully');
                 }
             }).catch((XHttpResponse) => {
                 console.log(XHttpResponse);
