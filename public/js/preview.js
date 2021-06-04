@@ -540,7 +540,7 @@ function evulate() {
                         break;
 
                     case '<<':
-                        if (numeric_answer > parseInt(numeric_item.split(';')[1]) && numeric_answer < parseInt(numeric_item.split(';')[2])) return true;
+                        if ((numeric_answer - parseInt(numeric_item.split(';')[1])) * (numeric_answer - parseInt(numeric_item.split(';')[2])) < 0) return true;
                         break;
 
                     case '>':
