@@ -1983,7 +1983,8 @@
                     <div class="create_form" id="quiz_form">
                         <div class="content_body">
                             <div class="row">
-                                <div class="cell-2">
+                                <div class="cell-10" id="quiz_view" style="padding: 0;order: 2;"></div>
+                                <div class="cell-2" style="order: 1;">
                                     <div style="display: flex; justify-content: space-between;">
                                         <div id="form_view_btn" class="view_switch_btn clicked form_view"
                                              style="background-image: url('{{ url('/images/ribbon_imgs/form_view.png') }}');">
@@ -2050,7 +2051,7 @@
                                                             <div id="quiz_background_container"
                                                                  style="font-size: 1rem;width: 100%;height:100%;padding: 20px;{{ isset($quiz->background_img) ? ('background-image:' . $quiz->background_img . ';') : '' }}background-size: 100% 100%;background-repeat:no-repeat;">
                                                                 {!! $quiz->question_element !!}
-                                                                {!! $quiz->answer_element !!}
+                                                                {!! str_replace('slide_view_hotspots_canvas', 'slide_view_hotspots_canvas-' . $quiz->id, $quiz->answer_element) !!}
                                                                 @if (isset($quiz->other_elements))
                                                                     {!! $quiz->other_elements !!}
                                                                 @endif
@@ -2125,8 +2126,6 @@
                                             @endif
                                         @endforeach
                                     </div>
-                                </div>
-                                <div class="cell-10" id="quiz_view" style="padding: 0;">
                                 </div>
                             </div>
                         </div>

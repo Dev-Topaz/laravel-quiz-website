@@ -10,6 +10,7 @@ function show_quiz_editor(node) {
     if (quizId === undefined) return;
 
     show_preload();
+
     $.get(root_url + "/quizes/" + quizId + "/edit", function (data, status) {
         $('.selected_preview_item').removeClass('selected_preview_item');
         $('#preview_item-' + quizId).addClass('selected_preview_item');
@@ -32,13 +33,14 @@ $('#alert_save').click(function () {
     update_quiz(true);
 
     $('#question_save_alert').fadeOut(300);
-    real_time_update_slide_view_nav_active();
+
 });
 
 $('#alert_not_save').click(function () {
     console.log('alert_not_save');
     show_quiz_editor(clicked_node);
     prev_id = clicked_node.attr('id');
+    init_styling_and_layout();
 
     $('#question_save_alert').fadeOut(300);
     real_time_update_slide_view_nav_active();
@@ -65,6 +67,7 @@ function onNodeClick(node) {
         real_time_update_slide_view_nav_inactive()
         show_quiz_editor(node);
         prev_id = node.attr('id');
+        init_styling_and_layout();
         real_time_update_slide_view_nav_active();
         return;
     }
@@ -78,6 +81,7 @@ function onNodeClick(node) {
     } else {
         show_quiz_editor(node);
         prev_id = node.attr('id');
+        init_styling_and_layout();
         real_time_update_slide_view_nav_active();
     }
 }
@@ -557,6 +561,8 @@ function update_quiz(is_alert_save) {
             if (is_alert_save) {
                 show_quiz_editor(clicked_node);
                 prev_id = clicked_node.attr('id');
+                init_styling_and_layout();
+                real_time_update_slide_view_nav_active();
             }
             hide_preload();
         }
@@ -1021,11 +1027,72 @@ function real_time_update_slide_view_nav_inactive() {
 
 setInterval(function () {
     if ($('#quiz_list .node.current').length > 0 && is_active_real_time_update_slide_view_nav) {
-        if ($('#quiz_view .slide_view_element').html() != undefined) $('#preview_item-' + $('#quiz_list .node.current').attr('id')).html($('#quiz_view .slide_view_element').html().replace('top: 50%; left: 50%; transform: translate(-50%, -50%);', '').replace('top:50%;left:50%;transform:translate(-50%, -50%);', ''));
+        if ($('#quiz_view .slide_view_element').html() != undefined) $('#preview_item-' + $('#quiz_list .node.current').attr('id')).html($('#quiz_view .slide_view_element').html().replace('top: 50%; left: 50%; transform: translate(-50%, -50%);', '').replace('top:50%;left:50%;transform:translate(-50%, -50%);', '').replace('slide_view_hotspots_canvas', 'slide_view_hotspots_canvas-' + $('#quiz_list .node.current').attr('id')));
         $('#preview_item-' + $('#quiz_list .node.current').attr('id') + ' > div').css({
             'margin': 'auto',
             'zoom': ($('#slide_view_quiz_list').width() - 40) / parseInt($('#screen_width').val()),
         });
         $('#' + $('#quiz_list .node.current').attr('id') + ' .data .caption').html($('#question').html().replace(/(<([^>]+)>)/gi, ''));
+
+        if ($('#type_id').val() == '11') {
+            var slide_view_canvas = new fabric.Canvas('slide_view_hotspots_canvas-' + $('#quiz_list .node.current').attr('id'));
+
+            var canvas_info = $('#answer_content').val();
+
+            if (canvas_info == '@{}') return;
+
+            var canvas_bg_url = canvas_info.split('@')[0];
+            var canvas_item_info = canvas_info.split('@')[1];
+
+            var json_bg_url = JSON.parse(canvas_bg_url);
+            var json_canvas_item = JSON.parse(canvas_item_info);
+
+            fabric.Image.fromURL(root_url + '/' + json_bg_url.background, function (img) {
+                slide_view_canvas.setBackgroundImage(img, slide_view_canvas.renderAll.bind(slide_view_canvas), {
+                    scaleX: fit_canvas_image(slide_view_canvas.width, slide_view_canvas.height, img.width, img.height).scaleFactor,
+                    scaleY: fit_canvas_image(slide_view_canvas.width, slide_view_canvas.height, img.width, img.height).scaleFactor,
+                    originX: 'left',
+                    originY: 'top',
+                    top: fit_canvas_image(slide_view_canvas.width, slide_view_canvas.height, img.width, img.height).top,
+                    left: fit_canvas_image(slide_view_canvas.width, slide_view_canvas.height, img.width, img.height).left,
+                });
+            });
+
+            if (json_canvas_item.type === 'circle') {
+
+                slide_view_canvas.add(new fabric.Circle({
+                    radius: json_canvas_item.radius,
+                    strokeWidth: 3,
+                    stroke: '#288f02',
+                    fill: '#c1fc8580',
+                    originX: 'center',
+                    originY: 'center',
+                    top: json_canvas_item.top,
+                    left: json_canvas_item.left
+                }));
+            }
+
+            if (json_canvas_item.type === 'rect') {
+
+                slide_view_canvas.add(new fabric.Rect({
+                    width: json_canvas_item.width,
+                    height: json_canvas_item.height,
+                    strokeWidth: 3,
+                    stroke: '#288f02',
+                    fill: '#c1fc8580',
+                    top: json_canvas_item.top,
+                    left: json_canvas_item.left
+                }));
+            }
+
+            if (json_canvas_item.type === 'polyline') {
+
+                slide_view_canvas.add(new fabric.Polygon(json_canvas_item.points, {
+                    strokeWidth: 3,
+                    stroke: '#288f02',
+                    fill: '#c1fc8580'
+                }));
+            }
+        }
     }
 }, 3000);

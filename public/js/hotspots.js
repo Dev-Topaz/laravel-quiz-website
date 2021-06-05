@@ -16,15 +16,24 @@ var canvas_info = $('#answer_content').val();
 var canvas_bg_url = canvas_info.split('@')[0];
 var canvas_item_info = canvas_info.split('@')[1];
 
+
+
 if (canvas_info != '') {
 
     var json_bg_url = JSON.parse(canvas_bg_url);
     var json_canvas_item = JSON.parse(canvas_item_info);
 
     fabric.Image.fromURL(root_url + '/' + json_bg_url.background, function (img) {
+            console.log(fit_canvas_image(canvas.width, canvas.height, img.width, img.height));
         canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
-            scaleX: canvas.width / img.width,
-            scaleY: canvas.height / img.height
+            scaleX: fit_canvas_image(canvas.width, canvas.height, img.width, img.height).scaleFactor,
+            scaleY: fit_canvas_image(canvas.width, canvas.height, img.width, img.height).scaleFactor,
+            originX: 'left',
+            originY: 'top',
+            top: fit_canvas_image(canvas.width, canvas.height, img.width, img.height).top,
+            left: fit_canvas_image(canvas.width, canvas.height, img.width, img.height).left,
+            // scaleX: canvas.width / img.width, fit_canvas_image(canvas.width, canvas.height, img.width, img.height),
+            //     scaleY: canvas.height / img.height
         });
     });
 
@@ -71,8 +80,14 @@ if (canvas_info != '') {
 
     fabric.Image.fromURL(root_url + '/' + json_bg_url.background, function (img) {
         slide_view_canvas.setBackgroundImage(img, slide_view_canvas.renderAll.bind(slide_view_canvas), {
-            scaleX: 300 / img.width,
-            scaleY: 214 / img.height
+            //  scaleX: 300 / img.width,
+            // scaleY: 214 / img.height
+            scaleX: fit_canvas_image(300, 214, img.width, img.height).scaleFactor,
+            scaleY: fit_canvas_image(300, 214, img.width, img.height).scaleFactor,
+            originX: 'left',
+            originY: 'top',
+            top: fit_canvas_image(canvas.width, canvas.height, img.width, img.height).top,
+            left: fit_canvas_image(canvas.width, canvas.height, img.width, img.height).left,
         });
     });
 

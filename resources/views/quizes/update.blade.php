@@ -370,12 +370,12 @@
                                 <div>
                                     <div style="display: flex;justify-content: center;">Choose hotspot shape</div>
                                     <div style="display: flex;">
-                                        <a style="padding: 10px;margin: 0 5px;border: 1px dotted gray;"
-                                           onclick="drawrec()">Rectangle</a>
-                                        <a style="padding: 10px;margin: 0 5px;border: 1px dotted gray;"
-                                           onclick="drawcle()">Circle</a>
-                                        <a style="padding: 10px;margin: 0 5px;border: 1px dotted gray;"
-                                           onclick="drawpoly()">Polygon</a>
+                                        <a style="padding: 10px;margin: 0 5px;border: 1px dotted gray;width: 60px; height: 60px;"
+                                           onclick="drawrec()"><img src="{{ url('/images/icons/rect.png') }}"></a>
+                                        <a style="padding: 10px;margin: 0 5px;border: 1px dotted gray;width: 60px; height: 60px;"
+                                           onclick="drawcle()"><img src="{{ url('/images/icons/circle.png') }}"></a>
+                                        <a style="padding: 10px;margin: 0 5px;border: 1px dotted gray;width: 60px; height: 60px;"
+                                           onclick="drawpoly()"><img src="{{ url('/images/icons/polygon.png') }}"></a>
                                     </div>
                                 </div>
                             </div>

@@ -169,6 +169,10 @@ $('#font_size_selector').change(function () {
     if (element.hasClass('slide_view_answer_element')) {
         element.css('font-size', $(this).val() + 'px');
         if (element.find('label').length > 0) element.find('label').css('font-size', $(this).val() + 'px');
+        if (element.find('input[type=checkbox]').length > 0) element.find('input[type=checkbox]').css('width', parseFloat($(this).val()) / 2 + 'px');
+        if (element.find('input[type=checkbox]').length > 0) element.find('input[type=checkbox]').css('height', parseFloat($(this).val()) / 2 + 'px');
+        if (element.find('input[type=radio]').length > 0) element.find('input[type=radio]').css('width', parseFloat($(this).val()) / 2 + 'px');
+        if (element.find('input[type=radio]').length > 0) element.find('input[type=radio]').css('height', parseFloat($(this).val()) / 2 + 'px');
         if (element.find('.ui-widget-header').length > 0) element.find('.ui-widget-header').css('font-size', $(this).val() + 'px');
         if (element.find('.ui-widget-content').length > 0) element.find('.ui-widget-content').css('font-size', $(this).val() + 'px');
         if (element.find('#slide_drag_words_answer').length > 0) element.find('#slide_drag_words_answer').find('span').css('font-size', $(this).val() + 'px');
@@ -176,6 +180,7 @@ $('#font_size_selector').change(function () {
 
         changing_font_size_for_answer_element = parseInt($('#font_size_selector').val());
     } else {
+        console.log('am here!!!');
         fontSize = parseInt($('#font_size_selector').val());
         document.execCommand("fontSize", false, "1");
         resetFont();
@@ -183,10 +188,13 @@ $('#font_size_selector').change(function () {
 });
 
 function resetFont() {
-    $("font[size=1]").removeAttr("size").css("font-size", fontSize + "px");
-    var tmp = $('.slide_view_question_element.selected_slide_view_group .cancel_drag').html();
-    tmp = tmp.split('x-small').join(fontSize + 'px');
-    $('.slide_view_question_element.selected_slide_view_group .cancel_drag').html(tmp);
+    if ($("font[size=1]").length > 0) {
+        $("font[size=1]").removeAttr("size").css("font-size", fontSize + "px");
+        return;
+    }
+    var deepest_editable_div = $('#quiz_view .slide_view_question_element.selected_slide_view_group  .cancel_drag').find('span').parent();
+    var font_size_changed_html = deepest_editable_div.html().split('x-small').join(fontSize + 'px');
+    deepest_editable_div.html(font_size_changed_html);
 }
 
 // Font size increase
@@ -200,11 +208,15 @@ $('#font_size_bigger_btn').click(function () {
         if (element.find('.ui-widget-content').length > 0) element.find('.ui-widget-content').css('font-size', changing_font_size_for_answer_element);
         if (element.find('#slide_drag_words_answer').length > 0) element.find('#slide_drag_words_answer').find('span').css('font-size', changing_font_size_for_answer_element);
         if (element.find('.select_lists_dropdown_body').length > 0) element.find('.select_lists_dropdown_body').find('select').css('font-size', changing_font_size_for_answer_element);
-
+        if (element.find('input[type=checkbox]').length > 0) element.find('input[type=checkbox]').css('width', changing_font_size_for_answer_element / 2 + 'px');
+        if (element.find('input[type=checkbox]').length > 0) element.find('input[type=checkbox]').css('height', changing_font_size_for_answer_element / 2 + 'px');
+        if (element.find('input[type=radio]').length > 0) element.find('input[type=radio]').css('width', changing_font_size_for_answer_element / 2 + 'px');
+        if (element.find('input[type=radio]').length > 0) element.find('input[type=radio]').css('height', changing_font_size_for_answer_element / 2 + 'px');
         $('#font_size_selector').val(changing_font_size_for_answer_element);
     } else {
         if (fontSize < 100) fontSize += 2;
         document.execCommand("fontSize", false, "1");
+        console.log(fontSize);
         $('#font_size_selector').val(fontSize);
         resetFont();
     }
@@ -221,7 +233,10 @@ $('#font_size_smaller_btn').click(function () {
         if (element.find('.ui-widget-content').length > 0) element.find('.ui-widget-content').css('font-size', changing_font_size_for_answer_element);
         if (element.find('#slide_drag_words_answer').length > 0) element.find('#slide_drag_words_answer').find('span').css('font-size', changing_font_size_for_answer_element);
         if (element.find('.select_lists_dropdown_body').length > 0) element.find('.select_lists_dropdown_body').find('select').css('font-size', changing_font_size_for_answer_element);
-
+        if (element.find('input[type=checkbox]').length > 0) element.find('input[type=checkbox]').css('width', changing_font_size_for_answer_element / 2 + 'px');
+        if (element.find('input[type=checkbox]').length > 0) element.find('input[type=checkbox]').css('height', changing_font_size_for_answer_element / 2 + 'px');
+        if (element.find('input[type=radio]').length > 0) element.find('input[type=radio]').css('width', changing_font_size_for_answer_element / 2 + 'px');
+        if (element.find('input[type=radio]').length > 0) element.find('input[type=radio]').css('height', changing_font_size_for_answer_element / 2 + 'px');
         $('#font_size_selector').val(changing_font_size_for_answer_element);
     } else {
         if (fontSize > 6) fontSize -= 2;
@@ -294,6 +309,10 @@ $('#font_style_clear_btn').click(function () {
             element.find('.select_lists_dropdown_body').find('select').css('text-decoration', 'none');
         }
 
+        if (element.find('input[type=checkbox]').length > 0) element.find('input[type=checkbox]').css('width', '8px');
+        if (element.find('input[type=checkbox]').length > 0) element.find('input[type=checkbox]').css('height', '8px');
+        if (element.find('input[type=radio]').length > 0) element.find('input[type=radio]').css('width', '8px');
+        if (element.find('input[type=radio]').length > 0) element.find('input[type=radio]').css('height', '8px');
     } else {
         clear_formatting();
     }
@@ -463,7 +482,7 @@ $("#office_color_picker").on("change.color", function (event, color) {
         document.execCommand('foreColor', false, color);
     }
 
-    if (element.find('span').length > 0) element.find('span').css('color', color);
+
     // event.preventDefault();
     // change_font_color(color);
 });
@@ -1362,22 +1381,22 @@ var video_style_height;
 $('.layout_panel_img_holder').click(function () {
 
     if (!layout_applied) {
-        question_style_top = $('.slide_view_question_element').css('top');
-        question_style_left = $('.slide_view_question_element').css('left');
-        question_style_width = $('.slide_view_question_element').css('width');
-        question_style_height = $('.slide_view_question_element').css('height');
-        answer_style_top = $('.slide_view_answer_element').css('top');
-        answer_style_left = $('.slide_view_answer_element').css('left');
-        answer_style_width = $('.slide_view_answer_element').css('width');
-        answer_style_height = $('.slide_view_answer_element').css('height');
-        picture_style_top = $('.slide_view_media_element').css('top');
-        picture_style_left = $('.slide_view_media_element').css('left');
-        picture_style_width = $('.slide_view_media_element').css('width');
-        picture_style_height = $('.slide_view_media_element').css('height');
-        video_style_top = $('.slide_view_video_element').css('top');
-        video_style_left = $('.slide_view_video_element').css('left');
-        video_style_width = $('.slide_view_video_element').css('width');
-        video_style_height = $('.slide_view_video_element').css('height');
+        question_style_top = $('#quiz_view .slide_view_question_element').css('top');
+        question_style_left = $('#quiz_view .slide_view_question_element').css('left');
+        question_style_width = $('#quiz_view .slide_view_question_element').css('width');
+        question_style_height = $('#quiz_view .slide_view_question_element').css('height');
+        answer_style_top = $('#quiz_view .slide_view_answer_element').css('top');
+        answer_style_left = $('#quiz_view .slide_view_answer_element').css('left');
+        answer_style_width = $('#quiz_view .slide_view_answer_element').css('width');
+        answer_style_height = $('#quiz_view .slide_view_answer_element').css('height');
+        picture_style_top = $('#quiz_view .slide_view_media_element').css('top');
+        picture_style_left = $('#quiz_view .slide_view_media_element').css('left');
+        picture_style_width = $('#quiz_view .slide_view_media_element').css('width');
+        picture_style_height = $('#quiz_view .slide_view_media_element').css('height');
+        video_style_top = $('#quiz_view .slide_view_video_element').css('top');
+        video_style_left = $('#quiz_view .slide_view_video_element').css('left');
+        video_style_width = $('#quiz_view .slide_view_video_element').css('width');
+        video_style_height = $('#quiz_view .slide_view_video_element').css('height');
         layout_applied = true;
     }
 
@@ -1385,53 +1404,53 @@ $('.layout_panel_img_holder').click(function () {
     var question_style = $(this).attr('data-questyle').split(' ');
     var answer_style = $(this).attr('data-anstyle').split(' ');
     var media_style = $(this).attr('data-medstyle').split(' ');
-    $('.slide_view_question_element').css('top', question_style[0] + '%');
-    $('.slide_view_question_element').css('left', question_style[1] + '%');
-    $('.slide_view_question_element').css('width', question_style[2] + '%');
-    $('.slide_view_question_element').css('height', question_style[3] + '%');
+    $('#quiz_view .slide_view_question_element').css('top', question_style[0] + '%');
+    $('#quiz_view .slide_view_question_element').css('left', question_style[1] + '%');
+    $('#quiz_view .slide_view_question_element').css('width', question_style[2] + '%');
+    $('#quiz_view .slide_view_question_element').css('height', question_style[3] + '%');
 
-    $('.slide_view_answer_element').css('top', answer_style[0] + '%');
-    $('.slide_view_answer_element').css('left', answer_style[1] + '%');
-    $('.slide_view_answer_element').css('width', answer_style[2] + '%');
-    $('.slide_view_answer_element').css('height', answer_style[3] + '%');
+    $('#quiz_view .slide_view_answer_element').css('top', answer_style[0] + '%');
+    $('#quiz_view .slide_view_answer_element').css('left', answer_style[1] + '%');
+    $('#quiz_view .slide_view_answer_element').css('width', answer_style[2] + '%');
+    $('#quiz_view .slide_view_answer_element').css('height', answer_style[3] + '%');
 
-    var container_ratio = $('#quiz_background_container').width() / $('#quiz_background_container').height();
+    var container_ratio = $('#quiz_view #quiz_background_container').width() / $('#quiz_view #quiz_background_container').height();
     var ratio_to_be_changed = container_ratio * media_style[2] / media_style[3];
 
-    if ($('.slide_view_element .slide_view_media_element').find('img').eq(0).attr('src') != '#') {
+    if ($('#quiz_view .slide_view_element .slide_view_media_element').find('img').eq(0).attr('src') != '#') {
         // if ($('.slide_view_element .slide_view_media_element').css('display') != 'none') {
         if (picture_element_ratio == 0)
-            picture_element_ratio = $('.slide_view_element .slide_view_media_element').width() / $('.slide_view_element .slide_view_media_element').height();
+            picture_element_ratio = $('#quiz_view .slide_view_element .slide_view_media_element').width() / $('#quiz_view .slide_view_element .slide_view_media_element').height();
         // }
         if (picture_element_ratio < ratio_to_be_changed) {
-            $('.slide_view_media_element').css('top', media_style[0] + '%');
-            $('.slide_view_media_element').css('height', media_style[3] + '%');
-            $('.slide_view_media_element').css('width', parseInt(media_style[2]) / ratio_to_be_changed * picture_element_ratio + '%');
-            $('.slide_view_media_element').css('left', parseInt(media_style[1]) - (parseInt(media_style[2]) / ratio_to_be_changed * picture_element_ratio - parseInt(media_style[2])) / 2 + '%');
+            $('#quiz_view .slide_view_media_element').css('top', media_style[0] + '%');
+            $('#quiz_view .slide_view_media_element').css('height', media_style[3] + '%');
+            $('#quiz_view .slide_view_media_element').css('width', parseInt(media_style[2]) / ratio_to_be_changed * picture_element_ratio + '%');
+            $('#quiz_view .slide_view_media_element').css('left', parseInt(media_style[1]) - (parseInt(media_style[2]) / ratio_to_be_changed * picture_element_ratio - parseInt(media_style[2])) / 2 + '%');
         } else {
-            $('.slide_view_media_element').css('left', media_style[1] + '%');
-            $('.slide_view_media_element').css('width', media_style[2] + '%');
-            $('.slide_view_media_element').css('height', parseInt(media_style[3]) / picture_element_ratio * ratio_to_be_changed + '%');
-            $('.slide_view_media_element').css('top', parseInt(media_style[0]) - (parseInt(media_style[3]) / picture_element_ratio * ratio_to_be_changed - parseInt(media_style[3])) / 2 + '%');
+            $('#quiz_view .slide_view_media_element').css('left', media_style[1] + '%');
+            $('#quiz_view .slide_view_media_element').css('width', media_style[2] + '%');
+            $('#quiz_view .slide_view_media_element').css('height', parseInt(media_style[3]) / picture_element_ratio * ratio_to_be_changed + '%');
+            $('#quiz_view .slide_view_media_element').css('top', parseInt(media_style[0]) - (parseInt(media_style[3]) / picture_element_ratio * ratio_to_be_changed - parseInt(media_style[3])) / 2 + '%');
         }
     }
 
-    if ($('.slide_view_element .slide_view_video_element').find('source').eq(0).attr('src') != '#') {
-        // if ($('.slide_view_element .slide_view_video_element').css('display') != 'none') {
+    if ($('#quiz_view .slide_view_element .slide_view_video_element').find('source').eq(0).attr('src') != '#') {
+        // if ($('#quiz_view .slide_view_element .slide_view_video_element').css('display') != 'none') {
         if (video_element_ratio == 0)
-            video_element_ratio = $('.slide_view_element .slide_view_video_element ').width() / $('.slide_view_element .slide_view_video_element').height();
+            video_element_ratio = $('#quiz_view .slide_view_element .slide_view_video_element ').width() / $('#quiz_view .slide_view_element .slide_view_video_element').height();
         // }
 
         if (video_element_ratio < ratio_to_be_changed) {
-            $('.slide_view_video_element').css('top', media_style[0] + '%');
-            // $('.slide_view_video_element').css('height', media_style[3] + '%');
-            $('.slide_view_video_element').css('width', parseInt(media_style[3]) * video_element_ratio / container_ratio + '%');
-            $('.slide_view_video_element').css('left', parseInt(media_style[1]) + (parseInt(media_style[2]) - parseInt(media_style[3]) * video_element_ratio / container_ratio) / 2 + '%');
+            $('#quiz_view .slide_view_video_element').css('top', media_style[0] + '%');
+            // $('#quiz_view .slide_view_video_element').css('height', media_style[3] + '%');
+            $('#quiz_view .slide_view_video_element').css('width', parseInt(media_style[3]) * video_element_ratio / container_ratio + '%');
+            $('#quiz_view .slide_view_video_element').css('left', parseInt(media_style[1]) + (parseInt(media_style[2]) - parseInt(media_style[3]) * video_element_ratio / container_ratio) / 2 + '%');
         } else {
-            $('.slide_view_video_element').css('left', media_style[1] + '%');
-            $('.slide_view_video_element').css('width', media_style[2] + '%');
-            $('.slide_view_video_element').css('top', parseInt(media_style[0]) - (parseInt(media_style[2]) / video_element_ratio * container_ratio - parseInt(media_style[3])) / 2 + '%');
-            // $('.slide_view_video_element').css('height', parseInt(media_style[3]) / picture_element_ratio * ratio_to_be_changed + '%');
+            $('#quiz_view .slide_view_video_element').css('left', media_style[1] + '%');
+            $('#quiz_view .slide_view_video_element').css('width', media_style[2] + '%');
+            $('#quiz_view .slide_view_video_element').css('top', parseInt(media_style[0]) - (parseInt(media_style[2]) / video_element_ratio * container_ratio - parseInt(media_style[3])) / 2 + '%');
+            // $('#quiz_view .slide_view_video_element').css('height', parseInt(media_style[3]) / picture_element_ratio * ratio_to_be_changed + '%');
         }
     }
 });
@@ -1439,22 +1458,22 @@ $('.layout_panel_img_holder').click(function () {
 
 $('#layout_reset_btn').click(function () {
     if (layout_applied) {
-        $('.slide_view_question_element').css('top', question_style_top);
-        $('.slide_view_question_element').css('left', question_style_left);
-        $('.slide_view_question_element').css('width', question_style_width);
-        $('.slide_view_question_element').css('height', question_style_height);
-        $('.slide_view_answer_element').css('top', answer_style_top);
-        $('.slide_view_answer_element').css('left', answer_style_left);
-        $('.slide_view_answer_element').css('width', answer_style_width);
-        $('.slide_view_answer_element').css('height', answer_style_height);
-        $('.slide_view_media_element').css('top', picture_style_top);
-        $('.slide_view_media_element').css('left', picture_style_left);
-        $('.slide_view_media_element').css('width', picture_style_width);
-        $('.slide_view_media_element').css('height', picture_style_height);
-        $('.slide_view_video_element').css('top', video_style_top);
-        $('.slide_view_video_element').css('left', video_style_left);
-        $('.slide_view_video_element').css('width', video_style_width);
-        $('.slide_view_video_element').css('height', video_style_height);
+        $('#quiz_view .slide_view_question_element').css('top', question_style_top);
+        $('#quiz_view .slide_view_question_element').css('left', question_style_left);
+        $('#quiz_view .slide_view_question_element').css('width', question_style_width);
+        $('#quiz_view .slide_view_question_element').css('height', question_style_height);
+        $('#quiz_view .slide_view_answer_element').css('top', answer_style_top);
+        $('#quiz_view .slide_view_answer_element').css('left', answer_style_left);
+        $('#quiz_view .slide_view_answer_element').css('width', answer_style_width);
+        $('#quiz_view .slide_view_answer_element').css('height', answer_style_height);
+        $('#quiz_view .slide_view_media_element').css('top', picture_style_top);
+        $('#quiz_view .slide_view_media_element').css('left', picture_style_left);
+        $('#quiz_view .slide_view_media_element').css('width', picture_style_width);
+        $('#quiz_view .slide_view_media_element').css('height', picture_style_height);
+        $('#quiz_view .slide_view_video_element').css('top', video_style_top);
+        $('#quiz_view .slide_view_video_element').css('left', video_style_left);
+        $('#quiz_view .slide_view_video_element').css('width', video_style_width);
+        $('#quiz_view .slide_view_video_element').css('height', video_style_height);
     }
 
 });

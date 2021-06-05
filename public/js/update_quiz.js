@@ -284,8 +284,12 @@ function answer_form2slide() {
 
             fabric.Image.fromURL(root_url + '/' + json_bg_url.background, function (img) {
                 slide_view_canvas.setBackgroundImage(img, slide_view_canvas.renderAll.bind(slide_view_canvas), {
-                    scaleX: slide_view_canvas.width / img.width,
-                    scaleY: slide_view_canvas.height / img.height
+                    scaleX: fit_canvas_image(slide_view_canvas.width, slide_view_canvas.height, img.width, img.height).scaleFactor,
+                    scaleY: fit_canvas_image(slide_view_canvas.width, slide_view_canvas.height, img.width, img.height).scaleFactor,
+                    originX: 'left',
+                    originY: 'top',
+                    top: fit_canvas_image(slide_view_canvas.width, slide_view_canvas.height, img.width, img.height).top,
+                    left: fit_canvas_image(slide_view_canvas.width, slide_view_canvas.height, img.width, img.height).left,
                 });
             });
 
@@ -495,7 +499,10 @@ function form_to_slide() {
     // media_form2slide();
 
     $('#quiz_view .slide_view_group').resizable();
-    $('#quiz_view #quiz_background_container .slide_view_group').draggable({cancel: 'div.cancel_drag', containment: 'parent'});
+    $('#quiz_view #quiz_background_container .slide_view_group').draggable({
+        cancel: 'div.cancel_drag',
+        containment: 'parent'
+    });
     if ($('#quiz_view .slide_view_group_checkbox').length === 0) $('#quiz_view .slide_view_group').append('<input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;">');
 
     // store_quiz_state();
@@ -724,3 +731,25 @@ $('#form_view_import_audio_file_btn').click(function () {
     $('#form_view_input_audio_element').trigger('click');
 });
 
+function fit_canvas_image(cw, ch, iw, ih) {
+    var canvasAspect = cw / ch;
+    var imgAspect = iw / ih;
+    var left, top, scaleFactor;
+
+    if (canvasAspect <= imgAspect) {
+        var scaleFactor = cw / iw;
+        left = 0;
+        top = -((ih * scaleFactor) - ch) / 2;
+    } else {
+        var scaleFactor = ch / ih;
+        top = 0;
+        left = -((iw * scaleFactor) - cw) / 2;
+
+    }
+
+    return {
+        'scaleFactor': scaleFactor,
+        'left': left,
+        'top': top,
+    };
+}
