@@ -17,14 +17,13 @@ var canvas_bg_url = canvas_info.split('@')[0];
 var canvas_item_info = canvas_info.split('@')[1];
 
 
-
 if (canvas_info != '') {
 
     var json_bg_url = JSON.parse(canvas_bg_url);
     var json_canvas_item = JSON.parse(canvas_item_info);
 
     fabric.Image.fromURL(root_url + '/' + json_bg_url.background, function (img) {
-            console.log(fit_canvas_image(canvas.width, canvas.height, img.width, img.height));
+        console.log(fit_canvas_image(canvas.width, canvas.height, img.width, img.height));
         canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
             scaleX: fit_canvas_image(canvas.width, canvas.height, img.width, img.height).scaleFactor,
             scaleY: fit_canvas_image(canvas.width, canvas.height, img.width, img.height).scaleFactor,
@@ -172,8 +171,12 @@ $('#hotspots_only_from_files_image').change(function () {
 
         fabric.Image.fromURL(e.target.result, function (img) {
             canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
-                scaleX: canvas.width / img.width,
-                scaleY: canvas.height / img.height
+                scaleX: fit_canvas_image(canvas.width, canvas.height, img.width, img.height).scaleFactor,
+                scaleY: fit_canvas_image(canvas.width, canvas.height, img.width, img.height).scaleFactor,
+                originX: 'left',
+                originY: 'top',
+                top: fit_canvas_image(canvas.width, canvas.height, img.width, img.height).top,
+                left: fit_canvas_image(canvas.width, canvas.height, img.width, img.height).left,
             });
         });
         $('#hotspots_image').attr('src', e.target.result);

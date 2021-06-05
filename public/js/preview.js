@@ -1,4 +1,5 @@
 $('div.quiz_item_container .slide_view_question_element').attr('contenteditable', 'false');
+$('#question_list_modal .question_content div').attr('contenteditable', 'false');
 
 /*
 * ************ Fit Quiz size ********************
@@ -223,8 +224,9 @@ function rearrange_preview_ui() {
 
             var json_bg_url = JSON.parse(canvas_bg_url);
 
-            $('.quiz_show .slide_view_answer_element .col-md-12').html('<div id="image-hotspots" style="position: relative;width: 300px;height: 214px;left: 50%;transform: translateX(-50%)"><img src="' + root_url + '/' + json_bg_url.background + '" height="214" width="300" onclick="create_hotspots(event)" style="position: relative;left: 50%;transform: translateX(-50%)"></div>');
+            $('.quiz_show .slide_view_answer_element .col-md-12').html('<div id="image-hotspots" style="position: relative;width: 300px;height: 214px;left: 50%;transform: translateX(-50%)"><img src="' + root_url + '/' + json_bg_url.background + '" height="214" width="300" onclick="create_hotspots(event)" style="position: relative;left: 50%;transform: translateX(-50%);object-fit: contain;"></div>');
 
+            $('#clear_hotspots').css('visibility', 'visible');
             break;
 
         case '13':
@@ -278,9 +280,17 @@ function create_hotspots(event) {
     var x = event.offsetX;
     var y = event.offsetY;
     console.log(x, y);
-    $('#image-hotspots').append('<div style="top: ' + y + 'px;height: 20px;width: 20px;position: absolute;background: #29b160;border-radius: 50%;cursor: pointer;z-index: 200;margin-left: -10px;margin-top: -10px;left: ' + x + 'px;"></div>');
+    $('#image-hotspots').append('<div class="preview_hotspots" style="top: ' + y + 'px;height: 20px;width: 20px;position: absolute;background: #29b160;border-radius: 50%;cursor: pointer;z-index: 200;margin-left: -10px;margin-top: -10px;left: ' + x + 'px;"></div>');
     hotspots_points.push([x, y]);
 }
+
+/*
+* ************* Clear Hotspots ****************
+* */
+$('#clear_hotspots').click(function () {
+   $('.preview_hotspots').remove();
+   hotspots_points = [];
+});
 
 /*
 * ********** question Processing **************
@@ -329,6 +339,8 @@ function preview() {
 
             attempts = 0;
             question_user_point = 0;
+
+            update_question_list_modal();
 
             var current_show_id = $('.quiz_show').attr('id');
             var next_show_id = $('.quiz_show').next().attr('id');
@@ -380,6 +392,7 @@ function preview() {
                 question_feedback: question_feedback,
             });
 
+            update_question_list_modal();
 
             attempts = 0;
             question_user_point = 0;
@@ -412,6 +425,7 @@ function preview() {
                     $('.preview_btn button').html('Continue');
                     return;
                 }
+                if (type_id != 11) $('#clear_hotspots').css('visibility', 'hidden');;
                 $('.preview_btn button').html('Submit');
             }
 
@@ -920,3 +934,33 @@ function s(x, y) {
 $('.quiz_show .slide_view_media_element').click(function () {
     image_popup($(this).find('img').attr('src'));
 });
+
+/*
+* ************* Question List Modal ********************
+* */
+$('#question_list_modal_close').click(function () {
+   $('#question_list_modal').hide();
+});
+
+$('#question_list').click(function () {
+   $('#question_list_modal').show();
+});
+
+function update_question_list_modal() {
+    var current_question_Id = $('.quiz_show .quiz_id').html();
+    var current_question_type_Id = $('.quiz_show .type_id').html();
+
+    if (parseInt(current_question_type_Id) > 11) {
+        console.log($('#question_list-' + current_question_Id).find('.question_result'));
+        $('#question_list-' + current_question_Id).find('.question_result').html('<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve" class="quiz-slide-list-status-icon__icon quiz-slide-list-status-icon__icon_answered"><circle fill="#FFFFFF" cx="12" cy="12" r="12"></circle> <path fill="#528BDF" d="M12,22C6.5,22,2,17.5,2,12S6.5,2,12,2s10,4.5,10,10S17.5,22,12,22z M9,11H7v2h2V11z M13,11h-2v2h2V11z M17,11 	h-2v2h2V11z"></path></svg>');
+        return;
+    }
+
+    if (question_user_point < parseInt($('.quiz_show .correct_score').html())) {
+        $('#question_list-' + current_question_Id).find('.question_awarded').html(question_user_point);
+        $('#question_list-' + current_question_Id).find('.question_result').html('<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve" class="quiz-slide-list-status-icon__icon quiz-slide-list-status-icon__icon_incorrect"><circle fill="#FFFFFF" cx="12" cy="12" r="12"></circle><path fill="#DB5A4B" d="M12,2C6.5,2,2,6.5,2,12s4.5,10,10,10s10-4.5,10-10S17.5,2,12,2z M16.4,8.8L13.2,12l2.9,2.9 	c0.3,0.3,0.3,0.9,0,1.2c-0.3,0.3-0.9,0.3-1.2,0l0,0L12,13.2l-3.2,3.2c-0.3,0.3-0.9,0.3-1.2,0s-0.3-0.9,0-1.2l3.2-3.2L7.9,9.1 	c-0.3-0.3-0.3-0.9,0-1.2s0.9-0.3,1.2,0l2.9,2.9l3.2-3.2c0.3-0.3,0.9-0.3,1.2,0C16.7,7.9,16.8,8.4,16.4,8.8 	C16.4,8.8,16.4,8.8,16.4,8.8z"></path></svg>');
+    } else {
+        $('#question_list-' + current_question_Id).find('.question_awarded').html(question_user_point);
+        $('#question_list-' + current_question_Id).find('.question_result').html('<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve" class="quiz-slide-list-status-icon__icon quiz-slide-list-status-icon__icon_correct"><circle fill="#FFFFFF" cx="12" cy="12" r="12"></circle><path fill="#7CB911" d="M12,2C6.5,2,2,6.5,2,12s4.5,10,10,10s10-4.5,10-10S17.5,2,12,2z M17.9,8.9l-7.7,7.7 	c-0.4,0.4-0.9,0.4-1.3,0l-3.2-3.2c-0.4-0.4-0.4-0.9,0-1.3s0.9-0.4,1.3,0l2.5,2.5l7.1-7.1c0.3-0.4,0.9-0.4,1.3,0 	C18.2,7.9,18.2,8.5,17.9,8.9C17.9,8.9,17.9,8.9,17.9,8.9z"></path></svg>');
+    }
+}
