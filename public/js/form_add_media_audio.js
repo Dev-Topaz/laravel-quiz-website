@@ -123,7 +123,7 @@ function apply_all() {
         },
         success: function (data) {
             alert('Background of All Quiz updated successfully');
-            store_quiz_state();
+            // store_quiz_state();
             hide_preload();
         }
     }).catch((XHttpResponse) => {

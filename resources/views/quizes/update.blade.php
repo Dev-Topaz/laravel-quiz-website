@@ -169,7 +169,7 @@
             @switch($quiz->type_id)
                 @case(1)
                 <h4>Choices</h4>
-                <div style="height: 216px;overflow-y: scroll;">
+                <div class="form_view_answer_element" style="height: 216px;overflow-y: scroll;">
                     <div>
                         <table class="table striped" style="margin: 0">
                             <thead>
@@ -191,7 +191,7 @@
 
                 @case(2)
                 <h4>Choices</h4>
-                <div style="height: 216px;overflow-y: scroll;">
+                <div class="form_view_answer_element" style="height: 216px;overflow-y: scroll;">
                     <div>
                         <table class="table striped" style="margin: 0">
                             <thead>
@@ -213,7 +213,7 @@
 
                 @case(3)
                 <h4>Choices</h4>
-                <div style="height: 216px;overflow-y: scroll;">
+                <div class="form_view_answer_element" style="height: 216px;overflow-y: scroll;">
                     <div>
                         <table class="table striped" style="margin: 0">
                             <thead>
@@ -234,7 +234,7 @@
 
                 @case(4)
                 <h4>Acceptable Answers</h4>
-                <div style="height: 216px;overflow-y: scroll;">
+                <div class="form_view_answer_element" style="height: 216px;overflow-y: scroll;">
                     <div>
                         <table class="table striped" style="margin: 0">
                             <thead>
@@ -262,7 +262,7 @@
 
                 @case(5)
                 <h4>Acceptable Numeric Values</h4>
-                <div style="height: 216px;overflow-y: scroll;">
+                <div class="form_view_answer_element" style="height: 216px;overflow-y: scroll;">
                     <div>
                         <table class="table striped" style="margin: 0">
                             <thead>
@@ -290,7 +290,7 @@
 
                 @case(6)
                 <h4>Correct Order</h4>
-                <div style="height: 216px;overflow-y: scroll;">
+                <div class="form_view_answer_element" style="height: 216px;overflow-y: scroll;">
                     <div>
                         <table class="table striped" style="margin: 0">
                             <thead>
@@ -310,7 +310,7 @@
 
                 @case(7)
                 <h4>Correct Matches</h4>
-                <div style="height: 216px;overflow-y: scroll;">
+                <div class="form_view_answer_element" style="height: 216px;overflow-y: scroll;">
                     <div>
                         <table class="table striped" style="margin: 0">
                             <thead>
@@ -336,7 +336,7 @@
                     <h4>Text with Blanks</h4>
                     <a href="javascript:void(0)" onclick="add_fill_word_dropdown();">Insert Blank</a>
                 </div>
-                <div contenteditable="true" id="fill_blanks">
+                <div contenteditable="true" id="fill_blanks" class="form_view_answer_element">
                 </div>
                 @break
 
@@ -345,7 +345,7 @@
                     <h4>Text with Blanks</h4>
                     <a href="javascript:void(0)" onclick="add_select_lists_dropdown();">Insert Blank</a>
                 </div>
-                <div contenteditable="true" id="select_lists">
+                <div contenteditable="true" id="select_lists" class="form_view_answer_element">
                 </div>
                 @break
 
@@ -355,12 +355,12 @@
                     <a href="javascript:void(0)" onclick="add_drag_words_insert();">Insert Blank</a>
                 </div>
                 <div contenteditable="true" style="height: 216px;overflow-y: scroll;border: 1px solid black"
-                     id="drag_words">
+                     id="drag_words" class="form_view_answer_element">
                 </div>
                 @break
 
                 @case(11)
-                <div class="hotspots_content">
+                <div class="hotspots_content form_view_answer_element">
                     <div class="row" id="hotspots_two_columns"
                          style="{{ $quiz->answer == '' ? 'display:none' : 'display:flex'}};flex-direction: row;max-width: 100%;margin: 0">
                         <div class="cell-6">
@@ -423,24 +423,24 @@
                 @case(12)
                 <h4>Description</h4>
                 <div contenteditable="true" style="height: 460px;overflow-y: scroll;border: 1px solid black"
-                     id="info_slide">
+                     id="info_slide"  class="form_view_answer_element">
                 </div>
                 @break
 
                 @case(13)
                 <h4>Description</h4>
                 <div contenteditable="true" style="height: 460px;overflow-y: scroll;border: 1px solid black"
-                     id="quiz_instructions">
+                     id="quiz_instructions" class="form_view_answer_element">
                 </div>
                 @break
 
                 @case(14)
-                <div contenteditable="true" style="height: 460px;">
+                <div contenteditable="true" style="height: 460px;" class="form_view_answer_element">
                 </div>
                 @break
 
                 @case(15)
-                <div contenteditable="true" style="height: 460px;">
+                <div contenteditable="true" style="height: 460px;" class="form_view_answer_element">
                 </div>
                 @break
 

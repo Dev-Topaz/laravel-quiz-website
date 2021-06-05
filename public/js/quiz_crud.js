@@ -913,6 +913,8 @@ function get_quiz_state() {
 
     const question = $('#question').html();
 
+    const form_view_answer = $('.form_view_answer_element').html();
+
     const feedback_correct = $('.feedback_branching tr:first-child td:nth-child(2) label').html();
     const feedback_incorrect = $('.feedback_branching tr:nth-child(2) td:nth-child(2) label').html();
     const feedback_try_again = $('.feedback_branching tr:nth-child(3) td:nth-child(2) label').html();
@@ -973,7 +975,7 @@ function get_quiz_state() {
         other_elements += remove_resizable_tag($('#quiz_view .other_slide_view_element').eq(i)[0].outerHTML);
     }
 
-    const tmp_values = question + question_element + answer + answer_element + media_element + feedback_correct + feedback_incorrect + feedback_try_again + media + media_element + video + audio + video_element + background_img + question_type + feedback_type + branching + attempts + shuffle_answers + partially_correct + limit_number_response + case_sensitive + correct_score + incorrect_score + try_again_score + other_elements;
+    const tmp_values = question + question_element + form_view_answer + answer + answer_element + media_element + feedback_correct + feedback_incorrect + feedback_try_again + media + media_element + video + audio + video_element + background_img + question_type + feedback_type + branching + attempts + shuffle_answers + partially_correct + limit_number_response + case_sensitive + correct_score + incorrect_score + try_again_score + other_elements;
 
     return tmp_values;
 }
