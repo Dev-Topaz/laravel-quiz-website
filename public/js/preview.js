@@ -1041,7 +1041,6 @@ function show_result(question_correct_answer, question_type_id, question_id) {
             break;
 
         case '2':
-            console.log(question_correct_answer);
             let response_correct_answer_array = question_correct_answer.split(';');
             response_correct_answer_array.pop();
 
@@ -1055,15 +1054,35 @@ function show_result(question_correct_answer, question_type_id, question_id) {
             break;
 
         case '4':
-            console.log(question_correct_answer);
             if ($('.quiz_show .is_correct').html() == 'true') {
                 $('.quiz_show #answer').css('cssText', 'color: green !important;');
             } else {
                 $('.quiz_show #answer').css('cssText', 'color: red !important;');
 
                 $('.quiz_show #answer').parent().append('<div style="color: #c6c61f;  position: absolute; top: 0; bottom: 0; right: 25px;" onmouseover="{$(this).next().show()}" onmouseleave="{$(this).next().hide()}"><i class="fas fa-align-justify"></i></div>');
-                $('.quiz_show #answer').parent().append('<div style="position: absolute;right: 0;background: white;color: black;padding: 10px;display: none;"><div>Correct Answer</div><div style="display: flex"><img src="' + root_url + '/images/icons/green_tick.png" style="height: 20px;width: 20px;">' + question_correct_answer +  '</div></div>');
+                $('.quiz_show #answer').parent().append('<div style="position: absolute;right: 0;background: white;color: black;padding: 10px;display: none;border-radius: 5px"><div>Correct Answer</div><div style="display: flex"><img src="' + root_url + '/images/icons/green_tick.png" style="height: 20px;width: 20px;">' + question_correct_answer +  '</div></div>');
             }
             break;
+
+        case '5':
+            let numeric_correct_answer_array = question_correct_answer.split('@');
+            numeric_correct_answer_array.pop();
+            console.log(numeric_correct_answer_array);
+
+            if ($('.quiz_show .is_correct').html() == 'true') {
+                $('.quiz_show #answer').css('cssText', 'color: green !important;');
+            } else {
+                $('.quiz_show #answer').css('cssText', 'color: red !important;');
+
+                $('.quiz_show #answer').parent().append('<div style="color: #c6c61f;  position: absolute; top: 0; bottom: 0; right: 25px;" onmouseover="{$(this).next().show()}" onmouseleave="{$(this).next().hide()}"><i class="fas fa-align-justify"></i></div>');
+                $('.quiz_show #answer').parent().append('<div style="position: absolute;right: 0;background: white;color: black;padding: 10px;display: none;border-radius: 5px;"><div>Correct Answer</div><div class="correct_answer_list_element"></div></div>');
+
+                for (let i = 0; i <numeric_correct_answer_array.length; i++) {
+                    $('.quiz_show .correct_answer_list_element').append('<div style="display: flex"><img src="' + root_url + '/images/icons/green_tick.png" style="height: 20px;width: 20px;">' + numeric_correct_answer_array[i].slice(0, -1).replaceAll('==;', 'Equal to ').replaceAll('&lt;&lt;;', 'Between ').replaceAll('&gt;;', 'Greater than ').replaceAll('&gt;=;', 'Greater than or equal to ').replaceAll('&lt;;', 'Less than ').replaceAll('&lt;=;', 'Less than or equal to ').replaceAll('!=;', 'Not equal to ').replaceAll(';', ' and ') +  '</div>');
+                }
+            }
+            break;
+
+
     }
 }
