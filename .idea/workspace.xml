@@ -5,6 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9d9fd7c1-0dd1-410f-8492-d59f6bb67158" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/preview.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/preview.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/preview.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/preview.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/preview.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/preview.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,6 +45,7 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/public/js/preview.js" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/public/js/update_quiz.js" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
@@ -266,7 +271,8 @@
       <workItem from="1622778923942" duration="257000" />
       <workItem from="1622779549391" duration="19814000" />
       <workItem from="1622805017350" duration="261000" />
-      <workItem from="1622805888761" duration="58117000" />
+      <workItem from="1622805888761" duration="62227000" />
+      <workItem from="1622981840889" duration="5243000" />
     </task>
     <servers />
   </component>

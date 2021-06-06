@@ -288,19 +288,19 @@ function create_hotspots(event) {
 * ************* Clear Hotspots ****************
 * */
 $('#clear_hotspots').click(function () {
-   $('.preview_hotspots').remove();
-   hotspots_points = [];
+    $('.preview_hotspots').remove();
+    hotspots_points = [];
 });
 
 /*
 * ********** question Processing **************
 * */
 
-function preview() {
+function preview(element) {
     const root_url = $('meta[name=url]').attr('content');
     const token = $('meta[name=csrf-token]').attr('content');
 
-    switch ($('.preview_btn button').html()) {
+    switch ($('#submit_btn').html()) {
         case 'Submit':
             if (!is_completed_question()) {
                 show_modal('error', 'Warning', 'You must complete the question before submitting.');
@@ -309,7 +309,7 @@ function preview() {
 
             if ($('.quiz_show .question_type').html() != 'graded') {
                 question_result = 'Survey';
-                $('.preview_btn button').html('Continue');
+                $('#submit_btn').html('Continue');
                 return;
             }
             if (evulate()) {
@@ -322,7 +322,7 @@ function preview() {
                 }
                 question_feedback = $('.quiz_show .feedback_correct').html();
                 question_result = 'Correct';
-                $('.preview_btn button').html('Continue');
+                $('#submit_btn').html('Continue');
             } else {
                 attempts += 1;
                 incorrect_process();
@@ -330,7 +330,7 @@ function preview() {
             break;
 
         case 'Try again':
-            $('.preview_btn button').html('Submit');
+            $('#submit_btn').html('Submit');
             break;
 
         case 'Start Quiz':
@@ -351,7 +351,8 @@ function preview() {
 
             if (next_show_id === undefined || type_id == 14 || type_id == 15) {
 
-                $('.preview_btn button').html('See Result');
+                $('#submit_btn').html('See Result');
+                $('#review_btn').css('visibility', 'visible');
             } else {
 
                 $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].pause();
@@ -366,10 +367,10 @@ function preview() {
                 rearrange_preview_ui();
 
                 if (type_id == 12) {
-                    $('.preview_btn button').html('Continue');
+                    $('#submit_btn').html('Continue');
                     return;
                 }
-                $('.preview_btn button').html('Submit');
+                $('#submit_btn').html('Submit');
             }
 
 
@@ -401,14 +402,19 @@ function preview() {
             if ($('.quiz_show').find('.type_id').html() != 12) quizId++;
 
             var current_show_id = $('.quiz_show').attr('id');
+            var current_show_type_id = $('.quiz_show .type_id').html();
             var next_show_id = $('.quiz_show').next().attr('id');
             var type_id = $('.quiz_show').next().find('.type_id').html();
+
+            show_result($('.quiz_show .correct_answer').html(), current_show_type_id, current_show_id);
 
             $('#quiz_list_audio-' + current_show_id.split('-')[1])[0].pause();
 
             if (next_show_id === undefined || type_id == 14 || type_id == 15) {
                 rearrange_preview_ui();
-                $('.preview_btn button').html('See Result');
+                $('#review_btn').css('visibility', 'visible');
+
+                $('#submit_btn').html('See Result');
             } else {
 
                 $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].pause();
@@ -422,11 +428,12 @@ function preview() {
                 $('#' + next_show_id).addClass('quiz_show');
                 rearrange_preview_ui();
                 if (type_id == 12) {
-                    $('.preview_btn button').html('Continue');
+                    $('#submit_btn').html('Continue');
                     return;
                 }
-                if (type_id != 11) $('#clear_hotspots').css('visibility', 'hidden');;
-                $('.preview_btn button').html('Submit');
+                if (type_id != 11) $('#clear_hotspots').css('visibility', 'hidden');
+                ;
+                $('#submit_btn').html('Submit');
             }
 
 
@@ -500,7 +507,7 @@ function preview() {
                 alert('Answered: ' + correct_quiz_count + '/' + quizId + ', Total Score: ' + total_score);
             }
 
-            $('.preview_btn button').html('Close');
+            $('#submit_btn').html('Close');
             break;
 
         case 'Close':
@@ -891,7 +898,7 @@ function incorrect_process() {
         question_result = 'Wrong';
         question_feedback = $('.quiz_show .feedback_incorrect').html();
 
-        $('.preview_btn button').html('Continue');
+        $('#submit_btn').html('Continue');
         if ($('.quiz_show .feedback_type').html() != 'none') {
             show_modal('error', 'Incorrect', $('.quiz_show .feedback_incorrect').html());
         }
@@ -900,7 +907,7 @@ function incorrect_process() {
         question_user_point += parseInt($('.quiz_show .try_again_score').html());
         question_feedback = $('.quiz_show .feedback_try_again').html();
 
-        $('.preview_btn button').html('Try again');
+        $('#submit_btn').html('Try again');
         if ($('.quiz_show .feedback_type').html() != 'none') {
             show_modal('error', 'Incorrect', $('.quiz_show .feedback_try_again').html());
         }
@@ -939,11 +946,11 @@ $('.quiz_show .slide_view_media_element').click(function () {
 * ************* Question List Modal ********************
 * */
 $('#question_list_modal_close').click(function () {
-   $('#question_list_modal').hide();
+    $('#question_list_modal').hide();
 });
 
 $('#question_list').click(function () {
-   $('#question_list_modal').show();
+    $('#question_list_modal').show();
 });
 
 function update_question_list_modal() {
@@ -962,5 +969,65 @@ function update_question_list_modal() {
     } else {
         $('#question_list-' + current_question_Id).find('.question_awarded').html(question_user_point);
         $('#question_list-' + current_question_Id).find('.question_result').html('<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve" class="quiz-slide-list-status-icon__icon quiz-slide-list-status-icon__icon_correct"><circle fill="#FFFFFF" cx="12" cy="12" r="12"></circle><path fill="#7CB911" d="M12,2C6.5,2,2,6.5,2,12s4.5,10,10,10s10-4.5,10-10S17.5,2,12,2z M17.9,8.9l-7.7,7.7 	c-0.4,0.4-0.9,0.4-1.3,0l-3.2-3.2c-0.4-0.4-0.4-0.9,0-1.3s0.9-0.4,1.3,0l2.5,2.5l7.1-7.1c0.3-0.4,0.9-0.4,1.3,0 	C18.2,7.9,18.2,8.5,17.9,8.9C17.9,8.9,17.9,8.9,17.9,8.9z"></path></svg>');
+    }
+}
+
+/*
+* ***************** Review Javascript ****************
+* */
+var review_Id = 0;
+
+function review() {
+    $('.preview_btn').hide();
+    $('.review_buttons').show();
+
+    $('.quiz_show').removeClass('quiz_show').addClass('quiz_hide');
+
+    $('.quiz_list_container').eq(review_Id).removeClass('quiz_hide').addClass('quiz_show');
+}
+
+// Next button
+function next_review() {
+    var current_show_id = $('.quiz_show').attr('id');
+    var next_show_id = $('.quiz_show').next().attr('id');
+    var type_id = $('.quiz_show').next().find('.type_id').html();
+
+    if (next_show_id === undefined || type_id == 14 || type_id == 15) {
+    } else {
+
+        $('#' + current_show_id).removeClass('quiz_show');
+        $('#' + current_show_id).addClass('quiz_hide');
+
+        $('#' + next_show_id).removeClass('quiz_hide');
+        $('#' + next_show_id).addClass('quiz_show');
+    }
+}
+
+// Previous Button
+function preview_review() {
+    var current_show_id = $('.quiz_show').attr('id');
+    var previous_show_id = $('.quiz_show').prev().attr('id');
+    var type_id = $('.quiz_show').prev().find('.type_id').html();
+
+    if (previous_show_id === undefined || type_id == 14 || type_id == 15) {
+    } else {
+
+        $('#' + current_show_id).removeClass('quiz_show');
+        $('#' + current_show_id).addClass('quiz_hide');
+
+        $('#' + previous_show_id).removeClass('quiz_hide');
+        $('#' + previous_show_id).addClass('quiz_show');
+    }
+}
+
+//Show Result
+function show_result(question_correct_answer, question_type_id, question_id) {
+
+    const root_url = $('meta[name=url]').attr('content');
+
+    switch (question_type_id) {
+        case '1':
+            $('#' + question_id.split('-')[1] + '_' + question_correct_answer).parent().prepend('<div style="position: absolute; transform: translateX(-100%);width: 20px;"><img src="' + root_url + '/images/icons/green_tick.png" style="height: 20px;width: 20px;"></div>');
+            break;
     }
 }

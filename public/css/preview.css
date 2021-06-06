@@ -9,7 +9,11 @@
     height: 100%;
 }
 
-.preview_btn {
+.quiz_item_container .slide_view_answer_element {
+    overflow: unset !important;
+}
+
+.preview_btn, .review_buttons {
     margin: 20px auto;
     display: flex;
     flex-direction: row;
@@ -18,7 +22,7 @@
     align-items: center;
 }
 
-.preview_btn button {
+.preview_btn button, .review_buttons button {
     z-index: 10;
     background-color: green;
     font-size: 20px;
@@ -115,3 +119,4 @@
     height: 42px;
     overflow: hidden;
 }
+

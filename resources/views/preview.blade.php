@@ -17,7 +17,8 @@
                             <div class="col-9 question_content">{{ strip_tags($quiz->question_element) }}
                             </div>
                             <div class="col-1 question_awarded">-</div>
-                            <div class="col-1 question_points">{{ $quiz->type_id > 11 ? '-' : $quiz->correct_score }}</div>
+                            <div
+                                class="col-1 question_points">{{ $quiz->type_id > 11 ? '-' : $quiz->correct_score }}</div>
                             <div class="col-1 question_result">
                             </div>
                         </div>
@@ -29,10 +30,10 @@
     <div id="is_quiz" style="display: none;">{{ $is_quiz }}</div>
     <div id="user_name" style="display: none;">{{ $user->name }}</div>
     <div id="user_email" style="display: none;">{{ $user->email }}</div>
-    <div class="question_menu_bar" style="margin: 0 auto;width: 656px;display: flex;justify-content: space-between;">
+    <div class="question_menu_bar" style="margin: 0 auto;width: 656px;display: flex;justify-content: space-between;padding-top: 10px;">
         <p id="question_list">Question <span id="question_number">1</span></p>
         <div id="question_result" style="display: flex;">
-            <p id="question_point">Point Value: <span>10</span> | </p>
+            <p id="question_point">Point Value: <span>10</span> |&nbsp;</p>
             <p>Total Points: <span id="total_point">0</span> out of <span id="passing_score">100</span></p>
         </div>
     </div>
@@ -117,7 +118,17 @@
         @endif
     @endforeach
     <div class="preview_btn">
-        <a href="javascript:void(0)" id="clear_hotspots" style="visibility: hidden;">Clear</a>
-        <button onclick="preview()">Submit</button>
+        <div>
+            <a href="javascript:void(0)" id="clear_hotspots" style="visibility: hidden;">Clear</a>
+            <button onclick="review()" id="review_btn" style="visibility: hidden;">Review Your LNN</button>
+        </div>
+        <button onclick="preview(this)" id="submit_btn">Submit</button>
+    </div>
+    <div class="review_buttons" style="display: none;">
+        <button onclick="preview(this)">See Result</button>
+        <div>
+            <button onclick="preview_review()">Previous</button>
+            <button onclick="next_review()">Next</button>
+        </div>
     </div>
 @endsection

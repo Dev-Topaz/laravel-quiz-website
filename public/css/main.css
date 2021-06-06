@@ -869,11 +869,11 @@ if it's not present, don't show loader */
 
 #preview_toast {
     position: absolute;
-    width: 450px;
+    width: 550px;
     background: white;
     left: 50%;
     z-index: 1000;
-    margin-left: -225px;
+    margin-left: -275px;
     bottom: 100px;
     border-radius: 10px;
     box-shadow: grey 1px 1px 10px 3px;
