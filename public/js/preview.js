@@ -188,6 +188,10 @@ function rearrange_preview_ui() {
             $('.quiz_show .slide_view_answer_element .col-md-12').html(rearrange_response_items);
             break;
 
+        case '3':
+            change_input_id_label_for($('.quiz_show .choice_item'), $('.quiz_show .quiz_id').html());
+            break;
+
         case '6':
             var sequence_items = $('#sortable li');
             shuffle(sequence_items)
@@ -319,6 +323,8 @@ function preview(element) {
                 correct_quiz_count += 1;
                 if ($('.quiz_show .feedback_type').html() != 'none') {
                     show_modal('success', 'Correct', $('.quiz_show .feedback_correct').html());
+                    $('.quiz_show .is_correct').html('true');
+
                 }
                 question_feedback = $('.quiz_show .feedback_correct').html();
                 question_result = 'Correct';
@@ -406,16 +412,16 @@ function preview(element) {
             var next_show_id = $('.quiz_show').next().attr('id');
             var type_id = $('.quiz_show').next().find('.type_id').html();
 
-            show_result($('.quiz_show .correct_answer').html(), current_show_type_id, current_show_id);
-
             $('#quiz_list_audio-' + current_show_id.split('-')[1])[0].pause();
 
             if (next_show_id === undefined || type_id == 14 || type_id == 15) {
-                rearrange_preview_ui();
+                // rearrange_preview_ui();
                 $('#review_btn').css('visibility', 'visible');
 
                 $('#submit_btn').html('See Result');
             } else {
+
+                show_result($('.quiz_show .correct_answer').html(), current_show_type_id, current_show_id);
 
                 $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].pause();
                 $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].currentTime = 0;
@@ -901,6 +907,7 @@ function incorrect_process() {
         $('#submit_btn').html('Continue');
         if ($('.quiz_show .feedback_type').html() != 'none') {
             show_modal('error', 'Incorrect', $('.quiz_show .feedback_incorrect').html());
+            $('.quiz_show .is_correct').html('false');
         }
     } else {
         total_score += parseInt($('.quiz_show .try_again_score').html());
@@ -910,6 +917,7 @@ function incorrect_process() {
         $('#submit_btn').html('Try again');
         if ($('.quiz_show .feedback_type').html() != 'none') {
             show_modal('error', 'Incorrect', $('.quiz_show .feedback_try_again').html());
+            $('.quiz_show .is_correct').html('false');
         }
     }
     console.log('incorrect_process function');
@@ -978,6 +986,8 @@ function update_question_list_modal() {
 var review_Id = 0;
 
 function review() {
+    show_result($('.quiz_show .correct_answer').html(), $('.quiz_show .type_id').html(), $('.quiz_show').attr('id'));
+
     $('.preview_btn').hide();
     $('.review_buttons').show();
 
@@ -1028,6 +1038,32 @@ function show_result(question_correct_answer, question_type_id, question_id) {
     switch (question_type_id) {
         case '1':
             $('#' + question_id.split('-')[1] + '_' + question_correct_answer).parent().prepend('<div style="position: absolute; transform: translateX(-100%);width: 20px;"><img src="' + root_url + '/images/icons/green_tick.png" style="height: 20px;width: 20px;"></div>');
+            break;
+
+        case '2':
+            console.log(question_correct_answer);
+            let response_correct_answer_array = question_correct_answer.split(';');
+            response_correct_answer_array.pop();
+
+            for (let i = 0; i < response_correct_answer_array.length; i++) {
+                $('#' + question_id.split('-')[1] + '_' + response_correct_answer_array[i]).parent().prepend('<div style="position: absolute; transform: translateX(-100%);width: 20px;"><img src="' + root_url + '/images/icons/green_tick.png" style="height: 20px;width: 20px;"></div>');
+            }
+            break;
+
+        case '3':
+            $('#' + question_id.split('-')[1] + '_' + (question_correct_answer == 1 ? 'true' : 'false')).parent().prepend('<div style="position: absolute; transform: translateX(-100%);width: 20px;"><img src="' + root_url + '/images/icons/green_tick.png" style="height: 20px;width: 20px;"></div>');
+            break;
+
+        case '4':
+            console.log(question_correct_answer);
+            if ($('.quiz_show .is_correct').html() == 'true') {
+                $('.quiz_show #answer').css('cssText', 'color: green !important;');
+            } else {
+                $('.quiz_show #answer').css('cssText', 'color: red !important;');
+
+                $('.quiz_show #answer').parent().append('<div style="color: #c6c61f;  position: absolute; top: 0; bottom: 0; right: 25px;" onmouseover="{$(this).next().show()}" onmouseleave="{$(this).next().hide()}"><i class="fas fa-align-justify"></i></div>');
+                $('.quiz_show #answer').parent().append('<div style="position: absolute;right: 0;background: white;color: black;padding: 10px;display: none;"><div>Correct Answer</div><div style="display: flex"><img src="' + root_url + '/images/icons/green_tick.png" style="height: 20px;width: 20px;">' + question_correct_answer +  '</div></div>');
+            }
             break;
     }
 }
