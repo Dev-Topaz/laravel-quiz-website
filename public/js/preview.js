@@ -1083,6 +1083,26 @@ function show_result(question_correct_answer, question_type_id, question_id) {
             }
             break;
 
+        case '6':
+            console.log(question_correct_answer);
+            let sequence_correct_answer_array = question_correct_answer.split(';');
+            sequence_correct_answer_array.pop();
 
+            let correct_index;
+            for (let i = 0; i < $('.quiz_show .ui-state-default').length; i++) {
+
+                correct_index = sequence_correct_answer_array.indexOf($('.quiz_show .ui-state-default').eq(i).find('.sequence_label').html());
+
+                if (correct_index == i) {
+                    $('.quiz_show .ui-state-default').eq(i).css('border', '1px solid green');
+                    $('.quiz_show .ui-state-default').eq(i).css('color', 'green');
+                } else {
+                    $('.quiz_show .ui-state-default').eq(i).css('border', '1px solid red');
+                    $('.quiz_show .ui-state-default').eq(i).css('color', 'red');
+                }
+
+                $('.quiz_show .ui-state-default').eq(i).find('.sequence_label').html((correct_index + 1) + '. ' + $('.quiz_show .ui-state-default').eq(i).find('.sequence_label').html());
+            }
+            break;
     }
 }
