@@ -20,6 +20,7 @@ $('#xxxxx').mousedown(function (e) {
 // Copy btn click function
 $('.copy_btn').click(function () {
     clipboard_str = get_selected_str();
+    localStorage.setItem('is_edited', 'true');
 });
 
 $('.copy_btn').mousedown(function (e) {
@@ -31,6 +32,8 @@ $('.copy_btn').mousedown(function (e) {
 $('.cut_btn').click(function () {
     clipboard_str = get_selected_str();
     delete_selected_str();
+
+    localStorage.setItem('is_edited', 'true');
 });
 
 $('.cut_btn').mousedown(function (e) {
@@ -41,6 +44,7 @@ $('.cut_btn').mousedown(function (e) {
 // Paste btn click function
 $('.paste_btn').click(function () {
     paste_str(clipboard_str);
+    localStorage.setItem('is_edited', 'true');
     // window.getSelection().removeAllRanges();
     // sel.focusOffset
     // setCurrentCursorPosition(get_cursor_pos_supposed_to_be(clipboard_str));
@@ -158,6 +162,8 @@ $('#slide_view_font_family_selector').change(function () {
         document.execCommand('styleWithCSS', false, true);
         document.execCommand('fontName', false, $(this).val());
     }
+
+    localStorage.setItem('is_edited', 'true');
 });
 
 var fontSize = 16;
@@ -185,6 +191,8 @@ $('#font_size_selector').change(function () {
         document.execCommand("fontSize", false, "1");
         resetFont();
     }
+
+    localStorage.setItem('is_edited', 'true');
 });
 
 function resetFont() {
@@ -195,6 +203,8 @@ function resetFont() {
     var deepest_editable_div = $('#quiz_view .slide_view_question_element.selected_slide_view_group  .cancel_drag').find('span').parent();
     var font_size_changed_html = deepest_editable_div.html().split('x-small').join(fontSize + 'px');
     deepest_editable_div.html(font_size_changed_html);
+
+    localStorage.setItem('is_edited', 'true');
 }
 
 // Font size increase
@@ -220,6 +230,8 @@ $('#font_size_bigger_btn').click(function () {
         $('#font_size_selector').val(fontSize);
         resetFont();
     }
+
+    localStorage.setItem('is_edited', 'true');
 });
 
 // Font size decrease
@@ -245,6 +257,7 @@ $('#font_size_smaller_btn').click(function () {
         resetFont();
     }
 
+    localStorage.setItem('is_edited', 'true');
 });
 
 // Font style clear
@@ -316,6 +329,8 @@ $('#font_style_clear_btn').click(function () {
     } else {
         clear_formatting();
     }
+
+    localStorage.setItem('is_edited', 'true');
 });
 
 var formatting_bold = false;
@@ -346,6 +361,8 @@ $('.font_bold_btn').click(function () {
         document.execCommand('styleWithCSS', false, true);
         document.execCommand('bold');
     }
+
+    localStorage.setItem('is_edited', 'true');
 });
 
 var formatting_strike = false;
@@ -374,6 +391,8 @@ $('#slide_view_font_strike_btn').click(function () {
         document.execCommand('styleWithCSS', false, true);
         document.execCommand('strikeThrough');
     }
+
+    localStorage.setItem('is_edited', 'true');
 });
 
 var formatting_ital = false;

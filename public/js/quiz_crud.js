@@ -18,6 +18,7 @@ function show_quiz_editor(node) {
         $('#quiz_view').html(data);
         show_correct_view();
         store_quiz_state();
+        localStorage.setItem("is_edited", "false");
         hide_preload();
     }).catch((XHttpResponse) => {
         console.log(XHttpResponse);
@@ -426,6 +427,7 @@ function update_and_show_preview(url) {
         success: function (data) {
             store_quiz_state();
             hide_preload();
+            localStorage.setItem('is_edited', 'false');
             window.open(url);
         }
     }).catch((XHttpResponse) => {
@@ -567,6 +569,7 @@ function update_quiz(is_alert_save) {
                 init_styling_and_layout();
                 real_time_update_slide_view_nav_active();
             }
+            localStorage.setItem('is_edited', 'false');
             hide_preload();
         }
     }).catch((XHttpResponse) => {
