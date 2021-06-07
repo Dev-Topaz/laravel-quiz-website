@@ -423,7 +423,7 @@
                 @case(12)
                 <h4>Description</h4>
                 <div contenteditable="true" style="height: 460px;overflow-y: scroll;border: 1px solid black"
-                     id="info_slide"  class="form_view_answer_element">
+                     id="info_slide" class="form_view_answer_element">
                 </div>
                 @break
 
@@ -529,7 +529,8 @@
                         <label for="question_type" style="font-size: 16px;">Question type:</label>
                     </div>
                     <div class="cell-7">
-                        <select data-role="select" data-filter="false" id="question_type">
+                        <select data-on-change="change_question_type" data-role="select" data-filter="false"
+                                id="question_type">
                             <option value="graded" {{ $quiz->question_type == 'graded' ? 'selected' : '' }}>Graded
                             </option>
                             <option value="survey" {{ $quiz->question_type == 'survey' ? 'selected' : '' }}>Survey
@@ -543,7 +544,8 @@
                             <label for="feedback" name="feedback">Feedback:</label>
                         </div>
                         <div class="cell-6">
-                            <select data-role="select" data-filter="false" id="feedback">
+                            <select data-on-change="change_feedback" data-role="select" data-filter="false"
+                                    id="feedback">
                                 <option value="none" {{ $quiz->feedback_type == 'none' ? 'selected' : '' }}>None
                                 </option>
                                 <option
@@ -593,7 +595,8 @@
                             <label for="attempts" name="attempts">Attempts:</label>
                         </div>
                         <div class="cell-6">
-                            <select data-role="select" data-filter="false" id="attempts">
+                            <select data-on-change="change_attempts" data-role="select" data-filter="false"
+                                    id="attempts">
                                 <option value="1" {{ $quiz->attempts == '1' ? 'selected' : '' }}>1</option>
                                 <option value="2" {{ $quiz->attempts == '2' ? 'selected' : '' }}>2</option>
                                 <option value="3" {{ $quiz->attempts == '3' ? 'selected' : '' }}>3</option>
@@ -756,6 +759,39 @@
 <script>
     answer_slide2form($('#answer_element').val(), $('#answer_content').val());
     $('#question').html(question_slide2form($('#question_element').val()));
+
+    /*
+*******************************************************
+* */
+    function change_question_type(selected) {
+        console.log(selected);
+        localStorage.setItem('is_edited', 'true');
+    }
+
+    function change_feedback(selected) {
+        console.log(selected);
+        localStorage.setItem('is_edited', 'true');
+    }
+
+    function change_attempts(selected) {
+        console.log(selected);
+        localStorage.setItem('is_edited', 'true');
+    }
+
+    $(document).ready(function () {
+
+        $('#partially_correct').parent().find('span').click(function () {
+            localStorage.setItem('is_edited', 'true');
+        });
+
+        $('#shuffle_answers').parent().find('span').click(function () {
+            localStorage.setItem('is_edited', 'true');
+        });
+
+        $('#case_sensitive').parent().find('span').click(function () {
+            localStorage.setItem('is_edited', 'true');
+        });
+    });
 
 </script>
 

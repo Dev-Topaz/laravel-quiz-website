@@ -25,9 +25,13 @@ $('body').on('click', '[data-editable]', function () {
     // const $input = $('<input style="margin: 0 40px 0 5px;"/>').val($el.text());
     $el.replaceWith($input);
 
-    $('.form_view_textbox_editable').keydown(function (e) {
+    $('div[contenteditable=true]').keydown(function (e) {
+        console.log(e.keyCode);
         if ($(this).closest('.question_score').length > 0) {
             if (!((e.keyCode > 47 && e.keyCode < 58) || (e.keyCode > 95 && e.keyCode < 106) || e.keyCode == 8 || e.keyCode == 46)) e.preventDefault();
+            localStorage.setItem('is_edited', 'true');
+        } else {
+            localStorage.setItem('is_edited', 'true');
         }
     });
 
@@ -115,6 +119,7 @@ $(function () {
         console.log(ui.attr('order'));
         return ui.attr('order');
     }
+
 });
 
 function show_preload() {
@@ -126,3 +131,9 @@ function hide_preload() {
     $('.se-pre-con').hide();
     $('.se-pre-con').removeClass('se-pre-con-show');
 }
+
+$('body').on('click', 'div[contenteditable=true]', function () {
+    $('div[contenteditable=true]').keydown(function (e) {
+        localStorage.setItem('is_edited', 'true');
+    });
+});

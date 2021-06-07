@@ -498,8 +498,15 @@ function form_to_slide() {
     fit_slide_view_quiz_list();
     // media_form2slide();
 
-    $('#quiz_view .slide_view_group').resizable();
+    $('#quiz_view .slide_view_group').resizable({
+        resize: function () {
+            localStorage.setItem('is_edited', 'true');
+        }
+    });
     $('#quiz_view #quiz_background_container .slide_view_group').draggable({
+        drag: function () {
+            localStorage.setItem('is_edited', 'true');
+        },
         cancel: 'div.cancel_drag',
         containment: 'parent'
     });
@@ -753,3 +760,5 @@ function fit_canvas_image(cw, ch, iw, ih) {
         'top': top,
     };
 }
+
+
