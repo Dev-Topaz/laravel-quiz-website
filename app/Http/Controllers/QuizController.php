@@ -174,7 +174,7 @@ class QuizController extends Controller
                     'exam_group_id' => $request->exam_group_id,
                     'type_id' => $request->type_id,
                     'question_element' => '<div class="slide_view_question_element slide_view_group" style="height: 70px;width: 80%;left: 10%;z-index: 3;overflow: hidden;padding:10px;position:absolute;"><div contenteditable="true" class="cancel_drag">Type your response:</div></div>',
-                    'answer' => '=;0;@',
+                    'answer' => '==;0;@',
                     'feedback_correct' => 'That\'s right! You chose the correct response.',
                     'feedback_incorrect' => 'You did not choose the correct response.',
                     'feedback_try_again' => 'You did not choose the correct response. Try again.',
