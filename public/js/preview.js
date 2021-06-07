@@ -6,12 +6,48 @@ $('#question_list_modal .question_content div').attr('contenteditable', 'false')
 * ************ Fit Quiz size ********************
 * */
 
-var w = window.innerWidth;
-var h = window.innerHeight;
+let zoomScale;
 
-const elementHeight = 500;
 
-zoomScale = (h - 30 - 42) / elementHeight;
+function fit_question_list_container_size() {
+    var w = window.innerWidth;
+    var h = window.innerHeight;
+
+    const elementHeight = parseInt($('.screen_height').html());
+    const elementWidth = parseInt($('.screen_width').html());
+
+    let height_zoomScale = (h - 50 - 82 - 40) / elementHeight;
+    let width_zoomScale = (w - 40) / elementWidth;
+
+    zoomScale = Math.min(height_zoomScale, width_zoomScale);
+
+    console.log($('.quiz_show .type_id').html());
+
+    if ($('.quiz_show .type_id').html() != '6' && $('.quiz_show .type_id').html() != '7' && $('.quiz_show .type_id').html() != '10') {
+        $('.quiz_list_container').css('zoom', zoomScale);
+        $('#preview_container').css('transform', 'translate(-50%, -50%)');
+    } else {
+        $('.quiz_list_container').css('zoom', 1);
+        $('#preview_container').css('transform', 'translate(-50%, -50%) scale(' + (zoomScale - 0.1) + ')');
+    }
+}
+
+fit_question_list_container_size();
+
+$(window).resize(function () {
+    console.log('resized');
+    fit_question_list_container_size();
+});
+
+function fit_drag_with_zoom(ui) {
+    var changeLeft = ui.position.left - ui.originalPosition.left;
+    var newLeft = ui.originalPosition.left + changeLeft / zoomScale;
+    var changeTop = ui.position.top - ui.originalPosition.top;
+    var newTop = ui.originalPosition.top + changeTop / zoomScale;
+
+    ui.position.left = newLeft;
+    ui.position.top = newTop;
+}
 
 // setZoom(zoomScale, document.getElementsByClassName('quiz_list_container')[0]);
 
@@ -37,7 +73,14 @@ zoomScale = (h - 30 - 42) / elementHeight;
 * For Sequence UI
 * */
 
-$('.slide_view_answer_element .col-md-12 > ul').sortable();
+var canvasHeight = $('.slide_view_answer_element .col-md-12 > ul').height();
+var canvasWidth = $('.slide_view_answer_element .col-md-12 > ul').width();
+
+$('.slide_view_answer_element .col-md-12 > ul').sortable({
+    // drag: function (evt, ui) {
+    //     fit_drag_with_zoom(ui);
+    // }
+});
 
 /*
 * ************ For Matching UI ***********
@@ -52,6 +95,10 @@ $(function () {
                 $(this).parent().css({'justify-content': 'space-around'});
                 $(this).attr("isdropped", false);
             }
+        },
+
+        drag: function (evt, ui) {
+            fit_drag_with_zoom(ui);
         },
 
         stop: function () {
@@ -81,7 +128,7 @@ $(function () {
 var drag_words_array = [];
 $("#slide_drag_words_answer span").draggable({
 
-    start: function () {
+    start: function (evt, ui) {
         $(this).addClass("ui-state-highlight");
         // if ($(this).attr("isdropped")) {
         // $(this).parent().css({'justify-content': 'space-around'});
@@ -89,9 +136,12 @@ $("#slide_drag_words_answer span").draggable({
         // }
     },
 
-    stop: function () {
-        $(this).removeClass("ui-state-highlight");
+    drag: function (evt, ui) {
+        fit_drag_with_zoom(ui);
+    },
 
+    stop: function (evt, ui) {
+        $(this).removeClass("ui-state-highlight");
     },
 
     // revert: true,
@@ -102,6 +152,7 @@ $("#slide_drag_words_question .blank").droppable({
     },
     drop: function (event, ui) {
         console.log('dropped');
+
         drag_words_array[$(this).index('.quiz_show .blank')] = ui.draggable.html();
         // $(this).parent().css({'justify-content': 'center'});
         // ui.draggable.attr("isdropped", true);
@@ -283,8 +334,9 @@ function shuffle(array) {
 * */
 
 function create_hotspots(event) {
-    var x = event.offsetX;
-    var y = event.offsetY;
+    var x = Math.round(event.offsetX / zoomScale);
+    var y = Math.round(event.offsetY / zoomScale);
+
     console.log(x, y);
     $('.quiz_show #image-hotspots').append('<div class="preview_hotspots" style="top: ' + y + 'px;height: 20px;width: 20px;position: absolute;background: #29b160;border-radius: 50%;cursor: pointer;z-index: 200;margin-left: -10px;margin-top: -10px;left: ' + x + 'px;"></div>');
     hotspots_points.push([x, y]);
@@ -373,6 +425,7 @@ function preview(element) {
                 $('#' + next_show_id).removeClass('quiz_hide');
                 $('#' + next_show_id).addClass('quiz_show');
                 rearrange_preview_ui();
+                fit_question_list_container_size();
 
                 if (type_id == 12) {
                     $('#submit_btn').html('Continue');
@@ -437,7 +490,10 @@ function preview(element) {
 
                 $('#' + next_show_id).removeClass('quiz_hide');
                 $('#' + next_show_id).addClass('quiz_show');
+
                 rearrange_preview_ui();
+                fit_question_list_container_size();
+
                 if (type_id == 12) {
                     $('#submit_btn').html('Continue');
                     return;
@@ -471,7 +527,9 @@ function preview(element) {
 
                     $('#' + next_show_id).removeClass('quiz_hide');
                     $('#' + next_show_id).addClass('quiz_show');
+
                     rearrange_preview_ui();
+                    fit_question_list_container_size();
                 } else {
                     result = 'Pass';
                     var current_show_id = $('.quiz_show').attr('id');
@@ -488,7 +546,9 @@ function preview(element) {
 
                     $('#' + next_show_id).removeClass('quiz_hide');
                     $('#' + next_show_id).addClass('quiz_show');
+
                     rearrange_preview_ui();
+                    fit_question_list_container_size();
                 }
 
 
@@ -1001,6 +1061,8 @@ function review() {
     $('.quiz_show').removeClass('quiz_show').addClass('quiz_hide');
 
     $('.quiz_list_container').eq(review_Id).removeClass('quiz_hide').addClass('quiz_show');
+
+    fit_question_list_container_size();
 }
 
 // Next button
@@ -1017,6 +1079,8 @@ function next_review() {
 
         $('#' + next_show_id).removeClass('quiz_hide');
         $('#' + next_show_id).addClass('quiz_show');
+
+        fit_question_list_container_size();
     }
 }
 
@@ -1034,6 +1098,8 @@ function preview_review() {
 
         $('#' + previous_show_id).removeClass('quiz_hide');
         $('#' + previous_show_id).addClass('quiz_show');
+
+        fit_question_list_container_size();
     }
 }
 
