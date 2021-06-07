@@ -37,7 +37,7 @@ zoomScale = (h - 30 - 42) / elementHeight;
 * For Sequence UI
 * */
 
-$('#sortable').sortable();
+$('.slide_view_answer_element .col-md-12 > ul').sortable();
 
 /*
 * ************ For Matching UI ***********
@@ -143,6 +143,7 @@ rearrange_preview_ui();
 function change_input_id_label_for(element_array, quiz_id) {
     for (let i = 0; i < element_array.length; i++) {
         element_array.eq(i).find('input').eq(0).attr('id', quiz_id + '_' + element_array.eq(i).find('input').eq(0).attr('id'));
+        element_array.eq(i).find('input').eq(0).attr('name', quiz_id + '_' + element_array.eq(i).find('input').eq(0).attr('name'));
         element_array.eq(i).find('label').eq(0).attr('for', quiz_id + '_' + element_array.eq(i).find('label').eq(0).attr('for'));
     }
 }
@@ -194,7 +195,7 @@ function rearrange_preview_ui() {
             break;
 
         case '6':
-            var sequence_items = $('#sortable li');
+            var sequence_items = $('.quiz_show #sortable li');
             shuffle(sequence_items)
 
             var rearrange_sequence_sortable = '';
@@ -202,11 +203,11 @@ function rearrange_preview_ui() {
                 rearrange_sequence_sortable += sequence_items[i].outerHTML;
             }
 
-            $('#sortable').html(rearrange_sequence_sortable);
+            $('.quiz_show #sortable').html(rearrange_sequence_sortable);
             break;
 
         case '7':
-            var matching_content_items = $('.ui-widget-content');
+            var matching_content_items = $('.quiz_show .ui-widget-content');
             shuffle(matching_content_items);
 
             var rearrange_matching = [];
@@ -214,7 +215,7 @@ function rearrange_preview_ui() {
                 rearrange_matching.push($(matching_content_items[i]).html());
             }
             for (let i = 0; i < matching_content_items.length; i++) {
-                $('.ui-widget-content').eq(i).html(rearrange_matching[i]);
+                $('.quiz_show .ui-widget-content').eq(i).html(rearrange_matching[i]);
             }
             break;
 
@@ -450,6 +451,8 @@ function preview(element) {
             break;
 
         case 'See Result':
+            $('.review_buttons').hide();
+            $('.preview_btn').show();
             if ($('#is_quiz').html() != '0') {
 
                 if (total_score < parseInt($('.quiz_show .passing_score').html())) {
@@ -533,17 +536,17 @@ function preview(element) {
 function is_completed_question() {
     switch ($('.quiz_show .type_id').html()) {
         case '1':
-            if ($('.quiz_show input[name=answer]:checked').length > 0) return true;
+            if ($('.quiz_show input:checked').length > 0) return true;
             return false;
             break;
 
         case '2':
-            if ($('.quiz_show input[name=answer]:checked').length > 0) return true;
+            if ($('.quiz_show input:checked').length > 0) return true;
             return false;
             break;
 
         case '3':
-            if ($('.quiz_show input[name=answer]:checked').length > 0) return true;
+            if ($('.quiz_show input:checked').length > 0) return true;
             return false;
             break;
 
@@ -603,14 +606,14 @@ function evulate() {
 
     switch ($('.quiz_show .type_id').html()) {
         case '1':
-            question_user_answer.push($('.quiz_show input[name=answer]:checked').next().html());
+            question_user_answer.push($('.quiz_show input:checked').next().html());
             question_correct_answer.push($('.quiz_show input[value=' + $('.quiz_show .correct_answer').html() + ']').next().html());
 
             return compare_arrays(question_user_answer, question_correct_answer);
             break;
 
         case '2':
-            var selected_checkbox = $(".quiz_show input[name='answer']:checked");
+            var selected_checkbox = $(".quiz_show input:checked");
 
             for (var i = 0; i < selected_checkbox.length; i++) {
                 question_user_answer.push(selected_checkbox.eq(i).next().html());
@@ -634,10 +637,10 @@ function evulate() {
             break;
 
         case '3':
-            question_user_answer.push($('.quiz_show input[name=answer]:checked').next().html());
+            question_user_answer.push($('.quiz_show input:checked').next().html());
             question_correct_answer.push($('.quiz_show input[value=' + $('.quiz_show .correct_answer').html() + ']').next().html());
 
-            return $('.quiz_show input[name=answer]:checked').val() == $('.quiz_show .correct_answer').html();
+            return $('.quiz_show input:checked').val() == $('.quiz_show .correct_answer').html();
             break;
 
         case '4':
