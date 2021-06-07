@@ -159,7 +159,7 @@
                              style="height: 70px;padding:0 3px;{{ isset($quiz->audio) ? '' : 'display: none' }}"
                              id="form_view_audio_mark">
                         <input type="file" id="form_view_input_media_element" hidden>
-                        <input type="file" id="form_view_input_video_element" hidden>
+                        <input type="file" id="form_view_input_video_element" accept="video/mp4" hidden>
                         <input type="file" id="form_view_input_audio_element" hidden>
                     </div>
                 </div>

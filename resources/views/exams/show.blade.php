@@ -356,7 +356,7 @@
                         </span>
                             <span class="caption">Video</span>
                         </button>
-                        <input id="slide_view_video_file_selector" type="file" data-role="file" style="display: none;">
+                        <input id="slide_view_video_file_selector" type="file" data-role="file" accept="video/mp4" style="display: none;">
                         <div class="ribbon-split-button">
                             <button class="ribbon-main" id="insert_section_audio_btn_top">
                             <span class="icon">
@@ -1850,7 +1850,7 @@
                             </span>
                                 <span class="caption">Video</span>
                             </button>
-                            <input id="form_view_video_file_selector" type="file" data-role="file"
+                            <input id="form_view_video_file_selector" type="file" accept="video/mp4" data-role="file"
                                    style="display: none;">
                             <button class="ribbon-icon-button">
                             <span class="icon">

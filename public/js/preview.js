@@ -1181,6 +1181,10 @@ function show_result(question_correct_answer, question_type_id, question_id) {
             let matching_correct_answer_array = question_correct_answer.split('@');
             matching_correct_answer_array.pop();
 
+            for (let i = 0; i < matching_correct_answer_array.length; i++) {
+                matching_correct_answer_array[i] = matching_correct_answer_array[i].replaceAll('<p>', '').replaceAll('</p>', '');
+            }
+
             let matching_content_correct_answer_array = [];
 
             for (let i = 0; i < matching_correct_answer_array.length; i++) {

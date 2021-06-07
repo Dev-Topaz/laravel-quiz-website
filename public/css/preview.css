@@ -136,3 +136,12 @@
     position: absolute !important;
     top: 0;
 }
+
+#question_list {
+    padding: 0 5px;
+}
+
+#question_list:hover {
+    background: gainsboro;
+    cursor: pointer;
+}

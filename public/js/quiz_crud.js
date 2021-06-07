@@ -89,7 +89,10 @@ function onNodeClick(node) {
 function is_edited() {
     if ($('#quiz_view .slide_view_question_element').length == 0) return false;
 
-    if (remove_zoom_style(get_quiz_state().replaceAll(/\s/g, '')) == remove_zoom_style($('#tmp_quiz_database_values').val().replaceAll(/\s/g, '').replaceAll('null', ''))) {
+    console.log(remove_zoom_style(get_quiz_state().replaceAll(/\s/g, '')).replaceAll('ui-resizableui-draggableui-draggable-handle', '').replaceAll('<divcontenteditable="true"class="cancel_drag">', '').replaceAll('style=""', '').replaceAll('<divclass="cancel_drag"contenteditable="true">', '').replaceAll('</div>', ''));
+    console.log(remove_zoom_style($('#tmp_quiz_database_values').val().replaceAll(/\s/g, '').replaceAll('null', '')).replaceAll('ui-resizableui-draggableui-draggable-handle', '').replaceAll('<divcontenteditable="true"class="cancel_drag">', '').replaceAll('style=""', '').replaceAll('<divclass="cancel_drag"contenteditable="true">', '').replaceAll('</div>', ''));
+
+    if (remove_zoom_style(get_quiz_state().replaceAll(/\s/g, '')).replaceAll('ui-resizableui-draggableui-draggable-handle', '').replaceAll('<divcontenteditable="true"class="cancel_drag">', '').replaceAll('style=""', '').replaceAll('<divclass="cancel_drag"contenteditable="true">', '').replaceAll('</div>', '') == remove_zoom_style($('#tmp_quiz_database_values').val().replaceAll(/\s/g, '').replaceAll('null', '')).replaceAll('ui-resizableui-draggableui-draggable-handle', '').replaceAll('<divcontenteditable="true"class="cancel_drag">', '').replaceAll('style=""', '').replaceAll('<divclass="cancel_drag"contenteditable="true">', '').replaceAll('</div>', '')) {
         return false;
     } else {
         return true;
