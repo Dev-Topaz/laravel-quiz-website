@@ -4,7 +4,7 @@ function add_select_lists_word(element) {
         name = parseInt($('#select_lists input').eq($('#select_lists input').length - 1).attr('name')) + 1;
     }
 
-    element.parent().parent().prepend('<li><div><input type="radio" name="' + name + '" value="Click and Type content..."><label data-editable>Click and Type content...</label></div><a onclick="{$(this).parent().remove();localStorage.setItem("is_edited", "true");}"><i class="fas fa-trash-alt"></i></a></li>');
+    element.parent().parent().prepend('<li><div><input type="radio" name="' + name + '" value="Click and Type content..."><label data-editable>Click and Type content...</label></div><a onclick="{$(this).parent().remove();localStorage.setItem(\'is_edited\', \'true\');}"><i class="fas fa-trash-alt"></i></a></li>');
 
     localStorage.setItem("is_edited", "true");
 }

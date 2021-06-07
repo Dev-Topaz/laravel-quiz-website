@@ -1,5 +1,5 @@
 function add_word(element) {
-    element.parent().parent().prepend('<li><label data-editable>Click and Type content...</label><a onclick="{$(this).parent().remove();localStorage.setItem("is_edited", "true");}"><i class="fas fa-trash-alt"></i></a></li>');
+    element.parent().parent().prepend('<li><label data-editable>Click and Type content...</label><a onclick="{$(this).parent().remove();localStorage.setItem(\'is_edited\', \'true\');}"><i class="fas fa-trash-alt"></i></a></li>');
 
     localStorage.setItem('is_edited', 'true');
 }
