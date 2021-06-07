@@ -145,3 +145,7 @@
     background: gainsboro;
     cursor: pointer;
 }
+
+.disable_btn {
+    background-color: gray !important;
+}

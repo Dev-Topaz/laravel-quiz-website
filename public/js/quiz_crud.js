@@ -89,14 +89,6 @@ function onNodeClick(node) {
 
 function is_edited() {
     return localStorage.getItem('is_edited') == 'true';
-
-    // if ($('#quiz_view .slide_view_question_element').length == 0) return false;
-    //
-    // if (remove_zoom_style(get_quiz_state().replaceAll(/\s/g, '')).replaceAll('ui-resizableui-draggableui-draggable-handle', '').replaceAll('<divcontenteditable="true"class="cancel_drag">', '').replaceAll('style=""', '').replaceAll('<divclass="cancel_drag"contenteditable="true">', '').replaceAll('</div>', '') == remove_zoom_style($('#tmp_quiz_database_values').val().replaceAll(/\s/g, '').replaceAll('null', '')).replaceAll('ui-resizableui-draggableui-draggable-handle', '').replaceAll('<divcontenteditable="true"class="cancel_drag">', '').replaceAll('style=""', '').replaceAll('<divclass="cancel_drag"contenteditable="true">', '').replaceAll('</div>', '')) {
-    //     return false;
-    // } else {
-    //     return true;
-    // }
 }
 
 function create_quiz(quiz_type, root_url, token) {
