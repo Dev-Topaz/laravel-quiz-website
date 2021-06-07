@@ -401,6 +401,7 @@ function preview(element) {
             });
 
             update_question_list_modal();
+            $('.quiz_show .question_user_answer').html(question_user_answer);
 
             attempts = 0;
             question_user_point = 0;
@@ -1101,7 +1102,7 @@ function show_result(question_correct_answer, question_type_id, question_id) {
                     $('.quiz_show .ui-state-default').eq(i).css('color', 'red');
                 }
 
-                $('.quiz_show .ui-state-default').eq(i).find('.sequence_label').html((correct_index + 1) + '. ' + $('.quiz_show .ui-state-default').eq(i).find('.sequence_label').html());
+                $('.quiz_show .ui-state-default').eq(i).find('.sequence_label').html((sequence_correct_index + 1) + '. ' + $('.quiz_show .ui-state-default').eq(i).find('.sequence_label').html());
             }
             break;
 
@@ -1138,8 +1139,6 @@ function show_result(question_correct_answer, question_type_id, question_id) {
             break;
 
         case '8':
-            console.log(question_correct_answer);
-
             let fill_blanks_correct_answer_array = question_correct_answer.split('@');
             fill_blanks_correct_answer_array.pop();
 
@@ -1149,23 +1148,67 @@ function show_result(question_correct_answer, question_type_id, question_id) {
                 fill_blanks_element_correct_answer_array = fill_blanks_correct_answer_array[i].split(';');
                 fill_blanks_element_correct_answer_array.pop();
 
-                input_value = $('.quiz_show #' + i).val();
+                input_value = $('#' + question_id + ' #' + i).val();
 
                 if (fill_blanks_element_correct_answer_array.indexOf(input_value) != -1) {
-                    $('.quiz_show #' + i).css('color', 'green');
+                    $('#' + question_id + ' #' + i).css('color', 'green');
                 } else {
-                    $('.quiz_show #' + i).css('color', 'red');
+                    $('#' + question_id + ' #' + i).css('color', 'red');
 
-                    $('.quiz_show #' + i).parent().css('position', 'relative');
-                    $('.quiz_show #' + i).parent().append('<div style="color: #c6c61f;  position: absolute; top: 0; bottom: 0; right: 8px;" onmouseover="{$(this).next().show()}" onmouseleave="{$(this).next().hide()}"><i class="fas fa-align-justify"></i></div>');
-                    $('.quiz_show #' + i).parent().append('<div style="position: absolute;left: 0;background: white;color: black;padding: 10px;display: none;border-radius: 5px;min-width: 180px;"><div>Correct Answer</div><div class="correct_answer_list_element"></div></div>');
+                    $('#' + question_id + ' #' + i).parent().css('position', 'relative');
+                    $('#' + question_id + ' #' + i).parent().append('<div style="color: #c6c61f;  position: absolute; top: 0; bottom: 0; right: 8px;" onmouseover="{$(this).next().show()}" onmouseleave="{$(this).next().hide()}"><i class="fas fa-align-justify"></i></div>');
+                    $('#' + question_id + ' #' + i).parent().append('<div style="position: absolute;left: 0;background: white;color: black;padding: 10px;display: none;border-radius: 5px;min-width: 180px;"><div>Correct Answer</div><div class="correct_answer_list_element"></div></div>');
 
                     for (let j = 0; j < fill_blanks_element_correct_answer_array.length; j++) {
-                        $('.quiz_show .correct_answer_list_element').append('<div style="display: flex"><img src="' + root_url + '/images/icons/green_tick.png" style="height: 20px;width: 20px;">' + fill_blanks_element_correct_answer_array[j] +'</div>');
+                        $('#' + question_id + ' .correct_answer_list_element').append('<div style="display: flex"><img src="' + root_url + '/images/icons/green_tick.png" style="height: 20px;width: 20px;">' + fill_blanks_element_correct_answer_array[j] + '</div>');
                     }
                 }
             }
+            break;
 
+        case '9':
+            let select_lists_correct_answer_array = question_correct_answer.split(';');
+            select_lists_correct_answer_array.pop();
+
+            for (let i = 0; i < select_lists_correct_answer_array.length; i++) {
+                if ($('#' + question_id + ' #' + i).val() == select_lists_correct_answer_array[i]) {
+                    $('#' + question_id + ' #' + i).css('color', 'green');
+                } else {
+                    $('#' + question_id + ' #' + i).css('color', 'red');
+
+                    $('#' + question_id + ' #' + i).parent().css('position', 'relative');
+                    $('#' + question_id + ' #' + i).parent().find('select').attr('onmouseover', '{$(this).next().show()}');
+                    $('#' + question_id + ' #' + i).parent().find('select').attr('onmouseleave', '{$(this).next().hide()}');
+                    $('#' + question_id + ' #' + i).parent().append('<div style="position: absolute;left: 0;background: white;color: black;padding: 10px;display: none;border-radius: 5px;min-width: 180px;"><div>Correct Answer</div><div class="correct_answer_list_element"></div></div>');
+                    $('#' + question_id + ' .correct_answer_list_element').append('<div style="display: flex"><img src="' + root_url + '/images/icons/green_tick.png" style="height: 20px;width: 20px;">' + select_lists_correct_answer_array[i] + '</div>');
+                }
+            }
+            break;
+
+        case '10':
+            let drop_words_correct_answer_array = question_correct_answer.split(';');
+            drop_words_correct_answer_array.pop();
+
+            let drop_words_user_answer_array = $('#' + question_id + ' .question_user_answer').html().split(';');
+            drop_words_user_answer_array.pop();
+
+            $('#' + question_id + ' #slide_drag_words_answer').remove();
+
+            const blank_element_list = $('#' + question_id + ' .blank');
+
+            for (let i = 0; i < blank_element_list.length; i++) {
+                blank_element_list.eq(i).html(drop_words_user_answer_array[i]);
+                if (drop_words_user_answer_array[i] == drop_words_correct_answer_array[i]) {
+                    blank_element_list.eq(i).css('color', 'green');
+                } else {
+                    blank_element_list.eq(i).css('color', 'red');
+
+                    blank_element_list.eq(i).css('position', 'relative');
+                    blank_element_list.eq(i).attr('onmouseover', '{$(this).children().show()}');
+                    blank_element_list.eq(i).attr('onmouseleave', '{$(this).children().hide()}');
+                    blank_element_list.eq(i).append('<div style="position: absolute;left: 0;background: white;color: black;padding: 10px;display: none;border-radius: 5px;min-width: 180px;"><div>Correct Answer</div><div class="correct_answer_list_element"><div style="display: flex"><img src="' + root_url + '/images/icons/green_tick.png" style="height: 20px;width: 20px;">' + drop_words_correct_answer_array[i] + '</div></div></div>');
+                }
+            }
             break;
     }
 }

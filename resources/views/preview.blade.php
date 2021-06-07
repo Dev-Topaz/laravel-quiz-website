@@ -74,6 +74,7 @@
                 <div class="stuff_emails" style="display: none;">{!! $quiz->exam_group->exam->stuff_emails !!}</div>
                 <div class="passing_score" style="display: none;">{!! $quiz->exam_group->exam->passing_score !!}</div>
                 <div class="is_correct"></div>
+                <div class="question_user_answer"></div>
             </div>
             @php
                 $index += 1
