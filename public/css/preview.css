@@ -1,3 +1,10 @@
+#preview_container {
+    position: absolute !important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 #preview_container .resize-element::after {
     display: none !important;
 }
@@ -101,6 +108,7 @@
     margin: 0;
     border-radius: 10px 10px 0 0;
     font-weight: 600;
+    font-size: 14px;
 }
 
 .question_list_body {
@@ -122,4 +130,9 @@
 
 #preview_container #slide_drag_words_question .review_drag_words {
     padding: 5px 10px !important;
+}
+
+#preview_container .canvas-container {
+    position: absolute !important;
+    top: 0;
 }

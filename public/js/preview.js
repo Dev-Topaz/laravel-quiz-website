@@ -406,6 +406,7 @@ function preview(element) {
             attempts = 0;
             question_user_point = 0;
             drag_words_array = [];
+            hotspots_points = [];
 
 
             if ($('.quiz_show').find('.type_id').html() != 12) quizId++;
@@ -1214,7 +1215,51 @@ function show_result(question_correct_answer, question_type_id, question_id) {
             break;
 
         case '11':
+            console.log(question_correct_answer);
+            console.log($('#' + question_id + ' #image-hotspots'));
+            $('#' + question_id + ' #image-hotspots').append('<canvas id="preview_hotspots_canvas-' + question_id + '" height="214" width="300"></canvas>');
 
+            var preview_view_canvas = new fabric.Canvas('preview_hotspots_canvas-' + question_id);
+
+            var canvas_item_info = question_correct_answer.split('@')[1];
+
+            var json_canvas_item = JSON.parse(canvas_item_info);
+
+            if (json_canvas_item.type === 'circle') {
+
+                preview_view_canvas.add(new fabric.Circle({
+                    radius: json_canvas_item.radius,
+                    strokeWidth: 3,
+                    stroke: '#288f02',
+                    fill: '#c1fc8580',
+                    originX: 'center',
+                    originY: 'center',
+                    top: json_canvas_item.top,
+                    left: json_canvas_item.left
+                }));
+            }
+
+            if (json_canvas_item.type === 'rect') {
+
+                preview_view_canvas.add(new fabric.Rect({
+                    width: json_canvas_item.width,
+                    height: json_canvas_item.height,
+                    strokeWidth: 3,
+                    stroke: '#288f02',
+                    fill: '#c1fc8580',
+                    top: json_canvas_item.top,
+                    left: json_canvas_item.left
+                }));
+            }
+
+            if (json_canvas_item.type === 'polyline') {
+
+                preview_view_canvas.add(new fabric.Polygon(json_canvas_item.points, {
+                    strokeWidth: 3,
+                    stroke: '#288f02',
+                    fill: '#c1fc8580'
+                }));
+            }
             break;
     }
 }
