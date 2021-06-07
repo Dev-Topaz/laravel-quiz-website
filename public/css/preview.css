@@ -120,3 +120,6 @@
     overflow: hidden;
 }
 
+#preview_container #slide_drag_words_question .review_drag_words {
+    padding: 5px 10px !important;
+}

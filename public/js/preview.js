@@ -102,7 +102,7 @@ $("#slide_drag_words_question .blank").droppable({
     },
     drop: function (event, ui) {
         console.log('dropped');
-        drag_words_array[$(this).index('.blank')] = ui.draggable.html();
+        drag_words_array[$(this).index('.quiz_show .blank')] = ui.draggable.html();
         // $(this).parent().css({'justify-content': 'center'});
         // ui.draggable.attr("isdropped", true);
 
@@ -405,6 +405,7 @@ function preview(element) {
 
             attempts = 0;
             question_user_point = 0;
+            drag_words_array = [];
 
 
             if ($('.quiz_show').find('.type_id').html() != 12) quizId++;
@@ -1198,6 +1199,7 @@ function show_result(question_correct_answer, question_type_id, question_id) {
 
             for (let i = 0; i < blank_element_list.length; i++) {
                 blank_element_list.eq(i).html(drop_words_user_answer_array[i]);
+                blank_element_list.eq(i).addClass('review_drag_words');
                 if (drop_words_user_answer_array[i] == drop_words_correct_answer_array[i]) {
                     blank_element_list.eq(i).css('color', 'green');
                 } else {
@@ -1206,9 +1208,13 @@ function show_result(question_correct_answer, question_type_id, question_id) {
                     blank_element_list.eq(i).css('position', 'relative');
                     blank_element_list.eq(i).attr('onmouseover', '{$(this).children().show()}');
                     blank_element_list.eq(i).attr('onmouseleave', '{$(this).children().hide()}');
-                    blank_element_list.eq(i).append('<div style="position: absolute;left: 0;background: white;color: black;padding: 10px;display: none;border-radius: 5px;min-width: 180px;"><div>Correct Answer</div><div class="correct_answer_list_element"><div style="display: flex"><img src="' + root_url + '/images/icons/green_tick.png" style="height: 20px;width: 20px;">' + drop_words_correct_answer_array[i] + '</div></div></div>');
+                    blank_element_list.eq(i).append('<div style="position: absolute;left: 0;background: white;color: black;padding: 10px;display: none;border-radius: 5px;min-width: 180px;z-index: 3;"><div>Correct Answer</div><div class="correct_answer_list_element"><div style="display: flex"><img src="' + root_url + '/images/icons/green_tick.png" style="height: 20px;width: 20px;">' + drop_words_correct_answer_array[i] + '</div></div></div>');
                 }
             }
+            break;
+
+        case '11':
+
             break;
     }
 }
