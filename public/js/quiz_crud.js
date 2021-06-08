@@ -842,7 +842,7 @@ $('#duplicate_btn').click(function () {
         return;
     }
 
-    if (node.attr('data-content') == '<i>Info Slide</i>' || node.attr('data-content') == '<i>Quiz Instructions</i>') {
+    if (node.attr('data-content') == '<i>Quiz Instructions</i>') {
         show_modal('error', 'Warning', 'This slide can\'t be duplicated!');
         return;
     }
