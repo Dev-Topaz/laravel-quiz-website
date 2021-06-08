@@ -287,7 +287,7 @@ function rearrange_preview_ui() {
             break;
 
         case '13':
-            $('#preview_container .preview_btn button').html('Start Quiz');
+            $('#preview_container .preview_btn #submit_btn').html('Start Quiz');
             break;
 
         case '14':
