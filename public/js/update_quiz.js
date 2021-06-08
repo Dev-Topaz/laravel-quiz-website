@@ -511,6 +511,7 @@ function form_to_slide() {
         containment: 'parent'
     });
     if ($('#quiz_view .slide_view_group_checkbox').length === 0) $('#quiz_view .slide_view_group').append('<input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;">');
+    $('#quiz_view .slide_view_group').removeClass('selected_slide_view_group');
 
     // store_quiz_state();
     // $('#quiz_view .slide_view_answer_element').prepend('<div class="slide_view_answer_freeze_element" style="width: 100%;height: 100%;position: absolute;z-index: 100;"></div>')

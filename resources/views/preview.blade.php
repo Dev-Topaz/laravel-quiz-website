@@ -75,8 +75,8 @@
                 <div class="screen_height" style="display: none;">{!! $quiz->exam_group->exam->screen_height !!}</div>
                 <div class="screen_width" style="display: none;">{!! $quiz->exam_group->exam->screen_width !!}</div>
                 <div class="passing_score" style="display: none;">{!! $quiz->exam_group->exam->passing_score !!}</div>
-                <div class="is_correct"></div>
-                <div class="question_user_answer"></div>
+                <div class="is_correct" style="display: none;"></div>
+                <div class="question_user_answer" style="display: none;"></div>
             </div>
             @php
                 $index += 1
