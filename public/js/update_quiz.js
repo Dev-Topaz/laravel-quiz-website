@@ -9,7 +9,7 @@ function question_slide2form(question) {
 
 function question_form2slide() {
     $('#quiz_view .slide_view_question_element > div.cancel_drag').remove();
-    $('#quiz_view .slide_view_question_element').append($('#question').html());
+    $('#quiz_view .slide_view_question_element').prepend($('#question').html());
 }
 
 // function media_form2slide() {
