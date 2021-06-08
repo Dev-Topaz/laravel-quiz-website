@@ -576,11 +576,11 @@ function preview(element) {
                     console.log(XHttpResponse);
                     hide_preload();
                 });
+                $('#submit_btn').html('Close');
             } else {
-                alert('Answered: ' + correct_quiz_count + '/' + quizId + ', Total Score: ' + total_score);
+                // alert('Answered: ' + correct_quiz_count + '/' + quizId + ', Total Score: ' + total_score);
             }
 
-            $('#submit_btn').html('Close');
             break;
 
         case 'Close':
