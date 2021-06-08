@@ -200,9 +200,14 @@ function resetFont() {
         $("font[size=1]").removeAttr("size").css("font-size", fontSize + "px");
         return;
     }
-    var deepest_editable_div = $('#quiz_view .slide_view_question_element.selected_slide_view_group  .cancel_drag').find('span').parent();
-    var font_size_changed_html = deepest_editable_div.html().split('x-small').join(fontSize + 'px');
-    deepest_editable_div.html(font_size_changed_html);
+    var deepest_editable_div = $('#quiz_view .slide_view_question_element.selected_slide_view_group').eq(0);
+    // var length = deepest_editable_div.length;
+    // for (let i = 0; i < length; i++) {
+    //     var font_size_changed_html = deepest_editable_div.eq(i).html().split('x-small').join(fontSize + 'px');
+    //     deepest_editable_div.eq(i).html(font_size_changed_html);
+    // }
+        var font_size_changed_html = deepest_editable_div.html().split('x-small').join(fontSize + 'px');
+        deepest_editable_div.html(font_size_changed_html);
 
     localStorage.setItem('is_edited', 'true');
 }
@@ -867,7 +872,7 @@ function set_paragraph_spacing(paragraph_line_spacing_add_before) {
             $("font[size=1]").removeAttr("size").css("margin-top", "25px").css("display", "block");
             return;
         }
-        var deepest_editable_div = $('#quiz_view .slide_view_question_element.selected_slide_view_group  .cancel_drag').find('span').parent();
+        var deepest_editable_div = $('#quiz_view .slide_view_question_element.selected_slide_view_group  .cancel_drag');
         var font_size_changed_html = deepest_editable_div.html().split('x-small').join('px; margin-top: 25px; display: block;');
         deepest_editable_div.html(font_size_changed_html);
     } else {
@@ -875,7 +880,7 @@ function set_paragraph_spacing(paragraph_line_spacing_add_before) {
             $("font[size=1]").removeAttr("size").css("margin-top", "0px").css("display", "block");
             return;
         }
-        var deepest_editable_div = $('#quiz_view .slide_view_question_element.selected_slide_view_group  .cancel_drag').find('span').parent();
+        var deepest_editable_div = $('#quiz_view .slide_view_question_element.selected_slide_view_group  .cancel_drag');
         var font_size_changed_html = deepest_editable_div.html().split('x-small').join('px; margin-top: 0px; display: block;');
         deepest_editable_div.html(font_size_changed_html);
     }
