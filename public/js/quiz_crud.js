@@ -1041,7 +1041,7 @@ setInterval(function () {
             'margin': 'auto',
             'zoom': ($('#slide_view_quiz_list').width() - 40) / parseInt($('#screen_width').val()),
         });
-        $('#' + $('#quiz_list .node.current').attr('id') + ' .data .caption').html($('#question').html().replace(/(<([^>]+)>)/gi, ''));
+        if ($('#question').html() != undefined) $('#' + $('#quiz_list .node.current').attr('id') + ' .data .caption').html($('#question').html().replace(/(<([^>]+)>)/gi, ''));
 
         if ($('#type_id').val() == '11') {
             var slide_view_canvas = new fabric.Canvas('slide_view_hotspots_canvas-' + $('#quiz_list .node.current').attr('id'));
