@@ -686,7 +686,7 @@
                         class="fas fa-save"></i><span>Update
                     Question</span>
                 </button>
-                <button type="button" class="quiz_handle_button" onclick="show_delete_dialog('question', this)"><i
+                <button type="button" class="quiz_handle_button" onclick="show_delete_dialog('question', this)" style="{{ $quiz->type_id > 13 ? 'display:none;' : '' }}"><i
                         class="fas fa-trash"></i><span>Delete
                         Question</span>
                 </button>
