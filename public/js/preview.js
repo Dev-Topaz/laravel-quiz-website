@@ -10,6 +10,7 @@ let zoomScale;
 
 
 function fit_question_list_container_size() {
+
     var w = window.innerWidth;
     var h = window.innerHeight;
 
@@ -24,6 +25,7 @@ function fit_question_list_container_size() {
     console.log($('.quiz_show .type_id').html());
 
     if ($('.quiz_show .type_id').html() != '6' && $('.quiz_show .type_id').html() != '7' && $('.quiz_show .type_id').html() != '10') {
+    console.log(zoomScale);
         $('.quiz_list_container').css('zoom', zoomScale);
         $('#preview_container').css('transform', 'translate(-50%, -50%)');
     } else {

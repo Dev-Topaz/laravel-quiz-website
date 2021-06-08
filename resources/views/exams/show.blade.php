@@ -21,7 +21,7 @@
                         <div class="ribbon-split-button">
                             <button class="ribbon-main" id="theme_select_btn_top">
                             <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/design-1.png") }}">
+                                <img data-original="{{ url("/images/ribbon_imgs/design-1.png") }}">
                             </span>
                             </button>
                             <span class="ribbon-split dropdown-toggle" id="theme_select_btn_bottom">Themes</span>
@@ -200,7 +200,7 @@
                         <div data-role="button-group" data-cls-active="active">
                             <button class="ribbon-button" id="format_bg_btn">
                             <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/design-2.png") }}">
+                                <img data-original="{{ url("/images/ribbon_imgs/design-2.png") }}">
                             </span>
                                 <span class="caption" style="line-height: 11px;">Format <br> Background</span>
                             </button>
@@ -212,7 +212,7 @@
                         <div class="ribbon-split-button">
                             <button class="ribbon-main" id="design_section_preview_btn_top">
                             <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/design-3.png") }}">
+                                <img data-original="{{ url("/images/ribbon_imgs/design-3.png") }}">
                             </span>
                             </button>
                             <span class="ribbon-split dropdown-toggle">Preview</span>
@@ -238,7 +238,7 @@
                         <div class="ribbon-split-button">
                             <button class="ribbon-main" id="insert_section_question_btn_top">
                             <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/insert-1.png") }}">
+                                <img data-original="{{ url("/images/ribbon_imgs/insert-1.png") }}">
                             </span>
                             </button>
                             <span class="ribbon-split dropdown-toggle"
@@ -305,7 +305,7 @@
                         </div>
                         <button class="ribbon-button" onclick="create_quiz(12, '{{ url('/') }}', '{{ csrf_token() }}')">
                         <span class="icon">
-                            <img src="{{ url("/images/ribbon_imgs/insert-2.png") }}">
+                            <img data-original="{{ url("/images/ribbon_imgs/insert-2.png") }}">
                         </span>
                             <span class="caption">Info Slide</span>
                         </button>
@@ -315,7 +315,7 @@
                     <div class="group" id="import_picture_group">
                         <button class="ribbon-button" id="slide_view_picture_import_btn">
                         <span class="icon">
-                            <img src="{{ url("/images/ribbon_imgs/insert-3.png") }}">
+                            <img data-original="{{ url("/images/ribbon_imgs/insert-3.png") }}">
                         </span>
                             <span class="caption">Picture</span>
                         </button>
@@ -327,13 +327,13 @@
                     <div class="group">
                         <button class="ribbon-button" id="insert_textbox_btn">
                         <span class="icon">
-                            <img src="{{ url("/images/ribbon_imgs/insert-5.png") }}">
+                            <img data-original="{{ url("/images/ribbon_imgs/insert-5.png") }}">
                         </span>
                             <span class="caption">TextBox</span>
                         </button>
                     <!-- <button class="ribbon-button" id="insert_textbox_btn">
                         <span class="icon">
-                            <img src="{{ url("/images/ribbon_imgs/insert-6.png") }}">
+                            <img data-original="{{ url("/images/ribbon_imgs/insert-6.png") }}">
                         </span>
                         <span class="caption">Hyperlink</span>
                     </button> -->
@@ -341,7 +341,7 @@
                         <div style="display: flex; flex-direction: column; margin-top: 26px;">
                             <button class="ribbon-icon-button hyperlink_btn" id="slide_view_hyperlink_btn">
                             <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/insert-6.png") }}">
+                                <img data-original="{{ url("/images/ribbon_imgs/insert-6.png") }}">
                             </span>
                                 <span class="caption">Hyperlink</span>
                             </button>
@@ -352,7 +352,7 @@
                     <div class="group">
                         <button class="ribbon-button" id="slide_view_video_file_btn">
                         <span class="icon">
-                            <img src="{{ url("/images/ribbon_imgs/insert-9.png") }}">
+                            <img data-original="{{ url("/images/ribbon_imgs/insert-9.png") }}">
                         </span>
                             <span class="caption">Video</span>
                         </button>
@@ -360,7 +360,7 @@
                         <div class="ribbon-split-button">
                             <button class="ribbon-main" id="insert_section_audio_btn_top">
                             <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/insert-10.png") }}">
+                                <img data-original="{{ url("/images/ribbon_imgs/insert-10.png") }}">
                             </span>
                             </button>
                             <span class="ribbon-split dropdown-toggle">Audio</span>
@@ -390,7 +390,7 @@
                         <div class="ribbon-split-button">
                             <button class="ribbon-main" id="insert_section_slide_btn_top">
                             <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/insert-11.png") }}">
+                                <img data-original="{{ url("/images/ribbon_imgs/insert-11.png") }}">
                             </span>
                             </button>
                             <span class="ribbon-split dropdown-toggle">Preview</span>
@@ -415,26 +415,26 @@
                     <div class="group" style="flex: 0 0 170px;">
                         <button id="slide_view_paste_btn" class="ribbon-button paste_btn">
                         <span class="icon">
-                            <img src="{{ url("/images/ribbon_imgs/home-1.png") }}">
+                            <img data-original="{{ url("/images/ribbon_imgs/home-1.png") }}">
                         </span>
                             <span class="caption">Paste</span>
                         </button>
                         <div style="display: flex; flex-direction: column;">
                             <button id="slide_view_cut_btn" class="ribbon-icon-button cut_btn">
                             <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/home-2.png") }}">
+                                <img data-original="{{ url("/images/ribbon_imgs/home-2.png") }}">
                             </span>
                                 <span class="caption">Cut</span>
                             </button>
                             <button id="slide_view_copy_btn" class="ribbon-icon-button copy_btn">
                             <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/home-3.png") }}">
+                                <img data-original="{{ url("/images/ribbon_imgs/home-3.png") }}">
                             </span>
                                 <span class="caption">Copy</span>
                             </button>
                         <!-- <button id="format_painter_btn" class="ribbon-icon-button" disabled>
                             <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/home-4.png") }}">
+                                <img data-original="{{ url("/images/ribbon_imgs/home-4.png") }}">
                             </span>
                                 <span class="caption">Format Painter</span>
                             </button> -->
@@ -447,7 +447,7 @@
                             <div class="ribbon-split-button" style="display: flex; flex-direction: column;">
                                 <button class="ribbon-icon-button">
                                 <span class="icon">
-                                    <img src="{{ url("/images/ribbon_imgs/home-5.png") }}"
+                                    <img data-original="{{ url("/images/ribbon_imgs/home-5.png") }}"
                                          style="width: 100%; height: 100%;">
                                 </span>
                                     <span class="caption dropdown-toggle"
@@ -500,7 +500,7 @@
                             </div>
                             <button id="layout_reset_btn" class="ribbon-icon-button">
                             <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/home-6.png") }}">
+                                <img data-original="{{ url("/images/ribbon_imgs/home-6.png") }}">
                             </span>
                                 <span class="caption">Reset</span>
                             </button>
@@ -508,7 +508,7 @@
 
                                 <button class="ribbon-icon-button">
                                 <span class="icon">
-                                    <img src="{{ url("/images/ribbon_imgs/home-7.png") }}"
+                                    <img data-original="{{ url("/images/ribbon_imgs/home-7.png") }}"
                                          style="width: 100%; height: 100%;">
                                 </span>
                                     <span class="caption dropdown-toggle"
@@ -1058,7 +1058,7 @@
                         <div class="ribbon-split-button">
                             <button class="ribbon-main" id="slideview_arrange_btn_top">
                             <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/home-20.png") }}">
+                                <img data-original="{{ url("/images/ribbon_imgs/home-20.png") }}">
                             </span>
                             </button>
                             <span class="ribbon-split dropdown-toggle" id="slideview_arrange_btn_down">Arrange</span>
@@ -1114,7 +1114,7 @@
                         <div class="ribbon-split-button">
                             <button class="ribbon-main" id="slideview_quick_styles_btn_top">
                             <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/home-21.png") }}">
+                                <img data-original="{{ url("/images/ribbon_imgs/home-21.png") }}">
                             </span>
                             </button>
                             <span class="ribbon-split dropdown-toggle" style="line-height: 1.3;"
@@ -1380,7 +1380,7 @@
                         <div style="display: flex; flex-direction: column;">
                             <button class="ribbon-icon-button">
                             <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/home-22.png") }}">
+                                <img data-original="{{ url("/images/ribbon_imgs/home-22.png") }}">
                             </span>
                                 <span class="caption dropdown-toggle">Shape Fill</span>
                                 <div id="shape_fill_color_picker" class="ribbon-dropdown" data-role="dropdown"
@@ -1389,7 +1389,7 @@
                             </button>
                             <button class="ribbon-icon-button">
                             <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/home-23.png") }}">
+                                <img data-original="{{ url("/images/ribbon_imgs/home-23.png") }}">
                             </span>
                                 <span class="caption dropdown-toggle">Shape Outline</span>
                                 <div id="shape_outline_color_picker" class="ribbon-dropdown" data-role="dropdown"
@@ -1398,7 +1398,7 @@
                             </button>
                             <button class="ribbon-icon-button">
                             <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/home-24.png") }}">
+                                <img data-original="{{ url("/images/ribbon_imgs/home-24.png") }}">
                             </span>
                                 <span class="caption dropdown-toggle">Shape Effects</span>
                                 <ul id="shape_effects_ul" class="ribbon-dropdown" data-role="dropdown"
@@ -1571,13 +1571,13 @@
                 <!-- <div class="group">
                     <button class="ribbon-button">
                         <span class="icon">
-                            <img src="{{ url("/images/ribbon_imgs/home-25.png") }}">
+                            <img data-original="{{ url("/images/ribbon_imgs/home-25.png") }}">
                         </span>
                         <span class="caption">Properties</span>
                     </button>
                     <button class="ribbon-button">
                         <span class="icon">
-                            <img src="{{ url("/images/ribbon_imgs/home-26.png") }}">
+                            <img data-original="{{ url("/images/ribbon_imgs/home-26.png") }}">
                         </span>
                         <span class="caption">Player</span>
                     </button>
@@ -1588,7 +1588,7 @@
                         <div class="ribbon-split-button">
                             <button class="ribbon-main" id="slideview_home_preview_btn_top">
                             <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/home-27.png") }}">
+                                <img data-original="{{ url("/images/ribbon_imgs/home-27.png") }}">
                             </span>
                             </button>
                             <span class="ribbon-split dropdown-toggle">Preview</span>
@@ -1605,7 +1605,7 @@
                         </div>
                     <!-- <button class="ribbon-button">
                         <span class="icon">
-                            <img src="{{ url("/images/ribbon_imgs/home-28.png") }}">
+                            <img data-original="{{ url("/images/ribbon_imgs/home-28.png") }}">
                         </span>
                         <span class="caption">Publish</span>
                     </button> -->
@@ -1620,7 +1620,7 @@
                         <div class="ribbon-split-button">
                             <button class="ribbon-main" id="select_question_btn">
                             <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/insert-1.png") }}">
+                                <img data-original="{{ url("/images/ribbon_imgs/insert-1.png") }}">
                             </span>
                             </button>
                             <span class="ribbon-split dropdown-toggle" id="select_question_dropdown">Question</span>
@@ -1688,19 +1688,19 @@
                             <button class="ribbon-icon-button"
                                     onclick="create_quiz(12, '{{ url('/') }}', '{{ csrf_token() }}')">
                             <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/insert-2.png") }}">
+                                <img data-original="{{ url("/images/ribbon_imgs/insert-2.png") }}">
                             </span>
                                 <span class="caption">Info Slide</span>
                             </button>
                             <button class="ribbon-icon-button" id="question_group_btn">
                             <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/home/qgroup.png") }}">
+                                <img data-original="{{ url("/images/ribbon_imgs/home/qgroup.png") }}">
                             </span>
                                 <span class="caption">Question Group</span>
                             </button>
                             <button class="ribbon-icon-button">
                             <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/home/intro.png") }}">
+                                <img data-original="{{ url("/images/ribbon_imgs/home/intro.png") }}">
                             </span>
                                 <span class="caption dropdown-toggle">Introduction</span>
                                 <div class="ribbon-dropdown" data-role="dropdown" data-duration="100"
@@ -1722,13 +1722,13 @@
                         <div style="display: flex;flex-direction: column;">
                             <button class="ribbon-icon-button" id="duplicate_btn">
                             <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/home/dupli.png") }}">
+                                <img data-original="{{ url("/images/ribbon_imgs/home/dupli.png") }}">
                             </span>
                                 <span class="caption">Duplicate</span>
                             </button>
                             {{--                        <button class="ribbon-icon-button">--}}
                             {{--                            <span class="icon">--}}
-                            {{--                                <img src="{{ url("/images/ribbon_imgs/home/link.png") }}">--}}
+                            {{--                                <img data-original="{{ url("/images/ribbon_imgs/home/link.png") }}">--}}
                             {{--                            </span>--}}
                             {{--                            <span class="caption dropdown-toggle">Link</span>--}}
                             {{--                            <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100">--}}
@@ -1762,7 +1762,7 @@
                             {{--                        </button>--}}
                             {{--                        <button class="ribbon-icon-button">--}}
                             {{--                            <span class="icon">--}}
-                            {{--                                <img src="{{ url("/images/ribbon_imgs/home/importq.png") }}">--}}
+                            {{--                                <img data-original="{{ url("/images/ribbon_imgs/home/importq.png") }}">--}}
                             {{--                            </span>--}}
                             {{--                            <span class="caption ">Import Questions</span>--}}
                             {{--                        </button>--}}
@@ -1774,19 +1774,19 @@
                         <div style="display: flex;flex-direction: column;">
                             <button id="form_view_cut_btn" class="ribbon-icon-button cut_btn">
                             <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/home-2.png") }}">
+                                <img data-original="{{ url("/images/ribbon_imgs/home-2.png") }}">
                             </span>
                                 <span class="caption">Cut</span>
                             </button>
                             <button id="form_view_copy_btn" class="ribbon-icon-button copy_btn">
                             <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/home-3.png") }}">
+                                <img data-original="{{ url("/images/ribbon_imgs/home-3.png") }}">
                             </span>
                                 <span class="caption">Copy</span>
                             </button>
                             <button id="form_view_paste_btn" class="ribbon-icon-button paste_btn">
                             <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/home-1.png") }}">
+                                <img data-original="{{ url("/images/ribbon_imgs/home-1.png") }}">
                             </span>
                                 <span class="caption">Paste</span>
                             </button>
@@ -1831,7 +1831,7 @@
                         <div style="display: flex; flex-direction: column; margin-top: 26px;">
                             <button class="ribbon-icon-button hyperlink_btn">
                             <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/insert-6.png") }}">
+                                <img data-original="{{ url("/images/ribbon_imgs/insert-6.png") }}">
                             </span>
                                 <span class="caption">Hyperlink</span>
                             </button>
@@ -1839,14 +1839,14 @@
                         <div style="display: flex; flex-direction: column;">
                             <button class="ribbon-icon-button" id="form_view_picture_btn">
                             <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/insert-3.png") }}">
+                                <img data-original="{{ url("/images/ribbon_imgs/insert-3.png") }}">
                             </span>
                                 <span class="caption">Picture</span>
                             </button>
                             <input id="form_view_picture_selector" type="file" data-role="file" style="display: none;">
                             <button class="ribbon-icon-button" id="form_view_video_file_btn">
                             <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/insert-9.png") }}">
+                                <img data-original="{{ url("/images/ribbon_imgs/insert-9.png") }}">
                             </span>
                                 <span class="caption">Video</span>
                             </button>
@@ -1854,7 +1854,7 @@
                                    style="display: none;">
                             <button class="ribbon-icon-button">
                             <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/insert-10.png") }}">
+                                <img data-original="{{ url("/images/ribbon_imgs/insert-10.png") }}">
                             </span>
                                 <span class="caption dropdown-toggle">Audio</span>
                                 <ul class="ribbon-dropdown" data-role="dropdown" data-duration="100"
@@ -1884,13 +1884,13 @@
                 <!-- <div class="group">
                     <button class="ribbon-button">
                         <span class="icon">
-                            <img src="{{ url("/images/ribbon_imgs/home-25.png") }}">
+                            <img data-original="{{ url("/images/ribbon_imgs/home-25.png") }}">
                         </span>
                         <span class="caption">Properties</span>
                     </button>
                     <button class="ribbon-button">
                         <span class="icon">
-                            <img src="{{ url("/images/ribbon_imgs/home-26.png") }}">
+                            <img data-original="{{ url("/images/ribbon_imgs/home-26.png") }}">
                         </span>
                         <span class="caption">Player</span>
                     </button>
@@ -1901,7 +1901,7 @@
                         <div class="ribbon-split-button">
                             <button class="ribbon-main" id="formview_preview_btn">
                             <span class="icon">
-                                <img src="{{ url("/images/ribbon_imgs/home-27.png") }}">
+                                <img data-original="{{ url("/images/ribbon_imgs/home-27.png") }}">
                             </span>
                             </button>
                             <span class="ribbon-split dropdown-toggle">Preview</span>
@@ -1917,7 +1917,7 @@
                         </div>
                     <!-- <button class="ribbon-button">
                         <span class="icon">
-                            <img src="{{ url("/images/ribbon_imgs/home-28.png") }}">
+                            <img data-original="{{ url("/images/ribbon_imgs/home-28.png") }}">
                         </span>
                         <span class="caption">Publish</span>
                     </button> -->
@@ -2061,7 +2061,7 @@
                                                                     <div
                                                                         class="slide_view_media_element slide_view_group"
                                                                         style="z-index: 1;display: none;position: absolute;top: 0;left: 0;">
-                                                                        <img src="#" alt="slide_view_media"
+                                                                        <img data-original="#" alt="slide_view_media"
                                                                              style="width: 100%;height: 100%;">
                                                                     </div>
                                                                 @endif
@@ -2103,7 +2103,7 @@
                                                                     <div
                                                                         class="slide_view_media_element slide_view_group"
                                                                         style="z-index: 1;display: none;position: absolute;top: 0;left: 0;">
-                                                                        <img src="#" alt="slide_view_media"
+                                                                        <img data-original="#" alt="slide_view_media"
                                                                              style="width: 100%;height: 100%;">
                                                                     </div>
                                                                 @endif

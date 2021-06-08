@@ -113,8 +113,13 @@
                 <div class="feedback_type" style="display: none;">{!! $quiz->feedback_type !!}</div>
                 <div class="shuffle_answers" style="display: none;">{!! $quiz->shuffle_answers !!}</div>
                 <div class="case_sensitive" style="display: none;">{!! $quiz->case_sensitive !!}</div>
+                <div class="partially_correct" style="display: none;">{!! $quiz->partially_correct !!}</div>
                 <div class="stuff_emails" style="display: none;">{!! $quiz->exam_group->exam->stuff_emails !!}</div>
+                <div class="screen_height" style="display: none;">{!! $quiz->exam_group->exam->screen_height !!}</div>
+                <div class="screen_width" style="display: none;">{!! $quiz->exam_group->exam->screen_width !!}</div>
                 <div class="passing_score" style="display: none;">{!! $quiz->exam_group->exam->passing_score !!}</div>
+                <div class="is_correct" style="display: none;"></div>
+                <div class="question_user_answer" style="display: none;"></div>
             </div>
             @php
                 $index += 1
