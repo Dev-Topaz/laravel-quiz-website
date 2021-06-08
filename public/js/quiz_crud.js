@@ -370,10 +370,9 @@ function update_and_show_preview(url) {
 
 
     let other_elements = '';
-    for (let i = 0; i < $('#quiz_view .other_slide_view_element').length; i++) {
-        other_elements += remove_resizable_tag($('#quiz_view .other_slide_view_element').eq(i)[0].outerHTML);
+    for (let i = 0; i < $('#quiz_view .slide_view_element .other_slide_view_element').length; i++) {
+        other_elements += remove_resizable_tag($('#quiz_view .slide_view_element .other_slide_view_element').eq(i)[0].outerHTML);
     }
-
 
     const root_url = $('meta[name=url]').attr('content');
     const token = $('meta[name=csrf-token]').attr('content');
@@ -504,10 +503,9 @@ function update_quiz(is_alert_save) {
 
 
     let other_elements = '';
-    for (let i = 0; i < $('#quiz_view .other_slide_view_element').length; i++) {
-        other_elements += remove_resizable_tag($('#quiz_view .other_slide_view_element').eq(i)[0].outerHTML);
+    for (let i = 0; i < $('#quiz_view .slide_view_element .other_slide_view_element').length; i++) {
+        other_elements += remove_resizable_tag($('#quiz_view .slide_view_element .other_slide_view_element').eq(i)[0].outerHTML);
     }
-
 
     const root_url = $('meta[name=url]').attr('content');
     const token = $('meta[name=csrf-token]').attr('content');
