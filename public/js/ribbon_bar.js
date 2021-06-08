@@ -805,48 +805,94 @@ $('#paragraph_line_spacing_add_after').mousedown(function (e) {
 });
 
 function add_line_spacing_after(paragraph_line_spacing_add_after) {
-    var sel = window.getSelection();
-    if (sel.rangeCount) {
-        var e = document.createElement('span');
-        e.innerHTML = sel.toString();
-        // https://developer.mozilla.org/en-US/docs/Web/API/Selection/getRangeAt
-        var range = sel.getRangeAt(0);
-        range.deleteContents();
-        range.insertNode(e);
-        while (!(e.parentElement.classList.contains('slide_view_question_element'))) {
-            e = e.parentElement
+    // var sel = window.getSelection();
+    // if (sel.rangeCount) {
+    //     var e = document.createElement('span');
+    //     e.innerHTML = sel.toString();
+    //     // https://developer.mozilla.org/en-US/docs/Web/API/Selection/getRangeAt
+    //     var range = sel.getRangeAt(0);
+    //     range.deleteContents();
+    //     range.insertNode(e);
+    //     while (!(e.parentElement.classList.contains('slide_view_question_element'))) {
+    //         e = e.parentElement
+    //     }
+    //     if (paragraph_line_spacing_add_after)
+    //         e.style.marginBottom = '25px';
+    //     else
+    //         e.style.marginBottom = 'unset';
+    // }
+    var element = $('.selected_slide_view_group'); // get selected element
+    if (element.hasClass('slide_view_question_element')) {
+        if (paragraph_line_spacing_add_after ) {
+            element.children().css('padding-bottom', '10px');
+        } else {
+            element.children().css('padding-bottom', '0px');
         }
-        if (paragraph_line_spacing_add_after)
-            e.style.marginBottom = '25px';
-        else
-            e.style.marginBottom = 'unset';
     }
 }
 
 function add_line_spacing_before(paragraph_line_spacing_add_before) {
-    var sel = window.getSelection();
-    if (sel.rangeCount) {
-        var e = document.createElement('span');
-        e.innerHTML = sel.toString();
-        // https://developer.mozilla.org/en-US/docs/Web/API/Selection/getRangeAt
-        var range = sel.getRangeAt(0);
-        range.deleteContents();
-        range.insertNode(e);
-        while (!(e.parentElement.classList.contains('slide_view_question_element'))) {
-            e = e.parentElement
+    // var sel = window.getSelection();
+    // if (sel.rangeCount) {
+    //     console.log(sel.rangeCount);
+    //     var e = document.createElement('span');
+    //     e.innerHTML = sel.toString();
+    //     // https://developer.mozilla.org/en-US/docs/Web/API/Selection/getRangeAt
+    //     var range = sel.getRangeAt(0);
+    //     range.deleteContents();
+    //     range.insertNode(e);
+    //     while (!(e.parentElement.classList.contains('slide_view_question_element'))) {
+    //         e = e.parentElement
+    //     }
+    //     if (paragraph_line_spacing_add_before)
+    //         e.style.marginTop = '25px';
+    //     else
+    //         e.style.marginTop = 'unset';
+    // }
+    var element = $('.selected_slide_view_group'); // get selected element
+    if (element.hasClass('slide_view_question_element')) {
+        if (paragraph_line_spacing_add_before) {
+            element.children().css('padding-top', '10px');
+        } else {
+            element.children().css('padding-top', '0px');
         }
-        if (paragraph_line_spacing_add_before)
-            e.style.marginTop = '25px';
-        else
-            e.style.marginTop = 'unset';
     }
+    // document.execCommand("fontSize", false, "1");
+    // set_paragraph_spacing(paragraph_line_spacing_add_before);
+}
+
+function set_paragraph_spacing(paragraph_line_spacing_add_before) {
+    if (paragraph_line_spacing_add_before) {
+        if ($("font[size=1]").length > 0) {
+            $("font[size=1]").removeAttr("size").css("margin-top", "25px").css("display", "block");
+            return;
+        }
+        var deepest_editable_div = $('#quiz_view .slide_view_question_element.selected_slide_view_group  .cancel_drag').find('span').parent();
+        var font_size_changed_html = deepest_editable_div.html().split('x-small').join('px; margin-top: 25px; display: block;');
+        deepest_editable_div.html(font_size_changed_html);
+    } else {
+        if ($("font[size=1]").length > 0) {
+            $("font[size=1]").removeAttr("size").css("margin-top", "0px").css("display", "block");
+            return;
+        }
+        var deepest_editable_div = $('#quiz_view .slide_view_question_element.selected_slide_view_group  .cancel_drag').find('span').parent();
+        var font_size_changed_html = deepest_editable_div.html().split('x-small').join('px; margin-top: 0px; display: block;');
+        deepest_editable_div.html(font_size_changed_html);
+    }
+
+    localStorage.setItem('is_edited', 'true');
 }
 
 // $('#slide_view_paragraph_style_decrease_indent_btn').click(function () {
 //     decrease_indent();
 // });
+
 $('.decrease_indent').click(function () {
-    decrease_indent();
+    // decrease_indent();
+    // element = $('.selected_slide_view_group');
+    // var indent = parseInt(element.css('text-indent'));
+    // if (indent > 0) element.css('text-indent', indent - 10 + 'px');
+    document.execCommand('outdent', false, null);
 
     localStorage.setItem('is_edited', 'true');
 });
@@ -857,7 +903,14 @@ $('.decrease_indent').mousedown(function (e) {
 
 $('.increase_indent').click(function () {
 
-    increase_indent();
+    // increase_indent();
+
+    // element = $('.selected_slide_view_group');
+    // var indent = parseInt(element.css('text-indent'));
+    // element.css('text-indent', indent + 10 + 'px');
+
+    document.execCommand('indent', false, null);
+
 
     localStorage.setItem('is_edited', 'true');
 });
@@ -1170,12 +1223,16 @@ $('#align_middle').click(function () {
 
 $('#distribute_vertically').click(function () {
     var height_sum = 0;
-    var elements = $('.selected_slide_view_group'); // get selected element
+    var elements = $('#quiz_view .selected_slide_view_group'); // get selected element
     var ele_count = elements.length;
+    console.log(ele_count);
     for (let i = 0; i < ele_count; i++) {
         height_sum += elements.eq(i).outerHeight();
+        console.log(height_sum);
     }
     var gap = ($('#slide_view_container').height() - height_sum) / (ele_count + 1);
+        if (gap < 0) return;
+
     for (let i = 0; i < ele_count; i++) {
         var height_to_set_sum = 0;
         for (let j = 0; j < i; j++) {
@@ -1189,12 +1246,13 @@ $('#distribute_vertically').click(function () {
 
 $('#distribute_horizontally').click(function () {
     var width_sum = 0;
-    var elements = $('.selected_slide_view_group'); // get selected element
+    var elements = $('#quiz_view .selected_slide_view_group'); // get selected element
     ele_count = elements.length;
     for (let i = 0; i < ele_count; i++) {
         width_sum += elements.eq(i).outerWidth();
     }
     var gap = ($('#slide_view_container').width() - width_sum) / (ele_count + 1);
+    if (gap < 0) return;
     for (let i = 0; i < ele_count; i++) {
         var width_to_set_sum = 0;
         for (let j = 0; j < i; j++) {

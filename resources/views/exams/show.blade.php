@@ -1805,7 +1805,7 @@
                             <button class="button increase_indent" id="form_view_paragraph_style_increase_indent_btn"
                                     style="padding: 7px;height: 25px; background-image: url('{{ url('/images/ribbon_imgs/home-14.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;"></button>
                         </div>
-                        <div data-role="buttongroup" data-mode="multi" data-cls-active="bg-grey fg-white">
+                        <div>
                             <button id="form_view_font_bold_btn" class="button font_bold_btn"
                                     style="background-image: url('{{ url('/images/ribbon_imgs/home/bold.png') }}'); background-repeat: no-repeat; background-position-x: center;background-position-y: center;
                                         "></button>
