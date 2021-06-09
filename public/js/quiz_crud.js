@@ -698,12 +698,12 @@ function show_correct_view() {
         fit_slide_view();
 
         $('.slide_view_group').resizable({
-            resize: function () {
+            stop: function () {
                 update_slide_view_nav();
             },
         });
         $('.slide_view_group').draggable({
-            drag: function () {
+            stop: function () {
                 update_slide_view_nav();
             },
             cancel: 'div.cancel_drag',

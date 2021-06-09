@@ -509,12 +509,12 @@ function form_to_slide() {
     // media_form2slide();
 
     $('#quiz_view .slide_view_group').resizable({
-        resize: function () {
+        stop: function () {
             update_slide_view_nav();
         }
     });
     $('#quiz_view #quiz_background_container .slide_view_group').draggable({
-        drag: function () {
+        stop: function () {
             update_slide_view_nav();
         },
         cancel: 'div.cancel_drag',
