@@ -82,7 +82,7 @@ class ExamController extends Controller
         Quiz::create([
             'exam_group_id' => $results->id,
             'type_id' => 14,
-            'question_element' => '<div contenteditable="true" class="slide_view_question_element slide_view_group" style="height: 70px;width: 80%;left: 10%;z-index: 3;overflow: hidden;padding:10px;position:absolute;"><div class="cancel_drag">Congratulations, you passed!</div></div>',
+            'question_element' => '<div class="slide_view_question_element slide_view_group" style="height: 70px;width: 80%;left: 10%;z-index: 3;overflow: hidden;padding:10px;position:absolute;"><div contenteditable="true" class="cancel_drag">Congratulations, you passed!</div></div>',
             'answer' => '',
             'feedback_correct' => 'That\'s right! You chose the correct response.',
             'feedback_incorrect' => 'You did not choose the correct response.',
@@ -110,7 +110,7 @@ class ExamController extends Controller
         Quiz::create([
             'exam_group_id' => $results->id,
             'type_id' => 15,
-            'question_element' => '<div contenteditable="true" class="slide_view_question_element slide_view_group" style="height: 70px;width: 80%;left: 10%;z-index: 3;overflow: hidden;padding:10px;position:absolute;"><div class="cancel_drag">You did not pass.</div></div>',
+            'question_element' => '<div class="slide_view_question_element slide_view_group" style="height: 70px;width: 80%;left: 10%;z-index: 3;overflow: hidden;padding:10px;position:absolute;"><div contenteditable="true" class="cancel_drag">You did not pass.</div></div>',
             'answer' => '',
             'feedback_correct' => 'That\'s right! You chose the correct response.',
             'feedback_incorrect' => 'You did not choose the correct response.',

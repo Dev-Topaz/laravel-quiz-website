@@ -1,4 +1,5 @@
 $('div.quiz_item_container .slide_view_question_element').attr('contenteditable', 'false');
+$('div.quiz_item_container .slide_view_question_element div').attr('contenteditable', 'false');
 $('div.quiz_item_container input').attr('autocomplete', 'off');
 $('#question_list_modal .question_content div').attr('contenteditable', 'false');
 
