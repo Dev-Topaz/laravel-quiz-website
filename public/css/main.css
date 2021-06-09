@@ -330,10 +330,6 @@ main {
     display: block;
 }
 
-#ex1 {
-    max-width: 700px;
-}
-
 .content_body h3, #ex1 h3 {
     font-family: "glober_regularregular", "Trebuchet MS", "Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
     font-size: 145%;
@@ -588,7 +584,10 @@ main.quiz {
 #main.quiz > h2 {
     font-size: 20px;
     font-weight: bold;
-    padding: 2px 5px;
+    padding: 0px 5px 2px;
+    background: #dcdcdc;
+    position: relative;
+    top: -2px;
 }
 
 .ribbon-dropdown .col-3 {
@@ -935,8 +934,8 @@ if it's not present, don't show loader */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
+    /*height: 100%; !* Full height *!*/
+    /*overflow: auto; !* Enable scroll if needed *!*/
     background-color: rgb(0, 0, 0); /* Fallback color */
     background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
 }
@@ -1048,4 +1047,54 @@ if it's not present, don't show loader */
 
 #form_view_quiz_list .listview {
     display: block !important;
+}
+
+#quiz_delete_yes {
+    outline-color: #adeb6e;
+    background-color: #60a917;
+    color: #ffffff;
+    cursor: pointer;
+    display: -webkit-inline-box;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0 0.75rem;
+    font-size: 0.875rem;
+    height: 36px;
+}
+
+#quiz_delete_no {
+    outline-color: #ffffff;
+    background-color: #f8f8f8;
+    color: #1d1d1d;
+    cursor: pointer;
+    display: -webkit-inline-box;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0 0.75rem;
+    font-size: 0.875rem;
+    height: 36px;
 }

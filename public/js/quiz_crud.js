@@ -7,8 +7,16 @@ function show_quiz_editor(node) {
     const root_url = $('meta[name=url]').attr('content');
     const quizId = node.attr('id');
 
-    if (quizId === 'none') return;
-    if (quizId === undefined) return;
+    $('#quiz_view').show();
+    $('#no_question_slide').hide();
+
+    if (quizId == 'none' || quizId === undefined) {
+
+        $('#quiz_view').hide();
+        $('#no_question_slide').show();
+
+        return;
+    }
 
     show_preload();
 
@@ -253,6 +261,9 @@ function create_quiz(quiz_type, root_url, token) {
             if (node.attr('id') === 'none' || node.attr('id') === undefined) node.remove();
 
             $.get(root_url + "/quizes/" + quizId + "/edit", function (data, status) {
+                $('#quiz_view').show();
+                $('#no_question_slide').hide();
+
                 $('#quiz_view').html(data);
 
                 const element = '<div id="preview_item-' + quizId + '" class="preview_item selected_preview_item">' + $('#quiz_view .slide_view_element').html().replace('top:50%;left:50%;transform:translate(-50%, -50%);', '') + '</div>';
@@ -283,7 +294,6 @@ function create_quiz(quiz_type, root_url, token) {
                 $('#preview_item-' + quizId).addClass('selected_preview_item');
 
                 show_correct_view();
-                store_quiz_state();
                 hide_preload();
 
                 prev_id = quizId;

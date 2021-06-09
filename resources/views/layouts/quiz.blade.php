@@ -49,8 +49,8 @@
     <input id="delete_dialog_id" type="text" hidden>
     <div id="delete_dialog_content" class="quiz_dialog_content">Are you sure you want to delete?</div>
     <div id="delete_dialog_btn" class="quiz_dialog_btn">
-        <button id="delete_yes" class="button success">OK</button>
-        <button id="delete_no" class="button light">Cancel</button>
+        <button id="delete_yes" class="button success">Yes</button>
+        <button id="delete_no" class="button light">No</button>
     </div>
 </div>
 <div id="preview_toast" style="display: none;">

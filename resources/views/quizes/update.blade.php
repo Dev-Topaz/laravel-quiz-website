@@ -1,5 +1,6 @@
 <div class="row" style="height: 100%;margin: 0;">
     <div class="cell-9 form_view_element" style="background: #dcdcdc;display: flex;">
+
         <div style="margin: auto 10px;background: #f1f1f1;width: 100%;padding: 20px;">
             <input id="select_background_img" type="file" hidden>
             <input id="tmp_quiz_database_values" type="text"

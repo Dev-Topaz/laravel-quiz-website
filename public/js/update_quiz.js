@@ -492,8 +492,10 @@ function answer_store() {
 
 function slide_to_form() {
 
-    answer_slide2form($('#quiz_view .slide_view_answer_element')[0].outerHTML, $('#answer_content').val());
-    $('#question').html(question_slide2form($('#quiz_view .slide_view_question_element')[0].outerHTML));
+    if ($('#quiz_view .slide_view_answer_element')[0] != undefined) {
+        answer_slide2form($('#quiz_view .slide_view_answer_element')[0].outerHTML, $('#answer_content').val());
+        $('#question').html(question_slide2form($('#quiz_view .slide_view_question_element')[0].outerHTML));
+    }
     $('.slide_view_group_checkbox').remove();
 
     // store_quiz_state();

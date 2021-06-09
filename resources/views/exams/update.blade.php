@@ -7,9 +7,9 @@
             <div class="content_header">
                 <div class="content_header_title">
                     <div style="float: left">
-                        <h2>Update Exam
+                        <h2>Quiz Properties
                         </h2>
-                        <p>Update this exams</p>
+                        <p>Update quiz properties</p>
                     </div>
                     <div style="clear: both; height: 1px"></div>
                 </div>
@@ -127,7 +127,7 @@
                                 <div class="form-group row mb-0">
                                     <div class="col-md-6 offset-md-4">
                                         <button type="submit" class="btn btn-primary">
-                                            {{ __('Update this exam') }}
+                                            {{ __('Apply') }}
                                         </button>
                                     </div>
                                 </div>

@@ -5,7 +5,7 @@
         <input type="text" id="exam_id" value="{{ $exam->id }}" hidden>
         <input type="text" id="screen_height" value="{{ $exam->screen_height }}" hidden>
         <input type="text" id="screen_width" value="{{ $exam->screen_width }}" hidden>
-        <h2>{{ $exam->name }}</h2>
+        {{--        <h2>{{ $exam->name }}</h2>--}}
 
 
         <nav data-role="ribbonmenu">
@@ -356,7 +356,8 @@
                         </span>
                             <span class="caption">Video</span>
                         </button>
-                        <input id="slide_view_video_file_selector" type="file" data-role="file" accept="video/mp4" style="display: none;">
+                        <input id="slide_view_video_file_selector" type="file" data-role="file" accept="video/mp4"
+                               style="display: none;">
                         <div class="ribbon-split-button">
                             <button class="ribbon-main" id="insert_section_audio_btn_top">
                             <span class="icon">
@@ -1568,22 +1569,24 @@
                         <span class="title">Drawing</span>
                         <div class="group-divider"></div>
                     </div>
-                <!-- <div class="group">
-                    <button class="ribbon-button">
+                    <div class="group">
+                        <a href="{{ url('/exams') }}/{{$exam->id}}/edit">
+                            <button class="ribbon-button">
                         <span class="icon">
                             <img loading="lazy" src="{{ url("/images/ribbon_imgs/home-25.png") }}">
                         </span>
-                        <span class="caption">Properties</span>
-                    </button>
-                    <button class="ribbon-button">
-                        <span class="icon">
-                            <img loading="lazy" src="{{ url("/images/ribbon_imgs/home-26.png") }}">
-                        </span>
-                        <span class="caption">Player</span>
-                    </button>
-                    <span class="title">Quiz</span>
-                    <div class="group-divider"></div>
-                </div> -->
+                                <span class="caption" style="color: black;">Quiz Properties</span>
+                            </button>
+                        </a>
+                        {{--                        <button class="ribbon-button">--}}
+                        {{--                        <span class="icon">--}}
+                        {{--                            <img loading="lazy" src="{{ url("/images/ribbon_imgs/home-26.png") }}">--}}
+                        {{--                        </span>--}}
+                        {{--                            <span class="caption">Player</span>--}}
+                        {{--                        </button>--}}
+                        <span class="title">Quiz</span>
+                        <div class="group-divider"></div>
+                    </div>
                     <div class="group">
                         <div class="ribbon-split-button">
                             <button class="ribbon-main" id="slideview_home_preview_btn_top">
@@ -1881,22 +1884,24 @@
                         <span class="title">Insert</span>
                         <div class="group-divider"></div>
                     </div>
-                <!-- <div class="group">
-                    <button class="ribbon-button">
+                    <div class="group">
+                        <a href="{{ url('/exams') }}/{{$exam->id}}/edit">
+                            <button class="ribbon-button">
                         <span class="icon">
                             <img loading="lazy" src="{{ url("/images/ribbon_imgs/home-25.png") }}">
                         </span>
-                        <span class="caption">Properties</span>
-                    </button>
-                    <button class="ribbon-button">
-                        <span class="icon">
-                            <img loading="lazy" src="{{ url("/images/ribbon_imgs/home-26.png") }}">
-                        </span>
-                        <span class="caption">Player</span>
-                    </button>
-                    <span class="title">Quiz</span>
-                    <div class="group-divider"></div>
-                </div> -->
+                                <span class="caption" style="color: black;">Quiz Properties</span>
+                            </button>
+                        </a>
+                        {{--                    <button class="ribbon-button">--}}
+                        {{--                        <span class="icon">--}}
+                        {{--                            <img loading="lazy" src="{{ url("/images/ribbon_imgs/home-26.png") }}">--}}
+                        {{--                        </span>--}}
+                        {{--                        <span class="caption">Player</span>--}}
+                        {{--                    </button>--}}
+                        <span class="title">Quiz</span>
+                        <div class="group-divider"></div>
+                    </div>
                     <div class="group">
                         <div class="ribbon-split-button">
                             <button class="ribbon-main" id="formview_preview_btn">
@@ -1983,7 +1988,23 @@
                     <div class="create_form" id="quiz_form">
                         <div class="content_body">
                             <div class="row">
-                                <div class="cell-10" id="quiz_view" style="padding: 0;order: 2;"></div>
+                                <div class="cell-10" id="quiz_view" style="padding: 0;order: 2;">
+                                </div>
+                                <div class="cell-10" id="no_question_slide" style="padding: 0;order: 2;display: none;">
+                                    <div class="row" style="height: 100%;margin: 0;">
+                                        <div class="cell-9"
+                                             style="background: #dcdcdc;display: flex;height: 690px;">
+                                            <div
+                                                style="margin: auto 10px;background: #f1f1f1;width: 100%;padding: 20px;height: 600px;font-size: 18px;display: flex;align-items: center;justify-content: center;">
+                                                Quiz has no questions. Add new questions.
+                                            </div>
+                                        </div>
+                                        <div class="cell-3 slide_option" style="padding: 0 20px;">
+                                            <h3 style="border-bottom: 1px dotted grey;padding: 15px 10px;">Slide
+                                                Options</h3>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="cell-2" style="order: 1;">
                                     <div style="display: flex; justify-content: space-between;">
                                         <div id="form_view_btn" class="view_switch_btn clicked form_view"
@@ -2061,7 +2082,8 @@
                                                                     <div
                                                                         class="slide_view_media_element slide_view_group"
                                                                         style="z-index: 1;display: none;position: absolute;top: 0;left: 0;">
-                                                                        <img loading="lazy" src="#" alt="slide_view_media"
+                                                                        <img loading="lazy" src="#"
+                                                                             alt="slide_view_media"
                                                                              style="width: 100%;height: 100%;">
                                                                     </div>
                                                                 @endif
@@ -2103,7 +2125,8 @@
                                                                     <div
                                                                         class="slide_view_media_element slide_view_group"
                                                                         style="z-index: 1;display: none;position: absolute;top: 0;left: 0;">
-                                                                        <img loading="lazy" src="#" alt="slide_view_media"
+                                                                        <img loading="lazy" src="#"
+                                                                             alt="slide_view_media"
                                                                              style="width: 100%;height: 100%;">
                                                                     </div>
                                                                 @endif

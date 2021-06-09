@@ -3,8 +3,6 @@ $('.middle_form_bar').click(function () {
 });
 
 // $(document).on('load', function () {
-console.log("loaded!!!");
-// Animate loader off screen
 $(".se-pre-con").fadeOut(1000);
 // });
 

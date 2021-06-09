@@ -134,8 +134,9 @@ class ExamController extends Controller
             'try_again_score' => 0,
         ]);
 
-        return redirect()->route('exams.index')
-            ->with('success', 'Exam created successfully.');
+//        return redirect()->route('exams.index')
+//            ->with('success', 'Exam created successfully.');
+        return redirect('/exams/' . $exam->id)->with('success', 'Exam created successfully.');
     }
 
     /**
@@ -175,8 +176,10 @@ class ExamController extends Controller
     {
         $exam->update($request->all());
 
-        return redirect()->route('exams.index')
-            ->with('success', 'Exam updated successfully');
+        return redirect('/exams/' . $exam->id)->with('success', 'Exam updated successfully.');
+
+//        return redirect()->route('exams.index')
+//            ->with('success', 'Exam updated successfully');
     }
 
     /**
