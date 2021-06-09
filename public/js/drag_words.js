@@ -11,7 +11,7 @@ function add_drag_words_insert() {
 
     $('#drag_words').append('<div class="blank" style="display: inline; width: 70px; height: 100%; border: 1px solid grey; background: white; padding-right: 0px;"><input style="max-width: 70px;" id="' + index + '" value="blanks"></div>&nbsp');
 
-    localStorage.setItem('is_edited', 'true');
+    update_slide_view_nav();
 }
 
 function get_new_input_id() {

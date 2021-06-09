@@ -23,8 +23,8 @@ $('#add_response').click(function () {
 
     const id = get_response_item_id();
 
-    const element = $('<tr class="response_item"><td><input type="checkbox" name="answer" value="' + id + '" style="padding-right: 10px;"></td><td><label class="response_label" data-editable for="' + id + '">Type content ...</label></td><td></td><td><a onclick="{$(this).parent().parent().remove();localStorage.setItem(\'is_edited\', \'true\');}"><i class="fas fa-trash-alt"></i></a></td></tr>');
+    const element = $('<tr class="response_item"><td><input type="checkbox" name="answer" value="' + id + '" style="padding-right: 10px;"></td><td><label class="response_label" data-editable for="' + id + '">Type content ...</label></td><td></td><td><a onclick="{$(this).parent().parent().remove();update_slide_view_nav();}"><i class="fas fa-trash-alt"></i></a></td></tr>');
     $('tbody#response_list').append(element);
 
-    localStorage.setItem('is_edited', 'true');
+    update_slide_view_nav();
 });

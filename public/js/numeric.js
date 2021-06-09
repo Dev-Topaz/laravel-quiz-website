@@ -24,9 +24,9 @@ $('#add_select').change(function () {
         let element;
 
         if (this.value === '<<') {
-            element = $('<tr><td><div class="select_item" style="display: flex;padding: 5px 0;"><label for="' + id + '">Value is: </label><select onchange="{select_change(this);}" name="' + id + '" id="' + id + '" style="max-width: 160px;"><option value="==">Equal to</option><option value="<<">Between</option><option value=">">Greater than</option><option value=">=">Greater than or equal to</option><option value="<">Less than</option><option value="<=">Less than or equal to</option><option value="!=">Not equal to</option></select><div style="display: flex;"><input type="number" value="0" style="max-width: 100px;"><span>and</span><input type="number" value="0" style="max-width: 100px;"></div></div></td><td><a onclick="{$(this).parent().parent().remove();localStorage.setItem(\'is_edited\', \'true\');}"><i class="fas fa-trash-alt"></i></a></td></tr>');
+            element = $('<tr><td><div class="select_item" style="display: flex;padding: 5px 0;"><label for="' + id + '">Value is: </label><select onchange="{select_change(this);}" name="' + id + '" id="' + id + '" style="max-width: 160px;"><option value="==">Equal to</option><option value="<<">Between</option><option value=">">Greater than</option><option value=">=">Greater than or equal to</option><option value="<">Less than</option><option value="<=">Less than or equal to</option><option value="!=">Not equal to</option></select><div style="display: flex;"><input type="number" value="0" style="max-width: 100px;"><span>and</span><input type="number" value="0" style="max-width: 100px;"></div></div></td><td><a onclick="{$(this).parent().parent().remove();update_slide_view_nav();}"><i class="fas fa-trash-alt"></i></a></td></tr>');
         } else {
-            element = $('<tr><td><div class="select_item" style="display: flex;padding: 5px 0;"><label for="' + id + '">Value is: </label><select onchange="{select_change(this);}" name="' + id + '" id="' + id + '" style="max-width: 160px;"><option value="==">Equal to</option><option value="<<">Between</option><option value=">">Greater than</option><option value=">=">Greater than or equal to</option><option value="<">Less than</option><option value="<=">Less than or equal to</option><option value="!=">Not equal to</option></select><div style="display: flex;"><input type="number" value="0" style="max-width: 100px;"></div></div></td><td><a onclick="{$(this).parent().parent().remove();localStorage.setItem(\'is_edited\', \'true\');}"><i class="fas fa-trash-alt"></i></a></td></tr>');
+            element = $('<tr><td><div class="select_item" style="display: flex;padding: 5px 0;"><label for="' + id + '">Value is: </label><select onchange="{select_change(this);}" name="' + id + '" id="' + id + '" style="max-width: 160px;"><option value="==">Equal to</option><option value="<<">Between</option><option value=">">Greater than</option><option value=">=">Greater than or equal to</option><option value="<">Less than</option><option value="<=">Less than or equal to</option><option value="!=">Not equal to</option></select><div style="display: flex;"><input type="number" value="0" style="max-width: 100px;"></div></div></td><td><a onclick="{$(this).parent().parent().remove();update_slide_view_nav();}"><i class="fas fa-trash-alt"></i></a></td></tr>');
         }
         $('tbody#numeric_list').append(element);
         $('select#' + id).val(this.value);
@@ -34,7 +34,7 @@ $('#add_select').change(function () {
 
     $(this).val('+');
 
-    localStorage.setItem('is_edited', 'true');
+    update_slide_view_nav();
 });
 
 function select_change(select) {
@@ -45,5 +45,5 @@ function select_change(select) {
         $(select).next().html('<input type="number" value="0" style="max-width: 100px;">');
     }
 
-    localStorage.setItem('is_edited', 'true');
+    update_slide_view_nav();
 }

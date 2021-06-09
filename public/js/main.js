@@ -28,10 +28,10 @@ $('body').on('click', '[data-editable]', function () {
     $('div[contenteditable=true]').keydown(function (e) {
         console.log(e.keyCode);
         if ($(this).closest('.question_score').length > 0) {
-            if (!((e.keyCode > 47 && e.keyCode < 58) || (e.keyCode > 95 && e.keyCode < 106) || e.keyCode == 8 || e.keyCode == 46 || e.keyCode == 189)) e.preventDefault();
-            localStorage.setItem('is_edited', 'true');
+            if (!((e.keyCode > 47 && e.keyCode < 58) || (e.keyCode > 95 && e.keyCode < 106) || e.keyCode == 8 || e.keyCode == 46)) e.preventDefault();
+            update_slide_view_nav();
         } else {
-            localStorage.setItem('is_edited', 'true');
+            update_slide_view_nav();
         }
     });
 
@@ -133,7 +133,81 @@ function hide_preload() {
 }
 
 $('body').on('click', 'div[contenteditable=true]', function () {
-    $('div[contenteditable=true]').keydown(function (e) {
-        localStorage.setItem('is_edited', 'true');
+    $('div[contenteditable=true]').keyup(function (e) {
+        update_slide_view_nav();
     });
 });
+
+function update_slide_view_nav() {
+    localStorage.setItem('is_edited', 'true');
+
+    if ($('#quiz_list .node.current').length > 0) {
+        if ($('#quiz_view .slide_view_element').html() != undefined) $('#preview_item-' + $('#quiz_list .node.current').attr('id')).html($('#quiz_view .slide_view_element').html().replace('top: 50%; left: 50%; transform: translate(-50%, -50%);', '').replace('top:50%;left:50%;transform:translate(-50%, -50%);', '').replace('slide_view_hotspots_canvas', 'slide_view_hotspots_canvas-' + $('#quiz_list .node.current').attr('id')));
+        $('#preview_item-' + $('#quiz_list .node.current').attr('id') + ' > div').css({
+            'margin': 'auto',
+            'zoom': ($('#slide_view_quiz_list').width() - 40) / parseInt($('#screen_width').val()),
+        });
+        if ($('#question').html() != undefined) $('#' + $('#quiz_list .node.current').attr('id') + ' .data .caption').html($('#question').html().replace(/(<([^>]+)>)/gi, ''));
+
+        if ($('#type_id').val() == '11') {
+            var slide_view_canvas = new fabric.Canvas('slide_view_hotspots_canvas-' + $('#quiz_list .node.current').attr('id'));
+
+            var canvas_info = $('#answer_content').val();
+
+            if (canvas_info == '@{}') return;
+
+            var canvas_bg_url = canvas_info.split('@')[0];
+            var canvas_item_info = canvas_info.split('@')[1];
+
+            var json_bg_url = JSON.parse(canvas_bg_url);
+            var json_canvas_item = JSON.parse(canvas_item_info);
+
+            fabric.Image.fromURL(root_url + '/' + json_bg_url.background, function (img) {
+                slide_view_canvas.setBackgroundImage(img, slide_view_canvas.renderAll.bind(slide_view_canvas), {
+                    scaleX: fit_canvas_image(slide_view_canvas.width, slide_view_canvas.height, img.width, img.height).scaleFactor,
+                    scaleY: fit_canvas_image(slide_view_canvas.width, slide_view_canvas.height, img.width, img.height).scaleFactor,
+                    originX: 'left',
+                    originY: 'top',
+                    top: fit_canvas_image(slide_view_canvas.width, slide_view_canvas.height, img.width, img.height).top,
+                    left: fit_canvas_image(slide_view_canvas.width, slide_view_canvas.height, img.width, img.height).left,
+                });
+            });
+
+            if (json_canvas_item.type === 'circle') {
+
+                slide_view_canvas.add(new fabric.Circle({
+                    radius: json_canvas_item.radius,
+                    strokeWidth: 3,
+                    stroke: '#288f02',
+                    fill: '#c1fc8580',
+                    originX: 'center',
+                    originY: 'center',
+                    top: json_canvas_item.top,
+                    left: json_canvas_item.left
+                }));
+            }
+
+            if (json_canvas_item.type === 'rect') {
+
+                slide_view_canvas.add(new fabric.Rect({
+                    width: json_canvas_item.width,
+                    height: json_canvas_item.height,
+                    strokeWidth: 3,
+                    stroke: '#288f02',
+                    fill: '#c1fc8580',
+                    top: json_canvas_item.top,
+                    left: json_canvas_item.left
+                }));
+            }
+
+            if (json_canvas_item.type === 'polyline') {
+
+                slide_view_canvas.add(new fabric.Polygon(json_canvas_item.points, {
+                    strokeWidth: 3,
+                    stroke: '#288f02',
+                    fill: '#c1fc8580'
+                }));
+            }
+        }
+    }
+}

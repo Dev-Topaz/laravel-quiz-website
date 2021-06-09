@@ -1,6 +1,5 @@
 let prev_id = '';
 let clicked_node;
-let is_active_real_time_update_slide_view_nav = false;
 var preview_timer;
 
 function show_quiz_editor(node) {
@@ -21,14 +20,12 @@ function show_quiz_editor(node) {
         store_quiz_state();
         localStorage.setItem("is_edited", "false");
         hide_preload();
-        real_time_update_slide_view_nav_active();
     }).catch((XHttpResponse) => {
         console.log(XHttpResponse);
         if (XHttpResponse.responseJSON.message == '' && XHttpResponse.status == 404) {
             window.location.href = '/';
         }
         hide_preload();
-        real_time_update_slide_view_nav_active();
     });
 }
 
@@ -47,7 +44,6 @@ $('#alert_not_save').click(function () {
     init_styling_and_layout();
 
     $('#question_save_alert').fadeOut(300);
-    real_time_update_slide_view_nav_active();
 });
 
 $('#alert_cancel').click(function () {
@@ -60,7 +56,6 @@ $('#alert_cancel').click(function () {
     // $('#preview_item-' + prev_id).addClass('selected_preview_item');
 
     $('#question_save_alert').fadeOut(300);
-    real_time_update_slide_view_nav_active();
 });
 
 function onNodeClick(node) {
@@ -68,7 +63,6 @@ function onNodeClick(node) {
     clicked_node = node;
 
     if (prev_id === '') {
-        real_time_update_slide_view_nav_inactive();
         show_quiz_editor(node);
         prev_id = node.attr('id');
         init_styling_and_layout();
@@ -77,7 +71,6 @@ function onNodeClick(node) {
     }
 
     if (prev_id === node.attr('id')) return;
-    real_time_update_slide_view_nav_inactive();
     if (is_edited()) {
 
         $('#question_save_alert').fadeIn(300);
@@ -567,7 +560,6 @@ function update_quiz(is_alert_save) {
                 show_quiz_editor(clicked_node);
                 prev_id = clicked_node.attr('id');
                 init_styling_and_layout();
-                real_time_update_slide_view_nav_active();
             }
             localStorage.setItem('is_edited', 'false');
             hide_preload();
@@ -707,12 +699,12 @@ function show_correct_view() {
 
         $('.slide_view_group').resizable({
             resize: function () {
-                localStorage.setItem('is_edited', 'true');
+                update_slide_view_nav();
             },
         });
         $('.slide_view_group').draggable({
             drag: function () {
-                localStorage.setItem('is_edited', 'true');
+                update_slide_view_nav();
             },
             cancel: 'div.cancel_drag',
             containment: 'parent'
@@ -1033,83 +1025,5 @@ $('#slide_view_quiz_list').on('click', '.preview_item', function () {
 /*
 * ***************** real-time update at left navigation for question list ****************
 * */
-function real_time_update_slide_view_nav_active() {
-    preview_timer = setInterval(function () {
-        if ($('#quiz_list .node.current').length > 0) {
-            if ($('#quiz_view .slide_view_element').html() != undefined) $('#preview_item-' + $('#quiz_list .node.current').attr('id')).html($('#quiz_view .slide_view_element').html().replace('top: 50%; left: 50%; transform: translate(-50%, -50%);', '').replace('top:50%;left:50%;transform:translate(-50%, -50%);', '').replace('slide_view_hotspots_canvas', 'slide_view_hotspots_canvas-' + $('#quiz_list .node.current').attr('id')));
-            $('#preview_item-' + $('#quiz_list .node.current').attr('id') + ' > div').css({
-                'margin': 'auto',
-                'zoom': ($('#slide_view_quiz_list').width() - 40) / parseInt($('#screen_width').val()),
-            });
-            if ($('#question').html() != undefined) $('#' + $('#quiz_list .node.current').attr('id') + ' .data .caption').html($('#question').html().replace(/(<([^>]+)>)/gi, ''));
 
-            if ($('#type_id').val() == '11') {
-                var slide_view_canvas = new fabric.Canvas('slide_view_hotspots_canvas-' + $('#quiz_list .node.current').attr('id'));
-
-                var canvas_info = $('#answer_content').val();
-
-                if (canvas_info == '@{}') return;
-
-                var canvas_bg_url = canvas_info.split('@')[0];
-                var canvas_item_info = canvas_info.split('@')[1];
-
-                var json_bg_url = JSON.parse(canvas_bg_url);
-                var json_canvas_item = JSON.parse(canvas_item_info);
-
-                fabric.Image.fromURL(root_url + '/' + json_bg_url.background, function (img) {
-                    slide_view_canvas.setBackgroundImage(img, slide_view_canvas.renderAll.bind(slide_view_canvas), {
-                        scaleX: fit_canvas_image(slide_view_canvas.width, slide_view_canvas.height, img.width, img.height).scaleFactor,
-                        scaleY: fit_canvas_image(slide_view_canvas.width, slide_view_canvas.height, img.width, img.height).scaleFactor,
-                        originX: 'left',
-                        originY: 'top',
-                        top: fit_canvas_image(slide_view_canvas.width, slide_view_canvas.height, img.width, img.height).top,
-                        left: fit_canvas_image(slide_view_canvas.width, slide_view_canvas.height, img.width, img.height).left,
-                    });
-                });
-
-                if (json_canvas_item.type === 'circle') {
-
-                    slide_view_canvas.add(new fabric.Circle({
-                        radius: json_canvas_item.radius,
-                        strokeWidth: 3,
-                        stroke: '#288f02',
-                        fill: '#c1fc8580',
-                        originX: 'center',
-                        originY: 'center',
-                        top: json_canvas_item.top,
-                        left: json_canvas_item.left
-                    }));
-                }
-
-                if (json_canvas_item.type === 'rect') {
-
-                    slide_view_canvas.add(new fabric.Rect({
-                        width: json_canvas_item.width,
-                        height: json_canvas_item.height,
-                        strokeWidth: 3,
-                        stroke: '#288f02',
-                        fill: '#c1fc8580',
-                        top: json_canvas_item.top,
-                        left: json_canvas_item.left
-                    }));
-                }
-
-                if (json_canvas_item.type === 'polyline') {
-
-                    slide_view_canvas.add(new fabric.Polygon(json_canvas_item.points, {
-                        strokeWidth: 3,
-                        stroke: '#288f02',
-                        fill: '#c1fc8580'
-                    }));
-                }
-            }
-        }
-    }, 3000);
-}
-
-// real_time_update_slide_view_nav_active();
-
-function real_time_update_slide_view_nav_inactive() {
-    clearTimeout(preview_timer);
-}
 
