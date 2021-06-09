@@ -175,8 +175,8 @@ $('#font_size_selector').change(function () {
     if (element.hasClass('slide_view_answer_element')) {
         element.css('font-size', $(this).val() + 'px');
         if (element.find('label').length > 0) element.find('label').css('font-size', $(this).val() + 'px');
-        if (element.find('input[type=checkbox]').length > 0) element.find('input[type=checkbox]').css('width', parseFloat($(this).val()) / 2 + 'px');
-        if (element.find('input[type=checkbox]').length > 0) element.find('input[type=checkbox]').css('height', parseFloat($(this).val()) / 2 + 'px');
+        if (element.find('input[type=checkbox]').length > 0) element.find('input[type=checkbox]').not('.slide_view_group_checkbox').css('width', parseFloat($(this).val()) / 2 + 'px');
+        if (element.find('input[type=checkbox]').length > 0) element.find('input[type=checkbox]').not('.slide_view_group_checkbox').css('height', parseFloat($(this).val()) / 2 + 'px');
         if (element.find('input[type=radio]').length > 0) element.find('input[type=radio]').css('width', parseFloat($(this).val()) / 2 + 'px');
         if (element.find('input[type=radio]').length > 0) element.find('input[type=radio]').css('height', parseFloat($(this).val()) / 2 + 'px');
         if (element.find('.ui-widget-header').length > 0) element.find('.ui-widget-header').css('font-size', $(this).val() + 'px');
@@ -200,7 +200,7 @@ function resetFont() {
         $("font[size=1]").removeAttr("size").css("font-size", fontSize + "px");
         return;
     }
-    var deepest_editable_div = $('#quiz_view .slide_view_question_element.selected_slide_view_group').eq(0);
+    var deepest_editable_div = $('#quiz_view .selected_slide_view_group .cancel_drag').eq(0);
     // var length = deepest_editable_div.length;
     // for (let i = 0; i < length; i++) {
     //     var font_size_changed_html = deepest_editable_div.eq(i).html().split('x-small').join(fontSize + 'px');
@@ -223,8 +223,8 @@ $('#font_size_bigger_btn').click(function () {
         if (element.find('.ui-widget-content').length > 0) element.find('.ui-widget-content').css('font-size', changing_font_size_for_answer_element);
         if (element.find('#slide_drag_words_answer').length > 0) element.find('#slide_drag_words_answer').find('span').css('font-size', changing_font_size_for_answer_element);
         if (element.find('.select_lists_dropdown_body').length > 0) element.find('.select_lists_dropdown_body').find('select').css('font-size', changing_font_size_for_answer_element);
-        if (element.find('input[type=checkbox]').length > 0) element.find('input[type=checkbox]').css('width', changing_font_size_for_answer_element / 2 + 'px');
-        if (element.find('input[type=checkbox]').length > 0) element.find('input[type=checkbox]').css('height', changing_font_size_for_answer_element / 2 + 'px');
+        if (element.find('input[type=checkbox]').length > 0) element.find('input[type=checkbox]').not('.slide_view_group_checkbox').css('width', changing_font_size_for_answer_element / 2 + 'px');
+        if (element.find('input[type=checkbox]').length > 0) element.find('input[type=checkbox]').not('.slide_view_group_checkbox').css('height', changing_font_size_for_answer_element / 2 + 'px');
         if (element.find('input[type=radio]').length > 0) element.find('input[type=radio]').css('width', changing_font_size_for_answer_element / 2 + 'px');
         if (element.find('input[type=radio]').length > 0) element.find('input[type=radio]').css('height', changing_font_size_for_answer_element / 2 + 'px');
         $('#font_size_selector').val(changing_font_size_for_answer_element);
@@ -250,8 +250,8 @@ $('#font_size_smaller_btn').click(function () {
         if (element.find('.ui-widget-content').length > 0) element.find('.ui-widget-content').css('font-size', changing_font_size_for_answer_element);
         if (element.find('#slide_drag_words_answer').length > 0) element.find('#slide_drag_words_answer').find('span').css('font-size', changing_font_size_for_answer_element);
         if (element.find('.select_lists_dropdown_body').length > 0) element.find('.select_lists_dropdown_body').find('select').css('font-size', changing_font_size_for_answer_element);
-        if (element.find('input[type=checkbox]').length > 0) element.find('input[type=checkbox]').css('width', changing_font_size_for_answer_element / 2 + 'px');
-        if (element.find('input[type=checkbox]').length > 0) element.find('input[type=checkbox]').css('height', changing_font_size_for_answer_element / 2 + 'px');
+        if (element.find('input[type=checkbox]').length > 0) element.find('input[type=checkbox]').not('.slide_view_group_checkbox').css('width', changing_font_size_for_answer_element / 2 + 'px');
+        if (element.find('input[type=checkbox]').length > 0) element.find('input[type=checkbox]').not('.slide_view_group_checkbox').css('height', changing_font_size_for_answer_element / 2 + 'px');
         if (element.find('input[type=radio]').length > 0) element.find('input[type=radio]').css('width', changing_font_size_for_answer_element / 2 + 'px');
         if (element.find('input[type=radio]').length > 0) element.find('input[type=radio]').css('height', changing_font_size_for_answer_element / 2 + 'px');
         $('#font_size_selector').val(changing_font_size_for_answer_element);
@@ -327,8 +327,8 @@ $('#font_style_clear_btn').click(function () {
             element.find('.select_lists_dropdown_body').find('select').css('text-decoration', 'none');
         }
 
-        if (element.find('input[type=checkbox]').length > 0) element.find('input[type=checkbox]').css('width', '8px');
-        if (element.find('input[type=checkbox]').length > 0) element.find('input[type=checkbox]').css('height', '8px');
+        if (element.find('input[type=checkbox]').length > 0) element.find('input[type=checkbox]').not('.slide_view_group_checkbox').css('width', '8px');
+        if (element.find('input[type=checkbox]').length > 0) element.find('input[type=checkbox]').not('.slide_view_group_checkbox').css('height', '8px');
         if (element.find('input[type=radio]').length > 0) element.find('input[type=radio]').css('width', '8px');
         if (element.find('input[type=radio]').length > 0) element.find('input[type=radio]').css('height', '8px');
     } else {
@@ -463,7 +463,6 @@ $('.font_underline_btn').click(function () {
 var formatting_subscript = false;
 
 $('.font_subscription_btn').click(function () {
-
 
     formatting_subscript = !formatting_subscript;
     // toggle_subscript(formatting_subscript);
@@ -827,11 +826,17 @@ function add_line_spacing_after(paragraph_line_spacing_add_after) {
     //         e.style.marginBottom = 'unset';
     // }
     var element = $('.selected_slide_view_group'); // get selected element
-    if (element.hasClass('slide_view_question_element')) {
+    if (element.hasClass('slide_view_question_element') || element.hasClass('other_slide_view_element')) {
         if (paragraph_line_spacing_add_after ) {
-            element.children().css('padding-bottom', '10px');
+            element.find('.cancel_drag').children().css('padding-bottom', '10px');
+            // var sel = window.getSelection();
+            // console.log(sel.extentNode.parentNode);
+            // sel.extentNode.parentNode.style.paddingBottom = '20px';
         } else {
-            element.children().css('padding-bottom', '0px');
+            element.find('.cancel_drag').children().css('padding-bottom', '0px');
+            // var sel = window.getSelection();
+            // console.log(sel.extentNode.parentNode);
+            // sel.extentNode.parentNode.style.paddingBottom = '0px';
         }
     }
 }
@@ -854,14 +859,23 @@ function add_line_spacing_before(paragraph_line_spacing_add_before) {
     //     else
     //         e.style.marginTop = 'unset';
     // }
-    var element = $('.selected_slide_view_group'); // get selected element
-    if (element.hasClass('slide_view_question_element')) {
+
+
+    var element = $('#quiz_view .selected_slide_view_group'); // get selected element
+    if (element.hasClass('slide_view_question_element') || element.hasClass('other_slide_view_element')) {
         if (paragraph_line_spacing_add_before) {
-            element.children().css('padding-top', '10px');
+            element.find('.cancel_drag').children().css('padding-top', '10px');
+            // var sel = window.getSelection();
+            // console.log(sel.extentNode.parentNode);
+            // sel.extentNode.parentNode.style.paddingTop = '20px';
         } else {
-            element.children().css('padding-top', '0px');
+            element.find('.cancel_drag').children().css('padding-top', '0px');
+            // var sel = window.getSelection();
+            // console.log(sel.extentNode.parentNode);
+            // sel.extentNode.parentNode.style.paddingTop = '0px';
         }
     }
+
     // document.execCommand("fontSize", false, "1");
     // set_paragraph_spacing(paragraph_line_spacing_add_before);
 }
