@@ -612,16 +612,16 @@
                                 </option>
                             </select>
                         </div>
-                        {{--                        <div class="cell-7">--}}
-                        {{--                            <input type="checkbox" data-role="checkbox" id="is_limit_time"--}}
-                        {{--                                   data-caption="Limit time to answer the question:" {{ $quiz->is_limit_time ? 'checked' : '' }}>--}}
-                        {{--                        </div>--}}
-                        {{--                        <div class="cell-5">--}}
-                        {{--                            <input class="mt-1" type="time" data-role="input" id="limit_time"--}}
-                        {{--                                   {{ $quiz->is_limit_time ? '' : 'disabled' }}--}}
-                        {{--                                   data-clear-button="false"--}}
-                        {{--                                   value="{{ $quiz->is_limit_time ? $quiz->limit_time : '01:00' }}">--}}
-                        {{--                        </div>--}}
+                        <div class="cell-7">
+                            <input type="checkbox" data-role="checkbox" id="is_limit_time"
+                                   data-caption="Limit time to answer the question:" {{ $quiz->is_limit_time ? 'checked' : '' }}>
+                        </div>
+                        <div class="cell-5">
+                            <input class="mt-1" type="time" data-role="input" id="limit_time"
+                                   {{ $quiz->is_limit_time ? '' : 'disabled' }}
+                                   data-clear-button="false"
+                                   value="{{ $quiz->is_limit_time ? $quiz->limit_time : '01:00' }}">
+                        </div>
                         @if (isset($quiz->shuffle_answers))
                             <div class="cell-12">
                                 <input type="checkbox" data-role="checkbox" id="shuffle_answers"
@@ -649,46 +649,45 @@
                     </div>
                 </div>
             </div>
-{{--            <div class="preview_item" style="display: none">--}}
-{{--                <div--}}
-{{--                    style="zoom:0.3;top:50%;left:50%;transform:translate(-50%, -50%);margin: auto 0;width: {{ $quiz->exam_group->exam->screen_width }}px;height:{{ $quiz->exam_group->exam->screen_height }}px;{{ $quiz->exam_group->exam->theme_style ?? 'background:white' }}"--}}
-{{--                    id="slide_view_container">--}}
-{{--                    <div id="quiz_background_container"--}}
-{{--                         style="font-size: 1rem;width: 100%;height:100%;padding: 20px;{{ isset($quiz->background_img) ? ('background-image:' . $quiz->background_img . ';') : '' }}background-size: 100% 100%;background-repeat:no-repeat;">--}}
-{{--                        {!! $quiz->question_element !!}--}}
-{{--                        {!! $quiz->answer_element !!}--}}
-{{--                        @if (isset($quiz->other_elements))--}}
-{{--                            {!! $quiz->other_elements !!}--}}
-{{--                        @endif--}}
-{{--                        @if (isset($quiz->media))--}}
-{{--                            {!! $quiz->media_element !!}--}}
-{{--                        @else--}}
-{{--                            <div class="slide_view_media_element slide_view_group"--}}
-{{--                                 style="z-index: 1;display: none;position: absolute;top: 0;left: 0;">--}}
-{{--                                <img src="#" alt="slide_view_media" style="width: 100%;height: 100%;">--}}
-{{--                            </div>--}}
-{{--                        @endif--}}
-{{--                        @if (!isset($quiz->media) && isset($quiz->video))--}}
-{{--                            {!! $quiz->video_element !!}--}}
-{{--                        @else--}}
-{{--                            <div class="slide_view_video_element slide_view_group"--}}
-{{--                                 style="z-index: 1;display: none;position: absolute;top: 0;left: 0;">--}}
-{{--                                <video controls style="width: 100%;height: 100%">--}}
-{{--                                    <source src="#" type="video/mp4">--}}
-{{--                                </video>--}}
-{{--                            </div>--}}
-{{--                        @endif--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
+            {{--            <div class="preview_item" style="display: none">--}}
+            {{--                <div--}}
+            {{--                    style="zoom:0.3;top:50%;left:50%;transform:translate(-50%, -50%);margin: auto 0;width: {{ $quiz->exam_group->exam->screen_width }}px;height:{{ $quiz->exam_group->exam->screen_height }}px;{{ $quiz->exam_group->exam->theme_style ?? 'background:white' }}"--}}
+            {{--                    id="slide_view_container">--}}
+            {{--                    <div id="quiz_background_container"--}}
+            {{--                         style="font-size: 1rem;width: 100%;height:100%;padding: 20px;{{ isset($quiz->background_img) ? ('background-image:' . $quiz->background_img . ';') : '' }}background-size: 100% 100%;background-repeat:no-repeat;">--}}
+            {{--                        {!! $quiz->question_element !!}--}}
+            {{--                        {!! $quiz->answer_element !!}--}}
+            {{--                        @if (isset($quiz->other_elements))--}}
+            {{--                            {!! $quiz->other_elements !!}--}}
+            {{--                        @endif--}}
+            {{--                        @if (isset($quiz->media))--}}
+            {{--                            {!! $quiz->media_element !!}--}}
+            {{--                        @else--}}
+            {{--                            <div class="slide_view_media_element slide_view_group"--}}
+            {{--                                 style="z-index: 1;display: none;position: absolute;top: 0;left: 0;">--}}
+            {{--                                <img src="#" alt="slide_view_media" style="width: 100%;height: 100%;">--}}
+            {{--                            </div>--}}
+            {{--                        @endif--}}
+            {{--                        @if (!isset($quiz->media) && isset($quiz->video))--}}
+            {{--                            {!! $quiz->video_element !!}--}}
+            {{--                        @else--}}
+            {{--                            <div class="slide_view_video_element slide_view_group"--}}
+            {{--                                 style="z-index: 1;display: none;position: absolute;top: 0;left: 0;">--}}
+            {{--                                <video controls style="width: 100%;height: 100%">--}}
+            {{--                                    <source src="#" type="video/mp4">--}}
+            {{--                                </video>--}}
+            {{--                            </div>--}}
+            {{--                        @endif--}}
+            {{--                    </div>--}}
+            {{--                </div>--}}
+            {{--            </div>--}}
             <div id="question_control_btn_container">
                 <button type="button" class="quiz_handle_button" onclick="update_quiz()"><i
-                        class="fas fa-save"></i><span>Update
-                    Question</span>
+                        class="fas fa-save"></i><span>{{ $quiz->type_id > 13 ? 'Update Slide' : 'Update Question' }}</span>
                 </button>
-                <button type="button" class="quiz_handle_button" onclick="show_delete_dialog('question', this)" style="{{ $quiz->type_id > 13 ? 'display:none;' : '' }}"><i
-                        class="fas fa-trash"></i><span>Delete
-                        Question</span>
+                <button type="button" class="quiz_handle_button" onclick="show_delete_dialog('question', this)"
+                        style="{{ $quiz->type_id > 13 ? 'display:none;' : '' }}"><i
+                        class="fas fa-trash"></i><span>Delete Question</span>
                 </button>
             </div>
             {{--            <div class="form_view_element">preview</div>--}}
@@ -789,6 +788,23 @@
         });
 
         $('#case_sensitive').parent().find('span').click(function () {
+            localStorage.setItem('is_edited', 'true');
+        });
+
+        $('#is_limit_time').parent().find('span').click(function () {
+            if ($('#is_limit_time').is(":checked")) {
+                console.log('true');
+                $('#limit_time').parent().removeClass('disabled');
+                $('#limit_time').attr('disabled', 'true');
+            } else {
+                console.log('false');
+                $('#limit_time').parent().removeClass('disabled');
+                $('#limit_time').attr('disabled', 'false');
+            }
+            localStorage.setItem('is_edited', 'true');
+        });
+
+        $('#limit_time').change(function () {
             localStorage.setItem('is_edited', 'true');
         });
     });

@@ -83,18 +83,25 @@
                                     <div class="form_option">
                                         <a href="{{ url('/exams') }}/{{$exam->id}}"><i class="far fa-eye"></i>Edit Quizs of this Exam</a>
                                     </div>
-                                    <form method="POST" action="{{ url('/exams') }}/{{ $exam->id }}">
-                                        @csrf
-                                        @method('DELETE')
-                                        <div class="form_option">
-                                            <button type="submit"><i class="fas fa-trash"></i>Delete Exam</button>
-                                        </div>
-                                    </form>
                                     <div class="form_option_separator"></div>
+                                    <div class="form_option option_expandable">
+                                        <a class="mf_link_theme" href="{{ url('/preview_exam') }}/{{ $exam->id }}" title="Theme"><i class="far fa-play-circle"></i><span class="option_text">Test Exam</span></a>
+                                    </div>
                                     @endhasrole
+                                    @hasrole('student')
                                     <div class="form_option option_expandable">
                                         <a class="mf_link_theme" href="{{ url('/preview_exam') }}/{{ $exam->id }}" title="Theme"><i class="far fa-play-circle"></i><span class="option_text">Start Exam</span></a>
                                     </div>
+                                    @endhasrole
+                                    @hasrole('manager')
+                                    <form method="POST" action="{{ url('/exams') }}/{{ $exam->id }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <div class="form_option" style="float: right;">
+                                            <button type="submit"><i class="fas fa-trash"></i>Delete Exam</button>
+                                        </div>
+                                    </form>
+                                    @endhasrole
                                 </div>
 
                                 <div style="height: 0px; clear: both;"></div>

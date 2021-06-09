@@ -8,8 +8,17 @@ function question_slide2form(question) {
 }
 
 function question_form2slide() {
-    $('#quiz_view .slide_view_question_element > div.cancel_drag').remove();
-    $('#quiz_view .slide_view_question_element').prepend($('#question').html());
+    let element = $('#quiz_view .slide_view_question_element');
+
+    for (let i = 0; i < element.children().length; i++) {
+        if (!element.children().eq(i).hasClass('ui-resizable-handle')) {
+            console.log(element.children().eq(i));
+            element.children().eq(i).remove();
+        }
+    }
+
+    console.log($('#question').html());
+    element.prepend($('#question').html());
 }
 
 // function media_form2slide() {
@@ -564,18 +573,6 @@ function add_canvas_item_info(string) {
 }
 
 /*
-* ************ Remove other slide view elements *****************
-* */
-$('body').keydown(function (e) {
-
-    if (e.keyCode == 46) {
-        if ($('#quiz_view .other_slide_view_element.selected_slide_view_group').length > 0) {
-            $('#quiz_view .other_slide_view_element.selected_slide_view_group').remove();
-        }
-    }
-});
-
-/*
 * *********** Multiple selection (add class 'selected_slide_view_group')
 * */
 $("body").click(function (e) {
@@ -584,14 +581,19 @@ $("body").click(function (e) {
         if (element[0].classList.contains('slide_view_group_checkbox')) {
             if (element.is(':checked')) {
                 element.closest('.slide_view_group').addClass('selected_slide_view_group');
+                if (element.closest('.slide_view_group').find('.other_slide_view_element_delete_icon').length > 0) element.closest('.slide_view_group').find('.other_slide_view_element_delete_icon').show();
             } else {
                 element.closest('.slide_view_group').removeClass('selected_slide_view_group');
+                if (element.closest('.slide_view_group').find('.other_slide_view_element_delete_icon').length > 0) element.closest('.slide_view_group').find('.other_slide_view_element_delete_icon').hide();
             }
         } else {
             $('#quiz_view .slide_view_group').removeClass('selected_slide_view_group');
             $('#quiz_view .slide_view_group_checkbox').prop('checked', false);
+            if ($('#quiz_view .other_slide_view_element_delete_icon').length > 0) $('#quiz_view .other_slide_view_element_delete_icon').hide();
+
             element.closest('.slide_view_group').addClass('selected_slide_view_group');
             element.closest('.slide_view_group').find('.slide_view_group_checkbox').prop('checked', true);
+            if (element.closest('.slide_view_group').find('.other_slide_view_element_delete_icon').length > 0) element.closest('.slide_view_group').find('.other_slide_view_element_delete_icon').show();
         }
     }
 });
@@ -601,8 +603,10 @@ $("body").click(function (e) {
 *  */
 $('#insert_textbox_btn').click(function () {
     $('#quiz_view .slide_view_group').removeClass('just_added_slide_view_element');
-    $('#quiz_view #quiz_background_container').append('<div class="slide_view_group just_added_slide_view_element other_slide_view_element" style="height: 70px;width: 80%;left: 10%;z-index: 3;overflow: hidden;padding:10px;position:absolute;"><div class="cancel_drag" contenteditable="true">Type Text Content</div><input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;"></div>');
+    $('#quiz_view #quiz_background_container').append('<div class="slide_view_group just_added_slide_view_element other_slide_view_element" style="height: 70px;width: 80%;left: 10%;z-index: 3;overflow: hidden;padding:10px;position:absolute;"><div class="cancel_drag" contenteditable="true">Type Text Content</div><input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;"><span class="other_slide_view_element_delete_icon" style="position: absolute;top: 0;right: 0;display: none;" onclick="{$(this).parent().remove()}"><i class="fas fa-trash-alt" style="font-size: 18px;"></i></span></div>');
     $('#quiz_view .just_added_slide_view_element').draggable({cancel: 'div.cancel_drag'}).resizable();
+
+     localStorage.setItem('is_edited', 'true');
 });
 
 /*
@@ -638,8 +642,11 @@ $('#slide_view_picture_file_selector').change(function () {
             success: (response) => {
                 if (response) {
                     $('#quiz_view .slide_view_group').removeClass('just_added_slide_view_element');
-                    $('#quiz_view #quiz_background_container').append(`<div class="slide_view_group just_added_slide_view_element other_slide_view_element" style="left: 10%;z-index: 1;overflow: hidden;padding:10px;position:absolute;"><img src="${root_url}/${response}" style="width: 100%;height: 100%;"><input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;"></div>`);
+                    $('#quiz_view #quiz_background_container').append(`<div class="slide_view_group just_added_slide_view_element other_slide_view_element" style="left: 10%;z-index: 1;overflow: hidden;padding:10px;position:absolute;width: 300px;"><img src="${root_url}/${response}" style="width: 100%;height: 100%;"><input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;"><span class="other_slide_view_element_delete_icon" style="position: absolute;top: 0;right: 0;display: none;" onclick="{$(this).parent().remove()}"><i class="fas fa-trash-alt" style="font-size: 18px;"></i></span></div>`);
                     $('#quiz_view .just_added_slide_view_element').draggable({cancel: 'div.cancel_drag'}).resizable();
+
+                     localStorage.setItem('is_edited', 'true');
+
                 }
                 hide_preload();
             },
@@ -692,7 +699,7 @@ $('#slide_view_video_file_selector').change(function () {
                 if (response.success == 1) { // Uploaded successfully
 
                     $('#quiz_view .slide_view_group').removeClass('just_added_slide_view_element');
-                    $('#quiz_view #quiz_background_container').append(`<div class="slide_view_group just_added_slide_view_element other_slide_view_element" style="left: 10%;z-index: 1;overflow: hidden;padding:10px;position:absolute;"><video controls style="width: 100%;"><source src="${response.filepath}" type="video/mp4"></video><input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;"></div>`);
+                    $('#quiz_view #quiz_background_container').append(`<div class="slide_view_group just_added_slide_view_element other_slide_view_element" style="left: 10%;z-index: 1;overflow: hidden;padding:10px;position:absolute;"><video controls style="width: 100%;"><source src="${response.filepath}" type="video/mp4"></video><input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;"><span class="other_slide_view_element_delete_icon" style="position: absolute;top: 0;right: 0;display: none;" onclick="{$(this).parent().remove()}"><i class="fas fa-trash-alt" style="font-size: 18px;"></i></span></div>`);
                     $('#quiz_view .just_added_slide_view_element').draggable({cancel: 'div.cancel_drag'}).resizable();
                 } else if (response.success == 2) { // File not uploaded
 
@@ -701,6 +708,8 @@ $('#slide_view_video_file_selector').change(function () {
                     $('#responseMsg').addClass("alert-danger");
                     $('#responseMsg').html(response.message);
                     $('#responseMsg').show();
+
+                     localStorage.setItem('is_edited', 'true');
                 } else {
                     // Display Error
                     $('#err_file').text(response.error);

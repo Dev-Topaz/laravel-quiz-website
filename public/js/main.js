@@ -28,7 +28,7 @@ $('body').on('click', '[data-editable]', function () {
     $('div[contenteditable=true]').keydown(function (e) {
         console.log(e.keyCode);
         if ($(this).closest('.question_score').length > 0) {
-            if (!((e.keyCode > 47 && e.keyCode < 58) || (e.keyCode > 95 && e.keyCode < 106) || e.keyCode == 8 || e.keyCode == 46)) e.preventDefault();
+            if (!((e.keyCode > 47 && e.keyCode < 58) || (e.keyCode > 95 && e.keyCode < 106) || e.keyCode == 8 || e.keyCode == 46 || e.keyCode == 189)) e.preventDefault();
             localStorage.setItem('is_edited', 'true');
         } else {
             localStorage.setItem('is_edited', 'true');

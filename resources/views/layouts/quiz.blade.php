@@ -32,7 +32,7 @@
     <script src="{{ asset('js/evol-colorpicker.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.22/fabric.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.js"></script>
+{{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.js"></script>--}}
 </head>
 <body id="quiz_layout">
 <div class="se-pre-con"></div>
@@ -121,9 +121,9 @@
 {{--    <script src="{{ asset('js/jquery.richtext.min.js') }}" defer></script>--}}
 
 <script>
-    $("img").lazyload({
-	    effect : "fadeIn"
-	});
+    // $("img").lazyload({
+	//     effect : "fadeIn"
+	// });
     function show_modal(type, title, content) {
         switch (type) {
             case 'error':

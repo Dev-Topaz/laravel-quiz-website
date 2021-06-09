@@ -83,6 +83,7 @@
 }
 
 #question_list_modal_close {
+    cursor: pointer;
     position: absolute;
     top: 15px;
     right: 35px;

@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="url" content="{{ url('/') }}">
 
-    <title>Quiz Preview</title>
+    <title>{{ $user->roles[0]->id == '1' ? 'Quiz Preview' : 'Exam Page' }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -45,6 +45,7 @@
         <div id="preview_toast_title">Incorrect</div>
         <div id="preview_toast_body">You didn't choose the correct answer.</div>
     </div>
+
     <div id="exam_id" style="display: none;"></div>
     @yield('content')
 </div>

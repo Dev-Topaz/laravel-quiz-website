@@ -33,6 +33,7 @@
     <div class="question_menu_bar" style="margin: 0 auto;width: 656px;display: flex;justify-content: space-between;padding-top: 10px;">
         <p id="question_list">Question <span id="question_number">1</span></p>
         <div id="question_result" style="display: flex;">
+            <p id="question_time" style="display: none;"><span>60</span>&nbsp;sec |&nbsp;</p>
             <p id="question_point">Point Value: <span>10</span> |&nbsp;</p>
             <p>Total Points: <span id="total_point">0</span> out of <span id="passing_score">100</span></p>
         </div>
@@ -71,6 +72,8 @@
                 <div class="shuffle_answers" style="display: none;">{!! $quiz->shuffle_answers !!}</div>
                 <div class="case_sensitive" style="display: none;">{!! $quiz->case_sensitive !!}</div>
                 <div class="partially_correct" style="display: none;">{!! $quiz->partially_correct !!}</div>
+                <div class="is_limit_time" style="display: none;">{!! $quiz->is_limit_time !!}</div>
+                <div class="limit_time" style="display: none;">{!! $quiz->limit_time !!}</div>
                 <div class="stuff_emails" style="display: none;">{!! $quiz->exam_group->exam->stuff_emails !!}</div>
                 <div class="screen_height" style="display: none;">{!! $quiz->exam_group->exam->screen_height !!}</div>
                 <div class="screen_width" style="display: none;">{!! $quiz->exam_group->exam->screen_width !!}</div>
@@ -114,6 +117,8 @@
                 <div class="shuffle_answers" style="display: none;">{!! $quiz->shuffle_answers !!}</div>
                 <div class="case_sensitive" style="display: none;">{!! $quiz->case_sensitive !!}</div>
                 <div class="partially_correct" style="display: none;">{!! $quiz->partially_correct !!}</div>
+                <div class="is_limit_time" style="display: none;">{!! $quiz->is_limit_time !!}</div>
+                <div class="limit_time" style="display: none;">{!! $quiz->limit_time !!}</div>
                 <div class="stuff_emails" style="display: none;">{!! $quiz->exam_group->exam->stuff_emails !!}</div>
                 <div class="screen_height" style="display: none;">{!! $quiz->exam_group->exam->screen_height !!}</div>
                 <div class="screen_width" style="display: none;">{!! $quiz->exam_group->exam->screen_width !!}</div>

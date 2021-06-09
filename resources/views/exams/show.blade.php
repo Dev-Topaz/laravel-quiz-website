@@ -1956,7 +1956,7 @@
                         <div id="hyperlink_remove_btn">Remove Link</div>
                     </div>
                     <div id="open_in_new_check">
-                        <input type="checkbox" name="open_in_new" id="open_in_new">
+                        <input type="checkbox" name="open_in_new" id="open_in_new" checked>
                         <label for="open_in_new">Open in a new browser window</label>
                     </div>
                 </div>
