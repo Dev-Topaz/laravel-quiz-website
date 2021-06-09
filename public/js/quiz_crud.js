@@ -10,12 +10,29 @@ function show_quiz_editor(node) {
     $('#quiz_view').show();
     $('#no_question_slide').hide();
 
+    $('#duplicate_btn').removeAttr('disabled');
+    $('#question_group_btn').removeAttr('disabled');
+    $('.info_slide_btn').removeAttr('disabled');
+
     if (quizId == 'none' || quizId === undefined) {
 
         $('#quiz_view').hide();
         $('#no_question_slide').show();
 
+        $('#duplicate_btn').attr('disabled', '');
         return;
+    }
+
+    const node_question_type = node.find('.content').html();
+
+    if (node_question_type == '<i>Passed</i>' || node_question_type == '<i>Failed</i>') {
+        $('#duplicate_btn').attr('disabled', '');
+        $('#question_group_btn').attr('disabled', '');
+        $('.info_slide_btn').attr('disabled', '');
+    }
+
+    if (node_question_type == '<i>Quiz Instructions</i>') {
+        $('#duplicate_btn').attr('disabled', '');
     }
 
     show_preload();
@@ -252,6 +269,7 @@ function create_quiz(quiz_type, root_url, token) {
             if (quiz_type == '13') {
                 parentNode.find('li').eq(0).attr('id', quizId);
                 parentNode.find('li').eq(0).attr('order', order);
+                $('#introduction_btn').attr('disabled', '');
             } else {
                 node.next().attr('id', quizId);
                 node.next().attr('order', order);
@@ -267,8 +285,6 @@ function create_quiz(quiz_type, root_url, token) {
                 $('#quiz_view').html(data);
 
                 const element = '<div id="preview_item-' + quizId + '" class="preview_item selected_preview_item">' + $('#quiz_view .slide_view_element').html().replace('top:50%;left:50%;transform:translate(-50%, -50%);', '') + '</div>';
-
-                console.log(prev_id);
 
                 if (quiz_type == '13') {
                     $('#slide_view_quiz_list').prepend(element);
@@ -679,7 +695,10 @@ function delete_quiz(quizId) {
                 });
             }
 
-            console.log(get_next_node_element(node));
+            if (node.find('.content').html() == '<i>Quiz Instructions</i>') {
+                $('#introduction_btn').removeAttr('disabled');
+            }
+
             get_next_node_element(node).trigger('click');
 
             node.remove();
@@ -864,9 +883,15 @@ $('#duplicate_btn').click(function () {
         return;
     }
 
+    let caption = node.attr('data-caption');
+    let content = node.attr('data-content');
+
+    if (caption == undefined) caption = node.find('.caption').html();
+    if (content == undefined) content = node.find('.content').html();
+
     lv.insertAfter(node, {
-        caption: node.attr('data-caption'),
-        content: node.attr('data-content')
+        caption: caption,
+        content: content
     });
 
     $('#quiz_list').find('.current').removeClass('current current-select');
@@ -903,6 +928,8 @@ $('#duplicate_btn').click(function () {
 
                 $('.selected_preview_item').removeClass('selected_preview_item');
                 $('#preview_item-' + quizId).addClass('selected_preview_item');
+
+                prev_id = quizId;
 
                 show_correct_view();
                 hide_preload();

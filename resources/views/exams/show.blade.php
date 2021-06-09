@@ -303,7 +303,7 @@
                                 </div>
                             </ul>
                         </div>
-                        <button class="ribbon-button" onclick="create_quiz(12, '{{ url('/') }}', '{{ csrf_token() }}')">
+                        <button class="ribbon-button info_slide_btn" onclick="create_quiz(12, '{{ url('/') }}', '{{ csrf_token() }}')">
                         <span class="icon">
                             <img loading="lazy" src="{{ url("/images/ribbon_imgs/insert-2.png") }}">
                         </span>
@@ -1688,7 +1688,7 @@
                             </ul>
                         </div>
                         <div style="display: flex;flex-direction: column;">
-                            <button class="ribbon-icon-button"
+                            <button class="ribbon-icon-button info_slide_btn"
                                     onclick="create_quiz(12, '{{ url('/') }}', '{{ csrf_token() }}')">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/insert-2.png") }}">
@@ -1701,7 +1701,7 @@
                             </span>
                                 <span class="caption">Question Group</span>
                             </button>
-                            <button class="ribbon-icon-button">
+                            <button class="ribbon-icon-button" id="introduction_btn">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/home/intro.png") }}">
                             </span>
@@ -2238,6 +2238,7 @@
             $(document).ready(function () {
                 if ($('#form_view_quiz_list .node').length > 0) {
                     $('#form_view_quiz_list .node').eq(0).trigger('click');
+                    if ($('#form_view_quiz_list .node').eq(0).attr('data-content') == '<i>Quiz Instructions</i>') $('#introduction_btn').attr('disabled', '');
                 }
                 for (let i = 0; i < $('#form_view_quiz_list .node-group > div.data').length - 1; i++) {
                     $('#form_view_quiz_list .node-group > div.data').eq(i).append('<i class="fas fa-trash" id="delete_group_icon-' + $('#form_view_quiz_list .node-group').eq(i).attr('id') + '" style="font-size: 12px;" onclick="show_delete_dialog(\'group\', this)"></i>');

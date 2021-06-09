@@ -12,12 +12,10 @@ function question_form2slide() {
 
     for (let i = 0; i < element.children().length; i++) {
         if (!element.children().eq(i).hasClass('ui-resizable-handle')) {
-            console.log(element.children().eq(i));
             element.children().eq(i).remove();
         }
     }
 
-    console.log($('#question').html());
     element.prepend($('#question').html());
 }
 
