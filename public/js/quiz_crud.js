@@ -736,12 +736,12 @@ function show_correct_view() {
 
         $('.slide_view_group').resizable({
             resize: function () {
-                localStorage.setItem('is_edited', 'true');
+                set_flag_true();
             },
         });
         $('.slide_view_group').draggable({
             drag: function () {
-                localStorage.setItem('is_edited', 'true');
+                set_flag_true();
             },
             cancel: 'div.cancel_drag',
             containment: 'parent'
@@ -1073,8 +1073,8 @@ $('#slide_view_quiz_list').on('click', '.preview_item', function () {
 function real_time_update_slide_view_nav_active() {
     preview_timer = setInterval(function () {
         console.log('setinterval');
-        if ($('#quiz_list .node.current').length > 0 && localStorage.getItem('is_edited') == 'true') {
-            localStorage.setItem('is_edited', 'false');
+        if ($('#quiz_list .node.current').length > 0 && localStorage.getItem('is_edited_for_timer') == 'true') {
+            localStorage.setItem('is_edited_for_timer', 'false');
 
             if ($('#quiz_view .slide_view_element').html() != undefined) $('#preview_item-' + $('#quiz_list .node.current').attr('id')).html($('#quiz_view .slide_view_element').html().replace('top: 50%; left: 50%; transform: translate(-50%, -50%);', '').replace('top:50%;left:50%;transform:translate(-50%, -50%);', '').replace('slide_view_hotspots_canvas', 'slide_view_hotspots_canvas-' + $('#quiz_list .node.current').attr('id')));
             $('#preview_item-' + $('#quiz_list .node.current').attr('id') + ' > div').css({

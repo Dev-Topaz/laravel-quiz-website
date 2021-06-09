@@ -133,7 +133,7 @@ if (canvas_info != '') {
 
 $('#hotspots_only_from_files_image').change(function () {
 
-    localStorage.setItem('is_edited', 'true');
+    set_flag_true();
     canvas.setBackgroundColor('', canvas.renderAll.bind(canvas));
     canvas.setBackgroundImage(0, canvas.renderAll.bind(canvas));
     var root_url = $('meta[name=url]').attr('content');
@@ -194,7 +194,7 @@ var line, isDown;
 
 function drawcle() {
 
-    localStorage.setItem('is_edited', 'true');
+    set_flag_true();
 
     if (canvas.item(0) !== undefined) console.log(canvas.item(0));
     var circle, isDown, origX, origY, isDraw = false;
@@ -232,7 +232,7 @@ function drawcle() {
         if (isDown) {
             canvas.getActiveObject().remove();
             canvas.add(circle);
-            localStorage.setItem('is_edited', 'true');
+            set_flag_true();
         }
         isDown = false;
         isDraw = true;
@@ -243,7 +243,7 @@ function drawcle() {
 
 function drawrec() {
 
-    localStorage.setItem('is_edited', 'true');
+    set_flag_true();
     var rect, isDown, origX, origY, isDraw = false;
     removeEvents();
     canvas.on('mouse:down', function (o) {
@@ -299,7 +299,7 @@ function drawrec() {
         if (isDown) {
             canvas.getActiveObject().remove();
             canvas.add(rect);
-            localStorage.setItem('is_edited', 'true');
+            set_flag_true();
         }
         isDown = false;
         isDraw = true;
@@ -315,7 +315,7 @@ function removeEvents() {
 
 function deleteCanvas() {
     canvas.getActiveObject().remove();
-    localStorage.setItem('is_edited', 'true');
+    set_flag_true();
 }
 
 /*********************************************
@@ -337,7 +337,7 @@ function Point(x, y) {
 
 
 function drawpoly() {
-    localStorage.setItem('is_edited', 'true');
+    set_flag_true();
     if (drawingObject.type == "roof") {
         drawingObject.type = "";
         lines.forEach(function (value, index, ar) {

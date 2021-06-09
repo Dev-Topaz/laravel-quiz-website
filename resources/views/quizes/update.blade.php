@@ -765,31 +765,47 @@
 * */
     function change_question_type(selected) {
         console.log(selected);
-        localStorage.setItem('is_edited', 'true');
+        set_flag_true();
     }
 
     function change_feedback(selected) {
         console.log(selected);
-        localStorage.setItem('is_edited', 'true');
+        set_flag_true();
     }
 
     function change_attempts(selected) {
         console.log(selected);
-        localStorage.setItem('is_edited', 'true');
+        set_flag_true();
     }
+
+    $('.form_view_element input[type=radio]').click(function () {
+        set_flag_true();
+    })
+
+     $('.form_view_element input[type=checkbox]').click(function () {
+        set_flag_true();
+    })
+
+    $('#numeric_list input').keydown(function () {
+        set_flag_true();
+    });
+
+    $('#short_answer').keypress(function () {
+        set_flag_true();
+    });
 
     $(document).ready(function () {
 
         $('#partially_correct').parent().find('span').click(function () {
-            localStorage.setItem('is_edited', 'true');
+            set_flag_true();
         });
 
         $('#shuffle_answers').parent().find('span').click(function () {
-            localStorage.setItem('is_edited', 'true');
+            set_flag_true();
         });
 
         $('#case_sensitive').parent().find('span').click(function () {
-            localStorage.setItem('is_edited', 'true');
+            set_flag_true();
         });
 
         $('#is_limit_time').parent().find('span').click(function () {
@@ -802,11 +818,11 @@
                 $('#limit_time').parent().removeClass('disabled');
                 $('#limit_time').attr('disabled', 'false');
             }
-            localStorage.setItem('is_edited', 'true');
+            set_flag_true();
         });
 
         $('#limit_time').change(function () {
-            localStorage.setItem('is_edited', 'true');
+            set_flag_true();
         });
     });
 

@@ -579,14 +579,29 @@ class QuizController extends Controller
         $fromIndex = $request->fromIndex;
         $toIndex = $request->toIndex;
 
-        $quiz = Quiz::where('order', $fromIndex)->get()[0];
+        $index = 0;
+
+        $quizzes = Quiz::where('order', $fromIndex)->get();
+
+        foreach ($quizzes as $item) {
+            if (isset($item->exam_group)) {
+                if ($item->exam_group->exam_id == $request->exam_id) {
+                    $item->order = -1;
+                    $item->save();
+                }
+            }
+        }
 
         if ($fromIndex > $toIndex) {
             $quizzes = Quiz::where('order', '<', $fromIndex)->where('order', '>=', $toIndex)->get();
             foreach ($quizzes as $item) {
-                if ($item->exam_group->exam_id == $request->exam_id) {
-                    $item->order = $item->order + 1;
-                    $item->save();
+                if (isset($item->exam_group)) {
+                    if ($item->exam_group->exam_id == $request->exam_id) {
+                        $item->order ++;
+                        echo $item->order;
+                        echo '<br>';
+                        $item->save();
+                    }
                 }
             }
         }
@@ -594,18 +609,29 @@ class QuizController extends Controller
         if ($fromIndex < $toIndex) {
             $quizzes = Quiz::where('order', '>', $fromIndex)->where('order', '<=', $toIndex)->get();
             foreach ($quizzes as $item) {
-                if ($item->exam_group->exam_id == $request->exam_id) {
-                    $item->order = $item->order - 1;
-                    $item->save();
+                if (isset($item->exam_group)) {
+                    if ($item->exam_group->exam_id == $request->exam_id) {
+                        $item->order --;
+                        $item->save();
+                    }
                 }
             }
         }
 
-        echo $quiz->id;
-        $quiz->order = $toIndex;
-        $quiz->save();
+        $quizzes = Quiz::where('order', -1)->get();
 
-        return $quiz->id;
+        foreach ($quizzes as $item) {
+            if (isset($item->exam_group)) {
+                if ($item->exam_group->exam_id == $request->exam_id) {
+                    $item->order = $toIndex;
+                    $item->save();
+                    $index = $item->id;
+                }
+            }
+        }
+
+
+        return $index;
     }
 
     public function duplicate_quiz(Request $request)
@@ -629,7 +655,8 @@ class QuizController extends Controller
         return $replicate->id;
     }
 
-    public function bg_apply_all(Request $request)
+    public
+    function bg_apply_all(Request $request)
     {
         $exam_groups = Exam::find($request->exam_id)->exam_groups;
 

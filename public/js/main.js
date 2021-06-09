@@ -27,9 +27,9 @@ $('body').on('click', '[data-editable]', function () {
         console.log(e.keyCode);
         if ($(this).closest('.question_score').length > 0) {
             if (!((e.keyCode > 47 && e.keyCode < 58) || (e.keyCode > 95 && e.keyCode < 106) || e.keyCode == 8 || e.keyCode == 46)) e.preventDefault();
-            localStorage.setItem('is_edited', 'true');
+            set_flag_true();
         } else {
-            localStorage.setItem('is_edited', 'true');
+            set_flag_true();
         }
     });
 
@@ -56,18 +56,18 @@ $('body').on('click', '[data-editable]', function () {
 
 $(function () {
     var fromIndex, toIndex;
-    var fromId, toId;
 
     $('.listview li ul').sortable({
         start: function (event, ui) {
-            fromIndex = get_order(ui.item);
-            fromId = ui.item.attr('id');
+            $(this).attr('data-previndex', ui.item.index());
         },
 
         stop: function (event, ui) {
-            toIndex = get_order(ui.item.next());
-            toId = ui.item.next().attr('id');
-            console.log(fromId, toId);
+            toIndex = ui.item.index();
+            fromIndex = $(this).attr('data-previndex');
+            var element_id = ui.item.attr('id');
+            alert('id of Item moved = ' + element_id + ' old position = ' + fromIndex + ' new position = ' + toIndex);
+            $(this).removeAttr('data-previndex');
 
             const root_url = $('meta[name=url]').attr('content');
             const token = $('meta[name=csrf-token]').attr('content');
@@ -85,9 +85,13 @@ $(function () {
                 },
                 success: function (data) {
 
-                    const element = $('#preview_item-' + fromId)[0].outerHTML;
-                    $('#preview_item-' + fromId).remove();
-                    $(element).insertBefore($('#preview_item-' + toId));
+                    const element = $('#preview_item-' + element_id)[0].outerHTML;
+                    $('#preview_item-' + element_id).remove();
+                    if (toIndex < fromIndex) {
+                        $(element).insertBefore($('.preview-item').eq(toIndex));
+                    } else {
+                        $(element).insertAfter($('.preview-item').eq(toIndex - 1));
+                    }
 
                     if (fromIndex > toIndex) {
                         for (let i = 0; i < $('#quiz_list li.node').length; i++) {
@@ -132,6 +136,11 @@ function hide_preload() {
 
 $('body').on('click', 'div[contenteditable=true]', function () {
     $('div[contenteditable=true]').keydown(function (e) {
-        localStorage.setItem('is_edited', 'true');
+        set_flag_true();
     });
 });
+
+function set_flag_true() {
+    localStorage.setItem('is_edited', 'true');
+    localStorage.setItem('is_edited_for_timer', 'true');
+}

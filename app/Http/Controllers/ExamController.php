@@ -116,7 +116,7 @@ class ExamController extends Controller
             'feedback_incorrect' => 'You did not choose the correct response.',
             'feedback_try_again' => 'You did not choose the correct response. Try again.',
             'media' => null,
-            'order' => 0,
+            'order' => 1,
             'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%;z-index: 2;padding: 10px;position:absolute;overflow: hidden;"><div class="col-md-12"><div contenteditable="true"><div class="cancel_drag">Your Score: %%</div><div class="cancel_drag">Passing Score: ##</div></div></div></div>',
             'question_type' => 'graded',
             'feedback_type' => 'by_result',
