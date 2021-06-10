@@ -591,8 +591,9 @@ function add_canvas_item_info(string) {
 /*
 * *********** Multiple selection (add class 'selected_slide_view_group')
 * */
-$("body").click(function (e) {
+$("body").mousedown(function (e) {
     const element = $(e.target);
+
     if (element.closest('#quiz_background_container').length > 0) {
         if (element[0].classList.contains('slide_view_group_checkbox')) {
             if (element.is(':checked')) {
