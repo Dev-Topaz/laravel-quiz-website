@@ -522,7 +522,7 @@ function form_to_slide() {
             set_flag_true();
         },
         cancel: 'div.cancel_drag',
-        cursor: 'crosshair',
+        cursor: 'move',
         containment: 'parent'
     });
     if ($('#quiz_view .slide_view_group_checkbox').length === 0) $('#quiz_view .slide_view_group').append('<input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;">');
@@ -741,7 +741,7 @@ $('#slide_view_video_file_selector').change(function () {
                         stop: function () {
                             set_flag_true();
                         },
-                        cursor: 'crosshair',
+                        cursor: 'move',
                         containment: 'parent',
                     }).resizable({
                         containment: 'parent',

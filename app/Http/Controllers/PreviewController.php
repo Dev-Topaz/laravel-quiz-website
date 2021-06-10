@@ -45,9 +45,8 @@ class PreviewController extends Controller
 
     public function preview_exam(string $id) {
         $user = Auth::user();
-        $tmp = explode('&', $id);
-        $exams = Exam::where('id', $tmp[0])->get();
-        $is_quiz = count($tmp);
+        $exams = Exam::where('id', $id)->get();
+        $is_quiz = 1;
 
         $exam_groups = $exams[0]->exam_groups;
         $quizzes = [];

@@ -16,9 +16,14 @@
                 <div class="content_header">
                     <div class="content_header_title">
                         <div style="float: left">
+                            @hasrole('manager')
                             <h2>Exam Management
                             </h2>
                             <p>Create, edit, delete and test your exams</p>
+                            @endhasrole
+                            @hasrole('student')
+                            <h2>Exam Page</h2>
+                            @endhasrole
                         </div>
                         @hasrole('manager')
                         <div style="float: right;margin-right: 0px">
@@ -98,15 +103,15 @@
                                             </div>
                                             <div class="form_option_separator"></div>
                                             <div class="form_option option_expandable">
-                                                <a class="mf_link_theme"
-                                                   href="{{ url('/preview_exam') }}/{{ $exam->id }}" title="Theme"><i
+                                                <a class="mf_link_theme" href="javascript:void(0)"
+                                                   onclick="{window.open('{{ url('/preview_exam') }}/{{ $exam->id }}')}" title="Theme"><i
                                                         class="far fa-play-circle"></i><span class="option_text">Test Exam</span></a>
                                             </div>
                                             @endhasrole
                                             @hasrole('student')
                                             <div class="form_option option_expandable">
-                                                <a class="mf_link_theme"
-                                                   href="{{ url('/preview_exam') }}/{{ $exam->id }}" title="Theme"><i
+                                                <a class="mf_link_theme" href="javascript:void(0)"
+                                                   onclick="{window.open('{{ url('/preview_exam') }}/{{ $exam->id }}')}" title="Theme"><i
                                                         class="far fa-play-circle"></i><span class="option_text">Start Exam</span></a>
                                             </div>
                                             @endhasrole

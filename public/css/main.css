@@ -101,6 +101,9 @@ main {
 #content .post .content_body {
     padding: 0 20px;
     min-height: 200px;
+}
+
+#quiz_form #content .post .content_body {
     background-color: #f1f1f1;
 }
 
@@ -825,7 +828,7 @@ if it's not present, don't show loader */
 .quiz #main .slide_view_group {
     border: 1px dotted grey;
     box-shadow: rgb(255 255 255) 0px 0px 1px 1px;
-    cursor: crosshair;
+    cursor: move;
 }
 
 .quiz #main .selected_slide_view_group {

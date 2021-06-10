@@ -1,7 +1,8 @@
 $('div.quiz_item_container .slide_view_question_element').attr('contenteditable', 'false');
-$('div.quiz_item_container .slide_view_question_element div').attr('contenteditable', 'false');
+$('div.quiz_item_container div').attr('contenteditable', 'false');
 $('div.quiz_item_container input').attr('autocomplete', 'off');
 $('#question_list_modal .question_content div').attr('contenteditable', 'false');
+$('.other_slide_view_element_delete_icon').remove();
 
 /*
 * ************ Fit Quiz size ********************
@@ -503,7 +504,11 @@ function preview(element) {
                     $('#submit_btn').html('Close');
                 } else {
                     $('#review_btn').css('visibility', 'visible');
-                    $('#submit_btn').html('See Result');
+                    if ($('#is_quiz').html() == '0') {
+                        $('#submit_btn').html('Close');
+                    } else {
+                        $('#submit_btn').html('See Result');
+                    }
                 }
 
             } else {
@@ -1395,20 +1400,35 @@ function show_result(question_correct_answer, question_type_id, question_id) {
 * ************* Limit Time *************
 * */
 
+var start_or_end;
+
 function limit_time() {
 
     if ($('.quiz_show .is_limit_time').html() == '1') {
+
         const limit_second = get_limit_time_to_second();
+        start_or_end = 'start';
         $('#question_time').show();
 
-        alert('You have ' + limit_second + ' sec to answer the next question');
+        $('#timer_dialog_content').html('You have ' + limit_second + ' sec to answer this question');
 
         $('#question_time span').html(limit_second);
 
-        start_question_timer();
+        $('#timer_confirm_dialog').fadeIn(200);
+
     }
 
 }
+
+$('#timer_dialog_btn button').click(function () {
+    if (start_or_end == 'start') {
+
+        start_question_timer();
+        start_or_end = 'end';
+    }
+
+    $('#timer_confirm_dialog').fadeOut(200);
+});
 
 function get_limit_time_to_second() {
     return parseInt($('.quiz_show .limit_time').html().split(':')[0]) * 60 + parseInt($('.quiz_show .limit_time').html().split(':')[1]);
@@ -1423,7 +1443,8 @@ function start_question_timer() {
 
         if (current_second == 0) {
             clearInterval(question_timer);
-            alert('Your time is up for this question.');
+            $('#timer_dialog_content').html('Your time is up for this question.');
+            $('#timer_confirm_dialog').fadeIn(200);
             $('#submit_btn').html('Continue');
         }
     }, 1000);

@@ -150,3 +150,37 @@
 .disable_btn {
     background-color: gray !important;
 }
+
+#timer_confirm_dialog {
+    width: 600px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10000;
+    box-shadow: grey 1px 1px 3px 1px;
+    padding: 20px;
+    border-radius: 10px;
+    display: none;
+}
+
+#timer_dialog_content {
+    padding: 15px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+#timer_dialog_btn {
+    display: flex;
+    justify-content: center;
+}
+
+#timer_dialog_btn button {
+    background: #2f7de3;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 5px 25px;
+    border-radius: 8px;
+}

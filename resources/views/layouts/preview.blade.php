@@ -40,6 +40,10 @@
 
     <div id="caption"></div>
 </div>
+<div id="timer_confirm_dialog">
+    <div id="timer_dialog_content">You have 60 sec to answer this question.</div>
+    <div id="timer_dialog_btn"><button>OK</button></div>
+</div>
 <div id="preview_container">
     <div id="preview_toast" style="display: none;">
         <div id="preview_toast_title">Incorrect</div>
