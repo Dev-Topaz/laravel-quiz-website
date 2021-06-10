@@ -56,8 +56,12 @@ $('body').on('click', '[data-editable]', function () {
 
 $(function () {
     var fromIndex, toIndex;
+    var groupId;
+    var parentNode;
 
     $('.listview li ul').sortable({
+        cancel: '.instruction_node',
+
         start: function (event, ui) {
             $(this).attr('data-previndex', ui.item.index());
         },
@@ -65,6 +69,8 @@ $(function () {
         stop: function (event, ui) {
             toIndex = ui.item.index();
             fromIndex = $(this).attr('data-previndex');
+            parentNode = $(this).closest('.node-group');
+            groupId = parentNode.attr('id');
 
             if (toIndex == fromIndex) return;
 
@@ -85,30 +91,33 @@ $(function () {
                     fromIndex: fromIndex,
                     toIndex: toIndex,
                     exam_id: exam_id,
+                    exam_group_id: groupId,
                 },
                 success: function (data) {
 
                     const element = $('#preview_item-' + element_id)[0].outerHTML;
                     $('#preview_item-' + element_id).remove();
 
-                    if (toIndex < fromIndex) {
-                        $(element).insertBefore($('.preview_item').eq(toIndex));
-                    } else {
-                        $(element).insertAfter($('.preview_item').eq(toIndex - 1));
-                    }
+                    const to_element_id = parentNode.find('li.node').eq(toIndex + 1).attr('id');
+
+                    // if (toIndex < fromIndex) {
+                        $(element).insertBefore($('#preview_item-' + to_element_id));
+                    // } else {
+                    //     $(element).insertAfter($('.preview_item').eq(toIndex - 1));
+                    // }
 
                     if (fromIndex > toIndex) {
-                        for (let i = 0; i < $('#quiz_list li.node').length; i++) {
-                            if (parseInt($('#quiz_list li.node').eq(i).attr('order')) >= toIndex && parseInt($('#quiz_list li.node').eq(i).attr('order')) < fromIndex) {
-                                $('#quiz_list li.node').eq(i).attr('order', parseInt($('#quiz_list li.node').eq(i).attr('order')) + 1);
+                        for (let i = 0; i < parentNode.find('li.node').length; i++) {
+                            if (parseInt(parentNode.find('li.node').eq(i).attr('order')) >= toIndex && parseInt(parentNode.find('li.node').eq(i).attr('order')) < fromIndex) {
+                                parentNode.find('li.node').eq(i).attr('order', parseInt(parentNode.find('li.node').eq(i).attr('order')) + 1);
                             }
                         }
                     }
 
                     if (fromIndex < toIndex) {
-                        for (let i = 0; i < $('#quiz_list li.node').length; i++) {
-                            if (parseInt($('#quiz_list li.node').eq(i).attr('order')) <= toIndex && parseInt($('#quiz_list li.node').eq(i).attr('order')) > fromIndex) {
-                                $('#quiz_list li.node').eq(i).attr('order', parseInt($('#quiz_list li.node').eq(i).attr('order')) - 1);
+                        for (let i = 0; i < parentNode.find('li.node').length; i++) {
+                            if (parseInt(parentNode.find('li.node').eq(i).attr('order')) <= toIndex && parseInt(parentNode.find('li.node').eq(i).attr('order')) > fromIndex) {
+                                parentNode.find('li.node').eq(i).attr('order', parseInt(parentNode.find('li.node').eq(i).attr('order')) - 1);
                             }
                         }
                     }

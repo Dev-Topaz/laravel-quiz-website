@@ -303,7 +303,8 @@
                                 </div>
                             </ul>
                         </div>
-                        <button class="ribbon-button info_slide_btn" onclick="create_quiz(12, '{{ url('/') }}', '{{ csrf_token() }}')">
+                        <button class="ribbon-button info_slide_btn"
+                                onclick="create_quiz(12, '{{ url('/') }}', '{{ csrf_token() }}')">
                         <span class="icon">
                             <img loading="lazy" src="{{ url("/images/ribbon_imgs/insert-2.png") }}">
                         </span>
@@ -863,7 +864,6 @@
                                 <option style="font-family: 'SimSun-ExtB';" value="SimSun-ExtB">SimSun-ExtB</option>
                                 <option style="font-family: 'Sitka';" value="Sitka">Sitka</option>
                                 <option style="font-family: 'Snell Roundhan';" value="Snell Roundhan">Snell Roundhan
-                                </option>
                                 </option>
                                 <option style="font-family: 'Stencil Std';" value="Stencil Std">Stencil Std</option>
                                 <option style="font-family: 'Sylfaen';" value="Sylfaen">Sylfaen</option>
@@ -1996,7 +1996,7 @@
                                              style="background: #dcdcdc;display: flex;height: 690px;">
                                             <div
                                                 style="margin: auto 10px;background: #f1f1f1;width: 100%;padding: 20px;height: 600px;font-size: 18px;display: flex;align-items: center;justify-content: center;">
-                                                Quiz has no questions. Add new questions.
+                                                This question group has no questions. Add new questions.
                                             </div>
                                         </div>
                                         <div class="cell-3 slide_option" style="padding: 0 20px;">
@@ -2020,6 +2020,7 @@
                                          style="overflow-y: scroll;height: 650px;">
                                         <ul data-role="listview" data-view="content" id="quiz_list"
                                             data-on-node-click="onNodeClick">
+                                            {{ $exam->get_all_questions }}
                                             @foreach ($exam->exam_groups as $exam_group)
                                                 @if ($exam_group->group_name != 'Results')
                                                     <li data-caption="{{ $exam_group->group_name }}"
@@ -2030,7 +2031,7 @@
                                                                     data-content="<i>Add questions</i>"></li>
                                                             @else
                                                                 @foreach($exam_group->quizes as $quiz)
-                                                                    <li id="{{ $quiz->id }}" order="{{ $quiz->order }}"
+                                                                    <li class="{{ $quiz->type_id == 13 ? 'instruction_node' : '' }}" id="{{ $quiz->id }}" order="{{ $quiz->order }}"
                                                                         data-caption="{{ strip_tags($quiz->question_element) }}"
                                                                         data-content="<i>{{ $quiz->Quiz_type->name }}</i>"></li>
                                                                 @endforeach
@@ -2250,6 +2251,10 @@
                         'justify-content': 'space-around',
                     });
                 }
+
+                $('.node-group > .data > .caption').click(function () {
+                    console.log('node group');
+                });
             });
         </script>
 @endsection

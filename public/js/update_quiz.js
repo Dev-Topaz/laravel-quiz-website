@@ -514,7 +514,8 @@ function form_to_slide() {
     $('#quiz_view .slide_view_group').resizable({
         resize: function () {
             set_flag_true();
-        }
+        },
+        containment: 'parent',
     });
     $('#quiz_view #quiz_background_container .slide_view_group').draggable({
         drag: function () {
@@ -626,6 +627,7 @@ $('#insert_textbox_btn').click(function () {
             set_flag_true();
         }
     }).resizable({
+        containment: 'parent',
         stop: function () {
             set_flag_true();
         }
@@ -674,6 +676,7 @@ $('#slide_view_picture_file_selector').change(function () {
                         },
                         containment: 'parent',
                     }).resizable({
+                        containment: 'parent',
                         stop: function () {
                             set_flag_true();
                         }
@@ -741,6 +744,7 @@ $('#slide_view_video_file_selector').change(function () {
                         cursor: 'crosshair',
                         containment: 'parent',
                     }).resizable({
+                        containment: 'parent',
                         stop: function () {
                             set_flag_true();
                         }

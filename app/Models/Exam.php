@@ -17,4 +17,5 @@ class Exam extends Model
     {
         return $this->hasMany(ExamGroup::class, 'exam_id', 'id');
     }
+
 }
