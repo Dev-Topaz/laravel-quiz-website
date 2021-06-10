@@ -10,7 +10,7 @@
                 <div class="col-1">Points</div>
                 <div class="col-1">Result</div>
             </div>
-            <div id="question_list_content" style="overflow-y: scroll;height: 440px;">
+            <div id="question_list_content" style="overflow-y: scroll;height: 340px;">
                 @foreach($quizzes as $quiz)
                     @if ($quiz->type_id < 14)
                         <div class="row question_list_body" id="question_list-{{ $quiz->id }}">
