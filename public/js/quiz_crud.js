@@ -301,9 +301,16 @@ function create_quiz(quiz_type, root_url, token) {
                     }
                 }
 
+                $('#preview_item-' + quizId).css({
+                   'width': $('#preview_item-' + prev_id).css('width'),
+                   'height': $('#preview_item-' + prev_id).css('height'),
+                });
+
                 $('#preview_item-' + quizId + ' > div').css({
                     'margin': 'auto',
-                    'zoom': $('#preview_item-' + prev_id + ' > div').css('zoom'),
+                    'top': '50%',
+                    'left': '50%',
+                    'transform': $('#preview_item-' + prev_id + ' > div').css('transform'),
                 });
 
                 $('.selected_preview_item').removeClass('selected_preview_item');
@@ -583,7 +590,7 @@ function update_quiz(is_alert_save) {
         },
         success: function (data) {
             console.log(typeId);
-            if (typeId > 13) {
+            if (typeId > 12) {
                 show_modal('success', 'Success', 'Slide updated successfully');
             } else {
                 show_modal('success', 'Success', 'Question updated successfully');
@@ -672,6 +679,9 @@ function delete_quiz(quizId) {
     const token = $('meta[name=csrf-token]').attr('content');
 
     const node = $('#quiz_list').find('.current');
+    const order = node.attr('order');
+
+    const typeId = $('#type_id').val();
 
     prev_id = '';
 
@@ -702,10 +712,21 @@ function delete_quiz(quizId) {
             get_next_node_element(node).trigger('click');
 
             node.remove();
+
+            for (let i = 0; i < $('#quiz_list li.node').length; i++) {
+                if (parseInt($('#quiz_list li.node').eq(i).attr('order')) > order) {
+                    $('#quiz_list li.node').eq(i).attr('order', parseInt($('#quiz_list li.node').eq(i).attr('order')) - 1);
+                }
+            }
+
             $('#preview_item-' + quizId).remove();
 
             $('#quiz_view').html('');
-            show_modal('success', 'Success', 'Question deleted successfully');
+            if (typeId > 12) {
+                show_modal('success', 'Success', 'Slide deleted successfully');
+            } else {
+                show_modal('success', 'Success', 'Question deleted successfully');
+            }
             hide_preload();
         }
     }).catch((XHttpResponse) => {
@@ -743,6 +764,7 @@ function show_correct_view() {
             drag: function () {
                 set_flag_true();
             },
+            cursor: "crosshair",
             cancel: 'div.cancel_drag',
             containment: 'parent'
         });
@@ -921,9 +943,16 @@ $('#duplicate_btn').click(function () {
                 const element = '<div id="preview_item-' + quizId + '" class="preview_item selected_preview_item">' + $('#quiz_view .slide_view_element').html().replace('top:50%;left:50%;transform:translate(-50%, -50%);', '') + '</div>';
                 $(element).insertAfter($('#preview_item-' + prev_id));
 
+                $('#preview_item-' + quizId).css({
+                   'width': $('#preview_item-' + prev_id).css('width'),
+                   'height': $('#preview_item-' + prev_id).css('height'),
+                });
+
                 $('#preview_item-' + quizId + ' > div').css({
                     'margin': 'auto',
-                    'zoom': $('#preview_item-' + prev_id + ' > div').css('zoom'),
+                    'top': '50%',
+                    'left': '50%',
+                    'transform': $('#preview_item-' + prev_id + ' > div').css('transform'),
                 });
 
                 $('.selected_preview_item').removeClass('selected_preview_item');
@@ -1073,13 +1102,17 @@ $('#slide_view_quiz_list').on('click', '.preview_item', function () {
 function real_time_update_slide_view_nav_active() {
     preview_timer = setInterval(function () {
         console.log('setinterval');
+        const navZoomScale = ($('#slide_view_quiz_list').width() - 40) / parseInt($('#screen_width').val());
         if ($('#quiz_list .node.current').length > 0 && localStorage.getItem('is_edited_for_timer') == 'true') {
             localStorage.setItem('is_edited_for_timer', 'false');
 
             if ($('#quiz_view .slide_view_element').html() != undefined) $('#preview_item-' + $('#quiz_list .node.current').attr('id')).html($('#quiz_view .slide_view_element').html().replace('top: 50%; left: 50%; transform: translate(-50%, -50%);', '').replace('top:50%;left:50%;transform:translate(-50%, -50%);', '').replace('slide_view_hotspots_canvas', 'slide_view_hotspots_canvas-' + $('#quiz_list .node.current').attr('id')));
             $('#preview_item-' + $('#quiz_list .node.current').attr('id') + ' > div').css({
                 'margin': 'auto',
-                'zoom': ($('#slide_view_quiz_list').width() - 40) / parseInt($('#screen_width').val()),
+                // 'zoom': ($('#slide_view_quiz_list').width() - 40) / parseInt($('#screen_width').val()),
+                'top': '50%',
+                'left': '50%',
+                'transform': 'translate(-50%, -50%) matrix(' + navZoomScale + ', 0, 0, ' + navZoomScale + ', 0, 0)',
             });
             if ($('#question').html() != undefined) $('#' + $('#quiz_list .node.current').attr('id') + ' .data .caption').html($('#question').html().replace(/(<([^>]+)>)/gi, ''));
 

@@ -2232,6 +2232,8 @@
 
                 form_to_slide();
 
+                localStorage.setItem('is_edited_for_timer', 'true');
+
                 // if ($('.form_view_element').length > 0) store_quiz_state();
             });
 

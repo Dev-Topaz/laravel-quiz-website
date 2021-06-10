@@ -65,8 +65,11 @@ $(function () {
         stop: function (event, ui) {
             toIndex = ui.item.index();
             fromIndex = $(this).attr('data-previndex');
+
+            if (toIndex == fromIndex) return;
+
             var element_id = ui.item.attr('id');
-            alert('id of Item moved = ' + element_id + ' old position = ' + fromIndex + ' new position = ' + toIndex);
+            console.log('id of Item moved = ' + element_id + ' old position = ' + fromIndex + ' new position = ' + toIndex);
             $(this).removeAttr('data-previndex');
 
             const root_url = $('meta[name=url]').attr('content');
@@ -87,10 +90,11 @@ $(function () {
 
                     const element = $('#preview_item-' + element_id)[0].outerHTML;
                     $('#preview_item-' + element_id).remove();
+
                     if (toIndex < fromIndex) {
-                        $(element).insertBefore($('.preview-item').eq(toIndex));
+                        $(element).insertBefore($('.preview_item').eq(toIndex));
                     } else {
-                        $(element).insertAfter($('.preview-item').eq(toIndex - 1));
+                        $(element).insertAfter($('.preview_item').eq(toIndex - 1));
                     }
 
                     if (fromIndex > toIndex) {

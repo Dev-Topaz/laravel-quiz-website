@@ -122,9 +122,10 @@ function apply_all() {
             background_img: background_img,
         },
         success: function (data) {
-            alert('Background of All Quiz updated successfully');
-            // store_quiz_state();
+            show_modal('success', 'Success', 'Background of All Questions updated successfully');
+            $('.preview_item > div > div').css('background-image', background_img);
             hide_preload();
+            set_flag_true();
         }
     }).catch((XHttpResponse) => {
         console.log(XHttpResponse);
@@ -133,15 +134,26 @@ function apply_all() {
 }
 
 function delete_background_pic() {
+    $('#bg_delete_confirm_dialog').fadeIn(300);
+}
+
+$('#bg_delete_yes').click(function () {
     $('#quiz_view #quiz_background_container').css('background-image', 'unset');
     $('#background_properties_image img').attr('src', '');
     $('#background_img').val('');
     $('#change_background_tag').html('Open');
-}
+    $('#bg_delete_confirm_dialog').fadeOut(300);
+    set_flag_true();
+});
+
+$('#bg_delete_no').click(function () {
+    $('#bg_delete_confirm_dialog').fadeOut(300);
+});
 
 $('#select_background_img').change(function () {
 
     var root_url = $('meta[name=url]').attr('content');
+    const token = $('meta[name=csrf-token]').attr('content');
 
     let reader = new FileReader();
 
@@ -165,12 +177,14 @@ $('#select_background_img').change(function () {
             processData: false,
             success: (response) => {
                 if (response) {
-                    console.log(response);
+
                     $('#quiz_view #quiz_background_container').css('background-image', 'url("' + root_url + '/' + response + '")');
                     $('#background_properties_image img').attr('src', root_url + '/' + response);
                     $('#background_img').val('url("' + root_url + '/' + response + '")');
                     $('#change_background_tag').html('Change');
                     console.log('Image has been uploaded successfully');
+
+                    set_flag_true();
                 }
                 hide_preload();
             },

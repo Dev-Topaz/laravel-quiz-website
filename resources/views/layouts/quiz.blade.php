@@ -53,6 +53,14 @@
         <button id="delete_no" class="button light">No</button>
     </div>
 </div>
+<div id="bg_delete_confirm_dialog" class="quiz_dialog">
+    <input id="bg_delete_dialog_id" type="text" hidden>
+    <div id="bg_delete_dialog_content" class="quiz_dialog_content">Are you sure you want to delete?</div>
+    <div id="bg_delete_dialog_btn" class="quiz_dialog_btn">
+        <button id="bg_delete_yes" class="button success">Yes</button>
+        <button id="bg_delete_no" class="button light">No</button>
+    </div>
+</div>
 <div id="preview_toast" style="display: none;">
     <div id="preview_toast_title">Incorrect</div>
     <div id="preview_toast_body">You didn't choose the correct answer.</div>

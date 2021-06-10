@@ -684,11 +684,11 @@
             {{--            </div>--}}
             <div id="question_control_btn_container">
                 <button type="button" class="quiz_handle_button" onclick="update_quiz()"><i
-                        class="fas fa-save"></i><span>{{ $quiz->type_id > 13 ? 'Update Slide' : 'Update Question' }}</span>
+                        class="fas fa-save"></i><span>{{ $quiz->type_id > 12 ? 'Update Slide' : 'Update Question' }}</span>
                 </button>
                 <button type="button" class="quiz_handle_button" onclick="show_delete_dialog('question', this)"
                         style="{{ $quiz->type_id > 13 ? 'display:none;' : '' }}"><i
-                        class="fas fa-trash"></i><span>Delete Question</span>
+                        class="fas fa-trash"></i><span>{{ $quiz->type_id > 12 ? 'Delete Slide' : 'Delete Question' }}</span>
                 </button>
             </div>
             {{--            <div class="form_view_element">preview</div>--}}
@@ -812,11 +812,11 @@
             if ($('#is_limit_time').is(":checked")) {
                 console.log('true');
                 $('#limit_time').parent().removeClass('disabled');
-                $('#limit_time').attr('disabled', 'true');
+                $('#limit_time').attr('disabled', '');
             } else {
                 console.log('false');
                 $('#limit_time').parent().removeClass('disabled');
-                $('#limit_time').attr('disabled', 'false');
+                $('#limit_time').removeAttr('disabled');
             }
             set_flag_true();
         });

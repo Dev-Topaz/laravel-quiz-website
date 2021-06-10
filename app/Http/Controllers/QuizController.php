@@ -543,7 +543,19 @@ class QuizController extends Controller
     public function destroy(Quiz $quiz)
     {
 
+        $order = $quiz->order;
+        $exam_id = $quiz->exam_group->exam_id;
         $quiz->delete();
+
+        $order_updating_quizzes = Quiz::where('order', '>', $order)->get();
+        foreach ($order_updating_quizzes as $item) {
+            if (isset($item->exam_group)) {
+                if ($item->exam_group->exam_id == $exam_id) {
+                    $item->order = $item->order - 1;
+                    $item->save();
+                }
+            }
+        }
 
         return true;
     }

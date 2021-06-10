@@ -634,6 +634,7 @@ main.quiz {
 
 div[contenteditable="true"] {
     outline: none;
+    cursor: text;
 }
 
 .slide_view_element label[data-editable] {
@@ -824,6 +825,7 @@ if it's not present, don't show loader */
 .quiz #main .slide_view_group {
     border: 1px dotted grey;
     box-shadow: rgb(255 255 255) 0px 0px 1px 1px;
+    cursor: crosshair;
 }
 
 .quiz #main .selected_slide_view_group {
@@ -1105,4 +1107,8 @@ if it's not present, don't show loader */
     padding: 0 0.75rem;
     font-size: 0.875rem;
     height: 36px;
+}
+
+.other_slide_view_element_delete_icon {
+    cursor: pointer;
 }

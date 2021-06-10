@@ -85,6 +85,8 @@ function answer_slide2form(answer_element, answer_content) {
             let matching_answer_array = answer_content.split('@');
             matching_answer_array.pop();
 
+            console.log(matching_answer_array);
+
             for (let i = 0; i < matching_answer_array.length; i++) {
                 form_answer += '<tr class="matching_item"><td><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><label class="matching_item_label" data-editable>' + matching_answer_array[i].split(';')[0] + '</label></td><td></td><td><label class="matching_label" data-editable>' + matching_answer_array[i].split(';')[1] + '</label></td><td></td><td><a onclick="{$(this).parent().parent().remove();set_flag_true();}"><i class="fas fa-trash-alt"></i></a></td></tr>';
             }
@@ -415,8 +417,9 @@ function answer_store() {
         case '7':
             answer_element = $('tbody#matching_list tr');
             for (let i = 0; i < answer_element.length; i++) {
-                answer += $('#quiz_view .slide_view_answer_element .ui-widget-header').eq(i).html() + ';' + $('#quiz_view .slide_view_answer_element .ui-widget-content').eq(i).html() + '@';
+                answer += answer_element.eq(i).find('label').eq(0).html() + ';' + answer_element.eq(i).find('label').eq(1).html() + '@';
             }
+            console.log(answer);
             break;
 
         case '8':
@@ -518,6 +521,7 @@ function form_to_slide() {
             set_flag_true();
         },
         cancel: 'div.cancel_drag',
+        cursor: 'crosshair',
         containment: 'parent'
     });
     if ($('#quiz_view .slide_view_group_checkbox').length === 0) $('#quiz_view .slide_view_group').append('<input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;">');
@@ -540,12 +544,23 @@ function fit_slide_view() {
     const zoom_width = ($('#quiz_view .slide_view_element').width() - 30) / parseInt($('#screen_width').val());
     const zoom_height = ($('#quiz_view .slide_view_element').height() - 30) / parseInt($('#screen_height').val());
     const zoom = Math.min(zoom_width, zoom_height);
-    $('#quiz_view #slide_view_container').eq(0).css('zoom', zoom);
+    $('#quiz_view #slide_view_container').eq(0).css('transform', 'translate(-50%, -50%) matrix(' + zoom + ', 0, 0, ' + zoom + ', 0, 0)');
 }
 
 function fit_slide_view_quiz_list() {
     const zoom = ($('#slide_view_quiz_list').width() - 40) / parseInt($('#screen_width').val());
-    $('.preview_item > div').css('zoom', zoom);
+    console.log(zoom);
+    $('.preview_item > div').css({
+        'transform': 'translate(-50%, -50%) matrix(' + zoom + ', 0, 0, ' + zoom + ', 0, 0)',
+        'top': '50%',
+        'left': '50%'
+        // 'width': $('.preview_item > div').width() * zoom,
+        // 'height': $('.preview_item > div').height() * zoom,
+    });
+    $('.preview_item').css({
+        'width': parseInt($('#screen_width').val()) * zoom + 20,
+        'height': parseInt($('#screen_height').val()) * zoom + 20,
+    });
 }
 
 /**************************************************************/
@@ -605,6 +620,7 @@ $('#insert_textbox_btn').click(function () {
     $('#quiz_view .slide_view_group').removeClass('just_added_slide_view_element');
     $('#quiz_view #quiz_background_container').append('<div class="slide_view_group just_added_slide_view_element other_slide_view_element" style="height: 70px;width: 80%;left: 10%;z-index: 3;overflow: hidden;padding:10px;position:absolute;"><div class="cancel_drag" contenteditable="true">Type Text Content</div><input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;"><span class="other_slide_view_element_delete_icon" style="position: absolute;top: 0;right: 0;display: none;" onclick="{$(this).parent().remove();set_flag_true();}"><i class="fas fa-trash-alt" style="font-size: 18px;"></i></span></div>');
     $('#quiz_view .just_added_slide_view_element').draggable({
+        containment: 'parent',
         cancel: 'div.cancel_drag',
         stop: function () {
             set_flag_true();
@@ -655,7 +671,8 @@ $('#slide_view_picture_file_selector').change(function () {
                     $('#quiz_view .just_added_slide_view_element').draggable({cancel: 'div.cancel_drag',
                         stop: function () {
                             set_flag_true();
-                        }
+                        },
+                        containment: 'parent',
                     }).resizable({
                         stop: function () {
                             set_flag_true();
@@ -720,7 +737,9 @@ $('#slide_view_video_file_selector').change(function () {
                     $('#quiz_view .just_added_slide_view_element').draggable({cancel: 'div.cancel_drag',
                         stop: function () {
                             set_flag_true();
-                        }
+                        },
+                        cursor: 'crosshair',
+                        containment: 'parent',
                     }).resizable({
                         stop: function () {
                             set_flag_true();
