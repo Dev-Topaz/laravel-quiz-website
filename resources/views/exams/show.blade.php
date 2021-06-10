@@ -2005,7 +2005,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="cell-2" style="order: 1;">
+                                <div class="cell-2" style="order: 1;border-right: 1px solid #aeaeae;">
                                     <div style="display: flex; justify-content: space-between;">
                                         <div id="form_view_btn" class="view_switch_btn clicked form_view"
                                              style="background-image: url('{{ url('/images/ribbon_imgs/form_view.png') }}');">

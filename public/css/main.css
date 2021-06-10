@@ -103,7 +103,7 @@ main {
     min-height: 200px;
 }
 
-#quiz_form #content .post .content_body {
+#quiz_form .content_body {
     background-color: #f1f1f1;
 }
 

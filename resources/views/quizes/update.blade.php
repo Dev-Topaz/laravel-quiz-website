@@ -521,7 +521,7 @@
             </div>
         </div>
     </div>
-    <div class="cell-3 slide_option" style="padding: 0 20px;">
+    <div class="cell-3 slide_option" style="padding: 0 20px;border-left: 1px solid #aeaeae;">
         <h3 style="border-bottom: 1px dotted grey;padding: 15px 10px;">Slide Options</h3>
         <div>
             <div style="{{ $quiz->type_id > 11 ? 'display:none;' : ''}}">
@@ -696,7 +696,7 @@
             <input type="text" id="target_element" value="" hidden>
         </div>
     </div>
-    <div class="cell-3 picture_properties" style="padding: 0 20px;display: none;">
+    <div class="cell-3 picture_properties" style="padding: 0 20px;display: none;border-left: 1px solid #aeaeae;">
         <div style="display: flex;justify-content: space-around;align-items: center;">
             <h3 style="border-bottom: 1px dotted grey;padding: 15px 10px;">Picture Properties</h3>
             <p style="color: gray;font-size: 18px;" onclick="close_pic_properties()">x</p>
@@ -709,7 +709,7 @@
             <a href="javascript:void(0)" style="padding:5px" onclick="delete_media_pic()">Delete</a>
         </div>
     </div>
-    <div class="cell-3 background_properties" style="padding: 0 20px;display: none;">
+    <div class="cell-3 background_properties" style="padding: 0 20px;display: none;border-left: 1px solid #aeaeae;">
         <div style="display: flex;justify-content: space-around;align-items: center;">
             <h3 style="border-bottom: 1px dotted grey;padding: 15px 10px;">Background Properties</h3>
             <p style="color: gray;font-size: 18px;" onclick="close_background_properties()">x</p>
@@ -724,7 +724,7 @@
             <a href="javascript:void(0)" style="padding:5px" onclick="delete_background_pic()">Delete</a>
         </div>
     </div>
-    <div class="cell-3 video_properties" style="padding: 0 20px;display: none;">
+    <div class="cell-3 video_properties" style="padding: 0 20px;display: none;border-left: 1px solid #aeaeae;">
         <div style="display: flex;justify-content: space-around;align-items: center;">
             <h3 style="border-bottom: 1px dotted grey;padding: 15px 10px;">Video Properties</h3>
             <p style="color: gray;font-size: 18px;" onclick="close_video_properties()">x</p>
@@ -739,7 +739,7 @@
             <a href="javascript:void(0)" style="padding:5px" onclick="delete_video()">Delete</a>
         </div>
     </div>
-    <div class="cell-3 audio_properties" style="padding: 0 20px;display: none;">
+    <div class="cell-3 audio_properties" style="padding: 0 20px;display: none;border-left: 1px solid #aeaeae;">
         <div style="display: flex;justify-content: space-around;align-items: center;">
             <h3 style="border-bottom: 1px dotted grey;padding: 15px 10px;">Audio Properties</h3>
             <p style="color: gray;font-size: 18px;" onclick="close_audio_properties()">x</p>
