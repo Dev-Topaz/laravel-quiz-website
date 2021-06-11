@@ -520,9 +520,11 @@ function form_to_slide() {
     $('#quiz_view #quiz_background_container .slide_view_group').draggable({
         drag: function (evt, ui) {
             const zoom = get_zoom();
-            set_flag_true();
             ui.position.top = Math.round(ui.position.top / zoom);
             ui.position.left = Math.round(ui.position.left / zoom);
+        },
+        stop: function () {
+            set_flag_true();
         },
         cancel: 'div.cancel_drag',
         cursor: 'move',
@@ -631,6 +633,12 @@ $('#insert_textbox_btn').click(function () {
     $('#quiz_view .slide_view_group').removeClass('just_added_slide_view_element');
     $('#quiz_view #quiz_background_container').append('<div class="slide_view_group just_added_slide_view_element other_slide_view_element" style="height: 70px;width: 80%;left: 10%;z-index: 3;overflow: hidden;padding:10px;position:absolute;"><div class="cancel_drag" contenteditable="true">Type Text Content</div><input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;"><span class="other_slide_view_element_delete_icon" style="position: absolute;top: 0;right: 0;display: none;" onclick="{$(this).parent().remove();set_flag_true();}"><i class="fas fa-trash-alt" style="font-size: 18px;"></i></span></div>');
     $('#quiz_view .just_added_slide_view_element').draggable({
+        drag: function (evt, ui) {
+            const zoom = get_zoom();
+
+            ui.position.top = Math.round(ui.position.top / zoom);
+            ui.position.left = Math.round(ui.position.left / zoom);
+        },
         containment: 'parent',
         cancel: 'div.cancel_drag',
         stop: function () {
@@ -681,6 +689,12 @@ $('#slide_view_picture_file_selector').change(function () {
                     $('#quiz_view .slide_view_group').removeClass('just_added_slide_view_element');
                     $('#quiz_view #quiz_background_container').append(`<div class="slide_view_group just_added_slide_view_element other_slide_view_element" style="left: 10%;z-index: 1;overflow: hidden;padding:10px;position:absolute;width: 300px;"><img src="${root_url}/${response}" style="width: 100%;height: 100%;"><input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;"><span class="other_slide_view_element_delete_icon" style="position: absolute;top: 0;right: 0;display: none;" onclick="{$(this).parent().remove();set_flag_true();}"><i class="fas fa-trash-alt" style="font-size: 18px;"></i></span></div>`);
                     $('#quiz_view .just_added_slide_view_element').draggable({
+                        drag: function (evt, ui) {
+                            const zoom = get_zoom();
+
+                            ui.position.top = Math.round(ui.position.top / zoom);
+                            ui.position.left = Math.round(ui.position.left / zoom);
+                        },
                         cancel: 'div.cancel_drag',
                         stop: function () {
                             set_flag_true();
@@ -749,6 +763,12 @@ $('#slide_view_video_file_selector').change(function () {
                     $('#quiz_view .slide_view_group').removeClass('just_added_slide_view_element');
                     $('#quiz_view #quiz_background_container').append(`<div class="slide_view_group just_added_slide_view_element other_slide_view_element" style="left: 10%;z-index: 1;overflow: hidden;padding:10px;position:absolute;"><video controls style="width: 100%;"><source src="${response.filepath}"></video><input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;"><span class="other_slide_view_element_delete_icon" style="position: absolute;top: 0;right: 0;display: none;" onclick="{$(this).parent().remove();set_flag_true();}"><i class="fas fa-trash-alt" style="font-size: 18px;"></i></span></div>`);
                     $('#quiz_view .just_added_slide_view_element').draggable({
+                        drag: function (evt, ui) {
+                            const zoom = get_zoom();
+
+                            ui.position.top = Math.round(ui.position.top / zoom);
+                            ui.position.left = Math.round(ui.position.left / zoom);
+                        },
                         cancel: 'div.cancel_drag',
                         stop: function () {
                             set_flag_true();
