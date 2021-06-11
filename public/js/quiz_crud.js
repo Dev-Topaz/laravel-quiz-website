@@ -776,8 +776,13 @@ function show_correct_view() {
             containment: 'parent',
         });
         $('.slide_view_group').draggable({
-            drag: function () {
+            drag: function (evt, ui) {
                 set_flag_true();
+
+                const zoom = get_zoom();
+
+                ui.position.top = Math.round(ui.position.top / zoom);
+                ui.position.left = Math.round(ui.position.left / zoom);
             },
             cursor: "move",
             cancel: 'div.cancel_drag',
