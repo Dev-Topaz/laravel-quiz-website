@@ -46,6 +46,7 @@ function show_quiz_editor(node) {
         $('#quiz_view').html(data);
         show_correct_view();
         localStorage.setItem("is_edited", "false");
+        if ($('#quiz_view .slide_view_group_checkbox').length === 0) $('#quiz_view .slide_view_group').append('<input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;">');
         hide_preload();
         real_time_update_slide_view_nav_active();
     }).catch((XHttpResponse) => {
