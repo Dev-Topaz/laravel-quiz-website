@@ -1002,7 +1002,7 @@
                             <span id="font_color_display_letter"
                                   style="margin-right: -3px; border-bottom: 2px solid black;">A</span>
                             <button class="dropdown-toggle" id="font_picker_trigger"
-                                    style="background: #f5f6f7;"></button>
+                                    style="background: #f5f6f7; border: none; padding: 0"></button>
                             <!-- <input type="color" name="" id="font_color_picker"> -->
                             <div id="office_color_picker" class="ribbon-dropdown" data-role="dropdown"
                                  data-duration="100"
