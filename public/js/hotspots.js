@@ -193,6 +193,7 @@ $('#hotspots_only_from_files_image').change(function () {
 var line, isDown;
 
 function drawcle() {
+    $('#drawcle').addClass('hotspots_active');
 
     set_flag_true();
 
@@ -232,6 +233,7 @@ function drawcle() {
         if (isDown) {
             canvas.getActiveObject().remove();
             canvas.add(circle);
+            $('#drawcle').removeClass('hotspots_active');
             set_flag_true();
         }
         isDown = false;
@@ -242,6 +244,7 @@ function drawcle() {
 }
 
 function drawrec() {
+    $('#drawrec').addClass('hotspots_active');
 
     set_flag_true();
     var rect, isDown, origX, origY, isDraw = false;
@@ -300,6 +303,7 @@ function drawrec() {
             canvas.getActiveObject().remove();
             canvas.add(rect);
             set_flag_true();
+            $('#drawrec').removeClass('hotspots_active');
         }
         isDown = false;
         isDraw = true;
@@ -337,6 +341,7 @@ function Point(x, y) {
 
 
 function drawpoly() {
+    $('#drawpoly').addClass('hotspots_active');
     set_flag_true();
     if (drawingObject.type == "roof") {
         drawingObject.type = "";
@@ -392,6 +397,7 @@ fabric.util.addListener(window, 'dblclick', function () {
     canvas.add(roof);
     canvas.renderAll();
 
+    $('#drawpoly').removeClass('hotspots_active');
     console.log("double click");
     //clear arrays
     roofPoints = [];

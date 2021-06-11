@@ -840,9 +840,9 @@ if it's not present, don't show loader */
     background-color: #fbd8be !important;
 }
 
-#slide_drag_words_question .blank {
-    padding-left: 70px;
-}
+/*#slide_drag_words_question .blank {*/
+/*    padding-left: 70px;*/
+/*}*/
 
 #slide_drag_words_answer {
     padding: 5px;
@@ -1119,4 +1119,17 @@ if it's not present, don't show loader */
 
 .slide_option input[type="time"]::-webkit-calendar-picker-indicator {
     display: none;
+}
+
+#slide_details .select .dropdown-toggle::before {
+    visibility: visible;
+}
+
+#slide_details .select .option-list a {
+    padding: 0 0rem 0 0.5rem !important;
+}
+
+.hotspots_active {
+    border: 1px solid #ee8845 !important;
+    background: #fbe5da;
 }

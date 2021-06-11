@@ -2,6 +2,7 @@ let prev_id = '';
 let clicked_node;
 let is_active_real_time_update_slide_view_nav = false;
 var preview_timer;
+let create_type_id;
 
 function show_quiz_editor(node) {
     const root_url = $('meta[name=url]').attr('content');
@@ -61,7 +62,17 @@ function show_quiz_editor(node) {
 
 $('#alert_save').click(function () {
     console.log('alert_save');
-    update_quiz(true);
+    if ($('#node_click_or_create').val() == 'node_click') update_quiz(true);
+    if ($('#node_click_or_create').val() == 'create') {
+        update_quiz(false);
+
+        const root_url = $('meta[name=url]').attr('content');
+        const token = $('meta[name=csrf-token]').attr('content');
+
+        create_question(create_type_id, root_url, token);
+    }
+
+    init_styling_and_layout();
 
     $('#question_save_alert').fadeOut(300);
 
@@ -69,8 +80,19 @@ $('#alert_save').click(function () {
 
 $('#alert_not_save').click(function () {
     console.log('alert_not_save');
-    show_quiz_editor(clicked_node);
-    prev_id = clicked_node.attr('id');
+
+    if ($('#node_click_or_create').val() == 'node_click') {
+        show_quiz_editor(clicked_node);
+        prev_id = clicked_node.attr('id');
+    }
+
+    if ($('#node_click_or_create').val() == 'create') {
+        const root_url = $('meta[name=url]').attr('content');
+        const token = $('meta[name=csrf-token]').attr('content');
+
+        create_question(create_type_id, root_url, token);
+    }
+
     init_styling_and_layout();
 
     $('#question_save_alert').fadeOut(300);
@@ -79,8 +101,11 @@ $('#alert_not_save').click(function () {
 
 $('#alert_cancel').click(function () {
     console.log('alert_cancel');
-    $('#quiz_list').find('.current').removeClass('current current-select');
-    $('#quiz_list li#' + prev_id).addClass('current current-select');
+
+    if ($('#node_click_or_create').val() == 'node_click') {
+        $('#quiz_list').find('.current').removeClass('current current-select');
+        $('#quiz_list li#' + prev_id).addClass('current current-select');
+    }
 
     console.log(prev_id);
     // $('.selected_preview_item').removeClass('selected_preview_item');
@@ -106,7 +131,7 @@ function onNodeClick(node) {
     if (prev_id === node.attr('id')) return;
     real_time_update_slide_view_nav_inactive();
     if (is_edited()) {
-
+        $('#node_click_or_create').val('node_click');
         $('#question_save_alert').fadeIn(300);
 
     } else {
@@ -121,6 +146,19 @@ function is_edited() {
 }
 
 function create_quiz(quiz_type, root_url, token) {
+
+    if (is_edited()) {
+        $('#node_click_or_create').val('create');
+        create_type_id = quiz_type;
+        $('#question_save_alert').fadeIn(300);
+
+    } else {
+        create_question(quiz_type, root_url, token);
+        init_styling_and_layout();
+    }
+}
+
+function create_question(quiz_type, root_url, token) {
 
     let quizId;
     const lv = Metro.getPlugin('#quiz_list', 'listview');

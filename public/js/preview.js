@@ -206,6 +206,18 @@ function change_input_id_label_for(element_array, quiz_id) {
     }
 }
 
+function get_drag_words_blank_width() {
+    let width = 0;
+
+    const drag_words_elements = $('#slide_drag_words_answer span');
+
+    for (let i = 0; i < drag_words_elements.length; i++) {
+        width = Math.max(width, drag_words_elements.eq(i).width());
+    }
+
+    return width;
+}
+
 function rearrange_preview_ui() {
 
     console.log($('.quiz_show .is_limit_time').html());
@@ -286,6 +298,11 @@ function rearrange_preview_ui() {
             for (let i = 0; i < matching_content_items.length; i++) {
                 $('.quiz_show .ui-widget-content').eq(i).html(rearrange_matching[i]);
             }
+            break;
+
+        case '10':
+            console.log(get_drag_words_blank_width());
+            $('#slide_drag_words_question .blank').css('padding-right', (get_drag_words_blank_width() + 20) + 'px');
             break;
 
         case '11':

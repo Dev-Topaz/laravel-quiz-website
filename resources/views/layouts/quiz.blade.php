@@ -28,8 +28,7 @@
     <script src="{{ asset('js/jquery3.2.1.min.js') }}"></script>
     <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('js/evol-colorpicker.min.js') }}"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.4.0/fabric.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.22/fabric.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
     {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.js"></script>--}}
 </head>
@@ -43,6 +42,7 @@
         <button id="alert_not_save" class="button alert" style="margin-bottom: 0">Continue without Saving</button>
         <button id="alert_cancel" class="button light">Cancel</button>
     </div>
+    <input type="text" id="node_click_or_create" hidden>
 </div>
 <div id="delete_confirm_dialog" class="quiz_dialog">
     <input id="delete_dialog_id" type="text" hidden>
@@ -129,7 +129,7 @@
 
 </div>
 <script src="{{ asset('js/metro.min.js') }}" defer></script>
-
+<script src="{{ asset('js/main.js') }}" defer></script>
 {{--<script src="{{ asset('js/matching.js') }}" defer></script>--}}
 {{--<script src="{{ asset('js/text_dropdown.js') }}" defer></script>--}}
 {{--    <script src="{{ asset('js/jquery.richtext.min.js') }}" defer></script>--}}

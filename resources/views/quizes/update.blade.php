@@ -371,11 +371,11 @@
                                 <div>
                                     <div style="display: flex;justify-content: center;">Choose hotspot shape</div>
                                     <div style="display: flex;">
-                                        <a style="padding: 10px;margin: 0 5px;border: 1px dotted gray;width: 60px; height: 60px;"
+                                        <a id="drawrec" style="padding: 10px;margin: 0 5px;border: 1px dotted gray;width: 60px; height: 60px;"
                                            onclick="drawrec()"><img src="{{ url('/images/icons/rect.png') }}"></a>
-                                        <a style="padding: 10px;margin: 0 5px;border: 1px dotted gray;width: 60px; height: 60px;"
+                                        <a id="drawcle" style="padding: 10px;margin: 0 5px;border: 1px dotted gray;width: 60px; height: 60px;"
                                            onclick="drawcle()"><img src="{{ url('/images/icons/circle.png') }}"></a>
-                                        <a style="padding: 10px;margin: 0 5px;border: 1px dotted gray;width: 60px; height: 60px;"
+                                        <a id="drawpoly" style="padding: 10px;margin: 0 5px;border: 1px dotted gray;width: 60px; height: 60px;"
                                            onclick="drawpoly()"><img src="{{ url('/images/icons/polygon.png') }}"></a>
                                     </div>
                                 </div>
@@ -487,7 +487,8 @@
                 @endif
                 </tbody>
             </table>
-            <label style="color: red;padding-left: 145px;{{ $quiz->type_id > 11 ? 'display:none;' : ''}}">(Their score will be dropped by this amount every time when they try again.)</label>
+            <label style="color: red;padding-left: 145px;{{ $quiz->type_id > 11 ? 'display:none;' : ''}}">(Their score
+                will be dropped by this amount every time when they try again.)</label>
         </div>
     </div>
     <div class="cell-9 slide_view_element" style="height: 695px;background: #dcdcdc;display: none;">
@@ -495,7 +496,7 @@
             style="top:50%;left:50%;transform:translate(-50%, -50%);margin: auto 0;width: {{ $quiz->exam_group->exam->screen_width }}px;height:{{ $quiz->exam_group->exam->screen_height }}px;{{ $quiz->exam_group->exam->theme_style ?? 'background:white' }}"
             id="slide_view_container">
             <div id="quiz_background_container"
-                 style="font-size: 1rem;width: 100%;height:100%;padding: 20px;{{ isset($quiz->background_img) ? ('background-image:' . $quiz->background_img . ';') : '' }}background-size: 100% 100%;background-repeat:no-repeat;">
+                 style="font-size: 1rem;width: 100%;height:100%;padding: 0;{{ isset($quiz->background_img) ? ('background-image:' . $quiz->background_img . ';') : '' }}background-size: 100% 100%;background-repeat:no-repeat;">
                 {!! $quiz->question_element !!}
                 {!! $quiz->answer_element !!}
                 @if (isset($quiz->other_elements))
@@ -526,22 +527,34 @@
         <h3 style="border-bottom: 1px dotted grey;padding: 15px 10px;">Slide Options</h3>
         <div>
             <div style="{{ $quiz->type_id > 11 ? 'display:none;' : ''}}">
-                <div class="row" style="padding: 0 10px;">
-                    <div class="cell-5">
-                        <label for="question_type" style="font-size: 16px;">Question type:</label>
-                    </div>
-                    <div class="cell-7">
-                        <select data-on-change="change_question_type" data-role="select" data-filter="false"
-                                id="question_type">
-                            <option value="graded" {{ $quiz->question_type == 'graded' ? 'selected' : '' }}>Graded
-                            </option>
-                            <option value="survey" {{ $quiz->question_type == 'survey' ? 'selected' : '' }}>Survey
-                            </option>
-                        </select>
-                    </div>
-                </div>
+{{--                <div class="row" style="padding: 0 10px;">--}}
+{{--                    <div class="cell-5">--}}
+{{--                        <label for="question_type" style="font-size: 16px;">Question type:</label>--}}
+{{--                    </div>--}}
+{{--                    <div class="cell-7">--}}
+{{--                        <select data-on-change="change_question_type" data-role="select" data-filter="false"--}}
+{{--                                id="question_type">--}}
+{{--                            <option value="graded" {{ $quiz->question_type == 'graded' ? 'selected' : '' }}>Graded--}}
+{{--                            </option>--}}
+{{--                            <option value="survey" {{ $quiz->question_type == 'survey' ? 'selected' : '' }}>Survey--}}
+{{--                            </option>--}}
+{{--                        </select>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
                 <div id="slide_details" style="padding: 10px 10px 0 20px">
                     <div class="row">
+                        <div class="cell-6">
+                            <label for="question_type">Question type:</label>
+                        </div>
+                        <div class="cell-6">
+                            <select data-on-change="change_question_type" data-role="select" data-filter="false"
+                                    id="question_type">
+                                <option value="graded" {{ $quiz->question_type == 'graded' ? 'selected' : '' }}>Graded
+                                </option>
+                                <option value="survey" {{ $quiz->question_type == 'survey' ? 'selected' : '' }}>Survey
+                                </option>
+                            </select>
+                        </div>
                         <div class="cell-6">
                             <label for="feedback" name="feedback">Feedback:</label>
                         </div>
@@ -707,7 +720,8 @@
         </div>
         <div style="display: flex;justify-content: space-around;">
             <a href="javascript:void(0)" style="padding:5px" onclick="change_media_pic()">Change</a>
-            <a href="javascript:void(0)" style="padding:5px" onclick="confirm_delete_dialog(delete_media_pic)">Delete</a>
+            <a href="javascript:void(0)" style="padding:5px"
+               onclick="confirm_delete_dialog(delete_media_pic)">Delete</a>
         </div>
     </div>
     <div class="cell-3 background_properties" style="padding: 0 20px;display: none;border-left: 1px solid #aeaeae;">
