@@ -16,13 +16,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/metro-all.css') }}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/metro/4.4.3/css/metro-all.min.css" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('css/all.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/richtext.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/jquery.modal.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/evol-colorpicker.min.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
@@ -30,8 +28,8 @@
     <script src="{{ asset('js/jquery3.2.1.min.js') }}"></script>
     <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('js/evol-colorpicker.min.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.22/fabric.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.4.0/fabric.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.js"></script>--}}
 </head>
 <body id="quiz_layout">
@@ -121,7 +119,6 @@
     </main>
 
 </div>
-<script src="{{ asset('js/jquery.modal.min.js') }}" defer></script>
 <script src="{{ asset('js/metro.js') }}" defer></script>
 <script src="{{ asset('js/main.js') }}" defer></script>
 {{--<script src="{{ asset('js/matching.js') }}" defer></script>--}}

@@ -1357,7 +1357,7 @@ $('.design_themes_panels').click(function () {
     $('#slide_view_container').eq(0).css('background', 'unset');
     $('#slide_view_container').eq(0).css('font-family', $(this).css('font-family'));
     $('#slide_view_container').eq(0).css('color', $(this).css('color'));
-    $('#slide_view_container').eq(0).css('background-image', $(this).css('background-image'));
+    $('#slide_view_container').eq(0).css('background-image', $(this).css('background-image').split(".png").join(' - Copy.png'));
     $('#slide_view_container').eq(0).css('background-size', '100% 100%');
     $('#slide_view_container').eq(0).css('background-repeat', 'no-repeat');
 
@@ -1368,7 +1368,7 @@ $('.design_themes_panels').click(function () {
     $('.preview_item > div').css('background-size', '100% 100%');
     $('.preview_item > div').css('background-repeat', 'no-repeat');
 
-    var style = "background: unset; font-fmily:" + $(this).css('font-family') + "; color:" + $(this).css('color') + "; background-image:" + $(this).css('background-image') + "; background-size: 100% 100%; background-repeat: no-repeat; ";
+    var style = "background: unset; font-fmily:" + $(this).css('font-family') + "; color:" + $(this).css('color') + "; background-image:" + $(this).css('background-image').split(".png").join(' - Copy.png') + "; background-size: 100% 100%; background-repeat: no-repeat; ";
 
     store_theme_style(style);
 
