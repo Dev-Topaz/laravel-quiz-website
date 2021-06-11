@@ -302,7 +302,7 @@ function delete_video() {
     $('#form_view_video_element').hide();
     $('#video').val('');
     $('#quiz_view .slide_view_video_element').remove();
-    $('#quiz_view #quiz_background_container').append('<div class="slide_view_video_element slide_view_group" style="z-index: 3;display: none;position: absolute;top: 0;left: 0;"><video controls style="height: 100%;width: 100%;"><source src="#" type="video/mp4"></video></div>');
+    $('#quiz_view #quiz_background_container').append('<div class="slide_view_video_element slide_view_group" style="z-index: 3;display: none;position: absolute;top: 0;left: 0;"><video controls style="height: 100%;width: 100%;"><source src="#"></video></div>');
 }
 
 /*

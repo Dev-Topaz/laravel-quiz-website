@@ -737,7 +737,7 @@ $('#slide_view_video_file_selector').change(function () {
                 if (response.success == 1) { // Uploaded successfully
 
                     $('#quiz_view .slide_view_group').removeClass('just_added_slide_view_element');
-                    $('#quiz_view #quiz_background_container').append(`<div class="slide_view_group just_added_slide_view_element other_slide_view_element" style="left: 10%;z-index: 1;overflow: hidden;padding:10px;position:absolute;"><video controls style="width: 100%;"><source src="${response.filepath}" type="video/mp4"></video><input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;"><span class="other_slide_view_element_delete_icon" style="position: absolute;top: 0;right: 0;display: none;" onclick="{$(this).parent().remove();set_flag_true();}"><i class="fas fa-trash-alt" style="font-size: 18px;"></i></span></div>`);
+                    $('#quiz_view #quiz_background_container').append(`<div class="slide_view_group just_added_slide_view_element other_slide_view_element" style="left: 10%;z-index: 1;overflow: hidden;padding:10px;position:absolute;"><video controls style="width: 100%;"><source src="${response.filepath}"></video><input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;"><span class="other_slide_view_element_delete_icon" style="position: absolute;top: 0;right: 0;display: none;" onclick="{$(this).parent().remove();set_flag_true();}"><i class="fas fa-trash-alt" style="font-size: 18px;"></i></span></div>`);
                     $('#quiz_view .just_added_slide_view_element').draggable({cancel: 'div.cancel_drag',
                         stop: function () {
                             set_flag_true();

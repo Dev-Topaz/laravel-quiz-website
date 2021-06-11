@@ -2,7 +2,7 @@
     <div class="cell-9 form_view_element" style="background: #dcdcdc;display: flex;">
 
         <div style="margin: auto 10px;background: #f1f1f1;width: 100%;padding: 20px;">
-            <input id="select_background_img" type="file" hidden>
+            <input id="select_background_img" type="file" accept="image/*" hidden>
             <input id="tmp_quiz_database_values" type="text"
                    class="form-control @error('tmp_quiz_database_values') is-invalid @enderror"
                    name="tmp_quiz_database_values"
@@ -159,9 +159,9 @@
                         <img src="{{ url('/images/icons/audio_icon.png') }}" alt=""
                              style="height: 70px;padding:0 3px;{{ isset($quiz->audio) ? '' : 'display: none' }}"
                              id="form_view_audio_mark">
-                        <input type="file" id="form_view_input_media_element" hidden>
-                        <input type="file" id="form_view_input_video_element" accept="video/mp4" hidden>
-                        <input type="file" id="form_view_input_audio_element" hidden>
+                        <input type="file" id="form_view_input_media_element" accept="image/*" hidden>
+                        <input type="file" id="form_view_input_video_element" accept=".mp4, .webm, .ogg" hidden>
+                        <input type="file" id="form_view_input_audio_element" accept=".mp3, .wav, .ogg" hidden>
                     </div>
                 </div>
             </div>
@@ -403,7 +403,7 @@
                                       enctype="multipart/form-data" style="display: none;">
                                     @csrf
                                     <div class="form-group">
-                                        <input type="file" name="hotspots_only_from_files_image"
+                                        <input type="file" accept="image/*" name="hotspots_only_from_files_image"
                                                placeholder="Choose image"
                                                id="hotspots_only_from_files_image" hidden>
                                         <span class="text-danger" id="image-input-error"></span>
@@ -514,7 +514,7 @@
                     <div class="slide_view_video_element slide_view_group"
                          style="z-index: 1;display: none;position: absolute;top: 0;left: 0;width:33%;">
                         <video controls style="width: 100%;height: 100%">
-                            <source src="#" type="video/mp4">
+                            <source src="#">
                         </video>
                     </div>
                 @endif
@@ -675,7 +675,7 @@
             {{--                            <div class="slide_view_video_element slide_view_group"--}}
             {{--                                 style="z-index: 1;display: none;position: absolute;top: 0;left: 0;">--}}
             {{--                                <video controls style="width: 100%;height: 100%">--}}
-            {{--                                    <source src="#" type="video/mp4">--}}
+            {{--                                    <source src="#">--}}
             {{--                                </video>--}}
             {{--                            </div>--}}
             {{--                        @endif--}}
@@ -731,7 +731,7 @@
         </div>
         <div style="width: 100%;" id="video_properties_video">
             <video controls="controls">
-                <source src="{{ $quiz->video ?? '' }}" type="video/mp4">
+                <source src="{{ $quiz->video ?? '' }}">
             </video>
         </div>
         <div style="display: flex;justify-content: space-around;">
@@ -746,7 +746,7 @@
         </div>
         <div style="width: 100%;" id="audio_properties">
             <audio controls="controls">
-                <source src="{{ $quiz->audio ?? '' }}" type="audio/mpeg">
+                <source src="{{ $quiz->audio ?? '' }}">
             </audio>
         </div>
         <div style="display: flex;justify-content: space-around;">

@@ -54,7 +54,7 @@
                     {!! $quiz->video_element !!}
                     {!! $quiz->other_elements !!}
                     <audio controls autoplay id="quiz_list_audio-{{ $quiz->id }}" style="display: none;">
-                        <source src="{{ $quiz->audio }}" type="audio/mpeg">
+                        <source src="{{ $quiz->audio }}">
                     </audio>
                 </div>
                 <div class="quiz_id" style="display: none;">{!! $quiz->id !!}</div>
@@ -99,7 +99,7 @@
                     {!! $quiz->video_element !!}
                     {!! $quiz->other_elements !!}
                     <audio controls autoplay id="quiz_list_audio-{{ $quiz->id }}" style="display: none;">
-                        <source src="{{ $quiz->audio }}" type="audio/mpeg">
+                        <source src="{{ $quiz->audio }}">
                     </audio>
                 </div>
                 <div class="quiz_id" style="display: none;">{!! $quiz->id !!}</div>

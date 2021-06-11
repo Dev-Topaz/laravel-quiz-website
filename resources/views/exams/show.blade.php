@@ -320,7 +320,7 @@
                         </span>
                             <span class="caption">Picture</span>
                         </button>
-                        <input id="slide_view_picture_file_selector" type="file" data-role="file"
+                        <input id="slide_view_picture_file_selector" type="file" accept="image/*" data-role="file"
                                style="display: none;">
                         <span class="title">Images</span>
                         <div class="group-divider"></div>
@@ -357,7 +357,7 @@
                         </span>
                             <span class="caption">Video</span>
                         </button>
-                        <input id="slide_view_video_file_selector" type="file" data-role="file" accept="video/mp4"
+                        <input id="slide_view_video_file_selector" type="file" data-role="file" accept=".mp4, .webm, .ogg"
                                style="display: none;">
                         <div class="ribbon-split-button">
                             <button class="ribbon-main" id="insert_section_audio_btn_top">
@@ -374,7 +374,7 @@
                                     File...
                                 </li>
                                 <input id="slide_view_audio_selector" type="file" data-role="file"
-                                       style="display: none;">
+                                       style="display: none;" accept=".mp3, .wav, .ogg">
                                 <li class="insert_audio" id="slide_view_rec_mic_btn"
                                     style="background-image: url({{ url("/images/ribbon_imgs/insert/audio-2.png") }});">
                                     Record Mic...
@@ -1846,14 +1846,14 @@
                             </span>
                                 <span class="caption">Picture</span>
                             </button>
-                            <input id="form_view_picture_selector" type="file" data-role="file" style="display: none;">
+                            <input id="form_view_picture_selector" type="file" accept="image/*" data-role="file" style="display: none;">
                             <button class="ribbon-icon-button" id="form_view_video_file_btn">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/insert-9.png") }}">
                             </span>
                                 <span class="caption">Video</span>
                             </button>
-                            <input id="form_view_video_file_selector" type="file" accept="video/mp4" data-role="file"
+                            <input id="form_view_video_file_selector" type="file" accept=".mp4, .webm, .ogg" data-role="file"
                                    style="display: none;">
                             <button class="ribbon-icon-button">
                             <span class="icon">
@@ -1868,7 +1868,7 @@
                                         File...
                                     </li>
                                     <input id="form_view_audio_selector" type="file" data-role="file"
-                                           style="display: none;">
+                                           style="display: none;" accept=".mp3, .wav, .ogg">
                                     <li class="insert_audio" id="form_view_rec_mic_btn"
                                         style="background-image: url({{ url("/images/ribbon_imgs/insert/audio-2.png") }});">
                                         Record Mic...
@@ -2096,7 +2096,7 @@
                                                                         style="z-index: 1;display: none;position: absolute;top: 0;left: 0;">
                                                                         <video controls
                                                                                style="width: 100%;height: 100%">
-                                                                            <source src="#" type="video/mp4">
+                                                                            <source src="#">
                                                                         </video>
                                                                     </div>
                                                                 @endif
@@ -2139,7 +2139,7 @@
                                                                         style="z-index: 1;display: none;position: absolute;top: 0;left: 0;">
                                                                         <video controls
                                                                                style="width: 100%;height: 100%">
-                                                                            <source src="#" type="video/mp4">
+                                                                            <source src="#">
                                                                         </video>
                                                                     </div>
                                                                 @endif
