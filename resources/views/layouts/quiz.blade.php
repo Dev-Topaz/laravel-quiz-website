@@ -26,9 +26,9 @@
     <!-- Scripts -->
     <link href="{{ asset('css/jquery-ui.min.css') }}" rel="stylesheet">
     <script src="{{ asset('js/jquery3.2.1.min.js') }}"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('js/evol-colorpicker.min.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.4.0/fabric.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
     {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.js"></script>--}}
@@ -128,8 +128,8 @@
     </main>
 
 </div>
+<script src="{{ asset('js/metro.min.js') }}" defer></script>
 
-<script src="{{ asset('js/metro.min.js') }}"></script>
 {{--<script src="{{ asset('js/matching.js') }}" defer></script>--}}
 {{--<script src="{{ asset('js/text_dropdown.js') }}" defer></script>--}}
 {{--    <script src="{{ asset('js/jquery.richtext.min.js') }}" defer></script>--}}
