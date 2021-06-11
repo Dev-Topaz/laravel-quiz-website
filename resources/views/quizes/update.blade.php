@@ -487,6 +487,7 @@
                 @endif
                 </tbody>
             </table>
+            <label style="color: red;padding-left: 145px;{{ $quiz->type_id > 11 ? 'display:none;' : ''}}">(Their score will be dropped by this amount every time when they try again.)</label>
         </div>
     </div>
     <div class="cell-9 slide_view_element" style="height: 695px;background: #dcdcdc;display: none;">
@@ -613,11 +614,11 @@
                                 </option>
                             </select>
                         </div>
-                        <div class="cell-7">
+                        <div class="cell-12">
                             <input type="checkbox" data-role="checkbox" id="is_limit_time"
                                    data-caption="Limit time to answer the question:" {{ $quiz->is_limit_time ? 'checked' : '' }}>
                         </div>
-                        <div class="cell-5">
+                        <div style="padding-left: 40px;">
                             <input class="mt-1" type="time" data-role="input" id="limit_time"
                                    {{ $quiz->is_limit_time ? '' : 'disabled' }}
                                    data-clear-button="false"
@@ -706,7 +707,7 @@
         </div>
         <div style="display: flex;justify-content: space-around;">
             <a href="javascript:void(0)" style="padding:5px" onclick="change_media_pic()">Change</a>
-            <a href="javascript:void(0)" style="padding:5px" onclick="delete_media_pic()">Delete</a>
+            <a href="javascript:void(0)" style="padding:5px" onclick="confirm_delete_dialog(delete_media_pic)">Delete</a>
         </div>
     </div>
     <div class="cell-3 background_properties" style="padding: 0 20px;display: none;border-left: 1px solid #aeaeae;">
@@ -730,13 +731,13 @@
             <p style="color: gray;font-size: 18px;" onclick="close_video_properties()">x</p>
         </div>
         <div style="width: 100%;" id="video_properties_video">
-            <video controls="controls">
+            <video controls="controls" style="width: 100%;">
                 <source src="{{ $quiz->video ?? '' }}">
             </video>
         </div>
         <div style="display: flex;justify-content: space-around;">
             <a href="javascript:void(0)" style="padding:5px" onclick="change_video()">Change</a>
-            <a href="javascript:void(0)" style="padding:5px" onclick="delete_video()">Delete</a>
+            <a href="javascript:void(0)" style="padding:5px" onclick="confirm_delete_dialog(delete_video)">Delete</a>
         </div>
     </div>
     <div class="cell-3 audio_properties" style="padding: 0 20px;display: none;border-left: 1px solid #aeaeae;">
@@ -751,7 +752,7 @@
         </div>
         <div style="display: flex;justify-content: space-around;">
             <a href="javascript:void(0)" style="padding:5px" onclick="change_audio()">Change</a>
-            <a href="javascript:void(0)" style="padding:5px" onclick="delete_audio()">Delete</a>
+            <a href="javascript:void(0)" style="padding:5px" onclick="confirm_delete_dialog(delete_audio)">Delete</a>
         </div>
     </div>
 </div>
@@ -782,7 +783,7 @@
         set_flag_true();
     })
 
-     $('.form_view_element input[type=checkbox]').click(function () {
+    $('.form_view_element input[type=checkbox]').click(function () {
         set_flag_true();
     })
 

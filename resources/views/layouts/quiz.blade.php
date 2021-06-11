@@ -30,7 +30,7 @@
     <script src="{{ asset('js/evol-colorpicker.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.4.0/fabric.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-{{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.js"></script>--}}
+    {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.js"></script>--}}
 </head>
 <body id="quiz_layout">
 <div class="se-pre-con"></div>
@@ -57,6 +57,14 @@
     <div id="bg_delete_dialog_btn" class="quiz_dialog_btn">
         <button id="bg_delete_yes" class="button success">Yes</button>
         <button id="bg_delete_no" class="button light">No</button>
+    </div>
+</div>
+<div id="common_delete_confirm_dialog" class="quiz_dialog">
+    <input id="common_delete_dialog_id" type="text" hidden>
+    <div id="common_delete_dialog_content" class="quiz_dialog_content">Are you sure you want to delete?</div>
+    <div id="common_delete_dialog_btn" class="quiz_dialog_btn">
+        <button id="common_delete_yes" class="button success">Yes</button>
+        <button id="common_delete_no" class="button light">No</button>
     </div>
 </div>
 <div id="preview_toast" style="display: none;">
@@ -127,8 +135,19 @@
 
 <script>
     // $("img").lazyload({
-	//     effect : "fadeIn"
-	// });
+    //     effect : "fadeIn"
+    // });
+    function confirm_delete_dialog(onYes) {
+        $('#common_delete_confirm_dialog').fadeIn(300);
+        $('#common_delete_yes').click(function () {
+            onYes();
+            $('#common_delete_confirm_dialog').fadeOut(300);
+        });
+        $('#common_delete_no').click(function () {
+            $('#common_delete_confirm_dialog').fadeOut(300);
+        });
+    }
+
     function show_modal(type, title, content) {
         switch (type) {
             case 'error':

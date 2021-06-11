@@ -368,6 +368,11 @@ function update_and_show_preview(url) {
 
     const answer = $('#answer_content').val();
 
+    if (!validate_correct_answer_type(typeId, answer)) {
+        show_modal('error', 'Warning', 'You should complete correct answer about this question.');
+        return;
+    }
+
     const feedback_correct = $('.feedback_branching tr:first-child td:nth-child(2) label').html();
     const feedback_incorrect = $('.feedback_branching tr:nth-child(2) td:nth-child(2) label').html();
     const feedback_try_again = $('.feedback_branching tr:nth-child(3) td:nth-child(2) label').html();
@@ -482,6 +487,53 @@ function update_and_show_preview(url) {
     });
 }
 
+function validate_correct_answer_type(question_type_id, answer) {
+    switch (question_type_id) {
+        case '1':
+            return answer != '';
+            break;
+
+        case '2':
+            return answer != '';
+            break;
+
+        case '4':
+            return answer != '';
+            break;
+
+        case '5':
+            return answer != '' && answer.indexOf(';;') == -1;
+            break;
+
+        case '6':
+            return answer != '';
+            break;
+
+        case '7':
+            return answer != '';
+            break;
+
+        case '8':
+            return answer != '' && answer != '@' && answer.indexOf('@@') == -1;
+            break;
+
+        case '9':
+            return answer != '' && answer.indexOf('undefined') == -1;
+            break;
+
+        case '10':
+            return answer != '' && answer != ';' && answer.indexOf(';;') == -1;
+            break;
+
+        case '11':
+            return answer.indexOf('@{}') == -1;
+            break;
+
+        default:
+            return true;
+    }
+}
+
 function update_quiz(is_alert_save) {
 
     if (is_form_or_slide() === 'form') {
@@ -499,6 +551,11 @@ function update_quiz(is_alert_save) {
     let question_element = $('#quiz_view .slide_view_question_element')[0].outerHTML;
 
     const answer = $('#answer_content').val();
+
+    if (!validate_correct_answer_type(typeId, answer)) {
+        show_modal('error', 'Warning', 'You should complete correct answer about this question.');
+        return;
+    }
 
     const feedback_correct = $('.feedback_branching tr:first-child td:nth-child(2) label').html();
     const feedback_incorrect = $('.feedback_branching tr:nth-child(2) td:nth-child(2) label').html();

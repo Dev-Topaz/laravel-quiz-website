@@ -719,6 +719,7 @@ div[contenteditable="true"] {
 
 #select_lists .select_lists_dropdown_menu ul li div {
     display: flex;
+    align-items: center;
 }
 
 #fill_blanks .fill_blanks_dropdown_menu ul li label, #select_lists .select_lists_dropdown_menu ul li label {
