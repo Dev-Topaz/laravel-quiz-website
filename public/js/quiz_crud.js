@@ -495,6 +495,11 @@ function update_and_show_preview(url) {
 
     const limit_time = $('#limit_time').val();
 
+    if (limit_time.indexOf('_') != -1) {
+        show_modal('error', 'Warning', 'You should enter correct limit time.');
+        return;
+    }
+
     let shuffle_answers = $('#shuffle_answers').is(":checked");
     shuffle_answers = shuffle_answers ? 1 : 0;
     if ($('#shuffle_answers').length === 0) shuffle_answers = null;
@@ -678,6 +683,11 @@ function update_quiz(is_alert_save) {
     if ($('#is_limit_time').length === 0) is_limit_time = null;
 
     const limit_time = $('#limit_time').val();
+
+    if (limit_time.indexOf('_') != -1) {
+        show_modal('error', 'Warning', 'You should enter correct limit time.');
+        return;
+    }
 
     let shuffle_answers = $('#shuffle_answers').is(":checked");
     shuffle_answers = shuffle_answers ? 1 : 0;
