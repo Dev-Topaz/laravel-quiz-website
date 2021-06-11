@@ -45,7 +45,6 @@ function show_quiz_editor(node) {
 
         $('#quiz_view').html(data);
         show_correct_view();
-        store_quiz_state();
         localStorage.setItem("is_edited", "false");
         hide_preload();
         real_time_update_slide_view_nav_active();
