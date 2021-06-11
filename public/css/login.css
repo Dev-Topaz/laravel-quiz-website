@@ -28,10 +28,6 @@
     color: #444;
 }
 
-#login_logo:before {
-    content: "\e27e";
-}
-
 #login_main .card {
     padding: 20px 35px 5px;
 }
