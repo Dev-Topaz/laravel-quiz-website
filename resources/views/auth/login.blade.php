@@ -12,7 +12,7 @@
             <div class="container p-0">
                 <div class="card">
                     <div style="padding-top:10px">
-                        <span id="login_logo" class="icon-shield"></span>
+                        <span id="login_logo" class="icon-shield"><i class="fas fa-user-shield"></i></span>
                         <h3>Sign In to Quiz maker</h3>
                         <p>Sign in below to create or edit your forms</p>
                         <div style="clear:both; border-bottom: 1px dotted #CCCCCC;margin-top: 15px"></div>
