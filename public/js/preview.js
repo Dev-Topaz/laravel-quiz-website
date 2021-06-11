@@ -32,8 +32,8 @@ function fit_question_list_container_size() {
     //     $('.quiz_list_container').css('zoom', zoomScale);
     //     $('#preview_container').css('transform', 'translate(-50%, -50%)');
     // } else {
-        $('.quiz_list_container').css('zoom', 1);
-        $('#preview_container').css('transform', 'translate(-50%, -50%) matrix(' + zoomScale + ', 0, 0, ' + zoomScale + ', 0, 0)');
+    $('.quiz_list_container').css('zoom', 1);
+    $('#preview_container').css('transform', 'translate(-50%, -50%) matrix(' + zoomScale + ', 0, 0, ' + zoomScale + ', 0, 0)');
     // }
 }
 
@@ -189,7 +189,7 @@ let question_feedback;
 let question_user_answer = [];
 let question_correct_answer = [];
 
-let result;
+let result = '';
 let total_score = 0;
 let correct_quiz_count = 0;
 let hotspots_points = [];
@@ -369,8 +369,8 @@ function shuffle(array) {
 * */
 
 function create_hotspots(event) {
-    var x = event.offsetX ;
-    var y = event.offsetY ;
+    var x = event.offsetX;
+    var y = event.offsetY;
     // var x = Math.round(event.offsetX / zoomScale);
     // var y = Math.round(event.offsetY / zoomScale);
 
@@ -531,6 +531,7 @@ function preview(element) {
                     }
                 }
 
+                if (type_id != 11) $('#clear_hotspots').css('visibility', 'hidden');
             } else {
 
                 show_result($('.quiz_show .correct_answer').html(), current_show_type_id, current_show_id);
@@ -554,7 +555,6 @@ function preview(element) {
                     return;
                 }
                 if (type_id != 11) $('#clear_hotspots').css('visibility', 'hidden');
-                ;
                 $('#submit_btn').html('Submit');
             }
 
@@ -640,11 +640,8 @@ function preview(element) {
             break;
 
         case 'Close':
-            if ($('#is_quiz').html() == '1') {
-                location.replace(root_url + '/exams');
-            } else {
-                window.close();
-            }
+            window.close();
+
             break;
     }
 }
@@ -1112,6 +1109,10 @@ var review_Id = 0;
 function review() {
     show_result($('.quiz_show .correct_answer').html(), $('.quiz_show .type_id').html(), $('.quiz_show').attr('id'));
 
+    if ($('#is_quiz').html() == '0') {
+        $('.review_buttons > button').html('Close');
+    }
+
     $('.preview_btn').hide();
     $('.review_buttons').show();
 
@@ -1413,6 +1414,133 @@ function show_result(question_correct_answer, question_type_id, question_id) {
                 }));
             }
             break;
+    }
+}
+
+function see_result() {
+    const root_url = $('meta[name=url]').attr('content');
+    const token = $('meta[name=csrf-token]').attr('content');
+
+    $('.review_buttons').hide();
+    $('.preview_btn').show();
+
+    $('#submit_btn').html('Close');
+
+    const length = $('.quiz_list_container').length;
+
+    if (result == 'Fail') {
+        var current_show_id = $('.quiz_show').attr('id');
+
+        var next_show_id = $('.quiz_list_container').eq(length - 1).attr('id');
+        if (next_show_id === undefined) return;
+
+        $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].pause();
+        $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].currentTime = 0;
+        $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].play();
+
+        $('#' + current_show_id).removeClass('quiz_show');
+        $('#' + current_show_id).addClass('quiz_hide');
+
+        $('#' + next_show_id).removeClass('quiz_hide');
+        $('#' + next_show_id).addClass('quiz_show');
+
+        fit_question_list_container_size();
+
+        return;
+    }
+
+    if (result == 'Pass') {
+        var current_show_id = $('.quiz_show').attr('id');
+
+        var next_show_id = $('.quiz_list_container').eq(length - 2).attr('id');
+        if (next_show_id === undefined) return;
+
+        $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].pause();
+        $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].currentTime = 0;
+        $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].play();
+
+        $('#' + current_show_id).removeClass('quiz_show');
+        $('#' + current_show_id).addClass('quiz_hide');
+
+        $('#' + next_show_id).removeClass('quiz_hide');
+        $('#' + next_show_id).addClass('quiz_show');
+
+        fit_question_list_container_size();
+
+        return;
+    }
+
+
+    if ($('#is_quiz').html() != '0') {
+
+        if (total_score < parseInt($('.quiz_show .passing_score').html())) {
+            result = 'Fail';
+            var current_show_id = $('.quiz_show').attr('id');
+
+            var next_show_id = $('.quiz_list_container').eq(length - 1).attr('id');
+            if (next_show_id === undefined) return;
+
+            $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].pause();
+            $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].currentTime = 0;
+            $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].play();
+
+            $('#' + current_show_id).removeClass('quiz_show');
+            $('#' + current_show_id).addClass('quiz_hide');
+
+            $('#' + next_show_id).removeClass('quiz_hide');
+            $('#' + next_show_id).addClass('quiz_show');
+
+            rearrange_preview_ui();
+            fit_question_list_container_size();
+        } else {
+            result = 'Pass';
+            var current_show_id = $('.quiz_show').attr('id');
+
+            var next_show_id = $('.quiz_list_container').eq(length - 2);
+            if (next_show_id === undefined) return;
+
+            $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].pause();
+            $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].currentTime = 0;
+            $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].play();
+
+            $('#' + current_show_id).removeClass('quiz_show');
+            $('#' + current_show_id).addClass('quiz_hide');
+
+            $('#' + next_show_id).removeClass('quiz_hide');
+            $('#' + next_show_id).addClass('quiz_show');
+
+            rearrange_preview_ui();
+            fit_question_list_container_size();
+        }
+
+
+        show_preload();
+        $.ajax({
+            url: root_url + '/send-mail',
+            type: 'POST',
+            data: {
+                _token: token,
+                user_name: user_name,
+                user_email: user_email,
+                stuff_emails: $('.quiz_show .stuff_emails').html(),
+                exam_answered: correct_quiz_count,
+                exam_question_count: quizId,
+                exam_user_score: total_score,
+                exam_passing_score: $('.quiz_show .passing_score').html(),
+                result: result,
+                quizzes: quizzes,
+            },
+            success: function (data) {
+                console.log('success');
+                hide_preload();
+            }
+        }).catch((XHttpResponse) => {
+            console.log(XHttpResponse);
+            hide_preload();
+        });
+        $('#submit_btn').html('Close');
+    } else {
+        window.close();
     }
 }
 

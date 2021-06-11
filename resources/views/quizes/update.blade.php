@@ -632,7 +632,7 @@
                                    data-caption="Limit time to answer the question:" {{ $quiz->is_limit_time ? 'checked' : '' }}>
                         </div>
                         <div style="padding-left: 40px;">
-                            <input class="mt-1" type="time" data-role="input" id="limit_time"
+                            <input class="mt-1" type="time" step='1' min="00:00:00" max="20:00:00" data-role="input" id="limit_time"
                                    {{ $quiz->is_limit_time ? '' : 'disabled' }}
                                    data-clear-button="false"
                                    value="{{ $quiz->is_limit_time ? $quiz->limit_time : '01:00' }}">
@@ -772,6 +772,8 @@
 </div>
 
 <script>
+
+
     answer_slide2form($('#answer_element').val(), $('#answer_content').val());
     $('#question').html(question_slide2form($('#question_element').val()));
 

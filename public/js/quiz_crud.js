@@ -62,14 +62,26 @@ function show_quiz_editor(node) {
 
 $('#alert_save').click(function () {
     console.log('alert_save');
+    const root_url = $('meta[name=url]').attr('content');
     if ($('#node_click_or_create').val() == 'node_click') update_quiz(true);
     if ($('#node_click_or_create').val() == 'create') {
         update_quiz(false);
 
-        const root_url = $('meta[name=url]').attr('content');
         const token = $('meta[name=csrf-token]').attr('content');
 
         create_question(create_type_id, root_url, token);
+    }
+
+    if ($('#node_click_or_create').val() == 'redirect_exams') {
+        update_quiz(false);
+
+        window.location.href = root_url + '/exams';
+    }
+
+    if ($('#node_click_or_create').val() == 'redirect_users') {
+        update_quiz(false);
+
+        window.location.href = root_url + '/users';
     }
 
     init_styling_and_layout();
@@ -80,6 +92,7 @@ $('#alert_save').click(function () {
 
 $('#alert_not_save').click(function () {
     console.log('alert_not_save');
+    const root_url = $('meta[name=url]').attr('content');
 
     if ($('#node_click_or_create').val() == 'node_click') {
         show_quiz_editor(clicked_node);
@@ -87,10 +100,17 @@ $('#alert_not_save').click(function () {
     }
 
     if ($('#node_click_or_create').val() == 'create') {
-        const root_url = $('meta[name=url]').attr('content');
         const token = $('meta[name=csrf-token]').attr('content');
 
         create_question(create_type_id, root_url, token);
+    }
+
+    if ($('#node_click_or_create').val() == 'redirect_exams') {
+        window.location.href = root_url + '/exams';
+    }
+
+    if ($('#node_click_or_create').val() == 'redirect_users') {
+        window.location.href = root_url + '/users';
     }
 
     init_styling_and_layout();
@@ -114,6 +134,30 @@ $('#alert_cancel').click(function () {
     $('#question_save_alert').fadeOut(300);
     real_time_update_slide_view_nav_active();
 });
+
+function redirect_exams() {
+    const root_url = $('meta[name=url]').attr('content');
+
+    if (is_edited()) {
+
+        $('#node_click_or_create').val('redirect_exams');
+        $('#question_save_alert').fadeIn(300);
+    } else {
+        window.location.href = root_url + '/exams';
+    }
+}
+
+function redirect_users() {
+    const root_url = $('meta[name=url]').attr('content');
+
+    if (is_edited()) {
+
+        $('#node_click_or_create').val('redirect_users');
+        $('#question_save_alert').fadeIn(300);
+    } else {
+        window.location.href = root_url + '/users';
+    }
+}
 
 function onNodeClick(node) {
 
@@ -303,6 +347,8 @@ function create_question(quiz_type, root_url, token) {
         },
         function (data, status) {
             quizId = data;
+
+            let caption;
 
             if (quiz_type == 13) {
                 for (let i = 0; i < firstParentNode.find('li.node').length; i++) {
@@ -1219,8 +1265,10 @@ $('#slide_view_quiz_list').on('click', '.preview_item', function () {
 * ***************** real-time update at left navigation for question list ****************
 * */
 function real_time_update_slide_view_nav_active() {
+    if (localStorage.getItem('is_played_timer') == 'true') return;
     preview_timer = setInterval(function () {
         console.log('setinterval');
+        localStorage.setItem('is_played_timer', 'true');
         const navZoomScale = ($('#slide_view_quiz_list').width() - 40) / parseInt($('#screen_width').val());
         if ($('#quiz_list .node.current').length > 0 && localStorage.getItem('is_edited_for_timer') == 'true') {
             localStorage.setItem('is_edited_for_timer', 'false');
@@ -1301,5 +1349,6 @@ function real_time_update_slide_view_nav_active() {
 
 function real_time_update_slide_view_nav_inactive() {
     clearTimeout(preview_timer);
+    localStorage.setItem('is_played_timer', 'false');
 }
 

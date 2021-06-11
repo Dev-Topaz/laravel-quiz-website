@@ -14,6 +14,8 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
+
     <!-- Styles -->
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/metro/4.4.3/css/metro-all.min.css" rel="stylesheet">
@@ -26,10 +28,10 @@
     <!-- Scripts -->
     <link href="{{ asset('css/jquery-ui.min.css') }}" rel="stylesheet">
     <script src="{{ asset('js/jquery3.2.1.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
     <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('js/evol-colorpicker.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.22/fabric.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
     {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.js"></script>--}}
 </head>
 <body id="quiz_layout">
@@ -89,14 +91,14 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/exams') }}">
+                        <a class="nav-link" href="javascript:void(0)" onclick="redirect_exams()">
                             <i class="fas fa-award"></i>
                             <h6>{{ __('Exams') }}</h6>
                         </a>
                     </li>
                     @hasrole('manager')
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/users') }}">
+                        <a class="nav-link" href="javascript:void(0)" onclick="redirect_users()">
                             <i class="far fa-user"></i>
                             <h6>{{ __('Users') }}</h6>
                         </a>
@@ -135,6 +137,9 @@
 {{--    <script src="{{ asset('js/jquery.richtext.min.js') }}" defer></script>--}}
 
 <script>
+    $(document).on('ready', function () {
+        $(".se-pre-con").fadeOut(500);
+    });
     // $("img").lazyload({
     //     effect : "fadeIn"
     // });

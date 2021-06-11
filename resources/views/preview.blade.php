@@ -139,7 +139,7 @@
         <button onclick="preview(this)" id="submit_btn">Submit</button>
     </div>
     <div class="review_buttons" style="display: none;">
-        <button onclick="preview(this)">See Result</button>
+        <button onclick="see_result()">See Result</button>
         <div>
             <button onclick="preview_review()">Previous</button>
             <button onclick="next_review()">Next</button>

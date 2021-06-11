@@ -10,6 +10,8 @@
 
     <title>{{ $user->roles[0]->id == '1' ? 'Quiz Preview' : 'Exam Page' }}</title>
 
+    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -31,7 +33,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.22/fabric.js"></script>
 </head>
 <body>
-<div class="se-pre-con"></div>
+<div class="se-pre-con" style="display: none;"></div>
 <div id="imagePopup" class="modal">
 
     <span class="close">&times;</span>

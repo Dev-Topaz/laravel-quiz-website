@@ -2,10 +2,6 @@ $('.middle_form_bar').click(function () {
     $(this).next().toggle();
 });
 
-// $(document).on('load', function () {
-$(".se-pre-con").fadeOut(1000);
-// });
-
 var label_prev_content = '';
 
 $('body').on('click', '[data-editable]', function () {
