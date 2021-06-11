@@ -120,7 +120,7 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <div class="form_option" style="float: right;">
-                                                    <button type="button" onclick="{$('#quiz_delete_confirm_dialog').fadeIn(300);$('#quiz_delete_dialog_id').val('{{ $exam->id }}')}"><i class="fas fa-trash"></i>Delete Exam</button>
+                                                    <a href="javascript:void(0)" class="mf_link_theme" onclick="{$('#quiz_delete_confirm_dialog').fadeIn(300);$('#quiz_delete_dialog_id').val('{{ $exam->id }}')}"><i class="fas fa-trash"></i>Delete Exam</a>
                                                 </div>
                                             </form>
                                             @endhasrole
