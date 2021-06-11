@@ -30,11 +30,11 @@
     <div id="is_quiz" style="display: none;">{{ $is_quiz }}</div>
     <div id="user_name" style="display: none;">{{ $user->name }}</div>
     <div id="user_email" style="display: none;">{{ $user->email }}</div>
-    <div class="question_menu_bar" style="margin: 0 auto;width: 656px;display: flex;justify-content: space-between;padding-top: 10px;">
+    <div class="question_menu_bar" style="margin: 0 auto;display: flex;justify-content: space-between;padding-top: 10px;">
         <p id="question_list">Question <span id="question_number">1</span></p>
         <div id="question_result" style="display: flex;">
-            <p id="question_time" style="display: none;"><span>60</span>&nbsp;sec |&nbsp;</p>
-            <p id="question_point">Point Value: <span>10</span> |&nbsp;</p>
+            <p id="question_time" style="display: none;"><span>60</span>&nbsp;sec&nbsp;</p>
+            <p id="question_point">&nbsp;Point Value: <span>10</span> |&nbsp;</p>
             <p>Total Points: <span id="total_point">0</span> out of <span id="passing_score">100</span></p>
         </div>
     </div>
