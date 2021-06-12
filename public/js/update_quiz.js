@@ -284,7 +284,7 @@ function answer_form2slide() {
 
             var canvas_info = $('#answer_content').val();
 
-            if (canvas_info == '@{}') return;
+            if (canvas_info[0] == '@') return;
 
             var canvas_bg_url = canvas_info.split('@')[0];
             var canvas_item_info = canvas_info.split('@')[1];

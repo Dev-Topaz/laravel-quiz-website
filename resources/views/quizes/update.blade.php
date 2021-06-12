@@ -138,18 +138,18 @@
                              style="{{ $quiz->type_id > 11 ? 'display:none;' : 'display:flex;'}}">
                             <a href="javascript:void(0)"
                                style="padding: 0 3px;{{ (isset($quiz->media) || isset($quiz->video)) ? 'display: none' : '' }}"
-                               id="form_view_add_picture"><img src="{{ url('/images/icons/add_picture_normal.png') }}"
+                               id="form_view_add_picture"><img style="cursor: pointer;" src="{{ url('/images/icons/add_picture_normal.png') }}"
                                                                alt="pic"></a>
                             <a href="javascript:void(0)"
                                style="padding: 0 3px;{{ (isset($quiz->media) || isset($quiz->video)) ? 'display: none' : '' }}"
-                               id="form_view_add_video"><img src="{{ url('/images/icons/add_video_normal.png') }}"
+                               id="form_view_add_video"><img style="cursor: pointer;" src="{{ url('/images/icons/add_video_normal.png') }}"
                                                              alt="video"></a>
                             <img src="{{ $quiz->media ?? '#' }}" alt="form_view_media_element"
                                  id="form_view_media_element"
-                                 style="{{ isset($quiz->media) ? 'display: flex' : 'display: none' }};height: 70px;max-width: 135px;"
+                                 style="{{ isset($quiz->media) ? 'display: flex' : 'display: none' }};height: 70px;max-width: 135px;cursor: pointer;"
                                  onclick="show_pic_properties()">
                             <img src="{{ url('/images/icons/video_icon.png') }}" alt=""
-                                 style="height: 70px;padding:0 3px;{{ isset($quiz->video) ? '' : 'display: none' }}"
+                                 style="cursor: pointer;height: 70px;padding:0 3px;{{ isset($quiz->video) ? '' : 'display: none' }}"
                                  id="form_view_video_element" onclick="show_video_properties()">
                         </div>
                         <a href="javascript:void(0)"
@@ -157,7 +157,7 @@
                            id="form_view_add_audio"><img src="{{ url('/images/icons/add_audio_normal.png') }}"
                                                          alt="audio"></a>
                         <img src="{{ url('/images/icons/audio_icon.png') }}" alt=""
-                             style="height: 70px;padding:0 3px;{{ isset($quiz->audio) ? '' : 'display: none' }}"
+                             style="cursor: pointer;height: 70px;padding:0 3px;{{ isset($quiz->audio) ? '' : 'display: none' }}"
                              id="form_view_audio_mark">
                         <input type="file" id="form_view_input_media_element" accept="image/*" hidden>
                         <input type="file" id="form_view_input_video_element" accept=".mp4, .webm, .ogg" hidden>
