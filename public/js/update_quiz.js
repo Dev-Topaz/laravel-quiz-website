@@ -515,7 +515,7 @@ function form_to_slide() {
         resize: function () {
             set_flag_true();
         },
-        containment: '#drag_containment',
+        containment: '#quiz_view',
     });
     $('#quiz_view #quiz_background_container .slide_view_group').draggable({
         drag: function (evt, ui) {
@@ -528,7 +528,7 @@ function form_to_slide() {
         },
         cancel: 'div.cancel_drag',
         cursor: 'move',
-        containment: '#drag_containment'
+        containment: '#quiz_view'
     });
     if ($('#quiz_view .slide_view_group_checkbox').length === 0) $('#quiz_view .slide_view_group').append('<input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;">');
     $('#quiz_view .slide_view_group').removeClass('selected_slide_view_group');
@@ -557,16 +557,6 @@ function get_zoom() {
 function fit_slide_view() {
     const zoom = get_zoom();
     $('#quiz_view #slide_view_container').eq(0).css('transform', 'translate(-50%, -50%) matrix(' + zoom + ', 0, 0, ' + zoom + ', 0, 0)');
-    const left = (parseInt($('.slide_view_element').width()) - parseInt($('#quiz_view #slide_view_container').eq(0).width()) * zoom) / 2;
-    const top = (parseInt($('.slide_view_element').height()) - parseInt($('#quiz_view #slide_view_container').eq(0).height()) * zoom) / 2;
-    console.log(left, top);
-    $('#drag_containment').css({
-        'width': $('#quiz_view #slide_view_container').eq(0).width() + 'px',
-        'height': $('#quiz_view #slide_view_container').eq(0).height() + 'px',
-        'left': left + 'px',
-        'top': top + 'px',
-        'transform': 'unset',
-    });
 }
 
 function fit_slide_view_quiz_list() {
@@ -650,13 +640,13 @@ $('#insert_textbox_btn').click(function () {
             ui.position.top = Math.round(ui.position.top / zoom);
             ui.position.left = Math.round(ui.position.left / zoom);
         },
-        containment: '#drag_containment',
+        containment: '#quiz_view',
         cancel: 'div.cancel_drag',
         stop: function () {
             set_flag_true();
         }
     }).resizable({
-        containment: '#drag_containment',
+        containment: '#quiz_view',
         stop: function () {
             set_flag_true();
         }
@@ -710,9 +700,9 @@ $('#slide_view_picture_file_selector').change(function () {
                         stop: function () {
                             set_flag_true();
                         },
-                        containment: '#drag_containment',
+                        containment: '#quiz_view',
                     }).resizable({
-                        containment: '#drag_containment',
+                        containment: '#quiz_view',
                         stop: function () {
                             set_flag_true();
                         }
@@ -785,9 +775,9 @@ $('#slide_view_video_file_selector').change(function () {
                             set_flag_true();
                         },
                         cursor: 'move',
-                        containment: '#drag_containment',
+                        containment: '#quiz_view',
                     }).resizable({
-                        containment: '#drag_containment',
+                        containment: '#quiz_view',
                         stop: function () {
                             set_flag_true();
                         }
