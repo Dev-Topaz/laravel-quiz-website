@@ -924,7 +924,7 @@ function show_correct_view() {
             resize: function () {
                 set_flag_true();
             },
-            containment: 'parent',
+            containment: '#drag_containment',
         });
         $('.slide_view_group').draggable({
             drag: function (evt, ui) {
@@ -939,7 +939,7 @@ function show_correct_view() {
             },
             cursor: "move",
             cancel: 'div.cancel_drag',
-            containment: 'parent'
+            containment: '#drag_containment'
         });
         if ($('.slide_view_group_checkbox').length === 0) $('.slide_view_group').append('<input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;">');
     }

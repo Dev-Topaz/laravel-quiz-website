@@ -492,6 +492,7 @@
         </div>
     </div>
     <div class="cell-9 slide_view_element" style="height: 695px;background: #dcdcdc;display: none;">
+        <div id="drag_containment"></div>
         <div
             style="top:50%;left:50%;transform:translate(-50%, -50%);margin: auto 0;width: {{ $quiz->exam_group->exam->screen_width }}px;height:{{ $quiz->exam_group->exam->screen_height }}px;{{ $quiz->exam_group->exam->theme_style ?? 'background:white' }}"
             id="slide_view_container">

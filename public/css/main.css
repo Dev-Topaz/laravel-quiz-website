@@ -1133,3 +1133,13 @@ if it's not present, don't show loader */
     border: 1px solid #ee8845 !important;
     background: #fbe5da;
 }
+
+#drag_containment {
+    position: absolute;
+    width: 656px;
+    height: 315px;
+    background: #0008;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
