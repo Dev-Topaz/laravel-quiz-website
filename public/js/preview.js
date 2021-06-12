@@ -149,6 +149,8 @@ $("#slide_drag_words_answer span").draggable({
         $(this).removeClass("ui-state-highlight");
     },
 
+    cursor: 'move',
+
     // revert: true,
 });
 $("#slide_drag_words_question .blank").droppable({
