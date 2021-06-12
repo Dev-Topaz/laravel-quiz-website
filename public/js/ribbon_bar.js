@@ -149,7 +149,7 @@ function get_cursor_pos_supposed_to_be(str) {
 // Font Family Select
 $('#slide_view_font_family_selector').change(function () {
     // changeFont($(this).val());
-    var element = $('.selected_slide_view_group'); // get selected element
+    var element = $('#quiz_view .selected_slide_view_group'); // get selected element
     if (element.hasClass('slide_view_answer_element')) {
         element.css('font-family', $(this).val());
         if (element.find('label').length > 0) element.find('label').css('font-family', $(this).val());
@@ -171,7 +171,7 @@ var changing_font_size_for_answer_element = parseInt($('#font_size_selector').va
 
 // Font size select
 $('#font_size_selector').change(function () {
-    var element = $('.selected_slide_view_group'); // get selected element
+    var element = $('#quiz_view .selected_slide_view_group'); // get selected element
     if (element.hasClass('slide_view_answer_element')) {
         element.css('font-size', $(this).val() + 'px');
         if (element.find('label').length > 0) element.find('label').css('font-size', $(this).val() + 'px');
@@ -214,7 +214,7 @@ function resetFont() {
 
 // Font size increase
 $('#font_size_bigger_btn').click(function () {
-    var element = $('.selected_slide_view_group'); // get selected element
+    var element = $('#quiz_view .selected_slide_view_group'); // get selected element
     if (element.hasClass('slide_view_answer_element')) {
         if (changing_font_size_for_answer_element < 100) changing_font_size_for_answer_element += 2;
         element.css('font-size', changing_font_size_for_answer_element);
@@ -241,7 +241,7 @@ $('#font_size_bigger_btn').click(function () {
 
 // Font size decrease
 $('#font_size_smaller_btn').click(function () {
-    var element = $('.selected_slide_view_group'); // get selected element
+    var element = $('#quiz_view .selected_slide_view_group'); // get selected element
     if (element.hasClass('slide_view_answer_element')) {
         if (changing_font_size_for_answer_element > 6) changing_font_size_for_answer_element -= 2;
         element.css('font-size', changing_font_size_for_answer_element);
@@ -273,7 +273,7 @@ $('#font_style_clear_btn').click(function () {
     fontSize = 16;
     changing_font_size_for_answer_element = 16;
 
-    var element = $('.selected_slide_view_group'); // get selected element
+    var element = $('#quiz_view .selected_slide_view_group'); // get selected element
     if (element.hasClass('slide_view_answer_element')) {
         element.css('font-size', '16px');
         element.css('font-style', 'normal');
@@ -344,7 +344,7 @@ var formatting_bold = false;
 $('.font_bold_btn').click(function () {
     // toggle_bold(formatting_bold);
 
-    var element = $('.selected_slide_view_group'); // get selected element
+    var element = $('#quiz_view .selected_slide_view_group'); // get selected element
     if (element.hasClass('slide_view_answer_element')) {
         formatting_bold = !formatting_bold;
         if (formatting_bold) {
@@ -374,7 +374,7 @@ var formatting_strike = false;
 
 // Font strikethrough toggle
 $('#slide_view_font_strike_btn').click(function () {
-    var element = $('.selected_slide_view_group'); // get selected element
+    var element = $('#quiz_view .selected_slide_view_group'); // get selected element
     if (element.hasClass('slide_view_answer_element')) {
         formatting_strike = !formatting_strike;
         if (formatting_strike) {
@@ -404,7 +404,7 @@ var formatting_ital = false;
 
 // Font italic toggle
 $('.font_ital_btn').click(function () {
-    var element = $('.selected_slide_view_group'); // get selected element
+    var element = $('#quiz_view .selected_slide_view_group'); // get selected element
     if (element.hasClass('slide_view_answer_element')) {
         formatting_ital = !formatting_ital;
         if (formatting_ital) {
@@ -434,7 +434,7 @@ $('.font_ital_btn').click(function () {
 var formatting_underline = false;
 // Font underline toggle
 $('.font_underline_btn').click(function () {
-    var element = $('.selected_slide_view_group'); // get selected element
+    var element = $('#quiz_view .selected_slide_view_group'); // get selected element
     if (element.hasClass('slide_view_answer_element')) {
         formatting_underline = !formatting_underline;
         if (formatting_underline) {
@@ -499,7 +499,7 @@ $('#office_color_picker').mousedown(function (e) {
 
 // Font color select
 $("#office_color_picker").on("change.color", function (event, color) {
-    var element = $('.selected_slide_view_group'); // get selected element
+    var element = $('#quiz_view .selected_slide_view_group'); // get selected element
     if (element.hasClass('slide_view_answer_element')) {
         element.css('color', color);
         if (element.find('label').length > 0) element.find('label').css('color', color);
@@ -715,7 +715,7 @@ function create_bullet(para_bullet) {
 }
 
 $('#paragraph_align_left').click(function () {
-    var element = $('.selected_slide_view_group'); // get selected element
+    var element = $('#quiz_view .selected_slide_view_group'); // get selected element
     element.css('text-align', 'left');
     if (element.find('.choice_item').length > 0) element.find('.choice_item').css('justify-content', 'flex-start');
     if (element.find('.response_item').length > 0) element.find('.response_item').css('justify-content', 'flex-start');
@@ -724,7 +724,7 @@ $('#paragraph_align_left').click(function () {
 });
 
 $('#paragraph_align_center').click(function () {
-    var element = $('.selected_slide_view_group'); // get selected element
+    var element = $('#quiz_view .selected_slide_view_group'); // get selected element
     element.css('text-align', 'center');
     if (element.find('.choice_item').length > 0) element.find('.choice_item').css('justify-content', 'center');
     if (element.find('.response_item').length > 0) element.find('.response_item').css('justify-content', 'center');
@@ -733,7 +733,7 @@ $('#paragraph_align_center').click(function () {
 });
 
 $('#paragraph_align_right').click(function () {
-    var element = $('.selected_slide_view_group'); // get selected element
+    var element = $('#quiz_view .selected_slide_view_group'); // get selected element
     element.css('text-align', 'right');
     if (element.find('.choice_item').length > 0) element.find('.choice_item').css('justify-content', 'flex-end');
     if (element.find('.response_item').length > 0) element.find('.response_item').css('justify-content', 'flex-end');
@@ -742,35 +742,35 @@ $('#paragraph_align_right').click(function () {
 });
 
 $('#paragraph_align_justify').click(function () {
-    var element = $('.selected_slide_view_group'); // get selected element
+    var element = $('#quiz_view .selected_slide_view_group'); // get selected element
     element.css('text-align', 'justify');
 
     set_flag_true();
 });
 
 $('#paragraph_line_spacing_100').click(function () {
-    var element = $('.selected_slide_view_group'); // get selected element
+    var element = $('#quiz_view .selected_slide_view_group'); // get selected element
     element.css('line-height', '1');
 
     set_flag_true();
 });
 
 $('#paragraph_line_spacing_115').click(function () {
-    var element = $('.selected_slide_view_group'); // get selected element
+    var element = $('#quiz_view .selected_slide_view_group'); // get selected element
     element.css('line-height', '1.15');
 
     set_flag_true();
 });
 
 $('#paragraph_line_spacing_150').click(function () {
-    var element = $('.selected_slide_view_group'); // get selected element
+    var element = $('#quiz_view .selected_slide_view_group'); // get selected element
     element.css('line-height', '1.5');
 
     set_flag_true();
 });
 
 $('#paragraph_line_spacing_200').click(function () {
-    var element = $('.selected_slide_view_group'); // get selected element
+    var element = $('#quiz_view .selected_slide_view_group'); // get selected element
     element.css('line-height', '2');
 
     set_flag_true();
@@ -825,7 +825,7 @@ function add_line_spacing_after(paragraph_line_spacing_add_after) {
     //     else
     //         e.style.marginBottom = 'unset';
     // }
-    var element = $('.selected_slide_view_group'); // get selected element
+    var element = $('#quiz_view .selected_slide_view_group'); // get selected element
     if (element.hasClass('slide_view_question_element') || element.hasClass('other_slide_view_element')) {
         if (paragraph_line_spacing_add_after ) {
             element.find('.cancel_drag').children().css('padding-bottom', '10px');
@@ -983,13 +983,14 @@ function increase_indent() {
 //=========================================================================
 
 $('.shape_effect_shadow_sample').click(function () {
-    var element = $('.selected_slide_view_group'); // get selected element
+    var element = $('#quiz_view .selected_slide_view_group'); // get selected element
     element.css('box-shadow', $(this).attr('data-style'));
 
     set_flag_true();
 });
 $('.shape_effect_glow_sample').click(function () {
-    var element = $('.selected_slide_view_group'); // get selected element
+    console.log('general styling')
+    var element = $('#quiz_view .selected_slide_view_group'); // get selected element
     element.css('box-shadow', $(this).attr('data-style'));
 
     set_flag_true();
@@ -1170,7 +1171,7 @@ $('#rotate_left').click(function () {
 });
 
 $('#align_left').click(function () {
-    var element = $('.selected_slide_view_group'); // get selected element
+    var element = $('#quiz_view .selected_slide_view_group'); // get selected element
     element.css('left', '20px');
 
     set_flag_true();
@@ -1206,7 +1207,7 @@ $('#align_center').click(function () {
 });
 
 $('#align_top').click(function () {
-    var element = $('.selected_slide_view_group'); // get selected element
+    var element = $('#quiz_view .selected_slide_view_group'); // get selected element
     element.css('top', '20px');
 
     set_flag_true();
@@ -1285,25 +1286,24 @@ $('#distribute_horizontally').click(function () {
 
 $('.quick_style_sample').click(function () {
 
-    var element = $('.selected_slide_view_group'); // get selected element
+    var element = $('#quiz_view .selected_slide_view_group'); // get selected element
     // var element = $('.slide_view_question_element').eq(0);
-    element.css('border-color', $(this).css('border-color'));
-    element.css('border-width', $(this).css('border-width'));
-    element.css('border-style', $(this).css('border-style'));
+
+    element.css('border', this.style.border);
     element.css('color', $(this).css('color'));
-    element.css('background-image', $(this).css('background-image'));
+    element.css('background', this.style.background);
     // element.css('box-shadow', $(this).css('box-shadow'));
-    if ($(this).css('background').indexOf('repeating-conic-gradient(rgb') == -1) {
-        element.css('background', $(this).css('background'));
+    if (this.style.background.indexOf('repeating-conic-gradient(rgb') == -1) {
+        element.css('background', this.style.background);
     } else {
-        element.css('background', 'rgba' + $(this).css('background').split('repeating-conic-gradient(rgb')[1].split(') 0deg,')[0] + ', 0.7)');
+        element.css('background', 'rgba' + this.style.background.split('repeating-conic-gradient(rgb')[1].split(') 0deg,')[0] + ', 0.7)');
     }
 
     set_flag_true();
 });
 
 $('.quick_style_sample_none').click(function () {
-    var element = $('.selected_slide_view_group'); // get selected element
+    var element = $('#quiz_view .selected_slide_view_group'); // get selected element
     element.css('border', 'none');
     element.css('background', 'none');
     element.css('color', 'black');
@@ -1332,14 +1332,14 @@ $('#shape_outline_color_picker').colorpicker({
 
 // triggered when a color is selected.
 $("#shape_fill_color_picker").on("change.color", function (event, color) {
-    var element = $('.selected_slide_view_group'); // get selected element
+    var element = $('#quiz_view .selected_slide_view_group'); // get selected element
     element.css('background', color);
 
     set_flag_true();
 });
 
 $("#shape_outline_color_picker").on("change.color", function (event, color) {
-    var element = $('.selected_slide_view_group'); // get selected element
+    var element = $('#quiz_view .selected_slide_view_group'); // get selected element
     element.css('border', '3px solid ' + color);
 
     set_flag_true();
@@ -1821,5 +1821,102 @@ function init_styling_and_layout() {
     changing_font_size_for_answer_element = 16;
 }
 
-
 // init_styling_and_layout()   when leaving current quiz, on a new quiz
+
+$(document).ready(function (){
+   // console.log('%c Loaded', 'color: blue;');
+   // console.log($('.evo-palette').length);
+   // Insert No fill option
+   var a = $('.evo-palette').eq(1).find('tr').eq(0);
+   a.clone().insertBefore(a).attr('id', 'no_fill_btn').attr('onclick', 'apply_no_fill()').find('th').text("No fill");
+
+   // Insert No outline option
+   var a = $('.evo-palette').eq(2).find('tr').eq(0);
+   a.clone().insertBefore(a).attr('id', 'no_border_btn').attr('onclick', 'apply_no_outline()').find('th').text("No outline");
+
+});
+
+function apply_no_fill() {
+    console.log('no fill');
+    var element = $('#quiz_view .selected_slide_view_group'); // get selected element
+    var len = element.length;
+    for (let i = 0; i < len; i++) {
+        var style = element.eq(i).attr('style');
+        if (style.indexOf('background:') == -1) continue;
+        var tmp = style.split('background:');
+        var tmp_2 = tmp[1];
+        var tmp_3 = tmp_2.split(';');
+        tmp_3.shift();
+        var no_fill_style = tmp[0] + tmp_3.join(';');
+
+        element.eq(i).attr('style', no_fill_style);
+    }
+}
+
+function apply_no_outline() {
+    console.log('no border');
+    var element = $('#quiz_view .selected_slide_view_group'); // get selected element
+    var len = element.length;
+    for (let i = 0; i < len; i++) {
+        var style = element.eq(i).attr('style');
+        if (style.indexOf('border:') == -1) continue;
+        var tmp = style.split('border:');
+        var tmp_2 = tmp[1];
+        var tmp_3 = tmp_2.split(';');
+        tmp_3.shift();
+        var no_fill_style = tmp[0] + tmp_3.join(';');
+
+        element.eq(i).attr('style', no_fill_style);
+    }
+}
+
+$('#no_glow_btn').click(function () {
+    console.log('specific styling');
+    var element = $('#quiz_view .selected_slide_view_group'); // get selected element
+    var len = element.length;
+    for (let i = 0; i < len; i++) {
+        var style = element.eq(i).attr('style');
+        if (style.indexOf('box-shadow:') == -1) continue;
+        var tmp = style.split('box-shadow:');
+        var tmp_2 = tmp[1];
+        var tmp_3 = tmp_2.split(';');
+        tmp_3.shift();
+        var no_fill_style = tmp[0] + tmp_3.join(';');
+
+        element.eq(i).attr('style', no_fill_style);
+    }
+});
+
+$('#no_shadow_btn').click(function () {
+    console.log('specific styling');
+    var element = $('#quiz_view .selected_slide_view_group'); // get selected element
+    var len = element.length;
+    for (let i = 0; i < len; i++) {
+        var style = element.eq(i).attr('style');
+        if (style.indexOf('box-shadow:') == -1) continue;
+        var tmp = style.split('box-shadow:');
+        var tmp_2 = tmp[1];
+        var tmp_3 = tmp_2.split(';');
+        tmp_3.shift();
+        var no_fill_style = tmp[0] + tmp_3.join(';');
+
+        element.eq(i).attr('style', no_fill_style);
+    }
+});
+
+$('#quick_style_none').click(function () {
+    console.log('specific styling');
+    var element = $('#quiz_view .selected_slide_view_group'); // get selected element
+    var len = element.length;
+    for (let i = 0; i < len; i++) {
+        var style = element.eq(i).attr('style');
+        if (style.indexOf('border:') == -1) continue;
+        var tmp = style.split('border:');
+        var tmp_2 = tmp[1];
+        var tmp_3 = tmp_2.split(';');
+        tmp_3.shift();
+        var no_fill_style = tmp[0] + tmp_3.join(';');
+
+        element.eq(i).attr('style', no_fill_style);
+    }
+});

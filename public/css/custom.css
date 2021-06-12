@@ -678,3 +678,7 @@ div[contenteditable='true'] ul {
 #editor_footer_part button:hover {
     background: #c6c6c6;
 }
+
+tr#no_fill_btn:hover, tr#no_border_btn:hover {
+    background: lightgray;
+}

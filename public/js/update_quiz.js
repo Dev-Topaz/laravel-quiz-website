@@ -615,9 +615,9 @@ function add_canvas_item_info(string) {
 $("body").mousedown(function (e) {
     const element = $(e.target);
 
-    if (element.closest('#quiz_background_container').length > 0) {
+    if (element.closest('#quiz_view #quiz_background_container').length > 0) {
         if (element[0].classList.contains('slide_view_group_checkbox')) {
-            if (element.is(':checked')) {
+            if (!element.is(':checked')) {
                 element.closest('.slide_view_group').addClass('selected_slide_view_group');
                 if (element.closest('.slide_view_group').find('.other_slide_view_element_delete_icon').length > 0) element.closest('.slide_view_group').find('.other_slide_view_element_delete_icon').show();
             } else {
