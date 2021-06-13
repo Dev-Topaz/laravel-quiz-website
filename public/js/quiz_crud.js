@@ -920,27 +920,33 @@ function show_correct_view() {
         $('.slide_view_element').show();
         fit_slide_view();
 
-        $('.slide_view_group').resizable({
+        $('#quiz_view .slide_view_group').resizable({
             resize: function () {
                 set_flag_true();
             },
-            containment: '#quiz_view',
+            minWidth: 0,
+            maxWidth: get_containment_position().width / get_zoom() + 40,
+            minHeight: 0,
+            maxHeight: get_containment_position().height / get_zoom() + 40,
         });
-        $('.slide_view_group').draggable({
-            drag: function (evt, ui) {
 
-                const zoom = get_zoom();
+        $('#quiz_view #quiz_background_container .slide_view_group').mouseover(function () {
+            $(this).draggable({
+                drag: function (evt, ui) {
+                    const zoom = get_zoom();
+                    ui.position.top = Math.round(ui.position.top / zoom);
+                    ui.position.left = Math.round(ui.position.left / zoom);
 
-                ui.position.top = Math.round(ui.position.top / zoom);
-                ui.position.left = Math.round(ui.position.left / zoom);
-            },
-            stop: function () {
-                set_flag_true();
-            },
-            cursor: "move",
-            cancel: 'div.cancel_drag',
-            containment: '#quiz_view'
+                },
+                stop: function () {
+                    set_flag_true();
+                },
+                cancel: 'div.cancel_drag',
+                cursor: 'move',
+                containment: [get_containment_position().x0, get_containment_position().y0, get_containment_position().x1 - $(this).width() * get_zoom() + 20, get_containment_position().y1 - $(this).height() * get_zoom() + 20],
+            });
         });
+
         if ($('.slide_view_group_checkbox').length === 0) $('.slide_view_group').append('<input class="slide_view_group_checkbox" type="checkbox" style="position: absolute;top: 0;left: 0;">');
     }
 }

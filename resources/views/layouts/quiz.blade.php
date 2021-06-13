@@ -138,7 +138,7 @@
 {{--    <script src="{{ asset('js/jquery.richtext.min.js') }}" defer></script>--}}
 
 <script>
-    $(document).on('ready', function () {
+    $(document).ready(function () {
         $(".se-pre-con").fadeOut(500);
     });
     // $("img").lazyload({
