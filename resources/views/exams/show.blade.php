@@ -357,7 +357,8 @@
                         </span>
                             <span class="caption">Video</span>
                         </button>
-                        <input id="slide_view_video_file_selector" type="file" data-role="file" accept=".mp4, .webm, .ogg"
+                        <input id="slide_view_video_file_selector" type="file" data-role="file"
+                               accept=".mp4, .webm, .ogg"
                                style="display: none;">
                         <div class="ribbon-split-button">
                             <button class="ribbon-main" id="insert_section_audio_btn_top">
@@ -1120,7 +1121,7 @@
                             </button>
                             <span class="ribbon-split dropdown-toggle" style="line-height: 1.3;"
                                   id="slideview_quick_styles_btn_bottom">Quick<br>Styles</span>
-                                                        <div id="quick_styles_panel_holder" class="ribbon-dropdown" data-role="dropdown"
+                            <div id="quick_styles_panel_holder" class="ribbon-dropdown" data-role="dropdown"
                                  data-duration="100">
                                 <div>
                                     <div class='quick_style_sample_divider'>None</div>
@@ -1385,7 +1386,8 @@
                                 <img loading="lazy" src="{{ url("/images/ribbon_imgs/home-22.png") }}">
                             </span>
                                 <span class="caption dropdown-toggle">Shape Fill</span>
-                                <div id="shape_fill_color_picker" class="ribbon-dropdown" data-role="dropdown" data-duration="100" style="position: absolute;">
+                                <div id="shape_fill_color_picker" class="ribbon-dropdown" data-role="dropdown"
+                                     data-duration="100" style="position: absolute;">
                                 </div>
                             </button>
                             <button class="ribbon-icon-button">
@@ -1410,7 +1412,8 @@
                                         <div id="shape_effect_shadow_panel">
                                             <div>
                                                 <div class="shape_effect_shadow_sample_divider">No Shadow</div>
-                                                <div class="shape_effect_shadow_sample" id="no_shadow_btn" data-style="none"
+                                                <div class="shape_effect_shadow_sample" id="no_shadow_btn"
+                                                     data-style="none"
                                                      style="background-image: url({{ url("/images/ribbon_imgs/shadow/no_shadow.png") }});">
                                                 </div>
                                                 <div class="shape_effect_shadow_sample_divider">Variations</div>
@@ -1571,14 +1574,14 @@
                         <div class="group-divider"></div>
                     </div>
                     <div class="group">
-                        <a href="{{ url('/exams') }}/{{$exam->id}}/edit">
-                            <button class="ribbon-button">
+                        {{--                        <a href="{{ url('/exams') }}/{{$exam->id}}/edit">--}}
+                        <button class="ribbon-button" id="quiz_properties_btn">
                         <span class="icon">
                             <img loading="lazy" src="{{ url("/images/ribbon_imgs/home-25.png") }}">
                         </span>
-                                <span class="caption" style="color: black;">Quiz Properties</span>
-                            </button>
-                        </a>
+                            <span class="caption" style="color: black;">Quiz Properties</span>
+                        </button>
+                        {{--                        </a>--}}
                         {{--                        <button class="ribbon-button">--}}
                         {{--                        <span class="icon">--}}
                         {{--                            <img loading="lazy" src="{{ url("/images/ribbon_imgs/home-26.png") }}">--}}
@@ -1847,14 +1850,16 @@
                             </span>
                                 <span class="caption">Picture</span>
                             </button>
-                            <input id="form_view_picture_selector" type="file" accept="image/*" data-role="file" style="display: none;">
+                            <input id="form_view_picture_selector" type="file" accept="image/*" data-role="file"
+                                   style="display: none;">
                             <button class="ribbon-icon-button" id="form_view_video_file_btn">
                             <span class="icon">
                                 <img src="{{ url("/images/ribbon_imgs/insert-9.png") }}">
                             </span>
                                 <span class="caption">Video</span>
                             </button>
-                            <input id="form_view_video_file_selector" type="file" accept=".mp4, .webm, .ogg" data-role="file"
+                            <input id="form_view_video_file_selector" type="file" accept=".mp4, .webm, .ogg"
+                                   data-role="file"
                                    style="display: none;">
                             <button class="ribbon-icon-button">
                             <span class="icon">
@@ -2032,7 +2037,8 @@
                                                                     data-content="<i>Add questions</i>"></li>
                                                             @else
                                                                 @foreach($exam_group->quizes as $quiz)
-                                                                    <li class="{{ $quiz->type_id == 13 ? 'instruction_node' : '' }}" id="{{ $quiz->id }}" order="{{ $quiz->order }}"
+                                                                    <li class="{{ $quiz->type_id == 13 ? 'instruction_node' : '' }}"
+                                                                        id="{{ $quiz->id }}" order="{{ $quiz->order }}"
                                                                         data-caption="{{ strip_tags($quiz->question_element) }}"
                                                                         data-content="<i>{{ $quiz->Quiz_type->name }}</i>"></li>
                                                                 @endforeach

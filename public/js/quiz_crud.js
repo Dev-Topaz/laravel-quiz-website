@@ -84,6 +84,12 @@ $('#alert_save').click(function () {
         window.location.href = root_url + '/users';
     }
 
+    if ($('#node_click_or_create').val() == 'quiz_properties') {
+        update_quiz(false);
+
+        window.location.href = root_url + '/exams/' + $('#exam_id').val() + '/edit';
+    }
+
     init_styling_and_layout();
 
     $('#question_save_alert').fadeOut(300);
@@ -111,6 +117,10 @@ $('#alert_not_save').click(function () {
 
     if ($('#node_click_or_create').val() == 'redirect_users') {
         window.location.href = root_url + '/users';
+    }
+
+    if ($('#node_click_or_create').val() == 'quiz_properties') {
+        window.location.href = root_url + '/exams/' + $('#exam_id').val() + '/edit';
     }
 
     init_styling_and_layout();
@@ -146,6 +156,18 @@ function redirect_exams() {
         window.location.href = root_url + '/exams';
     }
 }
+
+$('#quiz_properties_btn').click(function () {
+    const root_url = $('meta[name=url]').attr('content');
+
+    if (is_edited()) {
+
+        $('#node_click_or_create').val('quiz_properties');
+        $('#question_save_alert').fadeIn(300);
+    } else {
+        window.location.href = root_url + '/exams/' + $('#exam_id').val() + '/edit';
+    }
+});
 
 function redirect_users() {
     const root_url = $('meta[name=url]').attr('content');
