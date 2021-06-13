@@ -232,6 +232,7 @@ function drawcle() {
     });
 
     canvas.on('mouse:up', function (o) {
+        if (isDraw) return;
         if (isDown) {
             canvas.getActiveObject().remove();
             canvas.add(circle);
@@ -303,6 +304,7 @@ function drawrec() {
     });
 
     canvas.on('mouse:up', function (o) {
+        if (isDraw) return;
         if (isDown) {
             canvas.getActiveObject().remove();
             canvas.add(rect);
@@ -360,7 +362,66 @@ function drawpoly() {
         canvas.renderAll();
     } else {
         drawingObject.type = "roof"; // roof type
+        console.log(drawingObject.type);
     }
+
+    fabric.util.addListener(window, 'dblclick', function () {
+
+        if (lines.length == 0) return;
+
+        drawingObject.type = "";
+        lines.forEach(function (value, index, ar) {
+            canvas.remove(value);
+        });
+        //canvas.remove(lines[lineCounter - 1]);
+        roof = makeRoof(roofPoints);
+        canvas.add(roof);
+        canvas.renderAll();
+
+        $('#drawpoly').removeClass('hotspots_active');
+        console.log("double click");
+        //clear arrays
+        roofPoints = [];
+        lines = [];
+        lineCounter = 0;
+
+    });
+
+    canvas.on('mouse:down', function (options) {
+        console.log('down');
+        if (drawingObject.type == "roof") {
+            canvas.selection = false;
+            setStartingPoint(options);
+            console.log("----------------");
+            console.log(x, y);// set x,y
+            roofPoints.push(new Point(x, y));
+            var points = [x, y, x, y];
+            lines.push(new fabric.Line(points, {
+                strokeWidth: 3,
+                selectable: false,
+                stroke: '#288f02',
+                originX: 'center',
+                originY: 'center'
+            }));
+            // }).setOriginX(x).setOriginY(y));
+            canvas.add(lines[lineCounter]);
+            lineCounter++;
+            canvas.on('mouse:up', function (options) {
+                console.log('up');
+                canvas.selection = true;
+            });
+        }
+    });
+    canvas.on('mouse:move', function (options) {
+        if (lines[0] !== null && lines[0] !== undefined && drawingObject.type == "roof") {
+            setStartingPoint(options);
+            lines[lineCounter - 1].set({
+                x2: x,
+                y2: y
+            });
+            canvas.renderAll();
+        }
+    });
 }
 
 
@@ -390,63 +451,6 @@ console.log(fabric.util);
 //
 // });
 
-fabric.util.addListener(window, 'dblclick', function () {
-
-    if (lines.length == 0) return;
-
-    drawingObject.type = "";
-    lines.forEach(function (value, index, ar) {
-        canvas.remove(value);
-    });
-    //canvas.remove(lines[lineCounter - 1]);
-    roof = makeRoof(roofPoints);
-    canvas.add(roof);
-    canvas.renderAll();
-
-    $('#drawpoly').removeClass('hotspots_active');
-    console.log("double click");
-    //clear arrays
-    roofPoints = [];
-    lines = [];
-    lineCounter = 0;
-
-});
-
-canvas.on('mouse:down', function (options) {
-    console.log('down');
-    if (drawingObject.type == "roof") {
-        canvas.selection = false;
-        setStartingPoint(options);
-        console.log("----------------");
-        console.log(x, y);// set x,y
-        roofPoints.push(new Point(x, y));
-        var points = [x, y, x, y];
-        lines.push(new fabric.Line(points, {
-            strokeWidth: 3,
-            selectable: false,
-            stroke: '#288f02',
-            originX: 'center',
-            originY: 'center'
-        }));
-        // }).setOriginX(x).setOriginY(y));
-        canvas.add(lines[lineCounter]);
-        lineCounter++;
-        canvas.on('mouse:up', function (options) {
-            console.log('up');
-            canvas.selection = true;
-        });
-    }
-});
-canvas.on('mouse:move', function (options) {
-    if (lines[0] !== null && lines[0] !== undefined && drawingObject.type == "roof") {
-        setStartingPoint(options);
-        lines[lineCounter - 1].set({
-            x2: x,
-            y2: y
-        });
-        canvas.renderAll();
-    }
-});
 
 function setStartingPoint(options) {
     var offset = $('#hotspots_canvas').offset();
