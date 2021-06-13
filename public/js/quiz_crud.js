@@ -920,14 +920,28 @@ function show_correct_view() {
         $('.slide_view_element').show();
         fit_slide_view();
 
-        $('#quiz_view .slide_view_group').resizable({
-            resize: function () {
-                set_flag_true();
-            },
-            minWidth: 0,
-            maxWidth: get_containment_position().width / get_zoom() + 40,
-            minHeight: 0,
-            maxHeight: get_containment_position().height / get_zoom() + 40,
+        $('#quiz_view .slide_view_group').mouseover(function () {
+            $(this).resizable({
+                resize: function (evt, ui) {
+                    console.log(ui)
+                    var changeWidth = ui.size.width - ui.originalSize.width;
+                    var newWidth = ui.originalSize.width + changeWidth / get_zoom();
+
+                    var changeHeight = ui.size.height - ui.originalSize.height;
+                    var newHeight = ui.originalSize.height + changeHeight / get_zoom();
+
+                    ui.size.width = newWidth;
+                    ui.size.height = newHeight;
+
+                },
+                stop: function () {
+                    set_flag_true();
+                },
+                minWidth: 0,
+                maxWidth: get_containment_position().width / get_zoom() - parseFloat($(this).css('left')) + 40,
+                minHeight: 0,
+                maxHeight: get_containment_position().height / get_zoom() - parseFloat($(this).css('top')) + 40,
+            });
         });
 
         $('#quiz_view #quiz_background_container .slide_view_group').mouseover(function () {
@@ -943,7 +957,7 @@ function show_correct_view() {
                 },
                 cancel: 'div.cancel_drag',
                 cursor: 'move',
-                containment: [get_containment_position().x0, get_containment_position().y0, get_containment_position().x1 - $(this).width() * get_zoom() + 20, get_containment_position().y1 - $(this).height() * get_zoom() + 20],
+                containment: [get_containment_position().x0, get_containment_position().y0, get_containment_position().x1 - ($(this).width() - 40) * get_zoom(), get_containment_position().y1 - ($(this).height() - 40) * get_zoom()],
             });
         });
 

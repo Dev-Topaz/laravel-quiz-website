@@ -243,6 +243,7 @@ $('#form_view_input_video_element').change(function () {
                     console.log(response.filepath);
                     $('#video').val(response.filepath);
                     $('#video_properties_video source').attr('src', $('#video').val()).appendTo($('#video_properties_video source').parent());
+                    $('#video_properties_video video')[0].load();
                     console.log($('.slide_view_video_element video source'));
                     $('#quiz_view .slide_view_video_element video source').attr('src', $('#video').val()).appendTo($('#quiz_view .slide_view_video_element video'));
                     $('#quiz_view .slide_view_video_element').show();

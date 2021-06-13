@@ -1,5 +1,6 @@
 $('div.quiz_item_container .slide_view_question_element').attr('contenteditable', 'false');
-$('div.quiz_item_container div').attr('contenteditable', 'false');
+$('div.quiz_item_container .cancel_drag').attr('contenteditable', 'false');
+// $('div.quiz_item_container div').attr('contenteditable', 'false');
 $('div.quiz_item_container input').attr('autocomplete', 'off');
 $('#question_list_modal .question_content div').attr('contenteditable', 'false');
 $('.other_slide_view_element_delete_icon').remove();
@@ -82,9 +83,10 @@ var canvasHeight = $('.slide_view_answer_element .col-md-12 > ul').height();
 var canvasWidth = $('.slide_view_answer_element .col-md-12 > ul').width();
 
 $('.slide_view_answer_element .col-md-12 > ul').sortable({
-    // drag: function (evt, ui) {
-    //     fit_drag_with_zoom(ui);
-    // }
+    sort: function (evt, ui) {
+        ui.item.css('top', parseFloat(ui.item.css('top')) / zoomScale);
+        ui.item.css('left', parseFloat(ui.item.css('left')) / zoomScale);
+    }
 });
 
 /*

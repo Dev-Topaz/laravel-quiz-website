@@ -511,15 +511,30 @@ function form_to_slide() {
     fit_slide_view_quiz_list();
     // media_form2slide();
 
-    $('#quiz_view .slide_view_group').resizable({
-        stop: function () {
-            set_flag_true();
-        },
-        minWidth: 0,
-        maxWidth: get_containment_position().width / get_zoom() + 40,
-        minHeight: 0,
-        maxHeight: get_containment_position().height / get_zoom() + 40,
+    $('#quiz_view .slide_view_group').mouseover(function () {
+        $(this).resizable({
+            resize: function (evt, ui) {
+                console.log(ui)
+                var changeWidth = ui.size.width - ui.originalSize.width;
+                var newWidth = ui.originalSize.width + changeWidth / get_zoom();
+
+                var changeHeight = ui.size.height - ui.originalSize.height;
+                var newHeight = ui.originalSize.height + changeHeight / get_zoom();
+
+                ui.size.width = newWidth;
+                ui.size.height = newHeight;
+
+            },
+            stop: function () {
+                set_flag_true();
+            },
+            minWidth: 0,
+            maxWidth: get_containment_position().width / get_zoom() - parseFloat($(this).css('left')) + 40,
+            minHeight: 0,
+            maxHeight: get_containment_position().height / get_zoom() - parseFloat($(this).css('top')) + 40,
+        });
     });
+
 
     $('#quiz_view #quiz_background_container .slide_view_group').mouseover(function () {
         $(this).draggable({
@@ -534,7 +549,7 @@ function form_to_slide() {
             },
             cancel: 'div.cancel_drag',
             cursor: 'move',
-            containment: [get_containment_position().x0, get_containment_position().y0, get_containment_position().x1 - $(this).width() * get_zoom() + 20, get_containment_position().y1 - $(this).height() * get_zoom() + 20],
+            containment: [get_containment_position().x0, get_containment_position().y0, get_containment_position().x1 - ($(this).width() - 40) * get_zoom(), get_containment_position().y1 - ($(this).height() - 40) * get_zoom()],
         });
     });
 
@@ -669,18 +684,32 @@ $('#insert_textbox_btn').click(function () {
             },
             cancel: 'div.cancel_drag',
             cursor: 'move',
-            containment: [get_containment_position().x0, get_containment_position().y0, get_containment_position().x1 - $(this).width() * get_zoom() + 20, get_containment_position().y1 - $(this).height() * get_zoom() + 20],
+            containment: [get_containment_position().x0, get_containment_position().y0, get_containment_position().x1 - ($(this).width() - 40) * get_zoom(), get_containment_position().y1 - ($(this).height() - 40) * get_zoom()],
         });
     });
 
-    $('#quiz_view .just_added_slide_view_element').resizable({
-        minWidth: 0,
-        maxWidth: get_containment_position().width / get_zoom() + 40,
-        minHeight: 0,
-        maxHeight: get_containment_position().height / get_zoom() + 40,
-        stop: function () {
-            set_flag_true();
-        }
+    $('#quiz_view .just_added_slide_view_element').mouseover(function () {
+        $(this).resizable({
+            resize: function (evt, ui) {
+                console.log(ui)
+                var changeWidth = ui.size.width - ui.originalSize.width;
+                var newWidth = ui.originalSize.width + changeWidth / get_zoom();
+
+                var changeHeight = ui.size.height - ui.originalSize.height;
+                var newHeight = ui.originalSize.height + changeHeight / get_zoom();
+
+                ui.size.width = newWidth;
+                ui.size.height = newHeight;
+
+            },
+            stop: function () {
+                set_flag_true();
+            },
+            minWidth: 0,
+            maxWidth: get_containment_position().width / get_zoom() - parseFloat($(this).css('left')) + 40,
+            minHeight: 0,
+            maxHeight: get_containment_position().height / get_zoom() - parseFloat($(this).css('top')) + 40,
+        });
     });
 
     set_flag_true();
@@ -733,18 +762,32 @@ $('#slide_view_picture_file_selector').change(function () {
                             },
                             cancel: 'div.cancel_drag',
                             cursor: 'move',
-                            containment: [get_containment_position().x0, get_containment_position().y0, get_containment_position().x1 - $(this).width() * get_zoom() + 20, get_containment_position().y1 - $(this).height() * get_zoom() + 20],
+                            containment: [get_containment_position().x0, get_containment_position().y0, get_containment_position().x1 - ($(this).width() - 40) * get_zoom(), get_containment_position().y1 - ($(this).height() - 40) * get_zoom()],
                         });
                     });
 
-                    $('#quiz_view .just_added_slide_view_element').resizable({
-                        minWidth: 0,
-                        maxWidth: get_containment_position().width / get_zoom() + 40,
-                        minHeight: 0,
-                        maxHeight: get_containment_position().height / get_zoom() + 40,
-                        stop: function () {
-                            set_flag_true();
-                        }
+                    $('#quiz_view .just_added_slide_view_element').mouseover(function () {
+                        $(this).resizable({
+                            resize: function (evt, ui) {
+                                console.log(ui)
+                                var changeWidth = ui.size.width - ui.originalSize.width;
+                                var newWidth = ui.originalSize.width + changeWidth / get_zoom();
+
+                                var changeHeight = ui.size.height - ui.originalSize.height;
+                                var newHeight = ui.originalSize.height + changeHeight / get_zoom();
+
+                                ui.size.width = newWidth;
+                                ui.size.height = newHeight;
+
+                            },
+                            stop: function () {
+                                set_flag_true();
+                            },
+                            minWidth: 0,
+                            maxWidth: get_containment_position().width / get_zoom() - parseFloat($(this).css('left')) + 40,
+                            minHeight: 0,
+                            maxHeight: get_containment_position().height / get_zoom() - parseFloat($(this).css('top')) + 40,
+                        });
                     });
 
                     set_flag_true();
@@ -815,18 +858,32 @@ $('#slide_view_video_file_selector').change(function () {
                             },
                             cancel: 'div.cancel_drag',
                             cursor: 'move',
-                            containment: [get_containment_position().x0, get_containment_position().y0, get_containment_position().x1 - $(this).width() * get_zoom() + 20, get_containment_position().y1 - $(this).height() * get_zoom() + 20],
+                            containment: [get_containment_position().x0, get_containment_position().y0, get_containment_position().x1 - ($(this).width() - 40) * get_zoom(), get_containment_position().y1 - ($(this).height() - 40) * get_zoom()],
                         });
                     });
 
-                    $('#quiz_view .just_added_slide_view_element').resizable({
-                        minWidth: 0,
-                        maxWidth: get_containment_position().width / get_zoom() + 40,
-                        minHeight: 0,
-                        maxHeight: get_containment_position().height / get_zoom() + 40,
-                        stop: function () {
-                            set_flag_true();
-                        }
+                    $('#quiz_view .just_added_slide_view_element').mouseover(function () {
+                        $(this).resizable({
+                            resize: function (evt, ui) {
+                                console.log(ui)
+                                var changeWidth = ui.size.width - ui.originalSize.width;
+                                var newWidth = ui.originalSize.width + changeWidth / get_zoom();
+
+                                var changeHeight = ui.size.height - ui.originalSize.height;
+                                var newHeight = ui.originalSize.height + changeHeight / get_zoom();
+
+                                ui.size.width = newWidth;
+                                ui.size.height = newHeight;
+
+                            },
+                            stop: function () {
+                                set_flag_true();
+                            },
+                            minWidth: 0,
+                            maxWidth: get_containment_position().width / get_zoom() - parseFloat($(this).css('left')) + 40,
+                            minHeight: 0,
+                            maxHeight: get_containment_position().height / get_zoom() - parseFloat($(this).css('top')) + 40,
+                        });
                     });
                     set_flag_true();
                 } else if (response.success == 2) { // File not uploaded

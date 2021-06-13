@@ -4,7 +4,7 @@ $('.middle_form_bar').click(function () {
 
 var label_prev_content = '';
 
-$('body').on('click', '[data-editable]', function () {
+$('body').on('click', '.form_view_element [data-editable]', function () {
 
     console.log("clicked");
 

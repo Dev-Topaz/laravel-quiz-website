@@ -34,17 +34,17 @@
     <script src="{{ asset('js/evol-colorpicker.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.22/fabric.min.js"></script>
     <script>
-        // const complete_timer = setInterval(function () {
-        //     console.log(document.readyState);
-        //     if (document.readyState === 'complete') {
-        //         console.log('ok');
-        //         $(".se-pre-con").fadeOut(500);
-        //         clearInterval(complete_timer);
-        //     }
-        // }, 100);
-        $(document).ready(function () {
-            $(".se-pre-con").fadeOut(500);
-        });
+        const complete_timer = setInterval(function () {
+            console.log(document.readyState);
+            if (document.readyState === 'complete') {
+                console.log('ok');
+                $(".se-pre-con").fadeOut(500);
+                clearInterval(complete_timer);
+            }
+        }, 100);
+        // $(document).ready(function () {
+        //     $(".se-pre-con").fadeOut(500);
+        // });
     </script>
 </head>
 <body id="quiz_layout">

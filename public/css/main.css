@@ -832,6 +832,10 @@ if it's not present, don't show loader */
     cursor: move;
 }
 
+.slide_view_group {
+    padding: 0 !important;
+}
+
 .quiz #main .selected_slide_view_group {
     overflow: unset !important;
 }
