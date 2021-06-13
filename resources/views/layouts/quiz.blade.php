@@ -92,7 +92,7 @@
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
             <!--                    {{ config('app.name', 'Quiz Maker') }}-->
-                <img class="title" src="https://www.online-anytime.com.au/admin-logo1.png" style="margin-left: 8px;">
+                <img class="title" src="{{ asset('images/admin-logo1.png') }}" style="margin-left: 8px;">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false"

@@ -4,9 +4,9 @@
 
     <div class="container" id="login_container">
         <div id="header">
-            <div id="logo">
-                <img class="title" src="https://www.online-anytime.com.au/admin-logo1.png" style="margin-left: 8px;">
-            </div>
+{{--            <div id="logo">--}}
+{{--                <img class="title" src="https://www.online-anytime.com.au/admin-logo1.png" style="margin-left: 8px;">--}}
+{{--            </div>--}}
         </div>
         <div class="row justify-content-center" id="login_main">
             <div class="container p-0">

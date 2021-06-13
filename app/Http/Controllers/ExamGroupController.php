@@ -30,6 +30,7 @@ class ExamGroupController extends Controller
 
         foreach ($quizzes as $quiz) {
             array_push($quizzes_id_array, $quiz->id);
+            $quiz->delete();
         }
 
         $exam_group->delete();

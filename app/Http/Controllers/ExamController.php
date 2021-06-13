@@ -192,6 +192,16 @@ class ExamController extends Controller
     {
         $exam->delete();
 
+        $exam_groups = $exam->exam_groups;
+
+        foreach ($exam_groups as $exam_group) {
+            $quizes= $exam_group->quizes;
+            foreach ($quizes as $quiz) {
+                $quiz->delete();
+            }
+            $exam_group->delete();
+        }
+
         return redirect()->route('exams.index')
             ->with('success', 'Exam deleted successfully');
     }
