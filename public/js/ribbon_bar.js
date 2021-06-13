@@ -1172,7 +1172,7 @@ $('#rotate_left').click(function () {
 
 $('#align_left').click(function () {
     var element = $('#quiz_view .selected_slide_view_group'); // get selected element
-    element.css('left', '20px');
+    element.css('left', '0px');
 
     set_flag_true();
 });
@@ -1185,7 +1185,7 @@ $('#align_right').click(function () {
     var el_num = elements.length;
     for (let i = 0; i < el_num; i++) {
         var element = elements.eq(i);
-        element.css('left', parent_width - element.outerWidth() - 20);
+        element.css('left', parent_width - element.outerWidth());
     }
 
     set_flag_true();
@@ -1208,7 +1208,7 @@ $('#align_center').click(function () {
 
 $('#align_top').click(function () {
     var element = $('#quiz_view .selected_slide_view_group'); // get selected element
-    element.css('top', '20px');
+    element.css('top', '0px');
 
     set_flag_true();
 
@@ -1221,7 +1221,7 @@ $('#align_bottom').click(function () {
     var el_num = elements.length;
     for (let i = 0; i < el_num; i++) {
         var element = elements.eq(i);
-        element.css('top', parent_height - element.outerHeight() - 20);
+        element.css('top', parent_height - element.outerHeight());
     }
 
     set_flag_true();

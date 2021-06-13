@@ -271,6 +271,7 @@ span.icon img {
     transform: translate(107px, -26px);
     width: 182px;
     display: none;
+    margin-left: 0;
 }
 
 .arrange_ul_ul>li {
