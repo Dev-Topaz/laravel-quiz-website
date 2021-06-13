@@ -194,6 +194,8 @@ var line, isDown;
 
 function drawcle() {
     $('#drawcle').addClass('hotspots_active');
+    $('#drawrec').removeClass('hotspots_active');
+    $('#drawpoly').removeClass('hotspots_active');
 
     set_flag_true();
 
@@ -245,6 +247,8 @@ function drawcle() {
 
 function drawrec() {
     $('#drawrec').addClass('hotspots_active');
+    $('#drawpoly').removeClass('hotspots_active');
+    $('#drawcle').removeClass('hotspots_active');
 
     set_flag_true();
     var rect, isDown, origX, origY, isDraw = false;
@@ -342,6 +346,8 @@ function Point(x, y) {
 
 function drawpoly() {
     $('#drawpoly').addClass('hotspots_active');
+    $('#drawrec').removeClass('hotspots_active');
+    $('#drawcle').removeClass('hotspots_active');
     set_flag_true();
     if (drawingObject.type == "roof") {
         drawingObject.type = "";

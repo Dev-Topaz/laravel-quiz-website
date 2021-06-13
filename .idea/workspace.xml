@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9d9fd7c1-0dd1-410f-8492-d59f6bb67158" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/custom.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/ribbon_bar.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/ribbon_bar.js" afterDir="false" />
-    </list>
+    <list default="true" id="9d9fd7c1-0dd1-410f-8492-d59f6bb67158" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -285,7 +281,7 @@
       <workItem from="1623368355695" duration="299000" />
       <workItem from="1623371104823" duration="10457000" />
       <workItem from="1623386646935" duration="65204000" />
-      <workItem from="1623585466568" duration="25059000" />
+      <workItem from="1623585466568" duration="25883000" />
     </task>
     <servers />
   </component>
