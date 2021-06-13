@@ -227,8 +227,6 @@
                             <tbody id="choice_list">
                             </tbody>
                         </table>
-                        <a id="add_choice" style="padding: 10px 0;margin-left: 90px;margin-top: 10px;">Type to add a new
-                            choice</a>
                     </div>
                 </div>
                 @break
@@ -241,7 +239,7 @@
                             <thead>
                             <tr>
                                 <th>Acceptable Answer</th>
-                                <th></th>
+{{--                                <th></th>--}}
                             </tr>
                             </thead>
                             <tbody id="short_answer_list">
@@ -252,8 +250,8 @@
                                            name="short_answer"
                                            value="{{ $quiz->answer }}" required autocomplete="short_answer" autofocus>
                                 </td>
-                                <td><a onclick="{$(this).parent().parent().remove();}"><i
-                                            class="fas fa-trash-alt"></i></a></td>
+{{--                                <td><a onclick="{$(this).parent().parent().remove();}"><i--}}
+{{--                                            class="fas fa-trash-alt"></i></a></td>--}}
                             </tr>
                             </tbody>
                         </table>
