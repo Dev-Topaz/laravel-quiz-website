@@ -29,11 +29,23 @@
     <link href="{{ asset('css/jquery-ui.min.css') }}" rel="stylesheet">
     <script src="{{ asset('js/jquery3.2.1.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>--}}
     <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('js/evol-colorpicker.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.22/fabric.min.js"></script>
-    {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.js"></script>--}}
+    <script>
+        // const complete_timer = setInterval(function () {
+        //     console.log(document.readyState);
+        //     if (document.readyState === 'complete') {
+        //         console.log('ok');
+        //         $(".se-pre-con").fadeOut(500);
+        //         clearInterval(complete_timer);
+        //     }
+        // }, 100);
+        $(document).ready(function () {
+            $(".se-pre-con").fadeOut(500);
+        });
+    </script>
 </head>
 <body id="quiz_layout">
 <div class="se-pre-con"></div>
@@ -133,17 +145,9 @@
 </div>
 <script src="{{ asset('js/metro.min.js') }}" defer></script>
 <script src="{{ asset('js/main.js') }}" defer></script>
-{{--<script src="{{ asset('js/matching.js') }}" defer></script>--}}
-{{--<script src="{{ asset('js/text_dropdown.js') }}" defer></script>--}}
-{{--    <script src="{{ asset('js/jquery.richtext.min.js') }}" defer></script>--}}
 
 <script>
-    $(document).ready(function () {
-        $(".se-pre-con").fadeOut(500);
-    });
-    // $("img").lazyload({
-    //     effect : "fadeIn"
-    // });
+
     function confirm_delete_dialog(onYes) {
         $('#common_delete_confirm_dialog').fadeIn(300);
         $('#common_delete_yes').click(function () {
@@ -210,9 +214,9 @@
         $("form#quiz_form").submit();
     }
 
-    $(document).ready(function () {
-        // $('.content').richText();
-    });
+    // $(document).ready(function () {
+    //     // $('.content').richText();
+    // });
 </script>
 </body>
 </html>

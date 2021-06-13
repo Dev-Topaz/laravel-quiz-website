@@ -133,9 +133,9 @@
             $("textarea#question").val(content);
             $("form#quiz_form").submit();
         }
-        $(document).ready(function(){
-            $('.content').richText();
-        });
+        // $(document).ready(function(){
+        //     $('.content').richText();
+        // });
     </script>
 </body>
 </html>
