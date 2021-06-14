@@ -63,11 +63,12 @@ function show_quiz_editor(node) {
 $('#alert_save').click(function () {
     console.log('alert_save');
     const root_url = $('meta[name=url]').attr('content');
+    const token = $('meta[name=csrf-token]').attr('content');
+
     if ($('#node_click_or_create').val() == 'node_click') update_quiz(true);
     if ($('#node_click_or_create').val() == 'create') {
         update_quiz(false);
 
-        const token = $('meta[name=csrf-token]').attr('content');
 
         create_question(create_type_id, root_url, token);
     }
@@ -99,6 +100,7 @@ $('#alert_save').click(function () {
 $('#alert_not_save').click(function () {
     console.log('alert_not_save');
     const root_url = $('meta[name=url]').attr('content');
+    const token = $('meta[name=csrf-token]').attr('content');
 
     if ($('#node_click_or_create').val() == 'node_click') {
         show_quiz_editor(clicked_node);
@@ -106,7 +108,6 @@ $('#alert_not_save').click(function () {
     }
 
     if ($('#node_click_or_create').val() == 'create') {
-        const token = $('meta[name=csrf-token]').attr('content');
 
         create_question(create_type_id, root_url, token);
     }
