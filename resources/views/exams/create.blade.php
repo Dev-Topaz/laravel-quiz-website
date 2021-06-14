@@ -82,7 +82,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="stuff_emails" class="col-md-3 col-form-label text-md-right">{{ __('Stuff Emails')
+                                    <label for="stuff_emails" class="col-md-3 col-form-label text-md-right">{{ __('Staff Emails')
                                         }}</label>
                                     <div class="col-md-7">
                                         <input id="stuff_emails" type="text" value="rto@civilsafety.edu.au,robert@civilsafety.edu.au"
