@@ -46,6 +46,7 @@
                                         class="form_visible">
 
                                         <div class="middle_form_bar">
+{{--                                            <span class="tooltiptext">{{ $exam->description }}</span>--}}
                                             <h3>{{ $exam->name }}</h3>
                                             <div class="form_meta" style="display:none;">
 

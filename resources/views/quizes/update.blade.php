@@ -447,8 +447,7 @@
 
             <br>
 
-            <h4 style="{{ $quiz->type_id > 11 ? 'display:none;' : ''}}">Feedback and
-                Branching</h4>
+            <h4 style="{{ $quiz->type_id > 11 ? 'display:none;' : ''}}">Feedback</h4>
             <table class="table striped feedback_branching"
                    style="margin: 0;{{ $quiz->type_id > 11 ? 'display:none;' : ''}}">
                 <thead>
