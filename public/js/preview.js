@@ -566,6 +566,7 @@ function preview(element) {
             break;
 
         case 'See Result':
+            show_result($('.quiz_show .correct_answer').html(), $('.quiz_show .type_id').html(), $('.quiz_show').attr('id'));
             $('.review_buttons').hide();
             $('.preview_btn').show();
             if ($('#is_quiz').html() != '0') {
@@ -1217,7 +1218,7 @@ function show_result(question_correct_answer, question_type_id, question_id) {
                 $('.quiz_show #answer').css('cssText', 'color: red !important;');
 
                 $('.quiz_show #answer').parent().append('<div style="color: #c6c61f;  position: absolute; top: 0; bottom: 0; right: 25px;display: flex;align-items: center;" onmouseover="{$(this).next().show()}" onmouseleave="{$(this).next().hide()}"><i class="fas fa-align-justify"></i></div>');
-                $('.quiz_show #answer').parent().append('<div style="position: absolute;right: 0;background: white;color: black;padding: 10px;display: none;border-radius: 5px"><div>Correct Answer</div><div style="display: flex"><img src="' + root_url + '/images/icons/green_tick.png" style="height: 20px;width: 20px;">' + question_correct_answer + '</div></div>');
+                $('.quiz_show #answer').parent().append('<div style="position: absolute;right: 0;background: white;color: black;padding: 10px;display: none;border-radius: 5px;z-index: 2;box-shadow: grey 2px 2px 6px 1px;"><div>Correct Answer</div><div style="display: flex"><img src="' + root_url + '/images/icons/green_tick.png" style="height: 20px;width: 20px;">' + question_correct_answer + '</div></div>');
             }
             break;
 
@@ -1232,7 +1233,7 @@ function show_result(question_correct_answer, question_type_id, question_id) {
                 $('.quiz_show #answer').css('cssText', 'color: red !important;');
 
                 $('.quiz_show #answer').parent().append('<div style="color: #c6c61f;  position: absolute; top: 0; bottom: 0; right: 25px;display: flex;align-items: center;" onmouseover="{$(this).next().show()}" onmouseleave="{$(this).next().hide()}"><i class="fas fa-align-justify"></i></div>');
-                $('.quiz_show #answer').parent().append('<div style="position: absolute;right: 0;background: white;color: black;padding: 10px;display: none;border-radius: 5px;"><div>Correct Answer</div><div class="correct_answer_list_element"></div></div>');
+                $('.quiz_show #answer').parent().append('<div style="position: absolute;right: 0;background: white;color: black;padding: 10px;display: none;border-radius: 5px;z-index: 2;box-shadow: grey 2px 2px 6px 1px;"><div>Correct Answer</div><div class="correct_answer_list_element"></div></div>');
 
                 for (let i = 0; i < numeric_correct_answer_array.length; i++) {
                     $('.quiz_show .correct_answer_list_element').append('<div style="display: flex"><img src="' + root_url + '/images/icons/green_tick.png" style="height: 20px;width: 20px;">' + numeric_correct_answer_array[i].slice(0, -1).replaceAll('==;', 'Equal to ').replaceAll('&lt;&lt;;', 'Between ').replaceAll('&gt;;', 'Greater than ').replaceAll('&gt;=;', 'Greater than or equal to ').replaceAll('&lt;;', 'Less than ').replaceAll('&lt;=;', 'Less than or equal to ').replaceAll('!=;', 'Not equal to ').replaceAll(';', ' and ') + '</div>');
@@ -1316,7 +1317,7 @@ function show_result(question_correct_answer, question_type_id, question_id) {
 
                     $('#' + question_id + ' #' + i).parent().css('position', 'relative');
                     $('#' + question_id + ' #' + i).parent().append('<div style="color: #c6c61f;  position: absolute; top: 0; bottom: 0; right: 8px;" onmouseover="{$(this).next().show()}" onmouseleave="{$(this).next().hide()}"><i class="fas fa-align-justify"></i></div>');
-                    $('#' + question_id + ' #' + i).parent().append('<div style="position: absolute;left: 0;background: white;color: black;padding: 10px;display: none;border-radius: 5px;min-width: 180px;"><div>Correct Answer</div><div class="correct_answer_list_element"></div></div>');
+                    $('#' + question_id + ' #' + i).parent().append('<div style="position: absolute;left: 0;background: white;color: black;padding: 10px;display: none;border-radius: 5px;min-width: 180px;z-index: 2;box-shadow: grey 2px 2px 6px 1px;"><div>Correct Answer</div><div class="correct_answer_list_element"></div></div>');
 
                     for (let j = 0; j < fill_blanks_element_correct_answer_array.length; j++) {
                         $('#' + question_id + ' .correct_answer_list_element').append('<div style="display: flex"><img src="' + root_url + '/images/icons/green_tick.png" style="height: 20px;width: 20px;">' + fill_blanks_element_correct_answer_array[j] + '</div>');
@@ -1338,7 +1339,7 @@ function show_result(question_correct_answer, question_type_id, question_id) {
                     $('#' + question_id + ' #' + i).parent().css('position', 'relative');
                     $('#' + question_id + ' #' + i).parent().find('select').attr('onmouseover', '{$(this).next().show()}');
                     $('#' + question_id + ' #' + i).parent().find('select').attr('onmouseleave', '{$(this).next().hide()}');
-                    $('#' + question_id + ' #' + i).parent().append('<div style="position: absolute;left: 0;background: white;color: black;padding: 10px;display: none;border-radius: 5px;min-width: 180px;"><div>Correct Answer</div><div class="correct_answer_list_element"></div></div>');
+                    $('#' + question_id + ' #' + i).parent().append('<div style="position: absolute;left: 0;background: white;color: black;padding: 10px;display: none;border-radius: 5px;min-width: 180px;z-index: 2;box-shadow: grey 2px 2px 6px 1px;"><div>Correct Answer</div><div class="correct_answer_list_element"></div></div>');
                     $('#' + question_id + ' .correct_answer_list_element').append('<div style="display: flex"><img src="' + root_url + '/images/icons/green_tick.png" style="height: 20px;width: 20px;">' + select_lists_correct_answer_array[i] + '</div>');
                 }
             }
@@ -1366,7 +1367,7 @@ function show_result(question_correct_answer, question_type_id, question_id) {
                     blank_element_list.eq(i).css('position', 'relative');
                     blank_element_list.eq(i).attr('onmouseover', '{$(this).children().show()}');
                     blank_element_list.eq(i).attr('onmouseleave', '{$(this).children().hide()}');
-                    blank_element_list.eq(i).append('<div style="position: absolute;left: 0;background: white;color: black;padding: 10px;display: none;border-radius: 5px;min-width: 180px;z-index: 3;"><div>Correct Answer</div><div class="correct_answer_list_element"><div style="display: flex"><img src="' + root_url + '/images/icons/green_tick.png" style="height: 20px;width: 20px;">' + drop_words_correct_answer_array[i] + '</div></div></div>');
+                    blank_element_list.eq(i).append('<div style="position: absolute;left: 0;background: white;color: black;padding: 10px;display: none;border-radius: 5px;min-width: 180px;z-index: 2;box-shadow: grey 2px 2px 6px 1px;"><div>Correct Answer</div><div class="correct_answer_list_element"><div style="display: flex"><img src="' + root_url + '/images/icons/green_tick.png" style="height: 20px;width: 20px;">' + drop_words_correct_answer_array[i] + '</div></div></div>');
                 }
             }
             break;
