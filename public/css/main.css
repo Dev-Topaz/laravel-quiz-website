@@ -1137,3 +1137,19 @@ if it's not present, don't show loader */
     border: 1px solid #ee8845 !important;
     background: #fbe5da;
 }
+
+.checkbox.transition-on .check {
+    background: white;
+}
+
+.input input {
+    width: 65px;
+}
+
+.question_score [contenteditable=true], .fill_blanks_dropdown_menu [contenteditable=true], .select_lists_dropdown_menu [contenteditable=true] {
+    overflow-y: unset !important;
+}
+
+.form_view_answer_element i {
+    cursor: pointer;
+}

@@ -517,7 +517,7 @@ function update_and_show_preview(url) {
 
     const limit_time = $('#limit_time').val();
 
-    if (limit_time.indexOf('_') != -1) {
+    if (limit_time.indexOf('_') != -1 || limit_time == '') {
         show_modal('error', 'Warning', 'You should enter correct limit time.');
         return;
     }
@@ -706,7 +706,7 @@ function update_quiz(is_alert_save) {
 
     const limit_time = $('#limit_time').val();
 
-    if (limit_time.indexOf('_') != -1) {
+    if (limit_time.indexOf('_') != -1 || limit_time == '') {
         show_modal('error', 'Warning', 'You should enter correct limit time.');
         return;
     }
