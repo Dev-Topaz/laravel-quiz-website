@@ -6,82 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9d9fd7c1-0dd1-410f-8492-d59f6bb67158" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1623092169_FormatFactoryrecord20210416_021001.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1623092185_small.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1623092193_small.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1623092205_small.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1623092229_small.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1623092237_FormatFactoryrecord20210416_021001.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1623092245_FormatFactoryrecord20210416_021001.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1623092251_FormatFactoryrecord20210416_021001.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1623320936_small.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1623321244_small.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1623380638_small.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1623380654_1.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1623391103_small.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1623408700_small.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1623408767_small.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1623408872_1.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1623472871_1.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1623474030_FormatFactoryrecord20210415_153748.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1623474048_small.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1623474054_small.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1623474069_small.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1623474085_small.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1623474105_small.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1623474123_FormatFactoryrecord20210416_021001.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1623588000_small.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1623611555_FormatFactoryrecord20210416_021001.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1623611589_small.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1623611769_FormatFactoryrecord20210416_021001.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/1623611773_small.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c2ed4a61419.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c2fb71a2d3e.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c3330f7f701.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c33f5261cc7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c340ffea3e1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c395f6631fb.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c396893c586.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c396c49c3c4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c397a842f19.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c398c1688e3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c3995fe16f1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c39a7e95dc2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c39a9e35f2f.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c39adb35024.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c39f7282ccd.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c3a00d7a39b.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c3a05a336a0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c3a0e4a02b7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c436f6c99ce.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c43b8a6afac.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c43c4f836da.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c4523bb397e.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c4526299253.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c5fc914c0d9.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c6146a76f78.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c6731f3aa04.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c6738e2b2de.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c673e68ec18.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c673f60c90f.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c67565b55c7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c67572abd0e.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c675e2508c8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c675ed3d447.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c6853ee71df.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c68878cb131.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c6a7ac60761.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c6b9eed7fcf.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c6ba22b99f9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c6c40bca5ba.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c6c7611d2c6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c6ca2102def.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c6ca389fc7a.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c6caa94140d.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c6cb25f1345.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c6cba96f367.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/upload/60c6cc05e5ecd.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/preview.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/preview.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -359,7 +284,7 @@
       <workItem from="1623368355695" duration="299000" />
       <workItem from="1623371104823" duration="10457000" />
       <workItem from="1623386646935" duration="65204000" />
-      <workItem from="1623585466568" duration="34586000" />
+      <workItem from="1623585466568" duration="35578000" />
     </task>
     <servers />
   </component>

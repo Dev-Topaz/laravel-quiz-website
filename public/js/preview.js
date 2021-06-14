@@ -1021,7 +1021,7 @@ function inside(point, vs) {
 };
 
 function incorrect_process() {
-    if (attempts == parseInt($('.quiz_show .attempts').html())) {
+    if (attempts == parseInt($('.quiz_show .attempts').html()) && $('.quiz_show .attempts').html() != 'unlimited') {
         clearInterval(question_timer);
 
         total_score += parseInt($('.quiz_show .incorrect_score').html());
@@ -1035,7 +1035,7 @@ function incorrect_process() {
             $('.quiz_show .is_correct').html('false');
         }
     } else {
-        total_score += parseInt($('.quiz_show .try_again_score').html());
+        total_score -= parseInt($('.quiz_show .try_again_score').html());
         question_user_point -= parseInt($('.quiz_show .try_again_score').html());
         question_feedback = $('.quiz_show .feedback_try_again').html();
 
