@@ -703,6 +703,8 @@ div[contenteditable="true"] {
     border: 1px solid gray;
     display: none;
     left: 0;
+    background: white;
+    z-index: 2;
 }
 
 #fill_blanks .fill_blanks_dropdown_menu ul, #select_lists .select_lists_dropdown_menu ul {
@@ -710,6 +712,7 @@ div[contenteditable="true"] {
     min-width: 220px;
     max-height: 130px;
     overflow-y: scroll;
+    margin: 0;
 }
 
 #fill_blanks .fill_blanks_dropdown_menu ul li, #select_lists .select_lists_dropdown_menu ul li {
