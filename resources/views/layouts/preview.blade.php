@@ -61,6 +61,7 @@
 <script src="{{ asset('js/jquery.hotspot.js') }}" defer></script>
 {{--<script src="{{ asset('js/metro.js') }}" defer></script>--}}
 <script src="{{ asset('js/main.js') }}" defer></script>
+<script src="{{ asset('js/drag_and_drop_mobile.js') }}"></script>
 <script src="{{ asset('js/preview.js') }}" defer></script>
 <script>
     function show_modal(type, title, content) {

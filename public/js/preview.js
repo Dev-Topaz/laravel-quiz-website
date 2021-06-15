@@ -92,8 +92,35 @@ $('.slide_view_answer_element .col-md-12 > ul').sortable({
 /*
 * ************ For Matching UI ***********
 * */
-
 $(function () {
+
+    // for mobile
+    $('.draggable').on('touchstart', function () {
+        $(this).addClass("ui-state-highlight");
+
+        // if ($(this).attr("isdropped")) {
+        //     $(this).parent().css({'justify-content': 'space-around'});
+        //     $(this).attr("isdropped", false);
+        // }
+    });
+
+    $('.draggable').on('touchmove', function (e) {
+        var touchLocation = e.targetTouches[0];
+        console.log(touchLocation);
+
+        var pageX = (touchLocation.clientX) + "px";
+        var pageY = (touchLocation.clientY) + "px";
+        this.style.position = "absolute";
+        this.style.left = pageX;
+        this.style.top = pageY;
+        // activeEvent = 'move';
+    });
+
+    $('.draggable').on('touchend', function () {
+        $(this).removeClass("ui-state-highlight");
+    });
+
+    // for web browser
     $(".draggable").draggable({
 
         start: function () {
@@ -110,7 +137,6 @@ $(function () {
 
         stop: function () {
             $(this).removeClass("ui-state-highlight");
-
         },
 
         revert: true,
@@ -779,7 +805,7 @@ function evulate() {
             numeric_answer_array.pop();
 
             question_user_answer.push($('.quiz_show #answer').val());
-            question_correct_answer = numeric_answer_array;
+            question_correct_answer.push(correct_answer.replaceAll("&lt;", "<").replaceAll("&lt;", "<").replaceAll("&gt;", ">").replaceAll(';@', ', ').replaceAll('==;', 'Equal to ').replaceAll('<<;', 'Between ').replaceAll('>;', 'Greater than ').replaceAll('>=;', 'Greater than or equal to ').replaceAll('<;', 'Less than ').replaceAll('<=;', 'Less than or equal to ').replaceAll('!=;', 'Not equal to ').replaceAll(';', ' and ').slice(0, -1));
 
             for (let numeric_item of numeric_answer_array) {
                 numeric_item = numeric_item.replace("&lt;", "<").replace("&lt;", "<").replace("&gt;", ">");
@@ -826,8 +852,8 @@ function evulate() {
                 sequence_answer += sequence_items.eq(i).find('label').html() + ';';
             }
 
-            question_user_answer = sequence_answer;
-            question_correct_answer = $('.quiz_show .correct_answer').html();
+            question_user_answer.push(sequence_answer);
+            question_correct_answer.push($('.quiz_show .correct_answer').html());
 
             if ($('.quiz_show .partially_correct').html() == '1') {
                 var correct_answer_array = question_correct_answer.split(';');
@@ -850,14 +876,14 @@ function evulate() {
                 if (matching_items.eq(i).css('justify-content') != 'center') return false;
                 matching_answer += matching_items.eq(i).find('.ui-widget-header').eq(0).html() + ';' + matching_items.eq(i).find('.ui-widget-content').eq(0).html() + '@';
             }
-            question_user_answer = matching_answer.replaceAll('<p>', '').replaceAll('</p>', '');
-            question_correct_answer = $('.quiz_show .correct_answer').html().replaceAll('<p>', '').replaceAll('</p>', '');
+            question_user_answer.push(matching_answer.replaceAll('<p>', '').replaceAll('</p>', ''));
+            question_correct_answer.push($('.quiz_show .correct_answer').html().replaceAll('<p>', '').replaceAll('</p>', ''));
 
 
             if ($('.quiz_show .partially_correct').html() == '1') {
-                var correct_answer_array = question_correct_answer.split('@');
+                var correct_answer_array = question_correct_answer[0].split('@');
                 correct_answer_array.pop();
-                var user_answer_array = question_user_answer.split('@');
+                var user_answer_array = question_user_answer[0].split('@');
                 user_answer_array.pop();
 
                 for (let i = 0; i < user_answer_array.length; i++) {
@@ -866,7 +892,7 @@ function evulate() {
                 return false;
             }
 
-            return question_user_answer == question_correct_answer;
+            return question_user_answer[0] == question_correct_answer[0];
             break;
 
         case '8':
@@ -922,16 +948,16 @@ function evulate() {
                 select_lists_answer += select_lists_items.eq(i).val() + ';';
             }
 
-            question_user_answer = select_lists_answer;
-            question_correct_answer = $('.quiz_show .correct_answer').html();
+            question_user_answer.push(select_lists_answer);
+            question_correct_answer.push($('.quiz_show .correct_answer').html());
 
             if ($('.quiz_show .partially_correct').html() == '1') {
-                var correct_answer_array = question_correct_answer.split(';');
+                var correct_answer_array = question_correct_answer[0].split(';');
                 correct_answer_array.pop();
-                var user_answer_array = question_user_answer.split(';');
+                var user_answer_array = question_user_answer[0].split(';');
                 user_answer_array.pop();
-                for (let i = 0; i < question_user_answer.length; i++) {
-                    if (question_user_answer[i] == question_correct_answer[i]) return true;
+                for (let i = 0; i < question_user_answer[0].length; i++) {
+                    if (question_user_answer[0][i] == question_correct_answer[0][i]) return true;
                 }
 
                 return false;
@@ -947,16 +973,16 @@ function evulate() {
                 drag_words_answer += drag_words_array[i] + ';';
             }
 
-            question_user_answer = drag_words_answer;
-            question_correct_answer = $('.quiz_show .correct_answer').html();
+            question_user_answer.push(drag_words_answer);
+            question_correct_answer.push($('.quiz_show .correct_answer').html());
 
             if ($('.quiz_show .partially_correct').html() == '1') {
-                var correct_answer_array = question_correct_answer.split(';');
+                var correct_answer_array = question_correct_answer[0].split(';');
                 correct_answer_array.pop();
-                var user_answer_array = question_user_answer.split(';');
+                var user_answer_array = question_user_answer[0].split(';');
                 user_answer_array.pop();
-                for (let i = 0; i < question_user_answer.length; i++) {
-                    if (question_user_answer[i] == question_correct_answer[i]) return true;
+                for (let i = 0; i < question_user_answer[0].length; i++) {
+                    if (question_user_answer[0][i] == question_correct_answer[0][i]) return true;
                 }
 
                 return false;
