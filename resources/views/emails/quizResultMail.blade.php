@@ -119,15 +119,15 @@
                                     <br>{!! $question['question_content'] !!}<br>
                                     <table style="width:100%;border-collapse:collapse">
                                         <tbody>
-                                        <tr style="background-color:#F3F3F3">
-                                            <td style="border: 1px solid #E0E0E0;padding:5px">
-                                                User Answer
-                                            </td>
-                                            <td style="border: 1px solid #E0E0E0;padding:5px">
-                                                Correct Answer
-                                            </td>
-                                        </tr>
                                         @if (isset($question['question_user_answer']))
+                                            <tr style="background-color:#F3F3F3">
+                                                <td style="border: 1px solid #E0E0E0;padding:5px">
+                                                    User Answer
+                                                </td>
+                                                <td style="border: 1px solid #E0E0E0;padding:5px">
+                                                    Correct Answer
+                                                </td>
+                                            </tr>
                                             @for ($i = 0; $i < count($question['question_user_answer']); $i++)
                                                 <tr>
                                                     <td style="border: 1px solid #E0E0E0;padding:5px">
