@@ -123,11 +123,11 @@
                                             Correct Answer
                                         </td>
                                     </tr>
-                                    @for ($i = 0; $i < count($question['question_user_answer']); $i++)
+                                    @for ($i = 0; $i < count($question['question_correct_answer']); $i++)
 
                                     <tr>
                                         <td style="border: 1px solid #E0E0E0;padding:5px">
-                                            {{ $question['question_user_answer'][$i] }}
+                                            {{ $question['question_user_answer'][$i] ?? '' }}
                                         </td>
                                         <td style="border: 1px solid #E0E0E0;padding:5px">
                                             {{ $question['question_correct_answer'][$i] }}
