@@ -14,7 +14,7 @@
 
                         <div style="float: right;margin-right: 5px">
                             <a href="{{ route('users.create') }}" id="button_add_user" class="bb_button bb_small bb_green">
-                                <i class="fas fa-plus" style="font-size: 12px;"></i>Create New User!
+                                <i class="fas fa-plus" style="font-size: 12px;padding-right: 5px;"></i>Create New User!
                             </a>
                         </div>
                         <div style="clear: both; height: 1px"></div>
