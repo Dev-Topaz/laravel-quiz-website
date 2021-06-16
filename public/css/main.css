@@ -1157,6 +1157,9 @@ if it's not present, don't show loader */
     cursor: pointer;
 }
 
+.tmp {
+    opacity: 0.2;
+}
 /*.tooltip {*/
 /*    position: relative;*/
 /*    display: inline-block;*/

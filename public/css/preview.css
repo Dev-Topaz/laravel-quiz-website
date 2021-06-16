@@ -193,3 +193,7 @@
 .slide_view_media_element {
     cursor: pointer;
 }
+
+#slide_drag_words_answer {
+    position: relative;
+}

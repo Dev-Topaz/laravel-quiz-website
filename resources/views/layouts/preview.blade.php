@@ -61,7 +61,9 @@
 <script src="{{ asset('js/jquery.hotspot.js') }}" defer></script>
 {{--<script src="{{ asset('js/metro.js') }}" defer></script>--}}
 <script src="{{ asset('js/main.js') }}" defer></script>
+<script src="{{ asset('js/drag_and_drop_mobile.js') }}" defer></script>
 <script src="{{ asset('js/preview.js') }}" defer></script>
+<script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
 <script>
     function show_modal(type, title, content) {
         switch (type) {

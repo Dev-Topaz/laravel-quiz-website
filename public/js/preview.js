@@ -5,6 +5,7 @@ $('div.quiz_item_container input').attr('autocomplete', 'off');
 $('#question_list_modal .question_content div').attr('contenteditable', 'false');
 $('.other_slide_view_element_delete_icon').remove();
 
+
 /*
 * ************ Fit Quiz size ********************
 * */
@@ -55,26 +56,6 @@ function fit_drag_with_zoom(ui) {
     ui.position.top = newTop;
 }
 
-// setZoom(zoomScale, document.getElementsByClassName('quiz_list_container')[0]);
-
-// function setZoom(zoom, el) {
-//
-//     transformOrigin = [0, 0];
-//     el = el || instance.getContainer();
-//     var p = ["webkit", "moz", "ms", "o"],
-//         s = "scale(" + zoom + ")",
-//         oString = (transformOrigin[0] * 100) + "% " + (transformOrigin[1] * 100) + "%";
-//
-//     for (var i = 0; i < p.length; i++) {
-//         el.style[p[i] + "Transform"] = s;
-//         el.style[p[i] + "TransformOrigin"] = oString;
-//     }
-//
-//     el.style["transform"] = s;
-//     el.style["transformOrigin"] = oString;
-//
-// }
-
 /*
 * For Sequence UI
 * */
@@ -82,43 +63,55 @@ function fit_drag_with_zoom(ui) {
 var canvasHeight = $('.slide_view_answer_element .col-md-12 > ul').height();
 var canvasWidth = $('.slide_view_answer_element .col-md-12 > ul').width();
 
-$('.slide_view_answer_element .col-md-12 > ul').sortable({
-    sort: function (evt, ui) {
-        ui.item.css('top', parseFloat(ui.item.css('top')) / zoomScale);
-        ui.item.css('left', parseFloat(ui.item.css('left')) / zoomScale);
-    }
-});
+// $('.slide_view_answer_element .col-md-12 > ul').sortable({
+//     sort: function (evt, ui) {
+//         ui.item.css('top', parseFloat(ui.item.css('top')) / zoomScale);
+//         ui.item.css('left', parseFloat(ui.item.css('left')) / zoomScale);
+//     }
+// });
+var el = $('.slide_view_answer_element .col-md-12 #sortable')[0];
+var sortable = Sortable.create(el);
 
+let drag_and_drop_mobile;
 /*
 * ************ For Matching UI ***********
 * */
 $(function () {
 
     // for mobile
-    $('.draggable').on('touchstart', function () {
-        $(this).addClass("ui-state-highlight");
+    if ($('.draggable').length > 0 && $('.droppable').length > 0) {
+        let drag = new Drag($('.draggable'));
+        let drop = new Drop($('.droppable'));
 
-        // if ($(this).attr("isdropped")) {
-        //     $(this).parent().css({'justify-content': 'space-around'});
-        //     $(this).attr("isdropped", false);
-        // }
-    });
+        drag_and_drop_mobile = new Drag_and_drop_mobile(drag, drop, zoomScale, 'matching');
 
-    $('.draggable').on('touchmove', function (e) {
-        var touchLocation = e.targetTouches[0];
-        console.log(touchLocation);
+        drag_and_drop_mobile.drag_and_drop();
 
-        var pageX = (touchLocation.clientX) + "px";
-        var pageY = (touchLocation.clientY) + "px";
-        this.style.position = "absolute";
-        this.style.left = pageX;
-        this.style.top = pageY;
-        // activeEvent = 'move';
-    });
+    }
 
-    $('.draggable').on('touchend', function () {
-        $(this).removeClass("ui-state-highlight");
-    });
+    // $('.draggable').on('touchstart', function () {
+    //     $(this).addClass("ui-state-highlight");
+    // if ($(this).attr("isdropped")) {
+    //     $(this).parent().css({'justify-content': 'space-around'});
+    //     $(this).attr("isdropped", false);
+    // }
+    // });
+
+    // $('.draggable').on('touchmove', function (e) {
+    //     var touchLocation = e.targetTouches[0];
+    //     console.log(touchLocation);
+    //
+    //     var pageX = (touchLocation.clientX) + "px";
+    //     var pageY = (touchLocation.clientY) + "px";
+    //     this.style.position = "absolute";
+    //     this.style.left = pageX;
+    //     this.style.top = pageY;
+    //     // activeEvent = 'move';
+    // });
+    //
+    // $('.draggable').on('touchend', function () {
+    //     $(this).removeClass("ui-state-highlight");
+    // });
 
     // for web browser
     $(".draggable").draggable({
@@ -159,6 +152,21 @@ $(function () {
 * ************ For Drag the Words UI ***********
 * */
 var drag_words_array = [];
+
+function insert_drag_words_array(index, content) {
+    drag_words_array[index] = content;
+}
+// for mobile
+if ($('#slide_drag_words_answer span').length > 0 && $('#slide_drag_words_question .blank').length > 0) {
+    let drag = new Drag($('#slide_drag_words_answer span'));
+    let drop = new Drop($('#slide_drag_words_question .blank'));
+
+    drag_and_drop_mobile = new Drag_and_drop_mobile(drag, drop, zoomScale, 'drag_words');
+
+    drag_and_drop_mobile.drag_and_drop();
+    console
+}
+
 $("#slide_drag_words_answer span").draggable({
 
     start: function (evt, ui) {

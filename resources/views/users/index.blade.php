@@ -14,7 +14,7 @@
 
                         <div style="float: right;margin-right: 5px">
                             <a href="{{ route('users.create') }}" id="button_add_user" class="bb_button bb_small bb_green">
-                                <span class="icon-user-plus" style="margin-right: 5px"></span>Create New User!
+                                <i class="fas fa-plus" style="font-size: 12px;"></i>Create New User!
                             </a>
                         </div>
                         <div style="clear: both; height: 1px"></div>
@@ -28,13 +28,13 @@
                     <div id="entries_actions" class="gradient_red">
                         <ul>
                             <li>
-                                <a id="user_delete" href="#"><span class="icon-remove"></span>Delete</a>
+                                <a id="user_delete" href="#"><i class="fas fa-trash" style="font-size: 16px;display: block;"></i>Delete</a>
                             </li>
                             <li>
                                 <div class="vline_separator" style="height: 35px;margin-top:5px"></div>
                             </li>
                             <li>
-                                <a id="user_suspend" href="#"><span class="icon-user-block"></span>Suspend</a>
+                                <a id="user_suspend" href="#"><i class="fas fa-exclamation-triangle" style="font-size: 16px;display: block;"></i>Suspend</a>
                             </li>
                         </ul>
                         <img id="entries_actions_arrow" src="images/icons/29.png"
