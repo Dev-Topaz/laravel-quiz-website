@@ -84,7 +84,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `migrations` */
 
@@ -129,7 +129,107 @@ insert  into `migrations`(`id`,`migration`,`batch`) values
 (38,'2021_05_20_104253_update_quizes_table_add_2_fields_video_element_audio_element',21),
 (39,'2021_05_20_110731_update_exams_add_2_fields_screen_height_screen_width',21),
 (40,'2021_05_28_084732_update_exams_table_add_field_stuff_emails',22),
-(41,'2021_05_28_085409_update_exams_table_update_field_stuff_emails',23);
+(41,'2021_05_28_085409_update_exams_table_update_field_stuff_emails',23),
+(42,'2016_06_01_000001_create_oauth_auth_codes_table',24),
+(43,'2016_06_01_000002_create_oauth_access_tokens_table',24),
+(44,'2016_06_01_000003_create_oauth_refresh_tokens_table',24),
+(45,'2016_06_01_000004_create_oauth_clients_table',24),
+(46,'2016_06_01_000005_create_oauth_personal_access_clients_table',24);
+
+/*Table structure for table `oauth_access_tokens` */
+
+DROP TABLE IF EXISTS `oauth_access_tokens`;
+
+CREATE TABLE `oauth_access_tokens` (
+  `id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` bigint(20) unsigned DEFAULT NULL,
+  `client_id` bigint(20) unsigned NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `scopes` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `revoked` tinyint(1) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `expires_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `oauth_access_tokens_user_id_index` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `oauth_access_tokens` */
+
+/*Table structure for table `oauth_auth_codes` */
+
+DROP TABLE IF EXISTS `oauth_auth_codes`;
+
+CREATE TABLE `oauth_auth_codes` (
+  `id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` bigint(20) unsigned NOT NULL,
+  `client_id` bigint(20) unsigned NOT NULL,
+  `scopes` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `revoked` tinyint(1) NOT NULL,
+  `expires_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `oauth_auth_codes_user_id_index` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `oauth_auth_codes` */
+
+/*Table structure for table `oauth_clients` */
+
+DROP TABLE IF EXISTS `oauth_clients`;
+
+CREATE TABLE `oauth_clients` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) unsigned DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `secret` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `provider` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `redirect` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `personal_access_client` tinyint(1) NOT NULL,
+  `password_client` tinyint(1) NOT NULL,
+  `revoked` tinyint(1) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `oauth_clients_user_id_index` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `oauth_clients` */
+
+insert  into `oauth_clients`(`id`,`user_id`,`name`,`secret`,`provider`,`redirect`,`personal_access_client`,`password_client`,`revoked`,`created_at`,`updated_at`) values 
+(1,NULL,'Quiz Maker Personal Access Client','Ue2aO64A4BBC7eKeUGE8zYAj663gd7fuV1EMricy',NULL,'http://localhost',1,0,0,'2021-06-18 02:18:45','2021-06-18 02:18:45'),
+(2,NULL,'Quiz Maker Password Grant Client','MxvuG4DshHgBzj09q5nxSnoASr7XAbAq74xAj0FV','users','http://localhost',0,1,0,'2021-06-18 02:18:45','2021-06-18 02:18:45');
+
+/*Table structure for table `oauth_personal_access_clients` */
+
+DROP TABLE IF EXISTS `oauth_personal_access_clients`;
+
+CREATE TABLE `oauth_personal_access_clients` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `client_id` bigint(20) unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `oauth_personal_access_clients` */
+
+insert  into `oauth_personal_access_clients`(`id`,`client_id`,`created_at`,`updated_at`) values 
+(1,1,'2021-06-18 02:18:45','2021-06-18 02:18:45');
+
+/*Table structure for table `oauth_refresh_tokens` */
+
+DROP TABLE IF EXISTS `oauth_refresh_tokens`;
+
+CREATE TABLE `oauth_refresh_tokens` (
+  `id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `access_token_id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `revoked` tinyint(1) NOT NULL,
+  `expires_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `oauth_refresh_tokens_access_token_id_index` (`access_token_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `oauth_refresh_tokens` */
 
 /*Table structure for table `password_resets` */
 
