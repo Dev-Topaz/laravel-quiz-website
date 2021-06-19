@@ -23,7 +23,7 @@ CREATE TABLE `exam_groups` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `exam_groups` */
 
@@ -49,13 +49,15 @@ CREATE TABLE `exams` (
   `screen_height` int(11) DEFAULT NULL,
   `screen_width` int(11) DEFAULT NULL,
   `stuff_emails` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `downloaded` tinyint(4) NOT NULL,
+  `published` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `exams` */
 
-insert  into `exams`(`id`,`name`,`description`,`author_id`,`status`,`attempt_number`,`passing_score`,`created_at`,`updated_at`,`theme_style`,`screen_height`,`screen_width`,`stuff_emails`) values 
-(34,'iSpring Exam',NULL,1,1,1,100,'2021-06-12 06:14:32','2021-06-14 03:56:30',NULL,450,940,'rto@civilsafety.edu.au,robert@civilsafety.edu.au');
+insert  into `exams`(`id`,`name`,`description`,`author_id`,`status`,`attempt_number`,`passing_score`,`created_at`,`updated_at`,`theme_style`,`screen_height`,`screen_width`,`stuff_emails`,`downloaded`,`published`) values 
+(34,'iSpring Exam',NULL,1,1,1,100,'2021-06-12 06:14:32','2021-06-14 03:56:30',NULL,450,940,'rto@civilsafety.edu.au,robert@civilsafety.edu.au',1,1);
 
 /*Table structure for table `failed_jobs` */
 
@@ -84,7 +86,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `migrations` */
 
@@ -134,7 +136,8 @@ insert  into `migrations`(`id`,`migration`,`batch`) values
 (43,'2016_06_01_000002_create_oauth_access_tokens_table',24),
 (44,'2016_06_01_000003_create_oauth_refresh_tokens_table',24),
 (45,'2016_06_01_000004_create_oauth_clients_table',24),
-(46,'2016_06_01_000005_create_oauth_personal_access_clients_table',24);
+(46,'2016_06_01_000005_create_oauth_personal_access_clients_table',24),
+(47,'2021_06_19_033232_update_exams_table_add_fields_downloaded_and_published',25);
 
 /*Table structure for table `oauth_access_tokens` */
 
@@ -155,6 +158,30 @@ CREATE TABLE `oauth_access_tokens` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `oauth_access_tokens` */
+
+insert  into `oauth_access_tokens`(`id`,`user_id`,`client_id`,`name`,`scopes`,`revoked`,`created_at`,`updated_at`,`expires_at`) values 
+('0805bfe145c68b697738b812ee37210a07246c0e2fc1da2e0d109f07c831ddf980cfd72af388a5c3',18,1,'MyApp','[]',0,'2021-06-19 02:02:54','2021-06-19 02:02:54','2022-06-19 02:02:54'),
+('0e772a982b73deb3f6be7bc9e41d80b5e5351cff0ba997c3ad9c2c5933028a129d82f1ba976cee42',6,1,'MyApp','[]',0,'2021-06-18 02:33:04','2021-06-18 02:33:04','2022-06-18 02:33:04'),
+('0e7fba9f213cf3700d5e8d353538f44b32ccefca242a855b84275bd04f584bfac1838904126be6bf',6,1,'MyApp','[]',0,'2021-06-18 21:45:49','2021-06-18 21:45:49','2022-06-18 21:45:49'),
+('158e5bf655704427bf901401538978b45fc14d267011c2732f4436134bc2338eaee475e5bf53b69f',6,1,'MyApp','[]',0,'2021-06-18 21:32:23','2021-06-18 21:32:23','2022-06-18 21:32:23'),
+('1592dab74d27ac823ba5779bc4ebcf1b7ce8e2ea2556de9133c1eac4d5885f822cb87e6dd33258cc',17,1,'MyApp','[]',0,'2021-06-18 23:28:31','2021-06-18 23:28:31','2022-06-18 23:28:31'),
+('17518a56eb11d3c7c202840809d36a20188656215258b53bf5594c0918b8b815137057d3cbead1d9',15,1,'MyApp','[]',0,'2021-06-18 19:31:58','2021-06-18 19:31:58','2022-06-18 19:31:58'),
+('1e9d1cea4d4fac82a8b4ee4fba13774751bf1af1b9e5413fa6faef43c40503d2d4c45c686389dc07',19,1,'MyApp','[]',0,'2021-06-19 02:03:23','2021-06-19 02:03:23','2022-06-19 02:03:23'),
+('2735cc460c4b55b313ea1a67a8b0c0f186a9e06a304f03a9b2f2dd0d2b68735139ed29e7d11af102',6,1,'MyApp','[]',0,'2021-06-18 21:47:00','2021-06-18 21:47:00','2022-06-18 21:47:00'),
+('3b97b7fd4c4723580a83869ed3ba4235a1cbc7667acfe5b94bc742da91f1165d9f781b3c6fee0439',6,1,'MyApp','[]',0,'2021-06-18 21:52:18','2021-06-18 21:52:18','2022-06-18 21:52:18'),
+('3fc989f0a5d473d6599af57d949c7180cf2da3d2efa2df4fea7e0914ea6e2d971577dd3928b6ffd3',15,1,'MyApp','[]',0,'2021-06-18 02:37:54','2021-06-18 02:37:54','2022-06-18 02:37:54'),
+('62238f381adb471cd841d2b07357be86d254bdc1f7fd5d02e9be9baeb065290f142514e65f1eb2a5',6,1,'MyApp','[]',0,'2021-06-18 22:55:10','2021-06-18 22:55:10','2022-06-18 22:55:10'),
+('65343ca04f8c5266ddd6c7016111fc3feefdfe3641784c6d871bba0e2c7783ddaa9bf1e799d17c5d',15,1,'MyApp','[]',0,'2021-06-18 22:01:14','2021-06-18 22:01:14','2022-06-18 22:01:14'),
+('68991f3e3970bc228cbebb47952cb0f0459bb8133e522767bbff947bc1686371c482e9684e9f7e91',6,1,'MyApp','[]',0,'2021-06-18 22:07:42','2021-06-18 22:07:42','2022-06-18 22:07:42'),
+('734b87e45aa603f407ff4cb3f4db82b9d78a3e9630853833214d695ed7f34783d01c1d471703d061',6,1,'MyApp','[]',0,'2021-06-18 21:19:57','2021-06-18 21:19:57','2022-06-18 21:19:57'),
+('83e2b45745dc977a25ecab11a2470275957a699215359895b8d307f8463ad36440949a10b2a4ada7',6,1,'MyApp','[]',0,'2021-06-18 23:24:26','2021-06-18 23:24:26','2022-06-18 23:24:26'),
+('90832981505bb2501ee26ab695be8e7ba20605c5cee70c3887265652abe41ea55e4a5b475580c80e',1,1,'MyApp','[]',0,'2021-06-18 22:01:26','2021-06-18 22:01:26','2022-06-18 22:01:26'),
+('9a42c43677af44f4a95d3feaa512e30bb5f34376c73ddf0b47a3775f73de6f7161bc8aa4184483b7',6,1,'MyApp','[]',0,'2021-06-18 21:32:39','2021-06-18 21:32:39','2022-06-18 21:32:39'),
+('b8e77501bc49b4fa244612be9ae3eedd3d7cb44256e2fb207f933e054c2c240eb47f196be89190d3',6,1,'MyApp','[]',0,'2021-06-18 21:33:47','2021-06-18 21:33:47','2022-06-18 21:33:47'),
+('ddf1056b37256b91fe16642ce9c2a128cdeafa56759ebb51b6e37ecd36b0641b28c94375041a99b5',6,1,'MyApp','[]',0,'2021-06-18 22:00:54','2021-06-18 22:00:54','2022-06-18 22:00:54'),
+('e154ee17eb6d334cf5b130ebadfc85786230ffaeafcc67bc9e63b798e136a61b001e403728b9965b',6,1,'MyApp','[]',0,'2021-06-18 21:31:46','2021-06-18 21:31:46','2022-06-18 21:31:46'),
+('e24e985db5cc8362bb02dc2757bd9c339d9f179855f1603c3805d78861a599e4fc090162e4aa8299',6,1,'MyApp','[]',0,'2021-06-18 21:33:14','2021-06-18 21:33:14','2022-06-18 21:33:14'),
+('e2f8cce184c0f0d161897e140d2511e929006c144fc17ffebfe73ba8054c81cdfb3843b8c8060b4a',6,1,'MyApp','[]',0,'2021-06-18 21:45:53','2021-06-18 21:45:53','2022-06-18 21:45:53');
 
 /*Table structure for table `oauth_auth_codes` */
 
@@ -331,7 +358,7 @@ CREATE TABLE `quizes` (
   `video_element` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `audio_element` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=658 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=668 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `quizes` */
 
@@ -402,7 +429,7 @@ CREATE TABLE `users` (
   `active` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `users` */
 
@@ -412,7 +439,10 @@ insert  into `users`(`id`,`name`,`email`,`email_verified_at`,`password`,`remembe
 (9,'Admin 1','admin1@gmail.com',NULL,'$2y$10$7JblXu4KOng1q6zcOuEeQuzYk02klOW1wZGXwjoMftKwmRlopuZEa',NULL,'2021-05-31 08:42:49','2021-05-31 09:10:47',1),
 (10,'Admin 2','admin2@gmail.com',NULL,'$2y$10$yVa8wx7xuRzw5B4nmcuimeYBhbKrPYrQ0CwvWa1GkVM44dhbayV5S',NULL,'2021-05-31 08:51:51','2021-05-31 08:51:51',1),
 (11,'Admin 3','admin3@gmail.com',NULL,'$2y$10$Fs0qIiW9RUmBENonjYg6pOJ.VG5XVj6JIXCyIOH6F15sJSX50LcAC',NULL,'2021-06-14 01:24:44','2021-06-14 01:25:50',1),
-(12,'Student 1','student1@gmail.com',NULL,'$2y$10$pKOb.iTahZKsomKNJ4iB7eLaYQxAJN4vNsLMf1YR0zSXo6jKJf3jS',NULL,'2021-06-14 01:25:06','2021-06-14 01:25:06',1);
+(12,'Student 1','student1@gmail.com',NULL,'$2y$10$pKOb.iTahZKsomKNJ4iB7eLaYQxAJN4vNsLMf1YR0zSXo6jKJf3jS',NULL,'2021-06-14 01:25:06','2021-06-14 01:25:06',1),
+(15,'Mobile User','mobile.user@gmail.com',NULL,'$2y$10$lJHhhcOoigb5ranYqGi.ZeUo/I5FMw0Bc7UUAec/Ff9UEDpS78ViS',NULL,'2021-06-18 02:37:54','2021-06-18 02:37:54',1),
+(18,'sophie','sophie@sophie.com',NULL,'$2y$10$VCVlCnCh5on1XGbiClpntuPAs.HRwSpGXp9JjA4TD89sNor4IKfNC',NULL,'2021-06-19 02:02:54','2021-06-19 02:02:54',1),
+(19,'sophie','sophie@gmail.com',NULL,'$2y$10$RzG1axVTXfqFGQTjYb/oBu.PJ3ggmvHx3q8/KPIjD72.fjPrex2RG',NULL,'2021-06-19 02:03:23','2021-06-19 02:03:23',1);
 
 /*Table structure for table `users_permissions` */
 
@@ -450,7 +480,10 @@ insert  into `users_roles`(`user_id`,`role_id`) values
 (9,1),
 (10,1),
 (11,1),
-(12,2);
+(12,2),
+(15,2),
+(18,2),
+(19,2);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

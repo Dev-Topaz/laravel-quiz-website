@@ -442,6 +442,9 @@ class QuizController extends Controller
             default:
         }
 
+        $exam = Exam::find($request->exam_id);
+        $exam->downloaded = 0;
+        $exam->save();
 
         return $quiz->id;
 
@@ -531,6 +534,11 @@ class QuizController extends Controller
 
         $quiz->save();
 
+        $exam_id = $quiz->exam_group->exam_id;
+        $exam = Exam::find($exam_id);
+        $exam->downloaded = 0;
+        $exam->save();
+
         return $quiz->id;
     }
 
@@ -565,7 +573,7 @@ class QuizController extends Controller
     {
 
         $exam = Exam::where('id', $request->exam_id)
-            ->update(['theme_style' => $request->style]);
+            ->update(['theme_style' => $request->style, 'downloaded' => 0]);
 
         return true;
     }
@@ -643,6 +651,9 @@ class QuizController extends Controller
             }
         }
 
+        $exam = Exam::find($request->exam_id);
+        $exam->downloaded = 0;
+        $exam->save();
 
         return $index;
     }
@@ -665,11 +676,14 @@ class QuizController extends Controller
         $replicate->order = $request->order;
         $replicate->save();
 
+        $exam = Exam::find($quiz->exam_group->exam_id);
+        $exam->downloaded = 0;
+        $exam->save();
+
         return $replicate->id;
     }
 
-    public
-    function bg_apply_all(Request $request)
+    public function bg_apply_all(Request $request)
     {
         $exam_groups = Exam::find($request->exam_id)->exam_groups;
 
@@ -680,6 +694,10 @@ class QuizController extends Controller
                 $quiz->save();
             }
         }
+
+        $exam = Exam::find($request->exam_id);
+        $exam->downloaded = 0;
+        $exam->save();
 
         return $quizzes;
     }

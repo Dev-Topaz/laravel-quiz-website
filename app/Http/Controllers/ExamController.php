@@ -65,6 +65,8 @@ class ExamController extends Controller
             'passing_score' => $request->passing_score,
             'screen_height' => $request->screen_height,
             'screen_width' => $request->screen_width,
+            'downloaded' => 0,
+            'published' => 1,
         ]);
 
         ExamGroup::create([
@@ -175,6 +177,8 @@ class ExamController extends Controller
     public function update(Request $request, Exam $exam)
     {
         $exam->update($request->all());
+        $exam->downloaded = 0;
+        $exam->save();
 
         return redirect('/exams/' . $exam->id)->with('success', 'Exam updated successfully.');
 
