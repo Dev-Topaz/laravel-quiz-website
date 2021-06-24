@@ -4,7 +4,7 @@
     @if (session('student'))
         {{ $title }}
     @else
-        {{ Auth::user()->roles[0]->id == '1' ? 'Quiz Preview' : 'Exam Page' }}
+        {{ Auth::user()->roles[0]->id == '1' ? 'Quiz Preview' : $title }}
     @endif
 @endsection
 
