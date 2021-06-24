@@ -138,11 +138,13 @@
                              style="{{ $quiz->type_id > 11 ? 'display:none;' : 'display:flex;'}}">
                             <a href="javascript:void(0)"
                                style="padding: 0 3px;{{ (isset($quiz->media) || isset($quiz->video)) ? 'display: none' : '' }}"
-                               id="form_view_add_picture"><img style="cursor: pointer;" src="{{ url('/images/icons/add_picture_normal.png') }}"
+                               id="form_view_add_picture"><img style="cursor: pointer;"
+                                                               src="{{ url('/images/icons/add_picture_normal.png') }}"
                                                                alt="pic"></a>
                             <a href="javascript:void(0)"
                                style="padding: 0 3px;{{ (isset($quiz->media) || isset($quiz->video)) ? 'display: none' : '' }}"
-                               id="form_view_add_video"><img style="cursor: pointer;" src="{{ url('/images/icons/add_video_normal.png') }}"
+                               id="form_view_add_video"><img style="cursor: pointer;"
+                                                             src="{{ url('/images/icons/add_video_normal.png') }}"
                                                              alt="video"></a>
                             <img src="{{ $quiz->media ?? '#' }}" alt="form_view_media_element"
                                  id="form_view_media_element"
@@ -239,7 +241,7 @@
                             <thead>
                             <tr>
                                 <th>Acceptable Answer</th>
-{{--                                <th></th>--}}
+                                {{--                                <th></th>--}}
                             </tr>
                             </thead>
                             <tbody id="short_answer_list">
@@ -250,8 +252,8 @@
                                            name="short_answer"
                                            value="{{ $quiz->answer }}" required autocomplete="short_answer" autofocus>
                                 </td>
-{{--                                <td><a onclick="{$(this).parent().parent().remove();}"><i--}}
-{{--                                            class="fas fa-trash-alt"></i></a></td>--}}
+                                {{--                                <td><a onclick="{$(this).parent().parent().remove();}"><i--}}
+                                {{--                                            class="fas fa-trash-alt"></i></a></td>--}}
                             </tr>
                             </tbody>
                         </table>
@@ -369,11 +371,14 @@
                                 <div>
                                     <div style="display: flex;justify-content: center;">Choose hotspot shape</div>
                                     <div style="display: flex;">
-                                        <a id="drawrec" style="padding: 10px;margin: 0 5px;border: 1px dotted gray;width: 60px; height: 60px;"
+                                        <a id="drawrec"
+                                           style="padding: 10px;margin: 0 5px;border: 1px dotted gray;width: 60px; height: 60px;"
                                            onclick="drawrec()"><img src="{{ url('/images/icons/rect.png') }}"></a>
-                                        <a id="drawcle" style="padding: 10px;margin: 0 5px;border: 1px dotted gray;width: 60px; height: 60px;"
+                                        <a id="drawcle"
+                                           style="padding: 10px;margin: 0 5px;border: 1px dotted gray;width: 60px; height: 60px;"
                                            onclick="drawcle()"><img src="{{ url('/images/icons/circle.png') }}"></a>
-                                        <a id="drawpoly" style="padding: 10px;margin: 0 5px;border: 1px dotted gray;width: 60px; height: 60px;"
+                                        <a id="drawpoly"
+                                           style="padding: 10px;margin: 0 5px;border: 1px dotted gray;width: 60px; height: 60px;"
                                            onclick="drawpoly()"><img src="{{ url('/images/icons/polygon.png') }}"></a>
                                     </div>
                                 </div>
@@ -385,10 +390,15 @@
                                 <canvas id="hotspots_canvas" height="214"></canvas>
                             </div>
                         </div>
-                        <div style="float: right;"><a href="javascript:void(0)" style="padding: 0 10px"
-                                                      onclick="hotspots_change_picture()">Change
-                                Picture</a><a href="javascript:void(0)" onclick="deleteCanvas()"
-                                              style="padding: 0 10px">Delete Shape</a></div>
+                        <div style="width: 100%;display: flex;justify-content: space-between;">
+
+                            <a href="javascript:void(0)" onclick="deleteCanvas()"
+                               style="padding: 0 10px">Delete Shape</a>
+                            <a href="javascript:void(0)" style="padding: 0 10px"
+                               onclick="hotspots_change_picture()">Change
+                                Picture</a>
+                        </div>
+
                     </div>
                     <div id="hotspots_one_column"
                          style="flex-direction: column;{{ $quiz->answer == '' ? 'display:flex' : 'display:none'}}">
@@ -488,7 +498,8 @@
                 will be dropped by this amount every time when they try again.)</label>
         </div>
     </div>
-    <div id="drag_containment" class="cell-9 slide_view_element" style="height: 695px;background: #dcdcdc;display: none;">
+    <div id="drag_containment" class="cell-9 slide_view_element"
+         style="height: 695px;background: #dcdcdc;display: none;">
         <div
             style="top:50%;left:50%;transform:translate(-50%, -50%);margin: auto 0;width: {{ $quiz->exam_group->exam->screen_width }}px;height:{{ $quiz->exam_group->exam->screen_height }}px;{{ $quiz->exam_group->exam->theme_style ?? 'background:white' }}"
             id="slide_view_container">
@@ -524,20 +535,20 @@
         <h3 style="border-bottom: 1px dotted grey;padding: 15px 10px;">Slide Options</h3>
         <div>
             <div style="{{ $quiz->type_id > 11 ? 'display:none;' : ''}}">
-{{--                <div class="row" style="padding: 0 10px;">--}}
-{{--                    <div class="cell-5">--}}
-{{--                        <label for="question_type" style="font-size: 16px;">Question type:</label>--}}
-{{--                    </div>--}}
-{{--                    <div class="cell-7">--}}
-{{--                        <select data-on-change="change_question_type" data-role="select" data-filter="false"--}}
-{{--                                id="question_type">--}}
-{{--                            <option value="graded" {{ $quiz->question_type == 'graded' ? 'selected' : '' }}>Graded--}}
-{{--                            </option>--}}
-{{--                            <option value="survey" {{ $quiz->question_type == 'survey' ? 'selected' : '' }}>Survey--}}
-{{--                            </option>--}}
-{{--                        </select>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
+                {{--                <div class="row" style="padding: 0 10px;">--}}
+                {{--                    <div class="cell-5">--}}
+                {{--                        <label for="question_type" style="font-size: 16px;">Question type:</label>--}}
+                {{--                    </div>--}}
+                {{--                    <div class="cell-7">--}}
+                {{--                        <select data-on-change="change_question_type" data-role="select" data-filter="false"--}}
+                {{--                                id="question_type">--}}
+                {{--                            <option value="graded" {{ $quiz->question_type == 'graded' ? 'selected' : '' }}>Graded--}}
+                {{--                            </option>--}}
+                {{--                            <option value="survey" {{ $quiz->question_type == 'survey' ? 'selected' : '' }}>Survey--}}
+                {{--                            </option>--}}
+                {{--                        </select>--}}
+                {{--                    </div>--}}
+                {{--                </div>--}}
                 <div id="slide_details" style="padding: 10px 10px 0 20px">
                     <div class="row">
                         <div class="cell-6">
@@ -769,7 +780,7 @@
 </div>
 
 <script>
-    $('#limit_time').inputmask({ mask: "99:(0|1|2|3|4|5)9"});
+    $('#limit_time').inputmask({mask: "99:(0|1|2|3|4|5)9"});
 
     answer_slide2form($('#answer_element').val(), $('#answer_content').val());
     $('#question').html(question_slide2form($('#question_element').val()));

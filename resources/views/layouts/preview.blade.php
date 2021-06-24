@@ -8,11 +8,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="url" content="{{ url('/') }}">
 
-    @if(session('student'))
-    <title>{{ __('Exam Page') }}</title>
-    @else
-    <title>{{ Auth::user()->roles[0]->id == '1' ? 'Quiz Preview' : 'Exam Page' }}</title>
-    @endif
+{{--    @if(session('student'))--}}
+{{--    <title>{{ __('Exam Page') }}</title>--}}
+{{--    @else--}}
+    <title>@yield('title')</title>
+{{--    @endif--}}
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
 
     <!-- Fonts -->

@@ -168,9 +168,9 @@
     <div id="duplicateModal" style="height: 100vh; width: 100vw; background: #666a; z-index: 10000; position: fixed; top: 0; left: 0; display: none;">
         <form action="{{ route("duplicateExam") }}" method="post">
             @csrf
-            <div class="modalContainer" style="width: 300px; padding: 20px 30px; background: white; margin: auto; margin-top: 200px; box-shadow: 0 0 3px 2px lightgrey;">
+            <div class="modalContainer" style="width: 500px; padding: 20px 40px; background: white; margin: auto; margin-top: 200px; box-shadow: 0 0 3px 2px lightgrey;">
                 <div class="modalBody">
-                    <label for="exam_name" style="display: block; font-size: 18px; ">Exam name</label>
+                    <label for="exam_name" style="display: block; font-size: 18px; ">Please input a name of duplicated exam.</label>
                     <input type="text" name="name" id="exam_name" class="form-control @error('name') is-invalid @enderror">
                     @error('name')
                         <span class="invalid-feedback" role="alert">
@@ -179,9 +179,9 @@
                     @enderror
                     <input type="hidden" name="exam_id" value="0" id="duplicate_exam_id">
                 </div>
-                <div style="width: 100%; display: flex; margin-top: 15px;">
-                    <button class="btn btn-success btn-lg col-6" type="submit">Duplicate</button>
-                    <button class="btn btn-danger btn-lg col-6" type="button" onclick="$('#duplicateModal').fadeOut(200);">Cancel</button>
+                <div style="width: 100%; display: flex; margin-top: 15px;justify-content: space-around;">
+                    <button class="btn btn-success btn-lg col-5" type="submit">Duplicate</button>
+                    <button class="btn btn-danger btn-lg col-5" type="button" onclick="$('#duplicateModal').fadeOut(200);">Cancel</button>
                 </div>
             </div>
         </form>

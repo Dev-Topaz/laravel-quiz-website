@@ -1,5 +1,13 @@
 @extends('layouts.preview')
 
+@section('title')
+    @if (session('student'))
+        {{ $title }}
+    @else
+        {{ Auth::user()->roles[0]->id == '1' ? 'Quiz Preview' : 'Exam Page' }}
+    @endif
+@endsection
+
 @section('content')
     <div id="question_list_modal">
         <span id="question_list_modal_close">&times;</span>
@@ -29,16 +37,17 @@
     </div>
     <div id="is_quiz" style="display: none;">{{ $is_quiz }}</div>
     @if(isset($name))
-    <div id="user_name" style="display: none;">{{ $name }}</div>
+        <div id="user_name" style="display: none;">{{ $name }}</div>
     @else
-    <div id="user_name" style="display: none;">{{ $user->name }}</div>
+        <div id="user_name" style="display: none;">{{ $user->name }}</div>
     @endif
     @if(isset($email))
-    <div id="user_email" style="display: none;">{{ $email }}</div>
+        <div id="user_email" style="display: none;">{{ $email }}</div>
     @else
-    <div id="user_email" style="display: none;">{{ $user->email }}</div>
+        <div id="user_email" style="display: none;">{{ $user->email }}</div>
     @endif
-    <div class="question_menu_bar" style="margin: 0 auto;display: flex;justify-content: space-between;padding-top: 10px;">
+    <div class="question_menu_bar"
+         style="margin: 0 auto;display: flex;justify-content: space-between;padding-top: 10px;">
         <p id="question_list">Question <span id="question_number">1</span></p>
         <div id="question_result" style="display: flex;">
             <p id="question_time" style="display: none;"><span>60</span>&nbsp;sec&nbsp;</p>

@@ -57,6 +57,7 @@ class PreviewController extends Controller
         }
 
         $exams = Exam::where('id', $id)->get();
+        $title = $exams[0]->name;
         $is_quiz = 1;
 
         $exam_groups = $exams[0]->exam_groups;
@@ -67,7 +68,7 @@ class PreviewController extends Controller
             }
         }
 
-        return view('preview', ['quizzes' => $quizzes, 'name' => $name, 'email' => $email, 'is_quiz' => $is_quiz]);
+        return view('preview', ['quizzes' => $quizzes, 'title' => $title, 'name' => $name, 'email' => $email, 'is_quiz' => $is_quiz]);
     }
 
     public function exam($name) {
