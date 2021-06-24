@@ -98,6 +98,5 @@
         $('#imagePopup').fadeOut(500);
     });
 </script>
-
 </body>
 </html>

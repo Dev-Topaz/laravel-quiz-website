@@ -994,7 +994,7 @@ function show_correct_view() {
 var root_url = $('meta[name=url]').attr('content');
 
 $('.preview_quiz_btn').click(function () {
-    update_and_show_preview(root_url + '/preview_exam/' + $('#exam_id').val());
+    update_and_show_preview(root_url + '/exam/' + $('#exam_id').val());
 });
 
 $('.preview_slide_btn').click(function () {

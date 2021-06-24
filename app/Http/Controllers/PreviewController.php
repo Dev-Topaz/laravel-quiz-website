@@ -89,7 +89,7 @@ class PreviewController extends Controller
         $rule = [
             'firstName' => 'required|string|max:20|regex:/^[a-zA-Z]+$/',
             'lastName' => 'required|string|max:20|regex:/^[a-zA-Z]+$/',
-            'company' => 'required|string|max:20|regex:/^[a-zA-Z]+$/',
+            'company' => 'required|string|max:20|regex:/^[a-z A-Z]+$/',
         ];
 
         $messages = [
@@ -98,8 +98,8 @@ class PreviewController extends Controller
             'email.required' => 'Email is a required field.',
             'company.required' => 'Company is a required field.',
             'firstName.regex' => 'First Name can contains only letters',
-            'lastName.regex' => 'First Name can contains only letters',
-            'company.regex' => 'First Name can contains only letters',
+            'lastName.regex' => 'Last Name can contains only letters',
+            'company.regex' => 'Company Name can contains only letters',
         ];
 
         $validator = Validator::make($input, $rule, $messages);

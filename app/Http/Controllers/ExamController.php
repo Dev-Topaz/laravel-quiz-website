@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Exam;
 use App\Models\ExamGroup;
 use App\Models\Quiz;
+use Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -208,5 +209,81 @@ class ExamController extends Controller
 
         return redirect()->route('exams.index')
             ->with('success', 'Exam deleted successfully');
+    }
+
+    public function duplicate_exam(Request $request) {
+        $input = $request->all();
+
+        $id = $input['exam_id'];
+        $name = $input['name'];
+        $rule = [
+            'name' => 'required|unique:exams',
+        ];
+        $messages = [
+            'name:unique' => 'Exam name already exists.',
+        ];
+        $validator = Validator::make($input, $rule, $messages);
+        if($validator->fails()){
+            return redirect()->back()
+                ->withInput($input)
+                ->withErrors($validator)
+                ->with('status', 'returnWithError')
+                ->with('id', $id)
+                ->with('name', $name);
+        }
+        $source_exam = Exam::find($id);
+
+        $exam = Exam::create([
+            'name' => $name,
+            'description' => $source_exam->description,
+            'author_id' => $source_exam->author_id,
+            'status' => 1,
+            'attempt_number' => $source_exam->attempt_number,
+            'stuff_emails' => $source_exam->stuff_emails,
+            'passing_score' => $source_exam->passing_score,
+            'screen_height' => $source_exam->screen_height,
+            'screen_width' => $source_exam->screen_width,
+            'downloaded' => 0,
+            'published' => 1,
+        ]);
+
+        $exam_groups = ExamGroup::where('exam_id', $id)->get();
+        foreach ($exam_groups as $exam_group) {
+            $new_exam_group = ExamGroup::create([
+                'group_name' => $exam_group->group_name,
+                'exam_id' => $exam->id,
+            ]);
+
+            $quizes = Quiz::where('exam_group_id', $exam_group->id)->get();
+            foreach ($quizes as $quiz) {
+                $new_quiz = Quiz::create([
+                    'exam_group_id' => $new_exam_group->id,
+                    'type_id' => $quiz->type_id,
+                    'question_element' => $quiz->question_element,
+                    'answer' => $quiz->answer,
+                    'feedback_correct' => $quiz->feedback_correct,
+                    'feedback_incorrect' => $quiz->feedback_incorrect,
+                    'feedback_try_again' => $quiz->feedback_try_again,
+                    'media' => $quiz->media,
+                    'order' => $quiz->order,
+                    'answer_element' => $quiz->answer_element,
+                    'question_type' => 'graded',
+                    'feedback_type' => 'by_result',
+                    'branching' => 'by_result',
+                    'score' => 'by_result',
+                    'attempts' => '1',
+                    'is_limit_time' => false,
+                    'limit_time' => null,
+                    'shuffle_answers' => true,
+                    'partially_correct' => null,
+                    'limit_number_response' => null,
+                    'case_sensitive' => null,
+                    'correct_score' => 10,
+                    'incorrect_score' => 0,
+                    'try_again_score' => 0,
+                ]);
+            }
+        }
+        return redirect('/exams');
     }
 }
