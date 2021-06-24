@@ -45,11 +45,14 @@
                                     <li data-theme_id="{{ $exam->id }}" id="liform_{{ $exam->id }}"
                                         class="form_visible">
 
-                                        <div class="middle_form_bar">
+                                        <div class="middle_form_bar" style="display: block; margin-bottom: 3px;">
 {{--                                            <span class="tooltiptext">{{ $exam->description }}</span>--}}
-                                            <h3>{{ $exam->name }}</h3>
+                                            <h3 style="float: left; margin: 0;">{{ $exam->name }}</h3>
+                                            <div>
+                                                <span style="float: right; margin: 5px;" id="exam_link{{ $exam->id }}">{{ env('APP_URL') . '/exam/'. $exam->name }}</span>
+                                            </div>
+                                            <div class="clearfix"></div>
                                             <div class="form_meta" style="display:none;">
-
 
                                                 <div class="form_actions">
                                                     <a class="form_actions_toggle" data-formid="{{ $exam->id }}"
@@ -105,18 +108,29 @@
                                             <div class="form_option_separator"></div>
                                             <div class="form_option option_expandable">
                                                 <a class="mf_link_theme" href="javascript:void(0)"
-                                                   onclick="{window.open('{{ url('/preview_exam') }}/{{ $exam->id }}')}" title="Theme"><i
+                                                   onclick="{window.open('{{ url('/preview_exam') }}/{{ $exam->id }}')}"><i
                                                         class="far fa-play-circle"></i><span class="option_text">Test Exam</span></a>
                                             </div>
                                             @endhasrole
                                             @hasrole('student')
                                             <div class="form_option option_expandable">
                                                 <a class="mf_link_theme" href="javascript:void(0)"
-                                                   onclick="{window.open('{{ url('/preview_exam') }}/{{ $exam->id }}')}" title="Theme"><i
+                                                   onclick="{window.open('{{ url('/preview_exam') }}/{{ $exam->id }}')}"><i
                                                         class="far fa-play-circle"></i><span class="option_text">Start Exam</span></a>
                                             </div>
                                             @endhasrole
                                             @hasrole('manager')
+                                            <div class="form_option_separator"></div>
+                                            <div class="form_option option_expandable" style="position: relative">
+                                                <a class="mf_link_theme" href="javascript:void(0)"
+                                                   onclick="copyToClipboard({{ $exam->id }})">
+                                                    <i class="fas fa-link"></i>
+                                                    <span class="option_text">Copy Link</span>
+                                                </a>
+                                                <div style="position: absolute; left: 100%;border-radius: 5px; background-color: #eee;padding: 5px; top: 5px; display: none;" id="copiedAlert{{ $exam->id }}">
+                                                    <p style="color: black; margin: 0">Copied</p>
+                                                </div>
+                                            </div>
                                             <form method="POST" action="{{ url('/exams') }}/{{ $exam->id }}" id="delete_form-{{ $exam->id }}">
                                                 @csrf
                                                 @method('DELETE')
@@ -145,4 +159,15 @@
         <div class="clear"></div>
 
     </div>
+    <script>
+        function copyToClipboard(id) {
+            const exam_link = $("#exam_link" + id).text();
+            navigator.clipboard.writeText(exam_link).then(
+                function() {
+                    const elem = $("#copiedAlert" + id);
+                    $(elem).fadeIn(50).delay(1000).fadeOut(50);},
+                function() {}
+            );
+        }
+    </script>
 @endsection

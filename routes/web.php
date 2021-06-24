@@ -25,8 +25,8 @@ Route::get('/', [ExamController::class, 'index']);
 Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::group(['middleware' => 'role:manager'], function () {
-
+//Route::group(['middleware' => 'role:manager'], function () {
+Route::middleware(['role:manager', 'auth'])->group(function() {
     Route::get('/admin', function () {
 
         return 'Welcome Admin';
@@ -54,7 +54,9 @@ Route::group(['middleware' => 'role:manager'], function () {
 
 Route::get('/preview_slide/{id}', [PreviewController::class, 'preview_slide']);
 Route::get('/preview_group/{id}', [PreviewController::class, 'preview_group']);
-Route::get('/preview_exam/{id}', [PreviewController::class, 'preview_exam']);
+Route::get('/preview_exam/{id}', [PreviewController::class, 'preview_exam'])->name('preview_exam');
+Route::get('/exam/{name}', [PreviewController::class, 'exam'])->name('exam');
+Route::get('/examRegister', [PreviewController::class, 'startExam'])->name('startExam');
 
 
 Route::resource('users', UserController::class);
