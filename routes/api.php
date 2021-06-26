@@ -21,6 +21,7 @@ Route::post('register', [RegisterController::class, 'register']);
 Route::post('login', [RegisterController::class, 'login']);
 
 Route::middleware('auth:api')->get('/get_downloading_quizzes_index', [ExamController::class, 'get_downloading_quizzes_index']);
+Route::middleware('auth:api')->get('/get_all_index', [ExamController::class, 'get_all_index']);
 Route::middleware('auth:api')->get('/get_quiz/{id}', [ExamController::class, 'get_quiz']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
