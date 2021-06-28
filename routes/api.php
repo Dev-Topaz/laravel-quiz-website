@@ -23,6 +23,7 @@ Route::post('login', [RegisterController::class, 'login']);
 Route::middleware('auth:api')->get('/get_downloading_quizzes_index', [ExamController::class, 'get_downloading_quizzes_index']);
 Route::middleware('auth:api')->get('/get_all_index', [ExamController::class, 'get_all_index']);
 Route::middleware('auth:api')->get('/get_quiz/{id}', [ExamController::class, 'get_quiz']);
+Route::middleware('auth:api')->get('/get_quiz_assets_url/{id}', [ExamController::class, 'get_quiz_assets_url']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

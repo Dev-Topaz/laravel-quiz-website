@@ -18,4 +18,13 @@ class Exam extends Model
         return $this->hasMany(ExamGroup::class, 'exam_id', 'id');
     }
 
+    public function get_all_questions() {
+        $questions = [];
+
+        foreach ($this->exam_groups as $item) {
+            array_push($questions, $item->quizes);
+        }
+
+        return $questions;
+    }
 }
