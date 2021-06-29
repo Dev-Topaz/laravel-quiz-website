@@ -2026,7 +2026,7 @@
                                          style="overflow-y: scroll;height: 650px;">
                                         <ul data-role="listview" data-view="content" id="quiz_list"
                                             data-on-node-click="onNodeClick">
-                                            {{ $exam->get_all_questions }}
+{{--                                            {{ $exam->get_all_questions }}--}}
                                             @foreach ($exam->exam_groups as $exam_group)
                                                 @if ($exam_group->group_name != 'Results')
                                                     <li data-caption="{{ $exam_group->group_name }}"
