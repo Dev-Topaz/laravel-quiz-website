@@ -48,7 +48,9 @@
     @endif
     <div class="question_menu_bar"
          style="margin: 0 auto;display: flex;justify-content: space-between;padding-top: 10px;">
-        <p id="question_list">Question <span id="question_number">1</span></p>
+        <p id="question_list">Question List
+            <span id="question_number" style="display: none;">1</span>
+        </p>
         <div id="question_result" style="display: flex;">
             <p id="question_time" style="display: none;"><span>60</span>&nbsp;sec&nbsp;</p>
             <p id="question_point">&nbsp;Point Value: <span>10</span> |&nbsp;</p>
@@ -151,7 +153,7 @@
     <div class="preview_btn">
         <div>
             <a href="javascript:void(0)" id="clear_hotspots" style="visibility: hidden;">Clear</a>
-            <button onclick="review()" id="review_btn" style="visibility: hidden;">Review Your LNN</button>
+            <button onclick="review()" id="review_btn" style="visibility: hidden;">Review</button>
         </div>
         <button onclick="preview(this)" id="submit_btn">Submit</button>
     </div>
