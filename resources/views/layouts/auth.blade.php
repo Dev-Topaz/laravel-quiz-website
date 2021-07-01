@@ -14,6 +14,8 @@
 
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
 
+    <link rel='manifest' href='/manifest.json'>
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -83,5 +85,11 @@
             @yield('content')
         </main>
     </div>
+<script type="module">
+    import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
+
+    const el = document.createElement('pwa-update');
+    document.body.appendChild(el);
+</script>
 </body>
 </html>

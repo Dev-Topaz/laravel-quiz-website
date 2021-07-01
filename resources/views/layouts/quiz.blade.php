@@ -10,6 +10,8 @@
 
     <title>{{ config('app.name', 'Quiz Maker') }}</title>
 
+    <link rel='manifest' href='/manifest.json'>
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -217,6 +219,13 @@
     // $(document).ready(function () {
     //     // $('.content').richText();
     // });
+</script>
+
+<script type="module">
+    import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
+
+    const el = document.createElement('pwa-update');
+    document.body.appendChild(el);
 </script>
 </body>
 </html>
