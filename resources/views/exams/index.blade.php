@@ -5,8 +5,12 @@
         <input id="quiz_delete_dialog_id" type="text" hidden>
         <div id="quiz_delete_dialog_content" class="quiz_dialog_content">Are you sure you want to delete?</div>
         <div id="quiz_delete_dialog_btn" class="quiz_dialog_btn">
-            <button id="quiz_delete_yes" class="button success" onclick="{$('#delete_form-' + $('#quiz_delete_dialog_id').val()).submit();}">Yes</button>
-            <button id="quiz_delete_no" class="button light" onclick="{$('#quiz_delete_confirm_dialog').fadeOut(300);}">No</button>
+            <button id="quiz_delete_yes" class="button success"
+                    onclick="{$('#delete_form-' + $('#quiz_delete_dialog_id').val()).submit();}">Yes
+            </button>
+            <button id="quiz_delete_no" class="button light" onclick="{$('#quiz_delete_confirm_dialog').fadeOut(300);}">
+                No
+            </button>
         </div>
     </div>
     <div id="main">
@@ -46,10 +50,11 @@
                                         class="form_visible">
 
                                         <div class="middle_form_bar" style="display: block; margin-bottom: 2px;">
-{{--                                            <span class="tooltiptext">{{ $exam->description }}</span>--}}
+                                            {{--                                            <span class="tooltiptext">{{ $exam->description }}</span>--}}
                                             <h3 style="float: left; margin: 0;">{{ $exam->name }}</h3>
                                             <div>
-                                                <span style="float: right; margin: 5px;" id="exam_link{{ $exam->id }}">{{ env('APP_URL') . '/examination/'. $exam->name }}</span>
+                                                <span style="float: right; margin: 5px;"
+                                                      id="exam_link{{ $exam->id }}">{{ env('APP_URL') . '/exam/'. $exam->id }}</span>
                                             </div>
                                             <div class="clearfix"></div>
                                             <div class="form_meta" style="display:none;">
@@ -103,7 +108,8 @@
                                             {{--                                    </div>--}}
 
                                             <div class="form_option">
-                                                <a href="{{ url('/exams') }}/{{$exam->id}}"><i class="far fa-eye"></i>Edit Exam</a>
+                                                <a href="{{ url('/exams') }}/{{$exam->id}}"><i class="far fa-eye"></i>Edit
+                                                    Exam</a>
                                             </div>
                                             <div class="form_option_separator"></div>
                                             <div class="form_option option_expandable">
@@ -115,7 +121,8 @@
                                             <div class="form_option option_expandable">
                                                 <a class="mf_link_theme" href="javascript:void(0)"
                                                    onclick="showDuplicateModel({{ $exam->id }}, '{{ $exam->name }} - copy')"><i
-                                                        class="fas fa-copy"></i><span class="option_text">Duplicate</span></a>
+                                                        class="fas fa-copy"></i><span
+                                                        class="option_text">Duplicate</span></a>
                                             </div>
                                             @endhasrole
                                             @hasrole('student')
@@ -133,15 +140,20 @@
                                                     <i class="fas fa-link"></i>
                                                     <span class="option_text">Copy Link</span>
                                                 </a>
-                                                <div style="position: absolute; left: 100%;border-radius: 5px; background-color: #eee;padding: 5px; top: 5px; display: none;" id="copiedAlert{{ $exam->id }}">
+                                                <div
+                                                    style="position: absolute; left: 100%;border-radius: 5px; background-color: #eee;padding: 5px; top: 5px; display: none;"
+                                                    id="copiedAlert{{ $exam->id }}">
                                                     <p style="color: black; margin: 0">Copied</p>
                                                 </div>
                                             </div>
-                                            <form method="POST" action="{{ url('/exams') }}/{{ $exam->id }}" id="delete_form-{{ $exam->id }}">
+                                            <form method="POST" action="{{ url('/exams') }}/{{ $exam->id }}"
+                                                  id="delete_form-{{ $exam->id }}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <div class="form_option" style="float: right;">
-                                                    <a href="javascript:void(0)" class="mf_link_theme" onclick="{$('#quiz_delete_confirm_dialog').fadeIn(300);$('#quiz_delete_dialog_id').val('{{ $exam->id }}')}"><i class="fas fa-trash"></i>Delete Exam</a>
+                                                    <a href="javascript:void(0)" class="mf_link_theme"
+                                                       onclick="{$('#quiz_delete_confirm_dialog').fadeIn(300);$('#quiz_delete_dialog_id').val('{{ $exam->id }}')}"><i
+                                                            class="fas fa-trash"></i>Delete Exam</a>
                                                 </div>
                                             </form>
                                             @endhasrole
@@ -165,15 +177,19 @@
         <div class="clear"></div>
 
     </div>
-    <div id="duplicateModal" style="height: 100vh; width: 100vw; background: #666a; z-index: 10000; position: fixed; top: 0; left: 0; display: none;">
+    <div id="duplicateModal"
+         style="height: 100vh; width: 100vw; background: #666a; z-index: 10000; position: fixed; top: 0; left: 0; display: none;">
         <form action="{{ route("duplicateExam") }}" method="post">
             @csrf
-            <div class="modalContainer" style="width: 500px; padding: 20px 40px; background: white; margin: auto; margin-top: 200px; box-shadow: 0 0 3px 2px lightgrey;">
+            <div class="modalContainer"
+                 style="width: 500px; padding: 20px 40px; background: white; margin: auto; margin-top: 200px; box-shadow: 0 0 3px 2px lightgrey;">
                 <div class="modalBody">
-                    <label for="exam_name" style="display: block; font-size: 18px; ">Please input a name of duplicated exam.</label>
-                    <input type="text" name="name" id="exam_name" class="form-control @error('name') is-invalid @enderror">
+                    <label for="exam_name" style="display: block; font-size: 18px; ">Please input a name of duplicated
+                        exam.</label>
+                    <input type="text" name="name" id="exam_name"
+                           class="form-control @error('name') is-invalid @enderror">
                     @error('name')
-                        <span class="invalid-feedback" role="alert">
+                    <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                         </span>
                     @enderror
@@ -181,7 +197,9 @@
                 </div>
                 <div style="width: 100%; display: flex; margin-top: 15px;justify-content: space-around;">
                     <button class="btn btn-success btn-lg col-5" type="submit">Duplicate</button>
-                    <button class="btn btn-danger btn-lg col-5" type="button" onclick="$('#duplicateModal').fadeOut(200);">Cancel</button>
+                    <button class="btn btn-danger btn-lg col-5" type="button"
+                            onclick="$('#duplicateModal').fadeOut(200);">Cancel
+                    </button>
                 </div>
             </div>
         </form>
@@ -190,22 +208,27 @@
         function copyToClipboard(id) {
             const exam_link = $("#exam_link" + id).text();
             navigator.clipboard.writeText(exam_link).then(
-                function() {
+                function () {
+                    console.log(exam_link);
                     const elem = $("#copiedAlert" + id);
-                    $(elem).fadeIn(50).delay(1000).fadeOut(50);},
-                function() {}
+                    $(elem).fadeIn(50).delay(1000).fadeOut(50);
+                },
+                function () {
+                }
             );
         }
+
         function showDuplicateModel(id, name) {
             $("#duplicate_exam_id").val(id);
             $("#duplicateModal #exam_name").val(name);
             $("#duplicateModal").fadeIn(200);
         }
+
         @if(session('status'))
-            console.log("duplicate");
-            const id = "{{ session('id') }}";
-            const name = "{{ session('name') }}";
-            showDuplicateModel(id, name);
+        console.log("duplicate");
+        const id = "{{ session('id') }}";
+        const name = "{{ session('name') }}";
+        showDuplicateModel(id, name);
         @endif
     </script>
 

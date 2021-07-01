@@ -266,7 +266,7 @@ function rearrange_preview_ui() {
     $('#question_time').hide();
     $('#question_list').css('visibility', 'visible');
 
-    if (parseInt($('.quiz_show .type_id').html()) < 13 ) {
+    if (parseInt($('.quiz_show .type_id').html()) < 13) {
         $('#question_list').css('visibility', 'hidden');
     }
 
@@ -443,6 +443,16 @@ function preview(element) {
 
     switch ($('#submit_btn').html()) {
         case 'Submit':
+            if ($('.quiz_show').find('.type_id').html() == '16') {
+                console.log('16');
+
+                if (!$('#user_info')[0].checkValidity()) {
+                    show_modal('error', 'Warning', 'You must complete the form correctly before submitting.');
+                } else {
+                    $('#submit_btn').html('Continue');
+                }
+                return;
+            }
             if (!is_completed_question()) {
                 show_modal('error', 'Warning', 'You must complete the question before submitting.');
                 return;
@@ -450,7 +460,6 @@ function preview(element) {
 
             if ($('.quiz_show .question_type').html() != 'graded') {
                 question_result = 'Survey';
-                $('#submit_btn').html('Continue');
                 return;
             }
             if (evulate()) {

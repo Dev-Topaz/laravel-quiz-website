@@ -20,7 +20,7 @@
             </div>
             <div id="question_list_content" style="overflow-y: scroll;height: 340px;">
                 @foreach($quizzes as $quiz)
-                    @if ($quiz->type_id < 14)
+                    @if ($quiz->type_id < 13)
                         <div class="row question_list_body" id="question_list-{{ $quiz->id }}">
                             <div class="col-9 question_content">{{ strip_tags($quiz->question_element) }}
                             </div>
@@ -61,7 +61,7 @@
         $index = 0
     @endphp
     @foreach ($quizzes as $quiz)
-        @if ($quiz->type_id < 14)
+        @if ($quiz->type_id < 14 || $quiz->type_id == 16)
             <div id="quiz_list_container-{{ $quiz->id }}"
                  class="quiz_list_container {{ $index == 0 ? 'quiz_show' : 'quiz_hide' }}"
                  style="margin:0 auto;width: {{ $quiz->exam_group->exam->screen_width }}px;height: {{ $quiz->exam_group->exam->screen_height }}px;{{ $quiz->exam_group->exam->theme_style ?? 'background:white' }}">
@@ -106,7 +106,7 @@
         @endif
     @endforeach
     @foreach ($quizzes as $quiz)
-        @if ($quiz->type_id > 13)
+        @if ($quiz->type_id > 13 && $quiz->type_id != 16)
             <div id="quiz_list_container-{{ $quiz->id }}"
                  class="quiz_list_container {{ $index == 0 ? 'quiz_show' : 'quiz_hide' }}"
                  style="margin:0 auto;width: {{ $quiz->exam_group->exam->screen_width }}px;height: {{ $quiz->exam_group->exam->screen_height }}px;{{ $quiz->exam_group->exam->theme_style ?? 'background:white' }}">
