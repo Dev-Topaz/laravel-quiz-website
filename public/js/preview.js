@@ -1117,8 +1117,7 @@ function s(x, y) {
 
 }
 
-$('.quiz_show .slide_view_media_element').mousedown(function () {
-    console.log('pop');
+$('.quiz_show .slide_view_media_element').click(function () {
     image_popup($(this).find('img').attr('src'));
 });
 

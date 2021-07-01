@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\RegisterController;
 use App\Http\Controllers\API\ExamController;
 
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -29,6 +28,3 @@ Route::middleware('auth:api')->get('/get_quiz_assets_url/{id}', [ExamController:
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::post('register', [RegisterController::class, 'register']);
-Route::post('login', [RegisterController::class, 'login']);

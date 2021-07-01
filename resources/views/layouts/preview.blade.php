@@ -15,8 +15,6 @@
 {{--    @endif--}}
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
 
-    <link rel='manifest' href='/manifest.json'>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -49,9 +47,7 @@
 </div>
 <div id="timer_confirm_dialog">
     <div id="timer_dialog_content">You have 60 sec to answer this question.</div>
-    <div id="timer_dialog_btn">
-        <button>OK</button>
-    </div>
+    <div id="timer_dialog_btn"><button>OK</button></div>
 </div>
 <div id="preview_container">
     <div id="preview_toast" style="display: none;">
