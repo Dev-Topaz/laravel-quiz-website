@@ -45,7 +45,7 @@
                                     <li data-theme_id="{{ $exam->id }}" id="liform_{{ $exam->id }}"
                                         class="form_visible">
 
-                                        <div class="middle_form_bar" style="display: block; margin-bottom: 3px;">
+                                        <div class="middle_form_bar" style="display: block; margin-bottom: 2px;">
 {{--                                            <span class="tooltiptext">{{ $exam->description }}</span>--}}
                                             <h3 style="float: left; margin: 0;">{{ $exam->name }}</h3>
                                             <div>

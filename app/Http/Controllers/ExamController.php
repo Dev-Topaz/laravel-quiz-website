@@ -73,8 +73,13 @@ class ExamController extends Controller
             'published' => 1,
         ]);
 
+        $intro_group = ExamGroup::create([
+            'group_name' => 'Intro Group',
+            'exam_id' => $exam->id,
+        ]);
+
         ExamGroup::create([
-            'group_name' => 'Question Group 1',
+            'group_name' => 'Question Group',
             'exam_id' => $exam->id,
         ]);
 
@@ -83,6 +88,35 @@ class ExamController extends Controller
             'group_name' => 'Results',
             'exam_id' => $exam->id,
         ]);
+
+        //create user info form
+        Quiz::create([
+            'exam_group_id' => $intro_group->id,
+            'type_id' => 16,
+            'question_element' => '<div class="slide_view_question_element slide_view_group" style="height: 70px;width: 80%;left: 10%;z-index: 3;overflow: hidden;padding:10px;position:absolute;"><div contenteditable="true" class="cancel_drag">Enter Your Details</div></div>',
+            'answer' => '',
+            'feedback_correct' => 'That\'s right! You chose the correct response.',
+            'feedback_incorrect' => 'You did not choose the correct response.',
+            'feedback_try_again' => 'You did not choose the correct response. Try again.',
+            'media' => null,
+            'order' => 0,
+            'answer_element' => '<div class="slide_view_answer_element slide_view_group" style="width: 80%;top: 100px;left: 10%;z-index: 2;padding: 10px;position:absolute;overflow: hidden;"><div class="col-md-12"><div contenteditable="true"><div class="cancel_drag">Your Score: %%</div><div class="cancel_drag">Passing Score: ##</div></div></div></div>',
+            'question_type' => 'graded',
+            'feedback_type' => 'by_result',
+            'branching' => null,
+            'score' => null,
+            'attempts' => '1',
+            'is_limit_time' => false,
+            'limit_time' => null,
+            'shuffle_answers' => null,
+            'partially_correct' => false,
+            'limit_number_response' => null,
+            'case_sensitive' => null,
+            'correct_score' => 0,
+            'incorrect_score' => 0,
+            'try_again_score' => 0,
+        ]);
+
 
         //create passed page
         Quiz::create([

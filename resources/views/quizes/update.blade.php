@@ -125,14 +125,18 @@
                     @case(15)
                     <h4>Quiz Results</h4>
                     @break
+
+                    @case(16)
+                    <h4>User Info Form</h4>
+                    @break
                 @endswitch
                 <div class="row" style="width: 100%;margin: 0;">
-                    <div class="cell-{{ $quiz->type_id > 11 ? '11' : '9'}}"
+                    <div class="cell-{{ $quiz->type_id > 11 ? ($quiz->type_id == 16 ? '12' : '11') : '9' }}"
                          style="padding: 0;">
                         <div id="question" class="form_view_question_element"
                              style="overflow-y: scroll;width: 100%;border: 1px solid black;height: 70px;color: black"></div>
                     </div>
-                    <div class="cell-{{ $quiz->type_id > 11 ? '1' : '3'}}"
+                    <div class="cell-{{ $quiz->type_id > 11 ? '1' : '3' }}"
                          style="display: flex;align-items: center;justify-content: center;padding: 0;">
                         <div id="form_view_pic_video_element"
                              style="{{ $quiz->type_id > 11 ? 'display:none;' : 'display:flex;'}}">
@@ -155,7 +159,7 @@
                                  id="form_view_video_element" onclick="show_video_properties()">
                         </div>
                         <a href="javascript:void(0)"
-                           style="padding: 0 3px;{{ isset($quiz->audio) ? 'display: none' : '' }}"
+                           style="padding: 0 3px;{{ isset($quiz->audio) || $quiz->type_id == 16 ? 'display: none' : '' }}"
                            id="form_view_add_audio"><img src="{{ url('/images/icons/add_audio_normal.png') }}"
                                                          alt="audio"></a>
                         <img src="{{ url('/images/icons/audio_icon.png') }}" alt=""
@@ -453,6 +457,133 @@
                 </div>
                 @break
 
+                @case(16)
+                <h4>Form Fields</h4>
+                <div class="form_view_answer_element" style="height: 380px;">
+                    <div>
+                        <table class="table striped" style="margin: 0">
+                            <thead>
+                            <tr>
+                                <th>Field Name</th>
+                                <th>Condition</th>
+                                <th>Field Type</th>
+                                <th>Initial Value</th>
+                                <th>Variable</th>
+                            </tr>
+                            </thead>
+                            <tbody id="user_info_table_body">
+                            <tr>
+                                <th>First Name</th>
+                                <th>
+                                    <select name="first_name_type" id="first_name_type">
+                                        <option value="mandatory">Mandatory</option>
+                                        <option value="none">Don't ask</option>
+                                    </select>
+                                </th>
+                                <th>Text</th>
+                                <th><input type="text" id="first_name"></th>
+                                <th>FIRST_NAME</th>
+                            </tr>
+                            <tr>
+                                <th>Last Name</th>
+                                <th>
+                                    <select name="last_name_type" id="last_name_type">
+                                        <option value="mandatory">Mandatory</option>
+                                        <option value="none">Don't ask</option>
+                                    </select>
+                                </th>
+                                <th>Text</th>
+                                <th>
+                                    <input type="text" id="last_name">
+                                </th>
+                                <th>LAST_NAME</th>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <th>
+                                    <select name="email_type" id="email_type">
+                                        <option value="mandatory">Mandatory</option>
+                                        <option value="none">Don't ask</option>
+                                    </select>
+                                </th>
+                                <th>Email</th>
+                                <th>
+                                    <input type="email" id="email">
+                                </th>
+                                <th>EMAIL</th>
+                            </tr>
+                            <tr>
+                                <th>Course Type</th>
+                                <th>
+                                    <select name="course_show_type" id="course_show_type">
+                                        <option value="mandatory">Mandatory</option>
+                                        <option value="none">Don't ask</option>
+                                    </select>
+                                </th>
+                                <th>Dropdown</th>
+                                <th>
+                                    <select name="course_type" id="course_type">
+                                        <option value="full_course">Full Course</option>
+                                        <option value="refresher">Refresher</option>
+                                        <option value="voc">VOC</option>
+                                        <option value="rpl">RPL</option>
+                                    </select>
+                                </th>
+                                <th>COURSE_TYPE</th>
+                            </tr>
+                            <tr>
+                                <th>Location</th>
+                                <th>
+                                    <select name="location_type" id="location_type">
+                                        <option value="mandatory">Mandatory</option>
+                                        <option value="none">Don't ask</option>
+                                    </select>
+                                </th>
+                                <th>Dropdown</th>
+                                <th>
+                                    <select name="location" id="location">
+                                        <option value="gold_coast">Gold Coast</option>
+                                        <option value="cairns">Cairns</option>
+                                        <option value="moranbah">Moranbah</option>
+                                        <option value="mackay">Mackay</option>
+                                        <option value="townsville">Townsville</option>
+                                        <option value="weipa">Weipa</option>
+                                        <option value="gladstone">Gladstone</option>
+                                    </select>
+                                </th>
+                                <th>LOCATION</th>
+                            </tr>
+                            <tr>
+                                <th>Company</th>
+                                <th>
+                                    <select name="company_type" id="company_type">
+                                        <option value="optional">Optional</option>
+                                        <option value="none">Don't ask</option>
+                                    </select>
+                                </th>
+                                <th>Text</th>
+                                <th>
+                                    <input type="text" id="company">
+                                </th>
+                                <th>COMPANY</th>
+                            </tr>
+                            <tr>
+                                <th>Date</th>
+                                <th>
+                                    <select name="date_type" id="date_type">
+                                        <option value="mandatory">Mandatory</option>
+                                        <option value="none">Don't ask</option>
+                                    </select>
+                                </th>
+                                <th>Date</th>
+                                <th><input type="date" id="date"></th>
+                                <th>DATE</th>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
             @endswitch
 
             <br>
@@ -707,12 +838,12 @@
             <div id="question_control_btn_container">
                 <button type="button" class="quiz_handle_button" onclick="update_quiz()"><i
                         class="fas fa-save"></i><span>Save</span>
-{{--                        class="fas fa-save"></i><span>{{ $quiz->type_id > 11 ? 'Update Slide' : 'Update Question' }}</span>--}}
+                    {{--                        class="fas fa-save"></i><span>{{ $quiz->type_id > 11 ? 'Update Slide' : 'Update Question' }}</span>--}}
                 </button>
                 <button type="button" class="quiz_handle_button" onclick="show_delete_dialog('question', this)"
                         style="{{ $quiz->type_id > 13 ? 'display:none;' : '' }}"><i
                         class="fas fa-trash"></i><span>Remove</span>
-{{--                        class="fas fa-trash"></i><span>{{ $quiz->type_id > 11 ? 'Delete Slide' : 'Delete Question' }}</span>--}}
+                    {{--                        class="fas fa-trash"></i><span>{{ $quiz->type_id > 11 ? 'Delete Slide' : 'Delete Question' }}</span>--}}
                 </button>
             </div>
             {{--            <div class="form_view_element">preview</div>--}}
