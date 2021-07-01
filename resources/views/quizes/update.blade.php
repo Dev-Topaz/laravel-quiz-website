@@ -476,25 +476,25 @@
                                 <th>First Name</th>
                                 <th>
                                     <select name="first_name_type" id="first_name_type">
-                                        <option value="mandatory">Mandatory</option>
-                                        <option value="none">Don't ask</option>
+                                        <option value="mandatory" {{ $quiz->user_info->first_name_type == 'mandatory' ? 'selected' : '' }}>Mandatory</option>
+                                        <option value="none" {{ $quiz->user_info->first_name_type == 'none' ? 'selected' : '' }}>Don't ask</option>
                                     </select>
                                 </th>
                                 <th>Text</th>
-                                <th><input type="text" id="first_name"></th>
+                                <th><input type="text" id="first_name" value="{{ $quiz->user_info->first_name }}"></th>
                                 <th>FIRST_NAME</th>
                             </tr>
                             <tr>
                                 <th>Last Name</th>
                                 <th>
                                     <select name="last_name_type" id="last_name_type">
-                                        <option value="mandatory">Mandatory</option>
-                                        <option value="none">Don't ask</option>
+                                        <option value="mandatory" {{ $quiz->user_info->last_name_type == 'mandatory' ? 'selected' : '' }}>Mandatory</option>
+                                        <option value="none" {{ $quiz->user_info->last_name_type == 'none' ? 'selected' : '' }}>Don't ask</option>
                                     </select>
                                 </th>
                                 <th>Text</th>
                                 <th>
-                                    <input type="text" id="last_name">
+                                    <input type="text" id="last_name" value="{{ $quiz->user_info->last_name }}">
                                 </th>
                                 <th>LAST_NAME</th>
                             </tr>
@@ -502,13 +502,13 @@
                                 <th>Email</th>
                                 <th>
                                     <select name="email_type" id="email_type">
-                                        <option value="mandatory">Mandatory</option>
-                                        <option value="none">Don't ask</option>
+                                        <option value="mandatory" {{ $quiz->user_info->email_type == 'mandatory' ? 'selected' : '' }}>Mandatory</option>
+                                        <option value="none" {{ $quiz->user_info->email_type == 'none' ? 'selected' : '' }}>Don't ask</option>
                                     </select>
                                 </th>
                                 <th>Email</th>
                                 <th>
-                                    <input type="email" id="email">
+                                    <input type="email" id="email" value="{{ $quiz->user_info->email }}">
                                 </th>
                                 <th>EMAIL</th>
                             </tr>
@@ -516,17 +516,17 @@
                                 <th>Course Type</th>
                                 <th>
                                     <select name="course_show_type" id="course_show_type">
-                                        <option value="mandatory">Mandatory</option>
-                                        <option value="none">Don't ask</option>
+                                        <option value="mandatory" {{ $quiz->user_info->course_show_type == 'mandatory' ? 'selected' : '' }}>Mandatory</option>
+                                        <option value="none" {{ $quiz->user_info->course_show_type == 'none' ? 'selected' : '' }}>Don't ask</option>
                                     </select>
                                 </th>
                                 <th>Dropdown</th>
                                 <th>
                                     <select name="course_type" id="course_type">
-                                        <option value="full_course">Full Course</option>
-                                        <option value="refresher">Refresher</option>
-                                        <option value="voc">VOC</option>
-                                        <option value="rpl">RPL</option>
+                                        <option value="full_course" {{ $quiz->user_info->course_type == 'full_course' ? 'selected' : '' }}>Full Course</option>
+                                        <option value="refresher" {{ $quiz->user_info->course_type == 'refresher' ? 'selected' : '' }}>Refresher</option>
+                                        <option value="voc" {{ $quiz->user_info->course_type == 'voc' ? 'selected' : '' }}>VOC</option>
+                                        <option value="rpl" {{ $quiz->user_info->course_type == 'rpl' ? 'selected' : '' }}>RPL</option>
                                     </select>
                                 </th>
                                 <th>COURSE_TYPE</th>
@@ -535,20 +535,20 @@
                                 <th>Location</th>
                                 <th>
                                     <select name="location_type" id="location_type">
-                                        <option value="mandatory">Mandatory</option>
-                                        <option value="none">Don't ask</option>
+                                        <option value="mandatory" {{ $quiz->user_info->location_type == 'mandatory' ? 'selected' : '' }}>Mandatory</option>
+                                        <option value="none" {{ $quiz->user_info->location_type == 'none' ? 'selected' : '' }}>Don't ask</option>
                                     </select>
                                 </th>
                                 <th>Dropdown</th>
                                 <th>
                                     <select name="location" id="location">
-                                        <option value="gold_coast">Gold Coast</option>
-                                        <option value="cairns">Cairns</option>
-                                        <option value="moranbah">Moranbah</option>
-                                        <option value="mackay">Mackay</option>
-                                        <option value="townsville">Townsville</option>
-                                        <option value="weipa">Weipa</option>
-                                        <option value="gladstone">Gladstone</option>
+                                        <option value="gold_coast" {{ $quiz->user_info->location == 'gold_coast' ? 'selected' : '' }}>Gold Coast</option>
+                                        <option value="cairns" {{ $quiz->user_info->location == 'cairns' ? 'selected' : '' }}>Cairns</option>
+                                        <option value="moranbah" {{ $quiz->user_info->location == 'moranbah' ? 'selected' : '' }}>Moranbah</option>
+                                        <option value="mackay" {{ $quiz->user_info->location == 'mackay' ? 'selected' : '' }}>Mackay</option>
+                                        <option value="townsville" {{ $quiz->user_info->location == 'townsville' ? 'selected' : '' }}>Townsville</option>
+                                        <option value="weipa" {{ $quiz->user_info->location == 'weipa' ? 'selected' : '' }}>Weipa</option>
+                                        <option value="gladstone" {{ $quiz->user_info->location == 'gladstone' ? 'selected' : '' }}>Gladstone</option>
                                     </select>
                                 </th>
                                 <th>LOCATION</th>
@@ -557,13 +557,13 @@
                                 <th>Company</th>
                                 <th>
                                     <select name="company_type" id="company_type">
-                                        <option value="optional">Optional</option>
-                                        <option value="none">Don't ask</option>
+                                        <option value="optional" {{ $quiz->user_info->company_type == 'optional' ? 'selected' : '' }}>Optional</option>
+                                        <option value="none" {{ $quiz->user_info->company_type == 'none' ? 'selected' : '' }}>Don't ask</option>
                                     </select>
                                 </th>
                                 <th>Text</th>
                                 <th>
-                                    <input type="text" id="company">
+                                    <input type="text" id="company" value="{{ $quiz->user_info->company }}">
                                 </th>
                                 <th>COMPANY</th>
                             </tr>
@@ -571,12 +571,12 @@
                                 <th>Date</th>
                                 <th>
                                     <select name="date_type" id="date_type">
-                                        <option value="mandatory">Mandatory</option>
-                                        <option value="none">Don't ask</option>
+                                        <option value="mandatory" {{ $quiz->user_info->date_type == 'mandatory' ? 'selected' : '' }}>Mandatory</option>
+                                        <option value="none" {{ $quiz->user_info->date_type == 'none' ? 'selected' : '' }}>Don't ask</option>
                                     </select>
                                 </th>
                                 <th>Date</th>
-                                <th><input type="date" id="date"></th>
+                                <th><input type="date" id="date" value="{{ $quiz->user_info->date }}"></th>
                                 <th>DATE</th>
                             </tr>
                             </tbody>

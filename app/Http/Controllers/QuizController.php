@@ -491,6 +491,10 @@ class QuizController extends Controller
      */
     public function edit(Quiz $quiz)
     {
+        if ($quiz->type_id == 16) {
+            $user_info = json_decode($quiz->answer);
+            $quiz->user_info = $user_info;
+        }
         return view('quizes.update', ['quiz' => $quiz]);
     }
 

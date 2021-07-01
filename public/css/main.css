@@ -1160,6 +1160,14 @@ if it's not present, don't show loader */
 .tmp {
     opacity: 0.2;
 }
+
+.slide_view_answer_element form > div {
+    padding-bottom: 5px;
+}
+
+.slide_view_answer_element form input, .slide_view_answer_element form select {
+    width: 100%;
+}
 /*.tooltip {*/
 /*    position: relative;*/
 /*    display: inline-block;*/

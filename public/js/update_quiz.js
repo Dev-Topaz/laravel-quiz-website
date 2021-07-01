@@ -355,6 +355,10 @@ function answer_form2slide() {
         case '15':
             slide_answer_element = $($('#answer_content').val()).find('.col-md-12').html();
             break;
+
+        case '16':
+            slide_answer_element = '<form><div id="user_first_name_container"><input type="text" id="user_first_name" placeholder="First Name*" required></div><div id="user_last_name_container"><input type="text" id="user_last_name" placeholder="Last Name*" required></div><div id="user_email_container"><input type="email" id="user_email" placeholder="Email*" required></div><div id="user_course_type_container"><select id="user_course_type" required><option value="" selected disabled>Course Type*</option><option value="full_course">Full Course</option><option value="refresher">Refresher</option><option value="voc">VOC</option><option value="rpl"}>RPL</option></select></div><div id="user_location_container"><select id="user_location" required><option value="" selected disabled>Location*</option><option value="gold_coast">Gold Coast</option><option value="cairns">Cairns</option><option value="moranbah">Moranbah</option><option value="mackay">Mackay</option><option value="townsville">Townsville</option><option value="weipa">Weipa</option><option value="gladstone">Gladstone</option></select></div><div id="user_company_container"><input type="text" id="user_company" placeholder="Company"></div><div id="user_date_container"><input type="date" id="user_date" placeholder="Date*" required></div></form>';
+            break;
     }
 
     if (typeId !== '10' && typeId !== '11') $('#quiz_view .slide_view_answer_element > .col-md-12').html(slide_answer_element);
@@ -485,6 +489,11 @@ function answer_store() {
             }
             var answer_info = $('#answer_content').val();
             answer = answer_info.split('@')[0] + '@' + string;
+            break;
+
+        case '16':
+            var user_info = '{"first_name_type": "' + $("#first_name_type").val() + '", "first_name": "' + $("#first_name").val() + '", "last_name_type": "' + $("#last_name_type").val() + '", "last_name": "' + $("#last_name").val() + '", "email_type": "' + $("#email_type").val() + '", "email": "' + $("#email").val() + '", "course_show_type": "' + $("#course_show_type").val() + '", "course_type": "' + $("#course_type").val() + '", "location_type": "' + $("#location_type").val() + '", "location": "' + $("#location").val() + '", "company_type": "' + $("#company_type").val() + '", "company": "' + $("#company").val() + '", "date_type": "' + $("#date_type").val() + '", "date": "' + $("#date").val() + '"}';
+            console.log('user_info: ', user_info);
             break;
     }
 
