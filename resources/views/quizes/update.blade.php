@@ -706,11 +706,13 @@
             {{--            </div>--}}
             <div id="question_control_btn_container">
                 <button type="button" class="quiz_handle_button" onclick="update_quiz()"><i
-                        class="fas fa-save"></i><span>{{ $quiz->type_id > 11 ? 'Update Slide' : 'Update Question' }}</span>
+                        class="fas fa-save"></i><span>Save</span>
+{{--                        class="fas fa-save"></i><span>{{ $quiz->type_id > 11 ? 'Update Slide' : 'Update Question' }}</span>--}}
                 </button>
                 <button type="button" class="quiz_handle_button" onclick="show_delete_dialog('question', this)"
                         style="{{ $quiz->type_id > 13 ? 'display:none;' : '' }}"><i
-                        class="fas fa-trash"></i><span>{{ $quiz->type_id > 11 ? 'Delete Slide' : 'Delete Question' }}</span>
+                        class="fas fa-trash"></i><span>Remove</span>
+{{--                        class="fas fa-trash"></i><span>{{ $quiz->type_id > 11 ? 'Delete Slide' : 'Delete Question' }}</span>--}}
                 </button>
             </div>
             {{--            <div class="form_view_element">preview</div>--}}
