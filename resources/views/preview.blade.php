@@ -41,11 +41,11 @@
     @else
         <div id="user_name" style="display: none;">{{ $user->name }}</div>
     @endif
-    @if(isset($email))
-        <div id="user_email" style="display: none;">{{ $email }}</div>
-    @else
-        <div id="user_email" style="display: none;">{{ $user->email }}</div>
-    @endif
+{{--    @if(isset($email))--}}
+{{--        <div id="user_email" style="display: none;">{{ $email }}</div>--}}
+{{--    @else--}}
+{{--        <div id="user_email" style="display: none;">{{ $user->email }}</div>--}}
+{{--    @endif--}}
     <div class="question_menu_bar"
          style="margin: 0 auto;display: flex;justify-content: space-between;padding-top: 10px;">
         <p id="question_list">Question List
@@ -97,6 +97,10 @@
                 <div class="screen_height" style="display: none;">{!! $quiz->exam_group->exam->screen_height !!}</div>
                 <div class="screen_width" style="display: none;">{!! $quiz->exam_group->exam->screen_width !!}</div>
                 <div class="passing_score" style="display: none;">{!! $quiz->exam_group->exam->passing_score !!}</div>
+                <div class="email_from" style="display: none;">{!! $quiz->exam_group->exam->email_from !!}</div>
+                <div class="email_subject" style="display: none;">{!! $quiz->exam_group->exam->email_subject !!}</div>
+                <div class="email_comment" style="display: none;">{!! $quiz->exam_group->exam->email_comment !!}</div>
+                <div class="quiz_name" style="display: none;">{!! $quiz->exam_group->exam->name !!}</div>
                 <div class="is_correct" style="display: none;"></div>
                 <div class="question_user_answer" style="display: none;"></div>
             </div>
@@ -142,6 +146,10 @@
                 <div class="screen_height" style="display: none;">{!! $quiz->exam_group->exam->screen_height !!}</div>
                 <div class="screen_width" style="display: none;">{!! $quiz->exam_group->exam->screen_width !!}</div>
                 <div class="passing_score" style="display: none;">{!! $quiz->exam_group->exam->passing_score !!}</div>
+                <div class="email_from" style="display: none;">{!! $quiz->exam_group->exam->email_from !!}</div>
+                <div class="email_subject" style="display: none;">{!! $quiz->exam_group->exam->email_subject !!}</div>
+                <div class="email_comment" style="display: none;">{!! $quiz->exam_group->exam->email_comment !!}</div>
+                <div class="quiz_name" style="display: none;">{!! $quiz->exam_group->exam->name !!}</div>
                 <div class="is_correct" style="display: none;"></div>
                 <div class="question_user_answer" style="display: none;"></div>
             </div>

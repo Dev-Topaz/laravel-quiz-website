@@ -14,8 +14,7 @@
                                style="border-collapse: collapse; font: 13px Open Sans, sans-serif;">
                             <tbody>
                             <tr style="height: 20px">
-                                <td> <span style="font: 13px Open Sans, sans-serif; line-height: 20px">
-                            This is an automatically generated assessment result of your test quiz. this email is generate from the test results and sent from the email server.</span>
+                                <td> <span style="font: 13px Open Sans, sans-serif; line-height: 20px">{{ $details['data']->email_comment }}</span>
                                 </td>
                             </tr>
                             </tbody>
@@ -56,7 +55,7 @@
                                 <td>Your Score&nbsp;</td>
                                 <td><strong>{{ $details['data']->exam_user_score }}
                                         / {{ $details['data']->exam_passing_score }}
-                                        ({{ number_format(intval($details['data']->exam_user_score) / intval($details['data']->exam_passing_score), 2, '.', '') }}
+                                        ({{ number_format(intval($details['data']->exam_user_score) / intval($details['data']->exam_passing_score) * 100, 2, '.', '') }}
                                         %)</strong></td>
                             </tr>
                             <tr style="height: 20px; display: table-row;">

@@ -217,7 +217,7 @@ function swap_value(a, b) {
 * ************** Rearrange Preview UI *************
 * */
 
-const user_name = $('#user_name').html();
+const user_name = $('#user_first_name').html() + ' ' + $('#user_last_name').html();
 const user_email = $('#user_email').html();
 
 let quizzes = [];
@@ -667,6 +667,7 @@ function preview(element) {
 
 
                 show_preload();
+
                 $.ajax({
                     url: root_url + '/send-mail',
                     type: 'POST',
@@ -675,6 +676,9 @@ function preview(element) {
                         user_name: user_name,
                         user_email: user_email,
                         stuff_emails: $('.quiz_show .stuff_emails').html(),
+                        email_from: $('.quiz_show .email_from').html(),
+                        email_subject: change_email_subject($('.quiz_show .email_subject').html()),
+                        email_comment: $('.quiz_show .email_comment').html(),
                         exam_answered: correct_quiz_count,
                         exam_question_count: quizId,
                         exam_user_score: total_score,
@@ -1583,6 +1587,9 @@ function see_result() {
                 user_name: user_name,
                 user_email: user_email,
                 stuff_emails: $('.quiz_show .stuff_emails').html(),
+                email_from: $('.quiz_show .email_from').html(),
+                email_subject: change_email_subject($('.quiz_show .email_subject').html()),
+                email_comment: $('.quiz_show .email_comment').html(),
                 exam_answered: correct_quiz_count,
                 exam_question_count: quizId,
                 exam_user_score: total_score,
@@ -1656,4 +1663,8 @@ function start_question_timer() {
             $('#submit_btn').html('Continue');
         }
     }, 1000);
+}
+
+function change_email_subject(string) {
+    return string.replaceAll('%FIRST_NAME%', $('#user_first_name').val()).replaceAll('%LAST_NAME%', $('#user_last_name').val()).replaceAll('%EMAIL%', $('#user_email').val()).replaceAll('%COURSE_TYPE%', $('#user_course_type').val()).replaceAll('%LOCATION%', $('#user_location').val()).replaceAll('%COMPANY%', $('#user_company').val()).replaceAll('%DATE%', $('#user_date').val()).replaceAll('%USER_NAME%', $('#user_first_name').val() + ' ' + $('#user_last_name').val()).replaceAll('%QUIZ_TITLE%', $('.quiz_show .quiz_name').html());
 }

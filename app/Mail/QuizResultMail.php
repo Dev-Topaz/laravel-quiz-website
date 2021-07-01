@@ -30,7 +30,7 @@ class QuizResultMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Mail from Quiz Maker')
+        return $this->subject($this->details['data']->email_subject)
                     ->view('emails.quizResultMail');
     }
 }
