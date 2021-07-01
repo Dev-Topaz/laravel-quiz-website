@@ -82,20 +82,6 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="stuff_emails" class="col-md-3 col-form-label text-md-right">{{ __('Staff Emails')
-                                        }}</label>
-                                    <div class="col-md-7">
-                                        <input id="stuff_emails" type="text" value="rto@civilsafety.edu.au,robert@civilsafety.edu.au"
-                                               class="form-control @error('stuff_emails') is-invalid @enderror" name="stuff_emails"
-                                               autocomplete="stuff_emails" autofocus>
-                                        @error('stuff_emails')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form-group row">
                                     <label for="screen_height" class="col-md-3 col-form-label text-md-right">{{ __('Screen Height')
                                         }}</label>
                                     <div class="col-md-7">
@@ -120,6 +106,65 @@
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="stuff_emails" class="col-md-3 col-form-label text-md-right">{{ __('Staff Emails')
+                                        }}</label>
+                                    <div class="col-md-7">
+                                        <input id="stuff_emails" type="text" value="rto@civilsafety.edu.au,robert@civilsafety.edu.au"
+                                               class="form-control @error('stuff_emails') is-invalid @enderror" name="stuff_emails"
+                                               autocomplete="stuff_emails" autofocus>
+                                        @error('stuff_emails')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                 <div class="form-group row">
+                                    <label for="email_from" class="col-md-3 col-form-label text-md-right">{{ __('From')
+                                        }}</label>
+                                    <div class="col-md-7">
+                                        <input id="email_from" type="text" value="Civil Safety Assessment Desk"
+                                               class="form-control @error('email_from') is-invalid @enderror" name="email_from"
+                                               autocomplete="email_from" autofocus>
+                                        @error('email_from')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                 <div class="form-group row">
+                                    <label for="email_subject" class="col-md-3 col-form-label text-md-right">{{ __('Subject')
+                                        }}</label>
+                                    <div class="col-md-7">
+                                        <input id="email_subject" type="text" value='[%QUIZ_STATUS%] Test Quiz Results: "%QUIZ_TITLE%"'
+                                               class="form-control @error('email_subject') is-invalid @enderror" name="email_subject"
+                                               autocomplete="email_subject" autofocus>
+                                        @error('email_subject')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="email_comment" class="col-md-3 col-form-label text-md-right">{{
+                                        __('Comment') }}</label>
+                                    <div class="col-md-7">
+                                        <textarea id="email_comment"
+                                                  class="form-control @error('email_comment') is-invalid @enderror"
+                                                  name="email_comment"
+                                                  value="{{ old('email_comment') }}" rows="4" cols="50"
+                                                  autocomplete="email_comment">This is an automatically generated email from the Civil Safety Assessment Desk to report your assessment results. Please store this email in a safe place as you willy be required to produce it if asked by Civil Safety</textarea>
+
+                                        @error('email_comment')
+                                        <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
                                         @enderror
                                     </div>
                                 </div>

@@ -66,6 +66,9 @@ class ExamController extends Controller
             'passing_score' => $request->passing_score,
             'screen_height' => $request->screen_height,
             'screen_width' => $request->screen_width,
+            'email_from' => $request->email_from,
+            'email_subject' => $request->email_subject,
+            'email_comment' => $request->email_comment,
             'downloaded' => 0,
             'published' => 1,
         ]);
@@ -244,6 +247,9 @@ class ExamController extends Controller
             'screen_height' => $source_exam->screen_height,
             'screen_width' => $source_exam->screen_width,
             'theme_style' => $source_exam->theme_style,
+            'email_from' => $source_exam->email_from,
+            'email_subject' => $source_exam->email_subject,
+            'email_comment' => $source_exam->email_comment,
             'downloaded' => 0,
             'published' => 1,
         ]);
