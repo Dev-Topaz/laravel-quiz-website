@@ -8,8 +8,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="url" content="{{ url('/') }}">
 
-    <title>{{ $user->roles[0]->id == '1' ? 'Quiz Preview' : 'Exam Page' }}</title>
-
+{{--    @if(session('student'))--}}
+{{--    <title>{{ __('Exam Page') }}</title>--}}
+{{--    @else--}}
+    <title>@yield('title')</title>
+{{--    @endif--}}
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
 
     <link rel='manifest' href='/manifest.json'>
@@ -98,12 +101,6 @@
     $('#imagePopup span.close').click(function () {
         $('#imagePopup').fadeOut(500);
     });
-</script>
-<script type="module">
-    import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
-
-    const el = document.createElement('pwa-update');
-    document.body.appendChild(el);
 </script>
 </body>
 </html>

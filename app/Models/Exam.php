@@ -11,11 +11,20 @@ class Exam extends Model
 
     protected $table = 'exams';
     protected $primaryKey = 'id';
-    protected $fillable = ['name', 'description', 'author_id', 'attempt_number', 'status', 'passing_score', 'screen_height', 'screen_width', 'stuff_emails'];
+    protected $fillable = ['name', 'description', 'author_id', 'attempt_number', 'status', 'passing_score', 'screen_height', 'screen_width', 'stuff_emails', 'downloaded', 'published', 'email_from', 'email_subject', 'email_comment'];
 
     public function exam_groups()
     {
         return $this->hasMany(ExamGroup::class, 'exam_id', 'id');
     }
 
+    public function get_all_questions() {
+        $questions = [];
+
+        foreach ($this->exam_groups as $item) {
+            array_push($questions, $item->quizes);
+        }
+
+        return $questions;
+    }
 }

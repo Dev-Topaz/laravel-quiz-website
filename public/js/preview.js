@@ -1,6 +1,5 @@
 $('div.quiz_item_container .slide_view_question_element').attr('contenteditable', 'false');
 $('div.quiz_item_container .cancel_drag').attr('contenteditable', 'false');
-// $('div.quiz_item_container div').attr('contenteditable', 'false');
 $('div.quiz_item_container input').attr('autocomplete', 'off');
 $('#question_list_modal .question_content div').attr('contenteditable', 'false');
 $('.other_slide_view_element_delete_icon').remove();
@@ -167,7 +166,7 @@ if ($('#slide_drag_words_answer span').length > 0 && $('#slide_drag_words_questi
     drag_and_drop_mobile = new Drag_and_drop_mobile(drag, drop, zoomScale, 'drag_words');
 
     drag_and_drop_mobile.drag_and_drop();
-    console
+    // console
 }
 
 $("#slide_drag_words_answer span").draggable({
@@ -265,10 +264,16 @@ function rearrange_preview_ui() {
     console.log($('.quiz_show .limit_time').html());
 
     $('#question_time').hide();
+    $('#question_list').css('visibility', 'visible');
+
+    if (parseInt($('.quiz_show .type_id').html()) < 13 ) {
+        $('#question_list').css('visibility', 'hidden');
+    }
 
     if ($('.quiz_show .type_id').html() == '12') {
         $('#submit_btn').html('Continue');
     }
+
 
     limit_time();
 
@@ -526,6 +531,7 @@ function preview(element) {
         case 'Continue':
 
             $('#preview_toast').fadeOut(1500);
+            $('#question_list').css('visibility', 'hidden');
 
             quizzes.push({
                 quizId: quizId,
@@ -603,6 +609,8 @@ function preview(element) {
             break;
 
         case 'See Result':
+            $('#question_list').css('visibility', 'visible');
+
             show_result($('.quiz_show .correct_answer').html(), $('.quiz_show .type_id').html(), $('.quiz_show').attr('id'));
             $('.review_buttons').hide();
             $('.preview_btn').show();
@@ -1461,6 +1469,7 @@ function show_result(question_correct_answer, question_type_id, question_id) {
 }
 
 function see_result() {
+    $('#question_list').css('visibility', 'visible');
     const root_url = $('meta[name=url]').attr('content');
     const token = $('meta[name=csrf-token]').attr('content');
 

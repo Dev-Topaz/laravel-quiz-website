@@ -45,8 +45,19 @@ class QuizTypeSeeder extends Seeder
             'name' => 'Hotspot',
         ]);
         DB::table('quiz_type')->insert([
-            'name' => 'Introduction',
+            'name' => 'Info Slide',
         ]);
-
+        DB::table('quiz_type')->insert([
+            'name' => 'Quiz Instructions',
+        ]);
+        DB::table('quiz_type')->insert([
+            'name' => 'Passed',
+        ]);
+        DB::table('quiz_type')->insert([
+            'name' => 'Failed',
+        ]);
+        DB::table('quiz_type')->insert([
+            'name' => 'User Info Form',
+        ]);
     }
 }

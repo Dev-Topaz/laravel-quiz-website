@@ -312,7 +312,7 @@ main {
 }
 
 #mf_form_list li .middle_form_bar, #mf_folder_list li .middle_folder_bar {
-    background-color: #5a9117;
+    background-color: #518018;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -372,7 +372,7 @@ main {
 }
 
 #mf_form_list li .bottom_form_bar {
-    background-color: #498205;
+    background-color: #5fa210;
     border-top: 1px solid #85b44c;
 }
 

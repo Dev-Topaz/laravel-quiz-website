@@ -34,13 +34,14 @@ class RegisterController extends BaseController
         $input['password'] = Hash::make($input['password']);
         $input['active'] = 1;
         $user = User::create($input);
-        $success['token'] =  $user->createToken('MyApp')->accessToken;
-        $success['name'] =  $user->name;
 
         UserRole::create([
             'user_id' => $user->id,
             'role_id' => 2,
         ]);
+
+        $success['token'] =  $user->createToken('MyApp')->accessToken;
+        $success['name'] =  $user->name;
 
         return $this->sendResponse($success, 'User register successfully.');
     }
