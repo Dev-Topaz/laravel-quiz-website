@@ -555,6 +555,8 @@ class QuizController extends Controller
     public function destroy(Quiz $quiz)
     {
 
+        if ($quiz->type_id > 13) return false;
+
         $order = $quiz->order;
         $exam_id = $quiz->exam_group->exam_id;
         $exam_group_id = $quiz->exam_group_id;

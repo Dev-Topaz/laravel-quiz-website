@@ -1003,6 +1003,13 @@ function delete_quiz(i) {
         },
         success: function (data) {
 
+            if (!data) {
+                delete_selected_quizzes(i + 1);
+                if (i == tmp_selected_node_id_list.length - 1) get_next_node_element(node).trigger('click');
+
+                return;
+            }
+
             const parentNode = node.closest('.node-group');
 
             if (parentNode.find('li').length === 1) {
