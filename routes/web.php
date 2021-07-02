@@ -51,11 +51,11 @@ Route::middleware(['role:manager', 'auth'])->group(function() {
     Route::post('/delete_selected_users', [UserController::class, 'destroy_selected_users']);
     Route::post('/suspend_selected_users', [UserController::class, 'suspend_selected_users']);
     Route::post('/duplicate_exam', [ExamController::class, 'duplicate_exam'])->name('duplicateExam');
+    Route::get('/exam/{id}', [PreviewController::class, 'preview_exam'])->name('preview_exam');
 });
 
 Route::get('/preview_slide/{id}', [PreviewController::class, 'preview_slide']);
 Route::get('/preview_group/{id}', [PreviewController::class, 'preview_group']);
-Route::get('/exam/{id}', [PreviewController::class, 'preview_exam'])->name('preview_exam');
 Route::get('/examination/{name}', [PreviewController::class, 'exam'])->name('exam');
 Route::get('/examRegister', [PreviewController::class, 'startExam'])->name('startExam');
 

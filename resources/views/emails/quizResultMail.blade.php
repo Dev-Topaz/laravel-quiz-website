@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="en-us" class="lang-en">
+<head>
+<title>{{ $details['data']->email_from }}</title>
+</head>
+<body>
 <table cellpadding="0" cellspacing="0" style="border-collapse: collapse; font: 13px Open Sans, sans-serif;"
        width="100%">
     <tbody>
@@ -14,7 +18,8 @@
                                style="border-collapse: collapse; font: 13px Open Sans, sans-serif;">
                             <tbody>
                             <tr style="height: 20px">
-                                <td> <span style="font: 13px Open Sans, sans-serif; line-height: 20px">{{ $details['data']->email_comment }}</span>
+                                <td><span
+                                        style="font: 13px Open Sans, sans-serif; line-height: 20px">{{ $details['data']->email_comment }}</span>
                                 </td>
                             </tr>
                             </tbody>
@@ -88,22 +93,22 @@
                       <span style="line-height: 12px"><b>Question
                           {{ intval($question['quizId']) + 1 }} <span style="color:#5B9BD5">Survey</span></b></span><br>
                                     <span><b>{{ $question['question_content'] }}<br></b></span><br>
-{{--                                    <table style="width:100%;border-collapse:collapse">--}}
-{{--                                        <tbody>--}}
-{{--                                        <tr style="background-color:#F3F3F3">--}}
-{{--                                            <td colspan="2" style="border: 1px solid #E0E0E0;padding:5px">--}}
-{{--                                                User Answer--}}
-{{--                                            </td>--}}
-{{--                                        </tr>--}}
-{{--                                        @foreach ($question['question_user_answer'] as $item)--}}
-{{--                                            <tr>--}}
-{{--                                                <td style="border: 1px solid #E0E0E0;padding:5px">--}}
-{{--                                                    {{ $item }}--}}
-{{--                                                </td>--}}
-{{--                                            </tr>--}}
-{{--                                        @endforeach--}}
-{{--                                        </tbody>--}}
-{{--                                    </table>--}}
+                                    {{--                                    <table style="width:100%;border-collapse:collapse">--}}
+                                    {{--                                        <tbody>--}}
+                                    {{--                                        <tr style="background-color:#F3F3F3">--}}
+                                    {{--                                            <td colspan="2" style="border: 1px solid #E0E0E0;padding:5px">--}}
+                                    {{--                                                User Answer--}}
+                                    {{--                                            </td>--}}
+                                    {{--                                        </tr>--}}
+                                    {{--                                        @foreach ($question['question_user_answer'] as $item)--}}
+                                    {{--                                            <tr>--}}
+                                    {{--                                                <td style="border: 1px solid #E0E0E0;padding:5px">--}}
+                                    {{--                                                    {{ $item }}--}}
+                                    {{--                                                </td>--}}
+                                    {{--                                            </tr>--}}
+                                    {{--                                        @endforeach--}}
+                                    {{--                                        </tbody>--}}
+                                    {{--                                    </table>--}}
                                     <br>
                                 </td>
                             </tr>
@@ -153,5 +158,6 @@
     </tr>
     </tbody>
 </table>
+</body>
 
 </html>

@@ -217,8 +217,8 @@ function swap_value(a, b) {
 * ************** Rearrange Preview UI *************
 * */
 
-const user_name = $('#user_first_name').html() + ' ' + $('#user_last_name').html();
-const user_email = $('#user_email').html();
+var user_name = $('#user_first_name').val() + ' ' + $('#user_last_name').val();
+var user_email = $('#user_email').val();
 
 let quizzes = [];
 let quizId = 0;
@@ -564,7 +564,7 @@ function preview(element) {
             hotspots_points = [];
 
 
-            if ($('.quiz_show').find('.type_id').html() != 12) quizId++;
+            if ($('.quiz_show').find('.type_id').html() != 12 && $('.quiz_show').find('.type_id').html() != 16) quizId++;
 
             var current_show_id = $('.quiz_show').attr('id');
             var current_show_type_id = $('.quiz_show .type_id').html();
@@ -667,6 +667,9 @@ function preview(element) {
 
 
                 show_preload();
+
+                user_email = $('#user_email').val();
+                user_name = $('#user_first_name').val() + ' ' + $('#user_last_name').val();
 
                 $.ajax({
                     url: root_url + '/send-mail',
@@ -1577,6 +1580,9 @@ function see_result() {
             fit_question_list_container_size();
         }
 
+
+        user_email = $('#user_email').val();
+        user_name = $('#user_first_name').val() + ' ' + $('#user_last_name').val();
 
         show_preload();
         $.ajax({

@@ -36,11 +36,11 @@
         </div>
     </div>
     <div id="is_quiz" style="display: none;">{{ $is_quiz }}</div>
-    @if(isset($name))
-        <div id="user_name" style="display: none;">{{ $name }}</div>
-    @else
-        <div id="user_name" style="display: none;">{{ $user->name }}</div>
-    @endif
+{{--    @if(isset($name))--}}
+{{--        <div id="user_name" style="display: none;">{{ $name }}</div>--}}
+{{--    @else--}}
+{{--        <div id="user_name" style="display: none;">{{ $user->name }}</div>--}}
+{{--    @endif--}}
 {{--    @if(isset($email))--}}
 {{--        <div id="user_email" style="display: none;">{{ $email }}</div>--}}
 {{--    @else--}}
