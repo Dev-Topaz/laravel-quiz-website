@@ -105,6 +105,7 @@ class ExamController extends BaseController
         $body = explode('</body>', explode('<body>', $html)[1])[0];
         $preview_container = '<div id="preview_container">' . explode('<script', explode('<div id="preview_container">', $html)[1])[0];
 
-        return $preview_container;
+        $success['data'] = $preview_container;
+        return $this->sendResponse($success, 'success');
     }
 }
