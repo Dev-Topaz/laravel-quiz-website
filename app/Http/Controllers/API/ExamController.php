@@ -101,6 +101,10 @@ class ExamController extends BaseController
             }
         }
 
-        return view('preview', ['quizzes' => $quizzes, 'title' => $title, 'is_quiz' => $is_quiz]);
+        $html = view('preview', ['quizzes' => $quizzes, 'title' => $title, 'is_quiz' => $is_quiz]);
+        $body = explode('</body>', explode('<body>', $html)[1])[0];
+        $preview_container = '<div id="preview_container">' . explode('<script', explode('<div id="preview_container">', $html)[1])[0];
+
+        return $preview_container;
     }
 }

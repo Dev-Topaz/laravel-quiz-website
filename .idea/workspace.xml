@@ -4,8 +4,6 @@
     <list default="true" id="66c309de-ec41-488e-b5c4-57ccc3865433" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/ExamController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/ExamController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizmaker.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,6 +200,7 @@
       <workItem from="1625183030756" duration="8689000" />
       <workItem from="1625273434768" duration="152000" />
       <workItem from="1625273825373" duration="2929000" />
+      <workItem from="1625465581772" duration="1610000" />
     </task>
     <servers />
   </component>
