@@ -975,7 +975,7 @@ function get_next_node_element(node) {
     var nodeCollection = $('.node');
     var index = nodeCollection.index(node);
 
-    return nodeCollection.eq(index + 1);
+    return index == nodeCollection.length ? nodeCollection.eq(0) : nodeCollection.eq(index + 1);
 }
 
 function delete_quiz(i) {

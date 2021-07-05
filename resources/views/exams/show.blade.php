@@ -2250,7 +2250,7 @@
                     $('#form_view_quiz_list .node').eq(0).trigger('click');
                     if ($('#form_view_quiz_list .node').eq(0).attr('data-content') == '<i>Quiz Instructions</i>') $('#introduction_btn').attr('disabled', '');
                 }
-                for (let i = 0; i < $('#form_view_quiz_list .node-group > div.data').length - 1; i++) {
+                for (let i = 1; i < $('#form_view_quiz_list .node-group > div.data').length - 1; i++) {
                     $('#form_view_quiz_list .node-group > div.data').eq(i).append('<i class="fas fa-trash" id="delete_group_icon-' + $('#form_view_quiz_list .node-group').eq(i).attr('id') + '" style="font-size: 12px;" onclick="show_delete_dialog(\'group\', this)"></i>');
                     $('#form_view_quiz_list .node-group > div.data').eq(i).css({
                         'display': 'flex',

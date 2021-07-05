@@ -1672,5 +1672,5 @@ function start_question_timer() {
 }
 
 function change_email_subject(string) {
-    return string.replaceAll('%FIRST_NAME%', $('#user_first_name').val()).replaceAll('%LAST_NAME%', $('#user_last_name').val()).replaceAll('%EMAIL%', $('#user_email').val()).replaceAll('%COURSE_TYPE%', $('#user_course_type').val()).replaceAll('%LOCATION%', $('#user_location').val()).replaceAll('%COMPANY%', $('#user_company').val()).replaceAll('%DATE%', $('#user_date').val()).replaceAll('%USER_NAME%', $('#user_first_name').val() + ' ' + $('#user_last_name').val()).replaceAll('%QUIZ_TITLE%', $('.quiz_show .quiz_name').html());
+    return string.replaceAll('%FIRST_NAME%', $('#user_first_name').val()).replaceAll('%LAST_NAME%', $('#user_last_name').val()).replaceAll('%EMAIL%', $('#user_email').val()).replaceAll('%COURSE_TYPE%', $('#user_course_type').val()).replaceAll('%LOCATION%', $('#user_location').val()).replaceAll('%COMPANY%', $('#user_company').val()).replaceAll('%DATE%', $('#user_date').val()).replaceAll('%USER_NAME%', $('#user_first_name').val() + ' ' + $('#user_last_name').val()).replaceAll('%QUIZ_TITLE%', $('.quiz_show .quiz_name').html()).replaceAll('%QUIZ_STATUS%', result);
 }
