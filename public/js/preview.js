@@ -4,6 +4,8 @@ $('div.quiz_item_container input').attr('autocomplete', 'off');
 $('#question_list_modal .question_content div').attr('contenteditable', 'false');
 $('.other_slide_view_element_delete_icon').remove();
 
+let user_info_field_patterns = [];
+
 
 /*
 * ************ Fit Quiz size ********************
@@ -445,6 +447,12 @@ function preview(element) {
         case 'Submit':
             if ($('.quiz_show').find('.type_id').html() == '16') {
                 console.log('16');
+
+                const user_info_elements = $('.quiz_show').find('#user_info').find('div');
+
+                for (let i = 0; i < user_info_elements.length; i++) {
+                    user_info_field_patterns.push(user_info_elements.eq(i).attr('id').replaceAll('user_', '').replaceAll('_container', ''));
+                }
 
                 if (!$('#user_info')[0].checkValidity()) {
                     show_modal('error', 'Warning', 'You must complete the form correctly before submitting.');
@@ -1569,8 +1577,10 @@ function see_result() {
             result = 'Pass';
             var current_show_id = $('.quiz_show').attr('id');
 
-            var next_show_id = $('.quiz_list_container').eq(length - 2);
+            var next_show_id = $('.quiz_list_container').eq(length - 2).attr('id');
             if (next_show_id === undefined) return;
+
+            console.log(next_show_id);
 
             $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].pause();
             $('#quiz_list_audio-' + next_show_id.split('-')[1])[0].currentTime = 0;
@@ -1587,8 +1597,8 @@ function see_result() {
         }
 
 
-        user_email = $('#user_email').val();
-        user_name = $('#user_first_name').val() + ' ' + $('#user_last_name').val();
+        user_email = $('#user_EMAIL_container').val();
+        user_name = $('#user_FIRST_NAME_container').val() + ' ' + $('#user_LAST_NAME_container').val();
 
         // show_preload();
         $('#progress_bar_container').show();
@@ -1685,11 +1695,14 @@ function start_question_timer() {
 }
 
 function change_email_subject(string) {
-    return string.replaceAll('%FIRST_NAME%', $('#user_first_name').val()).replaceAll('%LAST_NAME%', $('#user_last_name').val()).replaceAll('%EMAIL%', $('#user_email').val()).replaceAll('%COURSE_TYPE%', location_or_course_type($('#user_course_type').val())).replaceAll('%LOCATION%', location_or_course_type($('#user_location').val())).replaceAll('%COMPANY%', $('#user_company').val()).replaceAll('%DATE%', $('#user_date').val()).replaceAll('%USER_NAME%', $('#user_first_name').val() + ' ' + $('#user_last_name').val()).replaceAll('%QUIZ_TITLE%', $('.quiz_show .quiz_name').html()).replaceAll('%QUIZ_STATUS%', result);
-}
+    for (let i = 0; i < user_info_field_patterns.length; i++) {
+        string.replaceAll('%' + user_info_field_patterns[i] + '%', $('#user_' + user_info_field_patterns[i] + '_container').val());
+    }
+    string.replaceAll('%QUIZ_TITLE%', $('.quiz_show .quiz_name').html()).replaceAll('%QUIZ_STATUS%', result);
 
-function location_or_course_type(str) {
-    return eachWordUpperCase(str.replaceAll('_', ' '));
+    console.log(string);
+
+    return string;
 }
 
 function eachWordUpperCase(str) {
