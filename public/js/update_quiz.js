@@ -357,7 +357,30 @@ function answer_form2slide() {
             break;
 
         case '16':
-            slide_answer_element = '<form id="user_info"><div id="user_first_name_container"' + ($("#first_name_type").val() == 'none' ? 'style="display: none;"' : '') + '><input type="text" id="user_first_name" placeholder="First Name*" value="' + $("#first_name").val() + '" required></div><div id="user_last_name_container"' + ($("#last_name_type").val() == 'none' ? 'style="display: none;"' : '') + '><input type="text" id="user_last_name" placeholder="Last Name*" value="' + $("#last_name").val() + '" required></div><div id="user_email_container"' + ($("#email_type").val() == 'none' ? 'style="display: none;"' : '') + '><input type="email" id="user_email" placeholder="Email*" value="' + $("#email").val() + '" required></div><div id="user_course_type_container"' + ($("#course_show_type").val() == 'none' ? 'style="display: none;"' : '') + '><select id="user_course_type" required><option value="" disabled>Course Type*</option><option value="full_course" ' + ($("#course_type").val() == "full_course" ? "selected" : "") + '>Full Course</option><option value="refresher" ' + ($("#course_type").val() == "refresher" ? "selected" : "") + '>Refresher</option><option value="voc" ' + ($("#course_type").val() == "voc" ? "selected" : "") + '>VOC</option><option value="rpl" ' + ($("#course_type").val() == "rpl" ? "selected" : "") + '>RPL</option></select></div><div id="user_location_container"' + ($("#location_type").val() == 'none' ? 'style="display: none;"' : '') + '><select id="user_location" required><option value="" disabled>Location*</option><option value="gold_coast" ' + ($("#location").val() == "gold_coast" ? "selected" : "") + '>Gold Coast</option><option value="cairns" ' + ($("#location").val() == "cairns" ? "selected" : "") + '>Cairns</option><option value="moranbah" ' + ($("#location").val() == "moranbah" ? "selected" : "") + '>Moranbah</option><option value="mackay" ' + ($("#location").val() == "mackay" ? "selected" : "") + '>Mackay</option><option value="townsville" ' + ($("#location").val() == "townsville" ? "selected" : "") + '>Townsville</option><option value="weipa" ' + ($("#location").val() == "weipa" ? "selected" : "") + '>Weipa</option><option value="gladstone" ' + ($("#location").val() == "gladstone" ? "selected" : "") + '>Gladstone</option></select></div><div id="user_company_container"' + ($("#company_type").val() == 'none' ? 'style="display: none;"' : '') + '><input type="text" id="user_company" placeholder="Company" value="' + $("#company").val() + '"></div><div id="user_date_container"' + ($("#date_type").val() == 'none' ? 'style="display: none;"' : '') + '><input type="date" id="user_date" placeholder="Date*" value="' + $("#date").val() + '" required></div></form>';
+            slide_answer_element = '<form id="user_info">';
+
+            const tr_elements = $('#user_info_table_body tr');
+            for (let i = 0; i < tr_elements.length; i++) {
+                switch (tr_elements.eq(i).find('.field_type').val()) {
+                    case 'choice':
+                        slide_answer_element += '<div id="user_' + tr_elements.eq(i).find('.variable').val() + '_container"' + (tr_elements.eq(i).find('.condition').val() == 'none' ? 'style="display: none;"' : '') + '><select id="user_' + tr_elements.eq(i).find('.variable').val() + '" ' + (tr_elements.eq(i).find('.condition').val() == 'mandatory' ? 'required' : '') + '><option value="" disabled>' + tr_elements.eq(i).find('.field_name').val() + (tr_elements.eq(i).find('.condition').val() == 'mandatory' ? '*' : '') + '</option>';
+                        for (let j = 0; j < tr_elements.eq(i).find('label').length; j++) {
+                            slide_answer_element += '<option value="' + tr_elements.eq(i).find('label').eq(j).html() + '">' + tr_elements.eq(i).find('label').eq(j).html() + '</option>';
+                        }
+                        slide_answer_element += '</select></div>';
+                        break;
+
+                    case 'text':
+                        slide_answer_element += '<div id="user_' + tr_elements.eq(i).find('.variable').val() + '_container"' + (tr_elements.eq(i).find('.condition').val() == 'none' ? 'style="display: none;"' : '') + '><input type="text" id="user_' + tr_elements.eq(i).find('.variable').val() + '" placeholder="' + tr_elements.eq(i).find('.field_name').val() + (tr_elements.eq(i).find('.condition').val() == 'mandatory' ? '*' : '') + '" value="' + tr_elements.eq(i).find('.value').val() + '" ' + (tr_elements.eq(i).find('.condition').val() == 'mandatory' ? 'required' : '') + '></div>';
+                        break;
+
+                    case 'email':
+                        slide_answer_element += '<div id="user_' + tr_elements.eq(i).find('.variable').val() + '_container"' + (tr_elements.eq(i).find('.condition').val() == 'none' ? 'style="display: none;"' : '') + '><input type="email" id="user_' + tr_elements.eq(i).find('.variable').val() + '" placeholder="' + tr_elements.eq(i).find('.field_name').val() + (tr_elements.eq(i).find('.condition').val() == 'mandatory' ? '*' : '') + '" value="' + tr_elements.eq(i).find('.value').val() + '" ' + (tr_elements.eq(i).find('.condition').val() == 'mandatory' ? 'required' : '') + '></div>';
+                        break;
+                }
+            }
+
+            slide_answer_element += '</form>';
             break;
     }
 
@@ -492,8 +515,29 @@ function answer_store() {
             break;
 
         case '16':
-            answer = '{"first_name_type": "' + $("#first_name_type").val() + '", "first_name": "' + $("#first_name").val() + '", "last_name_type": "' + $("#last_name_type").val() + '", "last_name": "' + $("#last_name").val() + '", "email_type": "' + $("#email_type").val() + '", "email": "' + $("#email").val() + '", "course_show_type": "' + $("#course_show_type").val() + '", "course_type": "' + $("#course_type").val() + '", "location_type": "' + $("#location_type").val() + '", "location": "' + $("#location").val() + '", "company_type": "' + $("#company_type").val() + '", "company": "' + $("#company").val() + '", "date_type": "' + $("#date_type").val() + '", "date": "' + $("#date").val() + '"}';
-            console.log('answer: ', answer);
+            let json_object = [];
+            const tr_elements = $('#user_info_table_body tr');
+            for (let i = 0; i < tr_elements.length; i++) {
+                let choice_field = [];
+                let value = "";
+                if (tr_elements.eq(i).find('.field_type').val() == 'choice') {
+                    for (let j = 0; j < tr_elements.eq(i).find('label').length; j++) {
+                        choice_field.push(tr_elements.eq(i).find('label').eq(j).html());
+                    }
+                } else {
+                    value = tr_elements.eq(i).find('.value').val();
+                }
+                json_object.push({
+                    "field_name": tr_elements.eq(i).find('.field_name').val(),
+                    "condition": tr_elements.eq(i).find('.condition').val(),
+                    "field_type": tr_elements.eq(i).find('.field_type').val(),
+                    "choice_field": choice_field,
+                    "value": value,
+                    "variable": tr_elements.eq(i).find('.variable').val(),
+                });
+            }
+            answer = JSON.stringify(json_object);
+            console.log(answer);
             break;
     }
 

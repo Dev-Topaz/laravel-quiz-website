@@ -1192,6 +1192,8 @@ if it's not present, don't show loader */
     top: 28px;
     z-index: 1;
     background: white;
+    max-height: 200px;
+    overflow-y: scroll;
 }
 
 .user_info_dropdown_menu li {

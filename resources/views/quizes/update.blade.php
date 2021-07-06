@@ -478,7 +478,7 @@
                                 <tr>
                                     <th><input type="text" class="field_name" value="{{ $item->field_name }}"></th>
                                     <th>
-                                        <select name="condition" class="condition">
+                                        <select class="condition">
                                             <option
                                                 value="mandatory" {{ $item->condition == 'mandatory' ? 'selected' : '' }}>
                                                 Mandatory
@@ -493,7 +493,7 @@
                                         </select>
                                     </th>
                                     <th>
-                                        <select name="field_type" class="field_type">
+                                        <select class="field_type">
                                             <option value="text" {{ $item->field_type == 'text' ? 'selected' : '' }}>
                                                 Text
                                             </option>
@@ -508,28 +508,23 @@
                                     </th>
                                     <th>
                                         @if ($item->field_type == 'choice')
-                                            <div class="user_info_dropdown_body" contenteditable="false" ">
+                                            <div class="user_info_dropdown_body">
                                                 <div class="user_info_dropdown_content"></div>
                                                 <div class="user_info_dropdown_arrow"
                                                      onclick="toggle_user_info_dropdown(this)"><i
                                                         class="fas fa-chevron-down"></i></div>
-                                                <div class="user_info_dropdown_menu" contenteditable="false"
-                                                     style="display: none;">
+                                                <div class="user_info_dropdown_menu" style="display: none;">
                                                     <ul>
-                                                        <li><label data-editable="">blanks</label><a
+                                                        @foreach ($item->choice_field as $value)
+                                                        <li><label data-editable="">{{ $value }}</label><a
                                                                 onclick="{$(this).parent().remove();set_flag_true();}"
                                                                 data-nsfw-filter-status="swf"><i
                                                                     class="fas fa-trash-alt"></i></a></li>
-                                                        <li><i onclick="add_word($(this));">Add a new word</i></li>
+                                                        @endforeach
+                                                        <li><i onclick="add_word_user_info($(this));">Add a new word</i></li>
                                                     </ul>
                                                 </div>
                                             </div>
-{{--                                            <select name="value" class="value">--}}
-{{--                                                @foreach ($item->choice_field as $value)--}}
-{{--                                                    <option--}}
-{{--                                                        value="text" {{ $value == $item->value ? 'selected' : '' }}>{{ $value }}</option>--}}
-{{--                                                @endforeach--}}
-{{--                                            </select>--}}
                                         @else
                                             <input type="text" class="value" value="{{ $item->value }}">
                                         @endif
