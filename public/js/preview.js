@@ -666,7 +666,9 @@ function preview(element) {
                 }
 
 
-                show_preload();
+                // show_preload();
+                $('#progress_bar_container').show();
+                $('#preview_container').hide();
 
                 user_email = $('#user_email').val();
                 user_name = $('#user_first_name').val() + ' ' + $('#user_last_name').val();
@@ -691,11 +693,15 @@ function preview(element) {
                     },
                     success: function (data) {
                         console.log('success');
-                        hide_preload();
+                        // hide_preload();
+                        $('#progress_bar_container').hide();
+                        $('#preview_container').show();
                     }
                 }).catch((XHttpResponse) => {
                     console.log(XHttpResponse);
-                    hide_preload();
+                    // hide_preload();
+                    $('#progress_bar_container').hide();
+                    $('#preview_container').show();
                 });
                 $('#submit_btn').html('Close');
             } else {
@@ -1584,7 +1590,10 @@ function see_result() {
         user_email = $('#user_email').val();
         user_name = $('#user_first_name').val() + ' ' + $('#user_last_name').val();
 
-        show_preload();
+        // show_preload();
+        $('#progress_bar_container').show();
+        $('#preview_container').hide();
+
         $.ajax({
             url: root_url + '/send-mail',
             type: 'POST',
@@ -1605,11 +1614,15 @@ function see_result() {
             },
             success: function (data) {
                 console.log('success');
-                hide_preload();
+                // hide_preload();
+                $('#progress_bar_container').hide();
+                $('#preview_container').show();
             }
         }).catch((XHttpResponse) => {
             console.log(XHttpResponse);
-            hide_preload();
+            // hide_preload();
+            $('#progress_bar_container').hide();
+            $('#preview_container').show();
         });
         $('#submit_btn').html('Close');
     } else {
@@ -1680,10 +1693,10 @@ function location_or_course_type(str) {
 }
 
 function eachWordUpperCase(str) {
-   var splitStr = str.toLowerCase().split(' ');
-   for (var i = 0; i < splitStr.length; i++) {
-       splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
-   }
+    var splitStr = str.toLowerCase().split(' ');
+    for (var i = 0; i < splitStr.length; i++) {
+        splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+    }
 
-   return splitStr.join(' ');
+    return splitStr.join(' ');
 }

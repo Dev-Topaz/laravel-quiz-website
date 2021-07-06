@@ -8,11 +8,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="url" content="{{ url('/') }}">
 
-{{--    @if(session('student'))--}}
-{{--    <title>{{ __('Exam Page') }}</title>--}}
-{{--    @else--}}
+    {{--    @if(session('student'))--}}
+    {{--    <title>{{ __('Exam Page') }}</title>--}}
+    {{--    @else--}}
     <title>@yield('title')</title>
-{{--    @endif--}}
+    {{--    @endif--}}
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
 
     <!-- Fonts -->
@@ -37,6 +37,10 @@
 </head>
 <body>
 <div class="se-pre-con" style="display: none;"></div>
+<div id="progress_bar_container">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 100%;height: 10px;"></div>
+    <div id="progress_bar_content">Sending assessment results...</div>
+</div>
 <div id="imagePopup" class="modal">
 
     <span class="close">&times;</span>
@@ -47,7 +51,9 @@
 </div>
 <div id="timer_confirm_dialog">
     <div id="timer_dialog_content">You have 60 sec to answer this question.</div>
-    <div id="timer_dialog_btn"><button>OK</button></div>
+    <div id="timer_dialog_btn">
+        <button>OK</button>
+    </div>
 </div>
 <div id="preview_container">
     <div id="preview_toast" style="display: none;">
