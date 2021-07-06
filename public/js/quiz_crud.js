@@ -1005,7 +1005,7 @@ function delete_quiz(i) {
 
             if (!data) {
                 delete_selected_quizzes(i + 1);
-                if (i == tmp_selected_node_id_list.length - 1) get_next_node_element(node).trigger('click');
+                // if (i == tmp_selected_node_id_list.length - 1) get_next_node_element(node).trigger('click');
 
                 return;
             }
