@@ -1672,5 +1672,18 @@ function start_question_timer() {
 }
 
 function change_email_subject(string) {
-    return string.replaceAll('%FIRST_NAME%', $('#user_first_name').val()).replaceAll('%LAST_NAME%', $('#user_last_name').val()).replaceAll('%EMAIL%', $('#user_email').val()).replaceAll('%COURSE_TYPE%', $('#user_course_type').val()).replaceAll('%LOCATION%', $('#user_location').val()).replaceAll('%COMPANY%', $('#user_company').val()).replaceAll('%DATE%', $('#user_date').val()).replaceAll('%USER_NAME%', $('#user_first_name').val() + ' ' + $('#user_last_name').val()).replaceAll('%QUIZ_TITLE%', $('.quiz_show .quiz_name').html()).replaceAll('%QUIZ_STATUS%', result);
+    return string.replaceAll('%FIRST_NAME%', $('#user_first_name').val()).replaceAll('%LAST_NAME%', $('#user_last_name').val()).replaceAll('%EMAIL%', $('#user_email').val()).replaceAll('%COURSE_TYPE%', location_or_course_type($('#user_course_type').val())).replaceAll('%LOCATION%', location_or_course_type($('#user_location').val())).replaceAll('%COMPANY%', $('#user_company').val()).replaceAll('%DATE%', $('#user_date').val()).replaceAll('%USER_NAME%', $('#user_first_name').val() + ' ' + $('#user_last_name').val()).replaceAll('%QUIZ_TITLE%', $('.quiz_show .quiz_name').html()).replaceAll('%QUIZ_STATUS%', result);
+}
+
+function location_or_course_type(str) {
+    return eachWordUpperCase(str.replaceAll('_', ' '));
+}
+
+function eachWordUpperCase(str) {
+   var splitStr = str.toLowerCase().split(' ');
+   for (var i = 0; i < splitStr.length; i++) {
+       splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+   }
+
+   return splitStr.join(' ');
 }
