@@ -459,7 +459,7 @@
 
                 @case(16)
                 <h4>Form Fields</h4>
-                <div class="form_view_answer_element" style="height: 380px;">
+                <div class="form_view_answer_element" style="height: 460px;overflow-y: scroll;">
                     <div>
                         <table class="table striped" style="margin: 0">
                             <thead>
@@ -469,118 +469,81 @@
                                 <th>Field Type</th>
                                 <th>Initial Value</th>
                                 <th>Variable</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody id="user_info_table_body">
-                            <tr>
-                                <th>First Name</th>
-                                <th>
-                                    <select name="first_name_type" id="first_name_type">
-                                        <option value="mandatory" {{ $quiz->user_info->first_name_type == 'mandatory' ? 'selected' : '' }}>Mandatory</option>
-                                        <option value="none" {{ $quiz->user_info->first_name_type == 'none' ? 'selected' : '' }}>Don't ask</option>
-                                    </select>
-                                </th>
-                                <th>Text</th>
-                                <th><input type="text" id="first_name" value="{{ $quiz->user_info->first_name }}"></th>
-                                <th>FIRST_NAME</th>
-                            </tr>
-                            <tr>
-                                <th>Last Name</th>
-                                <th>
-                                    <select name="last_name_type" id="last_name_type">
-                                        <option value="mandatory" {{ $quiz->user_info->last_name_type == 'mandatory' ? 'selected' : '' }}>Mandatory</option>
-                                        <option value="none" {{ $quiz->user_info->last_name_type == 'none' ? 'selected' : '' }}>Don't ask</option>
-                                    </select>
-                                </th>
-                                <th>Text</th>
-                                <th>
-                                    <input type="text" id="last_name" value="{{ $quiz->user_info->last_name }}">
-                                </th>
-                                <th>LAST_NAME</th>
-                            </tr>
-                            <tr>
-                                <th>Email</th>
-                                <th>
-                                    <select name="email_type" id="email_type">
-                                        <option value="mandatory" {{ $quiz->user_info->email_type == 'mandatory' ? 'selected' : '' }}>Mandatory</option>
-                                        <option value="none" {{ $quiz->user_info->email_type == 'none' ? 'selected' : '' }}>Don't ask</option>
-                                    </select>
-                                </th>
-                                <th>Email</th>
-                                <th>
-                                    <input type="email" id="email" value="{{ $quiz->user_info->email }}">
-                                </th>
-                                <th>EMAIL</th>
-                            </tr>
-                            <tr>
-                                <th>Course Type</th>
-                                <th>
-                                    <select name="course_show_type" id="course_show_type">
-                                        <option value="mandatory" {{ $quiz->user_info->course_show_type == 'mandatory' ? 'selected' : '' }}>Mandatory</option>
-                                        <option value="none" {{ $quiz->user_info->course_show_type == 'none' ? 'selected' : '' }}>Don't ask</option>
-                                    </select>
-                                </th>
-                                <th>Dropdown</th>
-                                <th>
-                                    <select name="course_type" id="course_type">
-                                        <option value="full_course" {{ $quiz->user_info->course_type == 'full_course' ? 'selected' : '' }}>Full Course</option>
-                                        <option value="refresher" {{ $quiz->user_info->course_type == 'refresher' ? 'selected' : '' }}>Refresher</option>
-                                        <option value="voc" {{ $quiz->user_info->course_type == 'voc' ? 'selected' : '' }}>VOC</option>
-                                        <option value="rpl" {{ $quiz->user_info->course_type == 'rpl' ? 'selected' : '' }}>RPL</option>
-                                    </select>
-                                </th>
-                                <th>COURSE_TYPE</th>
-                            </tr>
-                            <tr>
-                                <th>Location</th>
-                                <th>
-                                    <select name="location_type" id="location_type">
-                                        <option value="mandatory" {{ $quiz->user_info->location_type == 'mandatory' ? 'selected' : '' }}>Mandatory</option>
-                                        <option value="none" {{ $quiz->user_info->location_type == 'none' ? 'selected' : '' }}>Don't ask</option>
-                                    </select>
-                                </th>
-                                <th>Dropdown</th>
-                                <th>
-                                    <select name="location" id="location">
-                                        <option value="gold_coast" {{ $quiz->user_info->location == 'gold_coast' ? 'selected' : '' }}>Gold Coast</option>
-                                        <option value="cairns" {{ $quiz->user_info->location == 'cairns' ? 'selected' : '' }}>Cairns</option>
-                                        <option value="moranbah" {{ $quiz->user_info->location == 'moranbah' ? 'selected' : '' }}>Moranbah</option>
-                                        <option value="mackay" {{ $quiz->user_info->location == 'mackay' ? 'selected' : '' }}>Mackay</option>
-                                        <option value="townsville" {{ $quiz->user_info->location == 'townsville' ? 'selected' : '' }}>Townsville</option>
-                                        <option value="weipa" {{ $quiz->user_info->location == 'weipa' ? 'selected' : '' }}>Weipa</option>
-                                        <option value="gladstone" {{ $quiz->user_info->location == 'gladstone' ? 'selected' : '' }}>Gladstone</option>
-                                    </select>
-                                </th>
-                                <th>LOCATION</th>
-                            </tr>
-                            <tr>
-                                <th>Company</th>
-                                <th>
-                                    <select name="company_type" id="company_type">
-                                        <option value="optional" {{ $quiz->user_info->company_type == 'optional' ? 'selected' : '' }}>Optional</option>
-                                        <option value="none" {{ $quiz->user_info->company_type == 'none' ? 'selected' : '' }}>Don't ask</option>
-                                    </select>
-                                </th>
-                                <th>Text</th>
-                                <th>
-                                    <input type="text" id="company" value="{{ $quiz->user_info->company }}">
-                                </th>
-                                <th>COMPANY</th>
-                            </tr>
-                            <tr>
-                                <th>Date</th>
-                                <th>
-                                    <select name="date_type" id="date_type">
-                                        <option value="mandatory" {{ $quiz->user_info->date_type == 'mandatory' ? 'selected' : '' }}>Mandatory</option>
-                                        <option value="none" {{ $quiz->user_info->date_type == 'none' ? 'selected' : '' }}>Don't ask</option>
-                                    </select>
-                                </th>
-                                <th>Date</th>
-                                <th><input type="date" id="date" value="{{ $quiz->user_info->date }}"></th>
-                                <th>DATE</th>
-                            </tr>
+                            @foreach ($quiz->user_info as $item)
+
+                                <tr>
+                                    <th><input type="text" class="field_name" value="{{ $item->field_name }}"></th>
+                                    <th>
+                                        <select name="condition" class="condition">
+                                            <option
+                                                value="mandatory" {{ $item->condition == 'mandatory' ? 'selected' : '' }}>
+                                                Mandatory
+                                            </option>
+                                            <option
+                                                value="optional" {{ $item->condition == 'optional' ? 'selected' : '' }}>
+                                                Optional
+                                            </option>
+                                            <option value="none" {{ $item->condition == 'none' ? 'selected' : '' }}>
+                                                Don't ask
+                                            </option>
+                                        </select>
+                                    </th>
+                                    <th>
+                                        <select name="field_type" class="field_type">
+                                            <option value="text" {{ $item->field_type == 'text' ? 'selected' : '' }}>
+                                                Text
+                                            </option>
+                                            <option
+                                                value="choice" {{ $item->field_type == 'choice' ? 'selected' : '' }}>
+                                                Choice
+                                            </option>
+                                            <option value="email" {{ $item->field_type == 'email' ? 'selected' : '' }}>
+                                                Email
+                                            </option>
+                                        </select>
+                                    </th>
+                                    <th>
+                                        @if ($item->field_type == 'choice')
+                                            <div class="user_info_dropdown_body" contenteditable="false" ">
+                                                <div class="user_info_dropdown_content"></div>
+                                                <div class="user_info_dropdown_arrow"
+                                                     onclick="toggle_user_info_dropdown(this)"><i
+                                                        class="fas fa-chevron-down"></i></div>
+                                                <div class="user_info_dropdown_menu" contenteditable="false"
+                                                     style="display: none;">
+                                                    <ul>
+                                                        <li><label data-editable="">blanks</label><a
+                                                                onclick="{$(this).parent().remove();set_flag_true();}"
+                                                                data-nsfw-filter-status="swf"><i
+                                                                    class="fas fa-trash-alt"></i></a></li>
+                                                        <li><i onclick="add_word($(this));">Add a new word</i></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+{{--                                            <select name="value" class="value">--}}
+{{--                                                @foreach ($item->choice_field as $value)--}}
+{{--                                                    <option--}}
+{{--                                                        value="text" {{ $value == $item->value ? 'selected' : '' }}>{{ $value }}</option>--}}
+{{--                                                @endforeach--}}
+{{--                                            </select>--}}
+                                        @else
+                                            <input type="text" class="value" value="{{ $item->value }}">
+                                        @endif
+                                    </th>
+                                    <th><input type="text" class="variable" value="{{ $item->variable }}"></th>
+                                    <th><a onclick="{$(this).parent().parent().remove();set_flag_true();}"><i
+                                                style="font-size: 18px;" class="fas fa-trash-alt"></i></a></th>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
+                        <div id="user_info_add_field" style="padding: 15px;">
+                            <a href="javascript:void(0)">Add a new field</a>
+                        </div>
                     </div>
                 </div>
 
@@ -1021,6 +984,11 @@
 
     @case(11)
     <script src="{{ asset('js/hotspots.js') }}" defer></script>
+    @break
+
+
+    @case(16)
+    <script src="{{ asset('js/user_info_form.js') }}" defer></script>
     @break
 
 @endswitch

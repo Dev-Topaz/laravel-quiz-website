@@ -1168,29 +1168,40 @@ if it's not present, don't show loader */
 .slide_view_answer_element form input, .slide_view_answer_element form select {
     width: 100%;
 }
-/*.tooltip {*/
-/*    position: relative;*/
-/*    display: inline-block;*/
-/*    border-bottom: 1px dotted black;*/
-/*}*/
 
-/*.tooltip .tooltiptext {*/
-/*    visibility: hidden;*/
-/*    width: 120px;*/
-/*    background-color: black;*/
-/*    color: #fff;*/
-/*    text-align: center;*/
-/*    border-radius: 6px;*/
-/*    padding: 5px 0;*/
+.user_info_dropdown_body {
+    width: 82%;
+    display: flex;
+    border: 1px solid #767676;
+    align-items: center;
+}
 
-/*    !* Position the tooltip *!*/
-/*    position: absolute;*/
-/*    z-index: 1;*/
-/*    top: 100%;*/
-/*    left: 50%;*/
-/*    margin-left: -60px;*/
-/*}*/
+.user_info_dropdown_content {
+    width: 90%;
+    height: 28px;
+}
 
-/*.tooltip:hover .tooltiptext {*/
-/*    visibility: visible;*/
-/*}*/
+.user_info_dropdown_arrow i, .user_info_dropdown_menu i {
+    font-size: 18px;
+}
+
+.user_info_dropdown_menu {
+    position: absolute;
+    border: 1px solid #767676;
+    width: 100%;
+    top: 28px;
+    z-index: 1;
+    background: white;
+}
+
+.user_info_dropdown_menu li {
+    list-style-type: none;
+    padding-top: 5px;
+    font-weight: normal;
+    display: flex;
+    justify-content: space-between;
+}
+
+.user_info_dropdown_menu li > i {
+    font-size: 14px;
+}
