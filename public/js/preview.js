@@ -219,8 +219,8 @@ function swap_value(a, b) {
 * ************** Rearrange Preview UI *************
 * */
 
-var user_name = $('#user_first_name').val() + ' ' + $('#user_last_name').val();
-var user_email = $('#user_email').val();
+var user_email = $('#user_EMAIL').val();
+var user_name = $('#user_FIRST_NAME').val() + ' ' + $('#user_LAST_NAME').val();
 
 let quizzes = [];
 let quizId = 0;
@@ -678,8 +678,8 @@ function preview(element) {
                 $('#progress_bar_container').show();
                 $('#preview_container').hide();
 
-                user_email = $('#user_email').val();
-                user_name = $('#user_first_name').val() + ' ' + $('#user_last_name').val();
+                user_email = $('#user_EMAIL').val();
+                user_name = $('#user_FIRST_NAME').val() + ' ' + $('#user_LAST_NAME').val();
 
                 $.ajax({
                     url: root_url + '/send-mail',
@@ -1597,8 +1597,8 @@ function see_result() {
         }
 
 
-        user_email = $('#user_EMAIL_container').val();
-        user_name = $('#user_FIRST_NAME_container').val() + ' ' + $('#user_LAST_NAME_container').val();
+        user_email = $('#user_EMAIL').val();
+        user_name = $('#user_FIRST_NAME').val() + ' ' + $('#user_LAST_NAME').val();
 
         // show_preload();
         $('#progress_bar_container').show();
@@ -1695,14 +1695,19 @@ function start_question_timer() {
 }
 
 function change_email_subject(string) {
+    string = string_replaceAll(string, '%QUIZ_TITLE%', $('.quiz_show .quiz_name').html());
+    string = string_replaceAll(string, '%QUIZ_STATUS%', result);
     for (let i = 0; i < user_info_field_patterns.length; i++) {
-        string.replaceAll('%' + user_info_field_patterns[i] + '%', $('#user_' + user_info_field_patterns[i] + '_container').val());
+        string = string_replaceAll(string, '%' + user_info_field_patterns[i] + '%', $('#user_' + user_info_field_patterns[i]).val());
     }
-    string.replaceAll('%QUIZ_TITLE%', $('.quiz_show .quiz_name').html()).replaceAll('%QUIZ_STATUS%', result);
 
     console.log(string);
 
     return string;
+}
+
+function string_replaceAll(str, str1, str2) {
+    return str.split(str1).join(str2);
 }
 
 function eachWordUpperCase(str) {
