@@ -50,35 +50,35 @@ class ExamController extends BaseController
         return $this->sendResponse($success, 'success');
     }
 
-    public function get_quiz_assets_url($id)
-    {
-        $url_list = [];
+    // public function get_quiz_assets_url($id)
+    // {
+    //     $url_list = [];
 
-        $quiz = Exam::find($id);
+    //     $quiz = Exam::find($id);
 
-        if (isset($quiz->theme_style)) array_push($url_list, explode('"); background-size:', explode('background-image:url("', $quiz->theme_style)[1])[0]);
+    //     if (isset($quiz->theme_style)) array_push($url_list, explode('"); background-size:', explode('background-image:url("', $quiz->theme_style)[1])[0]);
 
-        $questions = $quiz->get_all_questions();
+    //     $questions = $quiz->get_all_questions();
 
-        foreach ($questions as $question) {
-            if (isset($question[0]->media)) array_push($url_list, $question[0]->media);
-            if (isset($question[0]->video)) array_push($url_list, $question[0]->video);
-            if (isset($question[0]->audio)) array_push($url_list, $question[0]->audio);
-            if (isset($question[0]->background_img)) array_push($url_list, explode('")', explode('url("', $question[0]->background_img)[1])[0]);
+    //     foreach ($questions as $question) {
+    //         if (isset($question[0]->media)) array_push($url_list, $question[0]->media);
+    //         if (isset($question[0]->video)) array_push($url_list, $question[0]->video);
+    //         if (isset($question[0]->audio)) array_push($url_list, $question[0]->audio);
+    //         if (isset($question[0]->background_img)) array_push($url_list, explode('")', explode('url("', $question[0]->background_img)[1])[0]);
 
-            if (isset($question[0]->other_elements)) {
-                $tmp_array = explode('src="', $question[0]->other_elements);
-                array_shift($tmp_array);
+    //         if (isset($question[0]->other_elements)) {
+    //             $tmp_array = explode('src="', $question[0]->other_elements);
+    //             array_shift($tmp_array);
 
-                foreach ($tmp_array as $tmp) {
-                    array_push($url_list, explode('"', $tmp)[0]);
-                }
-            }
-        }
+    //             foreach ($tmp_array as $tmp) {
+    //                 array_push($url_list, explode('"', $tmp)[0]);
+    //             }
+    //         }
+    //     }
 
-        $success['data'] = $url_list;
-        return $this->sendResponse($success, 'success');
-    }
+    //     $success['data'] = $url_list;
+    //     return $this->sendResponse($success, 'success');
+    // }
 
     public function get_quiz_html(string $id)
     {
@@ -107,17 +107,32 @@ class ExamController extends BaseController
 //        return $this->sendResponse($success, 'success');
     }
 
-    public function get_url_array(string $str)
+    public function get_image_url_array(Request $request)
     {
-        preg_match_all('#\bhttps?://[^,\s()<>]+(?:\([\w\d]+\)|([^,[:punct:]\s]|/))#', $str, $url_array);
+        preg_match_all('#\bhttps?://[^,\s()<>]+(?:\([\w\d]+\)|([^,[:punct:]\s]|/))#', $request->quizContent, $url_array);
 
         $result = [];
 
         foreach ($url_array[0] as $url) {
-            array_push($result, str_replace('&quot', '', $url));
+            if ($this->isImage($url)) array_push($result, str_replace('&quot', '', $url));
         }
 
-        return array_unique($result);
+        $success['data'] = array_unique($result);
+        return $this->sendResponse($success, 'success');
+    }
+
+    public function get_video_audio_url_array(Request $request)
+    {
+        preg_match_all('#\bhttps?://[^,\s()<>]+(?:\([\w\d]+\)|([^,[:punct:]\s]|/))#', $request->quizContent, $url_array);
+
+        $result = [];
+
+        foreach ($url_array[0] as $url) {
+            if (!$this->isImage($url)) array_push($result, str_replace('&quot', '', $url));
+        }
+
+        $success['data'] = array_unique($result);
+        return $this->sendResponse($success, 'success');
     }
 
     public function isImage(string $url)
@@ -132,23 +147,26 @@ class ExamController extends BaseController
         return false;
     }
 
-    public function image_base64(string $url)
-    {
-        $type = pathinfo($url, PATHINFO_EXTENSION);
-        $data = file_get_contents($url);
-        $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+    // public function image_base64(string $url)
+    // {
+    //     $url = urldecode($url);
+    //     $type = pathinfo($url, PATHINFO_EXTENSION);
+    //     $data = file_get_contents($url);
+    //     $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
 
-        return $base64;
-    }
+    //     $success['data'] = $base64;
+    //     return $this->sendResponse($success, 'success');
+    //     // return $base64;
+    // }
 
-    public function replace_url_image_base64(string $str, array $url_array)
-    {
-        foreach ($url_array as $url) {
-            if ($this->isImage($url)) {
-                $str = str_replace($url, $this->image_base64($url), $str);
-            }
-        }
+    // public function replace_url_image_base64(string $str, array $url_array)
+    // {
+    //     foreach ($url_array as $url) {
+    //         if ($this->isImage($url)) {
+    //             $str = str_replace($url, $this->image_base64($url), $str);
+    //         }
+    //     }
 
-        return $str;
-    }
+    //     return $str;
+    // }
 }
