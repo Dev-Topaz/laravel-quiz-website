@@ -43,6 +43,9 @@ class ExamController extends BaseController
     {
         $quiz = Exam::find($id);
 
+        $quiz_content = $this->get_quiz_html($id);
+        $quiz->quiz_content = $quiz_content;
+
         $success['data'] = $quiz;
         return $this->sendResponse($success, 'success');
     }
@@ -79,15 +82,6 @@ class ExamController extends BaseController
 
     public function get_quiz_html(string $id)
     {
-//        if (isset(Auth::user()->id)) {
-//            $user = Auth::user();
-//            $name = $user->name;
-//            $email = $user->email;
-//        }
-//        if (session('name')) {
-//            $name = session('name');
-//            $email = session('email');
-//        }
 
         $exams = Exam::where('id', $id)->get();
         $title = $exams[0]->name;
@@ -106,7 +100,55 @@ class ExamController extends BaseController
         $preview_container = '<div id="preview_container">' . explode('<script', explode('<div id="preview_container">', $html)[1])[0];
         $preview_container = trim(preg_replace('/\s\s+/', '', $preview_container));
 
-        $success['data'] = $preview_container;
-        return $this->sendResponse($success, 'success');
+        return $preview_container;
+
+//        $url_array = $this->get_url_array($preview_container);
+//        $success['data'] = $preview_container;
+//        return $this->sendResponse($success, 'success');
+    }
+
+    public function get_url_array(string $str)
+    {
+        preg_match_all('#\bhttps?://[^,\s()<>]+(?:\([\w\d]+\)|([^,[:punct:]\s]|/))#', $str, $url_array);
+
+        $result = [];
+
+        foreach ($url_array[0] as $url) {
+            array_push($result, str_replace('&quot', '', $url));
+        }
+
+        return array_unique($result);
+    }
+
+    public function isImage(string $url)
+    {
+        $pos = strrpos($url, ".");
+        if ($pos === false)
+            return false;
+        $ext = strtolower(trim(substr($url, $pos)));
+        $imgExts = array(".gif", ".jpg", ".jpeg", ".png", ".tiff", ".tif", ".bmp"); // this is far from complete but that's always going to be the case...
+        if (in_array($ext, $imgExts))
+            return true;
+        return false;
+    }
+
+    public function image_base64(string $url)
+    {
+        $type = pathinfo($url, PATHINFO_EXTENSION);
+        $data = file_get_contents($url);
+        $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+
+        return $base64;
+    }
+
+    public function replace_url_image_base64(string $str, array $url_array)
+    {
+        foreach ($url_array as $url) {
+            if ($this->isImage($url)) {
+                $str = str_replace($url, $this->image_base64($url), $str);
+            }
+        }
+
+        return $str;
     }
 }

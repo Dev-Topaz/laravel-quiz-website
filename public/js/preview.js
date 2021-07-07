@@ -19,6 +19,8 @@ function fit_question_list_container_size() {
     var w = window.innerWidth;
     var h = window.innerHeight;
 
+    console.log(w, h);
+
     const elementHeight = parseInt($('.screen_height').html()) + 50 + 82;
     const elementWidth = parseInt($('.screen_width').html());
 
