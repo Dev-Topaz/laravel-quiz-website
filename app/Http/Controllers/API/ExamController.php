@@ -146,12 +146,12 @@ class ExamController extends BaseController
 
     public function image_base64(string $url)
     {
-        $url = urldecode($url);
+//        $url = urldecode($url);
         $type = pathinfo($url, PATHINFO_EXTENSION);
         $data = file_get_contents($url);
         $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
 
-        $success['data'] = $base64;
+//        $success['data'] = $base64;
 //        return $this->sendResponse($success, 'success');
          return $base64;
     }
