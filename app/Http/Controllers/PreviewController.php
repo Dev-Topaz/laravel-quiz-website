@@ -124,7 +124,7 @@ class PreviewController extends Controller
 
     public function get_quiz_html(string $id)
     {
-        File::put(url('/quiz_html/' . $id . '.txt'), 'okokokokoko');
+        File::put(('quiz_html/' . $id . '.txt'), 'okokokokoko');
         return;
         $exams = Exam::where('id', $id)->get();
         $title = $exams[0]->name;
