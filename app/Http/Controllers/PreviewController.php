@@ -124,8 +124,6 @@ class PreviewController extends Controller
 
     public function get_quiz_html(string $id)
     {
-        File::put(('quiz_html/' . $id . '.txt'), 'okokokokoko');
-        return;
         $exams = Exam::where('id', $id)->get();
         $title = $exams[0]->name;
         $is_quiz = 1;
@@ -144,6 +142,7 @@ class PreviewController extends Controller
 
         $image_url_array = $this->get_image_url_array($preview_container);
         $base64_preview_container = $this->replace_url_image_base64($preview_container, $image_url_array);
+        File::put(('quiz_html/' . $id . '.txt'), $base64_preview_container);
         return $base64_preview_container;
     }
 
