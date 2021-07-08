@@ -56,7 +56,6 @@ Route::middleware(['role:manager', 'auth'])->group(function() {
 
 Route::get('/preview_slide/{id}', [PreviewController::class, 'preview_slide']);
 Route::get('/preview_group/{id}', [PreviewController::class, 'preview_group']);
-Route::get('/get_quiz_html/{id}', [PreviewController::class, 'get_quiz_html']);
 Route::get('/examination/{name}', [PreviewController::class, 'exam'])->name('exam');
 Route::get('/examRegister', [PreviewController::class, 'startExam'])->name('startExam');
 

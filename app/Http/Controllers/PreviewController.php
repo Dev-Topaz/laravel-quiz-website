@@ -122,85 +122,85 @@ class PreviewController extends Controller
         ])->with('name', $userName)->with('email', $email)->with('student', true);
     }
 
-    public function get_quiz_html(string $id)
-    {
-        $exams = Exam::where('id', $id)->get();
-        $title = $exams[0]->name;
-        $is_quiz = 1;
+    // public function get_quiz_html(string $id)
+    // {
+    //     $exams = Exam::where('id', $id)->get();
+    //     $title = $exams[0]->name;
+    //     $is_quiz = 1;
 
-        $exam_groups = $exams[0]->exam_groups;
-        $quizzes = [];
-        foreach ($exam_groups as $exam_group) {
-            foreach ($exam_group->quizes as $quiz) {
-                array_push($quizzes, $quiz);
-            }
-        }
+    //     $exam_groups = $exams[0]->exam_groups;
+    //     $quizzes = [];
+    //     foreach ($exam_groups as $exam_group) {
+    //         foreach ($exam_group->quizes as $quiz) {
+    //             array_push($quizzes, $quiz);
+    //         }
+    //     }
 
-        $html = view('preview', ['quizzes' => $quizzes, 'title' => $title, 'is_quiz' => $is_quiz]);
-        $preview_container = '<div id="preview_container">' . explode('<script', explode('<div id="preview_container">', $html)[1])[0];
-        $preview_container = trim(preg_replace('/\s\s+/', '', $preview_container));
+    //     $html = view('preview', ['quizzes' => $quizzes, 'title' => $title, 'is_quiz' => $is_quiz]);
+    //     $preview_container = '<div id="preview_container">' . explode('<script', explode('<div id="preview_container">', $html)[1])[0];
+    //     $preview_container = trim(preg_replace('/\s\s+/', '', $preview_container));
 
-        $image_url_array = $this->get_image_url_array($preview_container);
-        $base64_preview_container = $this->replace_url_image_base64($preview_container, $image_url_array);
-        File::put(('quiz_html/' . $id . '.txt'), $base64_preview_container);
-        return $base64_preview_container;
-    }
+    //     $image_url_array = $this->get_image_url_array($preview_container);
+    //     $base64_preview_container = $this->replace_url_image_base64($preview_container, $image_url_array);
+    //     File::put(('quiz_html/' . $id . '.txt'), $base64_preview_container);
+    //     return $base64_preview_container;
+    // }
 
-    public function get_image_url_array(string $string)
-    {
-        preg_match_all('#\bhttps?://[^,\s()<>]+(?:\([\w\d]+\)|([^,[:punct:]\s]|/))#', $string, $url_array);
+    // public function get_image_url_array(string $string)
+    // {
+    //     preg_match_all('#\bhttps?://[^,\s()<>]+(?:\([\w\d]+\)|([^,[:punct:]\s]|/))#', $string, $url_array);
 
-        $result = [];
+    //     $result = [];
 
-        foreach ($url_array[0] as $url) {
-            $url = str_replace('&quot', '', $url);
-            if ($this->isImage($url)) array_push($result, $url);
-        }
+    //     foreach ($url_array[0] as $url) {
+    //         $url = str_replace('&quot', '', $url);
+    //         if ($this->isImage($url)) array_push($result, $url);
+    //     }
 
-        return array_unique($result);
-    }
+    //     return array_unique($result);
+    // }
 
-    public function isImage(string $url)
-    {
-        $pos = strrpos($url, ".");
-        if ($pos === false)
-            return false;
-        $ext = strtolower(trim(substr($url, $pos)));
-        $imgExts = array(".gif", ".jpg", ".jpeg", ".png", ".tiff", ".tif", ".bmp"); // this is far from complete but that's always going to be the case...
-        if (in_array($ext, $imgExts))
-            return true;
-        return false;
-    }
+    // public function isImage(string $url)
+    // {
+    //     $pos = strrpos($url, ".");
+    //     if ($pos === false)
+    //         return false;
+    //     $ext = strtolower(trim(substr($url, $pos)));
+    //     $imgExts = array(".gif", ".jpg", ".jpeg", ".png", ".tiff", ".tif", ".bmp"); // this is far from complete but that's always going to be the case...
+    //     if (in_array($ext, $imgExts))
+    //         return true;
+    //     return false;
+    // }
 
-    public function image_base64(string $url)
-    {
-        $type = pathinfo($url, PATHINFO_EXTENSION);
-        $data = $this->curl_get_contents($url);
-        $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+    // public function image_base64(string $url)
+    // {
+    //     $type = pathinfo($url, PATHINFO_EXTENSION);
+    //     $data = $this->curl_get_contents($url);
+    //     $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
 
-        return $base64;
-    }
+    //     return $base64;
+    // }
 
-    public function replace_url_image_base64(string $str, array $url_array)
-    {
-        foreach ($url_array as $url) {
-            $str = str_replace($url, $this->image_base64($url), $str);
-        }
+    // public function replace_url_image_base64(string $str, array $url_array)
+    // {
+    //     foreach ($url_array as $url) {
+    //         $str = str_replace($url, $this->image_base64($url), $str);
+    //     }
 
-        return $str;
-    }
+    //     return $str;
+    // }
 
-    function curl_get_contents($url)
-    {
-        $ch = curl_init();
+    // function curl_get_contents($url)
+    // {
+    //     $ch = curl_init();
 
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_URL, $url);
+    //     curl_setopt($ch, CURLOPT_HEADER, 0);
+    //     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    //     curl_setopt($ch, CURLOPT_URL, $url);
 
-        $data = curl_exec($ch);
-        curl_close($ch);
+    //     $data = curl_exec($ch);
+    //     curl_close($ch);
 
-        return $data;
-    }
+    //     return $data;
+    // }
 }
