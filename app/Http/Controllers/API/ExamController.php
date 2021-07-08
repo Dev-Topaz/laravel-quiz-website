@@ -114,7 +114,8 @@ class ExamController extends BaseController
         $result = [];
 
         foreach ($url_array[0] as $url) {
-            if ($this->isImage($url)) array_push($result, str_replace('&quot', '', $url));
+            $url = str_replace('&quot', '', $url);
+            if ($this->isImage($url)) array_push($result, $url);
         }
 
         $success['data'] = array_unique($result);
@@ -128,7 +129,8 @@ class ExamController extends BaseController
         $result = [];
 
         foreach ($url_array[0] as $url) {
-            if (!$this->isImage($url)) array_push($result, str_replace('&quot', '', $url));
+            $url = str_replace('&quot', '', $url);
+            if (!$this->isImage($url)) array_push($result, $url);
         }
 
         $success['data'] = array_unique($result);
