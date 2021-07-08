@@ -43,8 +43,6 @@ class ExamController extends BaseController
     {
         $quiz = Exam::find($id);
 
-        $quiz_content = $this->get_quiz_html($id);
-        $quiz->quiz_content = $quiz_content;
 
         $success['data'] = $quiz;
         return $this->sendResponse($success, 'success');
@@ -82,6 +80,7 @@ class ExamController extends BaseController
 
     public function get_quiz_html(string $id)
     {
+        ini_set('max_execution_time', 300);
 
         $exams = Exam::where('id', $id)->get();
         $title = $exams[0]->name;
@@ -100,16 +99,16 @@ class ExamController extends BaseController
         $preview_container = '<div id="preview_container">' . explode('<script', explode('<div id="preview_container">', $html)[1])[0];
         $preview_container = trim(preg_replace('/\s\s+/', '', $preview_container));
 
-        return $preview_container;
 
-//        $url_array = $this->get_url_array($preview_container);
-//        $success['data'] = $preview_container;
-//        return $this->sendResponse($success, 'success');
+        $image_url_array = $this->get_image_url_array($preview_container);
+        $base64_preview_container = $this->replace_url_image_base64($preview_container, $image_url_array);
+        $success['data'] = $base64_preview_container;
+        return $this->sendResponse($success, 'success');
     }
 
-    public function get_image_url_array(Request $request)
+    public function get_image_url_array(string $string)
     {
-        preg_match_all('#\bhttps?://[^,\s()<>]+(?:\([\w\d]+\)|([^,[:punct:]\s]|/))#', $request->quizContent, $url_array);
+        preg_match_all('#\bhttps?://[^,\s()<>]+(?:\([\w\d]+\)|([^,[:punct:]\s]|/))#', $string, $url_array);
 
         $result = [];
 
@@ -118,8 +117,7 @@ class ExamController extends BaseController
             if ($this->isImage($url)) array_push($result, $url);
         }
 
-        $success['data'] = array_unique($result);
-        return $this->sendResponse($success, 'success');
+        return array_unique($result);
     }
 
     public function get_video_audio_url_array(Request $request)
@@ -149,26 +147,24 @@ class ExamController extends BaseController
         return false;
     }
 
-    // public function image_base64(string $url)
-    // {
-    //     $url = urldecode($url);
-    //     $type = pathinfo($url, PATHINFO_EXTENSION);
-    //     $data = file_get_contents($url);
-    //     $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+    public function image_base64(string $url)
+    {
+        $url = urldecode($url);
+        $type = pathinfo($url, PATHINFO_EXTENSION);
+        $data = file_get_contents($url);
+        $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
 
-    //     $success['data'] = $base64;
-    //     return $this->sendResponse($success, 'success');
-    //     // return $base64;
-    // }
+        $success['data'] = $base64;
+        return $this->sendResponse($success, 'success');
+        // return $base64;
+    }
 
-    // public function replace_url_image_base64(string $str, array $url_array)
-    // {
-    //     foreach ($url_array as $url) {
-    //         if ($this->isImage($url)) {
-    //             $str = str_replace($url, $this->image_base64($url), $str);
-    //         }
-    //     }
+    public function replace_url_image_base64(string $str, array $url_array)
+    {
+        foreach ($url_array as $url) {
+            $str = str_replace($url, $this->image_base64($url), $str);
+        }
 
-    //     return $str;
-    // }
+        return $str;
+    }
 }
