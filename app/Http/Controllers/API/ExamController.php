@@ -80,8 +80,6 @@ class ExamController extends BaseController
 
     public function get_quiz_html(string $id)
     {
-        ini_set('max_execution_time', 300);
-
         $exams = Exam::where('id', $id)->get();
         $title = $exams[0]->name;
         $is_quiz = 1;
@@ -95,7 +93,6 @@ class ExamController extends BaseController
         }
 
         $html = view('preview', ['quizzes' => $quizzes, 'title' => $title, 'is_quiz' => $is_quiz]);
-        $body = explode('</body>', explode('<body>', $html)[1])[0];
         $preview_container = '<div id="preview_container">' . explode('<script', explode('<div id="preview_container">', $html)[1])[0];
         $preview_container = trim(preg_replace('/\s\s+/', '', $preview_container));
 
@@ -155,8 +152,8 @@ class ExamController extends BaseController
         $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
 
         $success['data'] = $base64;
-        return $this->sendResponse($success, 'success');
-        // return $base64;
+//        return $this->sendResponse($success, 'success');
+         return $base64;
     }
 
     public function replace_url_image_base64(string $str, array $url_array)
