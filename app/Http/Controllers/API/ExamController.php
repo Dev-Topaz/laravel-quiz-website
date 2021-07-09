@@ -111,8 +111,7 @@ class ExamController extends BaseController
 
         foreach ($url_array[0] as $url) {
             $url = str_replace('&quot', '', $url);
-            array_push($result, $url);
-            //if ($this->isImage($url)) array_push($result, $url);
+            if ($this->isImage($url)) array_push($result, $url);
         }
 
         return array_unique($result);
