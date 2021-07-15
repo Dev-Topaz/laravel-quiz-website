@@ -103,6 +103,7 @@
     $('#imagePopup span.close').click(function () {
         $('#imagePopup').fadeOut(500);
     });
+
 </script>
 </body>
 </html>

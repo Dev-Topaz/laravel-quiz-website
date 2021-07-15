@@ -162,4 +162,24 @@ class ExamController extends BaseController
 
         return $str;
     }
+
+    public function send_email(String $str)
+    {
+        $request = json_decode($str);
+
+        $details = [
+            'data' => $request,
+            'exam_date_time' => date("Y/m/d") . ' ' . date("h:i:sa"),
+        ];
+
+        \Mail::to($request->user_email)->send(new \App\Mail\QuizResultMail($details));
+
+        $stuff_emails = explode(',', $request->stuff_emails);
+
+        foreach ($stuff_emails as $stuff_email) {
+            \Mail::to($stuff_email)->send(new \App\Mail\QuizResultMail($details));
+        }
+
+        dd("Email is Sent.");
+    }
 }
