@@ -163,9 +163,9 @@ class ExamController extends BaseController
         return $str;
     }
 
-    public function send_email(String $str)
+    public function send_email(Request $str)
     {
-        $request = json_decode($str);
+        $request = json_decode($str->json);
 
         $details = [
             'data' => $request,

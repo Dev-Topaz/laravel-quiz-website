@@ -27,7 +27,7 @@ Route::middleware('auth:api')->get('/get_quiz/{id}', [ExamController::class, 'ge
 // Route::middleware('auth:api')->post('/get_quiz_image_url', [ExamController::class, 'get_image_url_array']);
 Route::middleware('auth:api')->post('/get_quiz_video_audio_url', [ExamController::class, 'get_video_audio_url_array']);
 Route::middleware('auth:api')->get('/get_quiz_html/{id}', [ExamController::class, 'get_quiz_html']);
-Route::middleware('auth:api')->get('/send_email/{str}', [ExamController::class, 'send_email']);
+Route::middleware('auth:api')->post('/send_email', [ExamController::class, 'send_email']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
