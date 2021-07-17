@@ -22,7 +22,7 @@ if (canvas_info != '') {
     var json_bg_url = JSON.parse(canvas_bg_url);
     var json_canvas_item = JSON.parse(canvas_item_info);
 
-    fabric.Image.fromURL(root_url + '/' + json_bg_url.background, function (img) {
+    fabric.Image.fromURL(json_bg_url.background, function (img) {
         console.log(fit_canvas_image(canvas.width, canvas.height, img.width, img.height));
         canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
             scaleX: fit_canvas_image(canvas.width, canvas.height, img.width, img.height).scaleFactor,
@@ -77,7 +77,7 @@ if (canvas_info != '') {
 
     var slide_view_canvas = new fabric.Canvas('slide_view_hotspots_canvas');
 
-    fabric.Image.fromURL(root_url + '/' + json_bg_url.background, function (img) {
+    fabric.Image.fromURL(json_bg_url.background, function (img) {
         slide_view_canvas.setBackgroundImage(img, slide_view_canvas.renderAll.bind(slide_view_canvas), {
             //  scaleX: 300 / img.width,
             // scaleY: 214 / img.height
