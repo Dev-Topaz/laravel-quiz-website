@@ -160,7 +160,7 @@ $('#hotspots_only_from_files_image').change(function () {
             success: (response) => {
                 if (response) {
                     console.log(response);
-                    $('#answer_content').val('{"background": "' + response + '"}@{}');
+                    $('#answer_content').val('{"background": "' + root_url + '/' + response + '"}@{}');
                     console.log('Image has been uploaded successfully');
                 }
             },
