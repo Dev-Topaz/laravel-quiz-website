@@ -292,7 +292,7 @@ function answer_form2slide() {
             var json_bg_url = JSON.parse(canvas_bg_url);
             var json_canvas_item = JSON.parse(canvas_item_info);
 
-            fabric.Image.fromURL(root_url + '/' + json_bg_url.background, function (img) {
+            fabric.Image.fromURL(json_bg_url.background, function (img) {
                 slide_view_canvas.setBackgroundImage(img, slide_view_canvas.renderAll.bind(slide_view_canvas), {
                     scaleX: fit_canvas_image(slide_view_canvas.width, slide_view_canvas.height, img.width, img.height).scaleFactor,
                     scaleY: fit_canvas_image(slide_view_canvas.width, slide_view_canvas.height, img.width, img.height).scaleFactor,
