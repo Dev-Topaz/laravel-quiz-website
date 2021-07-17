@@ -160,6 +160,7 @@ $('#hotspots_only_from_files_image').change(function () {
             success: (response) => {
                 if (response) {
                     console.log(response);
+                    var root_url = $('meta[name=url]').attr('content');
                     $('#answer_content').val('{"background": "' + root_url + '/' + response + '"}@{}');
                     console.log('Image has been uploaded successfully');
                 }
