@@ -394,7 +394,7 @@ function rearrange_preview_ui() {
 
             var json_bg_url = JSON.parse(canvas_bg_url);
 
-            $('.quiz_show .slide_view_answer_element .col-md-12').html('<div id="image-hotspots" style="position: relative;width: 300px;height: 214px;left: 50%;transform: translateX(-50%)"><img src="' + root_url + '/' + json_bg_url.background + '" height="214" width="300" onclick="create_hotspots(event)" style="position: relative;left: 50%;transform: translateX(-50%);object-fit: contain;"></div>');
+            $('.quiz_show .slide_view_answer_element .col-md-12').html('<div id="image-hotspots" style="position: relative;width: 300px;height: 214px;left: 50%;transform: translateX(-50%)"><img src="' + json_bg_url.background + '" height="214" width="300" onclick="create_hotspots(event)" style="position: relative;left: 50%;transform: translateX(-50%);object-fit: contain;"></div>');
 
             $('#clear_hotspots').css('visibility', 'visible');
             break;
