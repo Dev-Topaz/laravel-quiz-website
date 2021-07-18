@@ -99,7 +99,7 @@ class ExamController extends BaseController
 
         $image_url_array = $this->get_image_url_array($preview_container);
         $base64_preview_container = $this->replace_url_image_base64($preview_container, $image_url_array);
-        $success['data'] = $base64_preview_container;
+        $success['data'] = $image_url_array;
         // $success['data'] = $preview_container;
         return $this->sendResponse($success, 'success');
     }
