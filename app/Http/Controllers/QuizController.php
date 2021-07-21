@@ -445,6 +445,7 @@ class QuizController extends Controller
         $exam = Exam::find($request->exam_id);
         $exam->downloaded = 0;
         $exam->save();
+        $exam->touch();
 
         return $quiz->id;
 
@@ -542,6 +543,7 @@ class QuizController extends Controller
         $exam = Exam::find($exam_id);
         $exam->downloaded = 0;
         $exam->save();
+        $exam->touch();
 
         return $quiz->id;
     }
@@ -571,6 +573,9 @@ class QuizController extends Controller
                 }
             }
         }
+
+        $exam = Exam::find($exam_id);
+        $exam->touch();
 
         return true;
     }
@@ -660,6 +665,7 @@ class QuizController extends Controller
         $exam = Exam::find($request->exam_id);
         $exam->downloaded = 0;
         $exam->save();
+        $exam->touch();
 
         return $index;
     }
@@ -685,6 +691,7 @@ class QuizController extends Controller
         $exam = Exam::find($quiz->exam_group->exam_id);
         $exam->downloaded = 0;
         $exam->save();
+        $exam->touch();
 
         return $replicate->id;
     }
@@ -704,6 +711,7 @@ class QuizController extends Controller
         $exam = Exam::find($request->exam_id);
         $exam->downloaded = 0;
         $exam->save();
+        $exam->touch();
 
         return $quizzes;
     }

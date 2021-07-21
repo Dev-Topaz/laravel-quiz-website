@@ -971,6 +971,8 @@ function evulate() {
             question_user_answer.push(matching_answer.split('<p>').join('').split('</p>').join(''));
             question_correct_answer.push($('.quiz_show .correct_answer').html().split('<p>').join('').split('</p>').join(''));
 
+            console.log(question_correct_answer);
+            console.log(question_user_answer);
 
             if ($('.quiz_show .partially_correct').html() == '1') {
                 var correct_answer_array = question_correct_answer[0].split('@');
