@@ -95,7 +95,7 @@ class ExamController extends BaseController
         $html = view('preview', ['quizzes' => $quizzes, 'title' => $title, 'is_quiz' => $is_quiz]);
         $preview_container = '<div id="preview_container">' . explode('<script', explode('<div id="preview_container">', $html)[1])[0];
         $preview_container = trim(preg_replace('/\s+</', '<', $preview_container));
-
+        $preview_container = str_replace("\r\n", '', $preview_container);
 
         $image_url_array = $this->get_image_url_array($preview_container);
         $base64_preview_container = $this->replace_url_image_base64($preview_container, $image_url_array);
