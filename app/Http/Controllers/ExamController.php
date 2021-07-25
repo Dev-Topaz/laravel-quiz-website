@@ -69,6 +69,7 @@ class ExamController extends Controller
             'email_from' => $request->email_from,
             'email_subject' => $request->email_subject,
             'email_comment' => $request->email_comment,
+            'exam_icon' => $request->exam_icon,
             'downloaded' => 0,
             'published' => 1,
         ]);
