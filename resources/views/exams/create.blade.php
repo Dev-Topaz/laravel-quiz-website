@@ -171,8 +171,7 @@
                                 <div class="form-group row">
                                     <label for="exam_icon" class="col-md-3 col-form-label text-md-right">{{ __('Exam Icon')}}</label>
                                     <div class="col-md-7">
-                                        <input id="upload_exam_icon" type="file" accept="image/*"
-                                               class="form-control @error('upload_exam_icon') is-invalid @enderror" name="upload_exam_icon" autofocus hidden>
+                                        <input id="upload_exam_icon" type="file" accept="image/*" class="form-control @error('upload_exam_icon') is-invalid @enderror" name="upload_exam_icon" autofocus hidden>
                                         <input id="exam_icon" type="text" class="form-control @error('exam_icon') is-invalid @enderror" name="exam_icon" autocomplete="exam_icon" autofocus>
                                         <button id="upload_exam_icon_btn" type="button" class="btn btn-primary" style="margin-top: 10px;">
                                             {{ __('Upload Exam Icon') }}
