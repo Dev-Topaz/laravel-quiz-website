@@ -95,7 +95,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `migrations` */
 
@@ -151,7 +151,8 @@ insert  into `migrations`(`id`,`migration`,`batch`) values
 (49,'2021_07_25_142506_update_exams_table_add_exam_icon_field',27),
 (50,'2021_07_29_051548_create_users_exams_table',28),
 (51,'2021_07_29_092655_update_exams_table_add_field_approved_exams',29),
-(52,'2021_07_29_093021_update_users_table_add_field_approved_exams',30);
+(52,'2021_07_29_093021_update_users_table_add_field_approved_exams',30),
+(53,'2021_07_29_170437_create_results_table',31);
 
 /*Table structure for table `oauth_access_tokens` */
 
@@ -174,9 +175,11 @@ CREATE TABLE `oauth_access_tokens` (
 /*Data for the table `oauth_access_tokens` */
 
 insert  into `oauth_access_tokens`(`id`,`user_id`,`client_id`,`name`,`scopes`,`revoked`,`created_at`,`updated_at`,`expires_at`) values 
+('330abac31f5e5717ceebc15264e876186e1ad0ffec8e2bc22c6121fce602968aa3f5ddda186eb5d6',6,1,'MyApp','[]',0,'2021-07-29 13:29:26','2021-07-29 13:29:26','2022-07-29 13:29:26'),
 ('34220f128f587e31cddb3d6b28f22b32e03714ea8e27d67e7f14d45731dcf57a0e26fbd8b88871e5',6,1,'MyApp','[]',0,'2021-07-16 00:05:39','2021-07-16 00:05:39','2022-07-16 00:05:39'),
 ('468c8b5f816a0e84638b9a899d4d6fef82202b4f8349c17c9c3ad38905aab118e3cec71e105ef1c7',6,1,'MyApp','[]',0,'2021-07-15 07:48:25','2021-07-15 07:48:25','2022-07-15 07:48:25'),
 ('5b4d5cbe58c1eb614294f01960eb65cbd0085a2521d7247e87b7f1ae1cd045bd3745732c59fb00f5',6,1,'MyApp','[]',0,'2021-07-29 03:55:41','2021-07-29 03:55:41','2022-07-29 03:55:41'),
+('6616906b6b20a4c7596f02a8619760e5ebb52361ceefbb5067a0c8d022b1474f162f14959dbf34fb',6,1,'MyApp','[]',0,'2021-07-29 13:28:22','2021-07-29 13:28:22','2022-07-29 13:28:22'),
 ('90a736cf56cb5cc89cc82846dfdf968217511f97e66e003cac3b1b7b95b363055bda6a17bff9b756',6,1,'MyApp','[]',0,'2021-07-29 04:19:17','2021-07-29 04:19:17','2022-07-29 04:19:16'),
 ('98e81add880e6eabe68d84dfada8738f51ddedc179802b5ca0b5fdc5b053268a7623a36e8281e89d',6,1,'MyApp','[]',0,'2021-07-29 03:58:02','2021-07-29 03:58:02','2022-07-29 03:58:02'),
 ('c2ad138b9a4eebabf86fc70c017e18f248b6e498ddc8e85c797a1711439a0db6f14d5329f72c62cb',6,1,'MyApp','[]',0,'2021-07-29 03:58:38','2021-07-29 03:58:38','2022-07-29 03:58:38'),
@@ -374,6 +377,22 @@ insert  into `quizes`(`id`,`exam_group_id`,`type_id`,`question_element`,`answer`
 (1254,211,1,'<div class=\"slide_view_question_element slide_view_group\" style=\"height: 70px;width: 80%;left: 10%;z-index: 3;overflow: hidden;padding:10px;position:absolute;\"><div contenteditable=\"true\" class=\"cancel_drag\">Select the correct answer option:</div></div>','1','That\'s right! You chose the correct response.','You did not choose the correct response.','You did not choose the correct response. Try again.',NULL,'2021-07-29 08:55:22','2021-07-29 08:55:22',0,'<div class=\"slide_view_answer_element slide_view_group\" style=\"width: 80%;top: 100px;left: 10%;z-index: 2;position:absolute;overflow:hidden;\"><div class=\"col-md-12\"><div class=\"choice_item\"><input type=\"radio\" id=\"1\" name=\"answer\" value=\"1\" style=\"padding-right: 10px;\"><label for=\"1\">Option 1</label></div><div class=\"choice_item\"><input type=\"radio\" id=\"2\" name=\"answer\" value=\"2\" style=\"padding-right: 10px;\"><label for=\"2\">Option 2</label></div><div class=\"choice_item\"><input type=\"radio\" id=\"3\" name=\"answer\" value=\"3\" style=\"padding-right: 10px;\"><label for=\"3\">Option 3</label></div></div></div>','graded','by_result','by_result','by_result','1',0,NULL,1,NULL,NULL,NULL,10,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (1255,211,2,'<div class=\"slide_view_question_element slide_view_group\" style=\"height: 70px;width: 80%;left: 10%;z-index: 3;overflow: hidden;padding:10px;position:absolute;\"><div contenteditable=\"true\" class=\"cancel_drag\">Select one or more correct answers:</div></div>','1;','That\'s right! You chose the correct response.','You did not choose the correct response.','You did not choose the correct response. Try again.',NULL,'2021-07-29 08:55:29','2021-07-29 08:55:31',1,'<div class=\"slide_view_answer_element slide_view_group\" style=\"width: 80%;top: 100px;left: 10%;z-index: 2;position:absolute;overflow:hidden;\"><div class=\"col-md-12\" style=\"\"><div class=\"response_item\"><input type=\"checkbox\" id=\"1\" name=\"answer\" value=\"1\" style=\"padding-right: 10px;\"><label for=\"1\">Option 1</label></div><div class=\"response_item\"><input type=\"checkbox\" id=\"2\" name=\"answer\" value=\"2\" style=\"padding-right: 10px;\"><label for=\"2\">Option 2</label></div><div class=\"response_item\"><input type=\"checkbox\" id=\"3\" name=\"answer\" value=\"3\" style=\"padding-right: 10px;\"><label for=\"3\">Option 3</label></div></div></div>','graded','by_result',NULL,NULL,'1',0,'01:00',1,0,0,NULL,10,0,0,'<div class=\"slide_view_media_element slide_view_group\" style=\"z-index: 1;display: none;position: absolute;top: 0;left: 0;width:33%;\">\n                        <img src=\"#\" alt=\"slide_view_media\" style=\"width: 100%; height: 100%; visibility: visible;\" data-nsfw-filter-status=\"sfw\">\n                    </div>',NULL,NULL,NULL,NULL,'<div class=\"slide_view_video_element slide_view_group\" style=\"z-index: 1;display: none;position: absolute;top: 0;left: 0;width:33%;\">\n                        <video controls=\"\" style=\"width: 100%;height: 100%\">\n                            <source src=\"#\">\n                        </video>\n                    </div>',NULL);
 
+/*Table structure for table `results` */
+
+DROP TABLE IF EXISTS `results`;
+
+CREATE TABLE `results` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `exam_id` int(11) NOT NULL,
+  `result` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `results` */
+
 /*Table structure for table `roles` */
 
 DROP TABLE IF EXISTS `roles`;
@@ -431,7 +450,7 @@ CREATE TABLE `users` (
 
 insert  into `users`(`id`,`name`,`email`,`email_verified_at`,`password`,`remember_token`,`created_at`,`updated_at`,`active`,`approved_exams`) values 
 (1,'Test Admin','manager@gmail.com',NULL,'$2y$10$B.gKC6KKUq6asvFJK4m3deBLqLtLrtksCAjY7yyIt8eClYgGAvXk6',NULL,NULL,NULL,1,NULL),
-(6,'Sophie','bolesalavb@gmail.com',NULL,'$2y$10$WSQzjZbqn8wNVCSVxgaJpeB5rXb0Yeei.t8gi9XlhPdGY204m6R4m',NULL,'2021-05-28 08:40:01','2021-07-29 10:11:20',0,'88@');
+(6,'Sophie','bolesalavb@gmail.com',NULL,'$2y$10$WSQzjZbqn8wNVCSVxgaJpeB5rXb0Yeei.t8gi9XlhPdGY204m6R4m',NULL,'2021-05-28 08:40:01','2021-07-29 13:26:24',1,'88@');
 
 /*Table structure for table `users_permissions` */
 

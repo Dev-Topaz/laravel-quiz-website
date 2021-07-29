@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\BaseController as BaseController;
 use App\Models\Exam;
+use App\Models\Result;
 use Validator;
 
 //use App\Http\Resources\Product as ProductResource;
@@ -181,5 +182,17 @@ class ExamController extends BaseController
         }
 
         dd("Email is Sent.");
+    }
+
+    public function save_result(Request $request)
+    {
+        $result = Result::create([
+            'user_id' => $request->user_id,
+            'exam_id' => $request->exam_id,
+            'result' => $request->json,
+        ]);
+
+        $success['data'] = $result;
+        return $this->sendResponse($success, 'success');
     }
 }
