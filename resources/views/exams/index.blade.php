@@ -112,6 +112,10 @@
                                                         class="far fa-play-circle"></i><span class="option_text">Test Exam</span></a>
                                             </div>
                                             <div class="form_option_separator"></div>
+                                            <div class="form_option">
+                                                <a href="{{ url('/result') }}/{{$exam->id}}"><i class="far fa-eye"></i>Show Result</a>
+                                            </div>
+                                            <div class="form_option_separator"></div>
                                             <div class="form_option option_expandable">
                                                 <a class="mf_link_theme" href="javascript:void(0)"
                                                    onclick="showDuplicateModel({{ $exam->id }}, '{{ $exam->name }} - copy')"><i

@@ -8,6 +8,7 @@ use App\Http\Controllers\UploadController;
 use App\Http\Controllers\PreviewController;
 use App\Http\Controllers\ExamGroupController;
 use App\Http\Controllers\SendMailController;
+use App\Http\Controllers\ResultController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +54,8 @@ Route::middleware(['role:manager', 'auth'])->group(function() {
     Route::post('/duplicate_exam', [ExamController::class, 'duplicate_exam'])->name('duplicateExam');
     Route::get('/exam/{id}', [PreviewController::class, 'preview_exam'])->name('preview_exam');
 });
+
+Route::get('/result/{exam_id}', [ResultController::class, 'show']);
 
 Route::get('/preview_slide/{id}', [PreviewController::class, 'preview_slide']);
 Route::get('/preview_group/{id}', [PreviewController::class, 'preview_group']);
