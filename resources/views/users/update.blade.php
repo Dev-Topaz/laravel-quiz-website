@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-11">
             <div class="card">
                 <div class="card-header">{{ __('Update User') }}</div>
 
@@ -71,6 +71,37 @@
                             </div>
                         </div>
 
+                        <hr/>
+                        <div class="row">
+                            <h4 style="padding-left: 30px;">Approved Exams</h4>
+                        </div>
+
+                        <table width="100%" cellspacing="0" cellpadding="0" border="0" class="table table-striped">
+                            <tbody>
+                                @foreach($exam_list as $exam)
+                                <tr>
+                                    <td>{{ $exam->name }}</td>
+                                    <td style="width: 20px;"><input id="exam_{{ $exam->id }}" type="checkbox" class="exam_checkbox form-control @error('exam_{{ $exam->id }}') is-invalid @enderror" name="exam_{{ $exam->id }}" value="{{ $exam->id }}" autocomplete="exam_{{ $exam->id }}" style="height: 18px;width: 18px;" {{ $exam->approved ? 'checked' : '' }}></td>
+                                </tr>
+                                <!-- <div class="form-group row" style="align-items: center">
+                                    <label for="exam_{{ $exam->id }}" class="col-md-6 col-form-label text-md-right">{{ $exam->name }}</label>
+        
+                                    <div class="col-md-1">
+                                        <input id="exam_{{ $exam->id }}" type="checkbox" class="exam_checkbox form-control @error('exam_{{ $exam->id }}') is-invalid @enderror" name="exam_{{ $exam->id }}" value="{{ $exam->id }}" autocomplete="exam_{{ $exam->id }}" style="height: 18px;" {{ $exam->approved ? 'checked' : '' }}>
+        
+                                        @error('exam_{{ $exam->id }}')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div> -->
+                                @endforeach
+                            </tbody>
+                        </table>
+
+                        <input type="text" id="approved_exams" name="approved_exams" value="{{ $user->approved_exams }}" hidden>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
@@ -84,4 +115,16 @@
         </div>
     </div>
 </div>
+
+<script>
+    $('.exam_checkbox').change(function() {
+        result = '';
+        for (let index = 0; index < $('.exam_checkbox').length; index++) {
+            const element = $('.exam_checkbox').eq(index);
+            if (element.is(':checked')) result += element.val() + '@';
+        }
+
+        $('#approved_exams').val(result);
+    });
+</script>
 @endsection

@@ -23,14 +23,17 @@ CREATE TABLE `exam_groups` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=210 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=213 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `exam_groups` */
 
 insert  into `exam_groups`(`id`,`group_name`,`exam_id`,`created_at`,`updated_at`) values 
 (204,'Intro Group',86,'2021-07-16 07:14:18','2021-07-16 07:14:18'),
 (205,'Question Group',86,'2021-07-16 07:14:18','2021-07-16 07:14:18'),
-(206,'Results',86,'2021-07-16 07:14:19','2021-07-16 07:14:19');
+(206,'Results',86,'2021-07-16 07:14:19','2021-07-16 07:14:19'),
+(210,'Intro Group',88,'2021-07-29 08:55:06','2021-07-29 08:55:06'),
+(211,'Question Group',88,'2021-07-29 08:55:06','2021-07-29 08:55:06'),
+(212,'Results',88,'2021-07-29 08:55:06','2021-07-29 08:55:06');
 
 /*Table structure for table `exams` */
 
@@ -57,12 +60,13 @@ CREATE TABLE `exams` (
   `email_comment` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `exam_icon` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `exams` */
 
 insert  into `exams`(`id`,`name`,`description`,`author_id`,`status`,`attempt_number`,`passing_score`,`created_at`,`updated_at`,`theme_style`,`screen_height`,`screen_width`,`stuff_emails`,`downloaded`,`published`,`email_from`,`email_subject`,`email_comment`,`exam_icon`) values 
-(86,'NIKITA ZUKOV',NULL,1,1,1,100,'2021-07-16 07:14:18','2021-07-25 15:14:50','background: unset; font-fmily:Calibri; color:rgb(0, 0, 0); background-image:url(\"http://localhost:8000/images/theme_backgrounds/abstract_beige - Copy.png\"); background-size: 100% 100%; background-repeat: no-repeat;',450,940,'rto@civilsafety.edu.au,robert@civilsafety.edu.au',0,1,'Civil Safety Assessment Desk','[%QUIZ_STATUS%] Test Quiz Results: \"%QUIZ_TITLE%\"','This is an automatically generated email from the Civil Safety Assessment Desk to report your assessment results. Please store this email in a safe place as you willy be required to produce it if asked by Civil Safety','http://localhost:8000/images/upload/60fd7fb76fcde.jpeg');
+(86,'Text Exam 2',NULL,1,1,1,100,'2021-07-16 07:14:18','2021-07-29 08:56:41','background: unset; font-fmily:Calibri; color:rgb(0, 0, 0); background-image:url(\"http://localhost:8000/images/theme_backgrounds/abstract_beige - Copy.png\"); background-size: 100% 100%; background-repeat: no-repeat;',450,940,'rto@civilsafety.edu.au,robert@civilsafety.edu.au',0,1,'Civil Safety Assessment Desk','[%QUIZ_STATUS%] Test Quiz Results: \"%QUIZ_TITLE%\"','This is an automatically generated email from the Civil Safety Assessment Desk to report your assessment results. Please store this email in a safe place as you willy be required to produce it if asked by Civil Safety','http://localhost:8000/images/upload/60fd7fb76fcde.jpeg'),
+(88,'Test Exam',NULL,1,1,1,100,'2021-07-29 08:55:06','2021-07-29 08:55:56',NULL,450,940,'rto@civilsafety.edu.au,robert@civilsafety.edu.au',0,1,'Civil Safety Assessment Desk','[%QUIZ_STATUS%] Test Quiz Results: \"%QUIZ_TITLE%\"','This is an automatically generated email from the Civil Safety Assessment Desk to report your assessment results. Please store this email in a safe place as you willy be required to produce it if asked by Civil Safety',NULL);
 
 /*Table structure for table `failed_jobs` */
 
@@ -91,7 +95,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `migrations` */
 
@@ -144,7 +148,10 @@ insert  into `migrations`(`id`,`migration`,`batch`) values
 (46,'2016_06_01_000005_create_oauth_personal_access_clients_table',24),
 (47,'2021_06_19_033232_update_exams_table_add_fields_downloaded_and_published',25),
 (48,'2021_07_01_064159_update_exams_table_add_3_fields',26),
-(49,'2021_07_25_142506_update_exams_table_add_exam_icon_field',27);
+(49,'2021_07_25_142506_update_exams_table_add_exam_icon_field',27),
+(50,'2021_07_29_051548_create_users_exams_table',28),
+(51,'2021_07_29_092655_update_exams_table_add_field_approved_exams',29),
+(52,'2021_07_29_093021_update_users_table_add_field_approved_exams',30);
 
 /*Table structure for table `oauth_access_tokens` */
 
@@ -168,7 +175,12 @@ CREATE TABLE `oauth_access_tokens` (
 
 insert  into `oauth_access_tokens`(`id`,`user_id`,`client_id`,`name`,`scopes`,`revoked`,`created_at`,`updated_at`,`expires_at`) values 
 ('34220f128f587e31cddb3d6b28f22b32e03714ea8e27d67e7f14d45731dcf57a0e26fbd8b88871e5',6,1,'MyApp','[]',0,'2021-07-16 00:05:39','2021-07-16 00:05:39','2022-07-16 00:05:39'),
-('468c8b5f816a0e84638b9a899d4d6fef82202b4f8349c17c9c3ad38905aab118e3cec71e105ef1c7',6,1,'MyApp','[]',0,'2021-07-15 07:48:25','2021-07-15 07:48:25','2022-07-15 07:48:25');
+('468c8b5f816a0e84638b9a899d4d6fef82202b4f8349c17c9c3ad38905aab118e3cec71e105ef1c7',6,1,'MyApp','[]',0,'2021-07-15 07:48:25','2021-07-15 07:48:25','2022-07-15 07:48:25'),
+('5b4d5cbe58c1eb614294f01960eb65cbd0085a2521d7247e87b7f1ae1cd045bd3745732c59fb00f5',6,1,'MyApp','[]',0,'2021-07-29 03:55:41','2021-07-29 03:55:41','2022-07-29 03:55:41'),
+('90a736cf56cb5cc89cc82846dfdf968217511f97e66e003cac3b1b7b95b363055bda6a17bff9b756',6,1,'MyApp','[]',0,'2021-07-29 04:19:17','2021-07-29 04:19:17','2022-07-29 04:19:16'),
+('98e81add880e6eabe68d84dfada8738f51ddedc179802b5ca0b5fdc5b053268a7623a36e8281e89d',6,1,'MyApp','[]',0,'2021-07-29 03:58:02','2021-07-29 03:58:02','2022-07-29 03:58:02'),
+('c2ad138b9a4eebabf86fc70c017e18f248b6e498ddc8e85c797a1711439a0db6f14d5329f72c62cb',6,1,'MyApp','[]',0,'2021-07-29 03:58:38','2021-07-29 03:58:38','2022-07-29 03:58:38'),
+('cc09e9795ee62176b63c0dad99e2144cd782f1f459db9b490c692034f4182590ea06af25a9c87c3e',6,1,'MyApp','[]',0,'2021-07-29 03:56:10','2021-07-29 03:56:10','2022-07-29 03:56:10');
 
 /*Table structure for table `oauth_auth_codes` */
 
@@ -346,7 +358,7 @@ CREATE TABLE `quizes` (
   `video_element` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `audio_element` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1251 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1256 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `quizes` */
 
@@ -355,7 +367,12 @@ insert  into `quizes`(`id`,`exam_group_id`,`type_id`,`question_element`,`answer`
 (1236,206,14,'<div class=\"slide_view_question_element slide_view_group\" style=\"height: 70px;width: 80%;left: 10%;z-index: 3;overflow: hidden;padding:10px;position:absolute;\"><div contenteditable=\"true\" class=\"cancel_drag\">Congratulations, you passed!</div></div>','','That\'s right! You chose the correct response.','You did not choose the correct response.','You did not choose the correct response. Try again.',NULL,'2021-07-16 07:14:19','2021-07-16 07:14:19',0,'<div class=\"slide_view_answer_element slide_view_group\" style=\"width: 80%;top: 100px;left: 10%;z-index: 2;padding: 10px;position:absolute;overflow: hidden;\"><div class=\"col-md-12\"><div contenteditable=\"true\"><div class=\"cancel_drag\">Your Score: %%</div><div class=\"cancel_drag\">Passing Score: ##</div></div></div></div>','graded','by_result',NULL,NULL,'1',0,NULL,NULL,0,NULL,NULL,0,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (1237,206,15,'<div class=\"slide_view_question_element slide_view_group\" style=\"height: 70px;width: 80%;left: 10%;z-index: 3;overflow: hidden;padding:10px;position:absolute;\"><div contenteditable=\"true\" class=\"cancel_drag\">You did not pass.</div></div>','','That\'s right! You chose the correct response.','You did not choose the correct response.','You did not choose the correct response. Try again.',NULL,'2021-07-16 07:14:19','2021-07-16 07:14:19',1,'<div class=\"slide_view_answer_element slide_view_group\" style=\"width: 80%;top: 100px;left: 10%;z-index: 2;padding: 10px;position:absolute;overflow: hidden;\"><div class=\"col-md-12\"><div contenteditable=\"true\"><div class=\"cancel_drag\">Your Score: %%</div><div class=\"cancel_drag\">Passing Score: ##</div></div></div></div>','graded','by_result',NULL,NULL,'1',0,NULL,NULL,0,NULL,NULL,0,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (1246,205,7,'<div class=\"slide_view_question_element slide_view_group ui-resizable ui-draggable ui-draggable-handle\" style=\"height: 70px;width: 80%;left: 10%;z-index: 3;overflow: hidden;padding:10px;position:absolute;\"><div contenteditable=\"true\" class=\"cancel_drag\">Match the following items with their descriptions:</div></div>','Item 1;Match 1@Item 2;Match 2@Item 3;Match 3@','That\'s right! You chose the correct response.','You did not choose the correct response.','You did not choose the correct response. Try again.',NULL,'2021-07-18 21:47:47','2021-07-18 21:48:09',0,'<div class=\"slide_view_answer_element slide_view_group ui-resizable ui-draggable ui-draggable-handle\" style=\"width: 80%;top: 100px;left: 10%;z-index: 2;position:absolute;overflow:hidden;\"><div class=\"col-md-12\" style=\"\"><div style=\"display: flex;justify-content: space-around;padding-bottom: 10px;\"><div class=\"ui-widget-header droppable\" style=\"width: 40%\"><p data-nsfw-filter-status=\"swf\">Item 1</p></div><div class=\"ui-widget-content draggable\" style=\"width: 40%\" isdropped=\"false\"><p data-nsfw-filter-status=\"swf\">Match 1</p></div></div><div style=\"display: flex;justify-content: space-around;padding-bottom: 10px;\"><div class=\"ui-widget-header droppable\" style=\"width: 40%\"><p data-nsfw-filter-status=\"swf\">Item 2</p></div><div class=\"ui-widget-content draggable\" style=\"width: 40%\" isdropped=\"false\"><p data-nsfw-filter-status=\"swf\">Match 2</p></div></div><div style=\"display: flex;justify-content: space-around;padding-bottom: 10px;\"><div class=\"ui-widget-header droppable\" style=\"width: 40%\"><p data-nsfw-filter-status=\"swf\">Item 3</p></div><div class=\"ui-widget-content draggable\" style=\"width: 40%\" isdropped=\"false\"><p data-nsfw-filter-status=\"swf\">Match 3</p></div></div></div></div>','graded','by_result',NULL,NULL,'1',0,'01:00',1,0,NULL,NULL,10,0,0,'<div class=\"slide_view_media_element slide_view_group\" style=\"z-index: 1;display: none;position: absolute;top: 0;left: 0;width:33%;\">\n                        <img src=\"#\" alt=\"slide_view_media\" style=\"width: 100%; height: 100%; visibility: visible;\" data-nsfw-filter-status=\"sfw\">\n                    </div>',NULL,NULL,NULL,NULL,'<div class=\"slide_view_video_element slide_view_group\" style=\"z-index: 1;display: none;position: absolute;top: 0;left: 0;width:33%;\">\n                        <video controls=\"\" style=\"width: 100%;height: 100%\">\n                            <source src=\"#\">\n                        </video>\n                    </div>',NULL),
-(1247,205,10,'<div class=\"slide_view_question_element slide_view_group\" style=\"height: 70px;width: 80%;left: 10%;z-index: 3;overflow: hidden;padding:10px;position:absolute;\"><div contenteditable=\"true\" class=\"cancel_drag\">Drag and drop the words to their places:</div></div>','words;places;','That\'s right! You chose the correct response.','You did not choose the correct response.','You did not choose the correct response. Try again.',NULL,'2021-07-18 23:59:31','2021-07-18 23:59:50',1,'<div class=\"slide_view_answer_element slide_view_group\" style=\"width: 80%;top: 100px;left: 10%;z-index: 2;position:absolute;overflow:hidden;\"><div class=\"col-md-12\" style=\"\"><div id=\"slide_drag_words_question\">Drag the <div class=\"blank\" style=\"display: inline; width: 70px; height: 100%; border: 1px solid grey; background: white; padding-right: 70px;\"></div> and drop them to the appropriate <div class=\"blank\" style=\"display: inline; width: 70px; height: 100%; border: 1px solid grey; background: white; padding-right: 70px;\"></div> .</div><div id=\"slide_drag_words_answer\"><span style=\"border: 1px solid gray;background: white;color: black;\">words</span><span style=\"border: 1px solid gray;background: white;color: black;\">places</span></div></div></div>','graded','by_result',NULL,NULL,'1',0,'01:00',NULL,0,NULL,NULL,10,0,0,'<div class=\"slide_view_media_element slide_view_group\" style=\"z-index: 1;display: none;position: absolute;top: 0;left: 0;width:33%;\">\n                        <img src=\"#\" alt=\"slide_view_media\" style=\"width: 100%;height: 100%;\">\n                    </div>',NULL,NULL,NULL,NULL,'<div class=\"slide_view_video_element slide_view_group\" style=\"z-index: 1;display: none;position: absolute;top: 0;left: 0;width:33%;\">\n                        <video controls=\"\" style=\"width: 100%;height: 100%\">\n                            <source src=\"#\">\n                        </video>\n                    </div>',NULL);
+(1247,205,10,'<div class=\"slide_view_question_element slide_view_group\" style=\"height: 70px;width: 80%;left: 10%;z-index: 3;overflow: hidden;padding:10px;position:absolute;\"><div contenteditable=\"true\" class=\"cancel_drag\">Drag and drop the words to their places:</div></div>','words;places;','That\'s right! You chose the correct response.','You did not choose the correct response.','You did not choose the correct response. Try again.',NULL,'2021-07-18 23:59:31','2021-07-18 23:59:50',1,'<div class=\"slide_view_answer_element slide_view_group\" style=\"width: 80%;top: 100px;left: 10%;z-index: 2;position:absolute;overflow:hidden;\"><div class=\"col-md-12\" style=\"\"><div id=\"slide_drag_words_question\">Drag the <div class=\"blank\" style=\"display: inline; width: 70px; height: 100%; border: 1px solid grey; background: white; padding-right: 70px;\"></div> and drop them to the appropriate <div class=\"blank\" style=\"display: inline; width: 70px; height: 100%; border: 1px solid grey; background: white; padding-right: 70px;\"></div> .</div><div id=\"slide_drag_words_answer\"><span style=\"border: 1px solid gray;background: white;color: black;\">words</span><span style=\"border: 1px solid gray;background: white;color: black;\">places</span></div></div></div>','graded','by_result',NULL,NULL,'1',0,'01:00',NULL,0,NULL,NULL,10,0,0,'<div class=\"slide_view_media_element slide_view_group\" style=\"z-index: 1;display: none;position: absolute;top: 0;left: 0;width:33%;\">\n                        <img src=\"#\" alt=\"slide_view_media\" style=\"width: 100%;height: 100%;\">\n                    </div>',NULL,NULL,NULL,NULL,'<div class=\"slide_view_video_element slide_view_group\" style=\"z-index: 1;display: none;position: absolute;top: 0;left: 0;width:33%;\">\n                        <video controls=\"\" style=\"width: 100%;height: 100%\">\n                            <source src=\"#\">\n                        </video>\n                    </div>',NULL),
+(1251,210,16,'<div class=\"slide_view_question_element slide_view_group\" style=\"height: 70px;width: 80%;left: 10%;z-index: 3;overflow: hidden;padding:10px;position:absolute;\"><div contenteditable=\"true\" class=\"cancel_drag\">Enter Your Details</div></div>','[{\"field_name\": \"First Name\", \"condition\": \"mandatory\", \"field_type\": \"text\", \"choice_field\": [], \"value\": \"\", \"variable\": \"FIRST_NAME\"}, {\"field_name\": \"Last Name\", \"condition\": \"mandatory\", \"field_type\": \"text\", \"choice_field\": [], \"value\": \"\", \"variable\": \"LAST_NAME\"}, {\"field_name\": \"Course Type\", \"condition\": \"mandatory\", \"field_type\": \"choice\", \"choice_field\": [\"Full Course\", \"Refresher\", \"VOC\", \"RPL\"], \"value\": \"\", \"variable\": \"COURSE_TYPE\"}, {\"field_name\": \"Email\", \"condition\": \"mandatory\", \"field_type\": \"email\", \"choice_field\": [], \"value\": \"\", \"variable\": \"EMAIL\"}, {\"field_name\": \"Location\", \"condition\": \"mandatory\", \"field_type\": \"choice\", \"choice_field\": [\"Gold Coast\", \"Cairns\", \"Moranbah\", \"Mackay\", \"Townsville\", \"Weipa\", \"Gladstone\"], \"value\": \"\", \"variable\": \"LOCATION\"}, {\"field_name\": \"Company\", \"condition\": \"optional\", \"field_type\": \"text\", \"choice_field\": [], \"value\": \"\", \"variable\": \"COMPANY\"}, {\"field_name\": \"Date\", \"condition\": \"mandatory\", \"field_type\": \"text\", \"choice_field\": [], \"value\": \"\", \"variable\": \"DATE\"}]','That\'s right! You chose the correct response.','You did not choose the correct response.','You did not choose the correct response. Try again.',NULL,'2021-07-29 08:55:07','2021-07-29 08:55:07',0,'<div class=\"slide_view_answer_element slide_view_group\" style=\"width: 80%;top: 100px;left: 10%;z-index: 2;padding: 10px;position:absolute;overflow: hidden;\"><div class=\"col-md-12\"><form id=\"user_info\"><div id=\"user_first_name_container\"><input type=\"text\" id=\"user_FIRST_NAME\" placeholder=\"First Name*\" required></div><div id=\"user_last_name_container\"><input type=\"text\" id=\"user_LAST_NAME\" placeholder=\"Last Name*\" required></div><div id=\"user_email_container\"><input type=\"email\" id=\"user_EMAIL\" placeholder=\"Email*\" required></div><div id=\"user_course_type_container\"><select id=\"user_COURSE_TYPE\" required><option value=\"\" selected disabled>Course Type*</option><option value=\"full_course\">Full Course</option><option value=\"refresher\">Refresher</option><option value=\"voc\">VOC</option><option value=\"rpl\">RPL</option></select></div><div id=\"user_location_container\"><select id=\"user_LOCATION\" required><option value=\"\" selected disabled>Location*</option><option value=\"gold_coast\">Gold Coast</option><option value=\"cairns\">Cairns</option><option value=\"moranbah\">Moranbah</option><option value=\"mackay\">Mackay</option><option value=\"townsville\">Townsville</option><option value=\"weipa\">Weipa</option><option value=\"gladstone\">Gladstone</option></select></div><div id=\"user_company_container\"><input type=\"text\" id=\"user_COMPANY\" placeholder=\"Company\"></div><div id=\"user_date_container\"><input type=\"text\" id=\"user_DATE\" placeholder=\"Date*\" required></div></form></div></div>','graded','by_result',NULL,NULL,'1',0,NULL,NULL,0,NULL,NULL,0,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(1252,212,14,'<div class=\"slide_view_question_element slide_view_group\" style=\"height: 70px;width: 80%;left: 10%;z-index: 3;overflow: hidden;padding:10px;position:absolute;\"><div contenteditable=\"true\" class=\"cancel_drag\">Congratulations, you passed!</div></div>','','That\'s right! You chose the correct response.','You did not choose the correct response.','You did not choose the correct response. Try again.',NULL,'2021-07-29 08:55:07','2021-07-29 08:55:07',0,'<div class=\"slide_view_answer_element slide_view_group\" style=\"width: 80%;top: 100px;left: 10%;z-index: 2;padding: 10px;position:absolute;overflow: hidden;\"><div class=\"col-md-12\"><div contenteditable=\"true\"><div class=\"cancel_drag\">Your Score: %%</div><div class=\"cancel_drag\">Passing Score: ##</div></div></div></div>','graded','by_result',NULL,NULL,'1',0,NULL,NULL,0,NULL,NULL,0,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(1253,212,15,'<div class=\"slide_view_question_element slide_view_group\" style=\"height: 70px;width: 80%;left: 10%;z-index: 3;overflow: hidden;padding:10px;position:absolute;\"><div contenteditable=\"true\" class=\"cancel_drag\">You did not pass.</div></div>','','That\'s right! You chose the correct response.','You did not choose the correct response.','You did not choose the correct response. Try again.',NULL,'2021-07-29 08:55:07','2021-07-29 08:55:07',1,'<div class=\"slide_view_answer_element slide_view_group\" style=\"width: 80%;top: 100px;left: 10%;z-index: 2;padding: 10px;position:absolute;overflow: hidden;\"><div class=\"col-md-12\"><div contenteditable=\"true\"><div class=\"cancel_drag\">Your Score: %%</div><div class=\"cancel_drag\">Passing Score: ##</div></div></div></div>','graded','by_result',NULL,NULL,'1',0,NULL,NULL,0,NULL,NULL,0,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(1254,211,1,'<div class=\"slide_view_question_element slide_view_group\" style=\"height: 70px;width: 80%;left: 10%;z-index: 3;overflow: hidden;padding:10px;position:absolute;\"><div contenteditable=\"true\" class=\"cancel_drag\">Select the correct answer option:</div></div>','1','That\'s right! You chose the correct response.','You did not choose the correct response.','You did not choose the correct response. Try again.',NULL,'2021-07-29 08:55:22','2021-07-29 08:55:22',0,'<div class=\"slide_view_answer_element slide_view_group\" style=\"width: 80%;top: 100px;left: 10%;z-index: 2;position:absolute;overflow:hidden;\"><div class=\"col-md-12\"><div class=\"choice_item\"><input type=\"radio\" id=\"1\" name=\"answer\" value=\"1\" style=\"padding-right: 10px;\"><label for=\"1\">Option 1</label></div><div class=\"choice_item\"><input type=\"radio\" id=\"2\" name=\"answer\" value=\"2\" style=\"padding-right: 10px;\"><label for=\"2\">Option 2</label></div><div class=\"choice_item\"><input type=\"radio\" id=\"3\" name=\"answer\" value=\"3\" style=\"padding-right: 10px;\"><label for=\"3\">Option 3</label></div></div></div>','graded','by_result','by_result','by_result','1',0,NULL,1,NULL,NULL,NULL,10,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(1255,211,2,'<div class=\"slide_view_question_element slide_view_group\" style=\"height: 70px;width: 80%;left: 10%;z-index: 3;overflow: hidden;padding:10px;position:absolute;\"><div contenteditable=\"true\" class=\"cancel_drag\">Select one or more correct answers:</div></div>','1;','That\'s right! You chose the correct response.','You did not choose the correct response.','You did not choose the correct response. Try again.',NULL,'2021-07-29 08:55:29','2021-07-29 08:55:31',1,'<div class=\"slide_view_answer_element slide_view_group\" style=\"width: 80%;top: 100px;left: 10%;z-index: 2;position:absolute;overflow:hidden;\"><div class=\"col-md-12\" style=\"\"><div class=\"response_item\"><input type=\"checkbox\" id=\"1\" name=\"answer\" value=\"1\" style=\"padding-right: 10px;\"><label for=\"1\">Option 1</label></div><div class=\"response_item\"><input type=\"checkbox\" id=\"2\" name=\"answer\" value=\"2\" style=\"padding-right: 10px;\"><label for=\"2\">Option 2</label></div><div class=\"response_item\"><input type=\"checkbox\" id=\"3\" name=\"answer\" value=\"3\" style=\"padding-right: 10px;\"><label for=\"3\">Option 3</label></div></div></div>','graded','by_result',NULL,NULL,'1',0,'01:00',1,0,0,NULL,10,0,0,'<div class=\"slide_view_media_element slide_view_group\" style=\"z-index: 1;display: none;position: absolute;top: 0;left: 0;width:33%;\">\n                        <img src=\"#\" alt=\"slide_view_media\" style=\"width: 100%; height: 100%; visibility: visible;\" data-nsfw-filter-status=\"sfw\">\n                    </div>',NULL,NULL,NULL,NULL,'<div class=\"slide_view_video_element slide_view_group\" style=\"z-index: 1;display: none;position: absolute;top: 0;left: 0;width:33%;\">\n                        <video controls=\"\" style=\"width: 100%;height: 100%\">\n                            <source src=\"#\">\n                        </video>\n                    </div>',NULL);
 
 /*Table structure for table `roles` */
 
@@ -405,22 +422,16 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `active` tinyint(1) NOT NULL,
+  `approved_exams` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `users` */
 
-insert  into `users`(`id`,`name`,`email`,`email_verified_at`,`password`,`remember_token`,`created_at`,`updated_at`,`active`) values 
-(1,'Test Admin','manager@gmail.com',NULL,'$2y$10$B.gKC6KKUq6asvFJK4m3deBLqLtLrtksCAjY7yyIt8eClYgGAvXk6',NULL,NULL,NULL,1),
-(6,'Sophie','bolesalavb@gmail.com',NULL,'$2y$10$WSQzjZbqn8wNVCSVxgaJpeB5rXb0Yeei.t8gi9XlhPdGY204m6R4m',NULL,'2021-05-28 08:40:01','2021-06-01 08:03:51',1),
-(9,'Admin 1','admin1@gmail.com',NULL,'$2y$10$7JblXu4KOng1q6zcOuEeQuzYk02klOW1wZGXwjoMftKwmRlopuZEa',NULL,'2021-05-31 08:42:49','2021-05-31 09:10:47',1),
-(10,'Admin 2','admin2@gmail.com',NULL,'$2y$10$yVa8wx7xuRzw5B4nmcuimeYBhbKrPYrQ0CwvWa1GkVM44dhbayV5S',NULL,'2021-05-31 08:51:51','2021-05-31 08:51:51',1),
-(11,'Admin 3','admin3@gmail.com',NULL,'$2y$10$Fs0qIiW9RUmBENonjYg6pOJ.VG5XVj6JIXCyIOH6F15sJSX50LcAC',NULL,'2021-06-14 01:24:44','2021-06-14 01:25:50',1),
-(12,'Student 1','student1@gmail.com',NULL,'$2y$10$pKOb.iTahZKsomKNJ4iB7eLaYQxAJN4vNsLMf1YR0zSXo6jKJf3jS',NULL,'2021-06-14 01:25:06','2021-06-14 01:25:06',1),
-(15,'Mobile User','mobile.user@gmail.com',NULL,'$2y$10$lJHhhcOoigb5ranYqGi.ZeUo/I5FMw0Bc7UUAec/Ff9UEDpS78ViS',NULL,'2021-06-18 02:37:54','2021-06-18 02:37:54',1),
-(18,'sophie','sophie@sophie.com',NULL,'$2y$10$VCVlCnCh5on1XGbiClpntuPAs.HRwSpGXp9JjA4TD89sNor4IKfNC',NULL,'2021-06-19 02:02:54','2021-06-19 02:02:54',1),
-(19,'sophie','sophie@gmail.com',NULL,'$2y$10$RzG1axVTXfqFGQTjYb/oBu.PJ3ggmvHx3q8/KPIjD72.fjPrex2RG',NULL,'2021-06-19 02:03:23','2021-06-19 02:03:23',1);
+insert  into `users`(`id`,`name`,`email`,`email_verified_at`,`password`,`remember_token`,`created_at`,`updated_at`,`active`,`approved_exams`) values 
+(1,'Test Admin','manager@gmail.com',NULL,'$2y$10$B.gKC6KKUq6asvFJK4m3deBLqLtLrtksCAjY7yyIt8eClYgGAvXk6',NULL,NULL,NULL,1,NULL),
+(6,'Sophie','bolesalavb@gmail.com',NULL,'$2y$10$WSQzjZbqn8wNVCSVxgaJpeB5rXb0Yeei.t8gi9XlhPdGY204m6R4m',NULL,'2021-05-28 08:40:01','2021-07-29 10:11:20',0,'88@');
 
 /*Table structure for table `users_permissions` */
 
@@ -454,14 +465,7 @@ CREATE TABLE `users_roles` (
 
 insert  into `users_roles`(`user_id`,`role_id`) values 
 (1,1),
-(6,2),
-(9,1),
-(10,1),
-(11,1),
-(12,2),
-(15,2),
-(18,2),
-(19,2);
+(6,2);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

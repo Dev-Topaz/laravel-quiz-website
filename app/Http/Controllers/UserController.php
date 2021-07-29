@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Exam;
 use App\Models\UserRole;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -39,7 +40,10 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+
+        $exam_list = Exam::all();
+
+        return view('users.create', ['exam_list' => $exam_list]);
     }
 
     /**
@@ -67,6 +71,7 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => Hash::make('12345678'),
             'active' => $active,
+            'approved_exams' => $request->approved_exams,
         ]);
 
         UserRole::create([
@@ -97,7 +102,23 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('users.update', ['user' => $user]);
+        $exam_list = Exam::all();
+
+        $approved_exams = explode('@', $user->approved_exams);
+        array_pop($approved_exams);
+
+        $exams = [];
+
+        foreach ($exam_list as $exam) {
+            if (in_array($exam->id, $approved_exams)) {
+                $exam->approved = true;
+            } else {
+                $exam->approved = false;
+            }
+            array_push($exams, $exam);
+        }
+
+        return view('users.update', ['user' => $user, 'exam_list' => $exams]);
     }
 
     /**
@@ -119,6 +140,7 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->active = $active;
+        $user->approved_exams = $request->approved_exams;
         $user->save();
 
         $user_role = UserRole::where('user_id', '=', $user->id)->first();
