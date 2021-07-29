@@ -62,7 +62,7 @@ class RegisterController extends BaseController
             if ($user->active == 1) {
                 return $this->sendResponse($success, 'User login successfully.');
             } else {
-                return $this->sendError('Not approved.', ['error'=>'The user is not approved']);
+                return $this->sendError('The user is not approved', ['error'=>'Not approved']);
             }
         }
         else{
