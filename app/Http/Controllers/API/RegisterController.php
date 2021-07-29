@@ -57,8 +57,13 @@ class RegisterController extends BaseController
             $user = Auth::user();
             $success['token'] =  $user->createToken('MyApp')-> accessToken;
             $success['name'] =  $user->name;
+            $success['active'] = $user->active;
 
-            return $this->sendResponse($success, 'User login successfully.');
+            if ($user->active == 1) {
+                return $this->sendResponse($success, 'User login successfully.');
+            } else {
+                return $this->sendError('Not approved.', ['error'=>'The user is not approved']);
+            }
         }
         else{
             return $this->sendError('Unauthorised.', ['error'=>'Unauthorised']);
