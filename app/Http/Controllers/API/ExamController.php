@@ -62,7 +62,8 @@ class ExamController extends BaseController
             }
         }
 
-        $quiz->result = $result_list[count($result_list) - 1];
+        $quiz->result = $result_list[count($result_list) - 1]->result;
+        $quiz->exam_user_score = $result_list[count($result_list) - 1]->exam_user_score;
 
 
         $success['data'] = $quiz;
