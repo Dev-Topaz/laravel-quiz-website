@@ -42,7 +42,27 @@ class ExamController extends BaseController
 
     public function get_quiz($id)
     {
+        $user = auth('api')->user();
+    
         $quiz = Exam::find($id);
+
+        $results = Result::where('exam_id', $id)->get();
+
+        $result_list = [];
+        foreach ($results as $result) {
+            if ($result->user_id == $user->id) {
+
+                $data = json_decode($result->result);
+                
+                $tmp = new \stdClass();
+
+                $tmp->result = $data->result;
+                $tmp->exam_user_score = $data->exam_user_score;
+                array_push($result_list, $tmp);
+            }
+        }
+
+        $quiz->result = $result_list[count($result_list) - 1];
 
 
         $success['data'] = $quiz;
