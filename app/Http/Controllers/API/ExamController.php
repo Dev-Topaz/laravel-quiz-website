@@ -203,7 +203,7 @@ class ExamController extends BaseController
             \Mail::to($stuff_email)->send(new \App\Mail\QuizResultMail($details));
         }
 
-        dd("Email is Sent.");
+        return $this->sendResponse('success', 'success');
     }
 
     public function save_result(Request $request)
