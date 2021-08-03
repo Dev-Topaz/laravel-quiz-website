@@ -85,14 +85,14 @@
                     </td>
                 </tr>
                 @foreach($details['data']->quizzes as $question)
-                    @if (isset($question['question_result']))
+                    @if (isset($question->question_result))
 
-                        @if ($question['question_result'] == 'Survey')
+                        @if ($question->question_result == 'Survey')
                             <tr align="left">
                                 <td style="font: 13px Open Sans;padding-bottom:36px">
                       <span style="line-height: 12px"><b>Question
-                          {{ intval($question['quizId']) + 1 }} <span style="color:#5B9BD5">Survey</span></b></span><br>
-                                    <span><b>{{ $question['question_content'] }}<br></b></span><br>
+                          {{ intval($question->quizId) + 1 }} <span style="color:#5B9BD5">Survey</span></b></span><br>
+                                    <span><b>{{ $question->question_content }}<br></b></span><br>
                                     {{--                                    <table style="width:100%;border-collapse:collapse">--}}
                                     {{--                                        <tbody>--}}
                                     {{--                                        <tr style="background-color:#F3F3F3">--}}
@@ -100,7 +100,7 @@
                                     {{--                                                User Answer--}}
                                     {{--                                            </td>--}}
                                     {{--                                        </tr>--}}
-                                    {{--                                        @foreach ($question['question_user_answer'] as $item)--}}
+                                    {{--                                        @foreach ($question->question_user_answer as $item)--}}
                                     {{--                                            <tr>--}}
                                     {{--                                                <td style="border: 1px solid #E0E0E0;padding:5px">--}}
                                     {{--                                                    {{ $item }}--}}
@@ -116,14 +116,14 @@
                             <tr align="left">
                                 <td style="font: 13px Open Sans;padding-bottom:36px">
                       <span style="line-height: 12px"><b>Question
-                          {{ intval($question['quizId']) + 1 }} <span
-                                  style="{{ $question['question_result'] == 'Correct' ? 'color:#70AD47' : 'color:#CD1212'}}">{{ $question['question_result'] }}</span></b></span><br>
+                          {{ intval($question->quizId) + 1 }} <span
+                                  style="{{ $question->question_result == 'Correct' ? 'color:#70AD47' : 'color:#CD1212'}}">{{ $question->question_result }}</span></b></span><br>
                                     <span
-                                        style="line-height: 20px">Points:&nbsp;{{ $question['question_user_point'] }}/{{ $question['question_point'] }}&nbsp;&nbsp;|&nbsp;&nbsp;Attempts:&nbsp;{{ $question['question_user_attempts'] }}/{{ $question['question_attempts'] }}</span>
-                                    <br>{!! $question['question_content'] !!}<br>
+                                        style="line-height: 20px">Points:&nbsp;{{ $question->question_user_point }}/{{ $question->question_point }}&nbsp;&nbsp;|&nbsp;&nbsp;Attempts:&nbsp;{{ $question->question_user_attempts }}/{{ $question->question_attempts }}</span>
+                                    <br>{!! $question->question_content !!}<br>
                                     <table style="width:100%;border-collapse:collapse">
                                         <tbody>
-                                        @if (isset($question['question_user_answer']))
+                                        @if (isset($question->question_user_answer))
                                             <tr style="background-color:#F3F3F3">
                                                 <td style="border: 1px solid #E0E0E0;padding:5px">
                                                     User Answer
@@ -132,13 +132,13 @@
                                                     Correct Answer
                                                 </td>
                                             </tr>
-                                            @for ($i = 0; $i < count($question['question_user_answer']); $i++)
+                                            @for ($i = 0; $i < count($question->question_user_answer); $i++)
                                                 <tr>
                                                     <td style="border: 1px solid #E0E0E0;padding:5px">
-                                                        {{ $question['question_user_answer'][$i] }}
+                                                        {{ $question->question_user_answer[$i] }}
                                                     </td>
                                                     <td style="border: 1px solid #E0E0E0;padding:5px">
-                                                        {{ $question['question_correct_answer'][$i] }}
+                                                        {{ $question->question_correct_answer[$i] }}
                                                     </td>
                                                 </tr>
                                             @endfor
@@ -146,7 +146,7 @@
                                         </tbody>
                                     </table>
                                     <br>
-                                    <span><b>Feedback:</b>{{ $question['question_feedback'] }}</span>
+                                    <span><b>Feedback:</b>{{ $question->question_feedback }}</span>
                                 </td>
                             </tr>
                         @endif
