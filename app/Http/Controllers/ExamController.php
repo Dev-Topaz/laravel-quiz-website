@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Exam;
 use App\Models\ExamGroup;
 use App\Models\Quiz;
+use App\Models\User;
 use Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -243,6 +244,20 @@ class ExamController extends Controller
                 $quiz->delete();
             }
             $exam_group->delete();
+        }
+
+        $results = $exam->results;
+        foreach ($results as $result) {
+            $result->delete();
+        }
+
+        $users = User::all();
+        foreach ($users as $user) {
+           
+            $approved_exams = str_replace(strval($exam->id) . '@', '', $user->approved_exams);
+            
+            $user->approved_exams = $approved_exams;
+            $user->save();
         }
 
         return redirect()->route('exams.index')
