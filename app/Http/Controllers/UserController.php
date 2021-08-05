@@ -131,6 +131,10 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        $request->validate([
+            'name' => 'required|string|min:1',
+            'email' => 'required|string|email|unique:users,email,' . $user->id,
+        ]);
         if ($request->active == 'active') {
             $active = 1;
         } else {
