@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66c309de-ec41-488e-b5c4-57ccc3865433" name="Default Changelist" comment="add password change function at user update page">
+    <list default="true" id="66c309de-ec41-488e-b5c4-57ccc3865433" name="Default Changelist" comment="update user updating page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/users/update.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/update.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/ExamController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/ExamController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -240,7 +240,7 @@
       <workItem from="1626350931135" duration="4842000" />
       <workItem from="1626358621956" duration="4260000" />
       <workItem from="1626371061115" duration="781000" />
-      <workItem from="1628145318467" duration="3164000" />
+      <workItem from="1628145318467" duration="4891000" />
     </task>
     <task id="LOCAL-00001" summary="build send email api">
       <created>1626371772042</created>
@@ -256,7 +256,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628146985792</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="update user updating page">
+      <created>1628148614576</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1628148614576</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -277,6 +284,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="build send email api" />
     <MESSAGE value="add password change function at user update page" />
-    <option name="LAST_COMMIT_MESSAGE" value="add password change function at user update page" />
+    <MESSAGE value="update user updating page" />
+    <option name="LAST_COMMIT_MESSAGE" value="update user updating page" />
   </component>
 </project>

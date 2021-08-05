@@ -26,24 +26,40 @@ class ExamController extends BaseController
         return $this->sendResponse($success, 'success');
     }
 
-    public function get_downloading_quizzes_index()
+    public function get_downloading_quizzes_index(Request $request)
     {
-        $quizzes = Exam::where('downloaded', 0)->get();
+//        $quizzes = Exam::where('downloaded', 0)->get();
 
-        $quizzes_index = [];
-        foreach ($quizzes as $quiz) {
-            array_push($quizzes_index, $quiz->id);
+        $quizzes = Exam::all();
+
+        $user = $request->user();
+        $role = $user->roles[0]->id;
+
+        if ($role == 1) {
+
+            $quizzes_index = [];
+            foreach ($quizzes as $quiz) {
+                array_push($quizzes_index, strval($quiz->id));
+            }
+
+            $success['data'] = $quizzes_index;
+
+            return $this->sendResponse($success, 'success');
+        } else {
+            $approved_exams = $user->approved_exams;
+            $quizzes_index = explode('@', $approved_exams);
+            array_pop($quizzes_index);
+
+            $success['data'] = $quizzes_index;
+
+            return $this->sendResponse($success, 'success');
         }
-
-        $success['data'] = $quizzes_index;
-
-        return $this->sendResponse($success, 'success');
     }
 
     public function get_quiz($id)
     {
         $user = auth('api')->user();
-    
+
         $quiz = Exam::find($id);
 
         $results = Result::where('exam_id', $id)->get();
@@ -53,7 +69,7 @@ class ExamController extends BaseController
             if ($result->user_id == $user->id) {
 
                 $data = json_decode($result->result);
-                
+
                 $tmp = new \stdClass();
 
                 $tmp->result = $data->result;
