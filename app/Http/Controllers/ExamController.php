@@ -25,10 +25,27 @@ class ExamController extends Controller
      */
     public function index()
     {
-        $exams = Exam::latest()->paginate(25);
+//        $exams = Exam::latest()->paginate(25);
+        $user = Auth::user();
+        $role = $user->roles[0]->id;
 
-        return view('exams.index', compact('exams'))
-            ->with('i', (request()->input('page', 1) - 1) * 25);
+        if ($role == 1) {
+            $exams = Exam::all();
+            return view('exams.index', compact('exams'));
+        } else {
+            $exams = [];
+            $approved_exams = $user->approved_exams;
+            $exams_index = explode('@', $approved_exams);
+            array_pop($exams_index);
+
+            foreach ($exams_index as $exam_id) {
+                $exam = Exam::find($exam_id);
+                array_push($exams, $exam);
+            }
+            return view('exams.index', compact('exams'));
+        }
+
+//            ->with('i', (request()->input('page', 1) - 1) * 25);
     }
 
     /**
@@ -253,9 +270,9 @@ class ExamController extends Controller
 
         $users = User::all();
         foreach ($users as $user) {
-           
+
             $approved_exams = str_replace(strval($exam->id) . '@', '', $user->approved_exams);
-            
+
             $user->approved_exams = $approved_exams;
             $user->save();
         }
