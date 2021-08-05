@@ -81,21 +81,8 @@
                                 @foreach($exam_list as $exam)
                                 <tr>
                                     <td>{{ $exam->name }}</td>
-                                    <td style="width: 20px;"><input id="exam_{{ $exam->id }}" type="checkbox" class="exam_checkbox form-control @error('exam_{{ $exam->id }}') is-invalid @enderror" name="exam_{{ $exam->id }}" value="{{ $exam->id }}" autocomplete="exam_{{ $exam->id }}" style="height: 18px;width: 18px;" {{ $exam->approved ? 'checked' : '' }}></td>
+                                    <td style="width: 20px;"><input id="exam_{{ $exam->id }}" type="checkbox" class="exam_checkbox form-control @error('exam_{{ $exam->id }}') is-invalid @enderror" name="exam_{{ $exam->id }}" value="{{ $exam->id }}" autocomplete="exam_{{ $exam->id }}" style="height: 18px;width: 18px;" {{ $exam->approved ? 'checked' : '' }} {{ $user->roles[0]->id == 1 ? 'checked' : '' }} {{ $user->roles[0]->id == 1 ? 'disabled' : '' }}></td>
                                 </tr>
-                                <!-- <div class="form-group row" style="align-items: center">
-                                    <label for="exam_{{ $exam->id }}" class="col-md-6 col-form-label text-md-right">{{ $exam->name }}</label>
-
-                                    <div class="col-md-1">
-                                        <input id="exam_{{ $exam->id }}" type="checkbox" class="exam_checkbox form-control @error('exam_{{ $exam->id }}') is-invalid @enderror" name="exam_{{ $exam->id }}" value="{{ $exam->id }}" autocomplete="exam_{{ $exam->id }}" style="height: 18px;" {{ $exam->approved ? 'checked' : '' }}>
-
-                                        @error('exam_{{ $exam->id }}')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div> -->
                                 @endforeach
                             </tbody>
                         </table>
@@ -187,6 +174,15 @@
         }
 
         $('#approved_exams').val(result);
+    });
+    $('select[name="role"]').change(function() {
+        console.log($(this).val());
+        if ($(this).val() == 1) {
+            $('table input[type="checkbox"]').prop('checked', true);
+            $('table input[type="checkbox"]').prop('disabled', true);
+        } else {
+            $('table input[type="checkbox"]').prop('disabled', false);
+        }
     });
 </script>
 @endsection
