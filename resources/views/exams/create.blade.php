@@ -71,9 +71,12 @@
                                     <label for="passing_score" class="col-md-3 col-form-label text-md-right">{{ __('Passing Score')
                                         }}</label>
                                     <div class="col-md-7">
-                                        <input id="passing_score" type="number" min="1"
+                                        <div id="passing_score_container" style="display: flex;align-items: center;">
+                                            <input id="passing_score" type="number" min="1" max="100"
                                                class="form-control @error('passing_score') is-invalid @enderror" name="passing_score"
-                                               value="{{ old('passing_score') }}" required autocomplete="passing_score" autofocus>
+                                               value="{{ old('passing_score') !== null ? 100 : old('passing_score') }}" required autocomplete="passing_score" autofocus>
+                                            <p style="margin: 0;padding: 10px;">%</p>
+                                        </div>
                                         @error('passing_score')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

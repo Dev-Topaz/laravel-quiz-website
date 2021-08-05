@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66c309de-ec41-488e-b5c4-57ccc3865433" name="Default Changelist" comment="add email unique validation at user update page">
+    <list default="true" id="66c309de-ec41-488e-b5c4-57ccc3865433" name="Default Changelist" comment="update exam list page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ExamController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ExamController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/exams/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/exams/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/exams/update.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/exams/update.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -241,7 +242,8 @@
       <workItem from="1626358621956" duration="4260000" />
       <workItem from="1626371061115" duration="781000" />
       <workItem from="1628145318467" duration="5221000" />
-      <workItem from="1628152158775" duration="2091000" />
+      <workItem from="1628152158775" duration="2793000" />
+      <workItem from="1628159323508" duration="1026000" />
     </task>
     <task id="LOCAL-00001" summary="build send email api">
       <created>1626371772042</created>
@@ -278,7 +280,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628153175663</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="update exam list page">
+      <created>1628154621630</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1628154621630</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -302,6 +311,7 @@
     <MESSAGE value="update user updating page" />
     <MESSAGE value="update get quiz index API" />
     <MESSAGE value="add email unique validation at user update page" />
-    <option name="LAST_COMMIT_MESSAGE" value="add email unique validation at user update page" />
+    <MESSAGE value="update exam list page" />
+    <option name="LAST_COMMIT_MESSAGE" value="update exam list page" />
   </component>
 </project>
