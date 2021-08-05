@@ -85,10 +85,10 @@
                                 </tr>
                                 <!-- <div class="form-group row" style="align-items: center">
                                     <label for="exam_{{ $exam->id }}" class="col-md-6 col-form-label text-md-right">{{ $exam->name }}</label>
-        
+
                                     <div class="col-md-1">
                                         <input id="exam_{{ $exam->id }}" type="checkbox" class="exam_checkbox form-control @error('exam_{{ $exam->id }}') is-invalid @enderror" name="exam_{{ $exam->id }}" value="{{ $exam->id }}" autocomplete="exam_{{ $exam->id }}" style="height: 18px;" {{ $exam->approved ? 'checked' : '' }}>
-        
+
                                         @error('exam_{{ $exam->id }}')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -106,6 +106,68 @@
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Update User') }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center" style="padding-top: 10px;">
+        <div class="col-md-11">
+            <div class="card">
+                <div class="card-header">{{ __('Change Password') }}</div>
+
+                @if(session()->has('error'))
+                    <span class="alert alert-danger">
+                        <strong>{{ session()->get('error') }}</strong>
+                    </span>
+                @endif
+                @if(session()->has('success'))
+                    <span class="alert alert-success">
+                        <strong>{{ session()->get('success') }}</strong>
+                    </span>
+                @endif
+
+                <div class="card-body">
+                    <form method="POST" action="{{ route('change.password') }}">
+                        @csrf
+
+                        <input name="user_id" value="{{ $user->id }}" hidden>
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('New Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="password" autofocus>
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password_confirmation" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password_confirmation" type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" required autocomplete="password_confirmation" autofocus>
+
+                                @error('password_confirmation')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Change Password') }}
                                 </button>
                             </div>
                         </div>

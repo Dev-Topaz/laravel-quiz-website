@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Models\User;
 use App\Models\Exam;
 use App\Models\UserRole;
@@ -184,5 +185,21 @@ class UserController extends Controller
         }
 
         return $request->selected_Ids;
+    }
+
+    public function change_password(Request $request) {
+        $request->validate([
+          'password' => 'required|string|min:8|confirmed',
+          'password_confirmation' => 'required',
+        ]);
+
+        $userId = $request->user_id;
+
+        $user = User::find($userId);
+
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        return back()->with('success', 'Password successfully changed!');
     }
 }

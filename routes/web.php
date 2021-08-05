@@ -53,6 +53,7 @@ Route::middleware(['role:manager', 'auth'])->group(function() {
     Route::post('/suspend_selected_users', [UserController::class, 'suspend_selected_users']);
     Route::post('/duplicate_exam', [ExamController::class, 'duplicate_exam'])->name('duplicateExam');
     Route::get('/exam/{id}', [PreviewController::class, 'preview_exam'])->name('preview_exam');
+    Route::post('change_password', [UserController::class, 'change_password'])->name('change.password');
 });
 
 Route::get('/result/{exam_id}', [ResultController::class, 'show']);
