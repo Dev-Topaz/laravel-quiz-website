@@ -58,15 +58,12 @@
                             </tr>
                             <tr style="height: 20px">
                                 <td>Your Score&nbsp;</td>
-                                <td><strong>{{ $details['data']->exam_user_score }}
-                                        / {{ $details['data']->exam_passing_score }}
-                                        ({{ number_format(intval($details['data']->exam_user_score) / intval($details['data']->exam_passing_score) * 100, 2, '.', '') }}
-                                        %)</strong></td>
+                                <td><strong>{{ $details['data']->exam_user_score }} / {{ $details['data']->exam_passing_score }} (%)</strong></td>
                             </tr>
                             <tr style="height: 20px; display: table-row;">
                                 <td>Passing Score&nbsp;
                                 </td>
-                                <td><strong>{{ $details['data']->exam_passing_score }}</strong></td>
+                                <td><strong>{{ $details['data']->exam_passing_score }}%</strong></td>
                             </tr>
                             {{--                            <tr style="height: 20px">--}}
                             {{--                                <td>Time Spent:&nbsp;</td>--}}

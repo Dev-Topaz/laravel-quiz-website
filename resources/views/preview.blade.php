@@ -53,8 +53,9 @@
         </p>
         <div id="question_result" style="display: flex;">
             <p id="question_time" style="display: none;"><span>60</span>&nbsp;sec&nbsp;</p>
-            <p id="question_point">&nbsp;Point Value: <span>10</span> |&nbsp;</p>
-            <p>Total Points: <span id="total_point">0</span> out of <span id="passing_score">100</span></p>
+            <p id="question_point" style="display: none;">&nbsp;Point Value: <span>10</span></p>
+{{--            <p id="question_point">&nbsp;Point Value: <span>10</span> |&nbsp;</p>--}}
+{{--            <p>Total Points: <span id="total_point">0</span> out of <span id="passing_score">100</span></p>--}}
         </div>
     </div>
     @php
