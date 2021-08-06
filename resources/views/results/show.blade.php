@@ -39,6 +39,9 @@
                             </thead>
                             <tbody>
                             @foreach ($results as $result)
+                            @php
+                            $result->data = json_decode($result->result);
+                            @endphp
                                 <tr">
                                     <td class="me_number">{{$result->id}}</td>
                                     <td>
