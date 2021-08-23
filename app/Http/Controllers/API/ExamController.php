@@ -215,11 +215,14 @@ class ExamController extends BaseController
 
         $stuff_emails = explode(',', $request->stuff_emails);
 
-        foreach ($stuff_emails as $stuff_email) {
-            \Mail::to($stuff_email)->send(new \App\Mail\QuizResultMail($details));
+        try {
+            foreach ($stuff_emails as $stuff_email) {
+                \Mail::to($stuff_email)->send(new \App\Mail\QuizResultMail($details));
+            }
+            return $this->sendResponse('success', 'success');
+        } catch (err) {
+            return $this->sendResponse('success', 'failed');
         }
-
-        return $this->sendResponse('success', 'success');
     }
 
     public function save_result(Request $request)
