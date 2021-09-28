@@ -220,7 +220,7 @@ class ExamController extends BaseController
                 \Mail::to($stuff_email)->send(new \App\Mail\QuizResultMail($details));
             }
             return $this->sendResponse('success', 'success');
-        } catch (err) {
+        } catch (Exception $err) {
             return $this->sendResponse('success', 'failed');
         }
     }

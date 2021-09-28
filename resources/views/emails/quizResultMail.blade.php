@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en-us" class="lang-en">
 <head>
-<title>{{ $details['data']->email_from }}</title>
+    <title>{{ $details['data']->email_from }}</title>
 </head>
 <body>
+    <div style="width: 100%;text-align:center;">
+        <img src="https://maps.googleapis.com/maps/api/staticmap?center={{ $details['data']->latitude }},{{ $details['data']->longitude }}&zoom=13&scale=1&size=600x300&maptype=roadmap&key=AIzaSyDrIrv9kvi0hGmwIySGP0JUmjf9DcqgD30&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7C{{ $details['data']->latitude }},{{ $details['data']->longitude }}">
+    </div>
 <table cellpadding="0" cellspacing="0" style="border-collapse: collapse; font: 13px Open Sans, sans-serif;"
        width="100%">
     <tbody>
@@ -38,11 +41,6 @@
                                        rel="noopener noreferrer">{{ $details['data']->user_email }}</a>
                                 </td>
                             </tr>
-                            {{--                            <tr style="height: 20px">--}}
-                            {{--                                <td>Your Company&nbsp;--}}
-                            {{--                                </td>--}}
-                            {{--                                <td>Timezonedesign</td>--}}
-                            {{--                            </tr>--}}
                             <tr style="height: 15px; font-size: 1px">
                                 <td colspan="2">&nbsp;
                                 </td>
@@ -65,11 +63,6 @@
                                 </td>
                                 <td><strong>{{ $details['data']->exam_passing_score }}%</strong></td>
                             </tr>
-                            {{--                            <tr style="height: 20px">--}}
-                            {{--                                <td>Time Spent:&nbsp;</td>--}}
-                            {{--                                <td><strong>48--}}
-                            {{--                                        sec</strong></td>--}}
-                            {{--                            </tr>--}}
                             <tr style="height: 20px">
                                 <td>Result&nbsp;</td>
                                 <td><strong><b><span

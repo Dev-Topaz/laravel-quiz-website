@@ -12,6 +12,14 @@ let user_info_field_patterns = [];
 * */
 
 let zoomScale;
+let latitude;
+let longitude;
+
+$.getJSON('https://geolocation-db.com/json/')
+.done (function(location) {
+    latitude = location.latitude;
+    longitude = location.longitude;
+});
 
 
 function fit_question_list_container_size() {
@@ -703,6 +711,8 @@ function preview(element) {
                         exam_passing_score: $('.quiz_show .passing_score').html(),
                         result: result,
                         quizzes: quizzes,
+                        latitude: latitude,
+                        longitude: longitude,
                     },
                     success: function (data) {
                         console.log('success');
@@ -1628,6 +1638,8 @@ function see_result() {
                 exam_passing_score: $('.quiz_show .passing_score').html(),
                 result: result,
                 quizzes: quizzes,
+                longitude: longitude,
+                latitude: latitude,
             },
             success: function (data) {
                 console.log('success');
