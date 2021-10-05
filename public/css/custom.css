@@ -658,6 +658,7 @@ div[contenteditable='true'] ul {
 .slide_view_element .choice_item label,
 .slide_view_element .response_item label {
     margin-bottom: 0;
+    padding-left: 10px;
 }
 
 #design_themes_panel_holder {
