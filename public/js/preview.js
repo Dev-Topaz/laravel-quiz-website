@@ -298,10 +298,10 @@ function rearrange_preview_ui() {
     switch ($('.quiz_show .type_id').html()) {
         case '1':
             console.log($('.quiz_show .shuffle_answers').html());
-            if ($('.quiz_show .shuffle_answers').html() == 0) return;
 
             var choice_items = $('.quiz_show .choice_item');
             change_input_id_label_for(choice_items, $('.quiz_show .quiz_id').html());
+            if ($('.quiz_show .shuffle_answers').html() == 0) return;
 
             shuffle(choice_items);
 
@@ -315,10 +315,10 @@ function rearrange_preview_ui() {
 
         case '2':
             console.log($('.quiz_show .shuffle_answers').html());
-            if ($('.quiz_show .shuffle_answers').html() == 0) return;
 
             var response_items = $('.quiz_show .response_item');
             change_input_id_label_for(response_items, $('.quiz_show .quiz_id').html());
+            if ($('.quiz_show .shuffle_answers').html() == 0) return;
 
             shuffle(response_items);
 
